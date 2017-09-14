@@ -66,7 +66,7 @@ This will have something to do with sine and cosine.
 
 Here's an awfully huge pic of a unit circle; that is, a circle with radius 1:
 
-![unit circle](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/1200px-Unit_circle.svg.png)
+![unit circle](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/600px-Unit_circle.svg.png)
 
 This is really quite simple: the y coordinate is ![math:\sin t][] and the x
 coordinate is ![math:\cos t][]. But the radius of the unit circle is 1 instead of
