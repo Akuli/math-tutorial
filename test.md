@@ -1,3 +1,3 @@
-lel wat like
+lel ![wat][] like
 
-![wat](wat.gif)
+![wat]: wat.gif
