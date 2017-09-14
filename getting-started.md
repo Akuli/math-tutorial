@@ -62,11 +62,15 @@ change every second?
             |
 ```
 
+Note that the y axis goes up in math so higher means bigger, but in programming
+it's usually upside down.
+
 This will have something to do with sine and cosine.
 
-Here's an awfully huge pic of a unit circle; that is, a circle with radius 1:
+The unit circle is a circle with radius 1 placed in the middle of the xy plane.
+Here's a picture that shows:
 
-![unit circle](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/600px-Unit_circle.svg.png)
+![unit circle](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png)
 
 This is really quite simple: the y coordinate is ![math:\sin t][] and the x
 coordinate is ![math:\cos t][]. But the radius of the unit circle is 1 instead of
