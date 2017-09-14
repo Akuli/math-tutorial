@@ -1,6 +1,6 @@
 btw did u know that if ![math:y=f(x)][] then
 
-![math:f'(x)={dy}\over{dx}][]
+![math:f'(x)={{dy}\over{dx}}][]
 
 like yeah thats all there is to derivatives
 
