@@ -29,6 +29,7 @@ Prelude>
 And finally, here's the same thing in math:
 
 ![math:f(x)=2x][]
+
 ![math:f(6)=12][]
 
 That wasn't so hard at all!
