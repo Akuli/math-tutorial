@@ -35,16 +35,19 @@ And finally, here's the same thing in math:
 That wasn't so hard at all!
 
 Note that there is no special syntax for defining a function. All we have is the
-equal sign, and when defining a function we just say that f of x is equal to 2x
-and thus f of 6 is equal to 12.
+equal sign, and when defining a function we just say that f of x is equal to
+something.
 
 A small note about `f(x)` versus `f x`: if you define your own function called
-`f` or `g` or whatever people expect you to use parentheses, but you may omit
-them with some "special" functions like `sin` and `cos` for historical reasons.
-Also note that mathematicians prefer single-letter variable names because math
-was originally written on paper, and writing long things by hand sucks.
+![math:f][] or ![math:g][] you should use parentheses, but you may omit them
+with some "special" functions like ![math:\sin][] and ![math:\cos][] for
+historical reasons.
 
-## Very basic trig
+Also note that mathematicians prefer single-letter variable names because math
+was originally written on paper, and writing long things by hand sucks. Again,
+this annoyingly doesn't apply to the "special" functions.
+
+## Very basic trigonometry (aka trig)
 
 **Problem:** A player moves to top-right at the angle of 60° measured from the
 x axis at 10 pixels per second. How many pixels should the player's x and y
@@ -116,8 +119,12 @@ mathy-accurate values and how Python's conversion functions work some day.
 
 [math:f(x)=2x]: images/math/080320743c76f725cd1f62a2c774c4e6.gif
 [math:f(6)=12]: images/math/152e1ca519e8fcf69c2dbda118348af2.gif
-[math:\sin t]: images/math/5732d78efedc927ac0d505b0b839d142.gif
+[math:f]: images/math/8fa14cdd754f91cc6554c9e71929cce7.gif
+[math:g]: images/math/b2f5ff47436671b6e533d8dc3614845d.gif
+[math:\sin]: images/math/5912fc1251cd0c1e212f6dd8d19f17ef.gif
+[math:\cos]: images/math/8effff999de692c242b9f7a539c63e58.gif
 [math:\cos t]: images/math/4d3eb39ad6e06c939af4dee7de899759.gif
+[math:\sin t]: images/math/5732d78efedc927ac0d505b0b839d142.gif
 [math:\sin 60\degree]: images/math/10eb7bf694bb1144845276b2337dd629.gif
 [math:\sin 60\degree]: images/math/10eb7bf694bb1144845276b2337dd629.gif
 [math:\frac{\sqrt{3}}{2}]: images/math/aed430fdf4c64058b58e05bf9ccbbbde.gif
