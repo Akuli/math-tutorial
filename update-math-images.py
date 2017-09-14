@@ -7,6 +7,7 @@ import hashlib
 import os
 import re
 import shutil
+import sys
 import urllib.request     # because i can
 
 
@@ -26,18 +27,26 @@ def download_image(math):
     url = 'https://latex.codecogs.com/gif.latex?' + math.replace(' ', '&space;')
     print("Downloading", url, "to", path, "...")
 
-    response = urllib.request.urlopen(url)
+    try:
+        response = urllib.request.urlopen(url)
+    except urllib.error.URLError:
+        traceback.print_exc()
+        print("\n\nPlease try running the script again. The latex2png.com "
+              "server seems to work and not work randomly.")
+        sys.exit(1)
+
     with open(path, 'wb') as file:
         shutil.copyfileobj(response, file)
 
-    print("  done.")
     return path
 
 
-def update_link_list(old_content, used_filenames):
-    maths = MATH_REGEX.findall(old_content)
+def update_link_list(content, used_filenames):
+    content = LINK_LIST_REGEX.sub('', content).rstrip() + '\n'
+
+    maths = MATH_REGEX.findall(content)
     if not maths:
-        return LINK_LIST_REGEX.sub('', old_content)
+        return content
 
     lines = []
     for math in maths:
@@ -45,12 +54,7 @@ def update_link_list(old_content, used_filenames):
         used_filenames.add(filename)
         lines.append('[math:%s]: %s' % (math, filename.replace(os.sep, '/')))
 
-    match = LINK_LIST_REGEX.search(old_content)
-    if not match:
-        return old_content + '\n' + '\n'.join(lines) + '\n'
-
-    start, end = match.span()
-    return old_content[:start] + '\n'.join(lines) + old_content[end:]
+    return content + '\n' + '\n'.join(lines) + '\n'
 
 
 def main():
