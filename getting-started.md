@@ -73,8 +73,8 @@ coordinate is ![math:\cos t][]. But the radius of the unit circle is 1 instead o
 our 10, so we need to multiply everything by 10 to scale it up. We get this:
 
 ```python
-player.x += sin(60)
-player.y += cos(60)
+player.x += 10*cos(60)
+player.y += 10*sin(60)
 ```
 
 Based on the unit circle, ![math:\sin 60\degree][] should be somewhere between
