@@ -50,7 +50,6 @@ was originally written on paper, and writing long things by hand sucks.
 x axis at 10 pixels per second. How many pixels should the player's x and y
 change every second?
 
-
 ```
             y
             |      O     <-- the player
@@ -65,16 +64,15 @@ change every second?
 Note that the y axis goes up in math so higher means bigger, but in programming
 it's usually upside down.
 
-This will have something to do with sine and cosine.
-
-The unit circle is a circle with radius 1 placed in the middle of the xy plane.
-Here's a picture that shows:
+Our problem has something to do with sine and cosine. The unit circle is a
+circle with radius 1 placed in the middle of the xy plane. Here's a picture that
+shows what sine and cosine are:
 
 ![unit circle](https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png)
 
-This is really quite simple: the y coordinate is ![math:\sin t][] and the x
-coordinate is ![math:\cos t][]. But the radius of the unit circle is 1 instead of
-our 10, so we need to multiply everything by 10 to scale it up. We get this:
+This is really quite simple: the x coordinate is ![math:\cos t][] and the y
+coordinate is ![math:\sin t][]. But the radius of the unit circle is 1 instead
+of our 10, so we need to multiply everything by 10 to scale it up. We get this:
 
 ```python
 player.x += 10*cos(60)
@@ -96,7 +94,7 @@ Now you're really like WTF. The angles with negative sines should be below the
 x axis, e.g. something between 180° and 360°.
 
 The problem is that Python, Haskell, C and most other programming languages use
-radians by default instead of degrees. Let's convert them to radians so the sine
+radians by default instead of degrees. Let's convert 60° to radians so the sine
 function is happy:
 
 ```python
