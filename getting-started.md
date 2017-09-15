@@ -5,28 +5,7 @@ if someone has trouble following it.
 
 ## Functions
 
-As a programmer you know or guess what this Python code does:
-
-```python
-def f(x):
-    return 2*x
-
-print(f(6))
-```
-
-It prints the number `12`.
-
-The syntax in math is more like that of functional programming
-languages. For example, here's Haskell:
-
-```haskell
-Prelude> let f x = 2*x
-Prelude> f 6
-12
-Prelude>
-```
-
-And finally, here's the same thing in math:
+Here's a typical function definition in math:
 
 ![math:f(x)=2x][]
 
@@ -35,6 +14,29 @@ And finally, here's the same thing in math:
 There is no special syntax for defining a function in math. All we have is the
 equal sign, and when defining a function we just say that its value at x is
 equal to something.
+
+If you're familiar with a functional programming language like Haskell, then
+you'll probably realize that the above math looks a lot like this Haskell
+session:
+
+```haskell
+Prelude> let f x = 2*x
+Prelude> f 6
+12
+Prelude>
+```
+
+If you're feeling like WTF is this, here's a Python session that should make
+everything clear.
+
+```python
+>>> def f(x):
+...     return 2*x
+...
+>>> f(6)
+12
+>>>
+```
 
 Quick note about `f(x)` versus `f x`: if you define your own function called
 ![math:f][] or ![math:g][] you should use parentheses, but you may omit them
