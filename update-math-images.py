@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # update the gifs in images/math and the markdown files that use them
 #
 # this downloads images from latex2png.com and it doesn't work 100% of
