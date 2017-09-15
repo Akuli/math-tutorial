@@ -179,8 +179,8 @@ much more complex than the stuff above so I won't show that here.
 [math:\cos t]: images/math/4d3eb39ad6e06c939af4dee7de899759.gif
 [math:\sin t]: images/math/5732d78efedc927ac0d505b0b839d142.gif
 [math:\sin 60\degree]: images/math/10eb7bf694bb1144845276b2337dd629.gif
-[math:\sin 60\degree = \sqrt 3 \over 2]: images/math/36f2e6ce9af82f0e2facad5ed1a209cc.gif
-[math:\cos 60\degree = 1 \over 2]: images/math/7d2dd79922fa57fed3ed5b32d30d6149.gif
+[math:\sin 60\degree = {\sqrt 3 \over 2}]: images/math/2dbba55f17b7abb4642fb000b1e1eed1.gif
+[math:\cos 60\degree = {1 \over 2}]: images/math/f594199d05540abcf86048e7381f7e2f.gif
 [math:A=(1,2)]: images/math/ea55273b1ce070424fbe13c45d6270c9.gif
 [math:B=(3,5)]: images/math/ef624b5778b8523126644acae2e90d0c.gif
 [math:\overline{AB}=2\overline{i}+3\overline{j}]: images/math/1efdde526c4454c415962aee4c31c189.gif
