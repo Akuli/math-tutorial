@@ -11,7 +11,7 @@ Here's a typical function definition in math:
 
 ![math:f(6)=12][]
 
-There is no special syntax for defining a function in math. All we have is the
+There is no special syntax for defining a function. All we have is the
 equal sign, and when defining a function we just say that its value at x is
 equal to something.
 
