@@ -82,7 +82,7 @@ player.y += 10*sin(60)
 
 Based on the unit circle, ![math:\sin 60\degree][] should be somewhere between
 0.5 and 1 since the height of the x axis is 0 and the circle's top is at 1 (the
-radius is 1). But something is wrong:
+radius is 1). But if we try this out in Python, something is wrong:
 
 ```python
 >>> import math
@@ -108,9 +108,9 @@ function is happy:
 
 That's more like it. `0.5000000000000001` is obviously not an accurate result,
 but it's good enough for a programmer while a mathematician would say that
-![math:\sin 60\degree = \sqrt 3 \over 2][] and
-![math:\cos 60\degree = 1 \over 2][]. I might write more about radians, how the
-heck I came up with those mathy-accurate values and how Python's conversion
+![math:\sin 60\degree = {\sqrt 3 \over 2}][] and
+![math:\cos 60\degree = {1 \over 2}][]. I might write more about radians, how
+the heck I came up with those mathy-accurate values and how Python's conversion
 functions work some day.
 
 This tutorial uses the degree sign ° when you may need to convert things
@@ -139,19 +139,18 @@ player.y += speed_vector.j
 ```
 
 A disadvantage is that if we want to change the angle that the player moves at
-by 1° we can't just do `moving_angle += 1`. Of course it's possible to do these
-calculations, but it's perhaps not as easy.
+by 1° we can't just do `moving_angle += 1`. Of course it's possible to change
+that angle, but not as simple.
 
 Another nice thing about vectors is that they can be +'ed together easily.
 For example, if we first move 3 units to right, then 4 units to top and then
 5 more units to right, our total movement is simply
-
 ![math:3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}][].
 
 Now let's look into handy calculations that can be done with vectors. If you
-want to know how these things work just tell me about it and I'll write more
-explanations (but I'll put them to another file so they won't disturb people
-who don't care about them, and add a link to that here).
+want to know why these things work like they work just tell me about it and
+I'll write more explanations (but I'll put them to another file so they won't
+disturb people who don't care about them, and add a link to that here).
 
 ![vector from A to B, length l, angle from horizontal plane t](images/vector-calc.png)
 
@@ -159,10 +158,10 @@ who don't care about them, and add a link to that here).
 
 ![math:t = \text{atan2}(b,a)][]
 
-Here *atan2* is a function that mathematicians don't use, but I used it here
+Here atan2 is a function that mathematicians don't use, but I used it here
 because most programming languages have it, it takes care of some corner cases
 and it's sometimes more precise than doing the same thing with other functions.
-In other words, use `atan2` because it's good.
+In other words, use atan2 because it's good.
 
 For example, if we move 1 unit to the right and 2 units up, our vector is
 ![math:<1,2>][], its length is ![math:\sqrt{1^2+2^2} = \sqrt5 \approx 2.24][]
