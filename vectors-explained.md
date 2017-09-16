@@ -1,8 +1,8 @@
 # Vector Explanations
 
-If you haven't read [this thing](README.md#vectors) yet go ahead and read it
-now. This chapter focuses on explaining how the things in it work. **This thing
-is not for you if you just want to get things done**
+If you haven't read [this vector section](README.md#vectors) yet go ahead and
+read it now. This chapter explains how the things I showed in the vector section
+work.
 
 ## The Length
 
