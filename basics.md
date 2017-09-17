@@ -22,7 +22,7 @@ cancel out.
 
 ## Powers and Roots
 
-![math:x^4=x\cdot x\cdot x\cdot x\cdot x][]
+![math:x^5=x\cdot x\cdot x\cdot x\cdot x][]
 
 ![math:x^{a+b}=\underbrace{x\cdot x\cdot x\cdot...\cdot x}_\text{a+b pcs}=\underbrace{x\cdot...\cdot x}_\text{a pcs}\cdot\underbrace{x\cdot...\cdot x}_\text{b pcs}=x^ax^b][]
 
@@ -46,7 +46,7 @@ In most programming languages, ![math:x^a][] is `x**y` or `pow(x, y)` and
 [math:2\cdot(-2)=-4]: images/math/4776ce379db4fa3932ad3517c05463b6.gif
 [math:(-2)\cdot(-2)=4]: images/math/0b6eaa1d7f84d189c5e44e87d665a1d0.gif
 [math:\frac{-1}{-2}=\frac{1}{2}]: images/math/ec288525cac3614fa7764d5e589d8a4d.gif
-[math:x^4=x\cdot x\cdot x\cdot x\cdot x]: images/math/41dad511a35361915caf42f75efc1efd.gif
+[math:x^5=x\cdot x\cdot x\cdot x\cdot x]: images/math/2cbab7c8fba9a07388d76ae664eb6b26.gif
 [math:x^{a+b}=\underbrace{x\cdot x\cdot x\cdot...\cdot x}_\text{a+b pcs}=\underbrace{x\cdot...\cdot x}_\text{a pcs}\cdot\underbrace{x\cdot...\cdot x}_\text{b pcs}=x^ax^b]: images/math/89d150a6e7cdd864be80b9edbff6c1b1.gif
 [math:(x^a)^b=\underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}} \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}=x^{ab}]: images/math/9f5d63040b92089f21d1e27e07df8fef.gif
 [math:\sqrt x = x^\frac 1 2]: images/math/a0249919292fdb950e1b1b923a837488.gif
