@@ -1,7 +1,7 @@
 # Math for Programmers
 
 This tutorial will soon be hosted on
-[akuli.github.io/porcupine](https://akuli.github.io/math-tutorial).
+[akuli.github.io/math-tutorial](https://akuli.github.io/math-tutorial).
 
 ## Building
 
