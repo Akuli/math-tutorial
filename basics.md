@@ -38,7 +38,7 @@ language.
 
 ## Powers and Roots
 
-In most programming languages, ![math:x^a][] is `x**y` or `pow(x, y)` and
+In most programming languages, ![math:x^y][] is `x**y` or `pow(x, y)` and
 ![math:\sqrt x][] is `sqrt(x)`.
 
 ![math:x^5=x\cdot x\cdot x\cdot x\cdot x][]
@@ -78,7 +78,7 @@ is more complete.
 [math:|2|=2]: images/math/1d5b280040c7b5897d313e812280316f.gif
 [math:|-3|=3]: images/math/1f7f1085e75aad46877e7eb8629199b9.gif
 [math:|x|]: images/math/cf513decf6e4ace0e25cb1c932aaa049.gif
-[math:x^a]: images/math/347b99be8c291ade0c6b4d680e18916a.gif
+[math:x^y]: images/math/67d8bd969cb2cf1b378f5e534a19d936.gif
 [math:\sqrt x]: images/math/f108a3d88b22ff91ddbd459b0f359bc9.gif
 [math:x^5=x\cdot x\cdot x\cdot x\cdot x]: images/math/2cbab7c8fba9a07388d76ae664eb6b26.gif
 [math:x^{a+b}=\underbrace{x\cdot x\cdot x\cdot...\cdot x}_\text{a+b pcs}=\underbrace{x\cdot...\cdot x}_\text{a pcs}\cdot\underbrace{x\cdot...\cdot x}_\text{b pcs}=x^ax^b]: images/math/89d150a6e7cdd864be80b9edbff6c1b1.gif
