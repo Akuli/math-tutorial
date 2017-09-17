@@ -8,7 +8,7 @@ tutorial.
 
 I'm *sure* you know + and -.
 
-In this tutorail, `a/b` is written as ![math:\frac a b][], and `a*b` is
+In this tutorial, `a/b` is written as ![math:\frac a b][], and `a*b` is
 sometimes written as ![math:a \cdot b][] but more often ![math:ab][].
 
 You can also use these handy things:
