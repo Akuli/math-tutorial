@@ -4,10 +4,6 @@ This tutorial assumes that you know these things. If you don't, that's not a
 problem at all and you can just keep this page open while you read rest of the
 tutorial.
 
-## Why can't I divide by zero?!
-
-See [Numberphile's awesome video about zero](https://youtu.be/BRRolKTlF6Q).
-
 ## +, -, \*, /
 
 I'm *sure* you know + and -.
@@ -17,11 +13,16 @@ sometimes written as ![math:a \cdot b][] but more often ![math:ab][].
 
 You can also use these handy things:
 
+![math:0x=0][]
+
 ![math:ab=ba][] (but ![math:\frac a b=\frac b a][] only when ![math:a=b\ne0][])
 
 ![math:(a+b)c=ac+bc][]
 
 ![math:\frac{ac}{bc}=\frac a b][] if ![math:b\ne0][] and ![math:c\ne0][]
+
+See [Numberphile's awesome zero video](https://youtu.be/BRRolKTlF6Q) if you're
+wondering why dividing by zero is not allowed.
 
 Negative numbers behave like this when multiplied and divided. Note how two -'s
 cancel out.
@@ -40,7 +41,7 @@ For example, ![math:|2|=2][] and ![math:|-3|=3][]. ![math:|x|][] is `abs(x)` in
 most programming languages, but you may need e.g. `Math.abs(x)` depending on the
 language.
 
-## Powers and Roots
+## Powers and Square Root
 
 In most programming languages, ![math:x^y][] is `x**y` or `pow(x, y)` and
 ![math:\sqrt x][] is `sqrt(x)`.
@@ -84,6 +85,7 @@ is more complete.
 [math:\frac a b]: images/math/bf97403b855d7684b583323d15579b8b.gif
 [math:a \cdot b]: images/math/11e60ba50ad18c52fd95e243667a62cd.gif
 [math:ab]: images/math/187ef4436122d1cc2f40dc2b92f0eba0.gif
+[math:0x=0]: images/math/8177684c0f20605d5cb599a2e572a016.gif
 [math:ab=ba]: images/math/e535c14059b453f327db1fc15f33f108.gif
 [math:\frac a b=\frac b a]: images/math/24259f28ef4d734d302276f1d7486499.gif
 [math:a=b\ne0]: images/math/22abfbe4e0f52006656d398a51aa28a8.gif
