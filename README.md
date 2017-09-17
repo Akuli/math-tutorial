@@ -150,22 +150,23 @@ For example, if we first move 3 units to right, then 4 units to top and then
 ![math:3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}][].
 
 Now let's look into handy calculations that can be done with vectors. If you
-want to know why these things work like they work just tell me about it and
-I'll write more explanations (but I'll put them to another file so they won't
-disturb people who don't care about them, and add a link to that here).
+want to know why these things work see [this explanation
+chapter](vectors-explained.md)
 
 ![vector from A to B, length l, angle from horizontal plane t](images/vector-calc.png)
 
-![math:l = \sqrt{a^2+b^2}][]
+![math:l = \sqrt{a^2+b^2} = \text{hypot}(a, b)][]
 
 ![math:t = \text{atan2}(b,a)][]
 
-Here atan2 is a function that mathematicians don't use, but I used it here
-because most programming languages have it, it takes care of some corner cases
-and it's sometimes more precise than doing the same thing with other functions.
-In other words, use atan2 because it's good.
+Here atan2 and hypot are functions that mathematicians don't use. I showed the
+hypot thing here because some programming languages have it and you might be
+wondering what it is, but I prefer using the square root version directly
+because not many people know what hypot does. However, I recommend atan2 because
+most programming languages have it and it takes care of some corner cases (see
+[the explanation chapter](vectors-explained.md)).
 
-For example, if we move 1 unit to the right and 2 units up, our vector is
+Example: if we move 1 unit to the right and 2 units up, our vector is
 ![math:<1,2>][], its length is ![math:\sqrt{1^2+2^2} = \sqrt5 \approx 2.24][]
 and the angle is ![math:\text{atan2}(2,1) \approx 63.4\degree][].
 
@@ -191,7 +192,7 @@ much more complex than the stuff above so I won't show that here.
 [math:2\overline{i}+3\overline{j}]: images/math/e841e0cd2b87a7caab51341881b2179e.gif
 [math:<2,3>]: images/math/477e582288e4243cb3dc9173beaf64fc.gif
 [math:3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}]: images/math/a6cc20a2be8c06d9ba7e53998fc8558c.gif
-[math:l = \sqrt{a^2+b^2}]: images/math/d0991f3c2601c3ea485cd3956b3bc412.gif
+[math:l = \sqrt{a^2+b^2} = \text{hypot}(a, b)]: images/math/724226ee5ee24ff867619efd8df52e70.gif
 [math:t = \text{atan2}(b,a)]: images/math/17e4437cf9d2ecd41e41ccc5648befa5.gif
 [math:<1,2>]: images/math/10adba9a4d1293648444f90c1f98f4af.gif
 [math:\sqrt{1^2+2^2} = \sqrt5 \approx 2.24]: images/math/b80cc910ea17ab398618758290d4b592.gif
