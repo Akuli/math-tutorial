@@ -4,6 +4,10 @@ This tutorial assumes that you know these things. If you don't, that's not a
 problem at all and you can just keep this page open while you read rest of the
 tutorial.
 
+## Why can't I divide by zero?!
+
+See [Numberphile's awesome video about zero](https://youtu.be/BRRolKTlF6Q).
+
 ## +, -, \*, /
 
 I'm *sure* you know + and -.
@@ -13,11 +17,11 @@ sometimes written as ![math:a \cdot b][] but more often ![math:ab][].
 
 You can also use these handy things:
 
-![math:ab=ba][] (but ![math:\frac a b \ne \frac b a][])
+![math:ab=ba][] (but ![math:\frac a b=\frac b a][] only when ![math:a=b\ne0][])
 
 ![math:(a+b)c=ac+bc][]
 
-![math:\frac{ab}{cb}=\frac a b][]
+![math:\frac{ac}{bc}=\frac a b][] if ![math:b\ne0][] and ![math:c\ne0][]
 
 Negative numbers behave like this when multiplied and divided. Note how two -'s
 cancel out.
@@ -26,7 +30,7 @@ cancel out.
 
 ![math:(-2)\cdot(-2)=4][]
 
-![math:\frac{-1}{-2}=\frac{(-1)\cdot 1}{(-2)\cdot 2}=\frac 1 2][]
+![math:\frac{-1}{-2}=\frac{(-1)\cdot 1}{(-1)\cdot 2}=\frac 1 2][]
 
 ## Absolute Value
 
@@ -58,6 +62,19 @@ needed them in this tutorial).
 Confusingly ![math:\sqrt{x^2}=|x|][], e.g. ![math:\sqrt{(-2)^2}=\sqrt4=2][]
 where ![math:(-2)^2=4][] (see [above](#----)).
 
+## Equations
+
+For example:
+
+![math:2x+1=9][]
+
+![math:2x=8][]
+
+![math:x=4][]
+
+You can add or substract any numbers from both sides, like substracting 1 in the
+first step, or you can multiply or divide both sides by any nonzero number.
+
 ## See Also
 
 This chapter shows only the things you need in the rest of this tutorial, but
@@ -68,12 +85,15 @@ is more complete.
 [math:a \cdot b]: images/math/11e60ba50ad18c52fd95e243667a62cd.gif
 [math:ab]: images/math/187ef4436122d1cc2f40dc2b92f0eba0.gif
 [math:ab=ba]: images/math/e535c14059b453f327db1fc15f33f108.gif
-[math:\frac a b \ne \frac b a]: images/math/e697d0c147567919767d697c1dfd10b4.gif
+[math:\frac a b=\frac b a]: images/math/24259f28ef4d734d302276f1d7486499.gif
+[math:a=b\ne0]: images/math/22abfbe4e0f52006656d398a51aa28a8.gif
 [math:(a+b)c=ac+bc]: images/math/fda516801265bdcecd104f840b535c04.gif
-[math:\frac{ab}{cb}=\frac a b]: images/math/87eb9954a434b425ed1beed2979296d2.gif
+[math:\frac{ac}{bc}=\frac a b]: images/math/240a3f880e24b5b0ee3851678d011545.gif
+[math:b\ne0]: images/math/902294c62589bf0ded2e67a20fb13807.gif
+[math:c\ne0]: images/math/0f3c387a0d09fb844f5faca72ae22375.gif
 [math:2\cdot(-2)=-4]: images/math/4776ce379db4fa3932ad3517c05463b6.gif
 [math:(-2)\cdot(-2)=4]: images/math/0b6eaa1d7f84d189c5e44e87d665a1d0.gif
-[math:\frac{-1}{-2}=\frac{(-1)\cdot 1}{(-2)\cdot 2}=\frac 1 2]: images/math/696edc0420ed05380145da2a150d68bb.gif
+[math:\frac{-1}{-2}=\frac{(-1)\cdot 1}{(-1)\cdot 2}=\frac 1 2]: images/math/edb893bab76cad27869b4ff1bf1a085d.gif
 [math:|x|=\left\{\begin{matrix}x\text{ if }x\ge0\\-x\text{ if }x<0\end{matrix}\right]: images/math/48a80243158416d73cd18a6a18f774f7.gif
 [math:|2|=2]: images/math/1d5b280040c7b5897d313e812280316f.gif
 [math:|-3|=3]: images/math/1f7f1085e75aad46877e7eb8629199b9.gif
@@ -91,3 +111,6 @@ is more complete.
 [math:\sqrt{x^2}=|x|]: images/math/959babe8407cdf233d2ae124dc0f8329.gif
 [math:\sqrt{(-2)^2}=\sqrt4=2]: images/math/432c66cae765f66e18d8854e76ccbd3d.gif
 [math:(-2)^2=4]: images/math/b0361d47a79858018a3b6318baeabff5.gif
+[math:2x+1=9]: images/math/a5a26bfedee6b498ecfc7794197137d9.gif
+[math:2x=8]: images/math/e1d072e3de30611949b31a21229cef6a.gif
+[math:x=4]: images/math/440bcb2225cd249b09bb29454f83249d.gif
