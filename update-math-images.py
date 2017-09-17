@@ -28,14 +28,7 @@ def download_image(math):
     url = 'https://latex.codecogs.com/gif.latex?' + math.replace(' ', '&space;')
     print("Downloading", url, "to", path, "...")
 
-    try:
-        response = urllib.request.urlopen(url)
-    except urllib.error.URLError:
-        traceback.print_exc()
-        print("\n\nPlease try running the script again. The latex2png.com "
-              "server seems to work and not work randomly.")
-        sys.exit(1)
-
+    response = urllib.request.urlopen(url)
     with open(path, 'wb') as file:
         shutil.copyfileobj(response, file)
 
