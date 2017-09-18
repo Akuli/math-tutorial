@@ -58,6 +58,8 @@ def git_stash():
 
 
 def main():
+    run(sys.executable, '-m', 'sphinx', '.', '_build')
+
     with tempfile.TemporaryDirectory() as tmpdir:
         info("copying _build to a temporary directory")
         tmpdir = os.path.join(tmpdir, '_build')
