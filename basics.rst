@@ -8,7 +8,7 @@ tutorial.
 +, -, \*, /
 ~~~~~~~~~~~
 
-I'm sure you know already how + and - work.
+I'm sure you already know how + and - work.
 
 In this tutorial, ``a/b`` is written as `\frac a b`, and ``a*b`` is
 sometimes written as `a \cdot b` but more often `ab`.
