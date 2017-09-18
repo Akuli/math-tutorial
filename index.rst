@@ -209,8 +209,8 @@ Let's start with an example. If we have a number like 2017, it really means this
 
 .. math::
 
-   2017 = 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7
-       &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
+   2017 &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+        &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
 
 The idea with **hexadecimal** is that instead of using 10 as a magic number we
 use 16. That's why hexadecimal is also called *base 16*. But the problem is
@@ -224,12 +224,12 @@ that we only have 10 digits, 0 to 9, so we borrow a few letters so that
                   &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
                   &= 51966
 
-The sane way to calculate the last step is to use a calculator or an interpreter
-of your choice. Don't try to do it by hand.
-
 Here 0x means hexadecimal. Mathematicians don't use it, but I used it here
 because it's very common in programming. The x is kinda short-ishy-thingy-like
 for heXadecimal.
+
+The sane way to calculate the last step is to use a calculator or an interpreter
+of your choice. Don't try to do it by hand.
 
 Most programming languages have very good support for hexadecimal and a few
 other bases. For example, here's Python:
