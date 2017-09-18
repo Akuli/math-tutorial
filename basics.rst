@@ -29,9 +29,9 @@ you're wondering why dividing by zero is not allowed.
 Negative numbers behave like this when multiplied and divided. Note how the two
 -'s cancel out.
 
-.. math:: 2\cdot(-2)=-4
-.. math:: (-2)\cdot(-2)=4
-.. math:: \frac{-1}{-2} = \frac{(-1) \cdot 1}{(-1) \cdot 2} = \frac 1 2
+.. math:: 2 \cdot (-2) = -(2 \cdot 2) = 4
+.. math:: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
+.. math:: \frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
 
 Absolute Value
 ~~~~~~~~~~~~~~
