@@ -66,9 +66,9 @@ tutorial.</p>
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <p>Here’s a typical math function:</p>
 <div class="math">
-<p><span class="math">f(x)=2x</span></p>
+<p><img src="_images/math/e53d6ee39ddd130a251ea3f98d8ed55cfd036d0b.png" alt="f(x)=2x"/></p>
 </div><div class="math">
-<p><span class="math">f(6)=12</span></p>
+<p><img src="_images/math/de45dc3913156de4f9e6cf90d0e490ba94af8f8b.png" alt="f(6)=12"/></p>
 </div><p>There is no special syntax for defining a function. All we have is the
 equal sign, and when defining a function we just say that its value at x is
 equal to something.</p>
@@ -92,8 +92,8 @@ everything clear.</p>
 </pre></div>
 </div>
 <p>Quick note about <code class="docutils literal"><span class="pre">f(x)</span></code> versus <code class="docutils literal"><span class="pre">f</span> <span class="pre">x</span></code>: if you define your own function
-called <span class="math">f</span> or <span class="math">g</span> you should use parentheses, but you may omit them with some
-“special” functions like <span class="math">\sin</span> and <span class="math">\cos</span> for historical reasons.</p>
+called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> or <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> you should use parentheses, but you may omit them with some
+“special” functions like <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> for historical reasons.</p>
 <p>Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
 this doesn’t apply to the “special” functions.</p>
@@ -119,14 +119,14 @@ it’s usually upside down.</p>
 circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
 shows what sine and cosine are:</p>
 <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png" />
-<p>This is really quite simple: the x coordinate is <span class="math">\cos t</span> and the y
-coordinate is <span class="math">\sin t</span>. But the radius of the unit circle is 1 instead
+<p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
+coordinate is <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead
 of our 10, so we need to multiply everything by 10 to scale it up. We get this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Based on the unit circle, <span class="math">\sin 60°</span> should be somewhere between 0 and 1 since
+<p>Based on the unit circle, <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/> should be somewhere between 0 and 1 since
 the height of the x axis is 0 and the circle’s top is at 1 (the radius is 1).
 But if we try this out in Python, something is wrong:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
@@ -149,7 +149,7 @@ function is happy:</p>
 </div>
 <p>That’s more like it. <code class="docutils literal"><span class="pre">0.5000000000000001</span></code> is obviously not an accurate
 result, but it’s good enough for a programmer while a mathematician would say
-that <span class="math">\sin 60° = \frac{\sqrt 3}2</span> and <span class="math">\cos 60° = \frac 1 2</span>. I might write
+that <img class="math" src="_images/math/6e1490ba27369c4df406cbdd210f1c8684c44b30.png" alt="\sin 60° = \frac{\sqrt 3}2"/> and <img class="math" src="_images/math/453177a40323026da8b50cc4749aa5e55aa75614.png" alt="\cos 60° = \frac 1 2"/>. I might write
 more about radians, how the heck I came up with those mathy-accurate values and
 how Python’s conversion functions work some day.</p>
 <p>This tutorial uses the degree sign ° when you may need to convert things
@@ -158,12 +158,12 @@ between radians and degrees.</p>
 <div class="section" id="vectors">
 <h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
 <p>A point is simply a pair of x and y coordinates, and a vector represents the
-difference between two points. For example, if we have the points <span class="math">A=(1,2)</span> and
-<span class="math">B=(3,5)</span>, the vector from A to B is <span class="math">\overline{AB}=2\overline{i}+3\overline{j}</span>.
-Here <span class="math">\overline{i}</span> and <span class="math">\overline{j}</span> are vectors that go right and up by 1
+difference between two points. For example, if we have the points <img class="math" src="_images/math/43c55690dcb39b7b2a37bf3ba4f365c12bb79398.png" alt="A=(1,2)"/> and
+<img class="math" src="_images/math/570f76b28105e04d716df4cfff657839bea16132.png" alt="B=(3,5)"/>, the vector from A to B is <img class="math" src="_images/math/a294fb61310143938222b4f33841a6860a98206d.png" alt="\overline{AB}=2\overline{i}+3\overline{j}"/>.
+Here <img class="math" src="_images/math/9baffc5b5346ac3f8bb104632c141c631d54678a.png" alt="\overline{i}"/> and <img class="math" src="_images/math/e0361ec03e32dfe6e2a216f7714d8670ab35a002.png" alt="\overline{j}"/> are vectors that go right and up by 1
 unit, respectively.</p>
 <img alt="_images/vectors-ab-ij.png" src="_images/vectors-ab-ij.png" />
-<p>A vector like <span class="math">2\overline{i}+3\overline{j}</span> can be also written as <span class="math">&lt;2,3&gt;</span>.
+<p>A vector like <img class="math" src="_images/math/493461cf7f675737dd39c6bcd5269e45cc1c6fda.png" alt="2\overline{i}+3\overline{j}"/> can be also written as <img class="math" src="_images/math/d48cf67461b5fdd2fb15247f3d2279a172d97796.png" alt="&lt;2,3&gt;"/>.
 Use whatever style you like.</p>
 <p>We could also have used vectors in the above trig example. The advantage with
 them is that moving the player is really simple:</p>
@@ -177,22 +177,22 @@ that angle, but not as simple.</p>
 <p>Another nice thing about vectors is that they can be +’ed together easily.
 For example, if we first move 3 units to right, then 4 units to top and then
 5 more units to right, our total movement is simply
-<span class="math">3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}</span>.</p>
+<img class="math" src="_images/math/ab937b180f5c6b4ec2bff1bfd1b88c9075a28767.png" alt="3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}"/>.</p>
 <p>Now let’s look into handy calculations that can be done with vectors:</p>
 <img alt="_images/vector-calc.png" src="_images/vector-calc.png" />
 <div class="math">
-<p><span class="math">l = \sqrt{a^2+b^2} = \text{hypot}(a, b)</span></p>
+<p><img src="_images/math/36da0beb6ae49d9e6b237dd364422d7717556208.png" alt="l = \sqrt{a^2+b^2} = \text{hypot}(a, b)"/></p>
 </div><div class="math">
-<p><span class="math">t = \text{atan2}(b,a)</span></p>
+<p><img src="_images/math/ab45c6cfb050e901d90916fce73212c8952ee693.png" alt="t = \text{atan2}(b,a)"/></p>
 </div><p>Here atan2 and hypot are functions that mathematicians don’t use. I showed the
 hypot thing here because some programming languages have it and you might be
 wondering what it is, but I prefer using the square root version directly
 because not many people know what hypot does. However, I recommend atan2 because
 most programming languages have it and it takes care of some corner cases (see
 <a class="reference internal" href="vectors-explained.html#vectors-explained"><span class="std std-ref">the explanation chapter</span></a>).</p>
-<p>Example: if we move 1 unit to the right and 2 units up, our vector is <span class="math">&lt;1,2&gt;</span>,
-its length is <span class="math">\sqrt{1^2+2^2} = \sqrt5 \approx 2.24</span> and the angle is
-<span class="math">\text{atan2}(2,1) \approx 63.4°</span>.</p>
+<p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="math" src="_images/math/ee3662170a5c6a5c81a1dddf0de4c3fab3de3f29.png" alt="&lt;1,2&gt;"/>,
+its length is <img class="math" src="_images/math/595cc7bf51ea9f045e102a654fc523ecc3e5ad9c.png" alt="\sqrt{1^2+2^2} = \sqrt5 \approx 2.24"/> and the angle is
+<img class="math" src="_images/math/afc9336bb3210081d6c7d79c07d189ceb4f8f1a3.png" alt="\text{atan2}(2,1) \approx 63.4°"/>.</p>
 <p>You can also turn a length and an angle to a vector, but that turns out to be
 much more complex than the stuff above so I won’t show that here.</p>
 <div class="section" id="how-do-the-formulas-work">
