@@ -33,6 +33,21 @@ Negative numbers behave like this when multiplied and divided. Note how the two
 .. math:: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
 .. math:: \frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
 
+Python examples:
+
+.. code-block:: python
+
+   >>> 2 * (-2)
+   -4
+   >>> (-2) * (-2)
+   4
+   >>> (-3)/(-4)
+   0.75
+   >>> 3/4
+   0.75
+   >>> 
+
+
 Absolute Value
 ~~~~~~~~~~~~~~
 
