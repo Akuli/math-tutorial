@@ -2,15 +2,15 @@ Math for Programmers
 ====================
 
 This tutorial contains practical math for programmers who want to get stuff
-done as well as explanation chapters for those who get interested in how the
+done, as well as explanation chapters for those who get interested in how the
 math works.
 
 
-The Very Basics
-~~~~~~~~~~~~~~~
+The Basics
+~~~~~~~~~~
 
 This tutorial assumes that you know these things. If you don't, that's not a
-problem at all and you can just keep this page open while you read rest of the
+problem at all and you can just keep the basics page open while you read the
 tutorial.
 
 .. toctree::
