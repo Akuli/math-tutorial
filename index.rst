@@ -196,3 +196,53 @@ explanations to another page.
       :maxdepth: 2
 
       vectors-explained
+
+
+Hexadecimal Colors
+~~~~~~~~~~~~~~~~~~
+
+You might have seen weird colors before, like ``#ff0000`` is somehow magically
+red or ``#0000ff`` is blue. This section is all about what the heck happens in
+this color notation.
+
+Let's start with an example. If we have a number like 2017, it really means this:
+
+.. math::
+
+   2017 = 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7
+       &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
+
+The idea with **hexadecimal** is that instead of using 10 as a magic number we
+use 16. That's why hexadecimal is also called *base 16*. But the problem is
+that we only have 10 digits, 0 to 9, so we borrow a few letters so that
+`\text{a}=10`, `\text{b}=11`, `\text{c}=12` and so on. For example:
+
+.. math::
+
+   \text{0xcafe} = \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
+                   \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0
+                &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14
+                &= 51966
+
+The sane way to calculate the last step is to use a calculator or an interpreter
+of your choice. Don't try to do it by hand.
+
+Here 0x means hexadecimal. Mathematicians don't use it, but I used it here
+because it's very common in programming. The x is kinda short-ishy-thingy-like
+for heXadecimal.
+
+Most programming languages have very good support for hexadecimal and a few
+other bases. For example, here's Python:
+
+.. code-block:: python
+
+   >>> 0xcafe
+   51966
+   >>> 0xc * 16**3 + 0xa * 16**2 + 0xf * 16 + 0xe
+   51966
+   >>> 12 * 16**3 + 10 * 16**2 + 15 * 16 + 14
+   51966
+   >>> hex(51966)
+   '0xcafe'
+   >>> int('cafe', 16)
+   51966
