@@ -50,8 +50,8 @@ any. For example, `|2|=2` and `|-3|=3`. In most programming languages, `|x|` is
 Powers and Square Root
 ~~~~~~~~~~~~~~~~~~~~~~
 
-In most programming languages, `x^y` is ``x**y`` or ``pow(x, y)`` and `\sqrt x`
-is ``sqrt(x)``.
+`x^y` is ``x**y`` or ``pow(x, y)`` and `\sqrt x` is ``sqrt(x)`` in most
+programming languages.
 
 .. math:: x^5=x\cdot x\cdot x\cdot x\cdot x
 .. math:: x^{a+b}=\underbrace{x\cdot x\cdot x\cdot...\cdot x}_\text{a+b pcs}=\underbrace{x\cdot...\cdot x}_\text{a pcs}\cdot\underbrace{x\cdot...\cdot x}_\text{b pcs}=x^ax^b
