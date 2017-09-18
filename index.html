@@ -225,59 +225,12 @@ this color notation.</p>
 use 16. That’s why hexadecimal is also called <em>base 16</em>. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that
 <img class="math" src="_images/math/a05fdab04709637b7d6cbae160aec3c12d2cddd3.png" alt="\text{a}=10"/>, <img class="math" src="_images/math/c41ecf6f620f4a36485c3c564f8b96e190543257.png" alt="\text{b}=11"/>, <img class="math" src="_images/math/31d07d3c3584ea1c8ad3bcfbef2528944f5b0d05.png" alt="\text{c}=12"/> and so on. For example:</p>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\text{0xcafe} = \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
-                \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0
-             &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14
-             &amp;= 51966</tt>)</p>
-latex exited with error
-[stdout]
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
- restricted \write18 enabled.
-entering extended mode
-(./math.tex
-LaTeX2e &lt;2011/06/27&gt;
-Babel &lt;3.9h&gt; and hyphenation patterns for 2 languages loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def))
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
-(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty) (./math.aux)
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
-! Extra alignment tab has been changed to \cr.
-&lt;template&gt; }$\hfill \endtemplate 
-                                 
-l.17              &amp;= 51966\end{split}
-                                     
-! Extra alignment tab has been changed to \cr.
-&lt;template&gt; }$\hfill \endtemplate 
-                                 
-l.17              &amp;= 51966\end{split}
-                                     
-
-Overfull \hbox (47.05853pt too wide) in paragraph at lines 18--18
-[] 
-[1] (./math.aux) )
-(see the transcript file for additional information)
-Output written on math.dvi (1 page, 564 bytes).
-Transcript written on math.log.
-</div>
-<p>The sane way to calculate the last step is to use a calculator or an interpreter
+<div class="math">
+<p><img src="_images/math/c82a5bcda561442e3fcea93d35a662dbf685e9f7.png" alt="\text{0xcafe}  = \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
+                 \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0 \\
+               &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
+               &amp;= 51966"/></p>
+</div><p>The sane way to calculate the last step is to use a calculator or an interpreter
 of your choice. Don’t try to do it by hand.</p>
 <p>Here 0x means hexadecimal. Mathematicians don’t use it, but I used it here
 because it’s very common in programming. The x is kinda short-ishy-thingy-like
