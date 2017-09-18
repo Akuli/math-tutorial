@@ -212,6 +212,91 @@ explanations to another page.</p>
 </div></blockquote>
 </div>
 </div>
+<div class="section" id="hexadecimal-colors">
+<h2>Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Permalink to this headline">¶</a></h2>
+<p>You might have seen weird colors before, like <code class="docutils literal"><span class="pre">#ff0000</span></code> is somehow magically
+red or <code class="docutils literal"><span class="pre">#0000ff</span></code> is blue. This section is all about what the heck happens in
+this color notation.</p>
+<p>Let’s start with an example. If we have a number like 2017, it really means this:</p>
+<div class="math">
+<p><img src="_images/math/102e27227abadea71aa7221ef52adcc3a9f50a0b.png" alt="2017 = 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7
+    &amp;= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0"/></p>
+</div><p>The idea with <strong>hexadecimal</strong> is that instead of using 10 as a magic number we
+use 16. That’s why hexadecimal is also called <em>base 16</em>. But the problem is
+that we only have 10 digits, 0 to 9, so we borrow a few letters so that
+<img class="math" src="_images/math/a05fdab04709637b7d6cbae160aec3c12d2cddd3.png" alt="\text{a}=10"/>, <img class="math" src="_images/math/c41ecf6f620f4a36485c3c564f8b96e190543257.png" alt="\text{b}=11"/>, <img class="math" src="_images/math/31d07d3c3584ea1c8ad3bcfbef2528944f5b0d05.png" alt="\text{c}=12"/> and so on. For example:</p>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<tt class="docutils">\text{0xcafe} = \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
+                \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0
+             &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14
+             &amp;= 51966</tt>)</p>
+latex exited with error
+[stdout]
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian)
+ restricted \write18 enabled.
+entering extended mode
+(./math.tex
+LaTeX2e &lt;2011/06/27&gt;
+Babel &lt;3.9h&gt; and hyphenation patterns for 2 languages loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/utf8x.def))
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucs.sty
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-global.def))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty))
+(/usr/share/texlive/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty) (./math.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd)
+! Extra alignment tab has been changed to \cr.
+&lt;template&gt; }$\hfill \endtemplate 
+                                 
+l.17              &amp;= 51966\end{split}
+                                     
+! Extra alignment tab has been changed to \cr.
+&lt;template&gt; }$\hfill \endtemplate 
+                                 
+l.17              &amp;= 51966\end{split}
+                                     
+
+Overfull \hbox (47.05853pt too wide) in paragraph at lines 18--18
+[] 
+[1] (./math.aux) )
+(see the transcript file for additional information)
+Output written on math.dvi (1 page, 564 bytes).
+Transcript written on math.log.
+</div>
+<p>The sane way to calculate the last step is to use a calculator or an interpreter
+of your choice. Don’t try to do it by hand.</p>
+<p>Here 0x means hexadecimal. Mathematicians don’t use it, but I used it here
+because it’s very common in programming. The x is kinda short-ishy-thingy-like
+for heXadecimal.</p>
+<p>Most programming languages have very good support for hexadecimal and a few
+other bases. For example, here’s Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mh">0xcafe</span>
+<span class="go">51966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mh">0xc</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mh">0xa</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mh">0xf</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="mh">0xe</span>
+<span class="go">51966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">14</span>
+<span class="go">51966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">hex</span><span class="p">(</span><span class="mi">51966</span><span class="p">)</span>
+<span class="go">&#39;0xcafe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;cafe&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="go">51966</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 

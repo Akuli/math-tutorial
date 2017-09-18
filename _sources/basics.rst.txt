@@ -73,6 +73,7 @@ programming languages.
 .. math:: (x^a)^b=\underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}} \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}=\underbrace{x\cdot x\cdot...\cdot x}_{a\cdot b\ \text{pcs}}=x^{ab}
 .. math:: \sqrt x = x^\frac 1 2
 .. math:: (\sqrt x)^2=x^\frac 1 2 \cdot x^\frac 1 2 = x^{\frac 1 2 + \frac 1 2} = x^1 = x
+.. math:: x^0 = 1
 
 Note that `\sqrt x` only works if `x \ge 0`, and also
 `\sqrt x \ge 0` (unless you use complex numbers, but so far we haven't
@@ -80,6 +81,13 @@ needed them in this tutorial).
 
 Confusingly `\sqrt{x^2}=|x|`, e.g. `\sqrt{(-2)^2}=\sqrt4=2`
 where `(-2)^2 = 4` (see :ref:`above <negative-mul>`).
+
+If you're wondering why anything to the power of 0 is 0, you can do e.g. this:
+
+.. math:: x^2 = x^{0+2}
+.. math:: x^2 = x^0x^2
+
+Because `x^2 = x^2` with any `x`, `x^0` must be 1.
 
 Equations
 ~~~~~~~~~
