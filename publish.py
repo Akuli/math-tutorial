@@ -87,7 +87,7 @@ def main():
 
         info("deleting the temporary directory")
 
-    #run('git', 'push', 'origin', 'gh-pages')
+    run('git', 'push', 'origin', 'gh-pages')
 
 
 if __name__ == '__main__':

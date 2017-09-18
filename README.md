@@ -5,19 +5,28 @@ You can read this tutorial on
 
 ## Updating the github.io site
 
-You need to have Python 3, Sphinx and some LaTeX stuff installed. I
-installed a bunch of LaTeX stuff when I tried to get this to work and
-I'm not sure what exactly you need.
+These instructions assume a Debian-based Linux system (e.g. Ubuntu or
+Mint). You can do everything on other platforms as well but you need to
+figure out stuff yourself because I am not interested in writing
+instructions for every possible platform.
 
-1. Run sphinx.
+1. Install dependencies.
 
         $ cd math-tutorial
-        $ python3 -m sphinx . _build
+        $ sudo apt install texlive texlive-latex-extra dvipng
+        $ python3 -m venv env
+        $ . env/bin/activate
+        (env) $ pip install sphinx
 
-2. View the output in a web browser and make sure that everything's OK.
+2. Run sphinx.
+
+        (env) $ sphinx-build . _build
+        (env) $ deactivate
+
+3. View the output in a web browser and make sure that everything's OK.
 
         $ ( yourfavoritebrowser _build/index.html &>/dev/null )&
 
-3. Publish it.
+4. Run the crazy publishing script if you dare!
 
         $ python3 publish.py
