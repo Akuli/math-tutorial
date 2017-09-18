@@ -219,8 +219,8 @@ that we only have 10 digits, 0 to 9, so we borrow a few letters so that
 
 .. math::
 
-   \text{0xcafe}  = \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
-                    \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0 \\
+   \text{0xcafe}  &= \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
+                     \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0 \\
                   &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
                   &= 51966
 
