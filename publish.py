@@ -49,7 +49,7 @@ def git_stash():
     # git stash doesn't work if there's nothing to stash
     open('stash-dummy', 'x').close()
 
-    run('git', 'stash', '--include-untracked')
+    run('git', 'stash', '--all')
     try:
         yield
     finally:
