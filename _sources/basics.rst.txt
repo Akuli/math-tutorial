@@ -58,8 +58,8 @@ Absolute Value
       -x \text{ if } x < 0
    \end{matrix}\right.
 
-It's easiest to think of the absolute value as stripping off the `-` sign, if
-any. For example, `|2|=2` and `|-3|=3`. In most programming languages, `|x|` is
+It's easiest to think of the absolute value as stripping off the minus.
+For example, `|2|=2` and `|-3|=3`. In most programming languages, `|x|` is
 ``abs(x)`` or e.g. ``Math.abs(x)``.
 
 Powers and Square Root
