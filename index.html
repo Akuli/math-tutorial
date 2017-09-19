@@ -223,18 +223,18 @@ this color notation.</p>
      &amp;= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0"/></p>
 </div><p>The idea with <strong>hexadecimal</strong> is that instead of using 10 as a magic number we
 use 16. That’s why hexadecimal is also called <em>base 16</em>. But the problem is
-that we only have 10 digits, 0 to 9, so we borrow a few letters so that
-<img class="math" src="_images/math/a05fdab04709637b7d6cbae160aec3c12d2cddd3.png" alt="\text{a}=10"/>, <img class="math" src="_images/math/c41ecf6f620f4a36485c3c564f8b96e190543257.png" alt="\text{b}=11"/>, <img class="math" src="_images/math/31d07d3c3584ea1c8ad3bcfbef2528944f5b0d05.png" alt="\text{c}=12"/> and so on. For example:</p>
+that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
+B=11, C=12, D=13, E=14 and F=15. For example:</p>
 <div class="math">
-<p><img src="_images/math/d4d6c4bf1bb9c9051fd5fe6bd742bbc43fd2f1ae.png" alt="\text{0xcafe}  &amp;= \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
-                  \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0 \\
+<p><img src="_images/math/2de02ebf219355d3e8e068fdb83942d599371a69.png" alt="\text{0xCAFE}  &amp;= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +
+                  \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
                &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
                &amp;= 51966"/></p>
 </div><p>Here 0x means hexadecimal. Mathematicians don’t use it, but I used it here
 because it’s very common in programming. The x is kinda short-ishy-thingy-like
 for heXadecimal.</p>
-<p>The sane way to calculate the last step is to use a calculator or an interpreter
-of your choice. Don’t try to do it by hand.</p>
+<p>The sane way to calculate the last step is to use a programming interpreter or
+calculator of your choice. Don’t try to do it by hand.</p>
 <p>Most programming languages have very good support for hexadecimal and a few
 other bases. For example, here’s Python:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mh">0xcafe</span>
@@ -247,6 +247,33 @@ other bases. For example, here’s Python:</p>
 <span class="go">&#39;0xcafe&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;cafe&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
 <span class="go">51966</span>
+</pre></div>
+</div>
+<p>Now let’s have a look at the colors. Another common way to represent colors is
+<code class="docutils literal"><span class="pre">rgb(R,</span> <span class="pre">G,</span> <span class="pre">B)</span></code> triples where R, G and B are red, green and blue values
+between 0 and 255. For example, <code class="docutils literal"><span class="pre">rgb(255,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> is red because the red value
+is at maximum and other values are 0. <code class="docutils literal"><span class="pre">rgb(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> is black and
+<code class="docutils literal"><span class="pre">rgb(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></code> is white.</p>
+<p>You might have noticed that <img class="math" src="_images/math/a095cf6c4145dd72c1bb57e19b963428d29597f4.png" alt="0=\text{0x0}"/> and <img class="math" src="_images/math/8358c2a66bb5ee2b915796e56182b6d9f2bf3a77.png" alt="255=16^2-1=\text{0xFF}"/>, and
+that’s not just a random coincidence. A color like <code class="docutils literal"><span class="pre">#RRGGBB</span></code> is actually
+<code class="docutils literal"><span class="pre">rgb(RR,</span> <span class="pre">GG,</span> <span class="pre">BB)</span></code> where <code class="docutils literal"><span class="pre">RR</span></code>, <code class="docutils literal"><span class="pre">GG</span></code> and <code class="docutils literal"><span class="pre">BB</span></code> are hexadecimal. For
+example, <code class="docutils literal"><span class="pre">#ff0000</span> <span class="pre">=</span> <span class="pre">rgb(0xff,</span> <span class="pre">0x00,</span> <span class="pre">0x00)</span> <span class="pre">=</span> <span class="pre">rgb(255,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<p>Here’s a Python program that converts RGB colors to hexadecimal and back:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hex2rgb</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">hexcolor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="mi">16</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">rgb2hex</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="c1"># string formatting is magic</span>
+    <span class="k">return</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And a usage example here:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hex2rgb</span><span class="p">(</span><span class="s1">&#39;#ff00ff&#39;</span><span class="p">)</span>
+<span class="go">(255, 0, 255)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb2hex</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="go">&#39;#ff00ff&#39;</span>
+<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 </div>

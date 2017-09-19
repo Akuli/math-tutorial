@@ -214,13 +214,13 @@ Let's start with an example. If we have a number like 2017, it really means this
 
 The idea with **hexadecimal** is that instead of using 10 as a magic number we
 use 16. That's why hexadecimal is also called *base 16*. But the problem is
-that we only have 10 digits, 0 to 9, so we borrow a few letters so that
-`\text{a}=10`, `\text{b}=11`, `\text{c}=12` and so on. For example:
+that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
+B=11, C=12, D=13, E=14 and F=15. For example:
 
 .. math::
 
-   \text{0xcafe}  &= \text{0xc} \cdot 16^3 + \text{0xa} \cdot 16^2 +
-                     \text{0xf} \cdot 16^1 + \text{0xe} \cdot 16^0 \\
+   \text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +
+                     \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
                   &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
                   &= 51966
 
@@ -228,8 +228,8 @@ Here 0x means hexadecimal. Mathematicians don't use it, but I used it here
 because it's very common in programming. The x is kinda short-ishy-thingy-like
 for heXadecimal.
 
-The sane way to calculate the last step is to use a calculator or an interpreter
-of your choice. Don't try to do it by hand.
+The sane way to calculate the last step is to use a programming interpreter or
+calculator of your choice. Don't try to do it by hand.
 
 Most programming languages have very good support for hexadecimal and a few
 other bases. For example, here's Python:
@@ -246,3 +246,38 @@ other bases. For example, here's Python:
    '0xcafe'
    >>> int('cafe', 16)
    51966
+
+Now let's have a look at the colors. Another common way to represent colors is
+``rgb(R, G, B)`` triples where R, G and B are red, green and blue values
+between 0 and 255. For example, ``rgb(255, 0, 0)`` is red because the red value
+is at maximum and other values are 0. ``rgb(0, 0, 0)`` is black and
+``rgb(255, 255, 255)`` is white.
+
+You might have noticed that `0=\text{0x0}` and `255=16^2-1=\text{0xFF}`, and
+that's not just a random coincidence. A color like ``#RRGGBB`` is actually
+``rgb(RR, GG, BB)`` where ``RR``, ``GG`` and ``BB`` are hexadecimal. For
+example, ``#ff0000 = rgb(0xff, 0x00, 0x00) = rgb(255, 0, 0)``.
+
+Here's a Python program that converts RGB colors to hexadecimal and back:
+
+.. code-block:: python
+
+   def hex2rgb(hexcolor):
+       assert len(hexcolor) == 7 and hexcolor[0] == '#'
+       return (int(hexcolor[1:3], 16), int(hexcolor[3:5], 16), int(hexcolor[5:7], 16))
+
+   def rgb2hex(r, g, b):
+       # string formatting is magic
+       return '#%02x%02x%02x' % (r, g, b)
+
+And a usage example here:
+
+.. code-block:: python
+
+   >>> hex2rgb('#ff00ff')
+   (255, 0, 255)
+   >>> rgb2hex(255, 0, 255)
+   '#ff00ff'
+   >>> 
+
+.. TODO: how about #fff
