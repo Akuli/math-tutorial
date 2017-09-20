@@ -230,9 +230,8 @@ B=11, C=12, D=13, E=14 and F=15. For example:</p>
                   \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
                &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
                &amp;= 51966"/></p>
-</div><p>Here 0x means hexadecimal. Mathematicians don’t use it, but I used it here
-because it’s very common in programming. The x is kinda short-ishy-thingy-like
-for heXadecimal.</p>
+</div><p>Here 0x means heXadecimal. Mathematicians don’t use it, but I used it here
+because it’s very common in programming.</p>
 <p>The sane way to calculate the last step is to use a programming interpreter or
 calculator of your choice. Don’t try to do it by hand.</p>
 <p>Most programming languages have very good support for hexadecimal and a few
@@ -250,32 +249,36 @@ other bases. For example, here’s Python:</p>
 </pre></div>
 </div>
 <p>Now let’s have a look at the colors. Another common way to represent colors is
-<code class="docutils literal"><span class="pre">rgb(R,</span> <span class="pre">G,</span> <span class="pre">B)</span></code> triples where R, G and B are red, green and blue values
-between 0 and 255. For example, <code class="docutils literal"><span class="pre">rgb(255,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> is red because the red value
-is at maximum and other values are 0. <code class="docutils literal"><span class="pre">rgb(0,</span> <span class="pre">0,</span> <span class="pre">0)</span></code> is black and
-<code class="docutils literal"><span class="pre">rgb(255,</span> <span class="pre">255,</span> <span class="pre">255)</span></code> is white.</p>
-<p>You might have noticed that <img class="math" src="_images/math/a095cf6c4145dd72c1bb57e19b963428d29597f4.png" alt="0=\text{0x0}"/> and <img class="math" src="_images/math/8358c2a66bb5ee2b915796e56182b6d9f2bf3a77.png" alt="255=16^2-1=\text{0xFF}"/>, and
-that’s not just a random coincidence. A color like <code class="docutils literal"><span class="pre">#RRGGBB</span></code> is actually
-<code class="docutils literal"><span class="pre">rgb(RR,</span> <span class="pre">GG,</span> <span class="pre">BB)</span></code> where <code class="docutils literal"><span class="pre">RR</span></code>, <code class="docutils literal"><span class="pre">GG</span></code> and <code class="docutils literal"><span class="pre">BB</span></code> are hexadecimal. For
-example, <code class="docutils literal"><span class="pre">#ff0000</span> <span class="pre">=</span> <span class="pre">rgb(0xff,</span> <span class="pre">0x00,</span> <span class="pre">0x00)</span> <span class="pre">=</span> <span class="pre">rgb(255,</span> <span class="pre">0,</span> <span class="pre">0)</span></code>.</p>
+<code class="docutils literal"><span class="pre">rgb(R,G,B)</span></code> triples where R, G and B are red, green and blue values between
+0 and 255. For example, <code class="docutils literal"><span class="pre">rgb(255,0,0)</span></code> is red because the red value is at
+maximum and other values are 0. <code class="docutils literal"><span class="pre">rgb(0,0,0)</span></code> is black and
+<code class="docutils literal"><span class="pre">rgb(255,255,255)</span></code> is white.</p>
+<p>You might have noticed that <img class="math" src="_images/math/a095cf6c4145dd72c1bb57e19b963428d29597f4.png" alt="0=\text{0x0}"/> and
+<img class="math" src="_images/math/967ba383bf9e7cc19f1b487d58fbcfabffafbfbe.png" alt="255 = 15 \cdot 16 + 15 = \text{0xFF}"/>, and that’s not just a random
+coincidence. A color like <code class="docutils literal"><span class="pre">#RRGGBB</span></code> is actually <code class="docutils literal"><span class="pre">rgb(RR,GG,BB)</span></code> where
+<code class="docutils literal"><span class="pre">RR</span></code>, <code class="docutils literal"><span class="pre">GG</span></code> and <code class="docutils literal"><span class="pre">BB</span></code> are hexadecimal. For example,
+<code class="docutils literal"><span class="pre">#ff0000</span> <span class="pre">=</span> <span class="pre">rgb(0xff,0x00,0x00)</span> <span class="pre">=</span> <span class="pre">rgb(255,0,0)</span></code>.</p>
 <p>Here’s a Python program that converts RGB colors to hexadecimal and back:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hex2rgb</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">hexcolor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span>
     <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="mi">16</span><span class="p">))</span>
 
 <span class="k">def</span> <span class="nf">rgb2hex</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># string formatting is magic</span>
+    <span class="c1"># string formatting magic: %02x means hexadecimal padded with</span>
+    <span class="c1"># zeros until it&#39;s at least 2 characters wide</span>
     <span class="k">return</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>And a usage example here:</p>
+<p>And here’s a usage example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hex2rgb</span><span class="p">(</span><span class="s1">&#39;#ff00ff&#39;</span><span class="p">)</span>
 <span class="go">(255, 0, 255)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">rgb2hex</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
 <span class="go">&#39;#ff00ff&#39;</span>
-<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
+<p>Note that most color parsers support specifying colors so that e.g. <code class="docutils literal"><span class="pre">#f0f</span></code>
+and <code class="docutils literal"><span class="pre">#fff000fff</span></code> are equivalent to <code class="docutils literal"><span class="pre">#ff00ff</span></code>, but the above program doesn’t
+support that.</p>
 </div>
 </div>
 
