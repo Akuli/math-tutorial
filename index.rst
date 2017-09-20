@@ -62,6 +62,9 @@ Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
 this doesn't apply to the "special" functions.
 
+
+.. _simpletrig:
+
 Simple Trigonometry (aka trig)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -122,23 +125,76 @@ function is happy:
    0.8660254037844386
    >>> math.cos(math.radians(60))
    0.5000000000000001
-   >>> 
 
 That's more like it. ``0.5000000000000001`` is obviously not an accurate
 result, but it's good enough for a programmer while a mathematician would say
 that `\sin 60° = \frac{\sqrt 3}2` and `\cos 60° = \frac 1 2`. I might write
 more about radians, how the heck I came up with those mathy-accurate values and
-how Python's conversion functions work some day.
+how my conversion functions work some day.
 
 This tutorial uses the degree sign ° when you may need to convert things
 between radians and degrees.
+
+
+.. _more-geometry:
+
+More Geometry and Trig
+~~~~~~~~~~~~~~~~~~~~~~
+
+**Problem:** A player moves across a 800x600 pixel window straight from corner
+to corner. How long distance is that, and at what angle did the player move?
+
+Here's a picture:
+
+.. image:: images/abctrectangle.png
+
+.. math:: c = \sqrt{a^2+b^2} = \text{hypot}(a, b)
+.. math:: t = \text{atan2}(b,a)
+
+The above stuff works only if the angle between `a` and `b` is 90°, like it
+is in the picture.
+
+Here atan2 and hypot are functions that mathematicians don't use. I showed the
+hypot thing here because some programming languages have it and you might be
+wondering what it is, but I prefer using the square root version directly
+because not many people know what hypot is. However, I recommend atan2 because
+most programming languages have it and it takes care of some corner cases.
+
+Let's calculate our stuff. I'll use Python, but you can use whatever language
+you want.
+
+.. code-block:: python
+
+   >>> from math import sqrt, hypot, degrees, atan2
+   >>> sqrt(800**2 + 600**2)
+   1000.0
+   >>> hypot(800, 600)
+   1000.0
+   >>> degrees(atan2(600, 800))   # careful here! height goes first, then width
+   36.86989764584402
+
+Note that ``atan2(b, a)`` is not same as ``atan2(a, b)``, but the order doesn't
+matter for ``hypot`` because `a^2` and `b^2` are +'ed together.
+
+The diagonal isn't always an integer like 1000; it just happened to be exactly
+1000 in our example.
+
+If you're wondering how something works or why the functions are called
+``hypot`` and ``atan2`` have a look below. I put the explanations to another
+page because this way people don't need to read them just to use the formulas.
+
+.. toctree::
+   :maxdepth: 2
+
+   geometry-explanations
+
 
 Vectors
 ~~~~~~~
 
 A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points `A=(1,2)` and
-`B=(3,5)`, the vector from A to B is `\overline{AB}=2\overline{i}+3\overline{j}`.
+`B=(3,5)`, the vector from A to B is `\vec{AB} = 2\overline{i}+3\overline{j}`.
 Here `\overline{i}` and `\overline{j}` are vectors that go right and up by 1
 unit, respectively.
 
@@ -147,8 +203,9 @@ unit, respectively.
 A vector like `2\overline{i}+3\overline{j}` can be also written as `<2,3>`.
 Use whatever style you like.
 
-We could also have used vectors in the above trig example. The advantage with
-them is that moving the player is really simple:
+We could also use vectors to do similar things as in
+:ref:`our trig example <simpletrig>`. The advantage with that is that moving
+the player is really simple:
 
 .. code-block:: python
 
@@ -164,38 +221,20 @@ For example, if we first move 3 units to right, then 4 units to top and then
 5 more units to right, our total movement is simply
 `3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}`.
 
-Now let's look into handy calculations that can be done with vectors:
+These vector calculations are very similar to the
+:ref:`geometry stuff above <more-geometry>`:
 
 .. image:: images/vector-calc.png
 
 .. math:: l = \sqrt{a^2+b^2} = \text{hypot}(a, b)
 .. math:: t = \text{atan2}(b,a)
-
-Here atan2 and hypot are functions that mathematicians don't use. I showed the
-hypot thing here because some programming languages have it and you might be
-wondering what it is, but I prefer using the square root version directly
-because not many people know what hypot does. However, I recommend atan2 because
-most programming languages have it and it takes care of some corner cases (see
-:ref:`the explanation chapter <vectors-explained>`).
+.. math:: a = l \cdot \cos t
+.. math:: b = l \cdot \sin t
 
 Example: if we move 1 unit to the right and 2 units up, our vector is `<1,2>`,
 its length is `\sqrt{1^2+2^2} = \sqrt5 \approx 2.24` and the angle is
-`\text{atan2}(2,1) \approx 63.4°`.
-
-You can also turn a length and an angle to a vector, but that turns out to be
-much more complex than the stuff above so I won't show that here.
-
-
-How do the formulas work?
--------------------------
-
-Some people might be only interested in getting things done, so I put the
-explanations to another page.
-
-   .. toctree::
-      :maxdepth: 2
-
-      vectors-explained
+`\text{atan2}(2,1) \approx 63.4°`. On the other hand, `\cos 63.4° \approx 1`
+and `\sin 63.4° \approx 2`.
 
 
 Hexadecimal Colors
