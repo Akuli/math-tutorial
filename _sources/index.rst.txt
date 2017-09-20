@@ -62,7 +62,7 @@ Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
 this doesn't apply to the "special" functions.
 
-Smiple trigonometry (aka trig)
+Simple Trigonometry (aka trig)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Problem:** A player moves to top-right at the angle of 60° measured from the
