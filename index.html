@@ -1,0 +1,373 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Math for Programmers &#8212; Math for Programmers  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Basics" href="basics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="math-for-programmers">
+<h1>Math for Programmers<a class="headerlink" href="#math-for-programmers" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial contains practical math for programmers who want to get stuff
+done, as well as explanation chapters for those who get interested in how the
+math works.</p>
+<div class="section" id="the-basics">
+<h2>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial assumes that you know these things. If you don’t, that’s not a
+problem at all and you can just keep the basics page open while you read the
+tutorial.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#id1">+, -, *, /</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#absolute-value">Absolute Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#powers-and-square-root">Powers and Square Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#solving-equations">Solving Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#see-also">See Also</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a typical math function:</p>
+<div class="math">
+<p><img src="_images/math/e53d6ee39ddd130a251ea3f98d8ed55cfd036d0b.png" alt="f(x)=2x"/></p>
+</div><div class="math">
+<p><img src="_images/math/de45dc3913156de4f9e6cf90d0e490ba94af8f8b.png" alt="f(6)=12"/></p>
+</div><p>There is no special syntax for defining a function. All we have is the
+equal sign, and when defining a function we just say that its value at x is
+equal to something.</p>
+<p>If you’re familiar with a functional programming language like Haskell, then
+you’ll probably realize that the above math looks a lot like this Haskell
+session:</p>
+<div class="highlight-haskell"><div class="highlight"><pre><span></span><span class="kt">Prelude</span><span class="o">&gt;</span> <span class="kr">let</span> <span class="n">f</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="kt">Prelude</span><span class="o">&gt;</span> <span class="n">f</span> <span class="mi">6</span>
+<span class="mi">12</span>
+<span class="kt">Prelude</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If you’re feeling like WTF is this, here’s a Python session that should make
+everything clear.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">12</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Quick note about <code class="docutils literal"><span class="pre">f(x)</span></code> versus <code class="docutils literal"><span class="pre">f</span> <span class="pre">x</span></code>: if you define your own function
+called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> or <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> you should use parentheses, but you may omit them with some
+“special” functions like <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> for historical reasons.</p>
+<p>Also note that mathematicians prefer single-letter variable names because math
+was originally written on paper, and writing long things by hand sucks. Again,
+this doesn’t apply to the “special” functions.</p>
+</div>
+<div class="section" id="simple-trigonometry-aka-trig">
+<span id="simpletrig"></span><h2>Simple Trigonometry (aka trig)<a class="headerlink" href="#simple-trigonometry-aka-trig" title="Permalink to this headline">¶</a></h2>
+<p><strong>Problem:</strong> A player moves to top-right at the angle of 60° measured from the
+x axis at 10 pixels per second. How many pixels should the player’s x and y
+change every second?</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>            y
+            |      O     &lt;-- the player
+            |     /
+            |    /
+            |   / ) 60°
+------------|--/-----------&gt; x
+            | /
+            |
+</pre></div>
+</div>
+<p>Note that the y axis goes up in math so higher means bigger, but in programming
+it’s usually upside down.</p>
+<p>Our problem has something to do with sine and cosine. The unit circle is a
+circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
+shows what sine and cosine are:</p>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png" />
+<p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
+coordinate is <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead
+of our 10, so we need to multiply everything by 10 to scale it up. We get this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Based on the unit circle, <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/> should be somewhere between 0 and 1 since
+the height of the x axis is 0 and the circle’s top is at 1 (the radius is 1).
+But if we try this out in Python, something is wrong:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="go">-0.3048106211022167</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>Now you’re feeling really WTF. The angles with negative sines should be below
+the x axis, e.g. something between 180° and 360°.</p>
+<p>The problem is that Python, Haskell, C and most other programming languages use
+radians by default instead of degrees. Let’s convert 60° to radians so the sine
+function is happy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+<span class="go">0.8660254037844386</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+<span class="go">0.5000000000000001</span>
+</pre></div>
+</div>
+<p>That’s more like it. <code class="docutils literal"><span class="pre">0.5000000000000001</span></code> is obviously not an accurate
+result, but it’s good enough for a programmer while a mathematician would say
+that <img class="math" src="_images/math/6e1490ba27369c4df406cbdd210f1c8684c44b30.png" alt="\sin 60° = \frac{\sqrt 3}2"/> and <img class="math" src="_images/math/453177a40323026da8b50cc4749aa5e55aa75614.png" alt="\cos 60° = \frac 1 2"/>. I might write
+more about radians, how the heck I came up with those mathy-accurate values and
+how my conversion functions work some day.</p>
+<p>This tutorial uses the degree sign ° when you may need to convert things
+between radians and degrees.</p>
+</div>
+<div class="section" id="more-geometry-and-trig">
+<span id="more-geometry"></span><h2>More Geometry and Trig<a class="headerlink" href="#more-geometry-and-trig" title="Permalink to this headline">¶</a></h2>
+<p><strong>Problem:</strong> A player moves across a 800x600 pixel window straight from corner
+to corner. How long distance is that, and at what angle did the player move?</p>
+<p>Here’s a picture:</p>
+<img alt="_images/abctrectangle.png" src="_images/abctrectangle.png" />
+<div class="math">
+<p><img src="_images/math/7777181eb6e6fd24330be9a4754e4233aa02cbf8.png" alt="c = \sqrt{a^2+b^2} = \text{hypot}(a, b)"/></p>
+</div><div class="math">
+<p><img src="_images/math/ab45c6cfb050e901d90916fce73212c8952ee693.png" alt="t = \text{atan2}(b,a)"/></p>
+</div><p>The above stuff works only if the angle between <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> is 90°, like it
+is in the picture.</p>
+<p>Here atan2 and hypot are functions that mathematicians don’t use. I showed the
+hypot thing here because some programming languages have it and you might be
+wondering what it is, but I prefer using the square root version directly
+because not many people know what hypot is. However, I recommend atan2 because
+most programming languages have it and it takes care of some corner cases.</p>
+<p>Let’s calculate our stuff. I’ll use Python, but you can use whatever language
+you want.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">hypot</span><span class="p">,</span> <span class="n">degrees</span><span class="p">,</span> <span class="n">atan2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">800</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">600</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">1000.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hypot</span><span class="p">(</span><span class="mi">800</span><span class="p">,</span> <span class="mi">600</span><span class="p">)</span>
+<span class="go">1000.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">degrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="mi">600</span><span class="p">,</span> <span class="mi">800</span><span class="p">))</span>   <span class="c1"># careful here! height goes first, then width</span>
+<span class="go">36.86989764584402</span>
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal"><span class="pre">atan2(b,</span> <span class="pre">a)</span></code> is not same as <code class="docutils literal"><span class="pre">atan2(a,</span> <span class="pre">b)</span></code>, but the order doesn’t
+matter for <code class="docutils literal"><span class="pre">hypot</span></code> because <img class="math" src="_images/math/85a67c47edf90ff8796cce08a6ea2ebdc54020cf.png" alt="a^2"/> and <img class="math" src="_images/math/e6696bd9fb40c512f5cb3223459627ee78eea91d.png" alt="b^2"/> are +’ed together.</p>
+<p>The diagonal isn’t always an integer like 1000; it just happened to be exactly
+1000 in our example.</p>
+<p>If you’re wondering how something works or why the functions are called
+<code class="docutils literal"><span class="pre">hypot</span></code> and <code class="docutils literal"><span class="pre">atan2</span></code> have a look below. I put the explanations to another
+page because this way people don’t need to read them just to use the formulas.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geometry-explanations.html">Geometry and Trig Explanations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="geometry-explanations.html#the-diagonal">The Diagonal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometry-explanations.html#the-atan2">The atan2</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="vectors">
+<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
+<p>A point is simply a pair of x and y coordinates, and a vector represents the
+difference between two points. For example, if we have the points <img class="math" src="_images/math/43c55690dcb39b7b2a37bf3ba4f365c12bb79398.png" alt="A=(1,2)"/> and
+<img class="math" src="_images/math/570f76b28105e04d716df4cfff657839bea16132.png" alt="B=(3,5)"/>, the vector from A to B is <img class="math" src="_images/math/28cf9a78c8636fe1b7693b3f9bf41c3b426da801.png" alt="\vec{AB} = 2\overline{i}+3\overline{j}"/>.
+Here <img class="math" src="_images/math/9baffc5b5346ac3f8bb104632c141c631d54678a.png" alt="\overline{i}"/> and <img class="math" src="_images/math/e0361ec03e32dfe6e2a216f7714d8670ab35a002.png" alt="\overline{j}"/> are vectors that go right and up by 1
+unit, respectively.</p>
+<img alt="_images/vectors-ab-ij.png" src="_images/vectors-ab-ij.png" />
+<p>A vector like <img class="math" src="_images/math/493461cf7f675737dd39c6bcd5269e45cc1c6fda.png" alt="2\overline{i}+3\overline{j}"/> can be also written as <img class="math" src="_images/math/d48cf67461b5fdd2fb15247f3d2279a172d97796.png" alt="&lt;2,3&gt;"/>.
+Use whatever style you like.</p>
+<p>We could also use vectors to do similar things as in
+<a class="reference internal" href="#simpletrig"><span class="std std-ref">our trig example</span></a>. The advantage with that is that moving
+the player is really simple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">i</span>
+<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">j</span>
+</pre></div>
+</div>
+<p>A disadvantage is that if we want to change the angle that the player moves at
+by 1° we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">1</span></code>. Of course it’s possible to change
+that angle, but not as simple.</p>
+<p>Another nice thing about vectors is that they can be +’ed together easily.
+For example, if we first move 3 units to right, then 4 units to top and then
+5 more units to right, our total movement is simply
+<img class="math" src="_images/math/ab937b180f5c6b4ec2bff1bfd1b88c9075a28767.png" alt="3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}"/>.</p>
+<p>These vector calculations are very similar to the
+<a class="reference internal" href="#more-geometry"><span class="std std-ref">geometry stuff above</span></a>:</p>
+<img alt="_images/vector-calc.png" src="_images/vector-calc.png" />
+<div class="math">
+<p><img src="_images/math/36da0beb6ae49d9e6b237dd364422d7717556208.png" alt="l = \sqrt{a^2+b^2} = \text{hypot}(a, b)"/></p>
+</div><div class="math">
+<p><img src="_images/math/ab45c6cfb050e901d90916fce73212c8952ee693.png" alt="t = \text{atan2}(b,a)"/></p>
+</div><div class="math">
+<p><img src="_images/math/728becdf1f16ae02415e1e9eddbc1c859aa926ad.png" alt="a = l \cdot \cos t"/></p>
+</div><div class="math">
+<p><img src="_images/math/5eae08e8d9f48f1a89fcfef9eff236e332644f27.png" alt="b = l \cdot \sin t"/></p>
+</div><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="math" src="_images/math/ee3662170a5c6a5c81a1dddf0de4c3fab3de3f29.png" alt="&lt;1,2&gt;"/>,
+its length is <img class="math" src="_images/math/595cc7bf51ea9f045e102a654fc523ecc3e5ad9c.png" alt="\sqrt{1^2+2^2} = \sqrt5 \approx 2.24"/> and the angle is
+<img class="math" src="_images/math/afc9336bb3210081d6c7d79c07d189ceb4f8f1a3.png" alt="\text{atan2}(2,1) \approx 63.4°"/>. On the other hand, <img class="math" src="_images/math/74d2ff0b831aa25b5f82086bef792c62e612c047.png" alt="\cos 63.4° \approx 1"/>
+and <img class="math" src="_images/math/288a031dc7f5e320e30b1840898d18431dbca019.png" alt="\sin 63.4° \approx 2"/>.</p>
+</div>
+<div class="section" id="hexadecimal-colors">
+<h2>Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Permalink to this headline">¶</a></h2>
+<p>You might have seen weird colors before, like <code class="docutils literal"><span class="pre">#ff0000</span></code> is somehow magically
+red or <code class="docutils literal"><span class="pre">#0000ff</span></code> is blue. This section is all about what the heck happens in
+this color notation.</p>
+<p>Let’s start with an example. If we have a number like 2017, it really means this:</p>
+<div class="math">
+<p><img src="_images/math/024ec5eacb3267b73cb7388370b88707e4b716ee.png" alt="2017 &amp;= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+     &amp;= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0"/></p>
+</div><p>The idea with <strong>hexadecimal</strong> is that instead of using 10 as a magic number we
+use 16. That’s why hexadecimal is also called <strong>base 16</strong>. But the problem is
+that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
+B=11, C=12, D=13, E=14 and F=15. For example:</p>
+<div class="math">
+<p><img src="_images/math/2de02ebf219355d3e8e068fdb83942d599371a69.png" alt="\text{0xCAFE}  &amp;= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +
+                  \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
+               &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
+               &amp;= 51966"/></p>
+</div><p>Here 0x means heXadecimal. Mathematicians don’t use it, but I used it here
+because it’s very common in programming.</p>
+<p>The sane way to calculate the last step is to use a programming interpreter or
+calculator of your choice. Don’t try to do it by hand.</p>
+<p>Most programming languages have very good support for hexadecimal and a few
+other bases. For example, here’s Python:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mh">0xcafe</span>
+<span class="go">51966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mh">0xc</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mh">0xa</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mh">0xf</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="mh">0xe</span>
+<span class="go">51966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">14</span>
+<span class="go">51966</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">hex</span><span class="p">(</span><span class="mi">51966</span><span class="p">)</span>
+<span class="go">&#39;0xcafe&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;cafe&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="go">51966</span>
+</pre></div>
+</div>
+<p>Now let’s have a look at the colors. Another common way to represent colors is
+<code class="docutils literal"><span class="pre">rgb(R,G,B)</span></code> triples where R, G and B are red, green and blue values between
+0 and 255. For example, <code class="docutils literal"><span class="pre">rgb(255,0,0)</span></code> is red because the red value is at
+maximum and other values are 0. <code class="docutils literal"><span class="pre">rgb(0,0,0)</span></code> is black and
+<code class="docutils literal"><span class="pre">rgb(255,255,255)</span></code> is white.</p>
+<p>You might have noticed that <img class="math" src="_images/math/a095cf6c4145dd72c1bb57e19b963428d29597f4.png" alt="0=\text{0x0}"/> and
+<img class="math" src="_images/math/967ba383bf9e7cc19f1b487d58fbcfabffafbfbe.png" alt="255 = 15 \cdot 16 + 15 = \text{0xFF}"/>, and that’s not just a random
+coincidence. A color like <code class="docutils literal"><span class="pre">#RRGGBB</span></code> is actually <code class="docutils literal"><span class="pre">rgb(RR,GG,BB)</span></code> where
+<code class="docutils literal"><span class="pre">RR</span></code>, <code class="docutils literal"><span class="pre">GG</span></code> and <code class="docutils literal"><span class="pre">BB</span></code> are hexadecimal. For example,
+<code class="docutils literal"><span class="pre">#ff0000</span> <span class="pre">=</span> <span class="pre">rgb(0xff,0x00,0x00)</span> <span class="pre">=</span> <span class="pre">rgb(255,0,0)</span></code>.</p>
+<p>Here’s a Python program that converts RGB colors to hexadecimal and back:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hex2rgb</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">hexcolor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="mi">16</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">rgb2hex</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="c1"># string formatting magic: %02x means hexadecimal padded with</span>
+    <span class="c1"># zeros until it&#39;s at least 2 characters wide</span>
+    <span class="k">return</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And here’s a usage example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hex2rgb</span><span class="p">(</span><span class="s1">&#39;#ff00ff&#39;</span><span class="p">)</span>
+<span class="go">(255, 0, 255)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb2hex</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="go">&#39;#ff00ff&#39;</span>
+</pre></div>
+</div>
+<p>Note that most color parsers support specifying colors so that e.g. <code class="docutils literal"><span class="pre">#f0f</span></code>
+and <code class="docutils literal"><span class="pre">#fff000fff</span></code> are equivalent to <code class="docutils literal"><span class="pre">#ff00ff</span></code>, but the above program doesn’t
+support that.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Math for Programmers</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geometry-explanations.html">Geometry and Trig Explanations</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+      <li>Next: <a href="basics.html" title="next chapter">The Basics</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Akuli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
