@@ -1,9 +1,8 @@
 The Basics
 ==========
 
-This tutorial assumes that you know these things. If you don't, that's not a
-problem at all and you can just keep this page open while you read rest of the
-tutorial.
+This page contains all kinds of boring details that I don't want to clutter the
+rest of the tutorial with.
 
 +, -, \*, /
 ~~~~~~~~~~~
@@ -24,7 +23,7 @@ You can also use these handy things:
 See `Numberphile's awesome zero video <https://youtu.be/BRRolKTlF6Q>`_ if
 you're wondering why dividing by zero is not allowed.
 
-.. _negative-mul:
+.. _negative-mul-div:
 
 Negative numbers behave like this when multiplied and divided. Note how the two
 -'s cancel out.
@@ -51,14 +50,7 @@ Python examples:
 Absolute Value
 ~~~~~~~~~~~~~~
 
-.. math::
-
-   |x| = \left\{\begin{matrix}
-      x  \text{ if } x \ge 0 \\
-      -x \text{ if } x < 0
-   \end{matrix}\right.
-
-It's easiest to think of the absolute value as stripping off the minus.
+It's easiest to think of the absolute value as stripping off the minus sign.
 For example, `|2|=2` and `|-3|=3`. In most programming languages, `|x|` is
 ``abs(x)`` or e.g. ``Math.abs(x)``.
 
@@ -69,10 +61,20 @@ Powers and Square Root
 programming languages.
 
 .. math:: x^5=x\cdot x\cdot x\cdot x\cdot x
-.. math:: x^{a+b}=\underbrace{x\cdot x\cdot x\cdot...\cdot x}_\text{a+b pcs}=\underbrace{x\cdot...\cdot x}_\text{a pcs}\cdot\underbrace{x\cdot...\cdot x}_\text{b pcs}=x^ax^b
-.. math:: (x^a)^b=\underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}} \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}=\underbrace{x\cdot x\cdot...\cdot x}_{a\cdot b\ \text{pcs}}=x^{ab}
+.. math::
+   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_\text{a+b pcs}
+            = \underbrace{x \cdot...\cdot x}_\text{a pcs} \cdot
+              \underbrace{x \cdot...\cdot x}_\text{b pcs}
+            = x^a x^b
+.. math::
+   (x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}}
+              \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}
+           = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
+           = x^{ab}
 .. math:: \sqrt x = x^\frac 1 2
-.. math:: (\sqrt x)^2=x^\frac 1 2 \cdot x^\frac 1 2 = x^{\frac 1 2 + \frac 1 2} = x^1 = x
+.. math::
+   (\sqrt x)^2 = x^\frac 1 2 \cdot x^\frac 1 2
+               = x^{\frac 1 2 + \frac 1 2} = x^1 = x
 .. math:: x^0 = 1
 
 Note that `\sqrt x` only works if `x \ge 0`, and also
@@ -80,7 +82,7 @@ Note that `\sqrt x` only works if `x \ge 0`, and also
 needed them in this tutorial).
 
 Confusingly `\sqrt{x^2}=|x|`, e.g. `\sqrt{(-2)^2}=\sqrt4=2`
-where `(-2)^2 = 4` (see :ref:`above <negative-mul>`).
+where `(-2)^2 = 4` (see :ref:`above <negative-mul-div>`).
 
 If you're wondering why anything to the power of 0 is 0, you can do e.g. this:
 
