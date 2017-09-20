@@ -213,7 +213,7 @@ Let's start with an example. If we have a number like 2017, it really means this
         &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
 
 The idea with **hexadecimal** is that instead of using 10 as a magic number we
-use 16. That's why hexadecimal is also called *base 16*. But the problem is
+use 16. That's why hexadecimal is also called **base 16**. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
 B=11, C=12, D=13, E=14 and F=15. For example:
 
