@@ -50,9 +50,10 @@ Python examples:
 Absolute Value
 ~~~~~~~~~~~~~~
 
-It's easiest to think of the absolute value as stripping off the minus sign.
-For example, `|2|=2` and `|-3|=3`. In most programming languages, `|x|` is
-``abs(x)`` or e.g. ``Math.abs(x)``.
+The absolute value of `x` is `|x|` in math and something like ``abs(x)`` or
+``Math.abs(x)`` in most programming languages. It's easiest to think of the
+absolute value as stripping off the minus sign. For example, `|2| = 2` and
+`|-3| = 3`.
 
 Powers and Square Root
 ~~~~~~~~~~~~~~~~~~~~~~
