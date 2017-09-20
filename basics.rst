@@ -85,7 +85,7 @@ needed them in this tutorial).
 Confusingly `\sqrt{x^2}=|x|`, e.g. `\sqrt{(-2)^2}=\sqrt4=2`
 where `(-2)^2 = 4` (see :ref:`above <negative-mul-div>`).
 
-If you're wondering why anything to the power of 0 is 0, you can do e.g. this:
+If you're wondering why anything to the power of 0 is 1, you can do e.g. this:
 
 .. math:: x^2 = x^{0+2}
 .. math:: x^2 = x^0x^2
