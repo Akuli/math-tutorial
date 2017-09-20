@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Vector Explanations" href="vectors-explained.html" />
+    <link rel="next" title="Geometry and Trig Explanations" href="geometry-explanations.html" />
     <link rel="prev" title="Math for Programmers" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -42,9 +42,8 @@
             
   <div class="section" id="the-basics">
 <h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial assumes that you know these things. If you don’t, that’s not a
-problem at all and you can just keep this page open while you read rest of the
-tutorial.</p>
+<p>This page contains all kinds of boring details that I don’t want to clutter the
+rest of the tutorial with.</p>
 <div class="section" id="id1">
 <h2>+, -, *, /<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>I’m sure you already know how + and - work.</p>
@@ -63,7 +62,7 @@ sometimes written as <img class="math" src="_images/math/9d9ad179e4d24e332b8e883
 <p><img src="_images/math/e007ba5bc2c374f746d5e5cb2204326c3c3f5c4d.png" alt="\frac{ac}{bc} = \frac a b, c \ne 0"/></p>
 </div><p>See <a class="reference external" href="https://youtu.be/BRRolKTlF6Q">Numberphile’s awesome zero video</a> if
 you’re wondering why dividing by zero is not allowed.</p>
-<p id="negative-mul">Negative numbers behave like this when multiplied and divided. Note how the two
+<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
 -‘s cancel out.</p>
 <div class="math">
 <p><img src="_images/math/3b94ca09f277ee162e8b29f935c6060abcd7292f.png" alt="2 \cdot (-2) = -(2 \cdot 2) = 4"/></p>
@@ -86,14 +85,10 @@ you’re wondering why dividing by zero is not allowed.</p>
 </div>
 <div class="section" id="absolute-value">
 <h2>Absolute Value<a class="headerlink" href="#absolute-value" title="Permalink to this headline">¶</a></h2>
-<div class="math">
-<p><img src="_images/math/6b270460d705c25b2972c129a83ae241053cdbe0.png" alt="|x| = \left\{\begin{matrix}
-   x  \text{ if } x \ge 0 \\
-   -x \text{ if } x &lt; 0
-\end{matrix}\right."/></p>
-</div><p>It’s easiest to think of the absolute value as stripping off the minus.
-For example, <img class="math" src="_images/math/10b363f3b0cfb5464e26059ccd01ca6551fa2c8a.png" alt="|2|=2"/> and <img class="math" src="_images/math/779dd03671c57e168d034ab66fbb1d226d554b2d.png" alt="|-3|=3"/>. In most programming languages, <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> is
-<code class="docutils literal"><span class="pre">abs(x)</span></code> or e.g. <code class="docutils literal"><span class="pre">Math.abs(x)</span></code>.</p>
+<p>The absolute value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> is <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> in math and something like <code class="docutils literal"><span class="pre">abs(x)</span></code> or
+<code class="docutils literal"><span class="pre">Math.abs(x)</span></code> in most programming languages. It’s easiest to think of the
+absolute value as stripping off the minus sign. For example, <img class="math" src="_images/math/06650e682155af5081b8944d79a10396091f2aed.png" alt="|2| = 2"/> and
+<img class="math" src="_images/math/65b62abb642fc821fae6f6ca1f030fcdf7a58079.png" alt="|-3| = 3"/>.</p>
 </div>
 <div class="section" id="powers-and-square-root">
 <h2>Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Permalink to this headline">¶</a></h2>
@@ -102,29 +97,36 @@ programming languages.</p>
 <div class="math">
 <p><img src="_images/math/9f62f31022897143ec879d9b305723cae0fe089d.png" alt="x^5=x\cdot x\cdot x\cdot x\cdot x"/></p>
 </div><div class="math">
-<p><img src="_images/math/f95b2a04405c1e9b1193c7f71d3d5db7db0504e1.png" alt="x^{a+b}=\underbrace{x\cdot x\cdot x\cdot...\cdot x}_\text{a+b pcs}=\underbrace{x\cdot...\cdot x}_\text{a pcs}\cdot\underbrace{x\cdot...\cdot x}_\text{b pcs}=x^ax^b"/></p>
+<p><img src="_images/math/0f3596dd35aa6e188806997e876164396efe9a51.png" alt="x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_\text{a+b pcs}
+         = \underbrace{x \cdot...\cdot x}_\text{a pcs} \cdot
+           \underbrace{x \cdot...\cdot x}_\text{b pcs}
+         = x^a x^b"/></p>
 </div><div class="math">
-<p><img src="_images/math/532dc649ab7af4f33b593724594761fd84e26c0e.png" alt="(x^a)^b=\underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}} \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}=\underbrace{x\cdot x\cdot...\cdot x}_{a\cdot b\ \text{pcs}}=x^{ab}"/></p>
+<p><img src="_images/math/448f916699589772c1c39ca6d6f4866ce3e745b2.png" alt="(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}}
+           \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}
+        = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
+        = x^{ab}"/></p>
 </div><div class="math">
 <p><img src="_images/math/64c3764e0883ae06137fd8491b3038c63d701c8f.png" alt="\sqrt x = x^\frac 1 2"/></p>
 </div><div class="math">
-<p><img src="_images/math/786c4c0cc8a1231c849718119afb80030641c3d1.png" alt="(\sqrt x)^2=x^\frac 1 2 \cdot x^\frac 1 2 = x^{\frac 1 2 + \frac 1 2} = x^1 = x"/></p>
+<p><img src="_images/math/a3d37cbbbdba3e39267fe242a9dbbde157fd039a.png" alt="(\sqrt x)^2 = x^\frac 1 2 \cdot x^\frac 1 2
+            = x^{\frac 1 2 + \frac 1 2} = x^1 = x"/></p>
 </div><div class="math">
 <p><img src="_images/math/10ce93dfcf1e5e8b3e2b25ebe96a4998410b369e.png" alt="x^0 = 1"/></p>
-</div><p>Note that <img class="math" src="_images/math/a149eafec13abde27505a4576b87cf0018164bc4.png" alt="\sqrt x"/> only works if <img class="math" src="_images/math/e724b1a6733d78e86b725ee020d169b61ce25293.png" alt="x \ge 0"/>, and also
-<img class="math" src="_images/math/b2461ac7fd68086c17432785cc60dc91eb1f647b.png" alt="\sqrt x \ge 0"/> (unless you use complex numbers, but so far we haven’t
-needed them in this tutorial).</p>
+</div><p>Note that <img class="math" src="_images/math/a149eafec13abde27505a4576b87cf0018164bc4.png" alt="\sqrt x"/> only works if <img class="math" src="_images/math/e724b1a6733d78e86b725ee020d169b61ce25293.png" alt="x \ge 0"/> (unless you use complex numbers,
+but so far we haven’t needed them in this tutorial). The square root is never
+negative.</p>
 <p>Confusingly <img class="math" src="_images/math/d170601e8e6fda89f51a9d97db9adf6ee4070443.png" alt="\sqrt{x^2}=|x|"/>, e.g. <img class="math" src="_images/math/a3206ad336d6e82909d2e1006ec473e9f9c8f596.png" alt="\sqrt{(-2)^2}=\sqrt4=2"/>
-where <img class="math" src="_images/math/70c219b8367ae6359b28cee44f5e1fa3729799d2.png" alt="(-2)^2 = 4"/> (see <a class="reference internal" href="#negative-mul"><span class="std std-ref">above</span></a>).</p>
-<p>If you’re wondering why anything to the power of 0 is 0, you can do e.g. this:</p>
+where <img class="math" src="_images/math/70c219b8367ae6359b28cee44f5e1fa3729799d2.png" alt="(-2)^2 = 4"/> (see <a class="reference internal" href="#negative-mul-div"><span class="std std-ref">above</span></a>).</p>
+<p>If you’re wondering why anything to the power of 0 is 1, you can do e.g. this:</p>
 <div class="math">
 <p><img src="_images/math/689b0d74c44d85ad1d5724379fea2c12290cc550.png" alt="x^2 = x^{0+2}"/></p>
 </div><div class="math">
 <p><img src="_images/math/8c9a0227d7f76ab365e5b0349058443cf171912e.png" alt="x^2 = x^0x^2"/></p>
 </div><p>Because <img class="math" src="_images/math/c520c330655afaff2a251e7dcfe5fdb2d854498c.png" alt="x^2 = x^2"/> with any <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, <img class="math" src="_images/math/c19c691e28e60d4468e90b87a3782a3cd502dbef.png" alt="x^0"/> must be 1.</p>
 </div>
-<div class="section" id="equations">
-<h2>Equations<a class="headerlink" href="#equations" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="solving-equations">
+<h2>Solving Equations<a class="headerlink" href="#solving-equations" title="Permalink to this headline">¶</a></h2>
 <p>For example, if you know that <img class="math" src="_images/math/f76aad82b3680b6035af8a55eab335516975baa3.png" alt="2x+1 = 9"/> you can find <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> like this:</p>
 <div class="math">
 <p><img src="_images/math/0f79d1acc8d4040dc67d4742cc26baf262793119.png" alt="2x+1 = 9"/></p>
@@ -175,13 +177,13 @@ is more complete.</p>
 <li class="toctree-l2"><a class="reference internal" href="#id1">+, -, *, /</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#absolute-value">Absolute Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#powers-and-square-root">Powers and Square Root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#equations">Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#solving-equations">Solving Equations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
 </ul>
 </li>
 </ul>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="vectors-explained.html">Vector Explanations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="geometry-explanations.html">Geometry and Trig Explanations</a></li>
 </ul>
 
 <div class="relations">
@@ -189,7 +191,7 @@ is more complete.</p>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="index.html" title="previous chapter">Math for Programmers</a></li>
-      <li>Next: <a href="vectors-explained.html" title="next chapter">Vector Explanations</a></li>
+      <li>Next: <a href="geometry-explanations.html" title="next chapter">Geometry and Trig Explanations</a></li>
   </ul></li>
 </ul>
 </div>
