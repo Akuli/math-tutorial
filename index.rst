@@ -142,7 +142,7 @@ More Geometry and Trig
 ~~~~~~~~~~~~~~~~~~~~~~
 
 **Problem:** A player moves across a 800x600 pixel window straight from corner
-to corner. How long distance is that, and at what angle did the player move?
+to corner. How long distance is that, and what angle did the player move at?
 
 Here's a picture:
 
