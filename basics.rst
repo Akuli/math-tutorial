@@ -78,9 +78,9 @@ programming languages.
                = x^{\frac 1 2 + \frac 1 2} = x^1 = x
 .. math:: x^0 = 1
 
-Note that `\sqrt x` only works if `x \ge 0`, and also
-`\sqrt x \ge 0` (unless you use complex numbers, but so far we haven't
-needed them in this tutorial).
+Note that `\sqrt x` only works if `x \ge 0` (unless you use complex numbers,
+but so far we haven't needed them in this tutorial). The square root is never
+negative.
 
 Confusingly `\sqrt{x^2}=|x|`, e.g. `\sqrt{(-2)^2}=\sqrt4=2`
 where `(-2)^2 = 4` (see :ref:`above <negative-mul-div>`).
@@ -92,8 +92,8 @@ If you're wondering why anything to the power of 0 is 1, you can do e.g. this:
 
 Because `x^2 = x^2` with any `x`, `x^0` must be 1.
 
-Equations
-~~~~~~~~~
+Solving Equations
+~~~~~~~~~~~~~~~~~
 
 For example, if you know that `2x+1 = 9` you can find `x` like this:
 
