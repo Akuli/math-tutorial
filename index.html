@@ -223,8 +223,7 @@ but that’s not a problem because a triangle with a negative side length doesn�
 make much sense.</p>
 <p>“Hypotenuse” is a fancy word that means the longest side of a triangle with a
 90° angle, and that’s why some programming languages have a <code class="docutils literal"><span class="pre">hypot(a,</span> <span class="pre">b)</span></code>
-function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb823a5b5b4a4a9fcb503.png" alt="\sqrt{a^2 + b^2}"/>. I prefer using the square root thing
-directly because most people don’t know what <code class="docutils literal"><span class="pre">hypot</span></code> is.</p>
+function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb823a5b5b4a4a9fcb503.png" alt="\sqrt{a^2 + b^2}"/>.</p>
 <p>Let’s calculate the distance:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">hypot</span><span class="p">,</span> <span class="n">sqrt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">hypot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -282,6 +281,39 @@ pseudo-ish code:</p>
 <span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
 <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
 </pre></div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p>Create a <code class="docutils literal"><span class="pre">Vector</span></code> class in your favorite programming language that
+represents <img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/>. The class should implement a
+<code class="docutils literal"><span class="pre">Vector(x,</span> <span class="pre">y)</span></code> constructor and the properties (or setters and getters if
+you use e.g. Java) <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, <code class="docutils literal"><span class="pre">length</span></code> and <code class="docutils literal"><span class="pre">angle</span></code>. Additionally, if
+the programming language supports it, you can add a nice <code class="docutils literal"><span class="pre">Vector(i,</span> <span class="pre">j)</span></code>
+string representation and operator overloading; e.g.
+<img class="math" src="_images/math/02e22fc3beede8869e1de9d57d1c8d545d762191.png" alt="(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j"/>, so
+<code class="docutils literal"><span class="pre">Vector(1,</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">Vector(3,</span> <span class="pre">4)</span> <span class="pre">==</span> <span class="pre">Vector(4,</span> <span class="pre">6)</span></code>.</p>
+<p>For example, here I’m playing with my Python implementation:</p>
+<div class="last highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>         <span class="c1"># the string representation</span>
+<span class="go">Vector(1, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">x</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">y</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span>
+<span class="go">2.23606797749979</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">angle</span>
+<span class="go">1.1071487177940904</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>     <span class="c1"># 45° in radians</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
+<span class="go">Vector(1.5811388300841898, 1.5811388300841895)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span>      <span class="c1"># setting the angle didn&#39;t change this</span>
+<span class="go">2.23606797749979</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># lol</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
+<span class="go">Vector(0.0, 0.0)</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="hexadecimal-colors">

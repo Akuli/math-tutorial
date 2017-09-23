@@ -214,8 +214,7 @@ make much sense.
 
 "Hypotenuse" is a fancy word that means the longest side of a triangle with a
 90° angle, and that's why some programming languages have a ``hypot(a, b)``
-function that returns `\sqrt{a^2 + b^2}`. I prefer using the square root thing
-directly because most people don't know what ``hypot`` is.
+function that returns `\sqrt{a^2 + b^2}`.
 
 Let's calculate the distance:
 
@@ -285,6 +284,41 @@ pseudo-ish code:
    angle = atan2(speed_vector.y, speed_vector.x) + angle_change
    speed_vector.x = cos(angle) * length
    speed_vector.y = sin(angle) * length
+
+.. admonition:: Exercise
+
+   Create a ``Vector`` class in your favorite programming language that
+   represents `x \bar i + y \bar j`. The class should implement a
+   ``Vector(x, y)`` constructor and the properties (or setters and getters if
+   you use e.g. Java) ``x``, ``y``, ``length`` and ``angle``. Additionally, if
+   the programming language supports it, you can add a nice ``Vector(i, j)``
+   string representation and operator overloading; e.g.
+   `(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j`, so
+   ``Vector(1, 2) + Vector(3, 4) == Vector(4, 6)``.
+
+   For example, here I'm playing with my Python implementation:
+
+   .. code-block:: python
+
+      >>> v = Vector(1, 2)
+      >>> v         # the string representation
+      Vector(1, 2)
+      >>> v.x
+      1
+      >>> v.y
+      2
+      >>> v.length
+      2.23606797749979
+      >>> v.angle
+      1.1071487177940904
+      >>> v.angle = math.radians(45)     # 45° in radians
+      >>> v
+      Vector(1.5811388300841898, 1.5811388300841895)
+      >>> v.length      # setting the angle didn't change this
+      2.23606797749979
+      >>> v.length = 0     # lol
+      >>> v
+      Vector(0.0, 0.0)
 
 
 Hexadecimal Colors
