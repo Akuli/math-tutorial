@@ -170,7 +170,7 @@ that some functions (like <code class="docutils literal"><span class="pre">atan2
 </div>
 <p>Here’s another way to define <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, and another function called
 <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/> that we haven’t used before.</p>
-<img alt="_images/abcttriangle.png" src="_images/abcttriangle.png" />
+<img alt="_images/abcttriangle.png" class="align-right" src="_images/abcttriangle.png" />
 <div class="math">
 <p><img src="_images/math/9537f7fb5e276514cc560fe81c7c4baae0642610.png" alt="\sin t = \frac b c"/></p>
 </div><div class="math">
@@ -213,11 +213,13 @@ fail as division by zero is undefined.</p>
 <p class="last">A player moves 10 pixels up and 20 pixels right, just like in the previous
 problem. How many pixels is that in total, measured diagonally?</p>
 </div>
-<p>Here’s an image and a handy equation, also known as the Pythagorean theorem:</p>
-<img alt="_images/abctriangle.png" src="_images/abctriangle.png" />
+<img alt="_images/abctriangle.png" class="align-right" src="_images/abctriangle.png" />
+<p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
 <div class="math">
 <p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
-</div><p>If you’re wondering how the heck it works see <a class="reference internal" href="explanations.html#pythagoras-proof"><span class="std std-ref">this proof</span></a>.</p>
+</div><p>Again, the triangle’s corner between a and b must be 90° like it is in the
+image. If you’re wondering how the heck it works see
+<a class="reference internal" href="explanations.html#pythagoras-proof"><span class="std std-ref">this proof</span></a>.</p>
 <p>Let’s solve <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> from the equation by applying <img class="math" src="_images/math/47a602d47b0c7a02304bef79c050849f30710cbf.png" alt="\sqrt{\ \ }"/> on both sides:</p>
 <div class="math">
 <p><img src="_images/math/6e42ec5ab7d35e9bcaffd656e9808936551903d3.png" alt="\sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c"/></p>
@@ -238,12 +240,12 @@ function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb8
 </div>
 <div class="section" id="vectors">
 <h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/vectors-ab-ij.png" class="align-right" src="_images/vectors-ab-ij.png" />
 <p>A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points <img class="math" src="_images/math/43c55690dcb39b7b2a37bf3ba4f365c12bb79398.png" alt="A=(1,2)"/> and
 <img class="math" src="_images/math/570f76b28105e04d716df4cfff657839bea16132.png" alt="B=(3,5)"/>, the vector from A to B is
 <img class="math" src="_images/math/c16efb1bebe36fd8d1d00f38bd67eb399693166a.png" alt="\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j"/>. Here
 <img class="math" src="_images/math/5946ce0745c4b974284697e6137d58e8687cf614.png" alt="\bar i"/> and <img class="math" src="_images/math/75e12d28652bf0210a38052d424bc0247cbc9db1.png" alt="\bar j"/> are vectors that go right and up by 1 unit, respectively.</p>
-<img alt="_images/vectors-ab-ij.png" src="_images/vectors-ab-ij.png" />
 <p>A vector like <img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/> can be also written as <img class="math" src="_images/math/a87a5513cba799e00d2a31f9bc1a103049718655.png" alt="&lt;x,y&gt;"/>. Use
 whatever style you want.</p>
 <p>We could also use vectors to do similar things as in
@@ -256,14 +258,15 @@ vectors is that moving the player is really easy:</p>
 <p>A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">1</span></code>. We’ll look into how this is done
 below.</p>
+<a class="reference internal image-reference" href="_images/ijplus.png"><img alt="_images/ijplus.png" class="align-right" src="_images/ijplus.png" style="width: 180.6px; height: 112.69999999999999px;" /></a>
 <p>Another nice thing about vectors is that they can be +’ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That’s how
 <img class="math" src="_images/math/e62871e3a581b45639eb16d77a1a2c9fc309ddb0.png" alt="3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j"/>.</p>
+<a class="reference internal image-reference" href="_images/vector-calc.png"><img alt="_images/vector-calc.png" class="align-left" src="_images/vector-calc.png" style="width: 199.20000000000002px; height: 223.20000000000002px;" /></a>
 <p>These vector calculations are just like the
 <a class="reference internal" href="#pythagoras"><span class="std std-ref">Pythagorean theorem</span></a> and
 <a class="reference internal" href="#unitcircletrig"><span class="std std-ref">unit circle trig</span></a> stuff above:</p>
-<img alt="_images/vector-calc.png" src="_images/vector-calc.png" />
 <div class="math">
 <p><img src="_images/math/36da0beb6ae49d9e6b237dd364422d7717556208.png" alt="l = \sqrt{a^2+b^2} = \text{hypot}(a, b)"/></p>
 </div><div class="math">
