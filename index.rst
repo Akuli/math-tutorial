@@ -194,8 +194,10 @@ Finally, it's time to calculate our stuff:
 Pythagorean Theorem
 ~~~~~~~~~~~~~~~~~~~
 
-**Problem:** A player moves 10 pixels up and 20 pixels right, just like in the
-previous example. How many pixels is that in total, measured diagonally?
+.. admonition:: Problem
+
+   A player moves 10 pixels up and 20 pixels right, just like in the previous
+   problem. How many pixels is that in total, measured diagonally?
 
 Here's an image and a handy equation, also known as the Pythagorean theorem:
 
@@ -291,7 +293,7 @@ pseudo-ish code:
    represents `x \bar i + y \bar j`. The class should implement a
    ``Vector(x, y)`` constructor and the properties (or setters and getters if
    you use e.g. Java) ``x``, ``y``, ``length`` and ``angle``. Additionally, if
-   the programming language supports it, you can add a nice ``Vector(i, j)``
+   the programming language supports it, you can add a nice ``'Vector(x, y)'``
    string representation and operator overloading; e.g.
    `(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j`, so
    ``Vector(1, 2) + Vector(3, 4) == Vector(4, 6)``.
