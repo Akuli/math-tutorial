@@ -338,7 +338,7 @@ other bases. For example, here's Python:
    'i went to a cafe'
 
 Now let's have a look at the colors. Another common way to represent colors is
-``rgb(R,G,B)`` triples where R, G and B are red, green and blue values between
+``rgb(R,G,B)`` where R, G and B are red, green and blue values between
 0 and 255. For example, ``rgb(255,0,0)`` is red because the red value is at
 maximum and other values are 0. ``rgb(0,0,0)`` is black and
 ``rgb(255,255,255)`` is white.
