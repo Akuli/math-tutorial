@@ -320,6 +320,11 @@ pseudo-ish code:
       >>> v
       Vector(0.0, 0.0)
 
+   If you are interested in how I did it, click
+   `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/vector.py>`_.
+   I didn't add operator overloading because I wanted to keep the
+   implementation simple.
+
 
 Hexadecimal Colors
 ~~~~~~~~~~~~~~~~~~
