@@ -1,0 +1,155 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Proofs and Explanations &#8212; Math for Programmers  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The Basics" href="basics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="proofs-and-explanations">
+<h1>Proofs and Explanations<a class="headerlink" href="#proofs-and-explanations" title="Permalink to this headline">¶</a></h1>
+<p id="geometry-explained">I used a bunch of spooky formulas in this tutorial. Some of them are
+definitions of e.g. <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> or <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, but in this chapter we’ll focus on those
+that aren’t and prove that they actually work.</p>
+<div class="section" id="two-ways-to-define-sine-and-cosine">
+<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
+<p>In <a class="reference internal" href="index.html#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a> we defined <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and
+<img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> with a unit circle, but then in
+<a class="reference internal" href="index.html#triangletrig"><span class="std std-ref">the triangle trig section</span></a> we defined them in a triangle.
+These definitions are actually compatible with each other. If we draw a picture
+like this…</p>
+<img alt="_images/unitcircle-triangle.png" src="_images/unitcircle-triangle.png" />
+<p>…and apply the triangle stuff to the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, we get this:</p>
+<div class="math">
+<p><img src="_images/math/ed50c188c59521a5f2f297cc304295e6c50e1ef2.png" alt="\sin t = \frac{\sin t}{1}"/></p>
+</div><div class="math">
+<p><img src="_images/math/13510e3b9c5c4f3581047d85da6f52bd8edc54f1.png" alt="\cos t = \frac{\cos t}{1}"/></p>
+</div><div class="math">
+<p><img src="_images/math/204f4edd53942a0551a7863ace5611e7c482c8af.png" alt="\tan t = \frac{\sin t}{\cos t}"/></p>
+</div><p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
+bit more interesting. Actually we found another way to define <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, and we
+can also show that it works with a triangle:</p>
+<img alt="_images/abcttriangle.png" src="_images/abcttriangle.png" />
+<div class="math">
+<p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
+= \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
+</div></div>
+<div class="section" id="pythagorean-theorem">
+<span id="pythagoras-proof"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
+<p>This is a well-known proof and I like it because it’s simple.</p>
+<img alt="_images/pythagorasproof.png" src="_images/pythagorasproof.png" />
+<p>We can calculate the total area of the above square in a couple different ways:</p>
+<ul class="simple">
+<li>The square’s sides are each <img class="math" src="_images/math/816f131d424a7f386abfe78c32f078b878613044.png" alt="a+b"/>, so the area must be
+<img class="math" src="_images/math/2067bcb8ac246d06e7a90204a8f71bb5d51f60c6.png" alt="(a+b)(a+b) = a(a+b) + b(a+b) = aa+ab+ba+bb = a^2+2ab+b^2"/>.</li>
+<li>The square consists of the green square whose area is <img class="math" src="_images/math/546bfd75f5def7393a4a78b0735a88c29ac92165.png" alt="c^2"/> and 4 yellow
+triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02f2ef15c8d21d2b03.png" alt="\frac{ab}{2}"/> each.</li>
+</ul>
+<p>We must get the same area with both ways, so we get this
+<a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
+<div class="math">
+<p><img src="_images/math/5878c67c48e7ff6df8195041b3bbd2e4e7a245a4.png" alt="(a+b)(a+b) = c^2 + 4\frac{ab}{2}"/></p>
+</div><div class="math">
+<p><img src="_images/math/1d27c1a7368b38e77407c24f5623838fd13a346d.png" alt="a^2 + 2ab + b^2 = c^2 + 2ab"/></p>
+</div><div class="math">
+<p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
+</div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Math for Programmers</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Proofs and Explanations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#two-ways-to-define-sine-and-cosine">Two ways to define sine and cosine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pythagorean-theorem">Pythagorean Theorem</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="basics.html" title="previous chapter">The Basics</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Akuli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/explanations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
