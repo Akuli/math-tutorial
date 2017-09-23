@@ -153,6 +153,7 @@ Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
 
 .. image:: images/abcttriangle.png
+   :align: right
 .. math:: \sin t = \frac b c
 .. math:: \cos t = \frac a c
 .. math:: \tan t = \frac b a
@@ -199,12 +200,16 @@ Pythagorean Theorem
    A player moves 10 pixels up and 20 pixels right, just like in the previous
    problem. How many pixels is that in total, measured diagonally?
 
-Here's an image and a handy equation, also known as the Pythagorean theorem:
-
 .. image:: images/abctriangle.png
+   :align: right
+
+Here's a handy equation, also known as the Pythagorean theorem:
+
 .. math:: a^2 + b^2 = c^2
 
-If you're wondering how the heck it works see :ref:`this proof <pythagoras-proof>`.
+Again, the triangle's corner between a and b must be 90° like it is in the
+image. If you're wondering how the heck it works see
+:ref:`this proof <pythagoras-proof>`.
 
 Let's solve `c` from the equation by applying `\sqrt{\ \ }` on both sides:
 
@@ -232,13 +237,14 @@ Let's calculate the distance:
 Vectors
 ~~~~~~~
 
+.. image:: images/vectors-ab-ij.png
+   :align: right
+
 A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points `A=(1,2)` and
 `B=(3,5)`, the vector from A to B is
 `\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j`. Here
 `\bar i` and `\bar j` are vectors that go right and up by 1 unit, respectively.
-
-.. image:: images/vectors-ab-ij.png
 
 A vector like `x \bar i + y \bar j` can be also written as `<x,y>`. Use
 whatever style you want.
@@ -256,16 +262,23 @@ A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
 below.
 
+.. image:: images/ijplus.png
+   :align: right
+   :scale: 70%
+
 Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That's how
 `3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j`.
 
+.. image:: images/vector-calc.png
+   :align: left
+   :scale: 80%
+
 These vector calculations are just like the
 :ref:`Pythagorean theorem <pythagoras>` and
 :ref:`unit circle trig <unitcircletrig>` stuff above:
 
-.. image:: images/vector-calc.png
 .. math:: l = \sqrt{a^2+b^2} = \text{hypot}(a, b)
 .. math:: t = \text{atan2}(b,a)
 .. math:: a = l \cdot \cos t

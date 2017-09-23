@@ -13,25 +13,33 @@ that aren't and prove that they actually work.
 Two ways to define sine and cosine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. image:: images/unitcircle-triangle.png
+   :align: right
+   :scale: 80%
+
 In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
 `\cos` with a unit circle, but then in
 :ref:`the triangle trig section <triangletrig>` we defined them with a
 triangle. These definitions are compatible with each other. If we draw a
-picture like this...
+picture like the one at right and apply the triangle stuff to the angle `t`, we
+get this:
 
-.. image:: images/unitcircle-triangle.png
+.. this is one chunk of math for alignment reasons
 
-...and apply the triangle stuff to the angle `t`, we get this:
+.. math::
+   \sin t = \frac{\sin t}{1}
 
-.. math:: \sin t = \frac{\sin t}{1}
-.. math:: \cos t = \frac{\cos t}{1}
-.. math:: \tan t = \frac{\sin t}{\cos t}
+   \cos t = \frac{\cos t}{1}
 
-The first two formulas are obviously true with any `t`, but the last one is a
-bit more interesting. Actually we found another way to define `\tan`, and it
-also works with a triangle:
+   \tan t = \frac{\sin t}{\cos t}
 
 .. image:: images/abcttriangle.png
+   :align: right
+
+The first two formulas are obviously true with any `t`, but the last one is a
+bit more interesting. We found another way to define `\tan`, and it
+also works with a triangle:
+
 .. math::
    \frac{\sin t}{\cos t} = \frac{b/c}{a/c}
    = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t
