@@ -9,15 +9,16 @@ rest of the tutorial with.
 
 I'm sure you already know how + and - work.
 
-In this tutorial, ``a/b`` is written as `\frac a b`, and ``a*b`` is
-sometimes written as `a \cdot b` but more often `ab`.
+In this tutorial, ``a/b`` is written as `a/b` or `\frac a b`, and ``a*b`` is
+written as `a \cdot b` or simply `ab`.
 
 You can also use these handy things:
 
 .. math:: 0a = 0
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
-.. math:: \frac{ab}{cd} = \frac a c \cdot \frac b d
+.. math:: a \frac b c = \frac{ab}{c}
+.. math:: \frac a c \cdot \frac b d = \frac{ab}{cd}
 .. math:: \frac{ac}{bc} = \frac a b, c \ne 0
 
 See `Numberphile's awesome zero video <https://youtu.be/BRRolKTlF6Q>`_ if
@@ -31,6 +32,9 @@ Negative numbers behave like this when multiplied and divided. Note how the two
 .. math:: 2 \cdot (-2) = -(2 \cdot 2) = 4
 .. math:: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
 .. math:: \frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
+
+.. TODO: ask theelous3 whether this is needed? or better yet figure out how to
+   put stuff side by side so the code example can be next to the math
 
 Python examples:
 
@@ -46,6 +50,8 @@ Python examples:
    0.75
    >>> 
 
+
+.. _abs:
 
 Absolute Value
 ~~~~~~~~~~~~~~
@@ -92,6 +98,9 @@ If you're wondering why anything to the power of 0 is 1, you can do e.g. this:
 
 Because `x^2 = x^2` with any `x`, `x^0` must be 1.
 
+
+.. _equations:
+
 Solving Equations
 ~~~~~~~~~~~~~~~~~
 
@@ -106,7 +115,7 @@ You can add and substract any numbers you want, but you cannot multiply or
 divide by zero; multiplying by zero would give `0 = 0` and make anything true.
 
 You can also apply most functions to both sides. For example, you can do this
-with `\sqrt{\text{ }\text{ }}`:
+with `\sqrt{\ \ }`:
 
 .. math:: x^2 = 4
 .. math:: \sqrt{x^2} = \sqrt 4

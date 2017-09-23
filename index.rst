@@ -6,17 +6,21 @@ done, as well as explanation chapters for those who get interested in how the
 math works.
 
 
-The Basics
-~~~~~~~~~~
+Basics and Explanations
+~~~~~~~~~~~~~~~~~~~~~~~
 
-This tutorial assumes that you know these things. If you don't, that's not a
-problem at all and you can just keep the basics page open while you read the
-tutorial.
+This tutorial assumes that you know most things shown in the basics page. If
+you don't, that's not a problem at all and you can just keep the basics page
+open while you read the tutorial.
+
+I explain how most things work here, but if I don't explain or prove something
+you'll probably find it in the separate explanation chapter.
 
 .. toctree::
    :maxdepth: 2
 
    basics
+   explanations
 
 
 Functions
@@ -52,21 +56,20 @@ everything clear.
    ...
    >>> f(6)
    12
-   >>>
 
 Quick note about ``f(x)`` versus ``f x``: if you define your own function
-called `f` or `g` you should use parentheses, but you may omit them with some
-"special" functions like `\sin` and `\cos` for historical reasons.
+called `f` or `g` you should use `f(x)`, but you can use some "special"
+functions like `\sin x` or `\cos x` for historical reasons.
 
 Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
 this doesn't apply to the "special" functions.
 
 
-.. _simpletrig:
+.. _unitcircletrig:
 
-Simple Trigonometry (aka trig)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Trig (aka trigonometry) with the Unit Circle
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **Problem:** A player moves to top-right at the angle of 60° measured from the
 x axis at 10 pixels per second. How many pixels should the player's x and y
@@ -110,7 +113,6 @@ But if we try this out in Python, something is wrong:
    >>> import math
    >>> math.sin(60)
    -0.3048106211022167
-   >>>
 
 Now you're feeling really WTF. The angles with negative sines should be below
 the x axis, e.g. something between 180° and 360°.
@@ -132,61 +134,95 @@ that `\sin 60° = \frac{\sqrt 3}2` and `\cos 60° = \frac 1 2`. I might write
 more about radians, how the heck I came up with those mathy-accurate values and
 how my conversion functions work some day.
 
-This tutorial uses the degree sign ° when you may need to convert things
-between radians and degrees.
+Functions like `\sin` and `\cos` take radians as the argument, but also note
+that some functions (like ``atan2``, see below) return radians.
 
 
-.. _more-geometry:
+.. _triangletrig:
 
-More Geometry and Trig
-~~~~~~~~~~~~~~~~~~~~~~
+Trig with a Triangle
+~~~~~~~~~~~~~~~~~~~~
 
-**Problem:** A player moves across a 800x600 pixel window straight from corner
-to corner. How long distance is that, and what angle did the player move at?
+**Problem:** A player moves 10 pixels up and 20 pixels right. What angle is
+that?
 
-Here's a picture:
+Here's another way to define `\sin` and `\cos`, and another function called
+`\tan` that we haven't used before.
 
-.. image:: images/abctrectangle.png
+.. image:: images/abcttriangle.png
+.. math:: \sin t = \frac b c
+.. math:: \cos t = \frac a c
+.. math:: \tan t = \frac b a
 
-.. math:: c = \sqrt{a^2+b^2} = \text{hypot}(a, b)
-.. math:: t = \text{atan2}(b,a)
+These things only work if the triangle has a 90° corner, and the little box at
+bottom right means that the corner is 90°. These definitions are compatible
+with the unit circle stuff above; see :ref:`this <unitcircle-triangle-compat>`.
 
-The above stuff works only if the angle between `a` and `b` is 90°, like it
-is in the picture.
+So now we know that `a=20` and `b=10`. Let's figure out how to calculate `t`
+from those:
 
-Here atan2 and hypot are functions that mathematicians don't use. I showed the
-hypot thing here because some programming languages have it and you might be
-wondering what it is, but I prefer using the square root version directly
-because not many people know what hypot is. However, I recommend atan2 because
-most programming languages have it and it takes care of some corner cases.
+.. math:: \tan t = \frac b a
+.. math:: t = \arctan{\frac b a} = \text{atan2}(b, a)
 
-Let's calculate our stuff. I'll use Python, but you can use whatever language
-you want.
+Here `\arctan` is the inverse of `\tan`, so `\arctan (\tan t) = t`. Most
+programming languages have an ``atan(x)`` function that returns `\arctan x`,
+but I don't recommend using it in this case; the ``atan2(b,a)`` function
+returns `\arctan{\frac b a}` and I recommend it instead. ``atan2`` looks at the
+signs of `a` and `b` and does the right thing if they're negative (the player
+is moving to e.g. bottom left). It also works if ``a`` is 0 and ``b/a`` would
+fail as division by zero is undefined.
+
+.. note::
+   Usually people like to put `x` before `y` in different kinds of places, but
+   ``atan2`` is used like ``atan2(y_change, x_change)``, **not** like
+   ``atan2(x_change, y_change)``.
+
+Finally, it's time to calculate our stuff:
 
 .. code-block:: python
 
-   >>> from math import sqrt, hypot, degrees, atan2
-   >>> sqrt(800**2 + 600**2)
-   1000.0
-   >>> hypot(800, 600)
-   1000.0
-   >>> degrees(atan2(600, 800))   # careful here! height goes first, then width
-   36.86989764584402
+   >>> from math import atan2, degrees
+   >>> degrees(atan2(10, 20))
+   26.56505117707799
 
-Note that ``atan2(b, a)`` is not same as ``atan2(a, b)``, but the order doesn't
-matter for ``hypot`` because `a^2` and `b^2` are +'ed together.
 
-The diagonal isn't always an integer like 1000; it just happened to be exactly
-1000 in our example.
+.. _pythagoras:
 
-If you're wondering how something works or why the functions are called
-``hypot`` and ``atan2`` have a look below. I put the explanations to another
-page because this way people don't need to read them just to use the formulas.
+Pythagorean Theorem
+~~~~~~~~~~~~~~~~~~~
 
-.. toctree::
-   :maxdepth: 2
+**Problem:** A player moves 10 pixels up and 20 pixels right, just like in the
+previous example. How many pixels is that in total, measured diagonally?
 
-   geometry-explanations
+Here's an image and a handy equation, also known as the Pythagorean theorem:
+
+.. image:: images/abctriangle.png
+.. math:: a^2 + b^2 = c^2
+
+If you're wondering how the heck it works see :ref:`this proof <pythagoras-proof>`.
+
+Let's solve `c` from the equation by applying `\sqrt{\ \ }` on both sides:
+
+.. math:: \sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c
+
+Here `|c|` is :ref:`the absolute value <abs>`. The last step assumes `c \ge 0`,
+but that's not a problem because a triangle with a negative side length doesn't
+make much sense.
+
+"Hypotenuse" is a fancy word that means the longest side of a triangle with a
+90° angle, and that's why some programming languages have a ``hypot(a, b)``
+function that returns `\sqrt{a^2 + b^2}`. I prefer using the square root thing
+directly because most people don't know what ``hypot`` is.
+
+Let's calculate the distance:
+
+.. code-block:: python
+
+   >>> from math import hypot, sqrt
+   >>> hypot(10, 20)
+   22.360679774997898
+   >>> sqrt(10**2 + 20**2)
+   22.360679774997898
 
 
 Vectors
@@ -194,47 +230,57 @@ Vectors
 
 A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points `A=(1,2)` and
-`B=(3,5)`, the vector from A to B is `\vec{AB} = 2\overline{i}+3\overline{j}`.
-Here `\overline{i}` and `\overline{j}` are vectors that go right and up by 1
-unit, respectively.
+`B=(3,5)`, the vector from A to B is
+`\vec{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j`. Here `\bar i`
+and `\bar j` are vectors that go right and up by 1 unit, respectively.
 
 .. image:: images/vectors-ab-ij.png
 
-A vector like `2\overline{i}+3\overline{j}` can be also written as `<2,3>`.
-Use whatever style you like.
+A vector like `x \bar i + y \bar j` can be also written as `<x,y>`. Use
+whatever style you want.
 
 We could also use vectors to do similar things as in
-:ref:`our trig example <simpletrig>`. The advantage with that is that moving
-the player is really simple:
+:ref:`the unit circle trig section <unitcircletrig>`. The advantage with
+vectors is that moving the player is really easy:
 
 .. code-block:: python
 
-   player.x += speed_vector.i
-   player.y += speed_vector.j
+   player.x += speed_vector.x
+   player.y += speed_vector.y
 
 A disadvantage is that if we want to change the angle that the player moves at
-by 1° we can't just do ``moving_angle += 1``. Of course it's possible to change
-that angle, but not as simple.
+by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
+below.
 
-Another nice thing about vectors is that they can be +'ed together easily.
-For example, if we first move 3 units to right, then 4 units to top and then
-5 more units to right, our total movement is simply
-`3\overline{i}+4\overline{j}+5\overline{i} = 8\overline{i}+4\overline{j}`.
+Another nice thing about vectors is that they can be +'ed together easily. For
+example, if we first move 3 units to right, then 4 units up and finally 5 more
+units to right, we move a total of 8 units to right and 4 units up. That's how
+`3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j`.
 
-These vector calculations are very similar to the
-:ref:`geometry stuff above <more-geometry>`:
+These vector calculations are just like the
+:ref:`Pythagorean theorem <pythagoras>` and
+:ref:`unit circle trig <unitcircletrig>` stuff above:
 
 .. image:: images/vector-calc.png
-
 .. math:: l = \sqrt{a^2+b^2} = \text{hypot}(a, b)
 .. math:: t = \text{atan2}(b,a)
 .. math:: a = l \cdot \cos t
 .. math:: b = l \cdot \sin t
 
 Example: if we move 1 unit to the right and 2 units up, our vector is `<1,2>`,
-its length is `\sqrt{1^2+2^2} = \sqrt5 \approx 2.24` and the angle is
+its length is `\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24` and the angle is
 `\text{atan2}(2,1) \approx 63.4°`. On the other hand, `\cos 63.4° \approx 1`
 and `\sin 63.4° \approx 2`.
+
+One way to change the angle of a vector is to first convert it to a length and
+an angle, change that angle and create a new vector. It looks like this in
+pseudo-ish code:
+
+.. code-block:: python
+
+   length = hypot(speed_vector.x, speed_vector.y)
+   angle = atan2(speed_vector.y, speed_vector.x) + angle_change
+   speed_vector = Vector(cos(angle)*length, sin(angle)*length)
 
 
 Hexadecimal Colors
@@ -264,7 +310,8 @@ B=11, C=12, D=13, E=14 and F=15. For example:
                   &= 51966
 
 Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
-because it's very common in programming.
+because it's very common in programming. Note that the first character is a
+zero, not the letter O.
 
 The sane way to calculate the last step is to use a programming interpreter or
 calculator of your choice. Don't try to do it by hand.
@@ -284,6 +331,10 @@ other bases. For example, here's Python:
    '0xcafe'
    >>> int('cafe', 16)
    51966
+   >>> 'i went to a %x' % 51966
+   'i went to a cafe'
+   >>> 'i went to a {:x}'.format(51966)
+   'i went to a cafe'
 
 Now let's have a look at the colors. Another common way to represent colors is
 ``rgb(R,G,B)`` triples where R, G and B are red, green and blue values between
