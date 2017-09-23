@@ -1,3 +1,4 @@
 .~lock.drawings.odg#
 _build/
 env/
+__pycache__/
