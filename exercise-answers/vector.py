@@ -30,14 +30,3 @@ class Vector:
         length = math.hypot(self.x, self.y)
         self.x = math.cos(new_angle) * length
         self.y = math.sin(new_angle) * length
-
-
-v = Vector(1, 2)
-v.x
-v.y
-v.length
-v.angle
-v.angle = math.radians(45)     # 45° in radians
-v
-v.length = 0        # lol
-v
