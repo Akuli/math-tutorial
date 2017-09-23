@@ -234,8 +234,8 @@ Vectors
 A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points `A=(1,2)` and
 `B=(3,5)`, the vector from A to B is
-`\vec{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j`. Here `\bar i`
-and `\bar j` are vectors that go right and up by 1 unit, respectively.
+`\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j`. Here
+`\bar i` and `\bar j` are vectors that go right and up by 1 unit, respectively.
 
 .. image:: images/vectors-ab-ij.png
 
