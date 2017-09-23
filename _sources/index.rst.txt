@@ -280,7 +280,8 @@ pseudo-ish code:
 
    length = hypot(speed_vector.x, speed_vector.y)
    angle = atan2(speed_vector.y, speed_vector.x) + angle_change
-   speed_vector = Vector(cos(angle)*length, sin(angle)*length)
+   speed_vector.x = cos(angle) * length
+   speed_vector.y = sin(angle) * length
 
 
 Hexadecimal Colors
