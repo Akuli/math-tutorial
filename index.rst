@@ -71,9 +71,11 @@ this doesn't apply to the "special" functions.
 Trig (aka trigonometry) with the Unit Circle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Problem:** A player moves to top-right at the angle of 60° measured from the
-x axis at 10 pixels per second. How many pixels should the player's x and y
-change every second?
+.. admonition:: Problem
+
+   A player moves to top-right at the angle of 60° measured from the
+   x axis at 10 pixels per second. How many pixels should the player's x and y
+   change every second?
 
 .. code-block:: none
 
@@ -143,8 +145,9 @@ that some functions (like ``atan2``, see below) return radians.
 Trig with a Triangle
 ~~~~~~~~~~~~~~~~~~~~
 
-**Problem:** A player moves 10 pixels up and 20 pixels right. What angle is
-that?
+.. admonition:: Problem
+
+   A player moves 10 pixels up and 20 pixels right. What angle is that?
 
 Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
