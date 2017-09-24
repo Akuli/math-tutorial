@@ -170,3 +170,24 @@ default_role = 'math'
 # before the title appeared like this:
 # "Math for Programmers - Math for Programmers documentation"
 html_title = ''
+
+# update the images with asymptote
+# TODO: don't commit the generated pngs with git?
+import atexit
+import glob
+import os
+import subprocess
+
+asyfiles = [os.path.basename(path)
+            for path in glob.glob(os.path.join('asy', '*.asy'))]
+print("conf.py: running 'asy -f png *.asy' in asy/")
+subprocess.call(['asy', '-f', 'png'] + asyfiles, cwd='asy')
+
+def clean_pngs(asydir):
+    print("conf.py: removing png files from asy/")
+    for asyfile in asyfiles:
+        pngfile = os.path.join(asydir, os.path.splitext(asyfile)[0] + '.png')
+        os.remove(pngfile)
+
+# clean_pngs() needs the abspath if sphinx chdirs for some reason
+atexit.register(clean_pngs, os.path.abspath('asy'))

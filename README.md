@@ -12,7 +12,7 @@ instructions for every possible platform.
 
 1. Install dependencies.
 
-        $ sudo apt install git texlive texlive-latex-extra dvipng python3-pip
+        $ sudo apt install git texlive texlive-latex-extra dvipng python3-pip asymptote
         $ python3 -m pip install --user --upgrade pip
         $ python3 -m pip install --user sphinx
 
@@ -28,11 +28,11 @@ instructions for every possible platform.
 
 ## Adding images
 
-This is the process I use for creating images with LibreOffice Draw. It's by no
-means the best possible program for this purpose and if you end up maintaining
-this tutorial you are free to use whatever other tools you want.
+I recommend using asymptote. See [the asy directory](asy/).
 
-I create the png images like this:
+Unfortunately there are also quite a few things I drew with LibreOffice Draw
+before I learned about Asymptote. These images are in [images/](images/). I
+use this awful process to export them to png:
 
 1. Install LibreOffice Draw.
 
@@ -55,3 +55,4 @@ I create the png images like this:
 4. Zoom in 75%. See the thingy at bottom right and use ctrl+mousewheel.
 5. Take a *screenshot* (lol) with your favorite screenshot tool. I recommend a
     screenshot tool that lets you select an area with the mouse.
+6. Check "View" -> "Grid" -> "Display Grid" if you want to see the grid.
