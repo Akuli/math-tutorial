@@ -15,6 +15,7 @@ written as `a \cdot b` or simply `ab`.
 You can also use these handy things:
 
 .. math:: 0a = 0
+.. math:: 1a = a
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
 .. math:: a \frac b c = \frac{ab}{c}
