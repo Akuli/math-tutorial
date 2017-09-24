@@ -51,7 +51,7 @@ Pythagorean Theorem
 
 This is a well-known proof and I like it because it's simple.
 
-.. image:: images/pythagorasproof.png
+.. image:: asy/pythagorasproof.png
 
 We can calculate the total area of the above square in a couple different ways:
 
