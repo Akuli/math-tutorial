@@ -13,9 +13,8 @@ that aren't and prove that they actually work.
 Two ways to define sine and cosine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: images/unitcircle-triangle.png
+.. image:: asy/unitcircle-triangle.png
    :align: right
-   :scale: 80%
 
 In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
 `\cos` with a unit circle, but then in
@@ -33,7 +32,7 @@ get this:
 
    \tan t = \frac{\sin t}{\cos t}
 
-.. image:: images/abcttriangle.png
+.. image:: asy/abcttriangle.png
    :align: right
 
 The first two formulas are obviously true with any `t`, but the last one is a

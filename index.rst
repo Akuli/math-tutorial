@@ -152,7 +152,7 @@ Trig with a Triangle
 Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
 
-.. image:: images/abcttriangle.png
+.. image:: asy/abcttriangle.png
    :align: right
 .. math:: \sin t = \frac b c
 .. math:: \cos t = \frac a c
