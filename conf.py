@@ -171,8 +171,8 @@ default_role = 'math'
 # "Math for Programmers - Math for Programmers documentation"
 html_title = ''
 
-# update the images with asymptote
-# TODO: don't commit the generated pngs with git?
+
+# create images with asymptote automagically
 import atexit
 import glob
 import os
