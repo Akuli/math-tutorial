@@ -77,16 +77,7 @@ Trig (aka trigonometry) with the Unit Circle
    x axis at 10 pixels per second. How many pixels should the player's x and y
    change every second?
 
-.. code-block:: none
-
-               y
-               |      O     <-- the player
-               |     /
-               |    /
-               |   / ) 60°
-   ------------|--/-----------> x
-               | /
-               |
+   .. image:: asy/playerproblem.png
 
 Note that the y axis goes up in math so higher means bigger, but in programming
 it's usually upside down.
