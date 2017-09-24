@@ -187,7 +187,10 @@ def clean_pngs(asydir):
     print("conf.py: removing png files from asy/")
     for asyfile in asyfiles:
         pngfile = os.path.join(asydir, os.path.splitext(asyfile)[0] + '.png')
-        os.remove(pngfile)
+        if asyfile == 'boilerplate.asy':
+            assert not os.path.exists(pngfile), "don't draw in boilerplate.asy"
+        else:
+            os.remove(pngfile)
 
 # clean_pngs() needs the abspath if sphinx chdirs for some reason
 atexit.register(clean_pngs, os.path.abspath('asy'))

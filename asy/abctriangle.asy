@@ -1,7 +1,4 @@
-size(8cm);
-defaultpen(0.8mm + fontsize(30pt));
-
-real corner90 = 0.3;    // side length of 90° corner boxes
+import boilerplate;
 
 pair A = (0,0);     //     /| C
 pair B = (3,0);     //    / |
