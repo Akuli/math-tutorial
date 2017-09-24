@@ -200,7 +200,7 @@ Pythagorean Theorem
    A player moves 10 pixels up and 20 pixels right, just like in the previous
    problem. How many pixels is that in total, measured diagonally?
 
-.. image:: images/abctriangle.png
+.. image:: asy/abctriangle.png
    :align: right
 
 Here's a handy equation, also known as the Pythagorean theorem:
