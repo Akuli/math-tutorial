@@ -306,7 +306,7 @@ pseudo-ish code:
    represents `x \bar i + y \bar j`. The class should implement a
    ``Vector(x, y)`` constructor and the properties (or setters and getters if
    you use e.g. Java) ``x``, ``y``, ``length`` and ``angle``. Additionally, if
-   the programming language supports it, you can add a nice ``'Vector(x, y)'``
+   the programming language supports it, you can add a nice ``"Vector(x, y)"``
    string representation and operator overloading; e.g.
    `(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j`, so
    ``Vector(1, 2) + Vector(3, 4) == Vector(4, 6)``.
@@ -324,9 +324,9 @@ pseudo-ish code:
       2
       >>> v.length
       2.23606797749979
-      >>> v.angle
-      1.1071487177940904
-      >>> v.angle = math.radians(45)     # 45° in radians
+      >>> math.degrees(v.angle)
+      63.43494882292201
+      >>> v.angle = math.radians(45)
       >>> v
       Vector(1.5811388300841898, 1.5811388300841895)
       >>> v.length      # setting the angle didn't change this
