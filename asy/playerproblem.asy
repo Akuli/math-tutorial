@@ -6,11 +6,7 @@ size(10cm);
 pair pathstart = (0.1,-0.5);
 pair pathend = (1.5,2);
 
-// TODO: come up with a better way to label the axises
-draw((-1.5,0)--(3,0), arrow=Arrow(size=0.7cm));
-draw((0,-0.5)--(0,2), arrow=Arrow(size=0.7cm));
-draw((3,0)--(3,0.01), L="x");
-draw((0,2)--(0,2.01), L="y");
+axises(-1.5, 3, -0.5, 2);
 
 pen smalldashes = linetype(new real[] {4, 4});
 draw(pathstart--pathend, p=smalldashes);

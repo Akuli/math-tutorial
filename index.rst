@@ -228,7 +228,7 @@ Let's calculate the distance:
 Vectors
 ~~~~~~~
 
-.. image:: images/vectors-ab-ij.png
+.. image:: asy/ijab.png
    :align: right
 
 A point is simply a pair of x and y coordinates, and a vector represents the
@@ -253,9 +253,8 @@ A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
 below.
 
-.. image:: images/ijplus.png
+.. image:: asy/ijplus.png
    :align: right
-   :scale: 70%
 
 Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
