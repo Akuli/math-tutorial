@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The Basics &#8212; Math for Programmers  documentation</title>
+    <title>The Basics</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Vector Explanations" href="vectors-explained.html" />
+    <link rel="next" title="Proofs and Explanations" href="explanations.html" />
     <link rel="prev" title="Math for Programmers" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -47,17 +47,21 @@ rest of the tutorial with.</p>
 <div class="section" id="id1">
 <h2>+, -, *, /<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>I’m sure you already know how + and - work.</p>
-<p>In this tutorial, <code class="docutils literal"><span class="pre">a/b</span></code> is written as <img class="math" src="_images/math/3a437c5f2e7110e024dd0ff40939bf1322d42e40.png" alt="\frac a b"/>, and <code class="docutils literal"><span class="pre">a*b</span></code> is
-sometimes written as <img class="math" src="_images/math/9d9ad179e4d24e332b8e8834df2e2532f246b1fb.png" alt="a \cdot b"/> but more often <img class="math" src="_images/math/656ae3ea203842a615a5ac88da20ba695fd77966.png" alt="ab"/>.</p>
+<p>In this tutorial, <code class="docutils literal"><span class="pre">a/b</span></code> is written as <img class="math" src="_images/math/50142d8726ee0493b65e7046f97cd2c32ba2e583.png" alt="a/b"/> or <img class="math" src="_images/math/3a437c5f2e7110e024dd0ff40939bf1322d42e40.png" alt="\frac a b"/>, and <code class="docutils literal"><span class="pre">a*b</span></code> is
+written as <img class="math" src="_images/math/9d9ad179e4d24e332b8e8834df2e2532f246b1fb.png" alt="a \cdot b"/> or simply <img class="math" src="_images/math/656ae3ea203842a615a5ac88da20ba695fd77966.png" alt="ab"/>.</p>
 <p>You can also use these handy things:</p>
 <div class="math">
 <p><img src="_images/math/90189129a6fd0ffd53c1e39647a02af1495d5180.png" alt="0a = 0"/></p>
+</div><div class="math">
+<p><img src="_images/math/26fdd71b880676ea798ac7bc45f3e401c3fe4786.png" alt="1a = a"/></p>
 </div><div class="math">
 <p><img src="_images/math/f23acdaae30a1ce70bf12e2ec51107a557dab407.png" alt="ab = ba"/></p>
 </div><div class="math">
 <p><img src="_images/math/e4ed34f36cbe6c798956ad5a8314b8df39a142af.png" alt="(a+b)c = ac+bc"/></p>
 </div><div class="math">
-<p><img src="_images/math/710285acaddac2d79b97d6b37aa06e7688168134.png" alt="\frac{ab}{cd} = \frac a c \cdot \frac b d"/></p>
+<p><img src="_images/math/6292d7853bda0bf7259e1ac2f428924d9e9003eb.png" alt="a \frac b c = \frac{ab}{c}"/></p>
+</div><div class="math">
+<p><img src="_images/math/7e61218620a654faab8f7e5ce0cafb99bfbaf4ff.png" alt="\frac a c \cdot \frac b d = \frac{ab}{cd}"/></p>
 </div><div class="math">
 <p><img src="_images/math/e007ba5bc2c374f746d5e5cb2204326c3c3f5c4d.png" alt="\frac{ac}{bc} = \frac a b, c \ne 0"/></p>
 </div><p>See <a class="reference external" href="https://youtu.be/BRRolKTlF6Q">Numberphile’s awesome zero video</a> if
@@ -65,7 +69,7 @@ you’re wondering why dividing by zero is not allowed.</p>
 <p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
 -‘s cancel out.</p>
 <div class="math">
-<p><img src="_images/math/3b94ca09f277ee162e8b29f935c6060abcd7292f.png" alt="2 \cdot (-2) = -(2 \cdot 2) = 4"/></p>
+<p><img src="_images/math/1a0f9489d50268248d3389b0775f3417e997cf02.png" alt="2 \cdot (-2) = -(2 \cdot 2) = -4"/></p>
 </div><div class="math">
 <p><img src="_images/math/90e1c747e6d027f3dadf842f5a4469dbae984f70.png" alt="(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4"/></p>
 </div><div class="math">
@@ -84,7 +88,7 @@ you’re wondering why dividing by zero is not allowed.</p>
 </div>
 </div>
 <div class="section" id="absolute-value">
-<h2>Absolute Value<a class="headerlink" href="#absolute-value" title="Permalink to this headline">¶</a></h2>
+<span id="abs"></span><h2>Absolute Value<a class="headerlink" href="#absolute-value" title="Permalink to this headline">¶</a></h2>
 <p>The absolute value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> is <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> in math and something like <code class="docutils literal"><span class="pre">abs(x)</span></code> or
 <code class="docutils literal"><span class="pre">Math.abs(x)</span></code> in most programming languages. It’s easiest to think of the
 absolute value as stripping off the minus sign. For example, <img class="math" src="_images/math/06650e682155af5081b8944d79a10396091f2aed.png" alt="|2| = 2"/> and
@@ -126,7 +130,7 @@ where <img class="math" src="_images/math/70c219b8367ae6359b28cee44f5e1fa3729799
 </div><p>Because <img class="math" src="_images/math/c520c330655afaff2a251e7dcfe5fdb2d854498c.png" alt="x^2 = x^2"/> with any <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, <img class="math" src="_images/math/c19c691e28e60d4468e90b87a3782a3cd502dbef.png" alt="x^0"/> must be 1.</p>
 </div>
 <div class="section" id="solving-equations">
-<h2>Solving Equations<a class="headerlink" href="#solving-equations" title="Permalink to this headline">¶</a></h2>
+<span id="equations"></span><h2>Solving Equations<a class="headerlink" href="#solving-equations" title="Permalink to this headline">¶</a></h2>
 <p>For example, if you know that <img class="math" src="_images/math/f76aad82b3680b6035af8a55eab335516975baa3.png" alt="2x+1 = 9"/> you can find <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> like this:</p>
 <div class="math">
 <p><img src="_images/math/0f79d1acc8d4040dc67d4742cc26baf262793119.png" alt="2x+1 = 9"/></p>
@@ -138,7 +142,7 @@ where <img class="math" src="_images/math/70c219b8367ae6359b28cee44f5e1fa3729799
 You can add and substract any numbers you want, but you cannot multiply or
 divide by zero; multiplying by zero would give <img class="math" src="_images/math/447bd338f09ec7551f0c81ea5ddccb5245335f0f.png" alt="0 = 0"/> and make anything true.</p>
 <p>You can also apply most functions to both sides. For example, you can do this
-with <img class="math" src="_images/math/80110483bb2acf9378eac7f0764bc7b542f2ded0.png" alt="\sqrt{\text{ }\text{ }}"/>:</p>
+with <img class="math" src="_images/math/47a602d47b0c7a02304bef79c050849f30710cbf.png" alt="\sqrt{\ \ }"/>:</p>
 <div class="math">
 <p><img src="_images/math/130f6d6cd9c89a0a35cfc3c6503186741563191e.png" alt="x^2 = 4"/></p>
 </div><div class="math">
@@ -161,50 +165,10 @@ is more complete.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Math for Programmers</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">+, -, *, /</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#absolute-value">Absolute Value</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#powers-and-square-root">Powers and Square Root</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#solving-equations">Solving Equations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#see-also">See Also</a></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="vectors-explained.html">Vector Explanations</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Math for Programmers</a></li>
-      <li>Next: <a href="vectors-explained.html" title="next chapter">Vector Explanations</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+        <div class="sphinxsidebarwrapper"><p style="font-size:1.5em">
+  <a href="index.html">Click here</a>
+  to go back to the tutorial.
+</p>
         </div>
       </div>
       <div class="clearer"></div>

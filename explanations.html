@@ -1,0 +1,122 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Proofs and Explanations</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="The Basics" href="basics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="proofs-and-explanations">
+<h1>Proofs and Explanations<a class="headerlink" href="#proofs-and-explanations" title="Permalink to this headline">¶</a></h1>
+<p id="geometry-explained">I used a bunch of spooky formulas in this tutorial. Some of them are
+definitions of e.g. <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> or <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, but in this chapter we’ll focus on those
+that aren’t and prove that they actually work.</p>
+<div class="section" id="two-ways-to-define-sine-and-cosine">
+<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
+<img alt="_images/unitcircle-triangle.png" class="align-right" src="_images/unitcircle-triangle.png" />
+<p>In <a class="reference internal" href="index.html#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a> we defined <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and
+<img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> with a unit circle, but then in
+<a class="reference internal" href="index.html#triangletrig"><span class="std std-ref">the triangle trig section</span></a> we defined them with a
+triangle. These definitions are compatible with each other. If we draw a
+picture like the one at right and apply the triangle stuff to the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, we
+get this:</p>
+<div class="math">
+<p><img src="_images/math/7d6a741e616536f286c127123604d7adc6df7d33.png" alt="\sin t = \frac{\sin t}{1}
+
+\cos t = \frac{\cos t}{1}
+
+\tan t = \frac{\sin t}{\cos t}"/></p>
+</div><img alt="_images/abcttriangle1.png" class="align-right" src="_images/abcttriangle1.png" />
+<p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
+bit more interesting. We found another way to define <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, and it
+also works with a triangle:</p>
+<div class="math">
+<p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
+= \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
+</div></div>
+<div class="section" id="pythagorean-theorem">
+<span id="pythagoras-proof"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
+<p>This is a well-known proof and I like it because it’s simple.</p>
+<img alt="_images/pythagorasproof.png" src="_images/pythagorasproof.png" />
+<p>We can calculate the total area of the above square in a couple different ways:</p>
+<ul class="simple">
+<li>The square’s sides are each <img class="math" src="_images/math/816f131d424a7f386abfe78c32f078b878613044.png" alt="a+b"/>, so the area must be
+<img class="math" src="_images/math/079945664bd9a772b7b86f5d552f844e9d116749.png" alt="(a+b)(a+b) = a(a+b) + b(a+b) = aa+ab+ba+bb = a^2 + 2ab + b^2"/>.</li>
+<li>The square consists of the green square whose area is <img class="math" src="_images/math/546bfd75f5def7393a4a78b0735a88c29ac92165.png" alt="c^2"/> and 4 yellow
+triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02f2ef15c8d21d2b03.png" alt="\frac{ab}{2}"/> each. Total area is
+<img class="math" src="_images/math/8bef970c91cab487fcfaa8655df093a9d6a46663.png" alt="c^2 + 4 \frac{ab}{2} = c^2 + \frac{4}{2}ab = c^2 + 2ab"/>.</li>
+</ul>
+<p>We must get the same area with both ways, so we get this
+<a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
+<div class="math">
+<p><img src="_images/math/5878c67c48e7ff6df8195041b3bbd2e4e7a245a4.png" alt="(a+b)(a+b) = c^2 + 4\frac{ab}{2}"/></p>
+</div><div class="math">
+<p><img src="_images/math/1d27c1a7368b38e77407c24f5623838fd13a346d.png" alt="a^2 + 2ab + b^2 = c^2 + 2ab"/></p>
+</div><div class="math">
+<p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
+</div></div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p style="font-size:1.5em">
+  <a href="index.html">Click here</a>
+  to go back to the tutorial.
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Akuli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/explanations.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
