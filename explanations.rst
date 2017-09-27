@@ -13,7 +13,7 @@ that aren't and prove that they actually work.
 Two ways to define sine and cosine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: asy/unitcircle-triangle.png
+.. image:: images/unitcircle-triangle.png
    :align: right
 
 In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
@@ -32,7 +32,7 @@ get this:
 
    \tan t = \frac{\sin t}{\cos t}
 
-.. image:: asy/abcttriangle.png
+.. image:: images/abcttriangle.png
    :align: right
 
 The first two formulas are obviously true with any `t`, but the last one is a
@@ -51,7 +51,7 @@ Pythagorean Theorem
 
 This is a well-known proof and I like it because it's simple.
 
-.. image:: asy/pythagorasproof.png
+.. image:: images/pythagorasproof.png
 
 We can calculate the total area of the above square in a couple different ways:
 

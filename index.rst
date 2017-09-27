@@ -77,7 +77,7 @@ Trig (aka trigonometry) with the Unit Circle
    x axis at 10 pixels per second. How many pixels should the player's x and y
    change every second?
 
-   .. image:: asy/playerproblem.png
+   .. image:: images/playerproblem.png
 
 Note that the y axis goes up in math so higher means bigger, but in programming
 it's usually upside down.
@@ -143,7 +143,7 @@ Trig with a Triangle
 Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
 
-.. image:: asy/abcttriangle.png
+.. image:: images/abcttriangle.png
    :align: right
 .. math:: \sin t = \frac b c
 .. math:: \cos t = \frac a c
@@ -191,7 +191,7 @@ Pythagorean Theorem
    A player moves 10 pixels up and 20 pixels right, just like in the previous
    problem. How many pixels is that in total, measured diagonally?
 
-.. image:: asy/abctriangle.png
+.. image:: images/abctriangle.png
    :align: right
 
 Here's a handy equation, also known as the Pythagorean theorem:
@@ -228,7 +228,7 @@ Let's calculate the distance:
 Vectors
 ~~~~~~~
 
-.. image:: asy/ijab.png
+.. image:: images/ijab.png
    :align: right
 
 A point is simply a pair of x and y coordinates, and a vector represents the
@@ -253,7 +253,7 @@ A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
 below.
 
-.. image:: asy/ijplus.png
+.. image:: images/ijplus.png
    :align: right
 
 Another nice thing about vectors is that they can be +'ed together easily. For
@@ -261,7 +261,7 @@ example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That's how
 `3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j`.
 
-.. image:: asy/vectorcalc.png
+.. image:: images/vectorcalc.png
    :align: left
 
 These vector calculations are just like the

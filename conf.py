@@ -179,18 +179,19 @@ import os
 import subprocess
 
 asyfiles = [os.path.basename(path)
-            for path in glob.glob(os.path.join('asy', '*.asy'))]
-print("conf.py: running 'asy -f png *.asy' in asy/")
-subprocess.call(['asy', '-f', 'png'] + asyfiles, cwd='asy')
+            for path in glob.glob(os.path.join('images', '*.asy'))]
+print("conf.py: running 'asy -v -f png *.asy' in images/")
+subprocess.call(['asy', '-v', '-f', 'png'] + asyfiles, cwd='images')
 
-def clean_pngs(asydir):
-    print("conf.py: removing png files from asy/")
+def clean_pngs(imagedir):
+    print("conf.py: removing png files generated with asymptote from images/")
     for asyfile in asyfiles:
-        pngfile = os.path.join(asydir, os.path.splitext(asyfile)[0] + '.png')
+        pngfile = os.path.join(imagedir, os.path.splitext(asyfile)[0] + '.png')
         if asyfile == 'boilerplate.asy':
             assert not os.path.exists(pngfile), "don't draw in boilerplate.asy"
         else:
+            print("  ", pngfile)
             os.remove(pngfile)
 
 # clean_pngs() needs the abspath if sphinx chdirs for some reason
-atexit.register(clean_pngs, os.path.abspath('asy'))
+atexit.register(clean_pngs, os.path.abspath('images'))
