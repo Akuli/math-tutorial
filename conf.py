@@ -181,7 +181,7 @@ import subprocess
 asyfiles = [os.path.basename(path)
             for path in glob.glob(os.path.join('images', '*.asy'))]
 print("conf.py: running 'asy -v -f png *.asy' in images/")
-subprocess.call(['asy', '-v', '-f', 'png'] + asyfiles, cwd='images')
+subprocess.check_call(['asy', '-v', '-f', 'png'] + asyfiles, cwd='images')
 
 def clean_pngs(imagedir):
     print("conf.py: removing png files generated with asymptote from images/")
