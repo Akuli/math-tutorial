@@ -8,7 +8,6 @@ pair pathend = (1.5,2);
 
 axises(-1.5, 3, -0.5, 2);
 
-pen smalldashes = linetype(new real[] {4, 4});
 draw(pathstart--pathend, p=smalldashes);
 dot(pathend, L=" the player", align=NE);
 

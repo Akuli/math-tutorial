@@ -1,7 +1,10 @@
+// TODO: stop using a weird mixture of mm and raw numbers
 defaultpen(0.8mm + fontsize(25pt));
 pen dotpen = defaultpen() + 0.3cm;
+pen smalldashes = linetype(new real[] {4, 4});
 real corner90 = 0.3;    // side length of 90° corner boxes
 real vectorarrowsize = 0.7cm;
+real bracedistance = 0.2;
 
 void grid(real xmin, real xmax, real ymin, real ymax) {
     pen thingray = defaultpen() + 1pt + gray;

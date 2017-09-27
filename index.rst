@@ -261,9 +261,8 @@ example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That's how
 `3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j`.
 
-.. image:: images/vector-calc.png
+.. image:: asy/vectorcalc.png
    :align: left
-   :scale: 80%
 
 These vector calculations are just like the
 :ref:`Pythagorean theorem <pythagoras>` and
