@@ -77,7 +77,11 @@ Trig (aka trigonometry) with the Unit Circle
    x axis at 10 pixels per second. How many pixels should the player's x and y
    change every second?
 
+<<<<<<< HEAD
    .. image:: images/playerproblem.png
+=======
+   .. image:: asy/playerproblem.png
+>>>>>>> 4475e7622f8a890311da3f315e7799ccba5a7b18
 
 Note that the y axis goes up in math so higher means bigger, but in programming
 it's usually upside down.
@@ -143,7 +147,11 @@ Trig with a Triangle
 Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
 
+<<<<<<< HEAD
 .. image:: images/abcttriangle.png
+=======
+.. image:: asy/abcttriangle.png
+>>>>>>> 4475e7622f8a890311da3f315e7799ccba5a7b18
    :align: right
 .. math:: \sin t = \frac b c
 .. math:: \cos t = \frac a c
@@ -191,7 +199,11 @@ Pythagorean Theorem
    A player moves 10 pixels up and 20 pixels right, just like in the previous
    problem. How many pixels is that in total, measured diagonally?
 
+<<<<<<< HEAD
 .. image:: images/abctriangle.png
+=======
+.. image:: asy/abctriangle.png
+>>>>>>> 4475e7622f8a890311da3f315e7799ccba5a7b18
    :align: right
 
 Here's a handy equation, also known as the Pythagorean theorem:
@@ -228,7 +240,11 @@ Let's calculate the distance:
 Vectors
 ~~~~~~~
 
+<<<<<<< HEAD
 .. image:: images/ijab.png
+=======
+.. image:: images/vectors-ab-ij.png
+>>>>>>> 4475e7622f8a890311da3f315e7799ccba5a7b18
    :align: right
 
 A point is simply a pair of x and y coordinates, and a vector represents the
@@ -252,6 +268,7 @@ vectors is that moving the player is really easy:
 A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
 below.
+<<<<<<< HEAD
 
 .. image:: images/ijplus.png
    :align: right
@@ -264,6 +281,22 @@ units to right, we move a total of 8 units to right and 4 units up. That's how
 .. image:: images/vectorcalc.png
    :align: left
 
+=======
+
+.. image:: images/ijplus.png
+   :align: right
+   :scale: 70%
+
+Another nice thing about vectors is that they can be +'ed together easily. For
+example, if we first move 3 units to right, then 4 units up and finally 5 more
+units to right, we move a total of 8 units to right and 4 units up. That's how
+`3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j`.
+
+.. image:: images/vector-calc.png
+   :align: left
+   :scale: 80%
+
+>>>>>>> 4475e7622f8a890311da3f315e7799ccba5a7b18
 These vector calculations are just like the
 :ref:`Pythagorean theorem <pythagoras>` and
 :ref:`unit circle trig <unitcircletrig>` stuff above:
