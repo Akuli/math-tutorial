@@ -23,5 +23,4 @@ real s = deltay/deltax;
 real x = pathstart.x - pathstart.y/s;
 real t = atan2(deltay, deltax);
 
-// this isn't 60° because ° doesn't appear :/
-draw(arc((x,0), 0.4, 0, degrees(t)), L="60 degrees");
+draw(arc((x,0), 0.4, 0, degrees(t)), L="$60^\circ$");
