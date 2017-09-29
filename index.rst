@@ -346,6 +346,9 @@ pseudo-ish code:
    `(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j`, so
    ``Vector(1, 2) + Vector(3, 4) == Vector(4, 6)``.
 
+   I found it easiest to implement things by storing only ``x`` and
+   ``y`` and calculating everything else as needed.
+
    For example, here I'm playing with my Python implementation:
 
    .. code-block:: python
@@ -370,10 +373,10 @@ pseudo-ish code:
       >>> v
       Vector(0.0, 0.0)
 
-   If you are interested in how I did it, click
+   My code is
    `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/vector.py>`_.
    I didn't add operator overloading because I wanted to keep the
-   implementation simple.
+   implementation simple and easy to read.
 
 
 Hexadecimal Colors
