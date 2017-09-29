@@ -66,6 +66,46 @@ was originally written on paper, and writing long things by hand sucks. Again,
 this doesn't apply to the "special" functions.
 
 
+Basic Angle Stuff
+~~~~~~~~~~~~~~~~~
+
+.. admonition:: Problem
+
+   The ball of a ball-and-paddle game is moving at the angle of 30° and
+   it hits a wall at right. How should the angle change?
+
+   .. image:: images/ballpaddle.png
+      :align: center
+
+Here ° is the degree sign, and 30° means 30 degrees. Degrees work so
+that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
+on. It's also possible to measure angles in radians, but we'll look into
+that later.
+
+Note that all angles are measured the same way, up from a horizontal
+line. Measuring them like that is a standard that this tutorial uses and
+people are familiar with. You can also measure angles that go down like
+that; for example, 270° would be straight down (that's 90° less than a
+full turn).
+
+We can solve our problem by taking the 30° angle sign and moving it like
+this:
+
+.. image:: images/ballpaddle2.png
+
+Now you can see that the angles add up to half turn (or 180°), so we get
+this :ref:`equation <equations>`:
+
+.. math:: 30° + \text{???} = 180°
+.. math:: \text{???} = 180° - 30° = 150°
+
+In math it's common to use a letter instead of "???" to represent an
+unknown value. For example:
+
+.. math:: 30° + t = 180°
+.. math:: t = 180° - 30° = 150°
+
+
 .. _unitcircletrig:
 
 Trig (aka trigonometry) with the Unit Circle
