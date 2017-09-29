@@ -132,7 +132,7 @@ Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:
 
-.. image:: https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png
+.. image:: images/unitcircle.png
 
 This is really quite simple: the x coordinate is `\cos t` and the y
 coordinate is `\sin t`. But the radius of the unit circle is 1 instead
