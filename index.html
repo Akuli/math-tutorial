@@ -116,11 +116,10 @@ it hits a wall at right. How should the angle change?</p>
 that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It’s also possible to measure angles in radians, but we’ll look into
 that later.</p>
-<p>Note that all angles are measured the same way, up from a horizontal
-line. Measuring them like that is a standard that this tutorial uses and
-people are familiar with. You can also measure angles that go down like
-that; for example, 270° would be straight down (that’s 90° less than a
-full turn).</p>
+<p>Note that both angles are measured up from a horizontal line. Measuring
+them like that is a standard that this tutorial uses and people are
+familiar with. You can also measure angles that go down like that; for
+example, 270° would be straight down (that’s 90° less than a full turn).</p>
 <p>We can solve our problem by taking the 30° angle sign and moving it like
 this:</p>
 <img alt="_images/ballpaddle2.png" src="_images/ballpaddle2.png" />
@@ -136,7 +135,13 @@ unknown value. For example:</p>
 <p><img src="_images/math/dbe3e73b46f777dda08f64448b1e35061ed99bcb.png" alt="30° + t = 180°"/></p>
 </div><div class="math">
 <p><img src="_images/math/83e079fa8de514659caf28acfc2a7a03bf0641bf.png" alt="t = 180° - 30° = 150°"/></p>
-</div></div>
+</div><div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p class="last">Calculate similar things when the ball hits a wall at left, right,
+top or bottom. Don’t be arfaid to deal with angles between 180° and
+360°.</p>
+</div>
+</div>
 <div class="section" id="trig-aka-trigonometry-with-the-unit-circle">
 <span id="unitcircletrig"></span><h2>Trig (aka trigonometry) with the Unit Circle<a class="headerlink" href="#trig-aka-trigonometry-with-the-unit-circle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-problem admonition">
@@ -151,7 +156,7 @@ it’s usually upside down.</p>
 <p>Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
 shows what sine and cosine are:</p>
-<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Unit_circle.svg/352px-Unit_circle.svg.png" />
+<img alt="_images/unitcircle.png" src="_images/unitcircle.png" />
 <p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
 coordinate is <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead
 of our 10, so we need to multiply everything by 10 to scale it up. We get this:</p>
@@ -261,6 +266,10 @@ function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb8
 <span class="go">22.360679774997898</span>
 </pre></div>
 </div>
+<div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p class="last">Create a ball-and-paddle game.</p>
+</div>
 </div>
 <div class="section" id="vectors">
 <h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
@@ -322,6 +331,8 @@ the programming language supports it, you can add a nice <code class="docutils l
 string representation and operator overloading; e.g.
 <img class="math" src="_images/math/02e22fc3beede8869e1de9d57d1c8d545d762191.png" alt="(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j"/>, so
 <code class="docutils literal"><span class="pre">Vector(1,</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">Vector(3,</span> <span class="pre">4)</span> <span class="pre">==</span> <span class="pre">Vector(4,</span> <span class="pre">6)</span></code>.</p>
+<p>I found it easiest to implement things by storing only <code class="docutils literal"><span class="pre">x</span></code> and
+<code class="docutils literal"><span class="pre">y</span></code> and calculating everything else as needed.</p>
 <p>For example, here I’m playing with my Python implementation:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>         <span class="c1"># the string representation</span>
@@ -344,10 +355,10 @@ string representation and operator overloading; e.g.
 <span class="go">Vector(0.0, 0.0)</span>
 </pre></div>
 </div>
-<p class="last">If you are interested in how I did it, click
+<p class="last">My code is
 <a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/vector.py">here</a>.
 I didn’t add operator overloading because I wanted to keep the
-implementation simple.</p>
+implementation simple and easy to read.</p>
 </div>
 </div>
 <div class="section" id="hexadecimal-colors">

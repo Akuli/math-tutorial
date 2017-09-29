@@ -1,8 +1,6 @@
 Proofs and Explanations
 =======================
 
-.. _geometry-explained:
-
 I used a bunch of spooky formulas in this tutorial. Some of them are
 definitions of e.g. `\sin` or `\cos`, but in this chapter we'll focus on those
 that aren't and prove that they actually work.
