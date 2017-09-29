@@ -107,9 +107,8 @@ unknown value. For example:
 
 .. admonition:: Exercise
 
-   Calculate similar things when the ball hits a wall at left, right,
-   top or bottom. Don't be arfaid to deal with angles between 180° and
-   360°.
+   Calculate similar things when the ball hits a wall at left, top or
+   bottom. Don't be arfaid to deal with angles between 180° and 360°.
 
 
 .. _unitcircletrig:
