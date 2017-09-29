@@ -82,11 +82,10 @@ that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It's also possible to measure angles in radians, but we'll look into
 that later.
 
-Note that all angles are measured the same way, up from a horizontal
-line. Measuring them like that is a standard that this tutorial uses and
-people are familiar with. You can also measure angles that go down like
-that; for example, 270° would be straight down (that's 90° less than a
-full turn).
+Note that both angles are measured up from a horizontal line. Measuring
+them like that is a standard that this tutorial uses and people are
+familiar with. You can also measure angles that go down like that; for
+example, 270° would be straight down (that's 90° less than a full turn).
 
 We can solve our problem by taking the 30° angle sign and moving it like
 this:
@@ -104,6 +103,13 @@ unknown value. For example:
 
 .. math:: 30° + t = 180°
 .. math:: t = 180° - 30° = 150°
+
+
+.. admonition:: Exercise
+
+   Calculate similar things when the ball hits a wall at left, right,
+   top or bottom. Don't be arfaid to deal with angles between 180° and
+   360°.
 
 
 .. _unitcircletrig:
