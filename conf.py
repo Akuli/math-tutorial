@@ -173,25 +173,26 @@ html_title = ''
 
 
 # create images with asymptote automagically
-import atexit
 import glob
 import os
 import subprocess
 
-asyfiles = [os.path.basename(path)
-            for path in glob.glob(os.path.join('images', '*.asy'))]
-print("conf.py: running 'asy -v -f png *.asy' in images/")
-subprocess.check_call(['asy', '-v', '-f', 'png'] + asyfiles, cwd='images')
 
-def clean_pngs(imagedir):
-    print("conf.py: removing png files generated with asymptote from images/")
-    for asyfile in asyfiles:
-        pngfile = os.path.join(imagedir, os.path.splitext(asyfile)[0] + '.png')
-        if asyfile == 'boilerplate.asy':
-            assert not os.path.exists(pngfile), "don't draw in boilerplate.asy"
-        else:
-            print("  ", pngfile)
-            os.remove(pngfile)
+for asypath in glob.glob(os.path.join('images', '*.asy')):
+    asypath = os.path.abspath(asypath)
+    pngpath = os.path.splitext(asypath)[0] + '.png'
 
-# clean_pngs() needs the abspath if sphinx chdirs for some reason
-atexit.register(clean_pngs, os.path.abspath('images'))
+    try:
+        if os.path.getmtime(asypath) < os.path.getmtime(pngpath):
+            # asymptote file created before png file, everything ready
+            continue
+    except FileNotFoundError:
+        # no asymptote file
+        pass
+
+    asyfile = os.path.basename(asypath)
+    if asyfile == 'boilerplate.asy':
+        continue
+
+    print("conf.py: running 'asy -v -f png %s' in images/" % asyfile)
+    subprocess.check_call(['asy', '-v', '-f', 'png', asyfile], cwd='images')
