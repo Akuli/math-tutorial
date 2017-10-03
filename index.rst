@@ -58,8 +58,8 @@ everything clear.
    12
 
 Quick note about ``f(x)`` versus ``f x``: if you define your own function
-called `f` or `g` you should use `f(x)`, but you can use some "special"
-functions like `\sin x` or `\cos x` for historical reasons.
+called `f` or `g` you should use `f(x)`, but you can do e.g. `\sin x` or
+`cos x` with some "special" functions for historical reasons.
 
 Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
@@ -268,6 +268,22 @@ Let's calculate the distance:
    22.360679774997898
    >>> sqrt(10**2 + 20**2)
    22.360679774997898
+
+.. admonition:: Exercise
+
+   Now you should know enough things to create a simple 2D
+   ball-and-paddle game where the player moves the paddle (with e.g.
+   arrow keys), and the ball bounces between the paddle and the corners
+   of the window. Use a library that lets you do the math yourself but
+   provides some basic things, like e.g.
+   ``draw_circle(centerx, centery, radius)``. Remember that the y axis
+   is "upside down" so you may need to add minus signs to the formulas.
+
+   My Python and PyGame implementation is
+   `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/ball-and-paddle.py`_.
+   There are quite a few things that must be taken care of, so remember
+   that I created the above game in several small steps and I didn't do
+   it in a matter of minutes.
 
 
 Vectors
