@@ -280,7 +280,7 @@ Let's calculate the distance:
    is "upside down" so you may need to add minus signs to the formulas.
 
    My Python and PyGame implementation is
-   `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/ball-and-paddle.py`_.
+   `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/ball-and-paddle.py>`_.
    There are quite a few things that must be taken care of, so remember
    that I created the above game in several small steps and I didn't do
    it in a matter of minutes.
