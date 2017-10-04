@@ -18,6 +18,9 @@ from docutils.parsers.rst.directives.images import Image as ImageDirective
 from sphinx.util.nodes import set_source_info
 
 
+THIS_PLACE = os.path.abspath(os.path.dirname(__file__))
+
+
 class asymptote(nodes.Part, nodes.Element):
     pass
 
@@ -32,6 +35,8 @@ def render_drawing(self, code):
 
         with open(os.path.join(tmpdir, 'drawing.asy'), 'w') as fuck:
             fuck.write(code)
+        shutil.copyfile(os.path.join(THIS_PLACE, 'boilerplate.asy'),
+                        os.path.join(tmpdir, 'boilerplate.asy'))
         subprocess.check_call(['asy', '-f', 'png', 'drawing.asy'], cwd=tmpdir)
         pngpath = os.path.join(tmpdir, 'drawing.png')
 
@@ -68,13 +73,10 @@ class AsyDirective(Directive):
     def run(self):
         # type: () -> List[nodes.Node]
         node = asymptote()
-        node['code'] = '\n'.join(self.content)
+        node['code'] = 'import boilerplate;\n' + '\n'.join(self.content)
         node['docname'] = self.state.document.settings.env.docname
         if 'align' in self.options:
-            print("***\n***YES***\n***")
             node['align'] = self.options['align']
-        else:
-            print("***\n***NO***\n***")
 
         ret = [node]
         set_source_info(self, node)
