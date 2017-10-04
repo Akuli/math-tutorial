@@ -484,3 +484,16 @@ And here's a usage example:
 Note that most color parsers support specifying colors so that e.g. ``#f0f``
 and ``#fff000fff`` are equivalent to ``#ff00ff``, but the above program doesn't
 support that.
+
+
+Derivatives
+~~~~~~~~~~~
+
+I'll probably organize this tutorial in some new way soon. Currently the trig
+and geometry stuff is all on this page with some basics and number theory, but
+everything about derivatives is on a separate page... It's a mess.
+
+.. toctree::
+   :maxdepth: 2
+
+   derivatives

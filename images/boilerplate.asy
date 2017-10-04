@@ -1,7 +1,14 @@
-// TODO: stop using a weird mixture of mm and raw numbers
+/*
+   *************  if you edit this file be sure to delete all .png files
+   **  NOTE:  **  because changes to this file affect everything else
+   *************  but conf.py doesn't know it
+ */
+
+// TODO: stop using a weird mixture of mm and raw numbers?
 defaultpen(0.8mm + fontsize(25pt));
 pen dotpen = defaultpen() + 0.3cm;
 pen smalldashes = linetype(new real[] {4, 4});
+pen darkorange = rgb(0.9,0.4,0);
 real corner90 = 0.3;    // side length of 90° corner boxes
 real vectorarrowsize = 0.7cm;
 real bracedistance = 0.2;
@@ -14,10 +21,11 @@ void grid(real xmin, real xmax, real ymin, real ymax) {
         draw((xmin-0.5,y)--(xmax+0.5,y), thingray);
 }
 
-void axises(real xmin, real xmax, real ymin, real ymax) {
+void axises(real xmin, real xmax, real ymin, real ymax,
+            string xlabel="x", string ylabel="y") {
     // TODO: come up with a better way to label the axises
     draw((xmin,0)--(xmax,0), arrow=Arrow(size=0.7cm));
     draw((0,ymin)--(0,ymax), arrow=Arrow(size=0.7cm));
-    draw((xmax,0)--(xmax,0.01), L="x");
-    draw((0,ymax)--(0,ymax+0.01), L="y");
+    draw((xmax,0)--(xmax,0.01), L=xlabel);
+    draw((0,ymax)--(0,ymax+0.01), L=ylabel);
 }
