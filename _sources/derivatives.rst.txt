@@ -1,10 +1,10 @@
 Derivatives
 ===========
 
-This chapter contains more not-so-practical math than trig and geometry, but
-you may find it surprisingly fun. However, the math is not useless gibberish
-isolated from real life and there's a practical example at the end of the
-chapter.
+This chapter contains more not-so-practical math than the trig and geometry
+chapter, but you may find it surprisingly fun. However, the math is not useless
+gibberish isolated from real life and there's a practical and fun example at
+the end.
 
 .. warning::
 
