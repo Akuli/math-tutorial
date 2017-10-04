@@ -98,8 +98,8 @@ everything clear.</p>
 </pre></div>
 </div>
 <p>Quick note about <code class="docutils literal"><span class="pre">f(x)</span></code> versus <code class="docutils literal"><span class="pre">f</span> <span class="pre">x</span></code>: if you define your own function
-called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> or <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> you should use <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/>, but you can use some “special”
-functions like <img class="math" src="_images/math/d04fadda1b97dfc957b6fa76684ea7ee244991bb.png" alt="\sin x"/> or <img class="math" src="_images/math/b8b83309c496ddeb74169904dd05eaa33f9887db.png" alt="\cos x"/> for historical reasons.</p>
+called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> or <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> you should use <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/>, but you can do e.g. <img class="math" src="_images/math/d04fadda1b97dfc957b6fa76684ea7ee244991bb.png" alt="\sin x"/> or
+<img class="math" src="_images/math/95096d6dfe29c61690b29c974edc631144890257.png" alt="cos x"/> with some “special” functions for historical reasons.</p>
 <p>Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
 this doesn’t apply to the “special” functions.</p>
@@ -137,9 +137,8 @@ unknown value. For example:</p>
 <p><img src="_images/math/83e079fa8de514659caf28acfc2a7a03bf0641bf.png" alt="t = 180° - 30° = 150°"/></p>
 </div><div class="admonition-exercise admonition">
 <p class="first admonition-title">Exercise</p>
-<p class="last">Calculate similar things when the ball hits a wall at left, right,
-top or bottom. Don’t be arfaid to deal with angles between 180° and
-360°.</p>
+<p class="last">Calculate similar things when the ball hits a wall at left, top or
+bottom. Don’t be arfaid to deal with angles between 180° and 360°.</p>
 </div>
 </div>
 <div class="section" id="trig-aka-trigonometry-with-the-unit-circle">
@@ -199,7 +198,7 @@ that some functions (like <code class="docutils literal"><span class="pre">atan2
 </div>
 <p>Here’s another way to define <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, and another function called
 <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/> that we haven’t used before.</p>
-<img alt="_images/abcttriangle1.png" class="align-right" src="_images/abcttriangle1.png" />
+<img alt="_images/abcttriangle.png" class="align-right" src="_images/abcttriangle.png" />
 <div class="math">
 <p><img src="_images/math/9537f7fb5e276514cc560fe81c7c4baae0642610.png" alt="\sin t = \frac b c"/></p>
 </div><div class="math">
@@ -268,7 +267,18 @@ function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb8
 </div>
 <div class="admonition-exercise admonition">
 <p class="first admonition-title">Exercise</p>
-<p class="last">Create a ball-and-paddle game.</p>
+<p>Now you should know enough things to create a simple 2D
+ball-and-paddle game where the player moves the paddle (with e.g.
+arrow keys), and the ball bounces between the paddle and the corners
+of the window. Use a library that lets you do the math yourself but
+provides some basic things, like e.g.
+<code class="docutils literal"><span class="pre">draw_circle(centerx,</span> <span class="pre">centery,</span> <span class="pre">radius)</span></code>. Remember that the y axis
+is “upside down” so you may need to add minus signs to the formulas.</p>
+<p class="last">My Python and PyGame implementation is
+<a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/ball-and-paddle.py">here</a>.
+There are quite a few things that must be taken care of, so remember
+that I created the above game in several small steps and I didn’t do
+it in a matter of minutes.</p>
 </div>
 </div>
 <div class="section" id="vectors">
@@ -434,6 +444,22 @@ coincidence. A color like <code class="docutils literal"><span class="pre">#RRGG
 and <code class="docutils literal"><span class="pre">#fff000fff</span></code> are equivalent to <code class="docutils literal"><span class="pre">#ff00ff</span></code>, but the above program doesn’t
 support that.</p>
 </div>
+<div class="section" id="derivatives">
+<h2>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h2>
+<p>I’ll probably organize this tutorial in some new way soon. Currently the trig
+and geometry stuff is all on this page with some basics and number theory, but
+everything about derivatives is on a separate page… It’s a mess.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivatives.html#what-is-a-derivative">What is a derivative?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="derivatives.html#faster">Faster!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="derivatives.html#example-smooth-jumps">Example: Smooth Jumps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
 </div>
 
 
@@ -452,6 +478,7 @@ support that.</p>
 <li><a class="reference internal" href="#pythagorean-theorem">Pythagorean Theorem</a></li>
 <li><a class="reference internal" href="#vectors">Vectors</a></li>
 <li><a class="reference internal" href="#hexadecimal-colors">Hexadecimal Colors</a></li>
+<li><a class="reference internal" href="#derivatives">Derivatives</a></li>
 </ul>
 </li>
 </ul>

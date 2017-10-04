@@ -1,0 +1,254 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Derivatives</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Proofs and Explanations" href="explanations.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="derivatives">
+<h1>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains more not-so-practical math than trig and geometry, but
+you may find it surprisingly fun. However, the math is not useless gibberish
+isolated from real life and there’s a practical example at the end of the
+chapter.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last"><strong>If you’re an experienced mathematician</strong> you might feel like some of the
+notation used in this chapter is wrong. Stay calm and keep in mind that the
+whole purpose of notation is to express the math in a way that is easy to
+understand for others, and in this tutorial that’s much more important than
+perfect correctness.</p>
+</div>
+<div class="section" id="what-is-a-derivative">
+<h2>What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Permalink to this headline">¶</a></h2>
+<p>A <em>difference</em> means how much a value changes. For example, if the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>
+is first <img class="math" src="_images/math/01ba33ac52b972aa2cf4a5eba9e2411d8c72e1a3.png" alt="5"/> and then we change it to <img class="math" src="_images/math/84dbdbf879f217a1b808c52681a0f2e2b085ebf3.png" alt="6"/>, <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> changes by <img class="math" src="_images/math/2ad347e394c2bb0bab761a5ca631e42d7c52e139.png" alt="\Delta x = 1"/>. Here
+<img class="math" src="_images/math/4d26a3c646f81ab56cceb818c7801dd1f3cfaaf3.png" alt="\Delta"/> is the Greek delta letter, so if someone’s code has a variable named
+<code class="docutils literal"><span class="pre">deltax</span></code> it means this.</p>
+<p>Let’s draw a graph of something like <img class="math" src="_images/math/9e22a5b659e3f4da2d984512c3061a6f9eb2c22f.png" alt="y = 2x+1"/>:</p>
+<img alt="_images/deltaexample.png" src="_images/deltaexample.png" />
+<p>For example, at <img class="math" src="_images/math/db17ff73a1115194f86b62ffb9c159d911990270.png" alt="x=3"/> we know that <img class="math" src="_images/math/7f3298de8e7fefcb9daf5a16f4dc18a469137f0b.png" alt="y = 2x+1 = 2 \cdot 3 + 1 = 7"/>.</p>
+<p>Let’s calculate the <strong>slope</strong> of this line:</p>
+<div class="math">
+<p><img src="_images/math/55dbe75288f19d3e921e2930fc4365c3be05a64a.png" alt="\frac{\Delta y}{\Delta x} = \frac{6}{3} = 2"/></p>
+</div><p>The bigger the slope, the faster the line goes up, so the slope describes the
+“<strong>growing speed</strong>” or “<strong>changing speed</strong>”. I used the points <img class="math" src="_images/math/1b2d7f08274ff61fe540ead4aad1e73443934abc.png" alt="(1,0)"/> and
+<img class="math" src="_images/math/5b809407edc7fd2c3bee42378e5a94425b6e5149.png" alt="(3,7)"/> when calculating the slope, but you should get the same slope with any
+pair of points chosen from the line because the height grows at the same speed
+everywhere.</p>
+<p>The <strong>derivative</strong> <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> <strong>is also a “changing speed”</strong>, but <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/>
+instead of <img class="math" src="_images/math/4d26a3c646f81ab56cceb818c7801dd1f3cfaaf3.png" alt="\Delta"/> means that the changes we use for calculating derivatives
+are <em>infinitely</em> tiny. You might be worried about calculating the
+<img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> because if <img class="math" src="_images/math/075b9e3d331743ce6d4d35bf75f0fd2e3db90e61.png" alt="dx=0"/> then we’re dividing by zero, but <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is not
+zero; it’s just really, really small.</p>
+<p>If the graph is not a straight line, we get different <img class="math" src="_images/math/e51ba10724f3d8a22a11c015505eece772048615.png" alt="\frac{\Delta y}{\Delta x}"/>
+ratios depending on which points we choose for calculating <img class="math" src="_images/math/8aa1a4cf9bb5d0a602b7d66b617c71634700c91e.png" alt="\Delta y"/> and
+<img class="math" src="_images/math/05899b70d35eb61a85aaaba3affb9c7363f0d633.png" alt="\Delta x"/>. The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> is not the same number everywhere,
+but let’s try to figure out how to calculate it anyway.</p>
+<img alt="_images/derivative.png" class="align-right" src="_images/derivative.png" />
+<p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/>. The image at right seems to say that
+<img class="math" src="_images/math/9eb8cf5e319cdc1ad69765f15dc29afef6e6eae8.png" alt="f(x) + dy = f(x+dx)"/>, so we should be able to solve <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/>:</p>
+<div class="math">
+<p><img src="_images/math/dec7ac1eff8c162840d89ff33103508281e2c39f.png" alt="f(x) + dy = f(x+dx)
+
+dy = f(x+dx) - f(x)
+
+\frac{dy}{dx} = \frac{f(x+dx)-f(x)}{dx}"/></p>
+</div><img alt="_images/xsquared.png" class="align-right" src="_images/xsquared.png" />
+<p>For example, the graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging
+in <img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the above formula. It’ll be a mess, but don’t worry, we can
+do it.</p>
+<div class="math">
+<p><img src="_images/math/9b5a01fd8b1eac5d8db670bc665c7955fdafd62d.png" alt="\frac{dy}{dx}  &amp;= \frac{f(x+dx)-f(x)}{dx} \\
+               &amp;= \frac{(x+dx)^2 - x^2}{dx} \\
+               &amp;= \frac{(x+dx)(x+dx) - x^2}{dx} \\
+               &amp;= \frac{x(x+dx) + dx(x+dx) - x^2}{dx} \\
+               &amp;= \frac{x^2 + x \cdot dx + dx \cdot x + (dx)^2 - x^2}{dx} \\
+               &amp;= \frac{\overbrace{x^2 - x^2}^0 + x \cdot dx + dx \cdot x + (dx)^2}{dx} \\
+               &amp;= \frac{x \cdot dx + x \cdot dx + dx \cdot dx}{dx} \\
+               &amp;= \frac{(x + x + dx)dx}{dx} \\
+               &amp;= x + x + dx \\
+               &amp;= 2x+dx"/></p>
+</div><img alt="_images/xsquared-tangent-slope.png" class="align-right" src="_images/xsquared-tangent-slope.png" />
+<p>As <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> gets smaller and smaller, <img class="math" src="_images/math/21924e5842a57dca3814b4f6da114886404cc27a.png" alt="2x+dx"/> gets closer to <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> and we can say
+<img class="math" src="_images/math/e2f9fa0fc73faf4806dbc4314d9eb33479413a05.png" alt="\frac{dy}{dx} = 2x"/>.</p>
+<p>I think this is cool. We started with a really horribly complicated-looking
+thing but we arrived at just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random
+value we got out of a spooky calculation; for example, at <img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> the derivative
+is <img class="math" src="_images/math/a2015b6d842a5111f7b8d9a871f42f7dfca8e09c.png" alt="2 \cdot 2 = 4"/>, so if we draw a straight line that barely touches <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/>
+at that point its slope will also be 4 like in the image at right.</p>
+<p>You can also find the derivative of the <img class="math" src="_images/math/7a79e2a0fe24b65a0a49baa8dbd81152a81fdc53.png" alt="y=2x"/> example we looked at earlier,
+and turns out that <img class="math" src="_images/math/a9917289b7ef43fee7da1e311943f89855cd2cfa.png" alt="\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}"/>. It makes sense
+because derivatives are just like slopes but they also work with curvy things,
+and there’s no difference between a slope and a derivative of a straight line.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> can be also written as <img class="math" src="_images/math/7289590f3a727c0ad7e5fcd0115c76453dd53303.png" alt="\frac{d}{dx} y"/>, even
+though it doesn’t make much sense because <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> doesn’t mean <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/> times <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
+<p class="last">Another common style is to put a single quote after a function name, like
+<img class="math" src="_images/math/39ac67b0fea88a7dafaa411a70fbb7fc45922ad0.png" alt="f'(x) = \frac{d}{dx} f(x)"/>.</p>
+</div>
+</div>
+<div class="section" id="faster">
+<h2>Faster!<a class="headerlink" href="#faster" title="Permalink to this headline">¶</a></h2>
+<p>Finding the derivative was kind of complicated and really slow. With these
+handy-dandy rules, you can get <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> from <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> in a matter of seconds. Most of
+these rules are easy to prove so there is no magic involved.</p>
+<p>I have listed many rules here, but <strong>don’t panic</strong>; there’s no need to memorize
+them. Here <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> and <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> can be any functions (e.g. <img class="math" src="_images/math/620d3592799463cd9e295c04f3f3e844d072bc74.png" alt="f(x)=\sqrt x - x"/> and
+<img class="math" src="_images/math/21c08c14d6858e50f35adbcb50d636bd06c771a2.png" alt="g(x)=1"/>), and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> can be any constant like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/969d4aaf2ca4b401759470cb0f2c75b4942d8309.png" alt="-\pi"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>
+because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
+<div class="math">
+<p><img src="_images/math/3621fef1eb82a9e9d614a3ee33a1b5108989bbd7.png" alt="\begin{matrix}
+   \frac{d}{dx}\ c = 0     &amp; \frac{d}{dx}(c\ f(x)) = c\ f'(x) &amp; \\
+   &amp;&amp;\\
+   \frac{d}{dx}\ x = 1     &amp; \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &amp; \\
+   &amp;&amp;\\
+   \frac{d}{dx}\ cx = c    &amp; \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) &amp; \\
+   &amp;&amp;\\
+   \frac{d}{dx}\ x^c = c\ x^{c-1} &amp; \frac{d}{dx} (f(x)g(x)) = f'(g(x)) + g'(x)f(x) &amp; \\
+   &amp;&amp;\\
+   \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &amp; \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
+\end{matrix}"/></p>
+</div><p>With these formulas you can find derivatives of long and scary functions
+really easily. For example:</p>
+<div class="math">
+<p><img src="_images/math/2de520cafc038a89894862199094baf194b1a761.png" alt="&amp; \frac{d}{dx} (5x^3-6x^2+7x-123) \\
+&amp;= \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
+&amp;= 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
+&amp;= 5 \cdot 3x^{3-1} - 6 \cdot 2x + 7 \\
+&amp;= 15x^2 - 12x + 7"/></p>
+</div><p>Of course, there’s no need to write down all of these steps.</p>
+<p>You can also use a nice symbolic calculation library, like Python’s
+<a class="reference external" href="http://www.sympy.org">SymPy</a> (can be installed with pip):</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">123</span><span class="p">)</span>
+<span class="go">    2</span>
+<span class="go">15⋅x  - 12⋅x + 7</span>
+</pre></div>
+</div>
+<p>Here “diff” is short for “differenciate”, and it means finding a derivative.</p>
+</div>
+<div class="section" id="example-smooth-jumps">
+<h2>Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Permalink to this headline">¶</a></h2>
+<p>Let’s say you’re making a game where a player can jump over something. If the
+player moves right at a steady speed, which of these jumps looks best?</p>
+<img alt="_images/jumps.png" src="_images/jumps.png" />
+<p>The answer is obvious – the rightmost jump looks best. It’s time to figure out
+how to make games with jumps like that.</p>
+<p>Let’s say that <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> is time and <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> is the height of our player, so we get this
+graph:</p>
+<img alt="_images/jumpgraph.png" src="_images/jumpgraph.png" />
+<p>This looks like a parabola, and the equation of a parabola is <img class="math" src="_images/math/7b32fef7aa2a343b2d325869eb1ed332d8493279.png" alt="h = at^2+bt+c"/>
+where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/>, <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> are constants. The changing speed of height is velocity
+<img class="math" src="_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/>:</p>
+<div class="math">
+<p><img src="_images/math/4d7f6f82295e84381547a3a021efc1201aff7123.png" alt="v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b"/></p>
+</div><p>On the other hand, the changing speed of velocity is the acceleration caused by
+gravity. Let’s call that <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/>.</p>
+<div class="math">
+<p><img src="_images/math/ad22a12ee6285aa647a65ea5f78d66fb547a05b3.png" alt="g = \frac{dv}{dt} = \frac{d}{dt} (2at+b) = 2a"/></p>
+</div><p>Note how the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> disappeared and we’re left with just the constant <img class="math" src="_images/math/f6f76e3321e2f2af192eb390879dcdd466b06a5d.png" alt="2a"/>. This
+makes sense because the gravity is always the same, no matter what time it is.</p>
+<p>This Python program…</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">gravity</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">while</span> <span class="n">height</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="n">height</span> <span class="o">+</span> <span class="s1">&#39;O&#39;</span><span class="p">)</span>
+    <span class="n">height</span> <span class="o">+=</span> <span class="n">velocity</span>
+    <span class="n">velocity</span> <span class="o">-=</span> <span class="n">gravity</span>
+</pre></div>
+</div>
+<p>…prints this awesome parabola:</p>
+<div class="highlight-none"><div class="highlight"><pre><span></span>O
+          O
+                  O
+                        O
+                            O
+                              O
+                              O
+                            O
+                        O
+                  O
+          O
+O
+</pre></div>
+</div>
+<p>You can use similar code for doing jumps in 2D games.</p>
+<div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p class="last">Create a minimal game where a player can be moved side to side with arrow
+keys and the player jumps when arrow up is pressed. I’ll create an example
+implementation soon.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><p style="font-size:1.5em">
+  <a href="index.html">Click here</a>
+  to go back to the tutorial.
+</p>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Akuli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/derivatives.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

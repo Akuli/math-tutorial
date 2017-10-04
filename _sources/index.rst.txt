@@ -58,8 +58,8 @@ everything clear.
    12
 
 Quick note about ``f(x)`` versus ``f x``: if you define your own function
-called `f` or `g` you should use `f(x)`, but you can use some "special"
-functions like `\sin x` or `\cos x` for historical reasons.
+called `f` or `g` you should use `f(x)`, but you can do e.g. `\sin x` or
+`cos x` with some "special" functions for historical reasons.
 
 Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
@@ -107,9 +107,8 @@ unknown value. For example:
 
 .. admonition:: Exercise
 
-   Calculate similar things when the ball hits a wall at left, right,
-   top or bottom. Don't be arfaid to deal with angles between 180° and
-   360°.
+   Calculate similar things when the ball hits a wall at left, top or
+   bottom. Don't be arfaid to deal with angles between 180° and 360°.
 
 
 .. _unitcircletrig:
@@ -272,7 +271,19 @@ Let's calculate the distance:
 
 .. admonition:: Exercise
 
-   Create a ball-and-paddle game.
+   Now you should know enough things to create a simple 2D
+   ball-and-paddle game where the player moves the paddle (with e.g.
+   arrow keys), and the ball bounces between the paddle and the corners
+   of the window. Use a library that lets you do the math yourself but
+   provides some basic things, like e.g.
+   ``draw_circle(centerx, centery, radius)``. Remember that the y axis
+   is "upside down" so you may need to add minus signs to the formulas.
+
+   My Python and PyGame implementation is
+   `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/ball-and-paddle.py>`_.
+   There are quite a few things that must be taken care of, so remember
+   that I created the above game in several small steps and I didn't do
+   it in a matter of minutes.
 
 
 Vectors
@@ -473,3 +484,16 @@ And here's a usage example:
 Note that most color parsers support specifying colors so that e.g. ``#f0f``
 and ``#fff000fff`` are equivalent to ``#ff00ff``, but the above program doesn't
 support that.
+
+
+Derivatives
+~~~~~~~~~~~
+
+I'll probably organize this tutorial in some new way soon. Currently the trig
+and geometry stuff is all on this page with some basics and number theory, but
+everything about derivatives is on a separate page... It's a mess.
+
+.. toctree::
+   :maxdepth: 2
+
+   derivatives

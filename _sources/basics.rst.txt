@@ -89,8 +89,6 @@ Note that `\sqrt x` only works if `x \ge 0` (unless you use complex numbers,
 but so far we haven't needed them in this tutorial). The square root is never
 negative.
 
-.. _sqrt-abs:
-
 Confusingly `\sqrt{x^2}=|x|`, e.g. `\sqrt{(-2)^2}=\sqrt4=2`
 where `(-2)^2 = 4` (see :ref:`above <negative-mul-div>`).
 
