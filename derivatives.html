@@ -60,8 +60,8 @@ is first <img class="math" src="_images/math/01ba33ac52b972aa2cf4a5eba9e2411d8c7
 <img class="math" src="_images/math/4d26a3c646f81ab56cceb818c7801dd1f3cfaaf3.png" alt="\Delta"/> is the Greek delta letter, so if someone’s code has a variable named
 <code class="docutils literal"><span class="pre">deltax</span></code> it means this.</p>
 <p>Let’s draw a graph of something like <img class="math" src="_images/math/9e22a5b659e3f4da2d984512c3061a6f9eb2c22f.png" alt="y = 2x+1"/>:</p>
-<img alt="_images/deltaexample.png" src="_images/deltaexample.png" />
-<p>For example, at <img class="math" src="_images/math/db17ff73a1115194f86b62ffb9c159d911990270.png" alt="x=3"/> we know that <img class="math" src="_images/math/7f3298de8e7fefcb9daf5a16f4dc18a469137f0b.png" alt="y = 2x+1 = 2 \cdot 3 + 1 = 7"/>.</p>
+<div class="i">
+<p><img src="_images/asymptote/55257dfd94da4c75ef3b65644c69b4f5.png"/></p></div><p>For example, at <img class="math" src="_images/math/db17ff73a1115194f86b62ffb9c159d911990270.png" alt="x=3"/> we know that <img class="math" src="_images/math/7f3298de8e7fefcb9daf5a16f4dc18a469137f0b.png" alt="y = 2x+1 = 2 \cdot 3 + 1 = 7"/>.</p>
 <p>Let’s calculate the <strong>slope</strong> of this line:</p>
 <div class="math">
 <p><img src="_images/math/55dbe75288f19d3e921e2930fc4365c3be05a64a.png" alt="\frac{\Delta y}{\Delta x} = \frac{6}{3} = 2"/></p>
@@ -79,8 +79,8 @@ zero; it’s just really, really small.</p>
 ratios depending on which points we choose for calculating <img class="math" src="_images/math/8aa1a4cf9bb5d0a602b7d66b617c71634700c91e.png" alt="\Delta y"/> and
 <img class="math" src="_images/math/05899b70d35eb61a85aaaba3affb9c7363f0d633.png" alt="\Delta x"/>. The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> is not the same number everywhere,
 but let’s try to figure out how to calculate it anyway.</p>
-<img alt="_images/derivative.png" class="align-right" src="_images/derivative.png" />
-<p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/>. The image at right seems to say that
+<div class="i">
+<p><img src="_images/asymptote/a9d67f1f1ee463659d8fd8f3cf4169c8.png" class="align-right"/></p><p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/>. The image at right seems to say that
 <img class="math" src="_images/math/9eb8cf5e319cdc1ad69765f15dc29afef6e6eae8.png" alt="f(x) + dy = f(x+dx)"/>, so we should be able to solve <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/>:</p>
 <div class="math">
 <p><img src="_images/math/dec7ac1eff8c162840d89ff33103508281e2c39f.png" alt="f(x) + dy = f(x+dx)
@@ -88,8 +88,8 @@ but let’s try to figure out how to calculate it anyway.</p>
 dy = f(x+dx) - f(x)
 
 \frac{dy}{dx} = \frac{f(x+dx)-f(x)}{dx}"/></p>
-</div><img alt="_images/xsquared.png" class="align-right" src="_images/xsquared.png" />
-<p>For example, the graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging
+</div><div class="i">
+<p><img src="_images/asymptote/643db37d57fcc9c46c92099743596d97.png" class="align-right"/></p><p>For example, the graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging
 in <img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the above formula. It’ll be a mess, but don’t worry, we can
 do it.</p>
 <div class="math">
@@ -103,8 +103,8 @@ do it.</p>
                &amp;= \frac{(x + x + dx)dx}{dx} \\
                &amp;= x + x + dx \\
                &amp;= 2x+dx"/></p>
-</div><img alt="_images/xsquared-tangent-slope.png" class="align-right" src="_images/xsquared-tangent-slope.png" />
-<p>As <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> gets smaller and smaller, <img class="math" src="_images/math/21924e5842a57dca3814b4f6da114886404cc27a.png" alt="2x+dx"/> gets closer to <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> and we can say
+</div><div class="i">
+<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p><p>As <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> gets smaller and smaller, <img class="math" src="_images/math/21924e5842a57dca3814b4f6da114886404cc27a.png" alt="2x+dx"/> gets closer to <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> and we can say
 <img class="math" src="_images/math/e2f9fa0fc73faf4806dbc4314d9eb33479413a05.png" alt="\frac{dy}{dx} = 2x"/>.</p>
 <p>I think this is cool. We started with a really horribly complicated-looking
 thing but we arrived at just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random
@@ -179,13 +179,13 @@ the one we did above:</p>
 <h2>Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Permalink to this headline">¶</a></h2>
 <p>Let’s say you’re making a game where a player can jump over something. If the
 player moves right at a steady speed, which of these jumps looks best?</p>
-<img alt="_images/jumps.png" src="_images/jumps.png" />
-<p>The answer is obvious – the rightmost jump looks best. It’s time to figure out
+<div class="i">
+<p><img src="_images/asymptote/b85a62993ce0aae1968063286d766a8a.png"/></p></div><p>The answer is obvious – the rightmost jump looks best. It’s time to figure out
 how to make games with jumps like that.</p>
 <p>Let’s say that <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> is time and <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> is the height of our player, so we get this
 graph:</p>
-<img alt="_images/jumpgraph.png" src="_images/jumpgraph.png" />
-<p>This looks like a parabola, and the equation of a parabola is <img class="math" src="_images/math/7b32fef7aa2a343b2d325869eb1ed332d8493279.png" alt="h = at^2+bt+c"/>
+<div class="i">
+<p><img src="_images/asymptote/8636fa0ea37226128a193a8c9334675b.png"/></p></div><p>This looks like a parabola, and the equation of a parabola is <img class="math" src="_images/math/7b32fef7aa2a343b2d325869eb1ed332d8493279.png" alt="h = at^2+bt+c"/>
 where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/>, <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> are constants. The changing speed of height is velocity
 <img class="math" src="_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/>:</p>
 <div class="math">

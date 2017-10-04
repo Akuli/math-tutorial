@@ -25,7 +25,26 @@ is first `5` and then we change it to `6`, `x` changes by `\Delta x = 1`. Here
 
 Let's draw a graph of something like `y = 2x+1`:
 
-.. image:: images/deltaexample.png
+.. asymptote::
+
+   size(14cm);
+   grid(-1,5,-2,9);
+
+   axises(-1,5,-2,9);
+   // TODO: move this shit to axises()?
+   for (real x = 1; x <= 4; x += 1) {
+       draw((x,0)--(x,0), L=(string) x, align=S);
+   }
+   for (real y = 1; y <= 7; y += 1) {
+       draw((0,y)--(0,y), L=(string) y, align=W);
+   }
+
+   real f(real x) { return 2*x + 1; }
+
+   draw((-1,f(-1))--(3,f(3)));
+   draw((3,f(3))--(4,f(4)), L=Label("$y=2x+1$", Rotate((1,2))), align=W);
+   draw((0,f(0))--(3,f(0)), smalldashes, L="$\Delta x = 3$", align=N);
+   draw((3,f(0))--(3,f(3)), smalldashes, L="$\Delta y = 6$", align=E);
 
 For example, at `x=3` we know that `y = 2x+1 = 2 \cdot 3 + 1 = 7`.
 
@@ -52,11 +71,39 @@ ratios depending on which points we choose for calculating `\Delta y` and
 `\Delta x`. The derivative `\frac{dy}{dx}` is not the same number everywhere,
 but let's try to figure out how to calculate it anyway.
 
-.. image:: images/derivative.png
+.. asymptote::
    :align: right
+
+   size(12cm);
+
+   real f(real x) { return 0.1*x**3 - 0.1x + 1; }
+   axises(-0.1,2.2,-0.5,f(2));
+
+   guide parabolaaa;
+   for (real x = -0.1; x <= 2; x += 0.05) {
+       parabolaaa = parabolaaa..(x,f(x));
+   }
+   //pathlabel(L=Label("MidPoint"), parabolaaa, position=0.5, align=Relative(W), sloped=true);
+   draw(parabolaaa, L="$y=f(x)$", align=NW, p=heavyred);
+
+   real x = 1.5;
+   real dx = 0.1;
+
+   draw((x,0)--(x,f(x)), lightblue);
+   draw((x+dx,0)--(x+dx,f(x+dx)), lightblue);
+   draw(brace((x,0), (0,0)), L="$x$", align=S);
+   draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$dx$", align=S);
+   draw(brace((x,0), (x,f(x))), L="$f(x)$", align=W);
+   draw(brace((x+dx,f(x+dx)), (x+dx,0)), L="$f(x+dx)$", align=E);
+   draw(brace((x,f(x)),(x,f(x+dx)), amplitude=0.1), L="$dy$", align=W);
+   draw(brace((x,f(x+dx)+0.05),(x+dx,f(x+dx)+0.05), amplitude=0.1), L="$dx$", align=N);
 
 Let's look at `dy` and `dx`. The image at right seems to say that
 `f(x) + dy = f(x+dx)`, so we should be able to solve `\frac{dy}{dx}`:
+
+.. these are all in one ..math because i want them to be aligned with each
+   other, and having sphinx align them at right is not a problem because
+   they're about same length each
 
 .. math::
    f(x) + dy = f(x+dx)
@@ -65,8 +112,19 @@ Let's look at `dy` and `dx`. The image at right seems to say that
 
    \frac{dy}{dx} = \frac{f(x+dx)-f(x)}{dx}
 
-.. image:: images/xsquared.png
+.. asymptote::
    :align: right
+
+   size(10cm);
+
+   axises(-3,3,-1,10);
+   grid(-3,3,-1,10);
+
+   guide xsquared_left, xsquared_right;
+   for (real x = -3; x <= 0; x+= 1/8) { xsquared_left  = xsquared_left ..(x,x**2); }
+   for (real x = 0 ; x <= 3; x+= 1/8) { xsquared_right = xsquared_right..(x,x**2); }
+   draw(xsquared_left, p=blue);
+   draw(xsquared_right, p=blue, L=Label(rotate(70)*"$y = x^2$"), align=W);
 
 For example, the graph `y=x^2` is curvy. Let's find its derivative by plugging
 in `y=f(x)=x^2` to the above formula. It'll be a mess, but don't worry, we can
@@ -85,8 +143,28 @@ do it.
                   &= x + x + dx \\
                   &= 2x+dx
 
-.. image:: images/xsquared-tangent-slope.png
+.. asymptote::
    :align: right
+
+   size(10cm);
+
+   axises(-3,6,-1,20);
+
+   // this is drawn first so it goes below the x^2 line
+   real tangent(real x) {
+       return 4*x-4;
+   }
+   draw((0.8,tangent(0.8))--(6,tangent(6)), p=darkorange,
+        L=rotate(degrees(atan(4)))*Label("this thing's slope is 4", position=Relative(0.6)));
+
+   guide xsquared;
+   for (real x = -3; x <= 4.5; x+= 1/16) {
+       xsquared = xsquared..(x,x**2);
+   }
+   draw(xsquared, p=blue, L=Label(rotate(75)*"$y = x^2$"), align=NW);
+
+   draw((2,0)--(2,2**2), smalldashes);
+   label("2", (2,0), align=S);
 
 As `dx` gets smaller and smaller, `2x+dx` gets closer to `2x` and we can say
 `\frac{dy}{dx} = 2x`.
@@ -183,7 +261,34 @@ Example: Smooth Jumps
 Let's say you're making a game where a player can jump over something. If the
 player moves right at a steady speed, which of these jumps looks best?
 
-.. image:: images/jumps.png
+.. asymptote::
+
+   size(20cm);
+
+   draw((0,0)--(0,1)--(1,1)--(1,0.5), smalldashes);
+   dot((1,0.5));
+
+   draw((1.5,0)--(1.5 + 2/3, 1)--(2.5,0.5), smalldashes);
+   dot((2.5,0.5));
+
+   real f(real x) {
+       /* top of parabola should be between x=3.7 and x=4, calculations with x=4:
+           f(x) = ax^2 + bx + c
+           f'(x) = 2ax + b
+           f'(3.7) = 0
+           2*a*3.7 + b = 0
+           -a approx 7.5 b
+
+          i found the constant with trial and error */
+       return -2x**2 + 15*x - 27.2;
+   }
+
+   guide parabolaaa;
+   for (real x = 3; x <= 4.2; x += 0.05) {
+       parabolaaa = parabolaaa..(x,f(x));
+   }
+   draw(parabolaaa, smalldashes);
+   dot((4.2, f(4.2)));
 
 The answer is obvious -- the rightmost jump looks best. It's time to figure out
 how to make games with jumps like that.
@@ -191,7 +296,18 @@ how to make games with jumps like that.
 Let's say that `t` is time and `h` is the height of our player, so we get this
 graph:
 
-.. image:: images/jumpgraph.png
+.. asymptote::
+
+   size(9cm);
+   axises(-0.3, 3.5, -0.4, 2, "t", "h");
+
+   real f(real x) { return -x**2 + 3*x - 0.5; }
+
+   guide parabolaaa;
+   for (real x = 0; x <= 3; x += 0.1) {
+       parabolaaa = parabolaaa..(x,f(x));
+   }
+   draw(parabolaaa);
 
 This looks like a parabola, and the equation of a parabola is `h = at^2+bt+c`
 where `a`, `b` and `c` are constants. The changing speed of height is velocity

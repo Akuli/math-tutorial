@@ -74,8 +74,31 @@ Basic Angle Stuff
    The ball of a ball-and-paddle game is moving at the angle of 30° and
    it hits a wall at right. How should the angle change?
 
-   .. image:: images/ballpaddle.png
-      :align: center
+   .. asymptote::
+
+      import patterns; add("wall",hatch(2mm));
+
+      size(9cm);
+
+      real tdeg = 30, t = pi/6;
+
+      // points of the dotted ball path line
+      pair A = (-cos(t)*1.5, -sin(t)*1.5);
+      pair B = (0,0);
+      pair C = (-cos(t)*2, sin(t)*2);
+
+      draw(A--B--C, p=smalldashes+deepblue);
+      dot(C, p=deepblue, L=" the ball", align=NE);
+
+      draw((-1.3,C.y/2)--(-0.3,C.y/2), smalldashes);
+      draw(arc((C.x/2,C.y/2), 0.2, 0, 180-tdeg), deepred, L="???");
+
+      // asymptote doesn't like °
+      draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
+      draw(arc((A.x*2/3,A.y*2/3), 0.3, 0, tdeg), deepgreen, L="$30^\circ$");
+
+      real wallthickness = 0.15;
+      filldraw((0,-1)--(0,1)--(wallthickness,1)--(wallthickness,-1)--cycle, pattern("wall"));
 
 Here ° is the degree sign, and 30° means 30 degrees. Degrees work so
 that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
@@ -90,7 +113,24 @@ example, 270° would be straight down (that's 90° less than a full turn).
 We can solve our problem by taking the 30° angle sign and moving it like
 this:
 
-.. image:: images/ballpaddle2.png
+.. asymptote::
+
+   import patterns; add("wall",hatch(2mm));
+
+   size(7cm);
+
+   real tdeg = 30, t = pi/6;
+
+   // points of the dotted ball path line
+   pair B = (0,0);
+   pair C = (-cos(t)*2, sin(t)*2);
+
+   draw(B--C, p=smalldashes+deepblue);
+   dot(C, p=deepblue);
+
+   draw((-1.6,C.y/2)--(-0.3,C.y/2), smalldashes);
+   draw(arc((C.x/2,C.y/2), 0.2, 0, 180-tdeg), deepred, L="???");
+   draw(arc((C.x/2,C.y/2), 0.25, 180-tdeg, 180), deepgreen, L="$30^\circ$");
 
 Now you can see that the angles add up to half turn (or 180°), so we get
 this :ref:`equation <equations>`:
@@ -122,7 +162,32 @@ Trig (aka trigonometry) with the Unit Circle
    x axis at 10 pixels per second. How many pixels should the player's x and y
    change every second?
 
-   .. image:: images/playerproblem.png
+   .. asymptote::
+
+      size(10cm);
+
+      // start and end of dotted player path line
+      pair pathstart = (0.1,-0.5);
+      pair pathend = (1.5,2);
+
+      axises(-1.5, 3, -0.5, 2);
+
+      draw(pathstart--pathend, p=smalldashes);
+      dot(pathend, L=" the player", align=NE);
+
+      // where does the player's path hit the x axis?
+      real deltay = pathend.y-pathstart.y;
+      real deltax = pathend.x-pathstart.x;
+      real s = deltay/deltax;
+
+      // y-y_0 = s*(x-x_0)      || x axis is the line y=0
+      // 0-y_0 = s*(x-x_0)
+      // x-x_0 = (0-y_0)/s = -y_0/s
+      // x = x_0 - y_0/s
+      real x = pathstart.x - pathstart.y/s;
+      real t = atan2(deltay, deltax);
+
+      draw(arc((x,0), 0.4, 0, degrees(t)), L="$60^\circ$");
 
 Note that the y axis goes up in math so higher means bigger, but in programming
 it's usually upside down.
@@ -131,7 +196,17 @@ Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:
 
-.. image:: images/unitcircle.png
+.. asymptote::
+
+   size(10cm);
+
+   axises(-1.2,1.4,-1.2,1.4);
+   real t = pi/3;   // 60°
+
+   draw(unitcircle);
+   draw((0,0)--(cos(t),sin(t)), L="1", align=NW);
+   dot((cos(t),sin(t)), p=dotpen, L="$(\cos t, \sin t)$", align=NE);
+   draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
 
 This is really quite simple: the x coordinate is `\cos t` and the y
 coordinate is `\sin t`. But the radius of the unit circle is 1 instead
@@ -188,8 +263,14 @@ Trig with a Triangle
 Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
 
-.. image:: images/abcttriangle.png
+.. asymptote::
    :align: right
+
+   import abctriangle;
+
+   real t = atan2(C.y, C.x);
+   draw(arc((0,0), 1, 0, degrees(t)), L="t");
+
 .. math:: \sin t = \frac b c
 .. math:: \cos t = \frac a c
 .. math:: \tan t = \frac b a
@@ -236,8 +317,10 @@ Pythagorean Theorem
    A player moves 10 pixels up and 20 pixels right, just like in the previous
    problem. How many pixels is that in total, measured diagonally?
 
-.. image:: images/abctriangle.png
+.. asymptote::
    :align: right
+
+   import abctriangle;
 
 Here's a handy equation, also known as the Pythagorean theorem:
 
@@ -289,8 +372,21 @@ Let's calculate the distance:
 Vectors
 ~~~~~~~
 
-.. image:: images/ijab.png
+.. asymptote::
    :align: right
+
+   size(8cm);
+   grid(0,8,0,7);
+   axises(-0.5,7.5,-0.5,6.5);
+
+   pair A = (1,2);
+   pair B = (3,5);
+
+   dot(A, L="A", p=dotpen);
+   dot(B, L="B", p=dotpen);
+   draw(A--B, arrow=Arrow(size=vectorarrowsize), L="$\overline{AB}$", align=NW);
+   draw((5,3)--(5,4), arrow=Arrow(size=vectorarrowsize), L="$\overline{i}$");
+   draw((6,2)--(7,2), arrow=Arrow(size=vectorarrowsize), L="$\overline{j}$");
 
 A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points `A=(1,2)` and
@@ -314,16 +410,50 @@ A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
 below.
 
-.. image:: images/ijplus.png
+.. asymptote::
    :align: right
+
+   size(8cm);
+   grid(0,8,0,5);
+
+   pair A = (0,0);
+   pair B = (3,0);
+   pair C = (3,4);
+   pair D = (8,4);
+
+   draw(A--B, arrow=Arrow(size=vectorarrowsize), L="$3 \overline{i}$");
+   draw(B--C, arrow=Arrow(size=vectorarrowsize), L="$4 \overline{j}$", align=NW);
+   draw(C--D, arrow=Arrow(size=vectorarrowsize), L="$5 \overline{i}$", align=N);
+   draw(A--D, arrow=Arrow(size=vectorarrowsize), L="$8 \overline{i} + 4 \overline{j}$", blue, align=SE);
 
 Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That's how
 `3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j`.
 
-.. image:: images/vectorcalc.png
+.. asymptote::
    :align: left
+
+   size(8cm);
+
+   real a = 4;
+   real b = 6;
+   grid(-1,6,-1,7);
+
+   // this is before <a,b> because that way <a,b> is drawn on top of this
+   draw(arc((0,0), 1, 0, degrees(atan2(b,a))), L="t", align=NE, brown);
+
+   // l looks like 1 without $$ and < and > turn into ¿ and ! without $$ (lol)
+   draw((0,0)--(a,b), arrow=Arrow(size=vectorarrowsize), align=NW,
+        L=Label("$<$a,b$>$", Rotate((a,b))));
+   pair llabeloffset = (-1,a/b);
+   draw(brace((0,0)+llabeloffset, (a,b)+llabeloffset),
+        L="$l$", align=NW, deepblue);
+
+   draw((a,0)--(0,0), smalldashes);
+   draw((a,0)--(a,b), smalldashes);
+   draw(brace((a,-bracedistance), (0,-bracedistance)), L="a", align=S);
+   draw(brace((a+bracedistance,b), (a+bracedistance,0)), L="b", align=E);
 
 These vector calculations are just like the
 :ref:`Pythagorean theorem <pythagoras>` and

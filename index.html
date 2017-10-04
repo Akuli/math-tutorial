@@ -110,8 +110,8 @@ this doesn’t apply to the “special” functions.</p>
 <p class="first admonition-title">Problem</p>
 <p>The ball of a ball-and-paddle game is moving at the angle of 30° and
 it hits a wall at right. How should the angle change?</p>
-<img alt="_images/ballpaddle.png" class="last align-center" src="_images/ballpaddle.png" />
-</div>
+<div class="last i">
+<p><img src="_images/asymptote/f23be0d8450a9b370ec23c3bb313509d.png"/></p></div></div>
 <p>Here ° is the degree sign, and 30° means 30 degrees. Degrees work so
 that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It’s also possible to measure angles in radians, but we’ll look into
@@ -122,8 +122,8 @@ familiar with. You can also measure angles that go down like that; for
 example, 270° would be straight down (that’s 90° less than a full turn).</p>
 <p>We can solve our problem by taking the 30° angle sign and moving it like
 this:</p>
-<img alt="_images/ballpaddle2.png" src="_images/ballpaddle2.png" />
-<p>Now you can see that the angles add up to half turn (or 180°), so we get
+<div class="i">
+<p><img src="_images/asymptote/55c1a71b761d98e4018d5cc8bfc651bf.png"/></p></div><p>Now you can see that the angles add up to half turn (or 180°), so we get
 this <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
 <div class="math">
 <p><img src="_images/math/013c492c8d1aefba9add4cae39cff78ab6cb69ac.png" alt="30° + \text{???} = 180°"/></p>
@@ -148,15 +148,15 @@ bottom. Don’t be arfaid to deal with angles between 180° and 360°.</p>
 <p>A player moves to top-right at the angle of 60° measured from the
 x axis at 10 pixels per second. How many pixels should the player’s x and y
 change every second?</p>
-<img alt="_images/playerproblem.png" class="last" src="_images/playerproblem.png" />
-</div>
+<div class="last i">
+<p><img src="_images/asymptote/798d19175cd4620e62937f6e38dc8ef1.png"/></p></div></div>
 <p>Note that the y axis goes up in math so higher means bigger, but in programming
 it’s usually upside down.</p>
 <p>Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
 shows what sine and cosine are:</p>
-<img alt="_images/unitcircle.png" src="_images/unitcircle.png" />
-<p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
+<div class="i">
+<p><img src="_images/asymptote/15a71270a31823589a5b53e125f03a3c.png"/></p></div><p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
 coordinate is <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead
 of our 10, so we need to multiply everything by 10 to scale it up. We get this:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
@@ -198,8 +198,8 @@ that some functions (like <code class="docutils literal"><span class="pre">atan2
 </div>
 <p>Here’s another way to define <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, and another function called
 <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/> that we haven’t used before.</p>
-<img alt="_images/abcttriangle.png" class="align-right" src="_images/abcttriangle.png" />
-<div class="math">
+<div class="i">
+<p><img src="_images/asymptote/a4164a86ff0eedd024abbae53daa3390.png" class="align-right"/></p><div class="math">
 <p><img src="_images/math/9537f7fb5e276514cc560fe81c7c4baae0642610.png" alt="\sin t = \frac b c"/></p>
 </div><div class="math">
 <p><img src="_images/math/5270a23b4ebee521b9706c0a68f1a9b457211659.png" alt="\cos t = \frac a c"/></p>
@@ -241,8 +241,8 @@ fail as division by zero is undefined.</p>
 <p class="last">A player moves 10 pixels up and 20 pixels right, just like in the previous
 problem. How many pixels is that in total, measured diagonally?</p>
 </div>
-<img alt="_images/abctriangle.png" class="align-right" src="_images/abctriangle.png" />
-<p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
+<div class="i">
+<p><img src="_images/asymptote/c63dafa0e6d9ef5bbb3f7093a2770d53.png" class="align-right"/></p><p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
 <div class="math">
 <p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
 </div><p>Again, the triangle’s corner between a and b must be 90° like it is in the
@@ -283,8 +283,8 @@ it in a matter of minutes.</p>
 </div>
 <div class="section" id="vectors">
 <h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
-<img alt="_images/ijab.png" class="align-right" src="_images/ijab.png" />
-<p>A point is simply a pair of x and y coordinates, and a vector represents the
+<div class="i">
+<p><img src="_images/asymptote/4f6582b2019b7d9526acab143c5cef28.png" class="align-right"/></p><p>A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points <img class="math" src="_images/math/43c55690dcb39b7b2a37bf3ba4f365c12bb79398.png" alt="A=(1,2)"/> and
 <img class="math" src="_images/math/570f76b28105e04d716df4cfff657839bea16132.png" alt="B=(3,5)"/>, the vector from A to B is
 <img class="math" src="_images/math/c16efb1bebe36fd8d1d00f38bd67eb399693166a.png" alt="\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j"/>. Here
@@ -301,13 +301,13 @@ vectors is that moving the player is really easy:</p>
 <p>A disadvantage is that if we want to change the angle that the player moves at
 by 1° we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">1</span></code>. We’ll look into how this is done
 below.</p>
-<img alt="_images/ijplus.png" class="align-right" src="_images/ijplus.png" />
-<p>Another nice thing about vectors is that they can be +’ed together easily. For
+<div class="i">
+<p><img src="_images/asymptote/2fe6c8b476cf50b09ef34a9ec728c6cd.png" class="align-right"/></p><p>Another nice thing about vectors is that they can be +’ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That’s how
 <img class="math" src="_images/math/e62871e3a581b45639eb16d77a1a2c9fc309ddb0.png" alt="3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j"/>.</p>
-<img alt="_images/vectorcalc.png" class="align-left" src="_images/vectorcalc.png" />
-<p>These vector calculations are just like the
+<div class="i">
+<p><img src="_images/asymptote/c8137bfd8c1d1b224d888ca8146df42b.png" class="align-left"/></p><p>These vector calculations are just like the
 <a class="reference internal" href="#pythagoras"><span class="std std-ref">Pythagorean theorem</span></a> and
 <a class="reference internal" href="#unitcircletrig"><span class="std std-ref">unit circle trig</span></a> stuff above:</p>
 <div class="math">
