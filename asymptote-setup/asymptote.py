@@ -35,15 +35,20 @@ def render_drawing(self, code):
 
         with open(os.path.join(tmpdir, 'drawing.asy'), 'w') as fuck:
             fuck.write(code)
-        shutil.copyfile(os.path.join(THIS_PLACE, 'boilerplate.asy'),
-                        os.path.join(tmpdir, 'boilerplate.asy'))
+
+        for file in os.listdir(THIS_PLACE):
+            if file.endswith('.asy'):
+                shutil.copyfile(os.path.join(THIS_PLACE, file),
+                                os.path.join(tmpdir, file))
+
         subprocess.check_call(['asy', '-f', 'png', 'drawing.asy'], cwd=tmpdir)
         pngpath = os.path.join(tmpdir, 'drawing.png')
 
         # Move generated image on tempdir to build dir
         os.makedirs(os.path.dirname(outfn), exist_ok=True)
-        shutil.move(pngpath, outfn)
-
+        # my /tmp and /home are on different drives and shutil.move
+        # doesn't seem to move across drives
+        shutil.copy(pngpath, outfn)
         return relfn
 
 
@@ -52,12 +57,14 @@ def html_visit_asymptote(self, node):
     fname = render_drawing(self, node['code'])
     self.body.append(self.starttag(node, 'div', CLASS='i'))
 
-    # this is based on looking at sphinx images with the inspector
+    # this is based on looking at the generated html with the inspector
     # TODO: support alts? it'd be quite pointless though
     if 'align' in node:
-        html = '<img src="%s" class="align-%s"/>' % (fname, node['align'])
+        html = '<p><img src="%s" class="align-%s"/></p>' % (fname, node['align'])
     else:
-        html = '<img src="%s"/>' % fname
+        # i have no idea why, but without </div> these cannot be nested
+        # inside admonitions (try removing the </div> and see what happens)
+        html = '<p><img src="%s"/></p></div>' % fname
     self.body.append(html)
     raise nodes.SkipNode
 
