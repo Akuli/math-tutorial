@@ -67,7 +67,7 @@ def main():
 
         with git_stash():
             with switch_branch('gh-pages'):
-                run('git', 'pull')          # avoid merging hell
+                run('git', 'pull', 'origin', 'gh-pages')   # avoid merging hell
 
                 for item in os.listdir():
                     if item[0] != '.':
