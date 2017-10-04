@@ -151,7 +151,7 @@ really easily. For example:
 Of course, there's no need to write down all of these steps.
 
 You can also use a nice symbolic calculation library, like Python's
-`SymPy <http://www.sympy.org>`_ (can be installed with pip):
+`sympy <http://www.sympy.org>`_ (can be installed with pip):
 
 .. code-block:: python
 
@@ -163,6 +163,18 @@ You can also use a nice symbolic calculation library, like Python's
    15⋅x  - 12⋅x + 7
 
 Here "diff" is short for "differenciate", and it means finding a derivative.
+
+Libraries like sympy are also useful for doing long and messy calculations like
+the one we did above:
+
+.. code-block:: python
+
+   >>> def f(x):
+   ...     return x**2
+   ...
+   >>> dx = Symbol('dx')
+   >>> expand((f(x+dx)-f(x))/dx)
+   dx + 2⋅x
 
 
 Example: Smooth Jumps
