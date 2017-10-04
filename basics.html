@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The Basics</title>
+    <title>The Very Basics</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -23,7 +23,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Proofs and Explanations" href="explanations.html" />
+    <link rel="next" title="Geometry and Trigonometry" href="geometry-and-trig.html" />
     <link rel="prev" title="Math for Programmers" href="index.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -40,33 +40,75 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="the-basics">
-<h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h1>
-<p>This page contains all kinds of boring details that I don’t want to clutter the
-rest of the tutorial with.</p>
+  <div class="section" id="the-very-basics">
+<h1>The Very Basics<a class="headerlink" href="#the-very-basics" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial assumes that you know most of these things. If you don’t, that’s
+not a problem at all and you can just keep the basics page open while you read
+other chapters.</p>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a typical math function:</p>
+<div class="math">
+<p><img src="_images/math/e53d6ee39ddd130a251ea3f98d8ed55cfd036d0b.png" alt="f(x)=2x"/></p>
+</div><div class="math">
+<p><img src="_images/math/de45dc3913156de4f9e6cf90d0e490ba94af8f8b.png" alt="f(6)=12"/></p>
+</div><p>There is no special syntax for defining a function. All we have is the
+equal sign, and when defining a function we just say that its value at x is
+equal to something.</p>
+<p>If you’re familiar with a functional programming language like Haskell, then
+you’ll probably realize that the above math looks a lot like this Haskell
+session:</p>
+<div class="highlight-haskell"><div class="highlight"><pre><span></span><span class="kt">Prelude</span><span class="o">&gt;</span> <span class="kr">let</span> <span class="n">f</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="kt">Prelude</span><span class="o">&gt;</span> <span class="n">f</span> <span class="mi">6</span>
+<span class="mi">12</span>
+<span class="kt">Prelude</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>If you’re feeling like WTF is this, here’s a Python session that should make
+everything clear.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
+<span class="gp">...</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="go">12</span>
+</pre></div>
+</div>
+<p>Quick note about <code class="docutils literal"><span class="pre">f(x)</span></code> versus <code class="docutils literal"><span class="pre">f</span> <span class="pre">x</span></code>: if you define your own function
+called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> or <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> you should use <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/>, but you can do e.g. <img class="math" src="_images/math/d04fadda1b97dfc957b6fa76684ea7ee244991bb.png" alt="\sin x"/> or
+<img class="math" src="_images/math/95096d6dfe29c61690b29c974edc631144890257.png" alt="cos x"/> with some “special” functions for historical reasons.</p>
+<p>Also note that mathematicians prefer single-letter variable names because math
+was originally written on paper, and writing long things by hand sucks. Again,
+this doesn’t apply to the “special” functions.</p>
+</div>
 <div class="section" id="id1">
 <h2>+, -, *, /<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>I’m sure you already know how + and - work.</p>
 <p>In this tutorial, <code class="docutils literal"><span class="pre">a/b</span></code> is written as <img class="math" src="_images/math/50142d8726ee0493b65e7046f97cd2c32ba2e583.png" alt="a/b"/> or <img class="math" src="_images/math/3a437c5f2e7110e024dd0ff40939bf1322d42e40.png" alt="\frac a b"/>, and <code class="docutils literal"><span class="pre">a*b</span></code> is
 written as <img class="math" src="_images/math/9d9ad179e4d24e332b8e8834df2e2532f246b1fb.png" alt="a \cdot b"/> or simply <img class="math" src="_images/math/656ae3ea203842a615a5ac88da20ba695fd77966.png" alt="ab"/>.</p>
-<p>You can also use these handy things:</p>
+<p>Handy things:</p>
 <div class="math">
 <p><img src="_images/math/90189129a6fd0ffd53c1e39647a02af1495d5180.png" alt="0a = 0"/></p>
 </div><div class="math">
-<p><img src="_images/math/26fdd71b880676ea798ac7bc45f3e401c3fe4786.png" alt="1a = a"/></p>
+<p><img src="_images/math/b928b518e5288309629f605a57b233beadb01393.png" alt="1a = \frac{a}{1} = a"/></p>
 </div><div class="math">
 <p><img src="_images/math/f23acdaae30a1ce70bf12e2ec51107a557dab407.png" alt="ab = ba"/></p>
 </div><div class="math">
 <p><img src="_images/math/e4ed34f36cbe6c798956ad5a8314b8df39a142af.png" alt="(a+b)c = ac+bc"/></p>
 </div><div class="math">
-<p><img src="_images/math/6292d7853bda0bf7259e1ac2f428924d9e9003eb.png" alt="a \frac b c = \frac{ab}{c}"/></p>
-</div><div class="math">
-<p><img src="_images/math/7e61218620a654faab8f7e5ce0cafb99bfbaf4ff.png" alt="\frac a c \cdot \frac b d = \frac{ab}{cd}"/></p>
-</div><div class="math">
 <p><img src="_images/math/e007ba5bc2c374f746d5e5cb2204326c3c3f5c4d.png" alt="\frac{ac}{bc} = \frac a b, c \ne 0"/></p>
-</div><p>See <a class="reference external" href="https://youtu.be/BRRolKTlF6Q">Numberphile’s awesome zero video</a> if
-you’re wondering why dividing by zero is not allowed.</p>
-<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
+</div><p>You can use these left-to-right or right-to-left. For example, if you want to
+calculate <img class="math" src="_images/math/1ece37cbebce2d2e99e8c1f20d28467e2fc9d194.png" alt="(1 + 2) \cdot 3"/> you know you could also do <img class="math" src="_images/math/c39c4646afc6ffca4bec81809b1b97b6672e608e.png" alt="1 \cdot 3 + 2 \cdot 3"/>,
+but you can also calculate <img class="math" src="_images/math/c39c4646afc6ffca4bec81809b1b97b6672e608e.png" alt="1 \cdot 3 + 2 \cdot 3"/> like <img class="math" src="_images/math/1ece37cbebce2d2e99e8c1f20d28467e2fc9d194.png" alt="(1 + 2) \cdot 3"/>.</p>
+<p>The easiest way to work with multiplication and division is to just look at
+which numbers are below a division line and which aren’t. For example, if we
+have <img class="math" src="_images/math/c5e4b6f7d54ecf68795e34697920b80178462d08.png" alt="\frac{1}{2} \cdot 3 \cdot \frac{4}{5}"/> we know that’s
+<img class="math" src="_images/math/51451d238a31db8f590fd6d8febbb4a4105abfd1.png" alt="\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}"/> because 2 and 5 were below the lines but
+the other numbers weren’t.</p>
+<p>If both the top and bottom are being multiplied by something you can get rid of
+that multiplier. For example:</p>
+<div class="math">
+<p><img src="_images/math/c8b43f22dfcddba97e87b0c821c693c80781eabc.png" alt="\frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0"/></p>
+</div><p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
 -‘s cancel out.</p>
 <div class="math">
 <p><img src="_images/math/1a0f9489d50268248d3389b0775f3417e997cf02.png" alt="2 \cdot (-2) = -(2 \cdot 2) = -4"/></p>
@@ -74,7 +116,12 @@ you’re wondering why dividing by zero is not allowed.</p>
 <p><img src="_images/math/90e1c747e6d027f3dadf842f5a4469dbae984f70.png" alt="(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4"/></p>
 </div><div class="math">
 <p><img src="_images/math/d6ba5b8a6e0cc30a38f9912c4d2c9f3aa17898e4.png" alt="\frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4"/></p>
-</div><p>Python examples:</p>
+</div><p id="zerodivision">You can add, substract and multiply any numbers together however you want, but
+remember that you cannot divide anything by zero. See
+<a class="reference external" href="https://youtu.be/BRRolKTlF6Q">Numberphile’s awesome zero video</a> if you’re
+wondering why. <code class="docutils literal"><span class="pre">1/0</span></code> is <code class="docutils literal"><span class="pre">Infinity</span></code> in JavaScript, but it’s some kind of
+error in all other programming languages I’ve tried it on.</p>
+<p>Python examples:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">-4</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
@@ -122,12 +169,9 @@ but so far we haven’t needed them in this tutorial). The square root is never
 negative.</p>
 <p>Confusingly <img class="math" src="_images/math/d170601e8e6fda89f51a9d97db9adf6ee4070443.png" alt="\sqrt{x^2}=|x|"/>, e.g. <img class="math" src="_images/math/a3206ad336d6e82909d2e1006ec473e9f9c8f596.png" alt="\sqrt{(-2)^2}=\sqrt4=2"/>
 where <img class="math" src="_images/math/70c219b8367ae6359b28cee44f5e1fa3729799d2.png" alt="(-2)^2 = 4"/> (see <a class="reference internal" href="#negative-mul-div"><span class="std std-ref">above</span></a>).</p>
-<p>If you’re wondering why anything to the power of 0 is 1, you can do e.g. this:</p>
-<div class="math">
-<p><img src="_images/math/689b0d74c44d85ad1d5724379fea2c12290cc550.png" alt="x^2 = x^{0+2}"/></p>
-</div><div class="math">
-<p><img src="_images/math/8c9a0227d7f76ab365e5b0349058443cf171912e.png" alt="x^2 = x^0x^2"/></p>
-</div><p>Because <img class="math" src="_images/math/c520c330655afaff2a251e7dcfe5fdb2d854498c.png" alt="x^2 = x^2"/> with any <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, <img class="math" src="_images/math/c19c691e28e60d4468e90b87a3782a3cd502dbef.png" alt="x^0"/> must be 1.</p>
+<p>If you’re wondering why anything to the power of 0 is 1, you can do e.g.
+<img class="math" src="_images/math/5f7365c69b497d40e3ad1a3ab26a6663f07a0fca.png" alt="x^2 = x^{0+2} = x^0 x^2"/>. The equation should be true with any <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, so
+<img class="math" src="_images/math/c19c691e28e60d4468e90b87a3782a3cd502dbef.png" alt="x^0"/> must be 1 because <img class="math" src="_images/math/a864ace89781c3495347b34869e3a7e9bd7897fa.png" alt="x^2 = 1 x^2"/>.</p>
 </div>
 <div class="section" id="solving-equations">
 <span id="equations"></span><h2>Solving Equations<a class="headerlink" href="#solving-equations" title="Permalink to this headline">¶</a></h2>
@@ -165,10 +209,24 @@ is more complete.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><p style="font-size:1.5em">
-  <a href="index.html">Click here</a>
-  to go back to the tutorial.
-</p>
+        <div class="sphinxsidebarwrapper"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Very Basics</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="geometry-and-trig.html">Geometry and Trigonometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
+</ul>
+
+<br>
+
+<!-- abusing abbr was the first way to dot-underline stuff i found -->
+<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
         </div>
       </div>
       <div class="clearer"></div>

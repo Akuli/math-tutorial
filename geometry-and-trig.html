@@ -1,0 +1,359 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Geometry and Trigonometry</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Derivatives" href="derivatives.html" />
+    <link rel="prev" title="The Very Basics" href="basics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="geometry-and-trigonometry">
+<h1>Geometry and Trigonometry<a class="headerlink" href="#geometry-and-trigonometry" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains useful stuff that aren’t too difficult to get started
+with. You’ll find it especially useful if you like writing games.</p>
+<div class="section" id="basic-angle-stuff">
+<h2>Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-problem admonition">
+<p class="first admonition-title">Problem</p>
+<p>The ball of a ball-and-paddle game is moving at the angle of 30° and
+it hits a wall at right. How should the angle change?</p>
+<div class="last i">
+<p><img src="_images/asymptote/f23be0d8450a9b370ec23c3bb313509d.png"/></p></div></div>
+<p>Here ° is the degree sign, and 30° means 30 degrees. Degrees work so
+that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
+on. It’s also possible to measure angles in radians, but we’ll look into
+that later.</p>
+<p>Note that both angles are measured up from a horizontal line. Measuring
+them like that is a standard that this tutorial uses and people are
+familiar with. You can also measure angles that go down like that; for
+example, 270° would be straight down (that’s 90° less than a full turn).</p>
+<p>We can solve our problem by taking the 30° angle sign and moving it like
+this:</p>
+<div class="i">
+<p><img src="_images/asymptote/55c1a71b761d98e4018d5cc8bfc651bf.png"/></p></div><p>Now you can see that the angles add up to half turn (or 180°), so we get
+this <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
+<div class="math">
+<p><img src="_images/math/013c492c8d1aefba9add4cae39cff78ab6cb69ac.png" alt="30° + \text{???} = 180°"/></p>
+</div><div class="math">
+<p><img src="_images/math/cf60972aa024c276036be90c1611d46d8c11f317.png" alt="\text{???} = 180° - 30° = 150°"/></p>
+</div><p>In math it’s common to use a letter instead of “???” to represent an
+unknown value. For example:</p>
+<div class="math">
+<p><img src="_images/math/dbe3e73b46f777dda08f64448b1e35061ed99bcb.png" alt="30° + t = 180°"/></p>
+</div><div class="math">
+<p><img src="_images/math/83e079fa8de514659caf28acfc2a7a03bf0641bf.png" alt="t = 180° - 30° = 150°"/></p>
+</div><div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p class="last">Calculate similar things when the ball hits a wall at left, top or
+bottom. Don’t be arfaid to deal with angles between 180° and 360°.</p>
+</div>
+</div>
+<div class="section" id="trig-aka-trigonometry-with-the-unit-circle">
+<span id="unitcircletrig"></span><h2>Trig (aka trigonometry) with the Unit Circle<a class="headerlink" href="#trig-aka-trigonometry-with-the-unit-circle" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-problem admonition">
+<p class="first admonition-title">Problem</p>
+<p>A player moves to top-right at the angle of 60° measured from the
+x axis at 10 pixels per second. How many pixels should the player’s x and y
+change every second?</p>
+<div class="last i">
+<p><img src="_images/asymptote/798d19175cd4620e62937f6e38dc8ef1.png"/></p></div></div>
+<p>Note that the y axis goes up in math so higher means bigger, but in programming
+it’s usually upside down.</p>
+<p>Our problem has something to do with sine and cosine. The unit circle is a
+circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
+shows what sine and cosine are:</p>
+<div class="i">
+<p><img src="_images/asymptote/15a71270a31823589a5b53e125f03a3c.png"/></p></div><p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
+coordinate is <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead
+of our 10, so we need to multiply everything by 10 to scale it up. We get this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Based on the unit circle, <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/> should be somewhere between 0 and 1 since
+the height of the x axis is 0 and the circle’s top is at 1 (the radius is 1).
+But if we try this out in Python, something is wrong:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="go">-0.3048106211022167</span>
+</pre></div>
+</div>
+<p>Now you’re feeling really WTF. The angles with negative sines should be below
+the x axis, e.g. something between 180° and 360°.</p>
+<p>The problem is that Python, Haskell, C and most other programming languages use
+radians by default instead of degrees. Let’s convert 60° to radians so the sine
+function is happy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+<span class="go">0.8660254037844386</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
+<span class="go">0.5000000000000001</span>
+</pre></div>
+</div>
+<p>That’s more like it. <code class="docutils literal"><span class="pre">0.5000000000000001</span></code> is obviously not an accurate
+result, but it’s good enough for a programmer while a mathematician would say
+that <img class="math" src="_images/math/6e1490ba27369c4df406cbdd210f1c8684c44b30.png" alt="\sin 60° = \frac{\sqrt 3}2"/> and <img class="math" src="_images/math/453177a40323026da8b50cc4749aa5e55aa75614.png" alt="\cos 60° = \frac 1 2"/>. I might write
+more about radians, how the heck I came up with those mathy-accurate values and
+how my conversion functions work some day.</p>
+<p>Functions like <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> take radians as the argument, but also note
+that some functions (like <code class="docutils literal"><span class="pre">atan2</span></code>, see below) return radians.</p>
+</div>
+<div class="section" id="trig-with-a-triangle">
+<span id="triangletrig"></span><h2>Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-problem admonition">
+<p class="first admonition-title">Problem</p>
+<p class="last">A player moves 10 pixels up and 20 pixels right. What angle is that?</p>
+</div>
+<p>Here’s another way to define <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, and another function called
+<img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/> that we haven’t used before.</p>
+<div class="i">
+<p><img src="_images/asymptote/a4164a86ff0eedd024abbae53daa3390.png" class="align-right"/></p></div><div class="math">
+<p><img src="_images/math/9537f7fb5e276514cc560fe81c7c4baae0642610.png" alt="\sin t = \frac b c"/></p>
+</div><div class="math">
+<p><img src="_images/math/5270a23b4ebee521b9706c0a68f1a9b457211659.png" alt="\cos t = \frac a c"/></p>
+</div><div class="math">
+<p><img src="_images/math/6ec055140998a97a5623de083e1ac7cb3765091b.png" alt="\tan t = \frac b a"/></p>
+</div><p>These things only work if the triangle has a 90° corner, and the little box at
+bottom right means that the corner is 90°. These definitions are compatible
+with the unit circle stuff above; see <a class="reference internal" href="explanations.html#unitcircle-triangle-compat"><span class="std std-ref">this</span></a>.</p>
+<p>So now we know that <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/>. Let’s figure out how to calculate <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>
+from those:</p>
+<div class="math">
+<p><img src="_images/math/6ec055140998a97a5623de083e1ac7cb3765091b.png" alt="\tan t = \frac b a"/></p>
+</div><div class="math">
+<p><img src="_images/math/df32b8cd08f1d85a26987d36b9fe91ecffce2d6b.png" alt="t = \arctan{\frac b a} = \text{atan2}(b, a)"/></p>
+</div><p>Here <img class="math" src="_images/math/726e3cfd2e5301f8ecd2b95a6681bf663ebeb6f7.png" alt="\arctan"/> is the inverse of <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, so <img class="math" src="_images/math/65583f0d3949b2faea8d86f010af0b4d5b020969.png" alt="\arctan (\tan t) = t"/>. Most
+programming languages have an <code class="docutils literal"><span class="pre">atan(x)</span></code> function that returns <img class="math" src="_images/math/151f9aa8667657d9baa719a843e7306d84434c03.png" alt="\arctan x"/>,
+but I don’t recommend using it in this case; the <code class="docutils literal"><span class="pre">atan2(b,a)</span></code> function
+returns <img class="math" src="_images/math/c67802de7f967aa6627113150a28eb0322bc7663.png" alt="\arctan{\frac b a}"/> and I recommend it instead. <code class="docutils literal"><span class="pre">atan2</span></code> looks at the
+signs of <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and does the right thing if they’re negative (the player
+is moving to e.g. bottom left). It also works if <code class="docutils literal"><span class="pre">a</span></code> is 0 and <code class="docutils literal"><span class="pre">b/a</span></code> would
+fail as division by zero is undefined.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Usually people like to put <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> before <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/> in different kinds of places, but
+<code class="docutils literal"><span class="pre">atan2</span></code> is used like <code class="docutils literal"><span class="pre">atan2(y_change,</span> <span class="pre">x_change)</span></code>, <strong>not</strong> like
+<code class="docutils literal"><span class="pre">atan2(x_change,</span> <span class="pre">y_change)</span></code>.</p>
+</div>
+<p>Finally, it’s time to calculate our stuff:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan2</span><span class="p">,</span> <span class="n">degrees</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">degrees</span><span class="p">(</span><span class="n">atan2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="go">26.56505117707799</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pythagorean-theorem">
+<span id="pythagoras"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
+<div class="admonition-problem admonition">
+<p class="first admonition-title">Problem</p>
+<p class="last">A player moves 10 pixels up and 20 pixels right, just like in the previous
+problem. How many pixels is that in total, measured diagonally?</p>
+</div>
+<div class="i">
+<p><img src="_images/asymptote/c63dafa0e6d9ef5bbb3f7093a2770d53.png" class="align-right"/></p></div><p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
+<div class="math">
+<p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
+</div><p>Again, the triangle’s corner between a and b must be 90° like it is in the
+image. If you’re wondering how the heck it works see
+<a class="reference internal" href="explanations.html#pythagoras-proof"><span class="std std-ref">this proof</span></a>.</p>
+<p>Let’s solve <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> from the equation by applying <img class="math" src="_images/math/47a602d47b0c7a02304bef79c050849f30710cbf.png" alt="\sqrt{\ \ }"/> on both sides:</p>
+<div class="math">
+<p><img src="_images/math/6e42ec5ab7d35e9bcaffd656e9808936551903d3.png" alt="\sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c"/></p>
+</div><p>Here <img class="math" src="_images/math/4d0d4bc59dc067e9d36107da1c30a3374b590682.png" alt="|c|"/> is <a class="reference internal" href="basics.html#abs"><span class="std std-ref">the absolute value</span></a>. The last step assumes <img class="math" src="_images/math/9e5f2ec2545958904136473d00f3743ab766004f.png" alt="c \ge 0"/>,
+but that’s not a problem because a triangle with a negative side length doesn’t
+make much sense.</p>
+<p>“Hypotenuse” is a fancy word that means the longest side of a triangle with a
+90° angle, and that’s why some programming languages have a <code class="docutils literal"><span class="pre">hypot(a,</span> <span class="pre">b)</span></code>
+function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb823a5b5b4a4a9fcb503.png" alt="\sqrt{a^2 + b^2}"/>.</p>
+<p>Let’s calculate the distance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">hypot</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hypot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="go">22.360679774997898</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">22.360679774997898</span>
+</pre></div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p>Now you should know enough things to create a simple 2D
+ball-and-paddle game where the player moves the paddle (with e.g.
+arrow keys), and the ball bounces between the paddle and the corners
+of the window. Use a library that lets you do the math yourself but
+provides some basic things, like e.g.
+<code class="docutils literal"><span class="pre">draw_circle(centerx,</span> <span class="pre">centery,</span> <span class="pre">radius)</span></code>. Remember that the y axis
+is “upside down” so you may need to add minus signs to the formulas.</p>
+<p class="last">My Python and PyGame implementation is
+<a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/ball-and-paddle.py">here</a>.
+There are quite a few things that must be taken care of, so remember
+that I created the above game in several small steps and I didn’t do
+it in a matter of minutes.</p>
+</div>
+</div>
+<div class="section" id="vectors">
+<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
+<div class="i">
+<p><img src="_images/asymptote/4f6582b2019b7d9526acab143c5cef28.png" class="align-right"/></p></div><p>A point is simply a pair of x and y coordinates, and a vector represents the
+difference between two points. For example, if we have the points <img class="math" src="_images/math/43c55690dcb39b7b2a37bf3ba4f365c12bb79398.png" alt="A=(1,2)"/> and
+<img class="math" src="_images/math/570f76b28105e04d716df4cfff657839bea16132.png" alt="B=(3,5)"/>, the vector from A to B is
+<img class="math" src="_images/math/c16efb1bebe36fd8d1d00f38bd67eb399693166a.png" alt="\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j"/>. Here
+<img class="math" src="_images/math/5946ce0745c4b974284697e6137d58e8687cf614.png" alt="\bar i"/> and <img class="math" src="_images/math/75e12d28652bf0210a38052d424bc0247cbc9db1.png" alt="\bar j"/> are vectors that go right and up by 1 unit, respectively.</p>
+<p>A vector like <img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/> can be also written as <img class="math" src="_images/math/a87a5513cba799e00d2a31f9bc1a103049718655.png" alt="&lt;x,y&gt;"/>. Use
+whatever style you want.</p>
+<p>We could also use vectors to do similar things as in
+<a class="reference internal" href="#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a>. The advantage with
+vectors is that moving the player is really easy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span>
+<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>A disadvantage is that if we want to change the angle that the player moves at
+by 1° we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">1</span></code>. We’ll look into how this is done
+below.</p>
+<div class="i">
+<p><img src="_images/asymptote/2fe6c8b476cf50b09ef34a9ec728c6cd.png" class="align-right"/></p></div><p>Another nice thing about vectors is that they can be +’ed together easily. For
+example, if we first move 3 units to right, then 4 units up and finally 5 more
+units to right, we move a total of 8 units to right and 4 units up. That’s how
+<img class="math" src="_images/math/e62871e3a581b45639eb16d77a1a2c9fc309ddb0.png" alt="3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j"/>.</p>
+<div class="i">
+<p><img src="_images/asymptote/c8137bfd8c1d1b224d888ca8146df42b.png" class="align-left"/></p></div><p>These vector calculations are just like the
+<a class="reference internal" href="#pythagoras"><span class="std std-ref">Pythagorean theorem</span></a> and
+<a class="reference internal" href="#unitcircletrig"><span class="std std-ref">unit circle trig</span></a> stuff above:</p>
+<div class="math">
+<p><img src="_images/math/36da0beb6ae49d9e6b237dd364422d7717556208.png" alt="l = \sqrt{a^2+b^2} = \text{hypot}(a, b)"/></p>
+</div><div class="math">
+<p><img src="_images/math/ab45c6cfb050e901d90916fce73212c8952ee693.png" alt="t = \text{atan2}(b,a)"/></p>
+</div><div class="math">
+<p><img src="_images/math/728becdf1f16ae02415e1e9eddbc1c859aa926ad.png" alt="a = l \cdot \cos t"/></p>
+</div><div class="math">
+<p><img src="_images/math/5eae08e8d9f48f1a89fcfef9eff236e332644f27.png" alt="b = l \cdot \sin t"/></p>
+</div><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="math" src="_images/math/ee3662170a5c6a5c81a1dddf0de4c3fab3de3f29.png" alt="&lt;1,2&gt;"/>,
+its length is <img class="math" src="_images/math/d66ed1ec2f96b2793e15ea6680eb96d013d056e4.png" alt="\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24"/> and the angle is
+<img class="math" src="_images/math/afc9336bb3210081d6c7d79c07d189ceb4f8f1a3.png" alt="\text{atan2}(2,1) \approx 63.4°"/>. On the other hand,
+<img class="math" src="_images/math/17ff0913b075f0fd7a2e84cf7050a6541d4629ab.png" alt="2.24 \cdot \cos 63.4° \approx 1"/> and <img class="math" src="_images/math/dc81058fec9413df0ef51db8a15f78f1629c093a.png" alt="2.24 \cdot \sin 63.4° \approx 2"/>.</p>
+<p>One way to change the angle of a vector is to first convert it to a length and
+an angle, change that angle and create a new vector. It looks like this in
+pseudo-ish code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">hypot</span><span class="p">(</span><span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">atan2</span><span class="p">(</span><span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">angle_change</span>
+<span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
+<span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
+</pre></div>
+</div>
+<div class="admonition-exercise admonition">
+<p class="first admonition-title">Exercise</p>
+<p>Create a <code class="docutils literal"><span class="pre">Vector</span></code> class in your favorite programming language that
+represents <img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/>. The class should implement a
+<code class="docutils literal"><span class="pre">Vector(x,</span> <span class="pre">y)</span></code> constructor and the properties (or setters and getters if
+you use e.g. Java) <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, <code class="docutils literal"><span class="pre">length</span></code> and <code class="docutils literal"><span class="pre">angle</span></code>. Additionally, if
+the programming language supports it, you can add a nice <code class="docutils literal"><span class="pre">&quot;Vector(x,</span> <span class="pre">y)&quot;</span></code>
+string representation and operator overloading; e.g.
+<img class="math" src="_images/math/02e22fc3beede8869e1de9d57d1c8d545d762191.png" alt="(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j"/>, so
+<code class="docutils literal"><span class="pre">Vector(1,</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">Vector(3,</span> <span class="pre">4)</span> <span class="pre">==</span> <span class="pre">Vector(4,</span> <span class="pre">6)</span></code>.</p>
+<p>I found it easiest to implement things by storing only <code class="docutils literal"><span class="pre">x</span></code> and
+<code class="docutils literal"><span class="pre">y</span></code> and calculating everything else as needed.</p>
+<p>For example, here I’m playing with my Python implementation:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>         <span class="c1"># the string representation</span>
+<span class="go">Vector(1, 2)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">x</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">y</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span>
+<span class="go">2.23606797749979</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
+<span class="go">63.43494882292201</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
+<span class="go">Vector(1.5811388300841898, 1.5811388300841895)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span>      <span class="c1"># setting the angle didn&#39;t change this</span>
+<span class="go">2.23606797749979</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># lol</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
+<span class="go">Vector(0.0, 0.0)</span>
+</pre></div>
+</div>
+<p class="last">My code is
+<a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/vector.py">here</a>.
+I didn’t add operator overloading because I wanted to keep the
+implementation simple and easy to read.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Very Basics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Geometry and Trigonometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
+</ul>
+
+<br>
+
+<!-- abusing abbr was the first way to dot-underline stuff i found -->
+<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Akuli.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/geometry-and-trig.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

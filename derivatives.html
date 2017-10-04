@@ -23,7 +23,8 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Proofs and Explanations" href="explanations.html" />
+    <link rel="next" title="Number Theory" href="numbertheory.html" />
+    <link rel="prev" title="Geometry and Trigonometry" href="geometry-and-trig.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -80,7 +81,7 @@ ratios depending on which points we choose for calculating <img class="math" src
 <img class="math" src="_images/math/05899b70d35eb61a85aaaba3affb9c7363f0d633.png" alt="\Delta x"/>. The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> is not the same number everywhere,
 but let’s try to figure out how to calculate it anyway.</p>
 <div class="i">
-<p><img src="_images/asymptote/a9d67f1f1ee463659d8fd8f3cf4169c8.png" class="align-right"/></p><p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/>. The image at right seems to say that
+<p><img src="_images/asymptote/a9d67f1f1ee463659d8fd8f3cf4169c8.png" class="align-right"/></p></div><p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/>. The image at right seems to say that
 <img class="math" src="_images/math/9eb8cf5e319cdc1ad69765f15dc29afef6e6eae8.png" alt="f(x) + dy = f(x+dx)"/>, so we should be able to solve <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/>:</p>
 <div class="math">
 <p><img src="_images/math/dec7ac1eff8c162840d89ff33103508281e2c39f.png" alt="f(x) + dy = f(x+dx)
@@ -89,7 +90,7 @@ dy = f(x+dx) - f(x)
 
 \frac{dy}{dx} = \frac{f(x+dx)-f(x)}{dx}"/></p>
 </div><div class="i">
-<p><img src="_images/asymptote/643db37d57fcc9c46c92099743596d97.png" class="align-right"/></p><p>For example, the graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging
+<p><img src="_images/asymptote/643db37d57fcc9c46c92099743596d97.png" class="align-right"/></p></div><p>For example, the graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging
 in <img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the above formula. It’ll be a mess, but don’t worry, we can
 do it.</p>
 <div class="math">
@@ -104,7 +105,7 @@ do it.</p>
                &amp;= x + x + dx \\
                &amp;= 2x+dx"/></p>
 </div><div class="i">
-<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p><p>As <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> gets smaller and smaller, <img class="math" src="_images/math/21924e5842a57dca3814b4f6da114886404cc27a.png" alt="2x+dx"/> gets closer to <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> and we can say
+<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p></div><p>As <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> gets smaller and smaller, <img class="math" src="_images/math/21924e5842a57dca3814b4f6da114886404cc27a.png" alt="2x+dx"/> gets closer to <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> and we can say
 <img class="math" src="_images/math/e2f9fa0fc73faf4806dbc4314d9eb33479413a05.png" alt="\frac{dy}{dx} = 2x"/>.</p>
 <p>I think this is cool. We started with a really horribly complicated-looking
 thing but we arrived at just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random
@@ -237,10 +238,24 @@ implementation soon.</p>
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><p style="font-size:1.5em">
-  <a href="index.html">Click here</a>
-  to go back to the tutorial.
-</p>
+        <div class="sphinxsidebarwrapper"><ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Very Basics</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="geometry-and-trig.html">Geometry and Trigonometry</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Derivatives</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
+</ul>
+
+<br>
+
+<!-- abusing abbr was the first way to dot-underline stuff i found -->
+<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
         </div>
       </div>
       <div class="clearer"></div>
