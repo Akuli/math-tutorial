@@ -58,12 +58,11 @@ def html_visit_asymptote(self, node):
     self.body.append(self.starttag(node, 'div', CLASS='i'))
 
     # this is based on looking at the generated html with the inspector
+    # the </div>'s end the self.body.append thing above
     # TODO: support alts? it'd be quite pointless though
     if 'align' in node:
-        html = '<p><img src="%s" class="align-%s"/></p>' % (fname, node['align'])
+        html = '<p><img src="%s" class="align-%s"/></p></div>' % (fname, node['align'])
     else:
-        # i have no idea why, but without </div> these cannot be nested
-        # inside admonitions (try removing the </div> and see what happens)
         html = '<p><img src="%s"/></p></div>' % fname
     self.body.append(html)
     raise nodes.SkipNode

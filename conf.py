@@ -102,11 +102,7 @@ html_static_path = []
 #
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': ['nonindextemplate.html'],
-    'index': ['indextemplate.html'],
-}
-
+html_sidebars = {'**': ['nonindextemplate.html'], 'index': []}
 
 # -- Options for HTMLHelp output ------------------------------------------
 
@@ -170,29 +166,3 @@ default_role = 'math'
 # before the title appeared like this:
 # "Math for Programmers - Math for Programmers documentation"
 html_title = ''
-
-
-# create images with asymptote automagically
-import glob
-import os
-import subprocess
-
-
-for asypath in glob.glob(os.path.join('images', '*.asy')):
-    asypath = os.path.abspath(asypath)
-    pngpath = os.path.splitext(asypath)[0] + '.png'
-
-    try:
-        if os.path.getmtime(asypath) < os.path.getmtime(pngpath):
-            # asymptote file created before png file, everything ready
-            continue
-    except FileNotFoundError:
-        # no asymptote file
-        pass
-
-    asyfile = os.path.basename(asypath)
-    if asyfile == 'boilerplate.asy':
-        continue
-
-    print("conf.py: running 'asy -v -f png %s' in images/" % asyfile)
-    subprocess.check_call(['asy', '-v', '-f', 'png', asyfile], cwd='images')
