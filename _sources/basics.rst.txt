@@ -1,5 +1,5 @@
-The Very Basics
-===============
+The Basics
+==========
 
 This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just keep the basics page open while you read
@@ -41,7 +41,7 @@ everything clear.
 
 Quick note about ``f(x)`` versus ``f x``: if you define your own function
 called `f` or `g` you should use `f(x)`, but you can do e.g. `\sin x` or
-`cos x` with some "special" functions for historical reasons.
+`\cos x` with some "special" functions for historical reasons.
 
 Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
@@ -51,7 +51,8 @@ this doesn't apply to the "special" functions.
 +, -, \*, /
 ~~~~~~~~~~~
 
-I'm sure you already know how + and - work.
+I'm sure you already know how + and - work. Just be careful when you have a
+minus in front of parentheses, e.g. `-(1+2)=-1-2` and `-(1-2)=-1-(-2)=-1+2=2-1`.
 
 In this tutorial, ``a/b`` is written as `a/b` or `\frac a b`, and ``a*b`` is
 written as `a \cdot b` or simply `ab`.
@@ -62,11 +63,17 @@ Handy things:
 .. math:: 1a = \frac{a}{1} = a
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
-.. math:: \frac{ac}{bc} = \frac a b, c \ne 0
 
 You can use these left-to-right or right-to-left. For example, if you want to
 calculate `(1 + 2) \cdot 3` you know you could also do `1 \cdot 3 + 2 \cdot 3`,
 but you can also calculate `1 \cdot 3 + 2 \cdot 3` like `(1 + 2) \cdot 3`.
+
+.. _zerodivision:
+
+You can add, substract and multiply any numbers together however you want, but
+remember that you cannot divide anything by zero. See
+`Numberphile's awesome zero video <https://youtu.be/BRRolKTlF6Q>`_ if you're
+wondering why.
 
 The easiest way to work with multiplication and division is to just look at
 which numbers are below a division line and which aren't. For example, if we
@@ -75,7 +82,7 @@ have `\frac{1}{2} \cdot 3 \cdot \frac{4}{5}` we know that's
 the other numbers weren't.
 
 If both the top and bottom are being multiplied by something you can get rid of
-that multiplier. For example:
+that multiplier if it isn't zero. For example:
 
 .. math:: \frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0
 
@@ -87,14 +94,6 @@ Negative numbers behave like this when multiplied and divided. Note how the two
 .. math:: 2 \cdot (-2) = -(2 \cdot 2) = -4
 .. math:: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
 .. math:: \frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
-
-.. _zerodivision:
-
-You can add, substract and multiply any numbers together however you want, but
-remember that you cannot divide anything by zero. See
-`Numberphile's awesome zero video <https://youtu.be/BRRolKTlF6Q>`_ if you're
-wondering why. ``1/0`` is ``Infinity`` in JavaScript, but it's some kind of
-error in all other programming languages I've tried it on. 
 
 .. TODO: ask theelous3 whether this is needed? or better yet figure out how to
    put stuff side by side so the code example can be next to the math

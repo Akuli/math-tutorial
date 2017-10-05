@@ -22,11 +22,11 @@ Two ways to define sine and cosine
 
    draw(unitcircle);
    fill((0,0)--(cos(t),0)--(cos(t),sin(t))--cycle, yellow);
-   draw((0,0)--(cos(t),0), L="cos t");
-   draw((cos(t),0)--(cos(t),sin(t)), L="sin t");
+   draw((0,0)--(cos(t),0), L="$\cos t$");
+   draw((cos(t),0)--(cos(t),sin(t)), L="$\sin t$");
    draw((cos(t),sin(t))--(0,0), L="1");
 
-   draw(arc((0,0), 0.2, 0, degrees(t)), L="t");
+   draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
 
    draw((-axisloc,0)--(axisloc,0));
    draw((0,-axisloc)--(0,axisloc));
@@ -53,7 +53,7 @@ get this:
    import abctriangle;
 
    real t = atan2(C.y, C.x);
-   draw(arc((0,0), 1, 0, degrees(t)), L="t");
+   draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 The first two formulas are obviously true with any `t`, but the last one is a
 bit more interesting. We found another way to define `\tan`, and it
@@ -88,19 +88,19 @@ This is a well-known proof and I like it because it's simple.
    fill(A2--B2--C2--D2--cycle, yellow);
    fill(A--B--C--D--cycle, heavygreen);
 
-   draw(A--B, L="c");
-   draw(B--C, L="c");
-   draw(C--D, L="c");
-   draw(D--A, L="c");
+   draw(A--B, L="$c$");
+   draw(B--C, L="$c$");
+   draw(C--D, L="$c$");
+   draw(D--A, L="$c$");
 
-   draw(A2--A, L="b");
-   draw(B2--B, L="b");
-   draw(C2--C, L="b");
-   draw(D2--D, L="b");
-   draw(A--D2, L="a");
-   draw(D--C2, L="a");
-   draw(C--B2, L="a");
-   draw(B--A2, L="a");
+   draw(A2--A, L="$b$");
+   draw(B2--B, L="$b$");
+   draw(C2--C, L="$b$");
+   draw(D2--D, L="$b$");
+   draw(A--D2, L="$a$");
+   draw(D--C2, L="$a$");
+   draw(C--B2, L="$a$");
+   draw(B--A2, L="$a$");
 
 We can calculate the total area of the above square in a couple different ways:
 
@@ -134,9 +134,11 @@ better definition:
 
 .. math:: f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
 
-We just replaced `dx` with `h` and threw in a `\lim`. The `\lim_{h \to 0}`
-means that we take the limit as `h` approaches `0`, so it's just like our `dx`
-thing but more explicit and also better-defined in some corner cases.
+We just replaced `dx` with `h`. We also added a `\lim` which means we take the
+*limit* as `h` approaches `0`. It's just like our `dx` thing but more explicit
+and also better-defined in some corner cases. I won't go through the official
+definition of a limit because most of the time limits are easy to calculate
+without it.
 
 These proofs are ordered so that they don't use any derivative rules that
 haven't been proved before them.
@@ -151,22 +153,36 @@ haven't been proved before them.
    axises(xmin,xmax,-1,6);
 
    draw((xmin,c)--(0,c), blue);
-   draw((0,c)--(xmax,c), blue, L="y=c");
-   draw(brace((-1,0),(-1,c)), L="c", align=W);
+   draw((0,c)--(xmax,c), blue, L="$y=c$");
+   draw(brace((-1,0),(-1,c)), L="$c$", align=W);
 
 `\frac{d}{dx} c = 0`
 
-   The graph `y=c` is a horizontal line, so the slope is 0.
+   The graph `y=c` is a horizontal line, so the slope is zero.
 
    We can also plug `f(x)=c` into the definition of derivative:
 
-   .. math:: \lim_{h\to0} \frac{c - c}{h} = \lim_{h\to0} \frac{0}{h} = 0
+   .. math:: f'(x) = \lim_{h\to0} \frac{c - c}{h} = \lim_{h\to0} \frac{0}{h} = 0
+
+.. asymptote::
+   :align: right
+
+   size(9cm);
+   real xmax = 5;
+   real c = 2;
+   //grid(-1,xmax,-1*c,xmax*c);
+   axises(-1,xmax,-1*c,xmax*c);
+
+   draw((-1,-1*c)--(xmax,xmax*c), blue,
+        L=rotate(degrees(atan(c)))*Label("$y=cx$"), align=NW);
+   draw((1,c)--(3,c), smalldashes, L="$\Delta x$");
+   draw((3,c)--(3,3c), smalldashes, L="$\Delta y$");
 
 `\frac{d}{dx} cx = c`
 
    The slope of the line `y=cx` is `c` because every time `x` is incremented by
-   something, `y` is incremented by `c` times as much. We did an example with
-   `y=2x` in the derivative chapter.
+   something, `y` increments `c` times as much. In other words,
+   `\Delta y = c \cdot \Delta x` and `\frac{\Delta y}{\Delta x} = c`.
 
    Again, we can confirm this with the definition of derivative:
 
@@ -177,22 +193,18 @@ haven't been proved before them.
 .. asymptote::
    :align: right
 
-   size(9cm);
-   real xmax = 10;
+   size(6cm);
+   real xmax = 7;
    real ymax = 6;
-   axises(-1,xmax,-1,ymax);
    grid(-1,xmax,-1,ymax);
-   draw((-1,-1)--(ymax,ymax), blue, L=rotate(45)*Label("y=x"), align=NW);
+   axises(-1,xmax,-1,ymax);
+   draw((-1,-1)--(ymax,ymax), blue, L=rotate(45)*Label("$y=x$"), align=NW);
    draw((2,2)--(5,2), smalldashes, L="$\Delta x$");
-   draw((5,2)--(5,5), smalldashes, L="$\Delta y = \Delta x$");
+   draw((5,2)--(5,5), smalldashes, L="$\Delta y$");
 
 `\frac{d}{dx} x = 1`
 
-   The graph `y=x` is a straight line. If we increment `x` by something the `y`
-   gets incremented by the same amount, so `\frac{\Delta y}{\Delta x}=1`. You
-   can also plug in `c=1` to the previous rule.
-
-   .. TODO: draw image
+   This is just like the previous rule, but `c=1` and `\Delta y = \Delta x`.
 
 `\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)`
 
@@ -246,33 +258,48 @@ haven't been proved before them.
       `\frac{d}{dx} x^1 = \frac{d}{dx} x = 1 = 1x^0 = 1x^{1-1}`
 
    Next we'll prove that **if** it works at `c=k` **then** it also works at
-   `c=k+1`. Let's write things down just to be clear:
+   `c=k+1` where `k` is a positive integer. Let's write things down just to be
+   clear:
 
    :We assume: `\frac{d}{dx} x^k = k x^{k-1}`
    :We'll prove: `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}`
 
    .. math:: \frac{d}{dx} x^{k+1} = \frac{d}{dx} (x^k x^1) = \frac{d}{dx} (x \cdot x^k)
 
-   Let's apply the `\frac{d}{dx}(f(x)g(x))` and `\frac{d}{dx} x` rules we
-   proved above:
+   Let's use the `\frac{d}{dx}(f(x)g(x))` and `\frac{d}{dx} x` rules we
+   proved above and the assumption.
 
    .. math::
-      \frac{d}{dx} (x \cdot x^k)
-      = \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \frac{d}{dx} x^k
-      = 1 \cdot x^k + x \cdot \frac{d}{dx} x^k
-      = x^k + x \cdot \frac{d}{dx} x^k
+      \frac{d}{dx} x^{k+1}
+      &= \frac{d}{dx} (x^k x^1) \\
+      &= \frac{d}{dx} (x \cdot x^k) \\
+      &= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right) \\
+      &= 1x^k + x \cdot k x^{k-1} \\
+      &= 1x^k + k\ x\ x^{k-1} \\
+      &= 1x^k + kx^k \\
+      &= (1+k)x^k \\
+      &= (k+1)x^{(k+1)-1}
 
-   Now we can use our assumption.
+   We proved that if `\frac{d}{dx} x^k = k x^{k-1}` then
+   `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}`. Now we know that the rule works
+   when `c=1`, and then if we plug in `k=1` we know it works when `c=2`, and so
+   on.
 
-   .. math::
-      & x^k + x \cdot \frac{d}{dx} x^k = x^k + x \cdot k x^{k-1} = x^k + k\ x\ x^{k-1} \\
-      &= x^k + kx^k = (1+k)x^k = (k+1)x^{(k+1)-1}
+   .. asymptote::
 
-   So all in all, `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}` which is what we
-   were supposed to prove. Now we know that this works when `c=0`, and thus it
-   also must work when `c=1`, and that means it works when `c=2` and so on.
+      size(15cm);
 
-   Note that we only proved that it works when `c` is a positive integers, but
+      for (real c = 1; ; c+=1) {
+         if (c == 4) {
+            label("...", (c,-0.2));
+            break;
+         }
+         label("$c="+(string)c+"$", (c,-0.2));
+         draw((c+0.1,0)..(c+0.5,0.2)..(c+0.9,0), arrow=Arrow(size=5mm),
+              L="$k="+(string)c+"$", align=N);
+      }
+
+   Note that we only proved that it works when `c` is a positive integer, but
    it also works when `c` is e.g. `\frac{1}{2}`. It's possible to prove that
    the rule isn't limited to positive integers, but that's beyond the scope of
    this tutorial.

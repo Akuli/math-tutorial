@@ -186,8 +186,9 @@ that `\sin 60° = \frac{\sqrt 3}2` and `\cos 60° = \frac 1 2`. I might write
 more about radians, how the heck I came up with those mathy-accurate values and
 how my conversion functions work some day.
 
-Functions like `\sin` and `\cos` take radians as the argument, but also note
-that some functions (like ``atan2``, see below) return radians.
+In most programming languages, functions like ``sin`` and ``cos`` take radians
+as arguments, but also note that some functions (like ``atan2``, see below)
+return radians.
 
 
 .. _triangletrig:
@@ -208,7 +209,7 @@ Here's another way to define `\sin` and `\cos`, and another function called
    import abctriangle;
 
    real t = atan2(C.y, C.x);
-   draw(arc((0,0), 1, 0, degrees(t)), L="t");
+   draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 .. math:: \sin t = \frac b c
 .. math:: \cos t = \frac a c
@@ -321,11 +322,12 @@ Vectors
    pair A = (1,2);
    pair B = (3,5);
 
-   dot(A, L="A", p=dotpen);
-   dot(B, L="B", p=dotpen);
-   draw(A--B, arrow=Arrow(size=vectorarrowsize), L="$\overline{AB}$", align=NW);
-   draw((5,3)--(5,4), arrow=Arrow(size=vectorarrowsize), L="$\overline{i}$");
-   draw((6,2)--(7,2), arrow=Arrow(size=vectorarrowsize), L="$\overline{j}$");
+   dot(A, L="$A$", p=dotpen);
+   dot(B, L="$B$", p=dotpen);
+   draw(A--B, arrow=Arrow(size=vectorarrowsize),
+        L=Label(rotate(degrees(atan2(3,2)))*"$\overrightarrow{AB}$"), align=NW);
+   draw((6,2)--(7,2), arrow=Arrow(size=vectorarrowsize), L="$\overline{i}$");
+   draw((5,3)--(5,4), arrow=Arrow(size=vectorarrowsize), L="$\overline{j}$");
 
 A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points `A=(1,2)` and
@@ -380,19 +382,18 @@ units to right, we move a total of 8 units to right and 4 units up. That's how
    grid(-1,6,-1,7);
 
    // this is before <a,b> because that way <a,b> is drawn on top of this
-   draw(arc((0,0), 1, 0, degrees(atan2(b,a))), L="t", align=NE, brown);
+   draw(arc((0,0), 1, 0, degrees(atan2(b,a))), L="$t$", align=NE, brown);
 
-   // l looks like 1 without $$ and < and > turn into ¿ and ! without $$ (lol)
    draw((0,0)--(a,b), arrow=Arrow(size=vectorarrowsize), align=NW,
-        L=Label("$<$a,b$>$", Rotate((a,b))));
+        L=Label("$<a,b>$", Rotate((a,b))));
    pair llabeloffset = (-1,a/b);
    draw(brace((0,0)+llabeloffset, (a,b)+llabeloffset),
         L="$l$", align=NW, deepblue);
 
    draw((a,0)--(0,0), smalldashes);
    draw((a,0)--(a,b), smalldashes);
-   draw(brace((a,-bracedistance), (0,-bracedistance)), L="a", align=S);
-   draw(brace((a+bracedistance,b), (a+bracedistance,0)), L="b", align=E);
+   draw(brace((a,-bracedistance), (0,-bracedistance)), L="$a$", align=S);
+   draw(brace((a+bracedistance,b), (a+bracedistance,0)), L="$b$", align=E);
 
 These vector calculations are just like the
 :ref:`Pythagorean theorem <pythagoras>` and
