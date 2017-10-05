@@ -353,7 +353,7 @@ This Python program...
              O
    O
 
-You can use similar code for doing jumps in 2D games.
+You can use similar code for doing jumps in games.
 
 .. admonition:: Exercise
 
