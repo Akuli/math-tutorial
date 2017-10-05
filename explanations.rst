@@ -264,8 +264,6 @@ haven't been proved before them.
    :We assume: `\frac{d}{dx} x^k = k x^{k-1}`
    :We'll prove: `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}`
 
-   .. math:: \frac{d}{dx} x^{k+1} = \frac{d}{dx} (x^k x^1) = \frac{d}{dx} (x \cdot x^k)
-
    Let's use the `\frac{d}{dx}(f(x)g(x))` and `\frac{d}{dx} x` rules we
    proved above and the assumption.
 
