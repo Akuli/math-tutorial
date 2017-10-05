@@ -125,7 +125,7 @@ though it doesn’t make much sense because <img class="math" src="_images/math/
 </div>
 </div>
 <div class="section" id="faster">
-<h2>Faster!<a class="headerlink" href="#faster" title="Permalink to this headline">¶</a></h2>
+<span id="derivative-rules"></span><h2>Faster!<a class="headerlink" href="#faster" title="Permalink to this headline">¶</a></h2>
 <p>Finding the derivative was kind of complicated and really slow. With these
 handy-dandy rules, you can get <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> from <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> in a matter of seconds. Most of
 these rules are easy to prove so there is no magic involved.</p>
@@ -134,14 +134,14 @@ them. Here <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40
 <img class="math" src="_images/math/21c08c14d6858e50f35adbcb50d636bd06c771a2.png" alt="g(x)=1"/>), and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> can be any constant like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/969d4aaf2ca4b401759470cb0f2c75b4942d8309.png" alt="-\pi"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>
 because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
 <div class="math">
-<p><img src="_images/math/3621fef1eb82a9e9d614a3ee33a1b5108989bbd7.png" alt="\begin{matrix}
+<p><img src="_images/math/25a7cb549afc9779f65ff5647a806bf006fd4023.png" alt="\begin{matrix}
    \frac{d}{dx}\ c = 0     &amp; \frac{d}{dx}(c\ f(x)) = c\ f'(x) &amp; \\
    &amp;&amp;\\
    \frac{d}{dx}\ x = 1     &amp; \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &amp; \\
    &amp;&amp;\\
    \frac{d}{dx}\ cx = c    &amp; \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) &amp; \\
    &amp;&amp;\\
-   \frac{d}{dx}\ x^c = c\ x^{c-1} &amp; \frac{d}{dx} (f(x)g(x)) = f'(g(x)) + g'(x)f(x) &amp; \\
+   \frac{d}{dx}\ x^c = c\ x^{c-1} &amp; \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) &amp; \\
    &amp;&amp;\\
    \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &amp; \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
 \end{matrix}"/></p>
@@ -223,7 +223,7 @@ makes sense because the gravity is always the same, no matter what time it is.</
 O
 </pre></div>
 </div>
-<p>You can use similar code for doing jumps in 2D games.</p>
+<p>You can use similar code for doing jumps in games.</p>
 <div class="admonition-exercise admonition">
 <p class="first admonition-title">Exercise</p>
 <p class="last">Create a minimal game where a player can be moved side to side with arrow

@@ -88,6 +88,150 @@ triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02
 </div><div class="math">
 <p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
 </div></div>
+<div class="section" id="derivative-rules">
+<h2>Derivative Rules<a class="headerlink" href="#derivative-rules" title="Permalink to this headline">¶</a></h2>
+<p>In the derivative chapter I showed <a class="reference internal" href="derivatives.html#derivative-rules"><span class="std std-ref">a bunch of rules</span></a>
+without explaining or proving why they work. We also used this definition of
+derivative:</p>
+<div class="math">
+<p><img src="_images/math/c458869b67dd68f21dd0f8239fc16b660f7fa36d.png" alt="f'(x) = \frac{f(x+dx)-f(x)}{dx}"/></p>
+</div><p>The warning in the beginning of the derivative chapter is all about this. Some
+mathematicians (most?) don’t like this at all because <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is a “small number”
+and it isn’t really clear how it behaves in different situations. Here’s a
+better definition:</p>
+<div class="math">
+<p><img src="_images/math/b81e39bf182df26f1ed106cff88dad0da9224854.png" alt="f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}"/></p>
+</div><p>We just replaced <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> with <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> and threw in a <img class="math" src="_images/math/006e27027dd30b11226eefa4295d2415b066ce23.png" alt="\lim"/>. The <img class="math" src="_images/math/30adc65ee52f95f52f1eb3ee690858debbd274c5.png" alt="\lim_{h \to 0}"/>
+means that we take the limit as <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> approaches <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/>, so it’s just like our <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/>
+thing but more explicit and also better-defined in some corner cases.</p>
+<p>These proofs are ordered so that they don’t use any derivative rules that
+haven’t been proved before them.</p>
+<div class="i">
+<p><img src="_images/asymptote/2c3718f2b08c5e9a28e3f0406f2c4522.png" class="align-right"/></p></div><p><img class="math" src="_images/math/05cfb9e174dcf8c3d320000642d92d18d70f4f7b.png" alt="\frac{d}{dx} c = 0"/></p>
+<blockquote>
+<div><p>The graph <img class="math" src="_images/math/ce81fb1e147ac8bf3ec17ed69a900e58c620f256.png" alt="y=c"/> is a horizontal line, so the slope is 0.</p>
+<p>We can also plug <img class="math" src="_images/math/370df8fb1f1b132f5e8e4bce4c02d3f31d850798.png" alt="f(x)=c"/> into the definition of derivative:</p>
+<div class="math">
+<p><img src="_images/math/89bd54d1f84c845dfb6bf840864a79d991e15bf4.png" alt="\lim_{h\to0} \frac{c - c}{h} = \lim_{h\to0} \frac{0}{h} = 0"/></p>
+</div></div></blockquote>
+<p><img class="math" src="_images/math/c89953d5ab16b1feefe5c42878559c73d95c9740.png" alt="\frac{d}{dx} cx = c"/></p>
+<blockquote>
+<div><p>The slope of the line <img class="math" src="_images/math/5ce3d5b61e6cc17c94b09efc9f597efb882ca0ea.png" alt="y=cx"/> is <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> because every time <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> is incremented by
+something, <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/> is incremented by <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> times as much. We did an example with
+<img class="math" src="_images/math/7a79e2a0fe24b65a0a49baa8dbd81152a81fdc53.png" alt="y=2x"/> in the derivative chapter.</p>
+<p>Again, we can confirm this with the definition of derivative:</p>
+<div class="math">
+<p><img src="_images/math/a15fb751b1d912900aa6a7842480c4ae68dbfdc2.png" alt="&amp; \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} = \lim_{h\to0} \frac{cx+ch-cx}{h} \\
+&amp;= \lim_{h\to0} \frac{cx-cx+ch}{h} = \lim_{h\to0} \frac{ch}{h} = c"/></p>
+</div></div></blockquote>
+<div class="i">
+<p><img src="_images/asymptote/44805b3916c25ddaa25cc5c535951f94.png" class="align-right"/></p></div><p><img class="math" src="_images/math/668c0b577e9de0a4bc5f0cffe70fb42f7ff3cd99.png" alt="\frac{d}{dx} x = 1"/></p>
+<blockquote>
+<div>The graph <img class="math" src="_images/math/2eaf27a495a53727b04e41cf3f327ee034862ee6.png" alt="y=x"/> is a straight line. If we increment <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> by something the <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/>
+gets incremented by the same amount, so <img class="math" src="_images/math/2769cf774f9a14de7a5f883463454433802520cc.png" alt="\frac{\Delta y}{\Delta x}=1"/>. You
+can also plug in <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/> to the previous rule.</div></blockquote>
+<p><img class="math" src="_images/math/a1cf2413483656a43f1eeff182a6d28e6669a5a4.png" alt="\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)"/></p>
+<blockquote>
+<div><p>This rule is particularly handy for differenciating long functions with many
+things added together. Let’s see what we get with the definition of
+derivative.</p>
+<div class="math">
+<p><img src="_images/math/65108762540d38bd2c2ee0aed380fb6c032aa4aa.png" alt="&amp; \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
+&amp;= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
+&amp;= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
+&amp;= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h}\right) \\
+&amp;= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} + \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+&amp;= f'(x) + g'(x)"/></p>
+</div><p>The <img class="math" src="_images/math/32fefacc75e7c85e1a85d9b40b7ab6c1956a30f0.png" alt="\frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x)"/> rule can be proved in a very
+similar way.</p>
+</div></blockquote>
+<p><img class="math" src="_images/math/9b0c2c3562d2534afd85381cdd40a92347240b87.png" alt="\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)"/></p>
+<blockquote>
+<div><p>It’s not pretty, but we can use the definition.</p>
+<div class="math">
+<p><img src="_images/math/7b21e11b6b3e3b7d6d5ea90608f6e4837e585b81.png" alt="&amp; \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
+&amp;= \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
+                      +f(x+h)g(x+h)-f(x)g(x)}{h} \\
+&amp;= \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
+&amp;= \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
+&amp;= \lim_{h\to0} \left(
+      \frac{(f(x+h)-f(x))\ g(x+h)}{h} + \frac{f(x)\ (g(x+h)-g(x))}{h}
+   \right) \\
+&amp;= \lim_{h\to0} \left(
+   \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
+\right) \\
+&amp;= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
+      + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
+&amp;= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
+  \left(\lim_{h\to0}g(x+h)\right)
+  + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
+&amp;= f'(x)g(x) + f(x)g'(x)"/></p>
+</div></div></blockquote>
+<p><img class="math" src="_images/math/8e2eb22c639a44eaad710d7261a791f0298ae29e.png" alt="\frac{d}{dx} x^c = c\ x^{c-1}"/></p>
+<blockquote>
+<div><p>It’s easy to prove that this works for an individual <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> value. For example,
+our very first derivative example shows that <img class="math" src="_images/math/9ae28760b3a23f0c8181fbe2646e23d06877722e.png" alt="\frac{d}{dx} x^2 = 2x"/>. Here
+I’ll prove that this works with all positive integers using a powerful
+technique known as <strong>induction</strong>.</p>
+<p>Let’s start by showing that this works with e.g. <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/>:</p>
+<blockquote>
+<div><img class="math" src="_images/math/a9272716c8ee60310f2eb8148343e27c0f074c26.png" alt="\frac{d}{dx} x^1 = \frac{d}{dx} x = 1 = 1x^0 = 1x^{1-1}"/></div></blockquote>
+<p>Next we’ll prove that <strong>if</strong> it works at <img class="math" src="_images/math/ee2f1a8e00432c090b96087cba7d7e97d7a0862f.png" alt="c=k"/> <strong>then</strong> it also works at
+<img class="math" src="_images/math/65a4031594f572672d72c031ba506275e5c2b463.png" alt="c=k+1"/>. Let’s write things down just to be clear:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">We assume:</th><td class="field-body"><img class="math" src="_images/math/f6cb2d33fb377620c1059cf313204935ff47d01a.png" alt="\frac{d}{dx} x^k = k x^{k-1}"/></td>
+</tr>
+<tr class="field-even field"><th class="field-name">We’ll prove:</th><td class="field-body"><img class="math" src="_images/math/3c1d453c51772d42e84932a79d560ac8591329f9.png" alt="\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}"/></td>
+</tr>
+</tbody>
+</table>
+<div class="math">
+<p><img src="_images/math/f9888e46c0250e91323ce1db3265456d989f247d.png" alt="\frac{d}{dx} x^{k+1} = \frac{d}{dx} (x^k x^1) = \frac{d}{dx} (x \cdot x^k)"/></p>
+</div><p>Let’s apply the <img class="math" src="_images/math/12a324efd66e78d76d178c01e573a2354b5935ea.png" alt="\frac{d}{dx}(f(x)g(x))"/> and <img class="math" src="_images/math/055595c47896aa3f90f91888e053739d06507dcc.png" alt="\frac{d}{dx} x"/> rules we
+proved above:</p>
+<div class="math">
+<p><img src="_images/math/771bfa70c9622002671f97662e604fa806892aa9.png" alt="\frac{d}{dx} (x \cdot x^k)
+= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \frac{d}{dx} x^k
+= 1 \cdot x^k + x \cdot \frac{d}{dx} x^k
+= x^k + x \cdot \frac{d}{dx} x^k"/></p>
+</div><p>Now we can use our assumption.</p>
+<div class="math">
+<p><img src="_images/math/749d8e6cf8ce451d4af54908ca10cfbd048f1901.png" alt="&amp; x^k + x \cdot \frac{d}{dx} x^k = x^k + x \cdot k x^{k-1} = x^k + k\ x\ x^{k-1} \\
+&amp;= x^k + kx^k = (1+k)x^k = (k+1)x^{(k+1)-1}"/></p>
+</div><p>So all in all, <img class="math" src="_images/math/3c1d453c51772d42e84932a79d560ac8591329f9.png" alt="\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}"/> which is what we
+were supposed to prove. Now we know that this works when <img class="math" src="_images/math/07f588e1ea48771167558014d7e1ae2662d46fba.png" alt="c=0"/>, and thus it
+also must work when <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/>, and that means it works when <img class="math" src="_images/math/98ddc75a93c83c1dfae845e656cc87da36617748.png" alt="c=2"/> and so on.</p>
+<p>Note that we only proved that it works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a positive integers, but
+it also works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is e.g. <img class="math" src="_images/math/582d85cfa35dc89f5ae0a4903ea8eef0da364ab7.png" alt="\frac{1}{2}"/>. It’s possible to prove that
+the rule isn’t limited to positive integers, but that’s beyond the scope of
+this tutorial.</p>
+</div></blockquote>
+<p><img class="math" src="_images/math/de27ec19138a293dd7e06cb57f03ed9cf7c55847.png" alt="\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}"/></p>
+<blockquote>
+<div><p>We could prove this with the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/> rule because
+<img class="math" src="_images/math/e1f2f47dde68244f7a225a6eb728a21cd9794eed.png" alt="\sqrt x = x^\frac{1}{2}"/>, but we proved the <img class="math" src="_images/math/2b8238b123f456cca2392b16b56774f8e678a91c.png" alt="x^c"/> rule only for positive
+integers. Let’s survive without it. Again, it’s a mess, but it works.</p>
+<div class="math">
+<p><img src="_images/math/3d58d1647dd84bafe077521e206acda6d9065351.png" alt="&amp; \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
+&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)(\sqrt{x+h}+\sqrt x)}{
+                      h \cdot (\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)\sqrt{x+h}
+      +(\sqrt{x+h}-\sqrt x)\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{\sqrt{x+h}\sqrt{x+h}
+   \overbrace{-\sqrt x\sqrt{x+h}+\sqrt{x+h}\sqrt x}^\text{this is 0}
+   - \sqrt x\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{\left(\sqrt{x+h}\right)^2 - \left(\sqrt x\right)^2}{
+                      h \cdot (\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
+&amp;= \frac{1}{\sqrt x + \sqrt x} \\
+&amp;= \frac{1}{2\ \sqrt x}"/></p>
+</div></div></blockquote>
+</div>
 </div>
 
 
