@@ -189,6 +189,8 @@ and there's no difference between a slope and a derivative of a straight line.
    `f'(x) = \frac{d}{dx} f(x)`.
 
 
+.. _derivative-rules:
+
 Faster!
 ~~~~~~~
 
@@ -210,7 +212,7 @@ because that depends on the value of `x`.
       &&\\
       \frac{d}{dx}\ cx = c    & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
       &&\\
-      \frac{d}{dx}\ x^c = c\ x^{c-1} & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + g'(x)f(x) & \\
+      \frac{d}{dx}\ x^c = c\ x^{c-1} & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
       &&\\
       \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} & \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
    \end{matrix}

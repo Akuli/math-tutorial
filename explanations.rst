@@ -116,3 +116,187 @@ We must get the same area with both ways, so we get this
 .. math:: (a+b)(a+b) = c^2 + 4\frac{ab}{2}
 .. math:: a^2 + 2ab + b^2 = c^2 + 2ab
 .. math:: a^2 + b^2 = c^2
+
+
+Derivative Rules
+~~~~~~~~~~~~~~~~
+
+In the derivative chapter I showed :ref:`a bunch of rules <derivative-rules>`
+without explaining or proving why they work. We also used this definition of
+derivative:
+
+.. math:: f'(x) = \frac{f(x+dx)-f(x)}{dx}
+
+The warning in the beginning of the derivative chapter is all about this. Some
+mathematicians (most?) don't like this at all because `dx` is a "small number"
+and it isn't really clear how it behaves in different situations. Here's a
+better definition:
+
+.. math:: f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+
+We just replaced `dx` with `h` and threw in a `\lim`. The `\lim_{h \to 0}`
+means that we take the limit as `h` approaches `0`, so it's just like our `dx`
+thing but more explicit and also better-defined in some corner cases.
+
+These proofs are ordered so that they don't use any derivative rules that
+haven't been proved before them.
+
+.. asymptote::
+   :align: right
+
+   size(7cm);
+   real xmin = -2;
+   real xmax = 3;
+   real c = 3;
+   axises(xmin,xmax,-1,6);
+
+   draw((xmin,c)--(0,c), blue);
+   draw((0,c)--(xmax,c), blue, L="y=c");
+   draw(brace((-1,0),(-1,c)), L="c", align=W);
+
+`\frac{d}{dx} c = 0`
+
+   The graph `y=c` is a horizontal line, so the slope is 0.
+
+   We can also plug `f(x)=c` into the definition of derivative:
+
+   .. math:: \lim_{h\to0} \frac{c - c}{h} = \lim_{h\to0} \frac{0}{h} = 0
+
+`\frac{d}{dx} cx = c`
+
+   The slope of the line `y=cx` is `c` because every time `x` is incremented by
+   something, `y` is incremented by `c` times as much. We did an example with
+   `y=2x` in the derivative chapter.
+
+   Again, we can confirm this with the definition of derivative:
+
+   .. math::
+      & \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} = \lim_{h\to0} \frac{cx+ch-cx}{h} \\
+      &= \lim_{h\to0} \frac{cx-cx+ch}{h} = \lim_{h\to0} \frac{ch}{h} = c
+
+.. asymptote::
+   :align: right
+
+   size(9cm);
+   real xmax = 10;
+   real ymax = 6;
+   axises(-1,xmax,-1,ymax);
+   grid(-1,xmax,-1,ymax);
+   draw((-1,-1)--(ymax,ymax), blue, L=rotate(45)*Label("y=x"), align=NW);
+   draw((2,2)--(5,2), smalldashes, L="$\Delta x$");
+   draw((5,2)--(5,5), smalldashes, L="$\Delta y = \Delta x$");
+
+`\frac{d}{dx} x = 1`
+
+   The graph `y=x` is a straight line. If we increment `x` by something the `y`
+   gets incremented by the same amount, so `\frac{\Delta y}{\Delta x}=1`. You
+   can also plug in `c=1` to the previous rule.
+
+   .. TODO: draw image
+
+`\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)`
+
+   This rule is particularly handy for differenciating long functions with many
+   things added together. Let's see what we get with the definition of
+   derivative.
+
+   .. math::
+      & \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
+      &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
+      &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
+      &= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h}\right) \\
+      &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} + \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+      &= f'(x) + g'(x)
+
+   The `\frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x)` rule can be proved in a very
+   similar way.
+
+`\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)`
+
+   It's not pretty, but we can use the definition.
+
+   .. math::
+      & \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
+      &= \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
+                            +f(x+h)g(x+h)-f(x)g(x)}{h} \\
+      &= \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
+      &= \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
+      &= \lim_{h\to0} \left(
+            \frac{(f(x+h)-f(x))\ g(x+h)}{h} + \frac{f(x)\ (g(x+h)-g(x))}{h}
+         \right) \\
+      &= \lim_{h\to0} \left(
+         \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
+      \right) \\
+      &= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
+            + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
+      &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
+        \left(\lim_{h\to0}g(x+h)\right)
+        + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
+      &= f'(x)g(x) + f(x)g'(x)
+
+`\frac{d}{dx} x^c = c\ x^{c-1}`
+
+   It's easy to prove that this works for an individual `c` value. For example,
+   our very first derivative example shows that `\frac{d}{dx} x^2 = 2x`. Here
+   I'll prove that this works with all positive integers using a powerful
+   technique known as **induction**.
+
+   Let's start by showing that this works with e.g. `c=1`:
+
+      `\frac{d}{dx} x^1 = \frac{d}{dx} x = 1 = 1x^0 = 1x^{1-1}`
+
+   Next we'll prove that **if** it works at `c=k` **then** it also works at
+   `c=k+1`. Let's write things down just to be clear:
+
+   :We assume: `\frac{d}{dx} x^k = k x^{k-1}`
+   :We'll prove: `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}`
+
+   .. math:: \frac{d}{dx} x^{k+1} = \frac{d}{dx} (x^k x^1) = \frac{d}{dx} (x \cdot x^k)
+
+   Let's apply the `\frac{d}{dx}(f(x)g(x))` and `\frac{d}{dx} x` rules we
+   proved above:
+
+   .. math::
+      \frac{d}{dx} (x \cdot x^k)
+      = \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \frac{d}{dx} x^k
+      = 1 \cdot x^k + x \cdot \frac{d}{dx} x^k
+      = x^k + x \cdot \frac{d}{dx} x^k
+
+   Now we can use our assumption.
+
+   .. math::
+      & x^k + x \cdot \frac{d}{dx} x^k = x^k + x \cdot k x^{k-1} = x^k + k\ x\ x^{k-1} \\
+      &= x^k + kx^k = (1+k)x^k = (k+1)x^{(k+1)-1}
+
+   So all in all, `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}` which is what we
+   were supposed to prove. Now we know that this works when `c=0`, and thus it
+   also must work when `c=1`, and that means it works when `c=2` and so on.
+
+   Note that we only proved that it works when `c` is a positive integers, but
+   it also works when `c` is e.g. `\frac{1}{2}`. It's possible to prove that
+   the rule isn't limited to positive integers, but that's beyond the scope of
+   this tutorial.
+
+`\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}`
+
+   We could prove this with the `\frac{d}{dx} x^c` rule because
+   `\sqrt x = x^\frac{1}{2}`, but we proved the `x^c` rule only for positive
+   integers. Let's survive without it. Again, it's a mess, but it works.
+
+   .. math::
+
+      & \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
+      &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)(\sqrt{x+h}+\sqrt x)}{
+                            h \cdot (\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)\sqrt{x+h}
+            +(\sqrt{x+h}-\sqrt x)\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{\sqrt{x+h}\sqrt{x+h}
+         \overbrace{-\sqrt x\sqrt{x+h}+\sqrt{x+h}\sqrt x}^\text{this is 0}
+         - \sqrt x\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{\left(\sqrt{x+h}\right)^2 - \left(\sqrt x\right)^2}{
+                            h \cdot (\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
+      &= \frac{1}{\sqrt x + \sqrt x} \\
+      &= \frac{1}{2\ \sqrt x}
