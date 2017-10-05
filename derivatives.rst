@@ -8,7 +8,7 @@ the end.
 
 .. warning::
 
-   **If you're an experienced mathematician** you might feel like some of the
+   **If you are an experienced mathematician** you might feel like some of the
    notation used in this chapter is wrong. Stay calm and keep in mind that the
    whole purpose of notation is to express the math in a way that is easy to
    understand for others, and in this tutorial that's much more important than
@@ -98,8 +98,8 @@ but let's try to figure out how to calculate it anyway.
    draw(brace((x,f(x)),(x,f(x+dx)), amplitude=0.1), L="$dy$", align=W);
    draw(brace((x,f(x+dx)+0.05),(x+dx,f(x+dx)+0.05), amplitude=0.1), L="$dx$", align=N);
 
-Let's look at `dy` and `dx`. The image at right seems to say that
-`f(x) + dy = f(x+dx)`, so we should be able to solve `\frac{dy}{dx}`:
+Let's look at `dy` and `dx` of the graph `y=f(x)`. The image at right seems to
+say that `f(x) + dy = f(x+dx)`, so we should be able to solve `\frac{dy}{dx}`:
 
 .. these are all in one ..math because i want them to be aligned with each
    other, and having sphinx align them at right is not a problem because
@@ -301,7 +301,7 @@ graph:
 .. asymptote::
 
    size(9cm);
-   axises(-0.3, 3.5, -0.4, 2, "t", "h");
+   axises(-0.3, 3.5, -0.4, 2, "$t$", "$h$");
 
    real f(real x) { return -x**2 + 3*x - 0.5; }
 

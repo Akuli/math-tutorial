@@ -7,6 +7,6 @@ pair C = (3,2);     //  A/__| B
 
 fill(A--B--C--cycle, mediumblue);
 draw((B.x-corner90, B.y)--(B.x-corner90, B.y+corner90)--(B.x, B.y+corner90));
-draw(A--B, L="a");
-draw(B--C, L="b");
-draw(C--A, L="c");
+draw(A--B, L="$a$");
+draw(B--C, L="$b$");
+draw(C--A, L="$c$");

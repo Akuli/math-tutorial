@@ -4,6 +4,8 @@
    *************  but conf.py doesn't know it
  */
 
+// TODO: get rid of corner90 and bracedistance because picture-specific
+//       values turned out to be a better idea
 // TODO: stop using a weird mixture of mm and raw numbers?
 defaultpen(0.8mm + fontsize(25pt));
 pen dotpen = defaultpen() + 0.3cm;
@@ -22,7 +24,7 @@ void grid(real xmin, real xmax, real ymin, real ymax) {
 }
 
 void axises(real xmin, real xmax, real ymin, real ymax,
-            string xlabel="x", string ylabel="y") {
+            string xlabel="$x$", string ylabel="$y$") {
     // TODO: come up with a better way to label the axises
     draw((xmin,0)--(xmax,0), arrow=Arrow(size=0.7cm));
     draw((0,ymin)--(0,ymax), arrow=Arrow(size=0.7cm));
