@@ -98,8 +98,12 @@ but let's try to figure out how to calculate it anyway.
    draw(brace((x,f(x)),(x,f(x+dx)), amplitude=0.1), L="$dy$", align=W);
    draw(brace((x,f(x+dx)+0.05),(x+dx,f(x+dx)+0.05), amplitude=0.1), L="$dx$", align=N);
 
-Let's look at `dy` and `dx` of the graph `y=f(x)`. The image at right seems to
-say that `f(x) + dy = f(x+dx)`, so we should be able to solve `\frac{dy}{dx}`:
+Let's look at `dy` and `dx` of the graph `y=f(x)`, where `f` can be any
+function that has a derivative. Most functions you'll come across have a
+derivative; if you want to know more, :ref:`click here <has-derivative>`.
+
+The image at right seems to say that `f(x) + dy = f(x+dx)`. Let's try to solve
+`\frac{dy}{dx}`:
 
 .. these are all in one ..math because i want them to be aligned with each
    other, and having sphinx align them at right is not a problem because
@@ -199,20 +203,20 @@ handy-dandy rules, you can get `2x` from `x^2` in a matter of seconds. Most of
 these rules are easy to prove so there is no magic involved.
 
 I have listed many rules here, but **don't panic**; there's no need to memorize
-them. Here `f` and `g` can be any functions (e.g. `f(x)=\sqrt x - x` and
-`g(x)=1`), and `c` can be any constant like `4` or `-\pi` but not e.g. `2x`
-because that depends on the value of `x`. 
+them. As before `f` and `g` can be any functions as long as they have a
+derivative (e.g. `f(x)=\sqrt x - x` and `g(x)=1`), and `c` can be any constant
+like `4` or `-\pi` but not e.g. `2x` because that depends on the value of `x`. 
 
 .. math::
 
    \begin{matrix}
-      \frac{d}{dx}\ c = 0     & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
+      \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
       &&\\
-      \frac{d}{dx}\ x = 1     & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
+      \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
       &&\\
-      \frac{d}{dx}\ cx = c    & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
+      \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
       &&\\
-      \frac{d}{dx}\ x^c = c\ x^{c-1} & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
+      \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
       &&\\
       \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} & \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
    \end{matrix}
@@ -230,6 +234,18 @@ really easily. For example:
 
 Of course, there's no need to write down all of these steps.
 
+Note that if you have something like `(2x)^2` as opposed to `x^2` you
+need to use the `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)` rule. In this example,
+you would plug in `f(x)=x^2` and `g(x)=2x` to get this:
+
+.. math:: \frac{d}{dx} (2x)^2 = 2(2x) \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
+
+In some cases it's also possible to first open up something like the `(\ \ )^2`:
+
+.. math::
+   \frac{d}{dx}(2x)^2 = \frac{d}{dx}(2^2x^2) = \frac{d}{dx}(4x^2)
+   = 4 \cdot \frac{d}{dx} x^2 = 4 \cdot 2x = 8x
+
 You can also use a nice symbolic calculation library, like Python's
 `sympy <http://www.sympy.org>`_ (can be installed with pip):
 
@@ -241,6 +257,9 @@ You can also use a nice symbolic calculation library, like Python's
    >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123)
        2           
    15⋅x  - 12⋅x + 7
+   >>> diff((2*x)**2)
+   8⋅x
+   >>> 
 
 Here "diff" is short for "differenciate", and it means finding a derivative.
 
@@ -275,13 +294,13 @@ player moves right at a steady speed, which of these jumps looks best?
 
    real f(real x) {
        /* top of parabola should be between x=3.7 and x=4, calculations with x=4:
-           f(x) = ax^2 + bx + c
-           f'(x) = 2ax + b
-           f'(3.7) = 0
-           2*a*3.7 + b = 0
-           -a approx 7.5 b
-
-          i found the constant with trial and error */
+         f(x) = ax^2 + bx + c
+         f'(x) = 2ax + b
+         f'(3.7) = 0
+         2*a*3.7 + b = 0
+         -a approx 7.5 b
+       i found the constant with trial and error
+       */
        return -2x**2 + 15*x - 27.2;
    }
 

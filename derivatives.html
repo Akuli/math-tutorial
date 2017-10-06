@@ -81,8 +81,11 @@ ratios depending on which points we choose for calculating <img class="math" src
 <img class="math" src="_images/math/05899b70d35eb61a85aaaba3affb9c7363f0d633.png" alt="\Delta x"/>. The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> is not the same number everywhere,
 but let’s try to figure out how to calculate it anyway.</p>
 <div class="i">
-<p><img src="_images/asymptote/a9d67f1f1ee463659d8fd8f3cf4169c8.png" class="align-right"/></p></div><p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> of the graph <img class="math" src="_images/math/4f4a8d7754b69178fbc85569f47f90b9989e9310.png" alt="y=f(x)"/>. The image at right seems to
-say that <img class="math" src="_images/math/9eb8cf5e319cdc1ad69765f15dc29afef6e6eae8.png" alt="f(x) + dy = f(x+dx)"/>, so we should be able to solve <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/>:</p>
+<p><img src="_images/asymptote/a9d67f1f1ee463659d8fd8f3cf4169c8.png" class="align-right"/></p></div><p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> of the graph <img class="math" src="_images/math/4f4a8d7754b69178fbc85569f47f90b9989e9310.png" alt="y=f(x)"/>, where <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> can be any
+function that has a derivative. Most functions you’ll come across have a
+derivative; if you want to know more, <a class="reference internal" href="explanations.html#has-derivative"><span class="std std-ref">click here</span></a>.</p>
+<p>The image at right seems to say that <img class="math" src="_images/math/9eb8cf5e319cdc1ad69765f15dc29afef6e6eae8.png" alt="f(x) + dy = f(x+dx)"/>. Let’s try to solve
+<img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/>:</p>
 <div class="math">
 <p><img src="_images/math/dec7ac1eff8c162840d89ff33103508281e2c39f.png" alt="f(x) + dy = f(x+dx)
 
@@ -130,18 +133,18 @@ though it doesn’t make much sense because <img class="math" src="_images/math/
 handy-dandy rules, you can get <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> from <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> in a matter of seconds. Most of
 these rules are easy to prove so there is no magic involved.</p>
 <p>I have listed many rules here, but <strong>don’t panic</strong>; there’s no need to memorize
-them. Here <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> and <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> can be any functions (e.g. <img class="math" src="_images/math/620d3592799463cd9e295c04f3f3e844d072bc74.png" alt="f(x)=\sqrt x - x"/> and
-<img class="math" src="_images/math/21c08c14d6858e50f35adbcb50d636bd06c771a2.png" alt="g(x)=1"/>), and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> can be any constant like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/969d4aaf2ca4b401759470cb0f2c75b4942d8309.png" alt="-\pi"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>
-because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
+them. As before <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> and <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> can be any functions as long as they have a
+derivative (e.g. <img class="math" src="_images/math/620d3592799463cd9e295c04f3f3e844d072bc74.png" alt="f(x)=\sqrt x - x"/> and <img class="math" src="_images/math/21c08c14d6858e50f35adbcb50d636bd06c771a2.png" alt="g(x)=1"/>), and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> can be any constant
+like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/969d4aaf2ca4b401759470cb0f2c75b4942d8309.png" alt="-\pi"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
 <div class="math">
-<p><img src="_images/math/25a7cb549afc9779f65ff5647a806bf006fd4023.png" alt="\begin{matrix}
-   \frac{d}{dx}\ c = 0     &amp; \frac{d}{dx}(c\ f(x)) = c\ f'(x) &amp; \\
+<p><img src="_images/math/6c3574849b46c52164bca2db9a20774ce96b2311.png" alt="\begin{matrix}
+   \frac{d}{dx}\ c = 0              &amp; \frac{d}{dx}(c\ f(x)) = c\ f'(x) &amp; \\
    &amp;&amp;\\
-   \frac{d}{dx}\ x = 1     &amp; \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &amp; \\
+   \frac{d}{dx}\ x = 1              &amp; \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &amp; \\
    &amp;&amp;\\
-   \frac{d}{dx}\ cx = c    &amp; \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) &amp; \\
+   \frac{d}{dx}\ cx = c             &amp; \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) &amp; \\
    &amp;&amp;\\
-   \frac{d}{dx}\ x^c = c\ x^{c-1} &amp; \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) &amp; \\
+   \frac{d}{dx}\ x^c = c\ x^{c-1}   &amp; \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) &amp; \\
    &amp;&amp;\\
    \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &amp; \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
 \end{matrix}"/></p>
@@ -154,7 +157,16 @@ really easily. For example:</p>
 &amp;= 5 \cdot 3x^{3-1} - 6 \cdot 2x + 7 \\
 &amp;= 15x^2 - 12x + 7"/></p>
 </div><p>Of course, there’s no need to write down all of these steps.</p>
-<p>You can also use a nice symbolic calculation library, like Python’s
+<p>Note that if you have something like <img class="math" src="_images/math/c6c22a1622778ec604c42302f50d693a94d350c5.png" alt="(2x)^2"/> as opposed to <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> you
+need to use the <img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/> rule. In this example,
+you would plug in <img class="math" src="_images/math/d772eeb4feb38727b849042e3ffce8f9a29c0ac4.png" alt="f(x)=x^2"/> and <img class="math" src="_images/math/0a55c8372837cd6b353d0116d76c334ff66d9530.png" alt="g(x)=2x"/> to get this:</p>
+<div class="math">
+<p><img src="_images/math/70c908c2b58e58b2f34620a29b9fd24ffacab185.png" alt="\frac{d}{dx} (2x)^2 = 2(2x) \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x"/></p>
+</div><p>In some cases it’s also possible to first open up something like the <img class="math" src="_images/math/a42dd9a1d8e8ca5681017f64c827060c86da1c64.png" alt="(\ \ )^2"/>:</p>
+<div class="math">
+<p><img src="_images/math/2da10339e0b7de6a0c97d7462efb85311016ed19.png" alt="\frac{d}{dx}(2x)^2 = \frac{d}{dx}(2^2x^2) = \frac{d}{dx}(4x^2)
+= 4 \cdot \frac{d}{dx} x^2 = 4 \cdot 2x = 8x"/></p>
+</div><p>You can also use a nice symbolic calculation library, like Python’s
 <a class="reference external" href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
@@ -162,6 +174,9 @@ really easily. For example:</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">123</span><span class="p">)</span>
 <span class="go">    2</span>
 <span class="go">15⋅x  - 12⋅x + 7</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">8⋅x</span>
+<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <p>Here “diff” is short for “differenciate”, and it means finding a derivative.</p>
@@ -181,7 +196,7 @@ the one we did above:</p>
 <p>Let’s say you’re making a game where a player can jump over something. If the
 player moves right at a steady speed, which of these jumps looks best?</p>
 <div class="i">
-<p><img src="_images/asymptote/b85a62993ce0aae1968063286d766a8a.png"/></p></div><p>The answer is obvious – the rightmost jump looks best. It’s time to figure out
+<p><img src="_images/asymptote/42dc12d3062f1d9a7f92a01b5118dc42.png"/></p></div><p>The answer is obvious – the rightmost jump looks best. It’s time to figure out
 how to make games with jumps like that.</p>
 <p>Let’s say that <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> is time and <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> is the height of our player, so we get this
 graph:</p>
@@ -264,7 +279,7 @@ implementation soon.</p>
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
