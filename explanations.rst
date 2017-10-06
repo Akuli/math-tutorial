@@ -3,7 +3,10 @@ Proofs and Explanations
 
 I used a bunch of spooky formulas in this tutorial. Some of them are
 definitions of e.g. `\sin` or `\cos`, but in this chapter we'll focus on those
-that aren't and prove that they actually work.
+that aren't and prove that they actually work. If you just want to get things
+done without worrying about why the calculations are exactly like they are then
+you're in the wrong place, but if you got interested in the math itself you
+may enjoy reading some of this stuff.
 
 
 .. _unitcircle-triangle-compat:
@@ -123,9 +126,9 @@ We must get the same area with both ways, so we get this
 Which functions have derivatives?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In the derivative chapter I said that most functions you'll come across have a
-derivative. Let's be a bit more specific. The derivative doesn't exist in these
-cases:
+In :ref:`the derivative chapter <derivatives>` I said that most functions
+you'll come across have a derivative. Let's be a bit more specific. The
+derivative doesn't exist in these cases:
 
 .. asymptote::
    :align: right
@@ -168,9 +171,9 @@ but this should be enough to give you some kind of idea about the limitations.
 Derivative Rules
 ~~~~~~~~~~~~~~~~
 
-In the derivative chapter I showed :ref:`a bunch of rules <derivative-rules>`
-without explaining or proving why they work. We also used this definition of
-derivative:
+The derivative chapter contains :ref:`a bunch of rules <derivative-rules>`
+with no explainations or proofs about how they work. We also used this
+definition of derivative:
 
 .. math:: f'(x) = \frac{f(x+dx)-f(x)}{dx}
 
@@ -423,7 +426,7 @@ haven't been proved before them.
    The rule can be used only if `g'(x)` exists, and thus `g` must be
    continuous; see `the derivative existence stuff above <#which-functions-have-derivatives>`_.
    So, if `h \to 0` (read: h approaches 0) then `g(x+h) \to g(x)` and
-   `g(x+h)-g(x) \to 0`.
+   `(g(x+h)-g(x)) \to 0`.
 
    If we put all this together we can set `k=g(x+h)-g(x)`. Now it's time to
    calculate `f'(g(x))g'(x)`.
