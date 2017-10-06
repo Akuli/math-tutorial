@@ -204,6 +204,7 @@ haven't been proved before them.
    draw(brace((-1,0),(-1,c)), L="$c$", align=W);
 
 `\frac{d}{dx} c = 0`
+^^^^^^^^^^^^^^^^^^^^
 
    The graph `y=c` is a horizontal line, so the slope is zero.
 
@@ -226,6 +227,7 @@ haven't been proved before them.
    draw((3,c)--(3,3c), smalldashes, L="$\Delta y$");
 
 `\frac{d}{dx} cx = c`
+^^^^^^^^^^^^^^^^^^^^^
 
    The slope of the line `y=cx` is `c` because every time `x` is incremented by
    something, `y` increments `c` times as much. In other words,
@@ -250,6 +252,7 @@ haven't been proved before them.
    draw((5,2)--(5,5), smalldashes, L="$\Delta y$");
 
 `\frac{d}{dx} x = 1`
+^^^^^^^^^^^^^^^^^^^^
 
    This is just like the previous rule, but `c=1` and `\Delta y = \Delta x`.
 
@@ -271,6 +274,7 @@ haven't been proved before them.
    similar way.
 
 `\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    It's not pretty, but we can use the definition.
 
@@ -294,6 +298,7 @@ haven't been proved before them.
       &= f'(x)g(x) + f(x)g'(x)
 
 `\frac{d}{dx} x^c = c\ x^{c-1}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    It's easy to prove that this works for an individual `c` value. For example,
    our very first derivative example shows that `\frac{d}{dx} x^2 = 2x`. Here
@@ -350,6 +355,7 @@ haven't been proved before them.
    this tutorial.
 
 `\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    We could prove this with the `\frac{d}{dx} x^c` rule because
    `\sqrt x = x^\frac{1}{2}`, but we proved the `x^c` rule only for positive
@@ -374,6 +380,7 @@ haven't been proved before them.
       &= \frac{1}{2\ \sqrt x}
 
 `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    This rule looks simple, but it's surprisingly difficult to prove correctly
    while keeping it easy to read. Here's the best proof I managed to make.
@@ -479,16 +486,16 @@ haven't been proved before them.
 
    This looks nice, but we are not done yet! We divided by `k`. What if
    `k=g(x+h)-g(x)=0` when `h \to 0` but `h \ne 0`? Practically it means that
-   the graph `y=g(x)` has a horizontal bit (red in the picture) around `x`
-   because `g(x+h)=g(x)` with a small `h`. So, we can say that `g(x)=c` on this
-   interval (`c` is a constant) and prove this case separately:
+   the graph `y=g(x)` is horizontal around `x` because `g(x+h)=g(x)` with a
+   small `h`. So, we can say that `g(x)=c` on this interval (`c` is a constant)
+   and prove this case separately:
 
    .. math::
       \frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0
 
-   Careful here -- we're differenciating with respect to `x` so `f'(c)` is
+   Careful here -- we're differenciating with respect to `x` so `f(c)` is
    actually yet another constant. The `c` could be something like `2` and
-   `f'(2)` obviously doesn't depend on the value of `x`.
+   `f(2)` obviously doesn't depend on the value of `x`.
 
    We get the same answer with the rule that we were supposed to prove:
 
