@@ -43,7 +43,10 @@
 <h1>Proofs and Explanations<a class="headerlink" href="#proofs-and-explanations" title="Permalink to this headline">¶</a></h1>
 <p>I used a bunch of spooky formulas in this tutorial. Some of them are
 definitions of e.g. <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> or <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, but in this chapter we’ll focus on those
-that aren’t and prove that they actually work.</p>
+that aren’t and prove that they actually work. If you just want to get things
+done without worrying about why the calculations are exactly like they are then
+you’re in the wrong place, but if you got interested in the math itself you
+may enjoy reading some of this stuff.</p>
 <div class="section" id="two-ways-to-define-sine-and-cosine">
 <span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
 <div class="i">
@@ -90,9 +93,9 @@ triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02
 </div></div>
 <div class="section" id="which-functions-have-derivatives">
 <span id="has-derivative"></span><h2>Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Permalink to this headline">¶</a></h2>
-<p>In the derivative chapter I said that most functions you’ll come across have a
-derivative. Let’s be a bit more specific. The derivative doesn’t exist in these
-cases:</p>
+<p>In <a class="reference internal" href="derivatives.html#derivatives"><span class="std std-ref">the derivative chapter</span></a> I said that most functions
+you’ll come across have a derivative. Let’s be a bit more specific. The
+derivative doesn’t exist in these cases:</p>
 <div class="i">
 <p><img src="_images/asymptote/60155662ec87aacddaef70dfae60ede6.png" class="align-right"/></p></div><ul>
 <li><p class="first">The function is not <em>continuous</em>; that is, the graph consists of multiple
@@ -117,9 +120,9 @@ but this should be enough to give you some kind of idea about the limitations.</
 </div>
 <div class="section" id="derivative-rules">
 <h2>Derivative Rules<a class="headerlink" href="#derivative-rules" title="Permalink to this headline">¶</a></h2>
-<p>In the derivative chapter I showed <a class="reference internal" href="derivatives.html#derivative-rules"><span class="std std-ref">a bunch of rules</span></a>
-without explaining or proving why they work. We also used this definition of
-derivative:</p>
+<p>The derivative chapter contains <a class="reference internal" href="derivatives.html#derivative-rules"><span class="std std-ref">a bunch of rules</span></a>
+with no explainations or proofs about how they work. We also used this
+definition of derivative:</p>
 <div class="math">
 <p><img src="_images/math/c458869b67dd68f21dd0f8239fc16b660f7fa36d.png" alt="f'(x) = \frac{f(x+dx)-f(x)}{dx}"/></p>
 </div><p>The warning in the beginning of the derivative chapter is all about this. Some
@@ -291,7 +294,7 @@ as both of them approach 0.</p>
 <p>The rule can be used only if <img class="math" src="_images/math/dfabaa32db4e32a14087893651d619aff17ba509.png" alt="g'(x)"/> exists, and thus <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> must be
 continuous; see <a class="reference external" href="#which-functions-have-derivatives">the derivative existence stuff above</a>.
 So, if <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84774.png" alt="h \to 0"/> (read: h approaches 0) then <img class="math" src="_images/math/06e56635f587d774b9f30350b6dd80b414b61635.png" alt="g(x+h) \to g(x)"/> and
-<img class="math" src="_images/math/d6c647b7e8c2d3766df6cb4f96d7a90bbeb790ae.png" alt="g(x+h)-g(x) \to 0"/>.</p>
+<img class="math" src="_images/math/a1e9d386aa984c2a6fec30d98e450dcfed6dea04.png" alt="(g(x+h)-g(x)) \to 0"/>.</p>
 <p>If we put all this together we can set <img class="math" src="_images/math/48438feaf697dd21d1d3af56b5e8c1a7666d2ce1.png" alt="k=g(x+h)-g(x)"/>. Now it’s time to
 calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2ec2c4b.png" alt="f'(g(x))g'(x)"/>.</p>
 <div class="math">
