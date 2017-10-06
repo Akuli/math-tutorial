@@ -118,6 +118,53 @@ We must get the same area with both ways, so we get this
 .. math:: a^2 + b^2 = c^2
 
 
+.. _has-derivative:
+
+Which functions have derivatives?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In the derivative chapter I said that most functions you'll come across have a
+derivative. Let's be a bit more specific. The derivative doesn't exist in these
+cases:
+
+.. asymptote::
+   :align: right
+
+   size(8cm);
+   axises(-3,3,-1,3);
+   draw((-3,0)--(0,0), blue);
+   filldraw(circle((0,0),0.1), white, blue);
+
+   draw((0,1)--(3,1), blue, L="$y=f(x)$", align=N);
+   filldraw(circle((0,1),0.1), blue, blue);
+
+*  The function is not *continuous*; that is, the graph consists of multiple
+   lines. For example, this function is not continuous at `x=0` and thus
+   `f'(0)` is not defined:
+
+   .. math::
+      f(x) = \left\{\begin{matrix}
+         1 \text{ if } x \ge 0\\ 
+         0 \text{ if } x < 0
+      \end{matrix}\right.
+
+.. asymptote::
+   :align: right
+
+   size(6cm);
+   axises(-3,3,-1,3);
+   draw((-3,3)--(0,0), blue);
+   draw((0,0)--(3,3), blue, L=rotate(45)*Label("$y=|x|$"), align=N);
+
+*  The graph of the function has a spike in it. Derivatives describe
+   "growing speed" and it isn't clear how fast the values grow on top of a
+   spike. For example, `|x|` has a derivative everywhere except at `x=0`, just
+   like our `f(x)` above.
+
+Of course, there are more precise definitions about continuity and "spikes",
+but this should be enough to give you some kind of idea about the limitations.
+
+
 Derivative Rules
 ~~~~~~~~~~~~~~~~
 
@@ -273,7 +320,7 @@ haven't been proved before them.
       &= \frac{d}{dx} (x \cdot x^k) \\
       &= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right) \\
       &= 1x^k + x \cdot k x^{k-1} \\
-      &= 1x^k + k\ x\ x^{k-1} \\
+      &= 1x^k + kx^1x^{k-1} \\
       &= 1x^k + kx^k \\
       &= (1+k)x^k \\
       &= (k+1)x^{(k+1)-1}
@@ -325,3 +372,126 @@ haven't been proved before them.
       &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
       &= \frac{1}{\sqrt x + \sqrt x} \\
       &= \frac{1}{2\ \sqrt x}
+
+`\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)`
+
+   This rule looks simple, but it's surprisingly difficult to prove correctly
+   while keeping it easy to read. Here's the best proof I managed to make.
+
+   Let's start by plugging stuff into the definition of derivative:
+
+   .. math:: g'(x) = \lim_{h\to0} \frac{g(x+h)-g(x)}{h}
+   .. math:: f'(g(x)) = \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k}
+   .. asymptote::
+      :align: right
+
+      size(9cm);
+      real xymin = -0.2;
+      real xymax = 1.5;
+      real the_x = 0.5;      // there's also a loop variable called x (lol)
+      real h = 0.1;
+
+      axises(xymin,xymax,xymin,xymax);
+
+      real g(real x) { return sin(x+0.5); }
+
+      path ggraph;
+      for (real x = xymin; x < xymax; x += 1/16) {
+         ggraph = ggraph..(x,g(x));
+      }
+      draw(ggraph, blue, L=rotate(20)*Label("$y=g(x)$"), align=N);
+
+      draw((the_x,0)--(the_x,g(the_x)), lightblue);
+      draw((the_x+h,0)--(the_x+h,g(the_x+h)), lightblue);
+      label((the_x,0), L="$x$", align=SW);
+      draw(brace((the_x+h,0),(the_x,0), amplitude=0.1), L="$h$", align=S);
+      draw(brace((the_x,0),(the_x,g(the_x))), L="$g(x)$", align=W);
+      draw(brace((the_x+h,g(the_x+h)),(the_x+h,0)), L="$g(x+h)$", align=E);
+
+   Note that I used `h` with one limit and `k` with the other; the limits are
+   completely independent of each other and I wanted to make it stand out. In
+   other words, it doesn't matter how `h` and `k` relate to each other as long
+   as both of them approach 0.
+
+   The rule can be used only if `g'(x)` exists, and thus `g` must be
+   continuous; see `the derivative existence stuff above <#which-functions-have-derivatives>`_.
+   So, if `h \to 0` (read: h approaches 0) then `g(x+h) \to g(x)` and
+   `g(x+h)-g(x) \to 0`.
+
+   If we put all this together we can set `k=g(x+h)-g(x)`. Now it's time to
+   calculate `f'(g(x))g'(x)`.
+
+   .. math::
+
+      f'(g(x))g'(x)
+      &= \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+      &= \lim_{k\to0} \lim_{h\to0} \left(
+            \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
+      \right) \\
+      &= \lim_{h\to0} \left(
+            \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
+            \cdot \frac{g(x+h)-g(x)}{h}
+      \right) \\
+      &= \lim_{h\to0} \left(
+            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}
+            \cdot \frac{g(x+h)-g(x)}{h}
+      \right) \\
+      &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+      &= \frac{d}{dx} (f(g(x))
+
+   .. asymptote::
+      :align: right
+
+      size(9cm);
+      real xymin = -0.2;
+      real xymax = 1.5;
+      real the_x = 0.6;      // there's also a loop variable called x (lol)
+      real h = 0.1;
+
+      axises(xymin,xymax,xymin,xymax);
+      real flatleft = the_x-2h, flatright=the_x+3h;
+
+      real g(real x) {
+         // flat spot around the_x
+         if (flatleft < x && x < flatright)
+            return 1;
+
+         // elsewhere: cosine graph moved appropriately
+         if (x < the_x)
+            return cos(x-flatleft);
+         return cos(x-flatright);
+      }
+
+      path ggraph;
+      for (real x = xymin; x < xymax; x += 1/16) {
+         ggraph = ggraph..(x,g(x));
+      }
+      draw(ggraph, blue, L="$y=g(x)$", align=N);
+
+      draw((the_x,0)--(the_x,g(the_x)), lightblue);
+      draw((the_x+h,0)--(the_x+h,g(the_x+h)), lightblue);
+      label((the_x,0), L="$x$", align=SW);
+      draw(brace((the_x+h,0),(the_x,0), amplitude=0.1), L="$h$", align=S);
+      draw(brace((the_x,0),(the_x,g(the_x))), L="$g(x)$", align=W);
+      draw(brace((the_x+h,g(the_x+h)),(the_x+h,0)), L="$g(x+h)$", align=E);
+
+      draw((flatleft,g(the_x))--(flatright,g(the_x)), red);
+
+   This looks nice, but we are not done yet! We divided by `k`. What if
+   `k=g(x+h)-g(x)=0` when `h \to 0` but `h \ne 0`? Practically it means that
+   the graph `y=g(x)` has a horizontal bit (red in the picture) around `x`
+   because `g(x+h)=g(x)` with a small `h`. So, we can say that `g(x)=c` on this
+   interval (`c` is a constant) and prove this case separately:
+
+   .. math::
+      \frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0
+
+   Careful here -- we're differenciating with respect to `x` so `f'(c)` is
+   actually yet another constant. The `c` could be something like `2` and
+   `f'(2)` obviously doesn't depend on the value of `x`.
+
+   We get the same answer with the rule that we were supposed to prove:
+
+   .. math::
+      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
+      = f'(c) \left( \frac{d}{dx} c \right) = f'(x) \cdot 0 = 0
