@@ -1,12 +1,13 @@
 Proofs and Explanations
 =======================
 
+If you just want to get things done without worrying about why the calculations
+are exactly like they are then you're in the wrong place, but if you got
+interested in the math itself you may enjoy reading some of this stuff.
+
 I used a bunch of spooky formulas in this tutorial. Some of them are
 definitions of e.g. `\sin` or `\cos`, but in this chapter we'll focus on those
-that aren't and prove that they actually work. If you just want to get things
-done without worrying about why the calculations are exactly like they are then
-you're in the wrong place, but if you got interested in the math itself you
-may enjoy reading some of this stuff.
+that aren't and prove that they actually work.
 
 
 .. _unitcircle-triangle-compat:
