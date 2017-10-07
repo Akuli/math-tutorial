@@ -505,4 +505,4 @@ haven't been proved before them.
 
    .. math::
       \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
-      = f'(c) \left( \frac{d}{dx} c \right) = f'(x) \cdot 0 = 0
+      = f'(c) \left( \frac{d}{dx} c \right) = f'(c) \cdot 0 = 0
