@@ -202,7 +202,8 @@ Faster!
 
 Finding the derivative was kind of complicated and really slow. With these
 handy-dandy rules, you can get `2x` from `x^2` in a matter of seconds. Most of
-these rules are easy to prove so there is no magic involved.
+these rules are :ref:`easy to prove <derivative-proofs>` so there is no magic
+involved.
 
 I have listed many rules here, but **don't panic**; there's no need to memorize
 them. As before `f` and `g` can be any functions as long as they have a
@@ -381,5 +382,6 @@ You can use similar code for doing jumps in games.
 .. admonition:: Exercise
 
    Create a minimal game where a player can be moved side to side with arrow
-   keys and the player jumps when arrow up is pressed. I'll create an example
-   implementation soon.
+   keys and the player jumps when arrow up is pressed.
+
+   My example implementation is `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/jump.py>`_.
