@@ -169,6 +169,8 @@ Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.
 
 
+.. _derivative-proofs:
+
 Derivative Rules
 ~~~~~~~~~~~~~~~~
 

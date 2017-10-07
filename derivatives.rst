@@ -202,7 +202,8 @@ Faster!
 
 Finding the derivative was kind of complicated and really slow. With these
 handy-dandy rules, you can get `2x` from `x^2` in a matter of seconds. Most of
-these rules are easy to prove so there is no magic involved.
+these rules are :ref:`easy to prove <derivative-proofs>` so there is no magic
+involved.
 
 I have listed many rules here, but **don't panic**; there's no need to memorize
 them. As before `f` and `g` can be any functions as long as they have a
