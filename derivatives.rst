@@ -143,7 +143,7 @@ do it.
                   &= \frac{(x+dx)(x+dx) - x^2}{dx} \\
                   &= \frac{x(x+dx) + dx(x+dx) - x^2}{dx} \\
                   &= \frac{x^2 + x \cdot dx + dx \cdot x + (dx)^2 - x^2}{dx} \\
-                  &= \frac{\overbrace{x^2 - x^2}^0 + x \cdot dx + dx \cdot x + (dx)^2}{dx} \\
+                  &= \frac{\overbrace{x^2 - x^2}^\text{this is 0} + x \cdot dx + dx \cdot x + (dx)^2}{dx} \\
                   &= \frac{x \cdot dx + x \cdot dx + dx \cdot dx}{dx} \\
                   &= \frac{(x + x + dx)dx}{dx} \\
                   &= x + x + dx \\
@@ -188,8 +188,8 @@ and there's no difference between a slope and a derivative of a straight line.
 
 .. note::
 
-   The derivative `\frac{dy}{dx}` can be also written as `\frac{d}{dx} y`, even
-   though it doesn't make much sense because `dx` doesn't mean `d` times `x`.
+   The derivative `\frac{dy}{dx}` can be also written as `\frac{d}{dx} y`,
+   although it doesn't make much sense because `dy` doesn't mean `d` times `y`.
 
    Another common style is to put a single quote after a function name, like
    `f'(x) = \frac{d}{dx} f(x)`.
