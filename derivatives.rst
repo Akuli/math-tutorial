@@ -384,4 +384,4 @@ You can use similar code for doing jumps in games.
    Create a minimal game where a player can be moved side to side with arrow
    keys and the player jumps when arrow up is pressed.
 
-   My example implementation is `here <https://github.com/Akuli/math-tutorial/blob/master/exercise-answers/jump.py>`_.
+   My example implementation is `here <https://github.com/Akuli/math-tutorial/blob/master/samplecode/jump.py>`_.
