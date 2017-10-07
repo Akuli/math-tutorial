@@ -28,31 +28,7 @@ instructions for every possible platform.
 
 ## Adding images
 
-I recommend using asymptote. See [the asy directory](asy/).
-
-Unfortunately there are also quite a few things I drew with LibreOffice Draw
-before I learned about Asymptote. These images are in [images/](images/). I
-use this awful process to export them to png:
-
-1. Install LibreOffice Draw.
-
-        $ sudo apt install libreoffice-draw
-
-2. Edit the images.
-
-        $ libreoffice --draw images/drawings.odg
-
-    I recommend going to "Options" -> "Tools" -> "LibreOffice Draw" and setting
-    up similar settings as mine are for compatibility with existing drawings.
-    Here are my settings:
-
-    - "General" at left: the measurement unit is centimeter
-    - "Grid" at left:
-        - "Snap to grid" and "Visible grid" are checked
-        - Both "Subdivision" numbers are 2
-
-3. Uncheck "View" -> "Grid" -> "Display Grid".
-4. Zoom in 75%. See the thingy at bottom right and use ctrl+mousewheel.
-5. Take a *screenshot* (lol) with your favorite screenshot tool. I recommend a
-    screenshot tool that lets you select an area with the mouse.
-6. Check "View" -> "Grid" -> "Display Grid" if you want to see the grid.
+Images are drawn with [Asymptote](http://asymptote.sourceforge.net/). The rst
+files contain images created with a custom `.. asymptote::` directive
+implemented in [asymptote-setup/](asymptote-setup/). All asymptote files that
+can be imported from asymptote directives are also there.
