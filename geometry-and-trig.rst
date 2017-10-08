@@ -53,9 +53,9 @@ that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It's also possible to measure angles in radians, but we'll look into
 that later.
 
-Note that both angles are measured down from a horizontal line because that's a
-standard in programming. In math angles are usually measured up from a
-horizontal line.
+Note that both angles are measured down from a horizontal line clockwise
+because that's a standard in programming. In math, angles are usually measured
+up from a horizontal line and counter-clockwise.
 
 We can solve our problem by taking the 30° angle sign and moving it like
 this:
@@ -89,15 +89,14 @@ In math it's common to use a letter instead of "???" to represent an
 unknown value. For example:
 
 .. math::
-   30° + t &= 180° \\
-   t &= 180° - 30° = 150°
+   30° + b &= 180° \\
+   b &= 180° - 30° = 150°
 
+It's easy to calculate similar things for other directions. Here are the
+results, where `a` is the original angle and `b` is the changed angle:
 
-.. admonition:: Exercise
-
-   Calculate similar things when the ball hits a wall at left, top or
-   bottom. Don't be arfaid to deal with angles between 180° and 360°.
-
+* If the ball hits left or right wall, `b = 180°-a`.
+* If the ball hits top or bottom, `b = 360°-a`.
 
 .. _unitcircletrig:
 
@@ -168,7 +167,7 @@ to multiply everything by 5 to scale it up. We get this:
 The angle `t` in the above image looks like it's about 60°, so `\sin 60°`
 should be somewhere between 0 and 1 since the height of the x axis is 0 and the
 circle's bottom is at `y=1`. But if we try this out in Python, something is
-badly wrong:
+wrong:
 
 .. code-block:: python
 
@@ -194,8 +193,8 @@ more about radians, how the heck I came up with those mathy-accurate values and
 how Python's conversion functions work some day.
 
 In most programming languages, functions like ``sin`` and ``cos`` take radians
-as arguments, but also note that some functions (like ``atan2``, see below)
-return radians.
+as arguments, but also note that some functions (like ``atan2``, see
+`Trig with a Triangle`_ below) return radians.
 
 
 .. _triangletrig:
@@ -236,9 +235,9 @@ with the unit circle stuff above; see
    real t = atan2(-2,3);
    draw(arc((0,0), 1, 0, degrees(t)), L="$t$", align=E);
 
-The green triangle is the same triangle as the blue one, but I flipped it so
-that we can calculate the stuff by plugging in `a=20` and `b=10` without
-worrying about which way things go. Let's figure out how to calculate the `t`:
+The green triangle is just like the blue one, but I flipped it so that we can
+calculate the stuff by plugging in `a=20` and `b=10` without worrying about
+which way things go. Let's figure out how to calculate the `t`:
 
 .. math:: \tan t = \frac b a
 .. math:: t = \arctan{\frac b a} = \text{atan2}(b, a)
@@ -442,7 +441,7 @@ pseudo-ish code:
    speed_vector.y = sin(angle) * length
 
 Example: Vector class in Python
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here's a ``Vector`` class I implemented in Python running with
 `repl.it <https://repl.it/>`_. A ``Vector(x, y)`` represents
