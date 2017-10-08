@@ -404,6 +404,7 @@ my canvaswrapper.js_ script. Click it and use arrow keys to move the ball.
      player.velocity -= GRAVITY;
 
      if (player.height < 0) {
+       // player hits the ground
        player.height = 0;
        player.velocity = 0;
      }

@@ -269,6 +269,7 @@ runRepeatedly(function() {
   player.velocity -= GRAVITY;
 
   if (player.height < 0) {
+    // player hits the ground
     player.height = 0;
     player.velocity = 0;
   }
@@ -316,6 +317,7 @@ runRepeatedly(function() {
   <span class="nx">player</span><span class="p">.</span><span class="nx">velocity</span> <span class="o">-=</span> <span class="nx">GRAVITY</span><span class="p">;</span>
 
   <span class="k">if</span> <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">height</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// player hits the ground</span>
     <span class="nx">player</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="nx">player</span><span class="p">.</span><span class="nx">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="p">}</span>
