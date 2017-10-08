@@ -74,14 +74,17 @@ this:
 Now you can see that the angles add up to half turn (or 180°), so we get
 this :ref:`equation <equations>`:
 
-.. math:: 30° + \text{???} = 180°
-.. math:: \text{???} = 180° - 30° = 150°
+.. math::
+   30° + \text{???} &= 180° \\
+   \text{???} &= 180° - 30° \\
+   \text{???} &= 150°
 
 In math it's common to use a letter instead of "???" to represent an
 unknown value. For example:
 
-.. math:: 30° + t = 180°
-.. math:: t = 180° - 30° = 150°
+.. math::
+   30° + t &= 180° \\
+   t &= 180° - 30° = 150°
 
 
 .. admonition:: Exercise
@@ -365,7 +368,8 @@ below.
    draw(A--B, arrow=Arrow(size=vectorarrowsize), L="$3 \overline{i}$");
    draw(B--C, arrow=Arrow(size=vectorarrowsize), L="$4 \overline{j}$", align=NW);
    draw(C--D, arrow=Arrow(size=vectorarrowsize), L="$5 \overline{i}$", align=N);
-   draw(A--D, arrow=Arrow(size=vectorarrowsize), L="$8 \overline{i} + 4 \overline{j}$", blue, align=SE);
+   draw(A--D, arrow=Arrow(size=vectorarrowsize), blue,
+      L=Label(rotate(degrees(atan(4/8)))*"$8 \overline{i} + 4 \overline{j}$"), align=SE);
 
 Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
@@ -399,10 +403,11 @@ These vector calculations are just like the
 :ref:`Pythagorean theorem <pythagoras>` and
 :ref:`unit circle trig <unitcircletrig>` stuff above:
 
-.. math:: l = \sqrt{a^2+b^2} = \text{hypot}(a, b)
-.. math:: t = \text{atan2}(b,a)
-.. math:: a = l \cdot \cos t
-.. math:: b = l \cdot \sin t
+.. math::
+   l &= \sqrt{a^2+b^2} = \text{hypot}(a, b) \\
+   t &= \text{atan2}(b,a) \\
+   a &= l \cdot \cos t \\
+   b &= l \cdot \sin t
 
 Example: if we move 1 unit to the right and 2 units up, our vector is `<1,2>`,
 its length is `\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24` and the angle is
@@ -420,45 +425,15 @@ pseudo-ish code:
    speed_vector.x = cos(angle) * length
    speed_vector.y = sin(angle) * length
 
-.. admonition:: Exercise
+Example: Vector class in Python
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Create a ``Vector`` class in your favorite programming language that
-   represents `x \bar i + y \bar j`. The class should implement a
-   ``Vector(x, y)`` constructor and the properties (or setters and getters if
-   you use e.g. Java) ``x``, ``y``, ``length`` and ``angle``. Additionally, if
-   the programming language supports it, you can add a nice ``"Vector(x, y)"``
-   string representation and operator overloading; e.g.
-   `(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j`, so
-   ``Vector(1, 2) + Vector(3, 4) == Vector(4, 6)``.
+Here's a ``Vector`` class I implemented in Python running with
+`repl.it <https://repl.it/>`_. A ``Vector(x, y)`` represents
+`x \bar i + y \bar j`. I didn't add operator overloading because I wanted to
+keep everything nice and simple. Click the "play"-shaped button at top to run
+the code and then use the Python shell at right.
 
-   I found it easiest to implement things by storing only ``x`` and
-   ``y`` and calculating everything else as needed.
+.. raw:: html
 
-   For example, here I'm playing with my Python implementation:
-
-   .. code-block:: python
-
-      >>> v = Vector(1, 2)
-      >>> v         # the string representation
-      Vector(1, 2)
-      >>> v.x
-      1
-      >>> v.y
-      2
-      >>> v.length
-      2.23606797749979
-      >>> math.degrees(v.angle)
-      63.43494882292201
-      >>> v.angle = math.radians(45)
-      >>> v
-      Vector(1.5811388300841898, 1.5811388300841895)
-      >>> v.length      # setting the angle didn't change this
-      2.23606797749979
-      >>> v.length = 0     # lol
-      >>> v
-      Vector(0.0, 0.0)
-
-   My code is
-   `here <https://github.com/Akuli/math-tutorial/blob/master/samplecode/vector.py>`_.
-   I didn't add operator overloading because I wanted to keep the
-   implementation simple and easy to read.
+   <iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MRCz/1"></iframe>
