@@ -218,9 +218,9 @@ technique known as <strong>induction</strong>.</p>
 <p>Let’s start by showing that this works with e.g. <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/>:</p>
 <blockquote>
 <div><img class="math" src="_images/math/a9272716c8ee60310f2eb8148343e27c0f074c26.png" alt="\frac{d}{dx} x^1 = \frac{d}{dx} x = 1 = 1x^0 = 1x^{1-1}"/></div></blockquote>
-<p>Next we’ll prove that <strong>if</strong> it works at <img class="math" src="_images/math/ee2f1a8e00432c090b96087cba7d7e97d7a0862f.png" alt="c=k"/> <strong>then</strong> it also works at
-<img class="math" src="_images/math/65a4031594f572672d72c031ba506275e5c2b463.png" alt="c=k+1"/> where <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> is a positive integer. Let’s write things down just to be
-clear:</p>
+<p>Next we’ll prove that <strong>if</strong> the rule works at <img class="math" src="_images/math/ee2f1a8e00432c090b96087cba7d7e97d7a0862f.png" alt="c=k"/> <strong>then</strong> it also works
+at <img class="math" src="_images/math/65a4031594f572672d72c031ba506275e5c2b463.png" alt="c=k+1"/> where <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> is a positive integer. Let’s write things down just to
+be clear:</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -248,10 +248,10 @@ proved above and the assumption.</p>
 when <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/>, and then if we plug in <img class="math" src="_images/math/e0c697f0cf4a4c09fb151f725bdc6e65c3be447c.png" alt="k=1"/> we know it works when <img class="math" src="_images/math/98ddc75a93c83c1dfae845e656cc87da36617748.png" alt="c=2"/>, and so
 on.</p>
 <div class="i">
-<p><img src="_images/asymptote/73c41ad0b63c9d17e598bae0608ebcde.png"/></p></div><p>Note that we only proved that it works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a positive integer, but
-it also works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is e.g. <img class="math" src="_images/math/582d85cfa35dc89f5ae0a4903ea8eef0da364ab7.png" alt="\frac{1}{2}"/>. It’s possible to prove that
-the rule isn’t limited to positive integers, but that’s beyond the scope of
-this tutorial.</p>
+<p><img src="_images/asymptote/73c41ad0b63c9d17e598bae0608ebcde.png"/></p></div><p>Note that we only proved that the rule works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a positive integer,
+but it also works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is e.g. <img class="math" src="_images/math/582d85cfa35dc89f5ae0a4903ea8eef0da364ab7.png" alt="\frac{1}{2}"/>. It’s possible to prove
+that the rule isn’t limited to positive integers, but that’s beyond the
+scope of this tutorial.</p>
 </div></blockquote>
 </div>
 <div class="section" id="id6">
@@ -300,7 +300,7 @@ So, if <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84
 <p>If we put all this together we can set <img class="math" src="_images/math/48438feaf697dd21d1d3af56b5e8c1a7666d2ce1.png" alt="k=g(x+h)-g(x)"/>. Now it’s time to
 calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2ec2c4b.png" alt="f'(g(x))g'(x)"/>.</p>
 <div class="math">
-<p><img src="_images/math/b8735dfe36104eca223d162337c3dadbbf95f8e7.png" alt="f'(g(x))g'(x)
+<p><img src="_images/math/aa334276c61f763ef00308d15cec423fc98def35.png" alt="f'(g(x))g'(x)
 &amp;= \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
 &amp;= \lim_{k\to0} \lim_{h\to0} \left(
       \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
@@ -310,7 +310,7 @@ calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2
       \cdot \frac{g(x+h)-g(x)}{h}
 \right) \\
 &amp;= \lim_{h\to0} \left(
-      \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}
+      \frac{f(g(x+h)+g(x)-g(x))-f(g(x))}{g(x+h)-g(x)}
       \cdot \frac{g(x+h)-g(x)}{h}
 \right) \\
 &amp;= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
@@ -318,19 +318,17 @@ calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2
 </div><div class="i">
 <p><img src="_images/asymptote/b927351c0ef1b6168ce8b3bb3e9e6d3f.png" class="align-right"/></p></div><p>This looks nice, but we are not done yet! We divided by <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/>. What if
 <img class="math" src="_images/math/3581b4c83622de31c2170c3e26137d2b921f9150.png" alt="k=g(x+h)-g(x)=0"/> when <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84774.png" alt="h \to 0"/> but <img class="math" src="_images/math/d010d8739df6f9919d9e4340196f07afcdddc018.png" alt="h \ne 0"/>? Practically it means that
-the graph <img class="math" src="_images/math/c8b7507d86751bbc4e8bfb5a5b626b87d2a55241.png" alt="y=g(x)"/> is horizontal around <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> because <img class="math" src="_images/math/e524283c92c29894380f55200192d96e80954915.png" alt="g(x+h)=g(x)"/> with a
-small <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/>. So, we can say that <img class="math" src="_images/math/3b34403af1c50199c4c06b1d11904c977d935988.png" alt="g(x)=c"/> on this interval (<img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a constant)
-and prove this case separately:</p>
+the graph <img class="math" src="_images/math/c8b7507d86751bbc4e8bfb5a5b626b87d2a55241.png" alt="y=g(x)"/> is a horizontal and straight line around <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> because
+<img class="math" src="_images/math/e524283c92c29894380f55200192d96e80954915.png" alt="g(x+h)=g(x)"/> with a small <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/>. So, we can say that <img class="math" src="_images/math/3b34403af1c50199c4c06b1d11904c977d935988.png" alt="g(x)=c"/> on this
+interval (<img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a constant) and prove this case separately:</p>
 <div class="math">
+<p><img src="_images/math/d7de58f5c3d2dd0e6f81b7871294f87d8da8b356.png" alt="f(g(x))g'(x) = f(c) \left(\frac{d}{dx} c\right) = f(c) \cdot 0 = 0"/></p>
+</div><div class="math">
 <p><img src="_images/math/bc9987dc57c8bf414874cead4817002dd235fb52.png" alt="\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0"/></p>
-</div><p>Careful here – we’re differenciating with respect to <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> so <img class="math" src="_images/math/0814556d52bf073d8cfc06adae041e777a976fee.png" alt="f(c)"/> is
+</div><p>Look carefully – we differenciated <img class="math" src="_images/math/0814556d52bf073d8cfc06adae041e777a976fee.png" alt="f(c)"/> with respect to <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> so <img class="math" src="_images/math/0814556d52bf073d8cfc06adae041e777a976fee.png" alt="f(c)"/> was
 actually yet another constant. The <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> could be something like <img class="math" src="_images/math/16d14f59441fe3b3d7c57975e6e10cbf2474c220.png" alt="2"/> and
 <img class="math" src="_images/math/51afa36742f93ac8b4e862e6db403fc0ec4f5146.png" alt="f(2)"/> obviously doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
-<p>We get the same answer with the rule that we were supposed to prove:</p>
-<div class="math">
-<p><img src="_images/math/fbc8c1b143d47db34a516eee3728850a6490e8e3.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
-= f'(c) \left( \frac{d}{dx} c \right) = f'(c) \cdot 0 = 0"/></p>
-</div></div></blockquote>
+</div></blockquote>
 </div>
 </div>
 </div>

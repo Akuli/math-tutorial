@@ -315,9 +315,9 @@ haven't been proved before them.
 
       `\frac{d}{dx} x^1 = \frac{d}{dx} x = 1 = 1x^0 = 1x^{1-1}`
 
-   Next we'll prove that **if** it works at `c=k` **then** it also works at
-   `c=k+1` where `k` is a positive integer. Let's write things down just to be
-   clear:
+   Next we'll prove that **if** the rule works at `c=k` **then** it also works
+   at `c=k+1` where `k` is a positive integer. Let's write things down just to
+   be clear:
 
    :We assume: `\frac{d}{dx} x^k = k x^{k-1}`
    :We'll prove: `\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}`
@@ -355,10 +355,10 @@ haven't been proved before them.
               L="$k="+(string)c+"$", align=N);
       }
 
-   Note that we only proved that it works when `c` is a positive integer, but
-   it also works when `c` is e.g. `\frac{1}{2}`. It's possible to prove that
-   the rule isn't limited to positive integers, but that's beyond the scope of
-   this tutorial.
+   Note that we only proved that the rule works when `c` is a positive integer,
+   but it also works when `c` is e.g. `\frac{1}{2}`. It's possible to prove
+   that the rule isn't limited to positive integers, but that's beyond the
+   scope of this tutorial.
 
 `\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -446,7 +446,7 @@ haven't been proved before them.
             \cdot \frac{g(x+h)-g(x)}{h}
       \right) \\
       &= \lim_{h\to0} \left(
-            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}
+            \frac{f(g(x+h)+g(x)-g(x))-f(g(x))}{g(x+h)-g(x)}
             \cdot \frac{g(x+h)-g(x)}{h}
       \right) \\
       &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
@@ -492,19 +492,13 @@ haven't been proved before them.
 
    This looks nice, but we are not done yet! We divided by `k`. What if
    `k=g(x+h)-g(x)=0` when `h \to 0` but `h \ne 0`? Practically it means that
-   the graph `y=g(x)` is horizontal around `x` because `g(x+h)=g(x)` with a
-   small `h`. So, we can say that `g(x)=c` on this interval (`c` is a constant)
-   and prove this case separately:
+   the graph `y=g(x)` is a horizontal and straight line around `x` because
+   `g(x+h)=g(x)` with a small `h`. So, we can say that `g(x)=c` on this
+   interval (`c` is a constant) and prove this case separately:
 
-   .. math::
-      \frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0
+   .. math:: f(g(x))g'(x) = f(c) \left(\frac{d}{dx} c\right) = f(c) \cdot 0 = 0
+   .. math:: \frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0
 
-   Careful here -- we're differenciating with respect to `x` so `f(c)` is
+   Look carefully -- we differenciated `f(c)` with respect to `x` so `f(c)` was
    actually yet another constant. The `c` could be something like `2` and
    `f(2)` obviously doesn't depend on the value of `x`.
-
-   We get the same answer with the rule that we were supposed to prove:
-
-   .. math::
-      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
-      = f'(c) \left( \frac{d}{dx} c \right) = f'(c) \cdot 0 = 0
