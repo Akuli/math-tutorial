@@ -1,9 +1,3 @@
-/*
-   *************  if you edit this file be sure to delete all .png files
-   **  NOTE:  **  because changes to this file affect everything else
-   *************  but conf.py doesn't know it
- */
-
 // TODO: get rid of corner90 and bracedistance because picture-specific
 //       values turned out to be a better idea
 // TODO: stop using a weird mixture of mm and raw numbers?
@@ -25,13 +19,20 @@ void grid(real xmin, real xmax, real ymin, real ymax) {
 
 void axises(real xmin, real xmax, real ymin, real ymax,
             string xlabel="$x$", string ylabel="$y$") {
-    // TODO: come up with a better way to label the axises
+    // TODO: come up with a nice way to add numbers along the axises
     draw((xmin,0)--(xmax,0), arrow=Arrow(size=0.7cm));
     draw((0,ymin)--(0,ymax), arrow=Arrow(size=0.7cm));
     draw((xmax,0)--(xmax,0.01), L=xlabel);
     draw((0,ymax)--(0,ymax+0.01), L=ylabel);
 }
 
+void abctriangle(real x, real y, pen fillcolor=mediumblue) {
+    fill((0,0)--(x,0)--(x,y)--cycle, fillcolor);
+    draw((x-corner90, 0)--(x-corner90, sgn(y)*corner90)--(x, sgn(y)*corner90));
+    draw((0,0)--(x,0), L="$a$", align=(y > 0 ? S : N));
+    draw((x,0)--(x,y), L="$b$", align=E);
+    draw((x,y)--(0,0), L="$c$", align=(y > 0 ? N : S));
+}
 
 
 // copy/pasted from asymptote source because not-very-newest asymptotes

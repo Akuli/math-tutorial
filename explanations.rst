@@ -18,11 +18,11 @@ Two ways to define sine and cosine
 .. asymptote::
    :align: right
 
-   size(11cm);
+   size(12cm);
 
+   axises(-1.1,1.3,-1.1,1.3);
    real t = pi/3;          // 60°
    real tradius = 0.2;     // radius of t's arc thingy
-   real axisloc = 1.1;     // x axis goes from -axisloc to +axisloc, y axis similarly
 
    draw(unitcircle);
    fill((0,0)--(cos(t),0)--(cos(t),sin(t))--cycle, yellow);
@@ -32,31 +32,27 @@ Two ways to define sine and cosine
 
    draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
 
-   draw((-axisloc,0)--(axisloc,0));
-   draw((0,-axisloc)--(0,axisloc));
+The y axis of the picture at right goes up because this explanation isn't
+really useful for programming; it's just an explanation for people who are
+wondering how `\sin` and `\cos` appear both in a unit circle and in triangles.
 
 In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
 `\cos` with a unit circle, but then in
 :ref:`the triangle trig section <triangletrig>` we defined them with a
-triangle. These definitions are compatible with each other. If we draw a
-picture like the one at right and apply the triangle stuff to the angle `t`, we
-get this:
-
-.. this is one chunk of math for alignment reasons
+triangle. If we apply the triangle stuff to the angle `t` of the picture at
+right, we get this:
 
 .. math::
-   \sin t = \frac{\sin t}{1}
-
-   \cos t = \frac{\cos t}{1}
-
-   \tan t = \frac{\sin t}{\cos t}
+   \sin t &= \frac{\sin t}{1} \\
+   \cos t &= \frac{\cos t}{1} \\
+   \tan t &= \frac{\sin t}{\cos t}
 
 .. asymptote::
    :align: right
 
-   import abctriangle;
-
-   real t = atan2(C.y, C.x);
+   size(9cm);
+   abctriangle(3,2);
+   real t = atan2(2,3);
    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 The first two formulas are obviously true with any `t`, but the last one is a

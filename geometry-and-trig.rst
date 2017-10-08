@@ -2,7 +2,18 @@ Geometry and Trigonometry
 =========================
 
 This chapter contains useful stuff that aren't too difficult to get started
-with. You'll find it especially useful if you like writing games.
+with. You'll find it especially useful if you like writing games, and this
+chapter contains a working example game.
+
+.. note::
+
+   Usually the y axis is so that more y means up, but in this chapter, it's
+   "upside down" and more y means down. Almost all programming things use the
+   "more y means down" version and are compatible with this chapter.
+
+   If you're a mathematician everything looks really weird to you, but if
+   you're a programmer who wants to get stuff done you'll enjoy not having to
+   add minus signs everywhere before using formulas from this tutorial.
 
 
 Basic Angle Stuff
@@ -19,22 +30,20 @@ Basic Angle Stuff
 
       size(9cm);
 
-      real tdeg = 30, t = pi/6;
-
       // points of the dotted ball path line
-      pair A = (-cos(t)*1.5, -sin(t)*1.5);
+      pair A = (-cos(radians(30))*1.5, sin(radians(30))*1.5);
       pair B = (0,0);
-      pair C = (-cos(t)*2, sin(t)*2);
+      pair C = (-cos(radians(30))*2, -sin(radians(30))*2);
 
       draw(A--B--C, p=smalldashes+deepblue);
-      dot(C, p=deepblue, L=" the ball", align=NE);
+      dot(C, p=deepblue, L=" the ball", align=S);
 
       draw((-1.3,C.y/2)--(-0.3,C.y/2), smalldashes);
-      draw(arc((C.x/2,C.y/2), 0.2, 0, 180-tdeg), deepred, L="???");
+      draw(arc((C.x/2,C.y/2), 0.2, -150, 0), deepred, L="???");
 
       // asymptote doesn't like °
       draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
-      draw(arc((A.x*2/3,A.y*2/3), 0.3, 0, tdeg), deepgreen, L="$30^\circ$");
+      draw(arc((A.x*2/3,A.y*2/3), 0.3, 0, -30), deepgreen, L="$30^\circ$", align=E);
 
       real wallthickness = 0.15;
       filldraw((0,-1)--(0,1)--(wallthickness,1)--(wallthickness,-1)--cycle, pattern("wall"));
@@ -44,10 +53,9 @@ that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It's also possible to measure angles in radians, but we'll look into
 that later.
 
-Note that both angles are measured up from a horizontal line. Measuring
-them like that is a standard that this tutorial uses and people are
-familiar with. You can also measure angles that go down like that; for
-example, 270° would be straight down (that's 90° less than a full turn).
+Note that both angles are measured down from a horizontal line because that's a
+standard in programming. In math angles are usually measured up from a
+horizontal line.
 
 We can solve our problem by taking the 30° angle sign and moving it like
 this:
@@ -58,18 +66,16 @@ this:
 
    size(7cm);
 
-   real tdeg = 30, t = pi/6;
-
    // points of the dotted ball path line
    pair B = (0,0);
-   pair C = (-cos(t)*2, sin(t)*2);
+   pair C = (-cos(radians(30))*2, -sin(radians(30))*2);
 
    draw(B--C, p=smalldashes+deepblue);
    dot(C, p=deepblue);
 
    draw((-1.6,C.y/2)--(-0.3,C.y/2), smalldashes);
-   draw(arc((C.x/2,C.y/2), 0.2, 0, 180-tdeg), deepred, L="???");
-   draw(arc((C.x/2,C.y/2), 0.25, 180-tdeg, 180), deepgreen, L="$30^\circ$");
+   draw(arc((C.x/2,C.y/2), 0.2, -150, 0), deepred, L="???");
+   draw(arc((C.x/2,C.y/2), 0.3, -150, -180), deepgreen, L="$30^\circ$", align=W);
 
 Now you can see that the angles add up to half turn (or 180°), so we get
 this :ref:`equation <equations>`:
@@ -100,22 +106,22 @@ Trig (aka trigonometry) with the Unit Circle
 
 .. admonition:: Problem
 
-   A player moves to top-right at the angle of 60° measured from the
-   x axis at 10 pixels per second. How many pixels should the player's x and y
-   change every second?
+   This time the ball moves at the angle of 60°, and it should move 5 pixels
+   every time the screen is updated. How many pixels should its x and y change
+   every second?
 
    .. asymptote::
 
       size(10cm);
 
       // start and end of dotted player path line
-      pair pathstart = (0.1,-0.5);
-      pair pathend = (1.5,2);
+      pair pathstart = (0.7,0);
+      pair pathend = (1.5,-1.5);
 
-      axises(-1.5, 3, -0.5, 2);
+      axises(0, 3, 0, -2);
 
-      draw(pathstart--pathend, p=smalldashes);
-      dot(pathend, L=" the player", align=NE);
+      draw(pathstart--pathend, p=smalldashes+deepblue);
+      dot(pathend, deepblue, L=" the ball", align=NE);
 
       // where does the player's path hit the x axis?
       real deltay = pathend.y-pathstart.y;
@@ -129,10 +135,7 @@ Trig (aka trigonometry) with the Unit Circle
       real x = pathstart.x - pathstart.y/s;
       real t = atan2(deltay, deltax);
 
-      draw(arc((x,0), 0.4, 0, degrees(t)), L="$60^\circ$");
-
-Note that the y axis goes up in math so higher means bigger, but in programming
-it's usually upside down.
+      draw(arc((x,0), 0.4, 0, degrees(t)), L="$60^\circ$", align=E);
 
 Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
@@ -140,28 +143,32 @@ shows what sine and cosine are:
 
 .. asymptote::
 
-   size(10cm);
+   size(9cm);
 
-   axises(-1.2,1.4,-1.2,1.4);
-   real t = pi/3;   // 60°
+   axises(-1.2,1.6,1.2,-1.8);
+   real t = radians(55);
 
    draw(unitcircle);
-   draw((0,0)--(cos(t),sin(t)), L="1", align=NW);
-   dot((cos(t),sin(t)), p=dotpen, L="$(\cos t, \sin t)$", align=NE);
-   draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
+   draw((0,0)--(cos(t),-sin(t)), L="1", align=S);
+   dot((cos(t),-sin(t)), p=dotpen);
+   draw(arc((0,0), 0.3, -degrees(t), 0), L="$t$");
 
-This is really quite simple: the x coordinate is `\cos t` and the y
-coordinate is `\sin t`. But the radius of the unit circle is 1 instead
-of our 10, so we need to multiply everything by 10 to scale it up. We get this:
+   draw(brace((cos(t),-1), (0,-1)), deepblue, L="$\cos t$", align=S);
+   draw(brace((cos(t)+0.15,0), (cos(t)+0.15,-sin(t))), darkorange, L="$\sin t$", align=E);
+
+This is really simple: the x coordinate is `\cos t` and the y coordinate is
+`\sin t`. But the radius of the unit circle is 1 instead of our 5, so we need
+to multiply everything by 5 to scale it up. We get this:
 
 .. code-block:: python
 
-   player.x += 10*cos(60)
-   player.y += 10*sin(60)
+   player.x += 5*cos(60)
+   player.y += 5*sin(60)
 
-Based on the unit circle, `\sin 60°` should be somewhere between 0 and 1 since
-the height of the x axis is 0 and the circle's top is at 1 (the radius is 1).
-But if we try this out in Python, something is wrong:
+The angle `t` in the above image looks like it's about 60°, so `\sin 60°`
+should be somewhere between 0 and 1 since the height of the x axis is 0 and the
+circle's bottom is at `y=1`. But if we try this out in Python, something is
+badly wrong:
 
 .. code-block:: python
 
@@ -169,12 +176,9 @@ But if we try this out in Python, something is wrong:
    >>> math.sin(60)
    -0.3048106211022167
 
-Now you're feeling really WTF. The angles with negative sines should be below
-the x axis, e.g. something between 180° and 360°.
-
 The problem is that Python, Haskell, C and most other programming languages use
-radians by default instead of degrees. Let's convert 60° to radians so the sine
-function is happy:
+radians by default instead of degrees. Let's convert 60° to radians so
+``math.sin`` is happy:
 
 .. code-block:: python
 
@@ -187,7 +191,7 @@ That's more like it. ``0.5000000000000001`` is obviously not an accurate
 result, but it's good enough for a programmer while a mathematician would say
 that `\sin 60° = \frac{\sqrt 3}2` and `\cos 60° = \frac 1 2`. I might write
 more about radians, how the heck I came up with those mathy-accurate values and
-how my conversion functions work some day.
+how Python's conversion functions work some day.
 
 In most programming languages, functions like ``sin`` and ``cos`` take radians
 as arguments, but also note that some functions (like ``atan2``, see below)
@@ -201,7 +205,7 @@ Trig with a Triangle
 
 .. admonition:: Problem
 
-   A player moves 10 pixels up and 20 pixels right. What angle is that?
+   The ball moves 10 pixels down and 20 pixels right. What angle is that?
 
 Here's another way to define `\sin` and `\cos`, and another function called
 `\tan` that we haven't used before.
@@ -209,21 +213,32 @@ Here's another way to define `\sin` and `\cos`, and another function called
 .. asymptote::
    :align: right
 
-   import abctriangle;
-
-   real t = atan2(C.y, C.x);
+   size(9cm);
+   abctriangle(3,2);
+   real t = atan2(2,3);
    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
-.. math:: \sin t = \frac b c
-.. math:: \cos t = \frac a c
-.. math:: \tan t = \frac b a
+.. math::
+   \sin t &= \frac b c \\
+   \cos t &= \frac a c \\
+   \tan t &= \frac b a
 
-These things only work if the triangle has a 90° corner, and the little box at
+These things work only if the triangle has a 90° corner, and the little box at
 bottom right means that the corner is 90°. These definitions are compatible
-with the unit circle stuff above; see :ref:`this <unitcircle-triangle-compat>`.
+with the unit circle stuff above; see
+:ref:`this thing <unitcircle-triangle-compat>`.
 
-So now we know that `a=20` and `b=10`. Let's figure out how to calculate `t`
-from those:
+.. asymptote::
+   :align: right
+
+   size(9cm);
+   abctriangle(3,-2, lightgreen);
+   real t = atan2(-2,3);
+   draw(arc((0,0), 1, 0, degrees(t)), L="$t$", align=E);
+
+The green triangle is the same triangle as the blue one, but I flipped it so
+that we can calculate the stuff by plugging in `a=20` and `b=10` without
+worrying about which way things go. Let's figure out how to calculate the `t`:
 
 .. math:: \tan t = \frac b a
 .. math:: t = \arctan{\frac b a} = \text{atan2}(b, a)
@@ -233,7 +248,7 @@ programming languages have an ``atan(x)`` function that returns `\arctan x`,
 but I don't recommend using it in this case; the ``atan2(b,a)`` function
 returns `\arctan{\frac b a}` and I recommend it instead. ``atan2`` looks at the
 signs of `a` and `b` and does the right thing if they're negative (the player
-is moving to e.g. bottom left). It also works if ``a`` is 0 and ``b/a`` would
+is moving to e.g. top left). It also works if ``a`` is 0 and ``b/a`` would
 fail as division by zero is undefined.
 
 .. note::
@@ -263,7 +278,8 @@ Pythagorean Theorem
 .. asymptote::
    :align: right
 
-   import abctriangle;
+   size(6cm);
+   abctriangle(3,2);
 
 Here's a handy equation, also known as the Pythagorean theorem:
 
