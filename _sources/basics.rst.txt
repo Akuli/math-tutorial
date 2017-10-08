@@ -60,7 +60,8 @@ written as `a \cdot b` or simply `ab`.
 Some handy stuff:
 
 .. math:: 0a = 0
-.. math:: 1a = \frac{a}{1} = a
+.. math:: 1a = a
+.. math:: \frac{a}{1} = a
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
 .. math:: \frac{a+b}{c} = \frac a c + \frac b c
@@ -75,7 +76,7 @@ doesn't work.
 
 Here's an easy way to work with long `+` and `-` things: if you have `a+b+c-b`
 you can move the `+b` and `-b` to the beginning and get `b-b+a+c` (where
-`b=+b`), and realize that `b-b=0` and the answer is just `a+c`. Later you'll
+`+b=b`), and realize that `b-b=0` and the answer is just `a+c`. Later you'll
 notice that we end up with this `x+y-x` pattern surprisingly often and things
 become nice and simple.
 
