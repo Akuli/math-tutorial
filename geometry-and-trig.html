@@ -43,7 +43,17 @@
   <div class="section" id="geometry-and-trigonometry">
 <h1>Geometry and Trigonometry<a class="headerlink" href="#geometry-and-trigonometry" title="Permalink to this headline">¶</a></h1>
 <p>This chapter contains useful stuff that aren’t too difficult to get started
-with. You’ll find it especially useful if you like writing games.</p>
+with. You’ll find it especially useful if you like writing games, and this
+chapter contains a working example game.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Usually the y axis is so that more y means up, but in this chapter, it’s
+“upside down” and more y means down. Almost all programming things use the
+“more y means down” version and are compatible with this chapter.</p>
+<p class="last">If you’re a mathematician everything looks really weird to you, but if
+you’re a programmer who wants to get stuff done you’ll enjoy not having to
+add minus signs everywhere before using formulas from this tutorial.</p>
+</div>
 <div class="section" id="basic-angle-stuff">
 <h2>Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-problem admonition">
@@ -51,19 +61,18 @@ with. You’ll find it especially useful if you like writing games.</p>
 <p>The ball of a ball-and-paddle game is moving at the angle of 30° and
 it hits a wall at right. How should the angle change?</p>
 <div class="last i">
-<p><img src="_images/asymptote/f23be0d8450a9b370ec23c3bb313509d.png"/></p></div></div>
+<p><img src="_images/asymptote/fb5caa08ab3bb76c401727fc545b99c1.png"/></p></div></div>
 <p>Here ° is the degree sign, and 30° means 30 degrees. Degrees work so
 that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It’s also possible to measure angles in radians, but we’ll look into
 that later.</p>
-<p>Note that both angles are measured up from a horizontal line. Measuring
-them like that is a standard that this tutorial uses and people are
-familiar with. You can also measure angles that go down like that; for
-example, 270° would be straight down (that’s 90° less than a full turn).</p>
+<p>Note that both angles are measured down from a horizontal line because that’s a
+standard in programming. In math angles are usually measured up from a
+horizontal line.</p>
 <p>We can solve our problem by taking the 30° angle sign and moving it like
 this:</p>
 <div class="i">
-<p><img src="_images/asymptote/55c1a71b761d98e4018d5cc8bfc651bf.png"/></p></div><p>Now you can see that the angles add up to half turn (or 180°), so we get
+<p><img src="_images/asymptote/2db2cd72682df006917dbeb4a3cea209.png"/></p></div><p>Now you can see that the angles add up to half turn (or 180°), so we get
 this <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
 <div class="math">
 <p><img src="_images/math/33723e63a81285a59a24e3f0ff8a57d709f397db.png" alt="30° + \text{???} &amp;= 180° \\
@@ -84,37 +93,34 @@ bottom. Don’t be arfaid to deal with angles between 180° and 360°.</p>
 <span id="unitcircletrig"></span><h2>Trig (aka trigonometry) with the Unit Circle<a class="headerlink" href="#trig-aka-trigonometry-with-the-unit-circle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-problem admonition">
 <p class="first admonition-title">Problem</p>
-<p>A player moves to top-right at the angle of 60° measured from the
-x axis at 10 pixels per second. How many pixels should the player’s x and y
-change every second?</p>
+<p>This time the ball moves at the angle of 60°, and it should move 5 pixels
+every time the screen is updated. How many pixels should its x and y change
+every second?</p>
 <div class="last i">
-<p><img src="_images/asymptote/798d19175cd4620e62937f6e38dc8ef1.png"/></p></div></div>
-<p>Note that the y axis goes up in math so higher means bigger, but in programming
-it’s usually upside down.</p>
+<p><img src="_images/asymptote/aa31cc8b95632b510d9ce9f4b2fac821.png"/></p></div></div>
 <p>Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
 shows what sine and cosine are:</p>
 <div class="i">
-<p><img src="_images/asymptote/15a71270a31823589a5b53e125f03a3c.png"/></p></div><p>This is really quite simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y
-coordinate is <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead
-of our 10, so we need to multiply everything by 10 to scale it up. We get this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
-<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">10</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<p><img src="_images/asymptote/466bfe7e473a2186df03f7b1487de347.png"/></p></div><p>This is really simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y coordinate is
+<img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead of our 5, so we need
+to multiply everything by 5 to scale it up. We get this:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Based on the unit circle, <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/> should be somewhere between 0 and 1 since
-the height of the x axis is 0 and the circle’s top is at 1 (the radius is 1).
-But if we try this out in Python, something is wrong:</p>
+<p>The angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> in the above image looks like it’s about 60°, so <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/>
+should be somewhere between 0 and 1 since the height of the x axis is 0 and the
+circle’s bottom is at <img class="math" src="_images/math/2b834b23cee7309ea7a9ea5fcedf9f258875c702.png" alt="y=1"/>. But if we try this out in Python, something is
+badly wrong:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="go">-0.3048106211022167</span>
 </pre></div>
 </div>
-<p>Now you’re feeling really WTF. The angles with negative sines should be below
-the x axis, e.g. something between 180° and 360°.</p>
 <p>The problem is that Python, Haskell, C and most other programming languages use
-radians by default instead of degrees. Let’s convert 60° to radians so the sine
-function is happy:</p>
+radians by default instead of degrees. Let’s convert 60° to radians so
+<code class="docutils literal"><span class="pre">math.sin</span></code> is happy:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
 <span class="go">0.8660254037844386</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">60</span><span class="p">))</span>
@@ -125,7 +131,7 @@ function is happy:</p>
 result, but it’s good enough for a programmer while a mathematician would say
 that <img class="math" src="_images/math/6e1490ba27369c4df406cbdd210f1c8684c44b30.png" alt="\sin 60° = \frac{\sqrt 3}2"/> and <img class="math" src="_images/math/453177a40323026da8b50cc4749aa5e55aa75614.png" alt="\cos 60° = \frac 1 2"/>. I might write
 more about radians, how the heck I came up with those mathy-accurate values and
-how my conversion functions work some day.</p>
+how Python’s conversion functions work some day.</p>
 <p>In most programming languages, functions like <code class="docutils literal"><span class="pre">sin</span></code> and <code class="docutils literal"><span class="pre">cos</span></code> take radians
 as arguments, but also note that some functions (like <code class="docutils literal"><span class="pre">atan2</span></code>, see below)
 return radians.</p>
@@ -134,22 +140,23 @@ return radians.</p>
 <span id="triangletrig"></span><h2>Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-problem admonition">
 <p class="first admonition-title">Problem</p>
-<p class="last">A player moves 10 pixels up and 20 pixels right. What angle is that?</p>
+<p class="last">The ball moves 10 pixels down and 20 pixels right. What angle is that?</p>
 </div>
 <p>Here’s another way to define <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, and another function called
 <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/> that we haven’t used before.</p>
 <div class="i">
-<p><img src="_images/asymptote/62ccdd1868079365d615aba8012f616d.png" class="align-right"/></p></div><div class="math">
-<p><img src="_images/math/9537f7fb5e276514cc560fe81c7c4baae0642610.png" alt="\sin t = \frac b c"/></p>
-</div><div class="math">
-<p><img src="_images/math/5270a23b4ebee521b9706c0a68f1a9b457211659.png" alt="\cos t = \frac a c"/></p>
-</div><div class="math">
-<p><img src="_images/math/6ec055140998a97a5623de083e1ac7cb3765091b.png" alt="\tan t = \frac b a"/></p>
-</div><p>These things only work if the triangle has a 90° corner, and the little box at
+<p><img src="_images/asymptote/6be200d872b812bea087400ccc82eb2d.png" class="align-right"/></p></div><div class="math">
+<p><img src="_images/math/06d0337a475709b7fa90dd8226296a4ac97432e5.png" alt="\sin t &amp;= \frac b c \\
+\cos t &amp;= \frac a c \\
+\tan t &amp;= \frac b a"/></p>
+</div><p>These things work only if the triangle has a 90° corner, and the little box at
 bottom right means that the corner is 90°. These definitions are compatible
-with the unit circle stuff above; see <a class="reference internal" href="explanations.html#unitcircle-triangle-compat"><span class="std std-ref">this</span></a>.</p>
-<p>So now we know that <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/>. Let’s figure out how to calculate <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>
-from those:</p>
+with the unit circle stuff above; see
+<a class="reference internal" href="explanations.html#unitcircle-triangle-compat"><span class="std std-ref">this thing</span></a>.</p>
+<div class="i">
+<p><img src="_images/asymptote/063aaba126958fcdd43568ff046e2ed8.png" class="align-right"/></p></div><p>The green triangle is the same triangle as the blue one, but I flipped it so
+that we can calculate the stuff by plugging in <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/> without
+worrying about which way things go. Let’s figure out how to calculate the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>:</p>
 <div class="math">
 <p><img src="_images/math/6ec055140998a97a5623de083e1ac7cb3765091b.png" alt="\tan t = \frac b a"/></p>
 </div><div class="math">
@@ -159,7 +166,7 @@ programming languages have an <code class="docutils literal"><span class="pre">a
 but I don’t recommend using it in this case; the <code class="docutils literal"><span class="pre">atan2(b,a)</span></code> function
 returns <img class="math" src="_images/math/c67802de7f967aa6627113150a28eb0322bc7663.png" alt="\arctan{\frac b a}"/> and I recommend it instead. <code class="docutils literal"><span class="pre">atan2</span></code> looks at the
 signs of <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and does the right thing if they’re negative (the player
-is moving to e.g. bottom left). It also works if <code class="docutils literal"><span class="pre">a</span></code> is 0 and <code class="docutils literal"><span class="pre">b/a</span></code> would
+is moving to e.g. top left). It also works if <code class="docutils literal"><span class="pre">a</span></code> is 0 and <code class="docutils literal"><span class="pre">b/a</span></code> would
 fail as division by zero is undefined.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -182,7 +189,7 @@ fail as division by zero is undefined.</p>
 problem. How many pixels is that in total, measured diagonally?</p>
 </div>
 <div class="i">
-<p><img src="_images/asymptote/c63dafa0e6d9ef5bbb3f7093a2770d53.png" class="align-right"/></p></div><p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
+<p><img src="_images/asymptote/dcfa1dfaaa79d2945672d01b3daa7570.png" class="align-right"/></p></div><p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
 <div class="math">
 <p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
 </div><p>Again, the triangle’s corner between a and b must be 90° like it is in the
