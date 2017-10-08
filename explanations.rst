@@ -158,8 +158,8 @@ derivative doesn't exist in these cases:
 
 *  The graph of the function has a spike in it. Derivatives describe
    "growing speed" and it isn't clear how fast the values grow on top of a
-   spike. For example, `|x|` has a derivative everywhere except at `x=0`, just
-   like our `f(x)` above.
+   spike. For example, the :ref:`absolute value <abs>` `|x|` has a derivative
+   everywhere except at `x=0`.
 
 Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.
@@ -212,7 +212,9 @@ haven't been proved before them.
 
    We can also plug `f(x)=c` into the definition of derivative:
 
-   .. math:: f'(x) = \lim_{h\to0} \frac{c - c}{h} = \lim_{h\to0} \frac{0}{h} = 0
+   .. math::
+      f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h} = \lim_{h\to0} \frac{c-c}{h}
+      = \lim_{h\to0} \frac{0}{h} = 0
 
 .. asymptote::
    :align: right
@@ -238,8 +240,24 @@ haven't been proved before them.
    Again, we can confirm this with the definition of derivative:
 
    .. math::
-      & \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} = \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-      &= \lim_{h\to0} \frac{cx-cx+ch}{h} = \lim_{h\to0} \frac{ch}{h} = c
+      \frac{d}{dx} cx &= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
+      &= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
+      &= \lim_{h\to0} \frac{cx-cx+ch}{h} \\
+      &= \lim_{h\to0} \frac{ch}{h} \\
+      &= c
+
+`\frac{d}{dx}(c\ f(x)) = c\ f'(x)`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   The previous rule actually works with all functions that have a derivative,
+   not just constants.
+
+   .. math::
+      \frac{d}{dx}(c\ f(x)) &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
+      &= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
+      &= \lim_{h\to0} \left(c\ \frac{f(x+h)-f(x)}{h} \right) \\
+      &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+      &= c\ f'(x)
 
 .. asymptote::
    :align: right
@@ -256,9 +274,11 @@ haven't been proved before them.
 `\frac{d}{dx} x = 1`
 ^^^^^^^^^^^^^^^^^^^^
 
-   This is just like the previous rule, but `c=1` and `\Delta y = \Delta x`.
+   This is just like the `\frac{d}{dx} cx = c` rule, but `c=1` and
+   `\Delta y = \Delta x`.
 
 `\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    This rule is particularly handy for differenciating long functions with many
    things added together. Let's see what we get with the definition of
@@ -441,10 +461,8 @@ haven't been proved before them.
             \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
             \cdot \frac{g(x+h)-g(x)}{h}
       \right) \\
-      &= \lim_{h\to0} \left(
-            \frac{f(g(x+h)+g(x)-g(x))-f(g(x))}{g(x+h)-g(x)}
-            \cdot \frac{g(x+h)-g(x)}{h}
-      \right) \\
+      &= \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
+      &= \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
       &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
       &= \frac{d}{dx} (f(g(x))
 
