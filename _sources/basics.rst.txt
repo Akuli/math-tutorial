@@ -52,21 +52,43 @@ this doesn't apply to the "special" functions.
 ~~~~~~~~~~~
 
 I'm sure you already know how + and - work. Just be careful when you have a
-minus in front of parentheses, e.g. `-(1+2)=-1-2` and `-(1-2)=-1-(-2)=-1+2=2-1`.
+minus in front of parentheses, e.g. `-(1+2)=-1-2`.
 
 In this tutorial, ``a/b`` is written as `a/b` or `\frac a b`, and ``a*b`` is
 written as `a \cdot b` or simply `ab`.
 
-Handy things:
+Some handy stuff:
 
 .. math:: 0a = 0
 .. math:: 1a = \frac{a}{1} = a
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
+.. math:: \frac{a+b}{c} = \frac a c + \frac b c
 
-You can use these left-to-right or right-to-left. For example, if you want to
-calculate `(1 + 2) \cdot 3` you know you could also do `1 \cdot 3 + 2 \cdot 3`,
-but you can also calculate `1 \cdot 3 + 2 \cdot 3` like `(1 + 2) \cdot 3`.
+You can use these rules left-to-right or right-to-left. For example, if you
+want to calculate `(1 + 2) \cdot 3` you know you could also do
+`1 \cdot 3 + 2 \cdot 3`, but you can also calculate `1 \cdot 3 + 2 \cdot 3`
+like `(1 + 2) \cdot 3`.
+
+Note that there is **no** `\frac{a}{b+c}=\frac a b + \frac a c` rule; that
+doesn't work.
+
+Here's an easy way to work with long `+` and `-` things: if you have `a+b+c-b`
+you can move the `+b` and `-b` to the beginning and get `b-b+a+c` (where
+`b=+b`), and realize that `b-b=0` and the answer is just `a+c`. Later you'll
+notice that we end up with this `x+y-x` pattern surprisingly often and things
+become nice and simple.
+
+Similarly, when working with multiplication and division just look at which
+numbers are below a division line and which aren't. For example, if we have
+`\frac{1}{2} \cdot 3 \cdot \frac{4}{5}` we know that's
+`\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}` because 2 and 5 were below the lines but
+other numbers weren't.
+
+If both the top and bottom are being multiplied by something you can get rid of
+that multiplier. For example (here `\ne` is ``!=``):
+
+.. math:: \frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0
 
 .. _zerodivision:
 
@@ -74,17 +96,6 @@ You can add, substract and multiply any numbers together however you want, but
 remember that you cannot divide anything by zero. See
 `Numberphile's awesome zero video <https://youtu.be/BRRolKTlF6Q>`_ if you're
 wondering why.
-
-The easiest way to work with multiplication and division is to just look at
-which numbers are below a division line and which aren't. For example, if we
-have `\frac{1}{2} \cdot 3 \cdot \frac{4}{5}` we know that's
-`\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}` because 2 and 5 were below the lines but
-the other numbers weren't.
-
-If both the top and bottom are being multiplied by something you can get rid of
-that multiplier if it isn't zero. For example:
-
-.. math:: \frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0
 
 .. _negative-mul-div:
 
@@ -94,23 +105,6 @@ Negative numbers behave like this when multiplied and divided. Note how the two
 .. math:: 2 \cdot (-2) = -(2 \cdot 2) = -4
 .. math:: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
 .. math:: \frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
-
-.. TODO: ask theelous3 whether this is needed? or better yet figure out how to
-   put stuff side by side so the code example can be next to the math
-
-Python examples:
-
-.. code-block:: python
-
-   >>> 2 * (-2)
-   -4
-   >>> (-2) * (-2)
-   4
-   >>> (-3)/(-4)
-   0.75
-   >>> 3/4
-   0.75
-   >>> 
 
 
 .. _abs:
@@ -131,27 +125,24 @@ programming languages.
 
 .. math:: x^5=x\cdot x\cdot x\cdot x\cdot x
 .. math::
-   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_\text{a+b pcs}
-            = \underbrace{x \cdot...\cdot x}_\text{a pcs} \cdot
-              \underbrace{x \cdot...\cdot x}_\text{b pcs}
+   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}
+            = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot
+              \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}
             = x^a x^b
 .. math::
-   (x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ \text{a pcs}}
-              \cdot\ \ x^a\ \cdot ... \cdot x^a}_\text{b pcs}
+   (x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}
+              \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}
            = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
            = x^{ab}
-.. math:: \sqrt x = x^\frac 1 2
-.. math::
-   (\sqrt x)^2 = x^\frac 1 2 \cdot x^\frac 1 2
-               = x^{\frac 1 2 + \frac 1 2} = x^1 = x
+.. math:: \sqrt x = x^\frac 1 2, x > 0
+.. math:: (\sqrt x)^2 = x, x > 0
+.. math:: \sqrt{x^2} = |x|
 .. math:: x^0 = 1
 
-Note that `\sqrt x` only works if `x \ge 0` (unless you use complex numbers,
-but so far we haven't needed them in this tutorial). The square root is never
-negative.
+You're probably wondering how the heck our `\sqrt{x^2}=|x|` rule works. This
+example should explain everything:
 
-Confusingly `\sqrt{x^2}=|x|`, e.g. `\sqrt{(-2)^2}=\sqrt4=2`
-where `(-2)^2 = 4` (see :ref:`above <negative-mul-div>`).
+.. math:: \sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqrt{3^2}
 
 If you're wondering why anything to the power of 0 is 1, you can do e.g.
 `x^2 = x^{0+2} = x^0 x^2`. The equation should be true with any `x`, so

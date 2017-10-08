@@ -5,8 +5,8 @@ Derivatives
 
 This chapter contains more not-so-practical math than the trig and geometry
 chapter, but you may find it surprisingly fun. However, the math is not useless
-gibberish isolated from real life and there's a practical and fun example at
-the end.
+gibberish isolated from real life and there's a practical example with a fun
+demonstration game at the end.
 
 .. warning::
 
@@ -112,11 +112,9 @@ The image at right seems to say that `f(x) + dy = f(x+dx)`. Let's try to solve
    they're about same length each
 
 .. math::
-   f(x) + dy = f(x+dx)
-
-   dy = f(x+dx) - f(x)
-
-   \frac{dy}{dx} = \frac{f(x+dx)-f(x)}{dx}
+   f(x) + dy &= f(x+dx) \\
+   dy &= f(x+dx) - f(x) \\
+   \frac{dy}{dx} &= \frac{f(x+dx)-f(x)}{dx}
 
 .. asymptote::
    :align: right

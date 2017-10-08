@@ -66,15 +66,14 @@ this:</p>
 <p><img src="_images/asymptote/55c1a71b761d98e4018d5cc8bfc651bf.png"/></p></div><p>Now you can see that the angles add up to half turn (or 180°), so we get
 this <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
 <div class="math">
-<p><img src="_images/math/013c492c8d1aefba9add4cae39cff78ab6cb69ac.png" alt="30° + \text{???} = 180°"/></p>
-</div><div class="math">
-<p><img src="_images/math/cf60972aa024c276036be90c1611d46d8c11f317.png" alt="\text{???} = 180° - 30° = 150°"/></p>
+<p><img src="_images/math/33723e63a81285a59a24e3f0ff8a57d709f397db.png" alt="30° + \text{???} &amp;= 180° \\
+\text{???} &amp;= 180° - 30° \\
+\text{???} &amp;= 150°"/></p>
 </div><p>In math it’s common to use a letter instead of “???” to represent an
 unknown value. For example:</p>
 <div class="math">
-<p><img src="_images/math/dbe3e73b46f777dda08f64448b1e35061ed99bcb.png" alt="30° + t = 180°"/></p>
-</div><div class="math">
-<p><img src="_images/math/83e079fa8de514659caf28acfc2a7a03bf0641bf.png" alt="t = 180° - 30° = 150°"/></p>
+<p><img src="_images/math/a178b0db75a39676b5d875c09135f136f70094ea.png" alt="30° + t &amp;= 180° \\
+t &amp;= 180° - 30° = 150°"/></p>
 </div><div class="admonition-exercise admonition">
 <p class="first admonition-title">Exercise</p>
 <p class="last">Calculate similar things when the ball hits a wall at left, top or
@@ -243,7 +242,7 @@ vectors is that moving the player is really easy:</p>
 by 1° we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">1</span></code>. We’ll look into how this is done
 below.</p>
 <div class="i">
-<p><img src="_images/asymptote/2fe6c8b476cf50b09ef34a9ec728c6cd.png" class="align-right"/></p></div><p>Another nice thing about vectors is that they can be +’ed together easily. For
+<p><img src="_images/asymptote/41c32bc31b5e10bed168af0f29500e31.png" class="align-right"/></p></div><p>Another nice thing about vectors is that they can be +’ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That’s how
 <img class="math" src="_images/math/e62871e3a581b45639eb16d77a1a2c9fc309ddb0.png" alt="3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j"/>.</p>
@@ -252,13 +251,10 @@ units to right, we move a total of 8 units to right and 4 units up. That’s how
 <a class="reference internal" href="#pythagoras"><span class="std std-ref">Pythagorean theorem</span></a> and
 <a class="reference internal" href="#unitcircletrig"><span class="std std-ref">unit circle trig</span></a> stuff above:</p>
 <div class="math">
-<p><img src="_images/math/36da0beb6ae49d9e6b237dd364422d7717556208.png" alt="l = \sqrt{a^2+b^2} = \text{hypot}(a, b)"/></p>
-</div><div class="math">
-<p><img src="_images/math/ab45c6cfb050e901d90916fce73212c8952ee693.png" alt="t = \text{atan2}(b,a)"/></p>
-</div><div class="math">
-<p><img src="_images/math/728becdf1f16ae02415e1e9eddbc1c859aa926ad.png" alt="a = l \cdot \cos t"/></p>
-</div><div class="math">
-<p><img src="_images/math/5eae08e8d9f48f1a89fcfef9eff236e332644f27.png" alt="b = l \cdot \sin t"/></p>
+<p><img src="_images/math/ddd8397b7b5aa9b57baccd943d469dba67325125.png" alt="l &amp;= \sqrt{a^2+b^2} = \text{hypot}(a, b) \\
+t &amp;= \text{atan2}(b,a) \\
+a &amp;= l \cdot \cos t \\
+b &amp;= l \cdot \sin t"/></p>
 </div><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="math" src="_images/math/ee3662170a5c6a5c81a1dddf0de4c3fab3de3f29.png" alt="&lt;1,2&gt;"/>,
 its length is <img class="math" src="_images/math/d66ed1ec2f96b2793e15ea6680eb96d013d056e4.png" alt="\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24"/> and the angle is
 <img class="math" src="_images/math/afc9336bb3210081d6c7d79c07d189ceb4f8f1a3.png" alt="\text{atan2}(2,1) \approx 63.4°"/>. On the other hand,
@@ -272,45 +268,14 @@ pseudo-ish code:</p>
 <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
 </pre></div>
 </div>
-<div class="admonition-exercise admonition">
-<p class="first admonition-title">Exercise</p>
-<p>Create a <code class="docutils literal"><span class="pre">Vector</span></code> class in your favorite programming language that
-represents <img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/>. The class should implement a
-<code class="docutils literal"><span class="pre">Vector(x,</span> <span class="pre">y)</span></code> constructor and the properties (or setters and getters if
-you use e.g. Java) <code class="docutils literal"><span class="pre">x</span></code>, <code class="docutils literal"><span class="pre">y</span></code>, <code class="docutils literal"><span class="pre">length</span></code> and <code class="docutils literal"><span class="pre">angle</span></code>. Additionally, if
-the programming language supports it, you can add a nice <code class="docutils literal"><span class="pre">&quot;Vector(x,</span> <span class="pre">y)&quot;</span></code>
-string representation and operator overloading; e.g.
-<img class="math" src="_images/math/02e22fc3beede8869e1de9d57d1c8d545d762191.png" alt="(1 \bar i + 2 \bar j) + (3 \bar i + 4 \bar j) = 4 \bar i + 6 \bar j"/>, so
-<code class="docutils literal"><span class="pre">Vector(1,</span> <span class="pre">2)</span> <span class="pre">+</span> <span class="pre">Vector(3,</span> <span class="pre">4)</span> <span class="pre">==</span> <span class="pre">Vector(4,</span> <span class="pre">6)</span></code>.</p>
-<p>I found it easiest to implement things by storing only <code class="docutils literal"><span class="pre">x</span></code> and
-<code class="docutils literal"><span class="pre">y</span></code> and calculating everything else as needed.</p>
-<p>For example, here I’m playing with my Python implementation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">v</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>         <span class="c1"># the string representation</span>
-<span class="go">Vector(1, 2)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">x</span>
-<span class="go">1</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">y</span>
-<span class="go">2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span>
-<span class="go">2.23606797749979</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">angle</span><span class="p">)</span>
-<span class="go">63.43494882292201</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">angle</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
-<span class="go">Vector(1.5811388300841898, 1.5811388300841895)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span>      <span class="c1"># setting the angle didn&#39;t change this</span>
-<span class="go">2.23606797749979</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span><span class="o">.</span><span class="n">length</span> <span class="o">=</span> <span class="mi">0</span>     <span class="c1"># lol</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">v</span>
-<span class="go">Vector(0.0, 0.0)</span>
-</pre></div>
-</div>
-<p class="last">My code is
-<a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/samplecode/vector.py">here</a>.
-I didn’t add operator overloading because I wanted to keep the
-implementation simple and easy to read.</p>
-</div>
+<div class="section" id="example-vector-class-in-python">
+<h3>Example: Vector class in Python<a class="headerlink" href="#example-vector-class-in-python" title="Permalink to this headline">¶</a></h3>
+<p>Here’s a <code class="docutils literal"><span class="pre">Vector</span></code> class I implemented in Python running with
+<a class="reference external" href="https://repl.it/">repl.it</a>. A <code class="docutils literal"><span class="pre">Vector(x,</span> <span class="pre">y)</span></code> represents
+<img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/>. I didn’t add operator overloading because I wanted to
+keep everything nice and simple. Click the “play”-shaped button at top to run
+the code and then use the Python shell at right.</p>
+<iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MRCz/1"></iframe></div>
 </div>
 </div>
 

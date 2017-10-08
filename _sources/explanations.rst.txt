@@ -499,6 +499,6 @@ haven't been proved before them.
    .. math:: f(g(x))g'(x) = f(c) \left(\frac{d}{dx} c\right) = f(c) \cdot 0 = 0
    .. math:: \frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0
 
-   Look carefully -- we differenciated `f(c)` with respect to `x` so `f(c)` was
-   actually yet another constant. The `c` could be something like `2` and
-   `f(2)` obviously doesn't depend on the value of `x`.
+   Look carefully: `\frac{d}{dx} f(c) = 0` because we differenciated `f(c)`
+   with respect to `x`, so `f(c)` was actually yet another constant because it
+   doesn't depend on the value of `x`.
