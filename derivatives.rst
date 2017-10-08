@@ -377,11 +377,51 @@ This Python program...
              O
    O
 
-You can use similar code for doing jumps in games.
+You can use similar code for doing jumps in games. Here's a demo created with
+my canvaswrapper.js_ script. Click it and use arrow keys to move the ball.
 
-.. admonition:: Exercise
+.. jsdemo::
 
-   Create a minimal game where a player can be moved side to side with arrow
-   keys and the player jumps when arrow up is pressed.
+   const GRAVITY = 1.5;
+   var player = {
+     x: screen.width/2,    // centered
+     height: 0,            // distance from bottom of screen to player's bottom
+     velocity: 0,          // positive means up
+     velocityMax: 30,      // velocity immediately after a jump
+     sidewayMovement: 0,   // -1 is left, +1 right
+     sidewaySpeed: 10,
+     ballRadius: 30,
+   };
 
-   My example implementation is `here <https://github.com/Akuli/math-tutorial/blob/master/samplecode/jump.py>`_.
+
+   runRepeatedly(function() {
+     screen.fill('black');
+     screen.drawCircle(player.x, screen.height-player.height-player.ballRadius,
+                       player.ballRadius, 'white');
+
+     player.x += player.sidewayMovement * player.sidewaySpeed;
+     player.height += player.velocity;
+     player.velocity -= GRAVITY;
+
+     if (player.height < 0) {
+       player.height = 0;
+       player.velocity = 0;
+     }
+
+     screen.getEvents().forEach(evt => {
+       if (evt.type == 'keydown') {
+         if (evt.key == 'ArrowLeft') {
+           player.sidewayMovement = -1;
+         } else if (evt.key == 'ArrowRight') {
+           player.sidewayMovement = 1;
+         } else if (evt.key == 'ArrowUp') {
+           player.velocity = player.velocityMax;
+         }
+       } else if (evt.type == 'keyup' && (
+             (evt.key == 'ArrowLeft' && player.sidewayMovement == -1) ||
+             (evt.key == 'ArrowRight' && player.sidewayMovement == 1))) {
+         // cancel the previous ArrowLeft or ArrowRight press
+         player.sidewayMovement = 0;
+       }
+     });
+   });

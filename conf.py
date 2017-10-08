@@ -20,6 +20,7 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('asymptote-setup'))
+sys.path.insert(0, os.path.abspath('jsdemo-setup'))
 
 
 # -- General configuration ------------------------------------------------
@@ -32,7 +33,8 @@ sys.path.insert(0, os.path.abspath('asymptote-setup'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 # asymptote is sphinxext/asymptote.py
-extensions = ['sphinx.ext.imgmath', 'sphinx.ext.githubpages', 'asymptote']
+extensions = ['sphinx.ext.imgmath', 'sphinx.ext.githubpages',
+              'asymptote', 'jsdemo']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -166,3 +168,9 @@ default_role = 'math'
 # before the title appeared like this:
 # "Math for Programmers - Math for Programmers documentation"
 html_title = ''
+
+# handy-dandy substitutions
+rst_epilog = """
+.. _canvaswrapper.js: https://github.com/Akuli/math-tutorial/blob/master/jsdem\
+o-setup/canvaswrapper.js
+"""
