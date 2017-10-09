@@ -8,15 +8,6 @@ chapter, but you may find it surprisingly fun. However, the math is not useless
 gibberish isolated from real life and there's a practical example with a fun
 demonstration game at the end.
 
-.. warning::
-
-   **If you are an experienced mathematician** you might feel like some of the
-   notation used in this chapter is wrong. Stay calm and keep in mind that the
-   whole purpose of notation is to express the math in a way that is easy to
-   understand for others, and in this tutorial that's much more important than
-   perfect correctness.
-
-
 What is a derivative?
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -116,6 +107,21 @@ The image at right seems to say that `f(x) + dy = f(x+dx)`. Let's try to solve
    dy &= f(x+dx) - f(x) \\
    \frac{dy}{dx} &= \frac{f(x+dx)-f(x)}{dx}
 
+Most mathematicians don't like the above formula because `dx` is a
+"small number" and it isn't really clear how it behaves in different
+situations. Here's a better definition:
+
+.. math::
+   \frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+
+Here the `\lim` thing means that we take the **limit** as `h` approaches 0.
+It's essentially the same as our `dx` thing, but more explicit and better
+defined in some corner cases.
+
+
+First Example
+~~~~~~~~~~~~~
+
 .. asymptote::
    :align: right
 
@@ -130,22 +136,24 @@ The image at right seems to say that `f(x) + dy = f(x+dx)`. Let's try to solve
    draw(xsquared_left, p=blue);
    draw(xsquared_right, p=blue, L=Label(rotate(70)*"$y = x^2$"), align=W);
 
-For example, the graph `y=x^2` is curvy. Let's find its derivative by plugging
-in `y=f(x)=x^2` to the above formula. It'll be a mess, but don't worry, we can
-do it.
+The graph `y=x^2` is curvy. Let's find its derivative by plugging in
+`y=f(x)=x^2` to the definition we ended up with. If we just try to evaluate it
+at `h=0` we get `\frac 0 0` so you might think that we need to evaluate it at
+e.g. `h=0.000001`, but we don't! Have a look:
 
 .. math::
 
-   \frac{dy}{dx}  &= \frac{f(x+dx)-f(x)}{dx} \\
-                  &= \frac{(x+dx)^2 - x^2}{dx} \\
-                  &= \frac{(x+dx)(x+dx) - x^2}{dx} \\
-                  &= \frac{x(x+dx) + dx(x+dx) - x^2}{dx} \\
-                  &= \frac{x^2 + x \cdot dx + dx \cdot x + (dx)^2 - x^2}{dx} \\
-                  &= \frac{\overbrace{x^2 - x^2}^\text{this is 0} + x \cdot dx + dx \cdot x + (dx)^2}{dx} \\
-                  &= \frac{x \cdot dx + x \cdot dx + dx \cdot dx}{dx} \\
-                  &= \frac{(x + x + dx)dx}{dx} \\
-                  &= x + x + dx \\
-                  &= 2x+dx
+   \frac{dy}{dx}  &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+                  &= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
+                  &= \lim_{h\to0} \frac{(x+h)(x+h) - x^2}{h} \\
+                  &= \lim_{h\to0} \frac{(x+h)x + (x+h)h - x^2}{h} \\
+                  &= \lim_{h\to0} \frac{x^2+hx+xh+h^2-x^2}{h} \\
+                  &= \lim_{h\to0} \frac{x^2-x^2+xh+xh+h^2}{h} \\
+                  &= \lim_{h\to0} \frac{xh+xh+h^2}{h} \\
+                  &= \lim_{h\to0} \frac{(x+x+h)h}{h} \\
+                  &= \lim_{h\to0} (x+x+h) \\
+                  &= \lim_{h\to0} (2x+h) \\
+                  &= 2x
 
 .. asymptote::
    :align: right
@@ -170,16 +178,14 @@ do it.
    draw((2,0)--(2,2**2), smalldashes);
    label("2", (2,0), align=S);
 
-As `dx` gets smaller and smaller, `2x+dx` gets closer to `2x` and we can say
-`\frac{dy}{dx} = 2x`.
-
 I think this is cool. We started with a really horribly complicated-looking
-thing but we arrived at just `2x`. What's more, the `2x` is not just a random
-value we got out of a spooky calculation; for example, at `x=2` the derivative
-is `2 \cdot 2 = 4`, so if we draw a straight line that barely touches `y=x^2`
-at that point its slope will also be 4 like in the image at right.
+thing, then we made it look even more complicated but finally we arrived at
+just `2x`. What's more, the `2x` is not just a random value we got out of a
+spooky calculation; for example, at `x=2` the derivative is `2 \cdot 2 = 4`,
+so if we draw a straight line that barely touches `y=x^2` at that point its
+slope will also be 4 like in the image at right.
 
-You can also find the derivative of the `y=2x` example we looked at earlier,
+You can also find the derivative of the `y=2x+1` example we looked at earlier,
 and turns out that `\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}`. It makes sense
 because derivatives are just like slopes but they also work with curvy things,
 and there's no difference between a slope and a derivative of a straight line.

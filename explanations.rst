@@ -171,26 +171,9 @@ Derivative Rules
 ~~~~~~~~~~~~~~~~
 
 The derivative chapter contains :ref:`a bunch of rules <derivative-rules>`
-with no explainations or proofs about how they work. We also used this
-definition of derivative:
-
-.. math:: f'(x) = \frac{f(x+dx)-f(x)}{dx}
-
-The warning in the beginning of the derivative chapter is all about this. Some
-mathematicians (most?) don't like this at all because `dx` is a "small number"
-and it isn't really clear how it behaves in different situations. Here's a
-better definition:
-
-.. math:: f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
-
-We just replaced `dx` with `h`. We also added a `\lim` which means we take the
-*limit* as `h` approaches `0`. It's just like our `dx` thing but more explicit
-and also better-defined in some corner cases. I won't go through the official
-definition of a limit because most of the time limits are easy to calculate
-without it.
-
-These proofs are ordered so that they don't use any derivative rules that
-haven't been proved before them.
+with no explainations or proofs about how they work. These proofs are ordered
+so that they don't use any derivative rules that haven't been proved before
+them.
 
 .. asymptote::
    :align: right
