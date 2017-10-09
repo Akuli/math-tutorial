@@ -46,14 +46,6 @@
 chapter, but you may find it surprisingly fun. However, the math is not useless
 gibberish isolated from real life and there’s a practical example with a fun
 demonstration game at the end.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last"><strong>If you are an experienced mathematician</strong> you might feel like some of the
-notation used in this chapter is wrong. Stay calm and keep in mind that the
-whole purpose of notation is to express the math in a way that is easy to
-understand for others, and in this tutorial that’s much more important than
-perfect correctness.</p>
-</div>
 <div class="section" id="what-is-a-derivative">
 <h2>What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Permalink to this headline">¶</a></h2>
 <p>A <em>difference</em> means how much a value changes. For example, if the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>
@@ -90,30 +82,42 @@ derivative; if you want to know more, <a class="reference internal" href="explan
 <p><img src="_images/math/15644034a64657e8407f6c84b22809ae91f6344a.png" alt="f(x) + dy &amp;= f(x+dx) \\
 dy &amp;= f(x+dx) - f(x) \\
 \frac{dy}{dx} &amp;= \frac{f(x+dx)-f(x)}{dx}"/></p>
-</div><div class="i">
-<p><img src="_images/asymptote/643db37d57fcc9c46c92099743596d97.png" class="align-right"/></p></div><p>For example, the graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging
-in <img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the above formula. It’ll be a mess, but don’t worry, we can
-do it.</p>
+</div><p>Most mathematicians don’t like the above formula because <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is a
+“small number” and it isn’t really clear how it behaves in different
+situations. Here’s a better definition:</p>
 <div class="math">
-<p><img src="_images/math/4b7dcf4ed603a8b8fb4f728f154e791523a82f57.png" alt="\frac{dy}{dx}  &amp;= \frac{f(x+dx)-f(x)}{dx} \\
-               &amp;= \frac{(x+dx)^2 - x^2}{dx} \\
-               &amp;= \frac{(x+dx)(x+dx) - x^2}{dx} \\
-               &amp;= \frac{x(x+dx) + dx(x+dx) - x^2}{dx} \\
-               &amp;= \frac{x^2 + x \cdot dx + dx \cdot x + (dx)^2 - x^2}{dx} \\
-               &amp;= \frac{\overbrace{x^2 - x^2}^\text{this is 0} + x \cdot dx + dx \cdot x + (dx)^2}{dx} \\
-               &amp;= \frac{x \cdot dx + x \cdot dx + dx \cdot dx}{dx} \\
-               &amp;= \frac{(x + x + dx)dx}{dx} \\
-               &amp;= x + x + dx \\
-               &amp;= 2x+dx"/></p>
+<p><img src="_images/math/3e8b52ed47f7ced83b0873ffd08ef901f03196c3.png" alt="\frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}"/></p>
+</div><p>The <img class="math" src="_images/math/006e27027dd30b11226eefa4295d2415b066ce23.png" alt="\lim"/> thing means that we take the <strong>limit</strong> as <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> approaches 0. It’s
+essentially same as our <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> thing, but more explicit and better defined in
+some corner cases.</p>
+</div>
+<div class="section" id="first-example">
+<h2>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h2>
+<div class="i">
+<p><img src="_images/asymptote/643db37d57fcc9c46c92099743596d97.png" class="align-right"/></p></div><p>The graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging in
+<img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the definition we ended up with. If we just try to evaluate it
+at <img class="math" src="_images/math/149ccbe5c545564e85bc7e1f6b90906e58b1e3e2.png" alt="h=0"/> we get <img class="math" src="_images/math/a4bc8eb91ce088e99d63c405b9efb744f717a669.png" alt="\frac 0 0"/> so you might think that we need to evaluate it at
+e.g. <img class="math" src="_images/math/d449b7fdd244422cebef58a3106da423c156cae9.png" alt="h=0.000001"/>, but we don’t! Have a look:</p>
+<div class="math">
+<p><img src="_images/math/9a93089abd47447af9af8741fe293525a4b150aa.png" alt="\frac{dy}{dx}  &amp;= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+               &amp;= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{(x+h)(x+h) - x^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{(x+h)x + (x+h)h - x^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{x^2+hx+xh+h^2-x^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{x^2-x^2+xh+xh+h^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{xh+xh+h^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{(x+x+h)h}{h} \\
+               &amp;= \lim_{h\to0} (x+x+h) \\
+               &amp;= x + x \\
+               &amp;= 2x"/></p>
 </div><div class="i">
-<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p></div><p>As <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> gets smaller and smaller, <img class="math" src="_images/math/21924e5842a57dca3814b4f6da114886404cc27a.png" alt="2x+dx"/> gets closer to <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> and we can say
-<img class="math" src="_images/math/e2f9fa0fc73faf4806dbc4314d9eb33479413a05.png" alt="\frac{dy}{dx} = 2x"/>.</p>
-<p>I think this is cool. We started with a really horribly complicated-looking
-thing but we arrived at just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random
-value we got out of a spooky calculation; for example, at <img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> the derivative
-is <img class="math" src="_images/math/a2015b6d842a5111f7b8d9a871f42f7dfca8e09c.png" alt="2 \cdot 2 = 4"/>, so if we draw a straight line that barely touches <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/>
-at that point its slope will also be 4 like in the image at right.</p>
-<p>You can also find the derivative of the <img class="math" src="_images/math/7a79e2a0fe24b65a0a49baa8dbd81152a81fdc53.png" alt="y=2x"/> example we looked at earlier,
+<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p></div><p>I think this is cool. We started with a really horribly complicated-looking
+thing, then we made it look even more complicated but finally we arrived at
+just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random value we got out of a
+spooky calculation; for example, at <img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> the derivative is <img class="math" src="_images/math/a2015b6d842a5111f7b8d9a871f42f7dfca8e09c.png" alt="2 \cdot 2 = 4"/>,
+so if we draw a straight line that barely touches <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> at that point its
+slope will also be 4 like in the image at right.</p>
+<p>You can also find the derivative of the <img class="math" src="_images/math/219a3762183563eed4c619bcd6b6090104afcf27.png" alt="y=2x+1"/> example we looked at earlier,
 and turns out that <img class="math" src="_images/math/a9917289b7ef43fee7da1e311943f89855cd2cfa.png" alt="\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}"/>. It makes sense
 because derivatives are just like slopes but they also work with curvy things,
 and there’s no difference between a slope and a derivative of a straight line.</p>
@@ -160,7 +164,7 @@ really easily. For example:</p>
 need to use the <img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/> rule. In this example,
 you would plug in <img class="math" src="_images/math/d772eeb4feb38727b849042e3ffce8f9a29c0ac4.png" alt="f(x)=x^2"/> and <img class="math" src="_images/math/0a55c8372837cd6b353d0116d76c334ff66d9530.png" alt="g(x)=2x"/> to get this:</p>
 <div class="math">
-<p><img src="_images/math/70c908c2b58e58b2f34620a29b9fd24ffacab185.png" alt="\frac{d}{dx} (2x)^2 = 2(2x) \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x"/></p>
+<p><img src="_images/math/092ca5c9007d38b449885dc32380b2dbfff41017.png" alt="\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x"/></p>
 </div><p>In some cases it’s also possible to first open up something like the <img class="math" src="_images/math/a42dd9a1d8e8ca5681017f64c827060c86da1c64.png" alt="(\ \ )^2"/>:</p>
 <div class="math">
 <p><img src="_images/math/2da10339e0b7de6a0c97d7462efb85311016ed19.png" alt="\frac{d}{dx}(2x)^2 = \frac{d}{dx}(2^2x^2) = \frac{d}{dx}(4x^2)
@@ -373,7 +377,7 @@ runRepeatedly(function() {
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

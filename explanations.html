@@ -123,23 +123,9 @@ but this should be enough to give you some kind of idea about the limitations.</
 <div class="section" id="derivative-rules">
 <span id="derivative-proofs"></span><h2>Derivative Rules<a class="headerlink" href="#derivative-rules" title="Permalink to this headline">¶</a></h2>
 <p>The derivative chapter contains <a class="reference internal" href="derivatives.html#derivative-rules"><span class="std std-ref">a bunch of rules</span></a>
-with no explainations or proofs about how they work. We also used this
-definition of derivative:</p>
-<div class="math">
-<p><img src="_images/math/c458869b67dd68f21dd0f8239fc16b660f7fa36d.png" alt="f'(x) = \frac{f(x+dx)-f(x)}{dx}"/></p>
-</div><p>The warning in the beginning of the derivative chapter is all about this. Some
-mathematicians (most?) don’t like this at all because <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is a “small number”
-and it isn’t really clear how it behaves in different situations. Here’s a
-better definition:</p>
-<div class="math">
-<p><img src="_images/math/b81e39bf182df26f1ed106cff88dad0da9224854.png" alt="f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}"/></p>
-</div><p>We just replaced <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> with <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/>. We also added a <img class="math" src="_images/math/006e27027dd30b11226eefa4295d2415b066ce23.png" alt="\lim"/> which means we take the
-<em>limit</em> as <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> approaches <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/>. It’s just like our <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> thing but more explicit
-and also better-defined in some corner cases. I won’t go through the official
-definition of a limit because most of the time limits are easy to calculate
-without it.</p>
-<p>These proofs are ordered so that they don’t use any derivative rules that
-haven’t been proved before them.</p>
+with no explainations or proofs about how they work. These proofs are ordered
+so that they don’t use any derivative rules that haven’t been proved before
+them.</p>
 <div class="i">
 <p><img src="_images/asymptote/bb4ba3dcc918fdfcff88c522300f30a9.png" class="align-right"/></p></div><div class="section" id="id1">
 <h3><img class="math" src="_images/math/05cfb9e174dcf8c3d320000642d92d18d70f4f7b.png" alt="\frac{d}{dx} c = 0"/><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
@@ -382,7 +368,7 @@ doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
