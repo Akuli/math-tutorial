@@ -66,9 +66,9 @@ it hits a wall at right. How should the angle change?</p>
 that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
 on. It’s also possible to measure angles in radians, but we’ll look into
 that later.</p>
-<p>Note that both angles are measured down from a horizontal line because that’s a
-standard in programming. In math angles are usually measured up from a
-horizontal line.</p>
+<p>Note that both angles are measured down from a horizontal line clockwise
+because that’s a standard in programming. In math, angles are usually measured
+up from a horizontal line and counter-clockwise.</p>
 <p>We can solve our problem by taking the 30° angle sign and moving it like
 this:</p>
 <div class="i">
@@ -81,13 +81,14 @@ this <a class="reference internal" href="basics.html#equations"><span class="std
 </div><p>In math it’s common to use a letter instead of “???” to represent an
 unknown value. For example:</p>
 <div class="math">
-<p><img src="_images/math/a178b0db75a39676b5d875c09135f136f70094ea.png" alt="30° + t &amp;= 180° \\
-t &amp;= 180° - 30° = 150°"/></p>
-</div><div class="admonition-exercise admonition">
-<p class="first admonition-title">Exercise</p>
-<p class="last">Calculate similar things when the ball hits a wall at left, top or
-bottom. Don’t be arfaid to deal with angles between 180° and 360°.</p>
-</div>
+<p><img src="_images/math/2421789fcd230f1cee643c7e33ff5ee6da0aa308.png" alt="30° + b &amp;= 180° \\
+b &amp;= 180° - 30° = 150°"/></p>
+</div><p>It’s easy to calculate similar things for other directions. Here are the
+results, where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> is the original angle and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> is the changed angle:</p>
+<ul class="simple">
+<li>If the ball hits left or right wall, <img class="math" src="_images/math/8c33ce59f7e5ac43c7703f790cd35277520b2be8.png" alt="b = 180°-a"/>.</li>
+<li>If the ball hits top or bottom, <img class="math" src="_images/math/89a322ef941e98da25d5877abb2ca7f20687d07e.png" alt="b = 360°-a"/>.</li>
+</ul>
 </div>
 <div class="section" id="trig-aka-trigonometry-with-the-unit-circle">
 <span id="unitcircletrig"></span><h2>Trig (aka trigonometry) with the Unit Circle<a class="headerlink" href="#trig-aka-trigonometry-with-the-unit-circle" title="Permalink to this headline">¶</a></h2>
@@ -112,7 +113,7 @@ to multiply everything by 5 to scale it up. We get this:</p>
 <p>The angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> in the above image looks like it’s about 60°, so <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/>
 should be somewhere between 0 and 1 since the height of the x axis is 0 and the
 circle’s bottom is at <img class="math" src="_images/math/2b834b23cee7309ea7a9ea5fcedf9f258875c702.png" alt="y=1"/>. But if we try this out in Python, something is
-badly wrong:</p>
+wrong:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 <span class="go">-0.3048106211022167</span>
@@ -133,8 +134,206 @@ that <img class="math" src="_images/math/6e1490ba27369c4df406cbdd210f1c8684c44b3
 more about radians, how the heck I came up with those mathy-accurate values and
 how Python’s conversion functions work some day.</p>
 <p>In most programming languages, functions like <code class="docutils literal"><span class="pre">sin</span></code> and <code class="docutils literal"><span class="pre">cos</span></code> take radians
-as arguments, but also note that some functions (like <code class="docutils literal"><span class="pre">atan2</span></code>, see below)
-return radians.</p>
+as arguments, but also note that some functions (like <code class="docutils literal"><span class="pre">atan2</span></code>, see
+<a class="reference internal" href="#trig-with-a-triangle">Trig with a Triangle</a> below) return radians.</p>
+</div>
+<div class="section" id="example-ball-and-paddle">
+<h2>Example: Ball and Paddle<a class="headerlink" href="#example-ball-and-paddle" title="Permalink to this headline">¶</a></h2>
+<p>Here’s a minimal game written with my <a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/jsdemo-setup/canvaswrapper.js">canvaswrapper.js</a> script that
+demonstrates most things we have learned so far. Click it, press arrow up to
+start the game and then use arrow keys to move the paddle.</p>
+<div class="i">
+
+    <script type="text/javascript" src="canvaswrapper.js"></script>
+    <canvas id="canvas1" width="600" height="400" tabindex="1"></canvas>
+    <script>var screen = new CanvasWrapper('canvas1');
+
+var paddle = {
+  length: 200,
+  thickness: 15,
+  speed: 10,
+  movement: 0,             // -1 means left, 0 means right
+};
+paddle.top = screen.height - paddle.thickness;
+
+var ball = {
+  radius: 10,
+  speed: 10,
+  moving: false,
+};
+
+// TODO: explain how this works
+function toRadians(degrees) { return degrees*Math.PI/180; }
+
+function resetGame() {
+  paddle.centerx = screen.width/2;
+  ball.centerx = screen.width/2;
+  ball.centery = screen.height-paddle.thickness-ball.radius;
+  ball.angle = 270;
+  ball.moving = false;
+}
+
+resetGame();
+runRepeatedly(function() {
+  screen.fill('black');
+  screen.drawRectangle(
+    paddle.centerx-paddle.length/2, screen.height-paddle.thickness,
+    paddle.length, paddle.thickness, '#00ff00');
+  screen.drawCircle(ball.centerx, ball.centery, ball.radius, 'white');
+
+  if (ball.moving) {
+    if (ball.centery > screen.height) {
+      resetGame();
+      return;
+    }
+
+    ball.centerx += ball.speed * Math.cos(toRadians(ball.angle));
+    ball.centery += ball.speed * Math.sin(toRadians(ball.angle));
+
+    if (ball.centerx < ball.radius) {     // bumps left wall
+      ball.angle = 180-ball.angle;
+      ball.centerx = ball.radius;
+    } else if (ball.centerx > screen.width-ball.radius) {   // right wall
+      ball.angle = 180-ball.angle;
+      ball.centerx = screen.width-ball.radius;
+    } else if (ball.centery < ball.radius) {          // top
+      ball.angle = 360-ball.angle;
+      ball.centery = ball.radius;
+    } else if (ball.centery > screen.height-paddle.thickness-ball.radius) {
+      // paddle?
+      paddleLeft = paddle.centerx - paddle.length/2;
+      paddleRight = paddle.centerx + paddle.length/2;
+      if (paddleLeft < ball.centerx && ball.centerx < paddleRight) {
+        // yes, it hits the paddle
+        ball.angle = 360 - ball.angle;
+        ball.centery = screen.height-paddle.thickness-ball.radius;
+
+        // also adjust the angle depending on which side of the paddle the
+        // ball hits
+        ball.angle += (ball.centerx - paddle.centerx) / 2;
+      }
+    }
+    paddle.centerx += paddle.movement*paddle.speed;
+  }
+
+  screen.getEvents().forEach(evt => {
+    if (evt.type == 'keydown') {
+      if (ball.moving) {
+        if (evt.key == 'ArrowLeft') {
+          paddle.movement = -1;
+        } else if (evt.key == 'ArrowRight') {
+          paddle.movement = 1;
+        }
+      } else {
+        if (evt.key == 'ArrowUp') {
+          ball.moving = true;
+          return;
+        }
+      }
+    } else if (evt.type == 'keyup' && (
+          (evt.key == 'ArrowLeft' && paddle.movement == -1) ||
+          (evt.key == 'ArrowRight' && paddle.movement == 1))) {
+      // cancel the previous ArrowLeft or ArrowRight press
+      paddle.movement = 0;
+    }
+  });
+});</script>
+    </div>      <!-- this finishes self.starttag above -->
+    <p>Here's the code:</p>
+    <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">screen</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CanvasWrapper</span><span class="p">(</span><span class="s1">&#39;canvas1&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">paddle</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">length</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
+  <span class="nx">thickness</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
+  <span class="nx">speed</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">movement</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1">// -1 means left, 0 means right</span>
+<span class="p">};</span>
+<span class="nx">paddle</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">ball</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">radius</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">speed</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="nx">moving</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="c1">// TODO: explain how this works</span>
+<span class="kd">function</span> <span class="nx">toRadians</span><span class="p">(</span><span class="nx">degrees</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">degrees</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span> <span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">resetGame</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+  <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+  <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+  <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="mi">270</span><span class="p">;</span>
+  <span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">resetGame</span><span class="p">();</span>
+<span class="nx">runRepeatedly</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">screen</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
+  <span class="nx">screen</span><span class="p">.</span><span class="nx">drawRectangle</span><span class="p">(</span>
+    <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="p">,</span>
+    <span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="p">,</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">);</span>
+  <span class="nx">screen</span><span class="p">.</span><span class="nx">drawCircle</span><span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span><span class="p">,</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span><span class="p">,</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">);</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">resetGame</span><span class="p">();</span>
+      <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">+=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">toRadians</span><span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">));</span>
+    <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">+=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">toRadians</span><span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">));</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&lt;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>     <span class="c1">// bumps left wall</span>
+      <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="mi">180</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
+      <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// right wall</span>
+      <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="mi">180</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
+      <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">&lt;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// top</span>
+      <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="mi">360</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
+      <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>
+      <span class="c1">// paddle?</span>
+      <span class="nx">paddleLeft</span> <span class="o">=</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">-</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+      <span class="nx">paddleRight</span> <span class="o">=</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">+</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">paddleLeft</span> <span class="o">&lt;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&amp;&amp;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&lt;</span> <span class="nx">paddleRight</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// yes, it hits the paddle</span>
+        <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">-</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
+        <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+
+        <span class="c1">// also adjust the angle depending on which side of the paddle the</span>
+        <span class="c1">// ball hits</span>
+        <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">-</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">+=</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span><span class="o">*</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">speed</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="nx">screen</span><span class="p">.</span><span class="nx">getEvents</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">evt</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;keydown&#39;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowLeft&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowRight&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowUp&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+          <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;keyup&#39;</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
+          <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowLeft&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span>
+          <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowRight&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span> <span class="p">{</span>
+      <span class="c1">// cancel the previous ArrowLeft or ArrowRight press</span>
+      <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="trig-with-a-triangle">
 <span id="triangletrig"></span><h2>Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Permalink to this headline">¶</a></h2>
@@ -154,9 +353,9 @@ bottom right means that the corner is 90°. These definitions are compatible
 with the unit circle stuff above; see
 <a class="reference internal" href="explanations.html#unitcircle-triangle-compat"><span class="std std-ref">this thing</span></a>.</p>
 <div class="i">
-<p><img src="_images/asymptote/063aaba126958fcdd43568ff046e2ed8.png" class="align-right"/></p></div><p>The green triangle is the same triangle as the blue one, but I flipped it so
-that we can calculate the stuff by plugging in <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/> without
-worrying about which way things go. Let’s figure out how to calculate the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>:</p>
+<p><img src="_images/asymptote/063aaba126958fcdd43568ff046e2ed8.png" class="align-right"/></p></div><p>The green triangle is just like the blue one, but I flipped it so that we can
+calculate the stuff by plugging in <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/> without worrying about
+which way things go. Let’s figure out how to calculate the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>:</p>
 <div class="math">
 <p><img src="_images/math/6ec055140998a97a5623de083e1ac7cb3765091b.png" alt="\tan t = \frac b a"/></p>
 </div><div class="math">

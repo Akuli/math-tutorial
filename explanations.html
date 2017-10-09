@@ -114,8 +114,8 @@ lines. For example, this function is not continuous at <img class="math" src="_i
 <p><img src="_images/asymptote/e8d92b69dcadc1e4d0691d5d8e46f18e.png" class="align-right"/></p></div><ul class="simple">
 <li>The graph of the function has a spike in it. Derivatives describe
 “growing speed” and it isn’t clear how fast the values grow on top of a
-spike. For example, <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> has a derivative everywhere except at <img class="math" src="_images/math/a098f6561c6f5328410f2b9133b9db7b9f08e663.png" alt="x=0"/>, just
-like our <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/> above.</li>
+spike. For example, the <a class="reference internal" href="basics.html#abs"><span class="std std-ref">absolute value</span></a> <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> has a derivative
+everywhere except at <img class="math" src="_images/math/a098f6561c6f5328410f2b9133b9db7b9f08e663.png" alt="x=0"/>.</li>
 </ul>
 <p>Of course, there are more precise definitions about continuity and “spikes”,
 but this should be enough to give you some kind of idea about the limitations.</p>
@@ -147,7 +147,8 @@ haven’t been proved before them.</p>
 <div><p>The graph <img class="math" src="_images/math/ce81fb1e147ac8bf3ec17ed69a900e58c620f256.png" alt="y=c"/> is a horizontal line, so the slope is zero.</p>
 <p>We can also plug <img class="math" src="_images/math/370df8fb1f1b132f5e8e4bce4c02d3f31d850798.png" alt="f(x)=c"/> into the definition of derivative:</p>
 <div class="math">
-<p><img src="_images/math/c5840517e32c5393b85420ff595736f09e4c99bd.png" alt="f'(x) = \lim_{h\to0} \frac{c - c}{h} = \lim_{h\to0} \frac{0}{h} = 0"/></p>
+<p><img src="_images/math/db41db0312334f74c41e1a50849d7e8bcbd8c9f5.png" alt="f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h} = \lim_{h\to0} \frac{c-c}{h}
+= \lim_{h\to0} \frac{0}{h} = 0"/></p>
 </div></div></blockquote>
 <div class="i">
 <p><img src="_images/asymptote/3c5d3e6e25a3e7b5887c90f9d4087a62.png" class="align-right"/></p></div></div>
@@ -159,16 +160,35 @@ something, <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3c
 <img class="math" src="_images/math/c7f0ebdeb0116be9ebd590efab9209d93fa897aa.png" alt="\Delta y = c \cdot \Delta x"/> and <img class="math" src="_images/math/18d9853f8376b597cdb7892b3ca73697998d56f0.png" alt="\frac{\Delta y}{\Delta x} = c"/>.</p>
 <p>Again, we can confirm this with the definition of derivative:</p>
 <div class="math">
-<p><img src="_images/math/a15fb751b1d912900aa6a7842480c4ae68dbfdc2.png" alt="&amp; \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} = \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-&amp;= \lim_{h\to0} \frac{cx-cx+ch}{h} = \lim_{h\to0} \frac{ch}{h} = c"/></p>
+<p><img src="_images/math/3e013b4e1871fd45edd6d4daaa94c5970bd804d1.png" alt="\frac{d}{dx} cx &amp;= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
+&amp;= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
+&amp;= \lim_{h\to0} \frac{cx-cx+ch}{h} \\
+&amp;= \lim_{h\to0} \frac{ch}{h} \\
+&amp;= c"/></p>
+</div></div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3><img class="math" src="_images/math/bab9837984444ba7db4deb91eaa4f998c7f61149.png" alt="\frac{d}{dx}(c\ f(x)) = c\ f'(x)"/><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>The previous rule actually works with all functions that have a derivative,
+not just constants.</p>
+<div class="math">
+<p><img src="_images/math/b8f8e3de7bb4c83a7672c67a45fa57bab4a59096.png" alt="\frac{d}{dx}(c\ f(x)) &amp;= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
+&amp;= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
+&amp;= \lim_{h\to0} \left(c\ \frac{f(x+h)-f(x)}{h} \right) \\
+&amp;= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+&amp;= c\ f'(x)"/></p>
 </div></div></blockquote>
 <div class="i">
 <p><img src="_images/asymptote/b4fe7d8cf6988a9c984c437f7bee9979.png" class="align-right"/></p></div></div>
-<div class="section" id="id3">
-<h3><img class="math" src="_images/math/668c0b577e9de0a4bc5f0cffe70fb42f7ff3cd99.png" alt="\frac{d}{dx} x = 1"/><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3><img class="math" src="_images/math/668c0b577e9de0a4bc5f0cffe70fb42f7ff3cd99.png" alt="\frac{d}{dx} x = 1"/><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div>This is just like the previous rule, but <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/> and <img class="math" src="_images/math/15a31ed72ec98e643bd6c7466c6c3f937e6cc688.png" alt="\Delta y = \Delta x"/>.</div></blockquote>
-<p><img class="math" src="_images/math/a1cf2413483656a43f1eeff182a6d28e6669a5a4.png" alt="\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)"/></p>
+<div>This is just like the <img class="math" src="_images/math/c89953d5ab16b1feefe5c42878559c73d95c9740.png" alt="\frac{d}{dx} cx = c"/> rule, but <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/> and
+<img class="math" src="_images/math/15a31ed72ec98e643bd6c7466c6c3f937e6cc688.png" alt="\Delta y = \Delta x"/>.</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h3><img class="math" src="_images/math/a1cf2413483656a43f1eeff182a6d28e6669a5a4.png" alt="\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)"/><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>This rule is particularly handy for differenciating long functions with many
 things added together. Let’s see what we get with the definition of
@@ -184,8 +204,8 @@ derivative.</p>
 similar way.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id4">
-<h3><img class="math" src="_images/math/9b0c2c3562d2534afd85381cdd40a92347240b87.png" alt="\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)"/><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id6">
+<h3><img class="math" src="_images/math/9b0c2c3562d2534afd85381cdd40a92347240b87.png" alt="\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)"/><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>It’s not pretty, but we can use the definition.</p>
 <div class="math">
@@ -208,8 +228,8 @@ similar way.</p>
 &amp;= f'(x)g(x) + f(x)g'(x)"/></p>
 </div></div></blockquote>
 </div>
-<div class="section" id="id5">
-<h3><img class="math" src="_images/math/8e2eb22c639a44eaad710d7261a791f0298ae29e.png" alt="\frac{d}{dx} x^c = c\ x^{c-1}"/><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3><img class="math" src="_images/math/8e2eb22c639a44eaad710d7261a791f0298ae29e.png" alt="\frac{d}{dx} x^c = c\ x^{c-1}"/><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>It’s easy to prove that this works for an individual <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> value. For example,
 our very first derivative example shows that <img class="math" src="_images/math/9ae28760b3a23f0c8181fbe2646e23d06877722e.png" alt="\frac{d}{dx} x^2 = 2x"/>. Here
@@ -254,8 +274,8 @@ that the rule isn’t limited to positive integers, but that’s beyond the
 scope of this tutorial.</p>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h3><img class="math" src="_images/math/de27ec19138a293dd7e06cb57f03ed9cf7c55847.png" alt="\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}"/><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><img class="math" src="_images/math/de27ec19138a293dd7e06cb57f03ed9cf7c55847.png" alt="\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}"/><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>We could prove this with the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/> rule because
 <img class="math" src="_images/math/e1f2f47dde68244f7a225a6eb728a21cd9794eed.png" alt="\sqrt x = x^\frac{1}{2}"/>, but we proved the <img class="math" src="_images/math/2b8238b123f456cca2392b16b56774f8e678a91c.png" alt="x^c"/> rule only for positive
@@ -278,8 +298,8 @@ integers. Let’s survive without it. Again, it’s a mess, but it works.</p>
 &amp;= \frac{1}{2\ \sqrt x}"/></p>
 </div></div></blockquote>
 </div>
-<div class="section" id="id7">
-<h3><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>This rule looks simple, but it’s surprisingly difficult to prove correctly
 while keeping it easy to read. Here’s the best proof I managed to make.</p>
@@ -300,7 +320,7 @@ So, if <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84
 <p>If we put all this together we can set <img class="math" src="_images/math/48438feaf697dd21d1d3af56b5e8c1a7666d2ce1.png" alt="k=g(x+h)-g(x)"/>. Now it’s time to
 calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2ec2c4b.png" alt="f'(g(x))g'(x)"/>.</p>
 <div class="math">
-<p><img src="_images/math/aa334276c61f763ef00308d15cec423fc98def35.png" alt="f'(g(x))g'(x)
+<p><img src="_images/math/1ea0b149db9873cf697f68aff96cf13ddf450fa6.png" alt="f'(g(x))g'(x)
 &amp;= \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
 &amp;= \lim_{k\to0} \lim_{h\to0} \left(
       \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
@@ -309,10 +329,8 @@ calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2
       \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
       \cdot \frac{g(x+h)-g(x)}{h}
 \right) \\
-&amp;= \lim_{h\to0} \left(
-      \frac{f(g(x+h)+g(x)-g(x))-f(g(x))}{g(x+h)-g(x)}
-      \cdot \frac{g(x+h)-g(x)}{h}
-\right) \\
+&amp;= \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
+&amp;= \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
 &amp;= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
 &amp;= \frac{d}{dx} (f(g(x))"/></p>
 </div><div class="i">

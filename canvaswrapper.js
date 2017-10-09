@@ -41,9 +41,9 @@ function CanvasWrapper(canvasId) {
     return res;
   }
 
-  this.drawRectangle = function(xmin, ymin, xmax, ymax, color) {
+  this.drawRectangle = function(left, top, width, height, color) {
     ctx.beginPath();
-    ctx.rect(0, 0, this.width, this.height);
+    ctx.rect(left, top, width, height);
     ctx.fillStyle = color;
     ctx.fill();
     ctx.closePath();
