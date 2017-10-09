@@ -189,12 +189,26 @@ radians by default instead of degrees. Let's convert 60° to radians so
 That's more like it. ``0.5000000000000001`` is obviously not an accurate
 result, but it's good enough for a programmer while a mathematician would say
 that `\sin 60° = \frac{\sqrt 3}2` and `\cos 60° = \frac 1 2`. I might write
-more about radians, how the heck I came up with those mathy-accurate values and
-how Python's conversion functions work some day.
+more about how the heck I came up with those mathy-accurate values some day.
 
 In most programming languages, functions like ``sin`` and ``cos`` take radians
 as arguments, but also note that some functions (like ``atan2``, see
 `Trig with a Triangle`_ below) return radians.
+
+If your favorite programming language doesn't come with handy ``radians()`` and
+``degrees()`` functions you can define your own. Here's a JavaScript example:
+
+.. code-block:: javascript
+
+   function toRadians(degrees) {
+     return degrees*Math.PI/180;
+   }
+
+   function toDegrees(radians) {
+     return radians*180/Math.PI;
+   }
+
+See :ref:`the explanation <radians>` if you're wondering how these functions work.
 
 
 Example: Ball and Paddle
@@ -220,8 +234,9 @@ start the game and then use arrow keys to move the paddle.
      moving: false,
    };
 
-   // TODO: explain how this works
-   function toRadians(degrees) { return degrees*Math.PI/180; }
+   function toRadians(degrees) {
+     return degrees*Math.PI/180;
+   }
 
    function resetGame() {
      paddle.centerx = screen.width/2;

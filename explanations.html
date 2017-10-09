@@ -47,10 +47,10 @@ interested in the math itself you may enjoy reading some of this stuff.</p>
 <p>I used a bunch of spooky formulas in this tutorial. Some of them are
 definitions of e.g. <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> or <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, but in this chapter we’ll focus on those
 that aren’t and prove that they actually work.</p>
-<div class="section" id="two-ways-to-define-sine-and-cosine">
-<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
 <div class="i">
-<p><img src="_images/asymptote/3ccb4225da2638c69e63b6c861e7ff09.png" class="align-right"/></p></div><p>The y axis of the picture at right goes up because this explanation isn’t
+<p><img src="_images/asymptote/3ccb4225da2638c69e63b6c861e7ff09.png" class="align-right"/></p></div><div class="section" id="two-ways-to-define-sine-and-cosine">
+<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
+<p>The y axis of the picture at right goes up because this explanation isn’t
 really useful for programming; it’s just an explanation for people who are
 wondering how <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> appear both in a unit circle and in triangles.</p>
 <p>In <a class="reference internal" href="geometry-and-trig.html#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a> we defined <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and
@@ -58,18 +58,47 @@ wondering how <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac
 <a class="reference internal" href="geometry-and-trig.html#triangletrig"><span class="std std-ref">the triangle trig section</span></a> we defined them with a
 triangle. If we apply the triangle stuff to the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> of the picture at
 right, we get this:</p>
-<div class="math">
+<div class="i">
+<p><img src="_images/asymptote/56fd989d85904e914a0dd6c51af5e370.png" class="align-right"/></p></div><div class="math">
 <p><img src="_images/math/4d51d3613e5319d17929ede605086d8a6bc77ad6.png" alt="\sin t &amp;= \frac{\sin t}{1} \\
 \cos t &amp;= \frac{\cos t}{1} \\
 \tan t &amp;= \frac{\sin t}{\cos t}"/></p>
-</div><div class="i">
-<p><img src="_images/asymptote/6be200d872b812bea087400ccc82eb2d.png" class="align-right"/></p></div><p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
+</div><p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
 bit more interesting. We found another way to define <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, and it
 also works with a triangle:</p>
 <div class="math">
 <p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
 = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
 </div></div>
+<div class="section" id="wtf-are-radians">
+<span id="radians"></span><h2>WTF are radians?<a class="headerlink" href="#wtf-are-radians" title="Permalink to this headline">¶</a></h2>
+<div class="i">
+<p><img src="_images/asymptote/96f66c5ad412354b17a89fda4c9acb7a.png" class="align-right"/></p></div><p>In <a class="reference internal" href="geometry-and-trig.html#unitcircletrig"><span class="std std-ref">the unit circle trig thing</span></a> we learned to convert
+angles to radians with Python’s <code class="docutils literal"><span class="pre">math.radians()</span></code> function before passing them
+to <code class="docutils literal"><span class="pre">math.sin</span></code> and <code class="docutils literal"><span class="pre">math.cos</span></code>. We also defined these functions:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">toRadians</span><span class="p">(</span><span class="nx">degrees</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">degrees</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">toDegrees</span><span class="p">(</span><span class="nx">radians</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">radians</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="i">
+<p><img src="_images/asymptote/7753db0910b826b3a1fc4ac7c6d3a653.png" class="align-right"/></p></div><p>The angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> of the green circle sector at right is by definition <img class="math" src="_images/math/2ae7a2c4e209f4654fc3211f8800c8cc3ddd88d1.png" alt="\frac b r"/>
+radians. It doesn’t depend on the size of the sector because the blue sector’s
+angle is also <img class="math" src="_images/math/1c0ecc5b17c69db875fb04babdafdba80d9a3fa8.png" alt="\frac{2b}{2r} = \frac b r"/> radians.</p>
+<p>Now let’s have a look at a full circle. The perimeter <img class="math" src="_images/math/27d463da4622be5b3ef1d4176ced7d7a323c6425.png" alt="p"/> of a circle with
+radius <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/> is <img class="math" src="_images/math/ff5d6582e44c4c870f839e254bbe49169218bed0.png" alt="\pi d"/> where <img class="math" src="_images/math/b9fe099231fc52e98f7ea641aee3ce8b783d195a.png" alt="\pi = 3.14159..."/>, and if we plug in <img class="math" src="_images/math/4b667897dc3597be40b436dd97dbd82068c4c7b2.png" alt="d=2r"/> we get
+<img class="math" src="_images/math/9eddb029b61d539f0aa69041be579556a49925aa.png" alt="p=2\pi r"/>. Let’s figure out how many radians a full turn is:</p>
+<div class="math">
+<p><img src="_images/math/565dea5921d84f982f53306c9687b1c78e930164.png" alt="t = \frac{b}{r} = \frac{p}{r} = \frac{2\pi r}{r} = 2\pi"/></p>
+</div><p>So, <img class="math" src="_images/math/17610c8cb79d7717fb063fbb2f5d0ff551472e0d.png" alt="360°"/> is <img class="math" src="_images/math/6f064faadf14a1d739a4ca4e1ea4aeeb3a342dfe.png" alt="2\pi"/> radians and <img class="math" src="_images/math/3aad8bc0e5e9523dd93ae9bf04cfec5205089552.png" alt="1°"/> is <img class="math" src="_images/math/1dd058c60e15c690b7c5926d73decef18a7e096e.png" alt="\frac{2\pi}{360}=\frac{\pi}{180}"/>
+radians.</p>
+<p>The constant <img class="math" src="_images/math/6f064faadf14a1d739a4ca4e1ea4aeeb3a342dfe.png" alt="2\pi"/> is so common in math that some people do <img class="math" src="_images/math/b66f8235ee730e5a81debf4a9b824cfb2fb00b3f.png" alt="\tau = 2\pi"/>
+where <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> is the Greek tau letter. Use whatever constant you like.</p>
+</div>
 <div class="section" id="pythagorean-theorem">
 <span id="pythagoras-proof"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
 <p>This is a well-known proof and I like it because it’s simple.</p>
@@ -368,7 +397,7 @@ doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
