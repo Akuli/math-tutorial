@@ -21,9 +21,11 @@ void axises(real xmin, real xmax, real ymin, real ymax,
             string xlabel="$x$", string ylabel="$y$") {
     // TODO: come up with a nice way to add numbers along the axises
     draw((xmin,0)--(xmax,0), arrow=Arrow(size=0.7cm));
-    draw((0,ymin)--(0,ymax), arrow=Arrow(size=0.7cm));
     draw((xmax,0)--(xmax,0.01), L=xlabel);
-    draw((0,ymax)--(0,ymax+0.01), L=ylabel);
+    if (ymin != 0 || ymax != 0) {
+        draw((0,ymin)--(0,ymax), arrow=Arrow(size=0.7cm));
+        draw((0,ymax)--(0,ymax+0.01), L=ylabel);
+    }
 }
 
 void abctriangle(real x, real y, pen fillcolor=mediumblue) {
