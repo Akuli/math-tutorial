@@ -114,9 +114,9 @@ situations. Here's a better definition:
 .. math::
    \frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
-Here the `\lim` thing means that we take the **limit** as `h` approaches 0.
-It's essentially the same as our `dx` thing, but more explicit and better
-defined in some corner cases.
+The `\lim` thing means that we take the **limit** as `h` approaches 0. It's
+essentially same as our `dx` thing, but more explicit and better defined in
+some corner cases.
 
 
 First Example
@@ -152,7 +152,7 @@ e.g. `h=0.000001`, but we don't! Have a look:
                   &= \lim_{h\to0} \frac{xh+xh+h^2}{h} \\
                   &= \lim_{h\to0} \frac{(x+x+h)h}{h} \\
                   &= \lim_{h\to0} (x+x+h) \\
-                  &= \lim_{h\to0} (2x+h) \\
+                  &= x + x \\
                   &= 2x
 
 .. asymptote::
@@ -245,7 +245,7 @@ Note that if you have something like `(2x)^2` as opposed to `x^2` you
 need to use the `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)` rule. In this example,
 you would plug in `f(x)=x^2` and `g(x)=2x` to get this:
 
-.. math:: \frac{d}{dx} (2x)^2 = 2(2x) \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
+.. math:: \frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
 
 In some cases it's also possible to first open up something like the `(\ \ )^2`:
 
