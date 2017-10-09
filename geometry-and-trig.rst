@@ -113,7 +113,7 @@ Trig (aka trigonometry) with the Unit Circle
 
       size(10cm);
 
-      // start and end of dotted player path line
+      // start and end of dotted ball path line
       pair pathstart = (0.7,0);
       pair pathend = (1.5,-1.5);
 
@@ -122,7 +122,7 @@ Trig (aka trigonometry) with the Unit Circle
       draw(pathstart--pathend, p=smalldashes+deepblue);
       dot(pathend, deepblue, L=" the ball", align=NE);
 
-      // where does the player's path hit the x axis?
+      // where does the ball's path hit the x axis?
       real deltay = pathend.y-pathstart.y;
       real deltax = pathend.x-pathstart.x;
       real s = deltay/deltax;
@@ -161,8 +161,8 @@ to multiply everything by 5 to scale it up. We get this:
 
 .. code-block:: python
 
-   player.x += 5*cos(60)
-   player.y += 5*sin(60)
+   ball.x += 5*cos(60)
+   ball.y += 5*sin(60)
 
 The angle `t` in the above image looks like it's about 60°, so `\sin 60°`
 should be somewhere between 0 and 1 since the height of the x axis is 0 and the
@@ -347,9 +347,9 @@ Here `\arctan` is the inverse of `\tan`, so `\arctan (\tan t) = t`. Most
 programming languages have an ``atan(x)`` function that returns `\arctan x`,
 but I don't recommend using it in this case; the ``atan2(b,a)`` function
 returns `\arctan{\frac b a}` and I recommend it instead. ``atan2`` looks at the
-signs of `a` and `b` and does the right thing if they're negative (the player
-is moving to e.g. top left). It also works if ``a`` is 0 and ``b/a`` would
-fail as division by zero is undefined.
+signs of `a` and `b` and does the right thing if they're negative (the ball is
+moving to e.g. top left). It also works if ``a`` is 0 and ``b/a`` would fail as
+division by zero is undefined.
 
 .. note::
    Usually people like to put `x` before `y` in different kinds of places, but
@@ -372,7 +372,7 @@ Pythagorean Theorem
 
 .. admonition:: Problem
 
-   A player moves 10 pixels up and 20 pixels right, just like in the previous
+   The ball moves 10 pixels down and 20 pixels right, just like in the previous
    problem. How many pixels is that in total, measured diagonally?
 
 .. asymptote::
@@ -442,14 +442,14 @@ whatever style you want.
 
 We could also use vectors to do similar things as in
 :ref:`the unit circle trig section <unitcircletrig>`. The advantage with
-vectors is that moving the player is really easy:
+vectors is that moving the ball is really easy:
 
 .. code-block:: python
 
-   player.x += speed_vector.x
-   player.y += speed_vector.y
+   ball.x += speed_vector.x
+   ball.y += speed_vector.y
 
-A disadvantage is that if we want to change the angle that the player moves at
+A disadvantage is that if we want to change the angle that the ball moves at
 by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
 below.
 
