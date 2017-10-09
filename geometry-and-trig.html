@@ -98,7 +98,7 @@ results, where <img class="math" src="_images/math/bd9d9c7512c898e0a254a08821841
 every time the screen is updated. How many pixels should its x and y change
 every second?</p>
 <div class="last i">
-<p><img src="_images/asymptote/aa31cc8b95632b510d9ce9f4b2fac821.png"/></p></div></div>
+<p><img src="_images/asymptote/94a716379dba47176a7edddf0f7117ef.png"/></p></div></div>
 <p>Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
 shows what sine and cosine are:</p>
@@ -106,8 +106,8 @@ shows what sine and cosine are:</p>
 <p><img src="_images/asymptote/466bfe7e473a2186df03f7b1487de347.png"/></p></div><p>This is really simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y coordinate is
 <img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead of our 5, so we need
 to multiply everything by 5 to scale it up. We get this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
-<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ball</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>The angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> in the above image looks like it’s about 60°, so <img class="math" src="_images/math/b90d86fb7e9545c4276e55a72ae6362d975e142d.png" alt="\sin 60°"/>
@@ -364,9 +364,9 @@ which way things go. Let’s figure out how to calculate the <img class="math" s
 programming languages have an <code class="docutils literal"><span class="pre">atan(x)</span></code> function that returns <img class="math" src="_images/math/151f9aa8667657d9baa719a843e7306d84434c03.png" alt="\arctan x"/>,
 but I don’t recommend using it in this case; the <code class="docutils literal"><span class="pre">atan2(b,a)</span></code> function
 returns <img class="math" src="_images/math/c67802de7f967aa6627113150a28eb0322bc7663.png" alt="\arctan{\frac b a}"/> and I recommend it instead. <code class="docutils literal"><span class="pre">atan2</span></code> looks at the
-signs of <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and does the right thing if they’re negative (the player
-is moving to e.g. top left). It also works if <code class="docutils literal"><span class="pre">a</span></code> is 0 and <code class="docutils literal"><span class="pre">b/a</span></code> would
-fail as division by zero is undefined.</p>
+signs of <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and does the right thing if they’re negative (the ball is
+moving to e.g. top left). It also works if <code class="docutils literal"><span class="pre">a</span></code> is 0 and <code class="docutils literal"><span class="pre">b/a</span></code> would fail as
+division by zero is undefined.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Usually people like to put <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> before <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/> in different kinds of places, but
@@ -384,7 +384,7 @@ fail as division by zero is undefined.</p>
 <span id="pythagoras"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
 <div class="admonition-problem admonition">
 <p class="first admonition-title">Problem</p>
-<p class="last">A player moves 10 pixels up and 20 pixels right, just like in the previous
+<p class="last">The ball moves 10 pixels down and 20 pixels right, just like in the previous
 problem. How many pixels is that in total, measured diagonally?</p>
 </div>
 <div class="i">
@@ -424,12 +424,12 @@ difference between two points. For example, if we have the points <img class="ma
 whatever style you want.</p>
 <p>We could also use vectors to do similar things as in
 <a class="reference internal" href="#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a>. The advantage with
-vectors is that moving the player is really easy:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">player</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span>
-<span class="n">player</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span>
+vectors is that moving the ball is really easy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ball</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span>
+<span class="n">ball</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span>
 </pre></div>
 </div>
-<p>A disadvantage is that if we want to change the angle that the player moves at
+<p>A disadvantage is that if we want to change the angle that the ball moves at
 by 1° we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">1</span></code>. We’ll look into how this is done
 below.</p>
 <div class="i">
