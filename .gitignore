@@ -2,7 +2,3 @@
 _build/
 env/
 __pycache__/
-
-# currently all images are generated automagically, so this may need to
-# be changed in the future
-images/*.png
