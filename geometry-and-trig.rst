@@ -197,6 +197,107 @@ as arguments, but also note that some functions (like ``atan2``, see
 `Trig with a Triangle`_ below) return radians.
 
 
+Example: Ball and Paddle
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here's a minimal game written with my canvaswrapper.js_ script that
+demonstrates most things we have learned so far. Click it, press arrow up to
+start the game and then use arrow keys to move the paddle.
+
+.. jsdemo::
+
+   var paddle = {
+     length: 200,
+     thickness: 15,
+     speed: 10,
+     movement: 0,             // -1 means left, 0 means right
+   };
+   paddle.top = screen.height - paddle.thickness;
+
+   var ball = {
+     radius: 10,
+     speed: 10,
+     moving: false,
+   };
+
+   // TODO: explain how this works
+   function toRadians(degrees) { return degrees*Math.PI/180; }
+
+   function resetGame() {
+     paddle.centerx = screen.width/2;
+     ball.centerx = screen.width/2;
+     ball.centery = screen.height-paddle.thickness-ball.radius;
+     ball.angle = 270;
+     ball.moving = false;
+   }
+
+   resetGame();
+   runRepeatedly(function() {
+     screen.fill('black');
+     screen.drawRectangle(
+       paddle.centerx-paddle.length/2, screen.height-paddle.thickness,
+       paddle.length, paddle.thickness, '#00ff00');
+     screen.drawCircle(ball.centerx, ball.centery, ball.radius, 'white');
+
+     if (ball.moving) {
+       if (ball.centery > screen.height) {
+         resetGame();
+         return;
+       }
+
+       ball.centerx += ball.speed * Math.cos(toRadians(ball.angle));
+       ball.centery += ball.speed * Math.sin(toRadians(ball.angle));
+
+       if (ball.centerx < ball.radius) {     // bumps left wall
+         ball.angle = 180-ball.angle;
+         ball.centerx = ball.radius;
+       } else if (ball.centerx > screen.width-ball.radius) {   // right wall
+         ball.angle = 180-ball.angle;
+         ball.centerx = screen.width-ball.radius;
+       } else if (ball.centery < ball.radius) {          // top
+         ball.angle = 360-ball.angle;
+         ball.centery = ball.radius;
+       } else if (ball.centery > screen.height-paddle.thickness-ball.radius) {
+         // paddle?
+         paddleLeft = paddle.centerx - paddle.length/2;
+         paddleRight = paddle.centerx + paddle.length/2;
+         if (paddleLeft < ball.centerx && ball.centerx < paddleRight) {
+           // yes, it hits the paddle
+           ball.angle = 360 - ball.angle;
+           ball.centery = screen.height-paddle.thickness-ball.radius;
+
+           // also adjust the angle depending on which side of the paddle the
+           // ball hits
+           ball.angle += (ball.centerx - paddle.centerx) / 2;
+         }
+       }
+       paddle.centerx += paddle.movement*paddle.speed;
+     }
+
+     screen.getEvents().forEach(evt => {
+       if (evt.type == 'keydown') {
+         if (ball.moving) {
+           if (evt.key == 'ArrowLeft') {
+             paddle.movement = -1;
+           } else if (evt.key == 'ArrowRight') {
+             paddle.movement = 1;
+           }
+         } else {
+           if (evt.key == 'ArrowUp') {
+             ball.moving = true;
+             return;
+           }
+         }
+       } else if (evt.type == 'keyup' && (
+             (evt.key == 'ArrowLeft' && paddle.movement == -1) ||
+             (evt.key == 'ArrowRight' && paddle.movement == 1))) {
+         // cancel the previous ArrowLeft or ArrowRight press
+         paddle.movement = 0;
+       }
+     });
+   });
+
+
 .. _triangletrig:
 
 Trig with a Triangle
@@ -452,3 +553,57 @@ the code and then use the Python shell at right.
 .. raw:: html
 
    <iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MRCz/1"></iframe>
+
+..
+   # this is here as a comment just in case the repl.it thing stops
+   # working some day
+
+   import math
+
+
+   class Vector:
+
+       def __init__(self, x, y):
+           self.x = x
+           self.y = y
+
+       def __repr__(self):
+           return 'Vector(%r, %r)' % (self.x, self.y)
+
+       @property
+       def length(self):
+           return math.hypot(self.x, self.y)
+
+       @length.setter
+       def length(self, new_length):
+           old_length = math.hypot(self.x, self.y)
+           scale = new_length / old_length
+           self.x = self.x * scale
+           self.y = self.y * scale
+
+       @property
+       def angle(self):
+           return math.atan2(self.y, self.x)
+
+       @angle.setter
+       def angle(self, new_angle):
+           length = math.hypot(self.x, self.y)
+           self.x = math.cos(new_angle) * length
+           self.y = math.sin(new_angle) * length
+
+
+   v = Vector(1, 2)
+   print(v)
+   print(v.x)
+   print(v.y)
+   print(v.length)
+   print(math.degrees(v.angle))
+   print('--------------')
+
+   v.angle = math.radians(45)
+   print(v)
+   print(v.length)      # didn't change
+   print('--------------')
+
+   v.length = 0     # lol
+   print(v)
