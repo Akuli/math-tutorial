@@ -10,11 +10,6 @@ definitions of e.g. `\sin` or `\cos`, but in this chapter we'll focus on those
 that aren't and prove that they actually work.
 
 
-.. _unitcircle-triangle-compat:
-
-Two ways to define sine and cosine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 .. asymptote::
    :align: right
 
@@ -32,6 +27,11 @@ Two ways to define sine and cosine
 
    draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
 
+.. _unitcircle-triangle-compat:
+
+Two ways to define sine and cosine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The y axis of the picture at right goes up because this explanation isn't
 really useful for programming; it's just an explanation for people who are
 wondering how `\sin` and `\cos` appear both in a unit circle and in triangles.
@@ -42,18 +42,18 @@ In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
 triangle. If we apply the triangle stuff to the angle `t` of the picture at
 right, we get this:
 
-.. math::
-   \sin t &= \frac{\sin t}{1} \\
-   \cos t &= \frac{\cos t}{1} \\
-   \tan t &= \frac{\sin t}{\cos t}
-
 .. asymptote::
    :align: right
 
    size(9cm);
-   abctriangle(3,2);
+   abctriangle(3,2,lightblue);
    real t = atan2(2,3);
    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
+
+.. math::
+   \sin t &= \frac{\sin t}{1} \\
+   \cos t &= \frac{\cos t}{1} \\
+   \tan t &= \frac{\sin t}{\cos t}
 
 The first two formulas are obviously true with any `t`, but the last one is a
 bit more interesting. We found another way to define `\tan`, and it
@@ -62,6 +62,70 @@ also works with a triangle:
 .. math::
    \frac{\sin t}{\cos t} = \frac{b/c}{a/c}
    = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t
+
+
+.. _radians:
+
+WTF are radians?
+~~~~~~~~~~~~~~~~
+
+.. asymptote::
+   :align: right
+
+   size(8cm);
+   real t = 50;
+
+   real[] sizes = { 1, 2 };
+   for (real s : sizes) {
+      transform trans = shift(s*0.4, -1.5*s)*scale(s);
+      string prefix = s==1 ? "$" : "$"+(string)s;
+
+      fill(trans*((0,0)--arc((0,0), 1, 0, t)--cycle), (s==1 ? lightgreen : mediumblue));
+      draw(trans*((1,0)--(0,0)));
+      draw(trans*((0,0)--(cos(radians(t)),sin(radians(t)))), L=prefix+"r$", align=NW);
+      draw(trans*arc((0,0), 1, 0, t), L=prefix+"b$");
+      draw(trans*arc((0,0), 0.2, 0, t), L="$t$");     // no prefix
+   }
+
+In :ref:`the unit circle trig thing <unitcircletrig>` we learned to convert
+angles to radians with Python's ``math.radians()`` function before passing them
+to ``math.sin`` and ``math.cos``. We also defined these functions:
+
+.. code-block:: javascript
+
+   function toRadians(degrees) {
+     return degrees*Math.PI/180;
+   }
+
+   function toDegrees(radians) {
+     return radians*180/Math.PI;
+   }
+
+.. asymptote::
+   :align: right
+
+   size(7cm);
+   fill(unitcircle, palecyan);
+   draw(unitcircle, heavyblue, L="$p$", align=NW);
+   draw((0,0)--(1,0), L="$r$");
+   draw(brace((1,1), (1,-1)), L="$d$", align=E);
+
+
+The angle `t` of the green circle sector at right is by definition `\frac b r`
+radians. It doesn't depend on the size of the sector because the blue sector's
+angle is also `\frac{2b}{2r} = \frac b r` radians.
+
+Now let's have a look at a full circle. The perimeter `p` of a circle with
+radius `d` is `\pi d` where `\pi = 3.14159...`, and if we plug in `d=2r` we get
+`p=2\pi r`. Let's figure out how many radians a full turn is:
+
+.. math:: t = \frac{b}{r} = \frac{p}{r} = \frac{2\pi r}{r} = 2\pi
+
+So, `360°` is `2\pi` radians and `1°` is `\frac{2\pi}{360}=\frac{\pi}{180}`
+radians.
+
+The constant `2\pi` is so common in math that some people do `\tau = 2\pi`
+where `\tau` is the Greek tau letter. Use whatever constant you like.
 
 
 .. _pythagoras-proof:
