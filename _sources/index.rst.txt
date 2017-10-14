@@ -20,6 +20,7 @@ I recommend reading these:
 
    geometry-and-trig
    derivatives
+   integrals
 
 If you're working with something that uses colors, this chapter explains how
 ``#ff0000`` is red.
