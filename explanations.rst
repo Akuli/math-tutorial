@@ -69,6 +69,10 @@ also works with a triangle:
 WTF are radians?
 ~~~~~~~~~~~~~~~~
 
+In :ref:`the unit circle trig thing <unitcircletrig>` we learned to convert
+angles to radians with Python's ``math.radians()`` function before passing them
+to ``math.sin`` and ``math.cos``. We also defined these JavaScript functions:
+
 .. asymptote::
    :align: right
 
@@ -87,10 +91,6 @@ WTF are radians?
       draw(trans*arc((0,0), 0.2, 0, t), L="$t$");     // no prefix
    }
 
-In :ref:`the unit circle trig thing <unitcircletrig>` we learned to convert
-angles to radians with Python's ``math.radians()`` function before passing them
-to ``math.sin`` and ``math.cos``. We also defined these functions:
-
 .. code-block:: javascript
 
    function toRadians(degrees) {
@@ -101,31 +101,35 @@ to ``math.sin`` and ``math.cos``. We also defined these functions:
      return radians*180/Math.PI;
    }
 
-.. asymptote::
-   :align: right
-
-   size(7cm);
-   fill(unitcircle, palecyan);
-   draw(unitcircle, heavyblue, L="$p$", align=NW);
-   draw((0,0)--(1,0), L="$r$");
-   draw(brace((1,1), (1,-1)), L="$d$", align=E);
-
-
-The angle `t` of the green circle sector at right is by definition `\frac b r`
+By definition, the angle of the green circle sector at right is `t = \frac b r`
 radians. It doesn't depend on the size of the sector because the blue sector's
 angle is also `\frac{2b}{2r} = \frac b r` radians.
 
-Now let's have a look at a full circle. The perimeter `p` of a circle with
-radius `d` is `\pi d` where `\pi = 3.14159...`, and if we plug in `d=2r` we get
-`p=2\pi r`. Let's figure out how many radians a full turn is:
+.. asymptote::
+   :align: right
 
-.. math:: t = \frac{b}{r} = \frac{p}{r} = \frac{2\pi r}{r} = 2\pi
+   size(5cm);
+   real rotation = 0.75*pi;
 
-So, `360°` is `2\pi` radians and `1°` is `\frac{2\pi}{360}=\frac{\pi}{180}`
-radians.
+   fill(unitcircle, lightgreen);
+   draw(unitcircle, heavyblue);
+   label(rotate(degrees(rotation)-90)*"$\tau r$", (cos(rotation),sin(rotation)),
+         blue, align=NW);
+   draw(brace((1,0), (0,0)), L="$r$", align=S);
 
-The constant `2\pi` is so common in math that some people do `\tau = 2\pi`
-where `\tau` is the Greek tau letter. Use whatever constant you like.
+Now let's have a look at a full circle. The perimeter of a circle with radius
+`r` is `\tau r` where `\tau = 6.283185...`. Be sure to not confuse the Greek
+tau letter `\tau` with something like `t` or `r`. You might also be familiar
+with the constant `\pi = \frac \tau 2 = 3.141592...`.
+
+Anyway, let's figure out how many radians a full turn is:
+
+.. math:: t = \frac b r = \frac{\tau r}{r} = \tau
+
+So `360°` is `\tau` radians, `180°` is `\frac \tau 2 = \pi` radians and so on,
+so `d` degrees is `d/360\cdot\tau` radians. I used `180°` and `\pi` in the
+conversion functions because JavaScript doesn't have a ``Math.TAU`` constant,
+but some programming languages have one, like ``math.tau`` in new Pythons.
 
 
 .. _pythagoras-proof:

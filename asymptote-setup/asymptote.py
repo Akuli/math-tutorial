@@ -13,7 +13,7 @@ import subprocess
 import tempfile
 
 from docutils import nodes
-from docutils.parsers.rst import Directive
+from docutils.parsers.rst import Directive, directives
 from docutils.parsers.rst.directives.images import Image as ImageDirective
 from sphinx.util.nodes import set_source_info
 
@@ -74,12 +74,17 @@ class AsyDirective(Directive):
     required_arguments = 0
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {'align': ImageDirective.option_spec['align']}
+    option_spec = {
+        'align': ImageDirective.option_spec['align'],
+        '3d': directives.flag,
+    }
 
     def run(self):
         # type: () -> List[nodes.Node]
         node = asymptote()
-        node['code'] = 'import boilerplate;\n' + '\n'.join(self.content)
+        node['code'] = (
+            ('import boilerplate%s;\n' % ['','3d']['3d' in self.options])
+            + '\n'.join(self.content))
         node['docname'] = self.state.document.settings.env.docname
         if 'align' in self.options:
             node['align'] = self.options['align']

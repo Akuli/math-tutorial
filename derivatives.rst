@@ -41,6 +41,8 @@ Let's draw a graph of something like `y = 2x+1`:
 
 For example, at `x=3` we know that `y = 2x+1 = 2 \cdot 3 + 1 = 7`.
 
+.. _slope:
+
 Let's calculate the **slope** of this line:
 
 .. math:: \frac{\Delta y}{\Delta x} = \frac{6}{3} = 2
@@ -282,6 +284,8 @@ the one we did above:
    >>> expand((f(x+dx)-f(x))/dx)
    dx + 2⋅x
 
+
+.. _smoothjumps:
 
 Example: Smooth Jumps
 ~~~~~~~~~~~~~~~~~~~~~
