@@ -22,6 +22,11 @@ instructions for every possible platform.
         $ python3 -m sphinx . _build
         $ ( yourfavoritebrowser _build/index.html &>/dev/null )&
 
+    If you get errors even though you have all the dependencies installed try
+    removing the last `.. asymptote::` block from `integrals.rst`. I don't know
+    why but 3D asymptote drawings work just fine on one of my computers but not
+    the other.
+
 3. Run the crazy script if you dare!
 
         $ python3 publish.py
