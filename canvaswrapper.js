@@ -22,7 +22,7 @@ function CanvasWrapper(canvasId) {
       }
 
       // prevent scrolling with arrow keys so the demo can use them
-      if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].indexOf(evt.key) > 0) {
+      if (['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].indexOf(evt.key) >= 0) {
         evt.preventDefault();
       }
       events.push(eventCreator(evt));
