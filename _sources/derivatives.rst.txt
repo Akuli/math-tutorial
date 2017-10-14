@@ -280,9 +280,10 @@ the one we did above:
    >>> def f(x):
    ...     return x**2
    ...
-   >>> dx = Symbol('dx')
-   >>> expand((f(x+dx)-f(x))/dx)
-   dx + 2⋅x
+   >>> h = Symbol('h')
+   >>> expand((f(x+h)-f(x))/h)
+   h + 2⋅x
+   >>> 
 
 
 .. _smoothjumps:
