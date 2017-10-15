@@ -568,8 +568,8 @@ These vector calculations are just like the
 
 Example: if we move 1 unit to the right and 2 units up, our vector is `<1,2>`,
 its length is `\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24` and the angle is
-`\text{atan2}(2,1) \approx 63.4°`. On the other hand,
-`2.24 \cdot \cos 63.4° \approx 1` and `2.24 \cdot \sin 63.4° \approx 2`.
+`\text{atan2}(2,1) \approx 1.107` radians. On the other hand,
+`2.24 \cdot \cos 1.107 \approx 1` and `2.24 \cdot \sin 1.107 \approx 2`.
 
 One way to change the angle of a vector is to first convert it to a length and
 an angle, change that angle and create a new vector. It looks like this in
