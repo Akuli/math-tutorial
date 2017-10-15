@@ -80,6 +80,15 @@ called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835
 was originally written on paper, and writing long things by hand sucks. Again,
 this doesn’t apply to the “special” functions.</p>
 </div>
+<div class="section" id="equality-and-stuff">
+<h2>Equality and stuff<a class="headerlink" href="#equality-and-stuff" title="Permalink to this headline">¶</a></h2>
+<p>I’m quite sure you know or you can guess what <img class="math" src="_images/math/361368edfb979b0fea138b74c7f87da34b92b310.png" alt="a=b"/>, <img class="math" src="_images/math/dc99e83bb0b647a72b8b2d0765e30a5a81a78e32.png" alt="a&gt;b"/>, <img class="math" src="_images/math/dc36094a2373d9170ef12cf087beccd7b2408d77.png" alt="a \ge b"/>, <img class="math" src="_images/math/885207eead57b058d4af891cb502086d69f6a5c7.png" alt="a &lt; b"/>
+and <img class="math" src="_images/math/1ea1576c9dadebf3f20973354205c998396a565a.png" alt="a \le b"/> mean so I won’t explain those. The equivalent of <code class="docutils literal"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">b</span></code> in
+programming is <img class="math" src="_images/math/66346e0920331a588ae289b564bb95f7426c19fc.png" alt="a \ne b"/> in math.</p>
+<p><img class="math" src="_images/math/85a7cc028c00504d67468e3e4f20a6e9cd60f526.png" alt="a \approx b"/> means that <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> are close to each other. It doesn’t
+contain any information about <em>how</em> close to each other the values are, and
+it’s often used like <img class="math" src="_images/math/6c5ce47f73af23d78e2a94670d3fc8c5573e1e42.png" alt="1/3 \approx 0.3333"/>.</p>
+</div>
 <div class="section" id="id1">
 <h2>+, -, *, /<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>I’m sure you already know how + and - work. Just be careful when you have a
@@ -116,7 +125,7 @@ numbers are below a division line and which aren’t. For example, if we have
 <img class="math" src="_images/math/51451d238a31db8f590fd6d8febbb4a4105abfd1.png" alt="\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}"/> because 2 and 5 were below the lines but
 other numbers weren’t.</p>
 <p>If both the top and bottom are being multiplied by something you can get rid of
-that multiplier. For example (here <img class="math" src="_images/math/a6b912fd3b00d82e1d9b2f71c9c0daf7a7f439b7.png" alt="\ne"/> is <code class="docutils literal"><span class="pre">!=</span></code>):</p>
+that multiplier. For example:</p>
 <div class="math">
 <p><img src="_images/math/c8b43f22dfcddba97e87b0c821c693c80781eabc.png" alt="\frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0"/></p>
 </div><p id="zerodivision">You can add, substract and multiply any numbers together however you want, but
@@ -146,6 +155,11 @@ programming languages.</p>
 <div class="math">
 <p><img src="_images/math/9f62f31022897143ec879d9b305723cae0fe089d.png" alt="x^5=x\cdot x\cdot x\cdot x\cdot x"/></p>
 </div><div class="math">
+<p><img src="_images/math/ee348abee33d67d772a3f4faa4d14f6f22728851.png" alt="x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot
+          \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}
+        = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}
+        = (xy)^a"/></p>
+</div><div class="math">
 <p><img src="_images/math/9239e39692846246a9ae0d95446bd6f8905a8066.png" alt="x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}
          = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot
            \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}
@@ -156,14 +170,19 @@ programming languages.</p>
         = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
         = x^{ab}"/></p>
 </div><div class="math">
-<p><img src="_images/math/a0b5e541323e21e9c777d2d8cd3fd94d78f8fdb2.png" alt="\sqrt x = x^\frac 1 2, x &gt; 0"/></p>
+<p><img src="_images/math/64c3764e0883ae06137fd8491b3038c63d701c8f.png" alt="\sqrt x = x^\frac 1 2"/></p>
 </div><div class="math">
-<p><img src="_images/math/45455802822b907cab0724af6f0a0458bee513f4.png" alt="(\sqrt x)^2 = x, x &gt; 0"/></p>
+<p><img src="_images/math/b8ead625a4743fc6d6a7513df41e5f95964ce34f.png" alt="\sqrt a \sqrt b = \sqrt{ab}"/></p>
+</div><div class="math">
+<p><img src="_images/math/adc61a54e7d12fea9b14fbc386a0ac23434f3c70.png" alt="(\sqrt x)^2 = x, x \ge 0"/></p>
 </div><div class="math">
 <p><img src="_images/math/0414c32f802b0de1d864768654c5ae3743720bc5.png" alt="\sqrt{x^2} = |x|"/></p>
 </div><div class="math">
 <p><img src="_images/math/10ce93dfcf1e5e8b3e2b25ebe96a4998410b369e.png" alt="x^0 = 1"/></p>
-</div><p>You’re probably wondering how the heck our <img class="math" src="_images/math/d170601e8e6fda89f51a9d97db9adf6ee4070443.png" alt="\sqrt{x^2}=|x|"/> rule works. This
+</div><p>Note that <img class="math" src="_images/math/a149eafec13abde27505a4576b87cf0018164bc4.png" alt="\sqrt x"/> is never negative, and you cannot take square roots of
+negative numbers like <img class="math" src="_images/math/2c2c9adf25ede95c30802610b5292c3f6ce0ab81.png" alt="\sqrt{-2}"/> (unless you use complex numbers, but they are
+beyond the scope of this tutorial).</p>
+<p>You’re probably wondering how the heck our <img class="math" src="_images/math/d170601e8e6fda89f51a9d97db9adf6ee4070443.png" alt="\sqrt{x^2}=|x|"/> rule works. This
 example should explain everything:</p>
 <div class="math">
 <p><img src="_images/math/4de645845ae1b060a8862396a1e848a03bb6453c.png" alt="\sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqrt{3^2}"/></p>
@@ -234,7 +253,7 @@ is more complete.</p>
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

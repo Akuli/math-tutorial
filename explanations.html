@@ -70,37 +70,6 @@ also works with a triangle:</p>
 <p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
 = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
 </div></div>
-<div class="section" id="wtf-are-radians">
-<span id="radians"></span><h2>WTF are radians?<a class="headerlink" href="#wtf-are-radians" title="Permalink to this headline">¶</a></h2>
-<p>In <a class="reference internal" href="geometry-and-trig.html#unitcircletrig"><span class="std std-ref">the unit circle trig thing</span></a> we learned to convert
-angles to radians with Python’s <code class="docutils literal"><span class="pre">math.radians()</span></code> function before passing them
-to <code class="docutils literal"><span class="pre">math.sin</span></code> and <code class="docutils literal"><span class="pre">math.cos</span></code>. We also defined these JavaScript functions:</p>
-<div class="i">
-<p><img src="_images/asymptote/96f66c5ad412354b17a89fda4c9acb7a.png" class="align-right"/></p></div><div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">toRadians</span><span class="p">(</span><span class="nx">degrees</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">degrees</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">toDegrees</span><span class="p">(</span><span class="nx">radians</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">radians</span><span class="o">*</span><span class="mi">180</span><span class="o">/</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>By definition, the angle of the green circle sector at right is <img class="math" src="_images/math/85e7a0caa8ee8c914f36c2a349f6dcb8f6ab55d3.png" alt="t = \frac b r"/>
-radians. It doesn’t depend on the size of the sector because the blue sector’s
-angle is also <img class="math" src="_images/math/1c0ecc5b17c69db875fb04babdafdba80d9a3fa8.png" alt="\frac{2b}{2r} = \frac b r"/> radians.</p>
-<div class="i">
-<p><img src="_images/asymptote/d606f3e64083b55e1df8b39f91c9bfc0.png" class="align-right"/></p></div><p>Now let’s have a look at a full circle. The perimeter of a circle with radius
-<img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> is <img class="math" src="_images/math/1d020512929df9e18f94151ea7fc9c39604a8b25.png" alt="\tau r"/> where <img class="math" src="_images/math/6ff34d78da30fa72ea566918ffdc093cf607644d.png" alt="\tau = 6.283185..."/>. Be sure to not confuse the Greek
-tau letter <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> with something like <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> or <img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/>. You might also be familiar
-with the constant <img class="math" src="_images/math/218ac540d4898329b28ea3f9b319c044c13537dc.png" alt="\pi = \frac \tau 2 = 3.141592..."/>.</p>
-<p>Anyway, let’s figure out how many radians a full turn is:</p>
-<div class="math">
-<p><img src="_images/math/de94bbb285c163f26797f1569b7016d14077cfe5.png" alt="t = \frac b r = \frac{\tau r}{r} = \tau"/></p>
-</div><p>So <img class="math" src="_images/math/17610c8cb79d7717fb063fbb2f5d0ff551472e0d.png" alt="360°"/> is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians, <img class="math" src="_images/math/6c95e82c7b3f9fb128e2bae484a1966ddedd36c5.png" alt="180°"/> is <img class="math" src="_images/math/1eb7dc1ae8cfe0ef6db61b289e0049f627627266.png" alt="\frac \tau 2 = \pi"/> radians and so on,
-so <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/> degrees is <img class="math" src="_images/math/22a9589a5d5060fef27db67fc24819bf895f9765.png" alt="d/360\cdot\tau"/> radians. I used <img class="math" src="_images/math/6c95e82c7b3f9fb128e2bae484a1966ddedd36c5.png" alt="180°"/> and <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> in the
-conversion functions because JavaScript doesn’t have a <code class="docutils literal"><span class="pre">Math.TAU</span></code> constant,
-but some programming languages have one, like <code class="docutils literal"><span class="pre">math.tau</span></code> in new Pythons.</p>
-</div>
 <div class="section" id="pythagorean-theorem">
 <span id="pythagoras-proof"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
 <p>This is a well-known proof and I like it because it’s simple.</p>
@@ -400,7 +369,7 @@ doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

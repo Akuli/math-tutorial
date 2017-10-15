@@ -50,6 +50,18 @@ was originally written on paper, and writing long things by hand sucks. Again,
 this doesn't apply to the "special" functions.
 
 
+Equality and stuff
+~~~~~~~~~~~~~~~~~~
+
+I'm quite sure you know or you can guess what `a=b`, `a>b`, `a \ge b`, `a < b`
+and `a \le b` mean so I won't explain those. The equivalent of ``a != b`` in
+programming is `a \ne b` in math.
+
+`a \approx b` means that `a` and `b` are close to each other. It doesn't
+contain any information about *how* close to each other the values are, and
+it's often used like `1/3 \approx 0.3333`.
+
+
 +, -, \*, /
 ~~~~~~~~~~~
 
@@ -89,7 +101,7 @@ numbers are below a division line and which aren't. For example, if we have
 other numbers weren't.
 
 If both the top and bottom are being multiplied by something you can get rid of
-that multiplier. For example (here `\ne` is ``!=``):
+that multiplier. For example:
 
 .. math:: \frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0
 
@@ -120,6 +132,7 @@ The absolute value of `x` is `|x|` in math and something like ``abs(x)`` or
 absolute value as stripping off the minus sign. For example, `|2| = 2` and
 `|-3| = 3`.
 
+
 Powers and Square Root
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -127,6 +140,11 @@ Powers and Square Root
 programming languages.
 
 .. math:: x^5=x\cdot x\cdot x\cdot x\cdot x
+.. math::
+   x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot
+             \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}
+           = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}
+           = (xy)^a
 .. math::
    x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}
             = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot
@@ -137,10 +155,16 @@ programming languages.
               \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}
            = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
            = x^{ab}
-.. math:: \sqrt x = x^\frac 1 2, x > 0
-.. math:: (\sqrt x)^2 = x, x > 0
+
+.. math:: \sqrt x = x^\frac 1 2
+.. math:: \sqrt a \sqrt b = \sqrt{ab}
+.. math:: (\sqrt x)^2 = x, x \ge 0
 .. math:: \sqrt{x^2} = |x|
 .. math:: x^0 = 1
+
+Note that `\sqrt x` is never negative, and you cannot take square roots of
+negative numbers like `\sqrt{-2}` (unless you use complex numbers, but they are
+beyond the scope of this tutorial).
 
 You're probably wondering how the heck our `\sqrt{x^2}=|x|` rule works. This
 example should explain everything:
