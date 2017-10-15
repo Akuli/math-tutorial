@@ -16,87 +16,155 @@ chapter contains a working example game.
    add minus signs everywhere before using formulas from this tutorial.
 
 
+.. asymptote::
+   :align: right
+
+   size(6cm);
+
+   draw(unitcircle, smalldashes);
+
+   fill(((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle), palegreen);
+   draw(((1,0)--(0,0)));
+   draw(((0,0)--(cos(1),sin(1))), blue, L="$r$", align=NW);
+   draw(arc((0,0), 1, 0, degrees(1.)), blue, L="$r$");
+   draw(arc((0,0), 0.2, 0, degrees(1.)), L="$1$");     // no prefix
+
+
+.. _radians:
+
+Radians and Tau
+~~~~~~~~~~~~~~~
+
+Angles are often measured in radians. The angle in the picture at right is one
+radian. Note that the radius and arc have the same length `r`, and the angle is
+always the same no matter what that length is.
+
+.. asymptote::
+   :align: right
+
+   size(6cm);
+
+   fill(((0,0)--arc((0,0), 1, 0, degrees(6.0))--cycle), palegreen);
+   draw(unitcircle);
+   for (real t = 0; t <= 6; t += 1) {
+      draw(((0,0)--(cos(t),sin(t))), align=NW);
+   }
+
+If we try to fill a circle with these 1 radian slices, 6 of them fit and
+there's some room left over. To be more precise, we can add 6.2831853...
+slices. This number is called tau and written with the Greek tau letter `\tau`.
+So, a full turn is `\tau` radians. Be careful not to confuse `\tau` with e.g. `T`.
+
+Some programming languages like new Pythons have a ``tau`` constant, but if
+your favorite language doesn't, use ``2*pi`` instead. Here pi is the more
+well-known circle constant `\pi = \tau/2 = 3.14159265...`, and almost all
+programming languages have something like ``math.pi`` or ``Math.PI``.
+
+I find `\tau` easier to work with than `\pi` because if I see `\tau/4`
+somewhere I know immediately that it's a quarter turn, but `\pi/2` isn't as
+obvious. Of course, you can use `\pi` if you prefer it over `\tau`.
+
+An alternative to radians is degrees, and they work so that 360° is a full
+turn. Here ° is the degree symbol, and 360 is just an arbitary number that
+someone has chosen a long time ago.
+
+If you need to convert between radians and degrees, use the fact that 360
+degrees is 1 radian. Here's a Python example:
+
+.. code-block:: python
+
+   def degrees2radians(degrees):
+       return degrees / 360 * math.tau
+
+   def radians2degrees(radians):
+       return radians / math.tau * 360
+
+Use ``180`` and ``pi`` instead of ``360`` and ``tau`` if your programming
+language doesn't have a ``tau`` constant. Or better yet, some programming
+languages feature conversion functions in standard libraries like Python's
+``math.radians()`` and ``math.degrees()``.
+
+
 Basic Angle Stuff
 ~~~~~~~~~~~~~~~~~
 
 .. admonition:: Problem
 
-   The ball of a ball-and-paddle game is moving at the angle of 30° and
+   The ball of a ball-and-paddle game is moving at the angle of 0.5 radians and
    it hits a wall at right. How should the angle change?
 
    .. asymptote::
 
       import patterns; add("wall",hatch(2mm));
-
       size(9cm);
+      real angle = 0.5;
 
       // points of the dotted ball path line
-      pair A = (-cos(radians(30))*1.5, sin(radians(30))*1.5);
+      pair A = (-cos(angle)*1.5, sin(angle)*1.5);
       pair B = (0,0);
-      pair C = (-cos(radians(30))*2, -sin(radians(30))*2);
+      pair C = (-cos(angle)*2, -sin(angle)*2);
 
       draw(A--B--C, p=smalldashes+deepblue);
       dot(C, p=deepblue, L=" the ball", align=S);
 
       draw((-1.3,C.y/2)--(-0.3,C.y/2), smalldashes);
-      draw(arc((C.x/2,C.y/2), 0.2, -150, 0), deepred, L="???");
+      draw(arc((C.x/2,C.y/2), 0.2, -degrees(pi-angle), 0), deepred, L="???");
 
-      // asymptote doesn't like °
       draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
-      draw(arc((A.x*2/3,A.y*2/3), 0.3, 0, -30), deepgreen, L="$30^\circ$", align=E);
+      draw(arc((A.x*2/3,A.y*2/3), 0.3, 0, -degrees(angle)), deepgreen,
+           L="0.5", align=E);
 
       real wallthickness = 0.15;
       filldraw((0,-1)--(0,1)--(wallthickness,1)--(wallthickness,-1)--cycle, pattern("wall"));
-
-Here ° is the degree sign, and 30° means 30 degrees. Degrees work so
-that 360° is a full turn, 180° is a half turn, 90° is a quarter and so
-on. It's also possible to measure angles in radians, but we'll look into
-that later.
 
 Note that both angles are measured down from a horizontal line clockwise
 because that's a standard in programming. In math, angles are usually measured
 up from a horizontal line and counter-clockwise.
 
-We can solve our problem by taking the 30° angle sign and moving it like
+We can solve our problem by taking the 0.5 radian angle sign and moving it like
 this:
 
 .. asymptote::
 
    import patterns; add("wall",hatch(2mm));
-
    size(7cm);
+   real angle = 0.5;
 
    // points of the dotted ball path line
    pair B = (0,0);
-   pair C = (-cos(radians(30))*2, -sin(radians(30))*2);
+   pair C = (-cos(angle)*2, -sin(angle)*2);
 
    draw(B--C, p=smalldashes+deepblue);
    dot(C, p=deepblue);
 
    draw((-1.6,C.y/2)--(-0.3,C.y/2), smalldashes);
-   draw(arc((C.x/2,C.y/2), 0.2, -150, 0), deepred, L="???");
-   draw(arc((C.x/2,C.y/2), 0.3, -150, -180), deepgreen, L="$30^\circ$", align=W);
+   draw(arc((C.x/2,C.y/2), 0.2, degrees(angle)-180, 0), deepred, L="???");
+   draw(arc((C.x/2,C.y/2), 0.3, degrees(angle)-180, -180), deepgreen,
+        L="0.5", align=W);
 
-Now you can see that the angles add up to half turn (or 180°), so we get
-this :ref:`equation <equations>`:
+Now you can see that the angles add up to half turn, and that's `\tau/2 = \pi`
+radians, so we get this :ref:`equation <equations>`:
 
 .. math::
-   30° + \text{???} &= 180° \\
-   \text{???} &= 180° - 30° \\
-   \text{???} &= 150°
+   0.5 + \text{???} &= \frac \tau 2 \\
+   \text{???} &= \frac \tau 2 - 0.5 \\
+   \text{???} &\approx 2.64
+
+I did the last step with Python.
 
 In math it's common to use a letter instead of "???" to represent an
 unknown value. For example:
 
 .. math::
-   30° + b &= 180° \\
-   b &= 180° - 30° = 150°
+   0.5 + b &= \frac \tau 2 \\
+   b &= \frac \tau 2 - 0.5 \approx 2.64
 
 It's easy to calculate similar things for other directions. Here are the
 results, where `a` is the original angle and `b` is the changed angle:
 
-* If the ball hits left or right wall, `b = 180°-a`.
-* If the ball hits top or bottom, `b = 360°-a`.
+   * If the ball hits left or right wall, `b = \frac \tau 2 - a`.
+   * If the ball hits top or bottom, `b = \tau - a`.
+
 
 .. _unitcircletrig:
 
@@ -105,9 +173,9 @@ Trig (aka trigonometry) with the Unit Circle
 
 .. admonition:: Problem
 
-   This time the ball moves at the angle of 60°, and it should move 5 pixels
-   every time the screen is updated. How many pixels should its x and y change
-   every second?
+   This time the ball moves at the angle of `\tau/6`, and it should move 5
+   pixels every time the screen is updated. How many pixels should its x and y
+   change every time?
 
    .. asymptote::
 
@@ -134,7 +202,7 @@ Trig (aka trigonometry) with the Unit Circle
       real x = pathstart.x - pathstart.y/s;
       real t = atan2(deltay, deltax);
 
-      draw(arc((x,0), 0.4, 0, degrees(t)), L="$60^\circ$", align=E);
+      draw(arc((x,0), 0.4, 0, degrees(t)), L="$\frac \tau 6$", align=E);
 
 Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
@@ -161,54 +229,32 @@ to multiply everything by 5 to scale it up. We get this:
 
 .. code-block:: python
 
-   ball.x += 5*cos(60)
-   ball.y += 5*sin(60)
+   ball.x += 5*cos(tau/6)
+   ball.y += 5*sin(tau/6)
 
-The angle `t` in the above image looks like it's about 60°, so `\sin 60°`
-should be somewhere between 0 and 1 since the height of the x axis is 0 and the
-circle's bottom is at `y=1`. But if we try this out in Python, something is
-wrong:
+Note that ``cos()`` and ``sin()`` functions use radians by default in almost
+all programming languages. Let's try this out with Python just to make sure
+that everything works:
 
 .. code-block:: python
 
    >>> import math
-   >>> math.sin(60)
-   -0.3048106211022167
-
-The problem is that Python, Haskell, C and most other programming languages use
-radians by default instead of degrees. Let's convert 60° to radians so
-``math.sin`` is happy:
-
-.. code-block:: python
-
-   >>> math.sin(math.radians(60))
+   >>> math.sin(math.tau/6)
    0.8660254037844386
-   >>> math.cos(math.radians(60))
+   >>> math.cos(math.tau/6)
    0.5000000000000001
 
-That's more like it. ``0.5000000000000001`` is obviously not an accurate
-result, but it's good enough for a programmer while a mathematician would say
-that `\sin 60° = \frac{\sqrt 3}2` and `\cos 60° = \frac 1 2`. I might write
-more about how the heck I came up with those mathy-accurate values some day.
+These results make sense because the angle `t` in the above image looks like
+it's about a sixth of a turn (or `\tau/6`), so `\sin(\tau/6)` should be
+somewhere between 0 and 1 since the height of the x axis is 0 and the circle's
+bottom is at `y=1`. Similarly, the `\cos t` marked on the picture seems to be
+about half of the radius, which is 1.
 
-In most programming languages, functions like ``sin`` and ``cos`` take radians
-as arguments, but also note that some functions (like ``atan2``, see
-`Trig with a Triangle`_ below) return radians.
-
-If your favorite programming language doesn't come with handy ``radians()`` and
-``degrees()`` functions you can define your own. Here's a JavaScript example:
-
-.. code-block:: javascript
-
-   function toRadians(degrees) {
-     return degrees*Math.PI/180;
-   }
-
-   function toDegrees(radians) {
-     return radians*180/Math.PI;
-   }
-
-See :ref:`the explanation <radians>` if you're wondering how these functions work.
+``0.5000000000000001`` is obviously not an accurate result, but it's good
+enough for a programmer while a mathematician would say that
+`\sin \frac \tau 6 = \frac{\sqrt 3}{2}` and `\cos \frac \tau 6 = \frac 1 2`. I
+might write more about how the heck I came up with those mathy-accurate values
+some day.
 
 
 Example: Ball and Paddle
@@ -219,6 +265,8 @@ demonstrates most things we have learned so far. Click it, press arrow up to
 start the game and then use arrow keys to move the paddle.
 
 .. jsdemo::
+
+   const TAU = Math.PI*2;
 
    var paddle = {
      length: 200,
@@ -234,15 +282,11 @@ start the game and then use arrow keys to move the paddle.
      moving: false,
    };
 
-   function toRadians(degrees) {
-     return degrees*Math.PI/180;
-   }
-
    function resetGame() {
      paddle.centerx = screen.width/2;
      ball.centerx = screen.width/2;
      ball.centery = screen.height-paddle.thickness-ball.radius;
-     ball.angle = 270;
+     ball.angle = 0.75*TAU;
      ball.moving = false;
    }
 
@@ -260,17 +304,17 @@ start the game and then use arrow keys to move the paddle.
          return;
        }
 
-       ball.centerx += ball.speed * Math.cos(toRadians(ball.angle));
-       ball.centery += ball.speed * Math.sin(toRadians(ball.angle));
+       ball.centerx += ball.speed * Math.cos(ball.angle);
+       ball.centery += ball.speed * Math.sin(ball.angle);
 
        if (ball.centerx < ball.radius) {     // bumps left wall
-         ball.angle = 180-ball.angle;
+         ball.angle = TAU/2 - ball.angle;
          ball.centerx = ball.radius;
        } else if (ball.centerx > screen.width-ball.radius) {   // right wall
-         ball.angle = 180-ball.angle;
+         ball.angle = TAU/2 - ball.angle;
          ball.centerx = screen.width-ball.radius;
        } else if (ball.centery < ball.radius) {          // top
-         ball.angle = 360-ball.angle;
+         ball.angle = TAU - ball.angle;
          ball.centery = ball.radius;
        } else if (ball.centery > screen.height-paddle.thickness-ball.radius) {
          // paddle?
@@ -278,12 +322,12 @@ start the game and then use arrow keys to move the paddle.
          paddleRight = paddle.centerx + paddle.length/2;
          if (paddleLeft < ball.centerx && ball.centerx < paddleRight) {
            // yes, it hits the paddle
-           ball.angle = 360 - ball.angle;
+           ball.angle = TAU - ball.angle;
            ball.centery = screen.height-paddle.thickness-ball.radius;
 
            // also adjust the angle depending on which side of the paddle the
            // ball hits
-           ball.angle += (ball.centerx - paddle.centerx) / 2;
+           ball.angle += (ball.centerx - paddle.centerx) / 100;
          }
        }
        paddle.centerx += paddle.movement*paddle.speed;
@@ -338,9 +382,9 @@ Here's another way to define `\sin` and `\cos`, and another function called
    \cos t &= \frac a c \\
    \tan t &= \frac b a
 
-These things work only if the triangle has a 90° corner, and the little box at
-bottom right means that the corner is 90°. These definitions are compatible
-with the unit circle stuff above; see
+These things work only if the triangle has an angle that is exactly a quarter
+turn, and the little box at bottom right means just that. These definitions are
+compatible with the unit circle stuff above; see
 :ref:`this thing <unitcircle-triangle-compat>`.
 
 .. asymptote::
@@ -375,10 +419,9 @@ Finally, it's time to calculate our stuff:
 
 .. code-block:: python
 
-   >>> from math import atan2, degrees
-   >>> degrees(atan2(10, 20))
-   26.56505117707799
-
+   >>> from math import atan2
+   >>> atan2(10, 20)
+   0.4636476090008061
 
 .. _pythagoras:
 
@@ -400,8 +443,8 @@ Here's a handy equation, also known as the Pythagorean theorem:
 
 .. math:: a^2 + b^2 = c^2
 
-Again, the triangle's corner between a and b must be 90° like it is in the
-image. If you're wondering how the heck it works see
+Again, the angle of the corner between a and b must be a quarter turn, like it
+is in the image. If you're wondering how the heck it works see
 :ref:`this proof <pythagoras-proof>`.
 
 Let's solve `c` from the equation by applying `\sqrt{\ \ }` on both sides:
@@ -413,8 +456,8 @@ but that's not a problem because a triangle with a negative side length doesn't
 make much sense.
 
 "Hypotenuse" is a fancy word that means the longest side of a triangle with a
-90° angle, and that's why some programming languages have a ``hypot(a, b)``
-function that returns `\sqrt{a^2 + b^2}`.
+quarter-turn angle, and that's why some programming languages have a
+``hypot(a, b)`` function that returns `\sqrt{a^2 + b^2}`.
 
 Let's calculate the distance:
 
@@ -465,8 +508,8 @@ vectors is that moving the ball is really easy:
    ball.y += speed_vector.y
 
 A disadvantage is that if we want to change the angle that the ball moves at
-by 1° we can't just do ``moving_angle += 1``. We'll look into how this is done
-below.
+we can't just do ``moving_angle += something``. We'll look into how this is
+done in a moment.
 
 .. asymptote::
    :align: right
@@ -535,9 +578,8 @@ pseudo-ish code:
 .. code-block:: python
 
    length = hypot(speed_vector.x, speed_vector.y)
-   angle = atan2(speed_vector.y, speed_vector.x) + angle_change
-   speed_vector.x = cos(angle) * length
-   speed_vector.y = sin(angle) * length
+   speed_vector.x = cos(new_angle) * length
+   speed_vector.y = sin(new_angle) * length
 
 Example: Vector class in Python
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -550,7 +592,7 @@ the code and then use the Python shell at right.
 
 .. raw:: html
 
-   <iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MRCz/1"></iframe>
+   <iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MeIW"></iframe>
 
 ..
    # this is here as a comment just in case the repl.it thing stops
@@ -595,10 +637,10 @@ the code and then use the Python shell at right.
    print(v.x)
    print(v.y)
    print(v.length)
-   print(math.degrees(v.angle))
+   print(v.angle)
    print('--------------')
 
-   v.angle = math.radians(45)
+   v.angle = math.tau/8
    print(v)
    print(v.length)      # didn't change
    print('--------------')

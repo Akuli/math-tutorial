@@ -427,8 +427,8 @@ Example: Circle Area
 ~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   This section assumes that you know what `\tau` is. I have shown it in
-   :ref:`the radian explanation thing <radians>`.
+   This section assumes that you know what `\tau` and radians are.
+   :ref:`Click here <radians>` if you don't.
 
 At some kind of school you may have learned that the area of a circle is
 `\pi r^2` where `\pi = \frac{\tau}{2} \approx 3.14` and `r` is the radius of

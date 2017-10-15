@@ -8,6 +8,7 @@ pen darkorange = rgb(0.9,0.4,0);
 real corner90 = 0.3;    // side length of 90° corner boxes
 real vectorarrowsize = 0.7cm;
 real bracedistance = 0.2;
+real tau = 2*pi;
 
 void grid(real xmin, real xmax, real ymin, real ymax) {
     pen thingray = defaultpen() + 1pt + gray;
