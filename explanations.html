@@ -83,15 +83,11 @@ triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02
 <p>We must get the same area with both ways, so we get this
 <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
 <div class="math">
-<p><img src="_images/math/5878c67c48e7ff6df8195041b3bbd2e4e7a245a4.png" alt="(a+b)(a+b) = c^2 + 4\frac{ab}{2}"/></p>
-</div><div class="math">
-<p><img src="_images/math/48930d469feccac62cd9216e831fdcebacf8d6d6.png" alt="(a+b)a+(a+b)b = c^2 + \frac{4}{2} ab"/></p>
-</div><div class="math">
-<p><img src="_images/math/bda9d990046934facc164bae09b2561c22de68fd.png" alt="aa+ba+ab+bb = c^2 + 2ab"/></p>
-</div><div class="math">
-<p><img src="_images/math/1d27c1a7368b38e77407c24f5623838fd13a346d.png" alt="a^2 + 2ab + b^2 = c^2 + 2ab"/></p>
-</div><div class="math">
-<p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
+<p><img src="_images/math/e47938892044fea6f15afc3307be7c2f1ac62d49.png" alt="(a+b)(a+b) &amp;= c^2 + 4\frac{ab}{2} \\
+(a+b)a+(a+b)b &amp;= c^2 + \frac{4}{2} ab \\
+aa+ba+ab+bb &amp;= c^2 + 2ab \\
+a^2 + 2ab + b^2 &amp;= c^2 + 2ab \\
+a^2 + b^2 &amp;= c^2"/></p>
 </div></div>
 <div class="section" id="which-functions-have-derivatives">
 <span id="has-derivative"></span><h2>Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Permalink to this headline">¶</a></h2>
@@ -157,7 +153,7 @@ something, <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3c
 <h3><img class="math" src="_images/math/bab9837984444ba7db4deb91eaa4f998c7f61149.png" alt="\frac{d}{dx}(c\ f(x)) = c\ f'(x)"/><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>The previous rule actually works with all functions that have a derivative,
-not just constants.</p>
+not just <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
 <div class="math">
 <p><img src="_images/math/b8f8e3de7bb4c83a7672c67a45fa57bab4a59096.png" alt="\frac{d}{dx}(c\ f(x)) &amp;= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
 &amp;= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
@@ -180,7 +176,8 @@ not just constants.</p>
 things added together. Let’s see what we get with the definition of
 derivative.</p>
 <div class="math">
-<p><img src="_images/math/65108762540d38bd2c2ee0aed380fb6c032aa4aa.png" alt="&amp; \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
+<p><img src="_images/math/dc604a228ada502d135663c3b6cc8dac42ea81cd.png" alt="\frac{d}{dx} (f(x)+g(x))
+&amp;= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
 &amp;= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
 &amp;= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
 &amp;= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h}\right) \\
@@ -195,23 +192,24 @@ similar way.</p>
 <blockquote>
 <div><p>It’s not pretty, but we can use the definition.</p>
 <div class="math">
-<p><img src="_images/math/7b21e11b6b3e3b7d6d5ea90608f6e4837e585b81.png" alt="&amp; \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
-&amp;= \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
+<p><img src="_images/math/94ce70e8b81fbf05da94cd5b01fc4f42492f691e.png" alt="&amp;  \frac{d}{dx} (f(x)g(x)) \\
+=&amp; \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
+=&amp; \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
                       +f(x+h)g(x+h)-f(x)g(x)}{h} \\
-&amp;= \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
-&amp;= \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
-&amp;= \lim_{h\to0} \left(
+=&amp; \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
+=&amp; \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
+=&amp; \lim_{h\to0} \left(
       \frac{(f(x+h)-f(x))\ g(x+h)}{h} + \frac{f(x)\ (g(x+h)-g(x))}{h}
    \right) \\
-&amp;= \lim_{h\to0} \left(
+=&amp; \lim_{h\to0} \left(
    \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
 \right) \\
-&amp;= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
+=&amp; \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
       + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
-&amp;= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
+=&amp; \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
   \left(\lim_{h\to0}g(x+h)\right)
   + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
-&amp;= f'(x)g(x) + f(x)g'(x)"/></p>
+=&amp; f'(x)g(x) + f(x)g'(x)"/></p>
 </div></div></blockquote>
 </div>
 <div class="section" id="id7">
@@ -267,7 +265,8 @@ scope of this tutorial.</p>
 <img class="math" src="_images/math/e1f2f47dde68244f7a225a6eb728a21cd9794eed.png" alt="\sqrt x = x^\frac{1}{2}"/>, but we proved the <img class="math" src="_images/math/2b8238b123f456cca2392b16b56774f8e678a91c.png" alt="x^c"/> rule only for positive
 integers. Let’s survive without it. Again, it’s a mess, but it works.</p>
 <div class="math">
-<p><img src="_images/math/3d58d1647dd84bafe077521e206acda6d9065351.png" alt="&amp; \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
+<p><img src="_images/math/fe4d26ab4a0714e08f0b5bdc085fd418f53ee65e.png" alt="\frac{d}{dx} \sqrt x
+&amp;= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
 &amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)(\sqrt{x+h}+\sqrt x)}{
                       h \cdot (\sqrt{x+h} + \sqrt x)} \\
 &amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)\sqrt{x+h}
@@ -306,19 +305,19 @@ So, if <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84
 <p>If we put all this together we can set <img class="math" src="_images/math/48438feaf697dd21d1d3af56b5e8c1a7666d2ce1.png" alt="k=g(x+h)-g(x)"/>. Now it’s time to
 calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2ec2c4b.png" alt="f'(g(x))g'(x)"/>.</p>
 <div class="math">
-<p><img src="_images/math/1ea0b149db9873cf697f68aff96cf13ddf450fa6.png" alt="f'(g(x))g'(x)
-&amp;= \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
-&amp;= \lim_{k\to0} \lim_{h\to0} \left(
+<p><img src="_images/math/35713a9f073efea34d98baed92a476f7bc9101a9.png" alt="&amp;  f'(g(x))g'(x) \\
+=&amp; \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+=&amp; \lim_{k\to0} \lim_{h\to0} \left(
       \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
 \right) \\
-&amp;= \lim_{h\to0} \left(
+=&amp; \lim_{h\to0} \left(
       \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
       \cdot \frac{g(x+h)-g(x)}{h}
 \right) \\
-&amp;= \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
-&amp;= \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
-&amp;= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-&amp;= \frac{d}{dx} (f(g(x))"/></p>
+=&amp; \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
+=&amp; \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
+=&amp; \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+=&amp; \frac{d}{dx} (f(g(x))"/></p>
 </div><div class="i">
 <p><img src="_images/asymptote/b927351c0ef1b6168ce8b3bb3e9e6d3f.png" class="align-right"/></p></div><p>This looks nice, but we are not done yet! We divided by <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/>. What if
 <img class="math" src="_images/math/3581b4c83622de31c2170c3e26137d2b921f9150.png" alt="k=g(x+h)-g(x)=0"/> when <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84774.png" alt="h \to 0"/> but <img class="math" src="_images/math/d010d8739df6f9919d9e4340196f07afcdddc018.png" alt="h \ne 0"/>? Practically it means that

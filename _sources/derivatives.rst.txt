@@ -236,10 +236,10 @@ really easily. For example:
 .. math::
 
    & \frac{d}{dx} (5x^3-6x^2+7x-123) \\
-   &= \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
-   &= 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
-   &= 5 \cdot 3x^{3-1} - 6 \cdot 2x + 7 \\
-   &= 15x^2 - 12x + 7
+   =& \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
+   =& 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
+   =& 5 \cdot 3x^{3-1} - 6 \cdot 2x + 7 \\
+   =& 15x^2 - 12x + 7
 
 Of course, there's no need to write down all of these steps.
 

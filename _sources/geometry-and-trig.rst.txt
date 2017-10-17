@@ -7,7 +7,7 @@ chapter contains a working example game.
 
 .. note::
 
-   Usually the y axis is so that more y means up, but in this chapter, it's
+   Usually the y axis is so that more y means up, but in this chapter it's
    "upside down" and more y means down. Almost all programming things use the
    "more y means down" version and are compatible with this chapter.
 
@@ -19,57 +19,99 @@ chapter contains a working example game.
 .. asymptote::
    :align: right
 
-   size(6cm);
+   size(10cm);
 
-   draw(unitcircle, smalldashes);
+   transform[] trans = { identity(), scale(2)*shift(1.6,-0.5) };
+   string[] lab = { "1", "2"};
+   for (int i = 0; i < 2; i += 1) {
+      draw(trans[i]*unitcircle, smalldashes);
 
-   fill(((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle), palegreen);
-   draw(((1,0)--(0,0)));
-   draw(((0,0)--(cos(1),sin(1))), blue, L="$r$", align=NW);
-   draw(arc((0,0), 1, 0, degrees(1.)), blue, L="$r$");
-   draw(arc((0,0), 0.2, 0, degrees(1.)), L="$1$");     // no prefix
-
+      fill(trans[i]*((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle), palegreen);
+      draw(trans[i]*((1,0)--(0,0)), blue, L=lab[i], align=S);
+      draw(trans[i]*((0,0)--(cos(1),sin(1))), blue, L=lab[i], align=NW);
+      draw(trans[i]*arc((0,0), 1, 0, degrees(1.)), blue, L=lab[i]);
+      draw(trans[i]*arc((0,0), 0.3, 0, degrees(1.)), purple, L=rotate(degrees(0.5))*"$1$");
+   }
 
 .. _radians:
 
 Radians and Tau
 ~~~~~~~~~~~~~~~
 
-Angles are often measured in radians. The angle in the picture at right is one
-radian. Note that the radius and arc have the same length `r`, and the angle is
-always the same no matter what that length is.
+Angles are often measured in radians. The angles in the pictures at right are
+both one radian. The angle is always 1 radian if the arc and radius lengths are
+equal, and it doesn't matter what that length is.
 
 .. asymptote::
    :align: right
 
    size(6cm);
 
-   fill(((0,0)--arc((0,0), 1, 0, degrees(6.0))--cycle), palegreen);
-   draw(unitcircle);
+   transform trans = scale(0.5)*shift(0.5,2.5);
+   fill(trans*((0,0)--arc((0,0), 1, 0, degrees(6.0))--cycle), palegreen);
+   draw(trans*unitcircle);
    for (real t = 0; t <= 6; t += 1) {
-      draw(((0,0)--(cos(t),sin(t))), align=NW);
+      draw(trans*((0,0)--(cos(t),sin(t))), align=NW);
    }
+
+   real angle = 0.7;
+   fill(((0,0)--arc((0,0), 1, 0, degrees(angle))--cycle), lightyellow);
+   draw(((0,0)--(1,0)));
+   draw(((0,0)--(cos(angle),sin(angle))), L="$r$", align=N);
+   draw((arc((0,0), 1, 0, degrees(angle))), L="$b$");
+   draw((arc((0,0), 0.3, 0, degrees(angle))), blue, L="$b/r$");
 
 If we try to fill a circle with these 1 radian slices, 6 of them fit and
 there's some room left over. To be more precise, we can add 6.2831853...
 slices. This number is called tau and written with the Greek tau letter `\tau`.
-So, a full turn is `\tau` radians. Be careful not to confuse `\tau` with e.g. `T`.
+So, a full turn is `\tau` radians. Be careful not to confuse `\tau` with other
+letters like `t`.
+
+The yellow slice at right shows another way to define an angle in radians, and
+it's compatible with the green slices because if we set `b=r` the angle is
+`r/r=1` radian.
+
+Sometimes the yellow slice definition is handier; for example, if we draw a
+full circle we know the angle in the center is `\tau` radians (full turn), so
+we get this:
+
+.. asymptote::
+   :align: right
+
+   size(5cm);
+
+   real spiralization = 0.02;
+   fill(unitcircle, lightyellow);
+   draw(unitcircle, L="$b$");
+   draw(((0,0)--(1,0)), L="$r$", align=N);
+   draw(arc((-spiralization,0), 0.2, 0, 180), blue);
+   draw(arc((spiralization,0), 0.2 + 2*spiralization, 180, 360), blue, L="$b/r$");
+
+.. math::
+   \frac b r &= \tau \\
+   b &= \tau r
+
+So we can multiply with tau to get from a radius to a perimeter. This is how
+`\tau` is usually defined.
 
 Some programming languages like new Pythons have a ``tau`` constant, but if
 your favorite language doesn't, use ``2*pi`` instead. Here pi is the more
 well-known circle constant `\pi = \tau/2 = 3.14159265...`, and almost all
-programming languages have something like ``math.pi`` or ``Math.PI``.
+programming languages have something like ``math.pi`` or ``Math.PI``. I find
+`\tau` easier to work with than `\pi` because if I see `\tau/4` somewhere I
+know immediately that it's a quarter turn, but `\pi/2` isn't as obvious. Of
+course, you can use `\pi` if you prefer it over `\tau`.
 
-I find `\tau` easier to work with than `\pi` because if I see `\tau/4`
-somewhere I know immediately that it's a quarter turn, but `\pi/2` isn't as
-obvious. Of course, you can use `\pi` if you prefer it over `\tau`.
 
-An alternative to radians is degrees, and they work so that 360° is a full
+Degrees
+~~~~~~~
+
+Degrees are an alternative to radians, and they work so that 360° is a full
 turn. Here ° is the degree symbol, and 360 is just an arbitary number that
 someone has chosen a long time ago.
 
 If you need to convert between radians and degrees, use the fact that 360
-degrees is 1 radian. Here's a Python example:
+degrees is `\tau` radians. Here's a Python example:
 
 .. code-block:: python
 
@@ -80,9 +122,10 @@ degrees is 1 radian. Here's a Python example:
        return radians / math.tau * 360
 
 Use ``180`` and ``pi`` instead of ``360`` and ``tau`` if your programming
-language doesn't have a ``tau`` constant. Or better yet, some programming
-languages feature conversion functions in standard libraries like Python's
-``math.radians()`` and ``math.degrees()``.
+language doesn't have a ``tau`` constant. You can also do something like
+``TAU = 2*Math.PI``. Or better yet, some programming languages feature
+conversion functions in standard libraries like Python's ``math.radians()`` and
+``math.degrees()``.
 
 
 Basic Angle Stuff
@@ -111,7 +154,7 @@ Basic Angle Stuff
       draw(arc((C.x/2,C.y/2), 0.2, -degrees(pi-angle), 0), deepred, L="???");
 
       draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
-      draw(arc((A.x*2/3,A.y*2/3), 0.3, 0, -degrees(angle)), deepgreen,
+      draw(arc((A.x*2/3,A.y*2/3), 0.4, 0, -degrees(angle)), deepgreen,
            L="0.5", align=E);
 
       real wallthickness = 0.15;
@@ -139,7 +182,7 @@ this:
 
    draw((-1.6,C.y/2)--(-0.3,C.y/2), smalldashes);
    draw(arc((C.x/2,C.y/2), 0.2, degrees(angle)-180, 0), deepred, L="???");
-   draw(arc((C.x/2,C.y/2), 0.3, degrees(angle)-180, -180), deepgreen,
+   draw(arc((C.x/2,C.y/2), 0.4, degrees(angle)-180, -180), deepgreen,
         L="0.5", align=W);
 
 Now you can see that the angles add up to half turn, and that's `\tau/2 = \pi`
@@ -164,6 +207,10 @@ results, where `a` is the original angle and `b` is the changed angle:
 
    * If the ball hits left or right wall, `b = \frac \tau 2 - a`.
    * If the ball hits top or bottom, `b = \tau - a`.
+
+Note that an angle like `-2` radians is perfectly valid and equivalent to
+`\tau-2` radians. If you want to make sure that an angle is between `0` and
+`\tau`, use something like ``angle % tau`` where ``%`` is division remainder.
 
 
 .. _unitcircletrig:
@@ -245,10 +292,9 @@ that everything works:
    0.5000000000000001
 
 These results make sense because the angle `t` in the above image looks like
-it's about a sixth of a turn (or `\tau/6`), so `\sin(\tau/6)` should be
-somewhere between 0 and 1 since the height of the x axis is 0 and the circle's
-bottom is at `y=1`. Similarly, the `\cos t` marked on the picture seems to be
-about half of the radius, which is 1.
+it's about a sixth of a turn (or `\tau/6`), so `\sin(\tau/6)` should be close
+to 1 because the circle's bottom is at `y=1`. Similarly, the `\cos t` marked on
+the picture seems to be about half of the radius, and the radius is 1.
 
 ``0.5000000000000001`` is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
@@ -399,8 +445,9 @@ The green triangle is just like the blue one, but I flipped it so that we can
 calculate the stuff by plugging in `a=20` and `b=10` without worrying about
 which way things go. Let's figure out how to calculate the `t`:
 
-.. math:: \tan t = \frac b a
-.. math:: t = \arctan{\frac b a} = \text{atan2}(b, a)
+.. math::
+   \tan t &= \frac b a \\
+   t &= \arctan{\frac b a} = \text{atan2}(b, a)
 
 Here `\arctan` is the inverse of `\tan`, so `\arctan (\tan t) = t`. Most
 programming languages have an ``atan(x)`` function that returns `\arctan x`,

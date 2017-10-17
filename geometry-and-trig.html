@@ -47,7 +47,7 @@ with. You’ll find it especially useful if you like writing games, and this
 chapter contains a working example game.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>Usually the y axis is so that more y means up, but in this chapter, it’s
+<p>Usually the y axis is so that more y means up, but in this chapter it’s
 “upside down” and more y means down. Almost all programming things use the
 “more y means down” version and are compatible with this chapter.</p>
 <p class="last">If you’re a mathematician everything looks really weird to you, but if
@@ -55,28 +55,44 @@ you’re a programmer who wants to get stuff done you’ll enjoy not having to
 add minus signs everywhere before using formulas from this tutorial.</p>
 </div>
 <div class="i">
-<p><img src="_images/asymptote/01a83845ec66aa026b60a4b596058b4c.png" class="align-right"/></p></div><div class="section" id="radians-and-tau">
+<p><img src="_images/asymptote/8eab71d0089187484a40fc2855a7d52b.png" class="align-right"/></p></div><div class="section" id="radians-and-tau">
 <span id="radians"></span><h2>Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Permalink to this headline">¶</a></h2>
-<p>Angles are often measured in radians. The angle in the picture at right is one
-radian. Note that the radius and arc have the same length <img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/>, and the angle is
-always the same no matter what that length is.</p>
+<p>Angles are often measured in radians. The angles in the pictures at right are
+both one radian. The angle is always 1 radian if the arc and radius lengths are
+equal, and it doesn’t matter what that length is.</p>
 <div class="i">
-<p><img src="_images/asymptote/fc1191a4a9427f7887add2c638ba6ec5.png" class="align-right"/></p></div><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
+<p><img src="_images/asymptote/c25e92e1ae3e41bd8ffd452b569a58cb.png" class="align-right"/></p></div><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
 there’s some room left over. To be more precise, we can add 6.2831853…
 slices. This number is called tau and written with the Greek tau letter <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>.
-So, a full turn is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians. Be careful not to confuse <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> with e.g. <img class="math" src="_images/math/f2d283a2071f9d043c9e0b0f794a8880fa0d3ce9.png" alt="T"/>.</p>
+So, a full turn is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians. Be careful not to confuse <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> with other
+letters like <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>.</p>
+<p>The yellow slice at right shows another way to define an angle in radians, and
+it’s compatible with the green slices because if we set <img class="math" src="_images/math/1657526a3368c9bb89dfaf86fa28ee7bdac60b56.png" alt="b=r"/> the angle is
+<img class="math" src="_images/math/d8784147651611acfd14a4ebcb9b5ffc68cdb4ac.png" alt="r/r=1"/> radian.</p>
+<p>Sometimes the yellow slice definition is handier; for example, if we draw a
+full circle we know the angle in the center is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians (full turn), so
+we get this:</p>
+<div class="i">
+<p><img src="_images/asymptote/bdf4139b16cfee3c4fe985cb51160b56.png" class="align-right"/></p></div><div class="math">
+<p><img src="_images/math/38466eb51d171603d86a4112e2ce0b84a69b910f.png" alt="\frac b r &amp;= \tau \\
+b &amp;= \tau r"/></p>
+</div><p>So we can multiply with tau to get from a radius to a perimeter. This is how
+<img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> is usually defined.</p>
 <p>Some programming languages like new Pythons have a <code class="docutils literal"><span class="pre">tau</span></code> constant, but if
 your favorite language doesn’t, use <code class="docutils literal"><span class="pre">2*pi</span></code> instead. Here pi is the more
 well-known circle constant <img class="math" src="_images/math/ab71c50e984f198097bef56502d59573c7c4897b.png" alt="\pi = \tau/2 = 3.14159265..."/>, and almost all
-programming languages have something like <code class="docutils literal"><span class="pre">math.pi</span></code> or <code class="docutils literal"><span class="pre">Math.PI</span></code>.</p>
-<p>I find <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> easier to work with than <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> because if I see <img class="math" src="_images/math/140467d9b0b530c28668cf5c004b19b1b6ff383b.png" alt="\tau/4"/>
-somewhere I know immediately that it’s a quarter turn, but <img class="math" src="_images/math/4ee0672a9e081e5ecb0c6b521863831e0ab3a68b.png" alt="\pi/2"/> isn’t as
-obvious. Of course, you can use <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> if you prefer it over <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>.</p>
-<p>An alternative to radians is degrees, and they work so that 360° is a full
+programming languages have something like <code class="docutils literal"><span class="pre">math.pi</span></code> or <code class="docutils literal"><span class="pre">Math.PI</span></code>. I find
+<img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> easier to work with than <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> because if I see <img class="math" src="_images/math/140467d9b0b530c28668cf5c004b19b1b6ff383b.png" alt="\tau/4"/> somewhere I
+know immediately that it’s a quarter turn, but <img class="math" src="_images/math/4ee0672a9e081e5ecb0c6b521863831e0ab3a68b.png" alt="\pi/2"/> isn’t as obvious. Of
+course, you can use <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> if you prefer it over <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>.</p>
+</div>
+<div class="section" id="degrees">
+<h2>Degrees<a class="headerlink" href="#degrees" title="Permalink to this headline">¶</a></h2>
+<p>Degrees are an alternative to radians, and they work so that 360° is a full
 turn. Here ° is the degree symbol, and 360 is just an arbitary number that
 someone has chosen a long time ago.</p>
 <p>If you need to convert between radians and degrees, use the fact that 360
-degrees is 1 radian. Here’s a Python example:</p>
+degrees is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians. Here’s a Python example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">degrees2radians</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">degrees</span> <span class="o">/</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">tau</span>
 
@@ -85,9 +101,10 @@ degrees is 1 radian. Here’s a Python example:</p>
 </pre></div>
 </div>
 <p>Use <code class="docutils literal"><span class="pre">180</span></code> and <code class="docutils literal"><span class="pre">pi</span></code> instead of <code class="docutils literal"><span class="pre">360</span></code> and <code class="docutils literal"><span class="pre">tau</span></code> if your programming
-language doesn’t have a <code class="docutils literal"><span class="pre">tau</span></code> constant. Or better yet, some programming
-languages feature conversion functions in standard libraries like Python’s
-<code class="docutils literal"><span class="pre">math.radians()</span></code> and <code class="docutils literal"><span class="pre">math.degrees()</span></code>.</p>
+language doesn’t have a <code class="docutils literal"><span class="pre">tau</span></code> constant. You can also do something like
+<code class="docutils literal"><span class="pre">TAU</span> <span class="pre">=</span> <span class="pre">2*Math.PI</span></code>. Or better yet, some programming languages feature
+conversion functions in standard libraries like Python’s <code class="docutils literal"><span class="pre">math.radians()</span></code> and
+<code class="docutils literal"><span class="pre">math.degrees()</span></code>.</p>
 </div>
 <div class="section" id="basic-angle-stuff">
 <h2>Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Permalink to this headline">¶</a></h2>
@@ -96,14 +113,14 @@ languages feature conversion functions in standard libraries like Python’s
 <p>The ball of a ball-and-paddle game is moving at the angle of 0.5 radians and
 it hits a wall at right. How should the angle change?</p>
 <div class="last i">
-<p><img src="_images/asymptote/889fd7f84d1210f9c43c9d96f93015d7.png"/></p></div></div>
+<p><img src="_images/asymptote/37336a474be7b84dc60ef66a1e7d6bd2.png"/></p></div></div>
 <p>Note that both angles are measured down from a horizontal line clockwise
 because that’s a standard in programming. In math, angles are usually measured
 up from a horizontal line and counter-clockwise.</p>
 <p>We can solve our problem by taking the 0.5 radian angle sign and moving it like
 this:</p>
 <div class="i">
-<p><img src="_images/asymptote/11aca17290ae12eeae2d88c242ee6d90.png"/></p></div><p>Now you can see that the angles add up to half turn, and that’s <img class="math" src="_images/math/6fe0d8f1efe1705d0fcca082c8f3a71566f1892e.png" alt="\tau/2 = \pi"/>
+<p><img src="_images/asymptote/4592e000612c80679a55bec9ca9be929.png"/></p></div><p>Now you can see that the angles add up to half turn, and that’s <img class="math" src="_images/math/6fe0d8f1efe1705d0fcca082c8f3a71566f1892e.png" alt="\tau/2 = \pi"/>
 radians, so we get this <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
 <div class="math">
 <p><img src="_images/math/6b50d09656c7111c5cf5d284c0749ed12ae17e25.png" alt="0.5 + \text{???} &amp;= \frac \tau 2 \\
@@ -123,6 +140,9 @@ results, where <img class="math" src="_images/math/bd9d9c7512c898e0a254a08821841
 <li>If the ball hits top or bottom, <img class="math" src="_images/math/4a5303c4df47d6238994fded44227f6eee33e581.png" alt="b = \tau - a"/>.</li>
 </ul>
 </div></blockquote>
+<p>Note that an angle like <img class="math" src="_images/math/be7947a4ba3d626aef83ede57b8d49318984d84e.png" alt="-2"/> radians is perfectly valid and equivalent to
+<img class="math" src="_images/math/7bf0482ba651964f9690832e4f1bbfcdb01b4b72.png" alt="\tau-2"/> radians. If you want to make sure that an angle is between <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/> and
+<img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>, use something like <code class="docutils literal"><span class="pre">angle</span> <span class="pre">%</span> <span class="pre">tau</span></code> where <code class="docutils literal"><span class="pre">%</span></code> is division remainder.</p>
 </div>
 <div class="section" id="trig-aka-trigonometry-with-the-unit-circle">
 <span id="unitcircletrig"></span><h2>Trig (aka trigonometry) with the Unit Circle<a class="headerlink" href="#trig-aka-trigonometry-with-the-unit-circle" title="Permalink to this headline">¶</a></h2>
@@ -155,10 +175,9 @@ that everything works:</p>
 </pre></div>
 </div>
 <p>These results make sense because the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> in the above image looks like
-it’s about a sixth of a turn (or <img class="math" src="_images/math/928ac4f4d8929a75a13ac9352da65f1660cb745b.png" alt="\tau/6"/>), so <img class="math" src="_images/math/2d1751926c48f0cc5c67f1070a63f0ddff7180b6.png" alt="\sin(\tau/6)"/> should be
-somewhere between 0 and 1 since the height of the x axis is 0 and the circle’s
-bottom is at <img class="math" src="_images/math/2b834b23cee7309ea7a9ea5fcedf9f258875c702.png" alt="y=1"/>. Similarly, the <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> marked on the picture seems to be
-about half of the radius, which is 1.</p>
+it’s about a sixth of a turn (or <img class="math" src="_images/math/928ac4f4d8929a75a13ac9352da65f1660cb745b.png" alt="\tau/6"/>), so <img class="math" src="_images/math/2d1751926c48f0cc5c67f1070a63f0ddff7180b6.png" alt="\sin(\tau/6)"/> should be close
+to 1 because the circle’s bottom is at <img class="math" src="_images/math/2b834b23cee7309ea7a9ea5fcedf9f258875c702.png" alt="y=1"/>. Similarly, the <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> marked on
+the picture seems to be about half of the radius, and the radius is 1.</p>
 <p><code class="docutils literal"><span class="pre">0.5000000000000001</span></code> is obviously not an accurate result, but it’s good
 enough for a programmer while a mathematician would say that
 <img class="math" src="_images/math/71653fbbc070c14bff2aa2daf584f2059ddfa3b4.png" alt="\sin \frac \tau 6 = \frac{\sqrt 3}{2}"/> and <img class="math" src="_images/math/aa3670eca717a1591e703df6cdf229377ae0fb74.png" alt="\cos \frac \tau 6 = \frac 1 2"/>. I
@@ -383,9 +402,8 @@ compatible with the unit circle stuff above; see
 calculate the stuff by plugging in <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/> without worrying about
 which way things go. Let’s figure out how to calculate the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>:</p>
 <div class="math">
-<p><img src="_images/math/6ec055140998a97a5623de083e1ac7cb3765091b.png" alt="\tan t = \frac b a"/></p>
-</div><div class="math">
-<p><img src="_images/math/df32b8cd08f1d85a26987d36b9fe91ecffce2d6b.png" alt="t = \arctan{\frac b a} = \text{atan2}(b, a)"/></p>
+<p><img src="_images/math/bf2a85468c0db0a52e8abfc1d97a29b53355bef0.png" alt="\tan t &amp;= \frac b a \\
+t &amp;= \arctan{\frac b a} = \text{atan2}(b, a)"/></p>
 </div><p>Here <img class="math" src="_images/math/726e3cfd2e5301f8ecd2b95a6681bf663ebeb6f7.png" alt="\arctan"/> is the inverse of <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, so <img class="math" src="_images/math/65583f0d3949b2faea8d86f010af0b4d5b020969.png" alt="\arctan (\tan t) = t"/>. Most
 programming languages have an <code class="docutils literal"><span class="pre">atan(x)</span></code> function that returns <img class="math" src="_images/math/151f9aa8667657d9baa719a843e7306d84434c03.png" alt="\arctan x"/>,
 but I don’t recommend using it in this case; the <code class="docutils literal"><span class="pre">atan2(b,a)</span></code> function
