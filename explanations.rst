@@ -111,11 +111,12 @@ We can calculate the total area of the above square in a couple different ways:
 We must get the same area with both ways, so we get this
 :ref:`equation <equations>`:
 
-.. math:: (a+b)(a+b) = c^2 + 4\frac{ab}{2}
-.. math:: (a+b)a+(a+b)b = c^2 + \frac{4}{2} ab
-.. math:: aa+ba+ab+bb = c^2 + 2ab
-.. math:: a^2 + 2ab + b^2 = c^2 + 2ab
-.. math:: a^2 + b^2 = c^2
+.. math::
+   (a+b)(a+b) &= c^2 + 4\frac{ab}{2} \\
+   (a+b)a+(a+b)b &= c^2 + \frac{4}{2} ab \\
+   aa+ba+ab+bb &= c^2 + 2ab \\
+   a^2 + 2ab + b^2 &= c^2 + 2ab \\
+   a^2 + b^2 &= c^2
 
 
 .. _has-derivative:
@@ -233,7 +234,7 @@ them.
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    The previous rule actually works with all functions that have a derivative,
-   not just constants.
+   not just `x`.
 
    .. math::
       \frac{d}{dx}(c\ f(x)) &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
@@ -268,7 +269,8 @@ them.
    derivative.
 
    .. math::
-      & \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
+      \frac{d}{dx} (f(x)+g(x))
+      &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
       &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
       &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
       &= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h}\right) \\
@@ -284,23 +286,24 @@ them.
    It's not pretty, but we can use the definition.
 
    .. math::
-      & \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
-      &= \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
+      &  \frac{d}{dx} (f(x)g(x)) \\
+      =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
+      =& \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
                             +f(x+h)g(x+h)-f(x)g(x)}{h} \\
-      &= \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
-      &= \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
-      &= \lim_{h\to0} \left(
+      =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
+      =& \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
+      =& \lim_{h\to0} \left(
             \frac{(f(x+h)-f(x))\ g(x+h)}{h} + \frac{f(x)\ (g(x+h)-g(x))}{h}
          \right) \\
-      &= \lim_{h\to0} \left(
+      =& \lim_{h\to0} \left(
          \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
       \right) \\
-      &= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
+      =& \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
             + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
-      &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
+      =& \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
         \left(\lim_{h\to0}g(x+h)\right)
         + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
-      &= f'(x)g(x) + f(x)g'(x)
+      =& f'(x)g(x) + f(x)g'(x)
 
 `\frac{d}{dx} x^c = c\ x^{c-1}`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -368,7 +371,8 @@ them.
 
    .. math::
 
-      & \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
+      \frac{d}{dx} \sqrt x
+      &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
       &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)(\sqrt{x+h}+\sqrt x)}{
                             h \cdot (\sqrt{x+h} + \sqrt x)} \\
       &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)\sqrt{x+h}
@@ -435,19 +439,19 @@ them.
 
    .. math::
 
-      f'(g(x))g'(x)
-      &= \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
-      &= \lim_{k\to0} \lim_{h\to0} \left(
+      &  f'(g(x))g'(x) \\
+      =& \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+      =& \lim_{k\to0} \lim_{h\to0} \left(
             \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
       \right) \\
-      &= \lim_{h\to0} \left(
+      =& \lim_{h\to0} \left(
             \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
             \cdot \frac{g(x+h)-g(x)}{h}
       \right) \\
-      &= \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
-      &= \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
-      &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-      &= \frac{d}{dx} (f(g(x))
+      =& \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
+      =& \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
+      =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+      =& \frac{d}{dx} (f(g(x))
 
    .. asymptote::
       :align: right

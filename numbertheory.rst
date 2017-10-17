@@ -70,7 +70,7 @@ coincidence. A color like ``#RRGGBB`` is actually ``rgb(RR,GG,BB)`` where
 ``RR``, ``GG`` and ``BB`` are hexadecimal. For example,
 ``#ff0000 = rgb(0xff,0x00,0x00) = rgb(255,0,0)``.
 
-Here's a Python program that converts RGB colors to hexadecimal and back:
+These Python functions convert RGB colors to hexadecimal and back:
 
 .. code-block:: python
 
@@ -83,7 +83,7 @@ Here's a Python program that converts RGB colors to hexadecimal and back:
        # zeros until it's at least 2 characters wide
        return '#%02x%02x%02x' % (r, g, b)
 
-And here's a usage example:
+Here's a usage example:
 
 .. code-block:: python
 

@@ -155,12 +155,16 @@ programming languages.
               \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}
            = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
            = x^{ab}
+.. math:: x^0 = 1
 
 .. math:: \sqrt x = x^\frac 1 2
 .. math:: \sqrt a \sqrt b = \sqrt{ab}
-.. math:: (\sqrt x)^2 = x, x \ge 0
+.. math:: (\sqrt x)^2 = x
 .. math:: \sqrt{x^2} = |x|
-.. math:: x^0 = 1
+
+If you're wondering why anything to the power of 0 is 1, you can do e.g.
+`x^2 = x^{0+2} = x^0 x^2`. The equation should be true with any `x`, so
+`x^0` must be 1 because `x^2 = 1 x^2`.
 
 Note that `\sqrt x` is never negative, and you cannot take square roots of
 negative numbers like `\sqrt{-2}` (unless you use complex numbers, but they are
@@ -170,10 +174,6 @@ You're probably wondering how the heck our `\sqrt{x^2}=|x|` rule works. This
 example should explain everything:
 
 .. math:: \sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqrt{3^2}
-
-If you're wondering why anything to the power of 0 is 1, you can do e.g.
-`x^2 = x^{0+2} = x^0 x^2`. The equation should be true with any `x`, so
-`x^0` must be 1 because `x^2 = 1 x^2`.
 
 
 .. _equations:
