@@ -428,8 +428,8 @@ them.
    that the rule isn't limited to positive integers, but that's beyond the
    scope of this tutorial.
 
-`\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+`\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    We could prove this with the `\frac{d}{dx} x^c` rule because
    `\sqrt x = x^\frac{1}{2}`, but we proved the `x^c` rule only for positive
@@ -453,6 +453,23 @@ them.
       &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
       &= \frac{1}{\sqrt x + \sqrt x} \\
       &= \frac{1}{2\ \sqrt x}
+
+`\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   We could use the `\frac{d}{dx} x^c` rule again because `1/x` is actually
+   `x^{-1}`, but as before, we haven't proved that it works at `c=-1` so we'll
+   do this without it.
+
+   .. math::
+      \frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 x}{h} \\
+      &= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h} \\
+      &= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h} \\
+      &= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh} \\
+      &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
+      &= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
+      &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
+      &= \frac{-1}{x^2}
 
 `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -569,3 +586,22 @@ them.
    Look carefully: `\frac{d}{dx} f(c) = 0` because we differenciated `f(c)`
    with respect to `x`, so `f(c)` was actually yet another constant because it
    doesn't depend on the value of `x`.
+
+`\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g'(x))^2}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   We need these rules that are proved above:
+
+      * `\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)`
+      * `\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}`
+      * `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)`
+
+   Now this is quite straight-forward.
+
+   .. math::
+      \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
+      =& \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
+      =& f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
+      =& \frac{f'(x)}{g(x)} + f(x) \frac{-1}{(g(x))^2} g'(x) \\
+      =& \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
+      =& \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}
