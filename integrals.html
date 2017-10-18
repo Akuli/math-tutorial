@@ -86,7 +86,7 @@ This chapter is all about how I did that and why it works.</p>
 <div class="section" id="area-to-x">
 <h2>Area to x<a class="headerlink" href="#area-to-x" title="Permalink to this headline">¶</a></h2>
 <div class="i">
-<p><img src="_images/asymptote/331a4bb3fd1f39317689743a02eaa154.png" class="align-right"/></p></div><p>Let’s say that our curve is of the form <img class="math" src="_images/math/4f4a8d7754b69178fbc85569f47f90b9989e9310.png" alt="y=f(x)"/> where <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> is a
+<p><img src="_images/asymptote/e198e6e2beb61c0cd52f2b308787385b.png" class="align-right"/></p></div><p>Let’s say that our curve is of the form <img class="math" src="_images/math/4f4a8d7754b69178fbc85569f47f90b9989e9310.png" alt="y=f(x)"/> where <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> is a
 <a class="reference internal" href="explanations.html#has-derivative"><span class="std std-ref">continuous</span></a> function. Maybe we could find out what the
 area <img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> is under the curve between 0 and <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>?</p>
 <p>Let’s imagine that we choose some <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> location and <em>move</em> it right by <img class="math" src="_images/math/05899b70d35eb61a85aaaba3affb9c7363f0d633.png" alt="\Delta x"/>.
@@ -104,7 +104,7 @@ compared to <img class="math" src="_images/math/6493025bbc8b47416e253cb751cf9bf7
 </div><p>Yes, this is correct! We can use a derivative here. This is precise, so we can
 get rid of <img class="math" src="_images/math/7480d09d210b45db2505dc78ea8dcdf9158cad81.png" alt="\approx"/> and replace it with <img class="math" src="_images/math/f83e0c11055f53d8b8d4d5968e1adb756869862c.png" alt="="/>.</p>
 <p>So, if we want to calculate areas all we really need is an antiderivative
-function <img class="math" src="_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> so that <img class="math" src="_images/math/8e4e3792f497c05b15b4804bc36abd4812957eec.png" alt="F'(x)=f(x)"/>, and we’ll use it like <img class="math" src="_images/math/80cc78e5acdf64f899a61743e93bc88f3c94116f.png" alt="A = F(x)"/>.</p>
+function <img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> so that <img class="math" src="_images/math/e8d28a991999ff522ec6ff54adfc39c3e6fa8f8d.png" alt="A'(x)=f(x)"/>, and <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/> will be an area to <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
 <div class="i">
 <p><img src="_images/asymptote/492662680d711ccad20c59e0892ae1ff.png" class="align-right"/></p></div></div>
 <div class="section" id="our-first-integral">
@@ -114,14 +114,14 @@ function <img class="math" src="_images/math/a3965ac90c9513644606210339d52538662
 <div class="math">
 <p><img src="_images/math/2be11c66c1b3e4a75580391562efb7522a4bc3d6.png" alt="\frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}"/></p>
 </div><div class="i">
-<p><img src="_images/asymptote/4121656e21756a5cf96a5977edcad1a5.png" class="align-right"/></p></div><p>So it looks like the antiderivative function <img class="math" src="_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/> that gives us the area between
-<img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/> and <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> is <img class="math" src="_images/math/a14320c531b622eea13e10add89d8e39c1a65f39.png" alt="F(x) = \sqrt x"/>. But how about <img class="math" src="_images/math/4e595dad9b4fb17ae29b761ef87901be5b2d7b9d.png" alt="F(x) = \sqrt x + 1"/>? Its
-derivative is also <img class="math" src="_images/math/91138de9859e2b6d5886ee0b73ad54fb5bd9c758.png" alt="\frac{1}{2 \sqrt x}"/> because <img class="math" src="_images/math/d00cb726382c5cbfd4f521e54d7d3490f10545dd.png" alt="\frac{d}{dx} 1 = 0"/>. Or how
-about <img class="math" src="_images/math/5e4c2ee8053c455496cb387b516f0593e8387a35.png" alt="\sqrt x + 100"/> or <img class="math" src="_images/math/f0274e847fc86e8daebcd964911eaadc4f502dae.png" alt="\sqrt x - 10"/>? We don’t know everything about the
-<img class="math" src="_images/math/a3965ac90c9513644606210339d525386626dcb2.png" alt="F"/>, all we know is that <img class="math" src="_images/math/b448f078a1e474f75b78cc8ece296b58fd897468.png" alt="F(x) = \sqrt x + C"/> where <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/> is a constant.</p>
+<p><img src="_images/asymptote/d1a49fc4e7c68e394a1bfd419e69dd00.png" class="align-right"/></p></div><p>So it looks like the antiderivative function <img class="math" src="_images/math/0043fe6507e9b1d112e07a2801e24927e267dd50.png" alt="A"/> is <img class="math" src="_images/math/0dd47f8c08331e04833db8017f1754190e4076ab.png" alt="A(x) = \sqrt x"/>. But how
+about <img class="math" src="_images/math/04ba9c1d534e63a2c3833782621e7ef50e375644.png" alt="A(x) = \sqrt x + 1"/>? Its derivative is also <img class="math" src="_images/math/91138de9859e2b6d5886ee0b73ad54fb5bd9c758.png" alt="\frac{1}{2 \sqrt x}"/>
+because <img class="math" src="_images/math/d00cb726382c5cbfd4f521e54d7d3490f10545dd.png" alt="\frac{d}{dx} 1 = 0"/>. Or how about <img class="math" src="_images/math/5e4c2ee8053c455496cb387b516f0593e8387a35.png" alt="\sqrt x + 100"/> or <img class="math" src="_images/math/f0274e847fc86e8daebcd964911eaadc4f502dae.png" alt="\sqrt x - 10"/>?
+We don’t know what <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/> is, but we know that <img class="math" src="_images/math/66a2ec6a46ce4b88e17249b54acecd911b7c1733.png" alt="A(x) = \sqrt x + C"/> where <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/>
+is a constant.</p>
 <p>Let’s try to calculate our area:</p>
 <div class="math">
-<p><img src="_images/math/e27e6d13c8639c64cdc455fa57caed725df981fb.png" alt="F(b)-F(a)   &amp;= (\sqrt b + C) - (\sqrt a + C) \\
+<p><img src="_images/math/7fa7dd3e22d01589e904fff2782b6046f0079c69.png" alt="A(b)-A(a)   &amp;= (\sqrt b + C) - (\sqrt a + C) \\
             &amp;= \sqrt b + C - \sqrt a - C \\
             &amp;= \sqrt b - \sqrt a \\
             &amp;= \sqrt 2 - \sqrt 1 \\
@@ -134,9 +134,9 @@ understand everything, but now that you have seen this once you can do it much
 faster. So, here are the steps for calculating the area under <img class="math" src="_images/math/4f4a8d7754b69178fbc85569f47f90b9989e9310.png" alt="y=f(x)"/> between
 <img class="math" src="_images/math/9aa6d136e9dd7e7ecf4ddb1521fe052c77912060.png" alt="x=a"/> and <img class="math" src="_images/math/5634dccd94f61ff29d8f815278565379cffe71df.png" alt="x=b"/>:</p>
 <ol class="arabic simple">
-<li>Find an antiderivative <img class="math" src="_images/math/6e2c80aa61901e9b6d4cd5739524d9e67dee7501.png" alt="F(x)"/>. There are infinitely many antiderivatives,
+<li>Find an antiderivative <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/>. There are infinitely many antiderivatives,
 but <em>any</em> antiderivative will do because the <img class="math" src="_images/math/afce44aa7c55836ca9345404c22fc7b599d2ed84.png" alt="C"/>‘s are substracted away.</li>
-<li>Calculate <img class="math" src="_images/math/b1462c3571bdd97abbd7d09446a505a64d8fd17e.png" alt="F(b)-F(a)"/> and you’re done.</li>
+<li>Calculate <img class="math" src="_images/math/1f96d0f13d4a6c718d1f185ac31334d95269f201.png" alt="A(b)-A(a)"/> and you’re done.</li>
 </ol>
 <p>This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.</p>
@@ -151,8 +151,8 @@ fundamental theorem of calculus.</p>
 here – the <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is just a part of the notation and you must not forget
 it.</li>
 <li>The antiderivative of <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/> including the <img class="math" src="_images/math/1b453633282eac6904c5f4a1768058858c0412e0.png" alt="+C"/> is the same thing without <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/>
-and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/>. So <img class="math" src="_images/math/36101cbb8fb469e1869a7ed9392791cdcab75dfa.png" alt="\int f(x) dx = F(x) + C"/> where <img class="math" src="_images/math/dfad05fa477e1ac1d8c50f201a51b5ad5e3ac0bb.png" alt="F'(x) = f(x)"/>.</li>
-<li><img class="math" src="_images/math/547944492629bf9fa8e4a9184ddca408cae25b74.png" alt="[F(x)]_a^b = F(b)-F(a)"/>.</li>
+and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/>. So <img class="math" src="_images/math/f2804aadf5768c936e871154eb1b15c01a975b4a.png" alt="\int f(x) dx = A(x) + C"/> where <img class="math" src="_images/math/e1f01b9b918185450148576a6d756405fcb459db.png" alt="A'(x) = f(x)"/>.</li>
+<li><img class="math" src="_images/math/b3cb3d8b46e366d02d3396ecb64531da717f616a.png" alt="[A(x)]_a^b = A(b)-A(a)"/>.</li>
 </ul>
 </div></blockquote>
 <p>The integral sign <img class="math" src="_images/math/dd0aea96ec732e7c29d10c45fb05f9b3b37feb36.png" alt="\int"/> is a strecthed S like Sum, and <img class="math" src="_images/math/5c61094544abebd12443558270c8f3e9a12adfe1.png" alt="\int_a^b f(x) dx"/>
@@ -292,9 +292,11 @@ it’s 3-dimensional, how many pixels fit inside the cone?</p>
    this wikimedia page</a>.
 </small></div></div>
 <div class="i">
-<p><img src="_images/asymptote/8239ad4168f5c2ef4f308fc2c982d0c8.png" class="align-right"/></p></div><p>Integrals are not actually limited to calculating areas in any way. If you look
-at the image at right, the total volume is <img class="math" src="_images/math/c4b304e93eaeb5088f5fbed9407c350b78174f30.png" alt="\int_0^h A(x) dx"/>. Now we just need
-to figure out how to calculate the <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/>, and for that we need to know what
+<p><img src="_images/asymptote/8239ad4168f5c2ef4f308fc2c982d0c8.png" class="align-right"/></p></div><p>Here <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/> has nothing to do with antiderivatives, it’s just the Area of the
+green circle in the picture at right.</p>
+<p>Integrals are not actually limited to calculating areas in any way. If you look
+at the image, the total volume is <img class="math" src="_images/math/c4b304e93eaeb5088f5fbed9407c350b78174f30.png" alt="\int_0^h A(x) dx"/>. Now we just need to
+figure out how to calculate the <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/>, and for that we need to know what
 <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/> is. Here’s everything we know about <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/>:</p>
 <blockquote>
 <div><ul class="simple">
@@ -315,10 +317,10 @@ to figure out how to calculate the <img class="math" src="_images/math/9d4155bf1
 skip that because it’s boring. Here’s the solution:</p>
 <div class="math">
 <p><img src="_images/math/220307e60e4cc713d5f4b11f28b83c6bdbad8c1e.png" alt="f(x) = \frac r h x"/></p>
-</div><p>Next we need <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/>. Last time we figured that the area of a circle is
-<img class="math" src="_images/math/a1a19c98650e0c955cc5bc9a8c736125809337bf.png" alt="\tau \frac 1 2 r^2"/> where <img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> is the radius, but the green circle’s radius is
-<img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/> instead of <img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> so <img class="math" src="_images/math/fbc6ff714d21ee140dc0a249a26ed3c5f80f725a.png" alt="A(x) = \tau \frac 1 2 (f(x))^2"/>.</p>
-<p>Now we’re ready to do this:</p>
+</div><p>Next we need <img class="math" src="_images/math/9d4155bf14a36642b87ec2d1bb4c548796a97b8c.png" alt="A(x)"/>. In the previous example we figured that the area of a
+circle is <img class="math" src="_images/math/a1a19c98650e0c955cc5bc9a8c736125809337bf.png" alt="\tau \frac 1 2 r^2"/> where <img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> is the radius, but the green circle’s
+radius is <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/> instead of <img class="math" src="_images/math/eaa6ad49a7f78fe5a13b486690163bf2dc7e3e60.png" alt="r"/> so <img class="math" src="_images/math/fbc6ff714d21ee140dc0a249a26ed3c5f80f725a.png" alt="A(x) = \tau \frac 1 2 (f(x))^2"/>. Let’s do
+this:</p>
 <div class="math">
 <p><img src="_images/math/4f5c949422b0534fdec25e48880d824026f56a52.png" alt="\int_0^h A(x) dx
 &amp;= \int_0^h \tau \frac 1 2 (f(x))^2 dx \\

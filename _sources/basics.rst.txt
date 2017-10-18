@@ -79,6 +79,7 @@ Some handy stuff:
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
 .. math:: \frac{a+b}{c} = \frac a c + \frac b c
+.. math:: \frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}
 
 You can use these rules left-to-right or right-to-left. For example, if you
 want to calculate `(1 + 2) \cdot 3` you know you could also do

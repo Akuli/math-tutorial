@@ -296,11 +296,13 @@ it's about a sixth of a turn (or `\tau/6`), so `\sin(\tau/6)` should be close
 to 1 because the circle's bottom is at `y=1`. Similarly, the `\cos t` marked on
 the picture seems to be about half of the radius, and the radius is 1.
 
+.. _accurate-sincos:
+
 ``0.5000000000000001`` is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
-`\sin \frac \tau 6 = \frac{\sqrt 3}{2}` and `\cos \frac \tau 6 = \frac 1 2`. I
-might write more about how the heck I came up with those mathy-accurate values
-some day.
+`\sin \frac \tau 6 = \frac{\sqrt 3}{2}` and `\cos \frac \tau 6 = \frac 1 2`.
+See :ref:`this thing <accurate-sincos-explained>` if you're wondering how I
+came up with these values.
 
 
 Example: Ball and Paddle

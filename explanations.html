@@ -47,29 +47,6 @@ interested in the math itself you may enjoy reading some of this stuff.</p>
 <p>I used a bunch of spooky formulas in this tutorial. Some of them are
 definitions of e.g. <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> or <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, but in this chapter we’ll focus on those
 that aren’t and prove that they actually work.</p>
-<div class="i">
-<p><img src="_images/asymptote/3ccb4225da2638c69e63b6c861e7ff09.png" class="align-right"/></p></div><div class="section" id="two-ways-to-define-sine-and-cosine">
-<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
-<p>The y axis of the picture at right goes up because this explanation isn’t
-really useful for programming; it’s just an explanation for people who are
-wondering how <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> appear both in a unit circle and in triangles.</p>
-<p>In <a class="reference internal" href="geometry-and-trig.html#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a> we defined <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and
-<img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> with a unit circle, but then in
-<a class="reference internal" href="geometry-and-trig.html#triangletrig"><span class="std std-ref">the triangle trig section</span></a> we defined them with a
-triangle. If we apply the triangle stuff to the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> of the picture at
-right, we get this:</p>
-<div class="i">
-<p><img src="_images/asymptote/56fd989d85904e914a0dd6c51af5e370.png" class="align-right"/></p></div><div class="math">
-<p><img src="_images/math/4d51d3613e5319d17929ede605086d8a6bc77ad6.png" alt="\sin t &amp;= \frac{\sin t}{1} \\
-\cos t &amp;= \frac{\cos t}{1} \\
-\tan t &amp;= \frac{\sin t}{\cos t}"/></p>
-</div><p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
-bit more interesting. We found another way to define <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, and it
-also works with a triangle:</p>
-<div class="math">
-<p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
-= \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
-</div></div>
 <div class="section" id="pythagorean-theorem">
 <span id="pythagoras-proof"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
 <p>This is a well-known proof and I like it because it’s simple.</p>
@@ -88,7 +65,62 @@ triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02
 aa+ba+ab+bb &amp;= c^2 + 2ab \\
 a^2 + 2ab + b^2 &amp;= c^2 + 2ab \\
 a^2 + b^2 &amp;= c^2"/></p>
+</div><div class="i">
+<p><img src="_images/asymptote/3ccb4225da2638c69e63b6c861e7ff09.png" class="align-right"/></p></div></div>
+<div class="section" id="two-ways-to-define-sine-and-cosine">
+<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
+<p>The y axis of the picture at right goes up because this explanation isn’t
+really useful for programming; it’s just an explanation for people who are
+wondering how <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> appear both in a unit circle and in triangles.</p>
+<p>In <a class="reference internal" href="geometry-and-trig.html#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a> we defined <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and
+<img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> with a unit circle, but then in
+<a class="reference internal" href="geometry-and-trig.html#triangletrig"><span class="std std-ref">the triangle trig section</span></a> we defined them with a
+triangle. If we apply the triangle stuff to the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> of the picture at
+right, we get this:</p>
+<div class="i">
+<p><img src="_images/asymptote/c5f2434be49dec410cd88d319b364549.png" class="align-right"/></p></div><div class="math">
+<p><img src="_images/math/4d51d3613e5319d17929ede605086d8a6bc77ad6.png" alt="\sin t &amp;= \frac{\sin t}{1} \\
+\cos t &amp;= \frac{\cos t}{1} \\
+\tan t &amp;= \frac{\sin t}{\cos t}"/></p>
+</div><p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
+bit more interesting. We found another way to define <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, and it
+also works with a triangle:</p>
+<div class="math">
+<p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
+= \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
 </div></div>
+<div class="section" id="accurate-sine-and-cosine-values">
+<span id="accurate-sincos-explained"></span><h2>Accurate Sine and Cosine Values<a class="headerlink" href="#accurate-sine-and-cosine-values" title="Permalink to this headline">¶</a></h2>
+<div class="i">
+<p><img src="_images/asymptote/77faf56d03cf5c31b27820957e67e3ae.png" class="align-right"/></p></div><p><a class="reference internal" href="geometry-and-trig.html#accurate-sincos"><span class="std std-ref">Here</span></a> I said that <img class="math" src="_images/math/71653fbbc070c14bff2aa2daf584f2059ddfa3b4.png" alt="\sin \frac \tau 6 = \frac{\sqrt 3}{2}"/>
+and <img class="math" src="_images/math/aa3670eca717a1591e703df6cdf229377ae0fb74.png" alt="\cos \frac \tau 6 = \frac 1 2"/>. I’m sorry to disappoint you, but there’s
+no general and easy way to find accurate <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> values by hand.
+However, in many cases there’s something special about the angles that allows
+us to do some other tricks.</p>
+<p>The angle in question is <img class="math" src="_images/math/cfdef7207cb7a3a87e2430ae1e5b4d682facbf2f.png" alt="\frac \tau 6"/>, a sixth of a turn. If a triangle has
+three sides with equal lengths, the angles will be <img class="math" src="_images/math/cfdef7207cb7a3a87e2430ae1e5b4d682facbf2f.png" alt="\frac \tau 6"/> each. That’s
+why we can complete the triangle drawn in unit circle like in the image. The
+angles at top are <img class="math" src="_images/math/d200bb0b0c6c2df4679617cee4ff5e7645157345.png" alt="\frac{\tau}{12}"/> because two <img class="math" src="_images/math/d200bb0b0c6c2df4679617cee4ff5e7645157345.png" alt="\frac{\tau}{12}"/> angles added
+together is <img class="math" src="_images/math/928ac4f4d8929a75a13ac9352da65f1660cb745b.png" alt="\tau/6"/>.</p>
+<p>The radius of the unit circle is 1, so we get this on the <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> axis:</p>
+<div class="math">
+<p><img src="_images/math/4289e2d9732598ede52131aa4164c7b4c97bd4a3.png" alt="\cos \frac \tau 6 + \cos \frac \tau 6 &amp;= 1"/></p>
+</div><div class="math">
+<p><img src="_images/math/969fbafd094606a901807a59e603cf0a9a5df053.png" alt="\cos \frac \tau 6 &amp;= \frac 1 2"/></p>
+</div><p>Now we can apply the Pythagorean theorem (proved
+<a class="reference internal" href="#pythagoras-proof"><span class="std std-ref">above</span></a>) to the yellow triangle and figure out
+<img class="math" src="_images/math/ab5a4e4dd4f136ec39a12453a9bbbf2d2f59ba92.png" alt="\sin \frac \tau 6"/>:</p>
+<div class="math">
+<p><img src="_images/math/7c657da5283bbc4e6c78ef697e19ea3fc2b9eb44.png" alt="\left( \cos \frac \tau 6 \right)^2 + \left( \sin \frac \tau 6 \right)^2 &amp;= 1^2 = 1 \\
+\left( \sin \frac \tau 6 \right)^2 &amp;= 1 - \left( \cos \frac \tau 6 \right)^2 \\
+\sqrt{\left( \sin \frac \tau 6 \right)^2} &amp;= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
+\left| \sin \frac \tau 6 \right| &amp;= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
+   &amp;= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
+   &amp;= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}
+      = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}"/></p>
+</div><p>We know that <img class="math" src="_images/math/ab5a4e4dd4f136ec39a12453a9bbbf2d2f59ba92.png" alt="\sin \frac \tau 6"/> is positive, so
+<img class="math" src="_images/math/559d76e19fcbcdcd3a500fc0175ba976c74c6daa.png" alt="\sin \frac \tau 6 = |\sin \frac \tau 6|"/>.</p>
+</div>
 <div class="section" id="which-functions-have-derivatives">
 <span id="has-derivative"></span><h2>Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Permalink to this headline">¶</a></h2>
 <p>In <a class="reference internal" href="derivatives.html#derivatives"><span class="std std-ref">the derivative chapter</span></a> I said that most functions
@@ -259,7 +291,7 @@ scope of this tutorial.</p>
 </div></blockquote>
 </div>
 <div class="section" id="id8">
-<h3><img class="math" src="_images/math/de27ec19138a293dd7e06cb57f03ed9cf7c55847.png" alt="\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}"/><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><img class="math" src="_images/math/427ef2ae4e202154debd5b29d01c7f5999105368.png" alt="\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}"/><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>We could prove this with the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/> rule because
 <img class="math" src="_images/math/e1f2f47dde68244f7a225a6eb728a21cd9794eed.png" alt="\sqrt x = x^\frac{1}{2}"/>, but we proved the <img class="math" src="_images/math/2b8238b123f456cca2392b16b56774f8e678a91c.png" alt="x^c"/> rule only for positive
@@ -284,7 +316,24 @@ integers. Let’s survive without it. Again, it’s a mess, but it works.</p>
 </div></div></blockquote>
 </div>
 <div class="section" id="id9">
-<h3><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><img class="math" src="_images/math/15673511ac891f259019b8c0a26e2eeef1619db3.png" alt="\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}"/><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>We could use the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/> rule again because <img class="math" src="_images/math/20aabfac838dcd6d583261303adcdeb8b16c9bc8.png" alt="1/x"/> is actually
+<img class="math" src="_images/math/36e6e129b66ffd554c1fddc3854af6ce260e7007.png" alt="x^{-1}"/>, but as before, we haven’t proved that it works at <img class="math" src="_images/math/070f16c1833eb508ace6b66d585271216f0f599e.png" alt="c=-1"/> so we’ll
+do this without it.</p>
+<div class="math">
+<p><img src="_images/math/2e91c60cb0ad318f809b05a82fbd07a7a9220bcd.png" alt="\frac{d}{dx} (1/x) &amp;= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 x}{h} \\
+&amp;= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h} \\
+&amp;= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h} \\
+&amp;= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh} \\
+&amp;= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
+&amp;= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
+&amp;= \lim_{h\to0} \frac{-1}{(x+h)x} \\
+&amp;= \frac{-1}{x^2}"/></p>
+</div></div></blockquote>
+</div>
+<div class="section" id="id10">
+<h3><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>This rule looks simple, but it’s surprisingly difficult to prove correctly
 while keeping it easy to read. Here’s the best proof I managed to make.</p>
@@ -332,6 +381,27 @@ interval (<img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d4648
 with respect to <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, so <img class="math" src="_images/math/0814556d52bf073d8cfc06adae041e777a976fee.png" alt="f(c)"/> was actually yet another constant because it
 doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
 </div></blockquote>
+</div>
+<div class="section" id="id11">
+<h3><img class="math" src="_images/math/9e753cef600e2c09bc4dfc1603310d00363e082a.png" alt="\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g'(x))^2}"/><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>We need these rules that are proved above:</p>
+<blockquote>
+<div><ul class="simple">
+<li><img class="math" src="_images/math/9b0c2c3562d2534afd85381cdd40a92347240b87.png" alt="\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)"/></li>
+<li><img class="math" src="_images/math/d08771ce5334857616cd148c6028a41e606b02b0.png" alt="\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}"/></li>
+<li><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/></li>
+</ul>
+</div></blockquote>
+<p>Now this is quite straight-forward.</p>
+<div class="math">
+<p><img src="_images/math/30807561fefcbac49746c5f8dde9fe7f469baf84.png" alt="\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
+=&amp; \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
+=&amp; f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
+=&amp; \frac{f'(x)}{g(x)} + f(x) \frac{-1}{(g(x))^2} g'(x) \\
+=&amp; \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
+=&amp; \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}"/></p>
+</div></div></blockquote>
 </div>
 </div>
 </div>

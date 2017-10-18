@@ -10,60 +10,6 @@ definitions of e.g. `\sin` or `\cos`, but in this chapter we'll focus on those
 that aren't and prove that they actually work.
 
 
-.. asymptote::
-   :align: right
-
-   size(12cm);
-
-   axises(-1.1,1.3,-1.1,1.3);
-   real t = pi/3;          // 60°
-   real tradius = 0.2;     // radius of t's arc thingy
-
-   draw(unitcircle);
-   fill((0,0)--(cos(t),0)--(cos(t),sin(t))--cycle, yellow);
-   draw((0,0)--(cos(t),0), L="$\cos t$");
-   draw((cos(t),0)--(cos(t),sin(t)), L="$\sin t$");
-   draw((cos(t),sin(t))--(0,0), L="1");
-
-   draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
-
-.. _unitcircle-triangle-compat:
-
-Two ways to define sine and cosine
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The y axis of the picture at right goes up because this explanation isn't
-really useful for programming; it's just an explanation for people who are
-wondering how `\sin` and `\cos` appear both in a unit circle and in triangles.
-
-In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
-`\cos` with a unit circle, but then in
-:ref:`the triangle trig section <triangletrig>` we defined them with a
-triangle. If we apply the triangle stuff to the angle `t` of the picture at
-right, we get this:
-
-.. asymptote::
-   :align: right
-
-   size(9cm);
-   abctriangle(3,2,lightblue);
-   real t = atan2(2,3);
-   draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
-
-.. math::
-   \sin t &= \frac{\sin t}{1} \\
-   \cos t &= \frac{\cos t}{1} \\
-   \tan t &= \frac{\sin t}{\cos t}
-
-The first two formulas are obviously true with any `t`, but the last one is a
-bit more interesting. We found another way to define `\tan`, and it
-also works with a triangle:
-
-.. math::
-   \frac{\sin t}{\cos t} = \frac{b/c}{a/c}
-   = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t
-
-
 .. _pythagoras-proof:
 
 Pythagorean Theorem
@@ -117,6 +63,126 @@ We must get the same area with both ways, so we get this
    aa+ba+ab+bb &= c^2 + 2ab \\
    a^2 + 2ab + b^2 &= c^2 + 2ab \\
    a^2 + b^2 &= c^2
+
+
+.. asymptote::
+   :align: right
+
+   size(12cm);
+
+   axises(-1.1,1.3,-1.1,1.3);
+   real t = pi/3;          // 60°
+   real tradius = 0.2;     // radius of t's arc thingy
+
+   draw(unitcircle);
+   fill((0,0)--(cos(t),0)--(cos(t),sin(t))--cycle, yellow);
+   draw((0,0)--(cos(t),0), L="$\cos t$");
+   draw((cos(t),0)--(cos(t),sin(t)), L="$\sin t$");
+   draw((cos(t),sin(t))--(0,0), L="1");
+
+   draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
+
+.. _unitcircle-triangle-compat:
+
+Two ways to define sine and cosine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The y axis of the picture at right goes up because this explanation isn't
+really useful for programming; it's just an explanation for people who are
+wondering how `\sin` and `\cos` appear both in a unit circle and in triangles.
+
+In :ref:`the unit circle trig section <unitcircletrig>` we defined `\sin` and
+`\cos` with a unit circle, but then in
+:ref:`the triangle trig section <triangletrig>` we defined them with a
+triangle. If we apply the triangle stuff to the angle `t` of the picture at
+right, we get this:
+
+.. asymptote::
+   :align: right
+
+   size(5cm);
+   abctriangle(3,2,lightblue);
+   real t = atan2(2,3);
+   draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
+
+.. math::
+   \sin t &= \frac{\sin t}{1} \\
+   \cos t &= \frac{\cos t}{1} \\
+   \tan t &= \frac{\sin t}{\cos t}
+
+The first two formulas are obviously true with any `t`, but the last one is a
+bit more interesting. We found another way to define `\tan`, and it
+also works with a triangle:
+
+.. math::
+   \frac{\sin t}{\cos t} = \frac{b/c}{a/c}
+   = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t
+
+
+.. _accurate-sincos-explained:
+
+Accurate Sine and Cosine Values
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. asymptote::
+   :align: right
+
+   size(10cm);
+
+   axises(-0.2,1.3,-0.2,1.3);
+   real t = tau/6;
+   real sint = sqrt(3)/2;
+   real cost = 1/2;
+   real tradius = 0.2;     // radius of t's arc thingy
+
+   draw(arc((0,0), 1, -5, 95));
+   fill((0,0)--(cost,0)--(cost,sint)--cycle, yellow);
+   draw((cost,0)--(cost,sint));
+   draw((cost,sint)--(0,0), L="1");
+   draw((cost,sint)--(1,0), smalldashes);
+   draw((cost,sint)--(1,sint), smalldashes);
+
+   draw(arc((0,0), tradius, 0, degrees(t)), L="$\frac \tau 6$");
+   draw(arc((1,0), tradius, 180-degrees(t), 180), L="$\frac \tau 6$");
+   draw(arc((cost,sint), tradius, 180+degrees(t), 270), L="$\frac{\tau}{12}$");
+   draw(arc((cost,sint), tradius, -90, -degrees(t)), L="$\frac{\tau}{12}$");
+
+   draw(brace((1,0), (cost,0)), L="$\cos \frac \tau 6$", align=S);
+   draw(brace((cost,0), (0,0)), L="$\cos \frac \tau 6$", align=S);
+   draw(brace((1.05,sint), (1.05,0)), L="$\sin \frac \tau 6$", align=E);
+
+:ref:`Here <accurate-sincos>` I said that `\sin \frac \tau 6 = \frac{\sqrt 3}{2}`
+and `\cos \frac \tau 6 = \frac 1 2`. I'm sorry to disappoint you, but there's
+no general and easy way to find accurate `\sin` and `\cos` values by hand.
+However, in many cases there's something special about the angles that allows
+us to do some other tricks.
+
+The angle in question is `\frac \tau 6`, a sixth of a turn. If a triangle has
+three sides with equal lengths, the angles will be `\frac \tau 6` each. That's
+why we can complete the triangle drawn in unit circle like in the image. The
+angles at top are `\frac{\tau}{12}` because two `\frac{\tau}{12}` angles added
+together is `\tau/6`.
+
+The radius of the unit circle is 1, so we get this on the `x` axis:
+
+.. math:: \cos \frac \tau 6 + \cos \frac \tau 6 &= 1
+.. math:: \cos \frac \tau 6 &= \frac 1 2
+
+Now we can apply the Pythagorean theorem (proved
+:ref:`above <pythagoras-proof>`) to the yellow triangle and figure out
+`\sin \frac \tau 6`:
+
+.. math::
+   \left( \cos \frac \tau 6 \right)^2 + \left( \sin \frac \tau 6 \right)^2 &= 1^2 = 1 \\
+   \left( \sin \frac \tau 6 \right)^2 &= 1 - \left( \cos \frac \tau 6 \right)^2 \\
+   \sqrt{\left( \sin \frac \tau 6 \right)^2} &= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
+   \left| \sin \frac \tau 6 \right| &= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
+      &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
+      &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}
+         = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}
+
+We know that `\sin \frac \tau 6` is positive, so
+`\sin \frac \tau 6 = |\sin \frac \tau 6|`.
 
 
 .. _has-derivative:
@@ -362,8 +428,8 @@ them.
    that the rule isn't limited to positive integers, but that's beyond the
    scope of this tutorial.
 
-`\frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x}`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+`\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    We could prove this with the `\frac{d}{dx} x^c` rule because
    `\sqrt x = x^\frac{1}{2}`, but we proved the `x^c` rule only for positive
@@ -387,6 +453,23 @@ them.
       &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
       &= \frac{1}{\sqrt x + \sqrt x} \\
       &= \frac{1}{2\ \sqrt x}
+
+`\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   We could use the `\frac{d}{dx} x^c` rule again because `1/x` is actually
+   `x^{-1}`, but as before, we haven't proved that it works at `c=-1` so we'll
+   do this without it.
+
+   .. math::
+      \frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 x}{h} \\
+      &= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h} \\
+      &= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h} \\
+      &= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh} \\
+      &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
+      &= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
+      &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
+      &= \frac{-1}{x^2}
 
 `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -503,3 +586,22 @@ them.
    Look carefully: `\frac{d}{dx} f(c) = 0` because we differenciated `f(c)`
    with respect to `x`, so `f(c)` was actually yet another constant because it
    doesn't depend on the value of `x`.
+
+`\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g'(x))^2}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   We need these rules that are proved above:
+
+      * `\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)`
+      * `\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}`
+      * `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)`
+
+   Now this is quite straight-forward.
+
+   .. math::
+      \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
+      =& \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
+      =& f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
+      =& \frac{f'(x)}{g(x)} + f(x) \frac{-1}{(g(x))^2} g'(x) \\
+      =& \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
+      =& \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}

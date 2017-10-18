@@ -227,7 +227,11 @@ like `4` or `-\pi` but not e.g. `2x` because that depends on the value of `x`.
       &&\\
       \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
       &&\\
-      \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} & \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
+      \frac{d}{dx}\ (1/x) = \displaystyle \frac{-1}{x^2} &
+      \frac{d}{dx}\ (f(x)/g(x)) = \displaystyle\frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
+      &&\\
+      \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
+      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
    \end{matrix}
 
 With these formulas you can find derivatives of long and scary functions
@@ -247,12 +251,12 @@ Note that if you have something like `(2x)^2` as opposed to `x^2` you
 need to use the `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)` rule. In this example,
 you would plug in `f(x)=x^2` and `g(x)=2x` to get this:
 
-.. math:: \frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
+.. math:: \frac{d}{dx}\ (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
 
 In some cases it's also possible to first open up something like the `(\ \ )^2`:
 
 .. math::
-   \frac{d}{dx}(2x)^2 = \frac{d}{dx}(2^2x^2) = \frac{d}{dx}(4x^2)
+   \frac{d}{dx}\ (2x)^2 = \frac{d}{dx}\ (2^2x^2) = \frac{d}{dx}(4x^2)
    = 4 \cdot \frac{d}{dx} x^2 = 4 \cdot 2x = 8x
 
 You can also use a nice symbolic calculation library, like Python's

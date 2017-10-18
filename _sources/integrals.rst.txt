@@ -137,7 +137,7 @@ Area to x
    real dx = 0.3;
 
    fill(slicebetween(parabolaaa, 0, x)--(x,0)--(0,0)--cycle, paleyellow);
-   label("$A$", (x/2,f(x/2)/2));
+   label("$A(x)$", (x/2,f(x/2)/2));
    axises(-0.1,2.2,-0.5,f(2));
    draw(parabolaaa, L="$y=f(x)$", align=NW, p=blue);
 
@@ -174,7 +174,7 @@ Yes, this is correct! We can use a derivative here. This is precise, so we can
 get rid of `\approx` and replace it with `=`.
 
 So, if we want to calculate areas all we really need is an antiderivative
-function `F` so that `F'(x)=f(x)`, and we'll use it like `A = F(x)`.
+function `A` so that `A'(x)=f(x)`, and `A(x)` will be an area to `x`.
 
 .. asymptote::
    :align: right
@@ -237,25 +237,25 @@ Let's go back to our original problem. One of
    fill((0,0)--(0,f(0))--slicebetween(curvie, 0.1, a)--(a,0)--cycle, lightyellow);
    draw((a,0)--(a,f(a)));
    draw((b,0)--(b,f(b)));
-   label(rotate(90)*"$F(b)-F(a)$", (b-0.1, 0), align=NW);
+   label(rotate(90)*"$A(b)-A(a)$", (b-0.1, 0), align=NW);
 
    draw(curvie, L=Label(rotate(55)*"$y=f(x)$"), align=NW);
    axises(-0.3,2.5,-0.3,3);
    label("$a$", (a,0), align=S);
    label("$b$", (b,0), align=S);
-   label("$F(a)$", (a/2, 0), align=N);
+   label("$A(a)$", (a/2, 0), align=N);
 
-So it looks like the antiderivative function `F` that gives us the area between
-`0` and `x` is `F(x) = \sqrt x`. But how about `F(x) = \sqrt x + 1`? Its
-derivative is also `\frac{1}{2 \sqrt x}` because `\frac{d}{dx} 1 = 0`. Or how
-about `\sqrt x + 100` or `\sqrt x - 10`? We don't know everything about the
-`F`, all we know is that `F(x) = \sqrt x + C` where `C` is a constant.
+So it looks like the antiderivative function `A` is `A(x) = \sqrt x`. But how
+about `A(x) = \sqrt x + 1`? Its derivative is also `\frac{1}{2 \sqrt x}`
+because `\frac{d}{dx} 1 = 0`. Or how about `\sqrt x + 100` or `\sqrt x - 10`?
+We don't know what `A(x)` is, but we know that `A(x) = \sqrt x + C` where `C`
+is a constant.
 
 Let's try to calculate our area:
 
 .. math::
 
-   F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
+   A(b)-A(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
                &= \sqrt b + C - \sqrt a - C \\
                &= \sqrt b - \sqrt a \\
                &= \sqrt 2 - \sqrt 1 \\
@@ -270,9 +270,9 @@ understand everything, but now that you have seen this once you can do it much
 faster. So, here are the steps for calculating the area under `y=f(x)` between
 `x=a` and `x=b`:
 
-1. Find an antiderivative `F(x)`. There are infinitely many antiderivatives,
+1. Find an antiderivative `A(x)`. There are infinitely many antiderivatives,
    but *any* antiderivative will do because the `C`'s are substracted away.
-2. Calculate `F(b)-F(a)` and you're done.
+2. Calculate `A(b)-A(a)` and you're done.
 
 This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.
@@ -317,8 +317,8 @@ Usually this stuff is written like this:
      here -- the `dx` is just a part of the notation and you must not forget
      it.
    * The antiderivative of `f(x)` including the `+C` is the same thing without `a`
-     and `b`. So `\int f(x) dx = F(x) + C` where `F'(x) = f(x)`.
-   * `[F(x)]_a^b = F(b)-F(a)`.
+     and `b`. So `\int f(x) dx = A(x) + C` where `A'(x) = f(x)`.
+   * `[A(x)]_a^b = A(b)-A(a)`.
 
 The integral sign `\int` is a strecthed S like Sum, and `\int_a^b f(x) dx`
 means conceptually a sum of the areas of little `f(x)` by `dx` rectangles.
@@ -561,9 +561,12 @@ Going 3D
    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
    draw(path3(brace((the_x,f(the_x)),(the_x,0), amplitude=0.2)), L="$f(x)$", align=E);
 
+Here `A(x)` has nothing to do with antiderivatives, it's just the Area of the
+green circle in the picture at right.
+
 Integrals are not actually limited to calculating areas in any way. If you look
-at the image at right, the total volume is `\int_0^h A(x) dx`. Now we just need
-to figure out how to calculate the `A(x)`, and for that we need to know what
+at the image, the total volume is `\int_0^h A(x) dx`. Now we just need to
+figure out how to calculate the `A(x)`, and for that we need to know what
 `f(x)` is. Here's everything we know about `f`:
 
    * The graph `y=f(x)` is a straight line, so
@@ -585,11 +588,10 @@ skip that because it's boring. Here's the solution:
 
 .. math:: f(x) = \frac r h x
 
-Next we need `A(x)`. Last time we figured that the area of a circle is
-`\tau \frac 1 2 r^2` where `r` is the radius, but the green circle's radius is
-`f(x)` instead of `r` so `A(x) = \tau \frac 1 2 (f(x))^2`.
-
-Now we're ready to do this:
+Next we need `A(x)`. In the previous example we figured that the area of a
+circle is `\tau \frac 1 2 r^2` where `r` is the radius, but the green circle's
+radius is `f(x)` instead of `r` so `A(x) = \tau \frac 1 2 (f(x))^2`. Let's do
+this:
 
 .. math::
    \int_0^h A(x) dx
