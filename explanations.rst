@@ -292,7 +292,6 @@ them.
    .. math::
       \frac{d}{dx} cx &= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
       &= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-      &= \lim_{h\to0} \frac{cx-cx+ch}{h} \\
       &= \lim_{h\to0} \frac{ch}{h} \\
       &= c
 
