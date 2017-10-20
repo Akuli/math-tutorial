@@ -48,7 +48,9 @@ Some handy stuff:
 .. math:: \frac{a}{1} = a
 .. math:: ab = ba
 .. math:: (a+b)c = ac+bc
+.. math:: (a-b)c = ac-bc
 .. math:: \frac{a+b}{c} = \frac a c + \frac b c
+.. math:: \frac{a-b}{c} = \frac a c - \frac b c
 .. math:: \frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}
 
 You can use these rules left-to-right or right-to-left. For example, if you
@@ -57,7 +59,7 @@ want to calculate `(1 + 2) \cdot 3` you know you could also do
 like `(1 + 2) \cdot 3`.
 
 Note that there is **no** `\displaystyle\frac{a}{b+c}=\frac a b + \frac a c`
-rule; that doesn't work.
+rule; that doesn't work. This also applies to `\displaystyle\frac{a}{b-c}`.
 
 It's often best to look at which numbers are below a division line and which
 aren't. For example, if we have `\frac 1 2 \cdot 3 \cdot \frac 4 5` we know
