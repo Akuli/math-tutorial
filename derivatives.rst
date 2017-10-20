@@ -362,8 +362,8 @@ graph:
    draw(parabolaaa);
 
 This looks like a parabola, and the equation of a parabola is `h = at^2+bt+c`
-where `a`, `b` and `c` are constants. The changing speed of height is velocity
-`v`:
+where `a`, `b` and `c` are constants. The changing speed of height is the
+falling speed. Let's call that `v` like velocity
 
 .. math:: v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b
 
