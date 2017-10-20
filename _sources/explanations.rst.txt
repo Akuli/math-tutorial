@@ -54,13 +54,23 @@ We can calculate the total area of the above square in a couple different ways:
 - The square consists of the green square whose area is `c^2` and 4 yellow
   triangles with area `\frac{ab}{2}` each. Total area is `c^2 + 4 \frac{ab}{2}`.
 
+.. sidebar:: Handy thing: `(a+b)^2=a^2+2ab+b^2`
+
+   Proof:
+
+   .. math::
+      & \ (a+b)^2 \\
+      =&\ (a+b)(a+b) \\
+      =&\ (a+b)a+(a+b)b \\
+      =&\ aa+ba+ab+bb \\
+      =&\ a^2+2ab+b^2
+
 We must get the same area with both ways, so we get this
 :ref:`equation <equations>`:
 
 .. math::
    (a+b)(a+b) &= c^2 + 4\frac{ab}{2} \\
-   (a+b)a+(a+b)b &= c^2 + \frac{4}{2} ab \\
-   aa+ba+ab+bb &= c^2 + 2ab \\
+   (a+b)^2 &= c^2 + \frac{4}{2} ab \\
    a^2 + 2ab + b^2 &= c^2 + 2ab \\
    a^2 + b^2 &= c^2
 
@@ -292,7 +302,6 @@ them.
    .. math::
       \frac{d}{dx} cx &= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
       &= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-      &= \lim_{h\to0} \frac{cx-cx+ch}{h} \\
       &= \lim_{h\to0} \frac{ch}{h} \\
       &= c
 
@@ -428,6 +437,18 @@ them.
    that the rule isn't limited to positive integers, but that's beyond the
    scope of this tutorial.
 
+.. sidebar:: Handy thing: `(a-b)(a+b)=a^2-b^2`
+
+   Proof:
+
+   .. math::
+      & \ (a-b)(a+b) \\
+      =&\ (a-b)a+(a-b)b \\
+      =&\ aa-ba+ab-bb \\
+      =&\ a^2 - b^2
+
+   In this case we need to plug in `a=\sqrt{x+h}` and `b=\sqrt x`.
+
 `\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -439,17 +460,12 @@ them.
 
       \frac{d}{dx} \sqrt x
       &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
-      &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)(\sqrt{x+h}+\sqrt x)}{
-                            h \cdot (\sqrt{x+h} + \sqrt x)} \\
-      &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)\sqrt{x+h}
-            +(\sqrt{x+h}-\sqrt x)\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
-      &= \lim_{h\to0} \frac{\sqrt{x+h}\sqrt{x+h}
-         \overbrace{-\sqrt x\sqrt{x+h}+\sqrt{x+h}\sqrt x}^\text{this is 0}
-         - \sqrt x\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
-      &= \lim_{h\to0} \frac{\left(\sqrt{x+h}\right)^2 - \left(\sqrt x\right)^2}{
-                            h \cdot (\sqrt{x+h} + \sqrt x)} \\
-      &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
-      &= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
+      &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x\ )(\sqrt{x+h}+\sqrt x\ )}{
+                            h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
+      &= \lim_{h\to0} \frac{(\sqrt{x+h}\ )^2 - (\sqrt x\ )^2}{
+                            h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
+      &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
+      &= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
       &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
       &= \frac{1}{\sqrt x + \sqrt x} \\
       &= \frac{1}{2\ \sqrt x}
@@ -532,9 +548,8 @@ them.
             \cdot \frac{g(x+h)-g(x)}{h}
       \right) \\
       =& \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
-      =& \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
       =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-      =& \frac{d}{dx} (f(g(x))
+      =& \frac{d}{dx} f(g(x))
 
    .. asymptote::
       :align: right
@@ -587,8 +602,8 @@ them.
    with respect to `x`, so `f(c)` was actually yet another constant because it
    doesn't depend on the value of `x`.
 
-`\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g'(x))^2}`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+`\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    We need these rules that are proved above:
 
@@ -602,6 +617,6 @@ them.
       \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
       =& \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
       =& f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
-      =& \frac{f'(x)}{g(x)} + f(x) \frac{-1}{(g(x))^2} g'(x) \\
+      =& \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
       =& \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
       =& \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}

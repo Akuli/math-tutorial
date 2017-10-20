@@ -124,37 +124,45 @@ some corner cases.
 First Example
 ~~~~~~~~~~~~~
 
+The graph `y=x^2` is curvy:
+
 .. asymptote::
-   :align: right
 
-   size(10cm);
+   size(7cm);
 
-   axises(-3,3,-1,10);
-   grid(-3,3,-1,10);
+   axises(-3,3,-1,7);
+   grid(-3,3,-1,7);
 
    guide xsquared_left, xsquared_right;
-   for (real x = -3; x <= 0; x+= 1/8) { xsquared_left  = xsquared_left ..(x,x**2); }
-   for (real x = 0 ; x <= 3; x+= 1/8) { xsquared_right = xsquared_right..(x,x**2); }
+   for (real x = -2.5; x <= 0; x+= 1/8) { xsquared_left  = xsquared_left ..(x,x**2); }
+   for (real x = 0 ; x <= 2.5; x+= 1/8) { xsquared_right = xsquared_right..(x,x**2); }
    draw(xsquared_left, p=blue);
-   draw(xsquared_right, p=blue, L=Label(rotate(70)*"$y = x^2$"), align=W);
+   draw(xsquared_right, p=blue, L=Label(rotate(70)*"$y = x^2$"), align=NW);
 
-The graph `y=x^2` is curvy. Let's find its derivative by plugging in
-`y=f(x)=x^2` to the definition we ended up with. If we just try to evaluate it
-at `h=0` we get `\frac 0 0` so you might think that we need to evaluate it at
-e.g. `h=0.000001`, but we don't! Have a look:
+Let's find the derivative of `x^2` by plugging in `y=f(x)=x^2` to the
+definition we ended up with. If we just try to evaluate it at `h=0` we get
+`\frac 0 0` so you might think that we need to evaluate it at e.g.
+`h=0.000001`, but we don't! Have a look:
+
+.. sidebar:: Handy thing: `(x+h)^2=x^2+2xh+h^2`
+
+   Proof:
+
+   .. math::
+      & \ (x+h)^2 \\
+      =&\ (x+h)(x+h) \\
+      =&\ (x+h)x+(x+h)h \\
+      =&\ xx+xh+hx+hh \\
+      =&\ x^2+2xh+h^2
 
 .. math::
 
    \frac{dy}{dx}  &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
                   &= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
-                  &= \lim_{h\to0} \frac{(x+h)(x+h) - x^2}{h} \\
-                  &= \lim_{h\to0} \frac{(x+h)x + (x+h)h - x^2}{h} \\
-                  &= \lim_{h\to0} \frac{x^2+hx+xh+h^2-x^2}{h} \\
-                  &= \lim_{h\to0} \frac{x^2-x^2+xh+xh+h^2}{h} \\
-                  &= \lim_{h\to0} \frac{xh+xh+h^2}{h} \\
-                  &= \lim_{h\to0} \frac{(x+x+h)h}{h} \\
-                  &= \lim_{h\to0} (x+x+h) \\
-                  &= x + x \\
+                  &= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
+                  &= \lim_{h\to0} \frac{2xh + h^2}{h} \\
+                  &= \lim_{h\to0} \frac{(2x+h)h}{h} \\
+                  &= \lim_{h\to0} (2x+h) \\
                   &= 2x
 
 .. asymptote::
@@ -180,12 +188,11 @@ e.g. `h=0.000001`, but we don't! Have a look:
    draw((2,0)--(2,2**2), smalldashes);
    label("2", (2,0), align=S);
 
-I think this is cool. We started with a really horribly complicated-looking
-thing, then we made it look even more complicated but finally we arrived at
-just `2x`. What's more, the `2x` is not just a random value we got out of a
-spooky calculation; for example, at `x=2` the derivative is `2 \cdot 2 = 4`,
-so if we draw a straight line that barely touches `y=x^2` at that point its
-slope will also be 4 like in the image at right.
+I think this is cool. We started with a complicated-looking thing but finally
+we arrived at just `2x`. What's more, the `2x` is not just a random value we
+got out of a spooky calculation; for example, at `x=2` the derivative is
+`2 \cdot 2 = 4`, so if we draw a straight line that barely touches `y=x^2` at
+`x=2` its slope will also be 4 like in the image at right.
 
 You can also find the derivative of the `y=2x+1` example we looked at earlier,
 and turns out that `\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}`. It makes sense
@@ -206,15 +213,14 @@ and there's no difference between a slope and a derivative of a straight line.
 Faster!
 ~~~~~~~
 
-Finding the derivative was kind of complicated and really slow. With these
-handy-dandy rules, you can get `2x` from `x^2` in a matter of seconds. Most of
-these rules are :ref:`easy to prove <derivative-proofs>` so there is no magic
-involved.
+Finding the derivative was kind of complicated and really slow. These rules
+change everything. Most of these rules are
+:ref:`easy to prove <derivative-proofs>` so there is no magic involved.
 
 I have listed many rules here, but **don't panic**; there's no need to memorize
 them. As before `f` and `g` can be any functions as long as they have a
 derivative (e.g. `f(x)=\sqrt x - x` and `g(x)=1`), and `c` can be any constant
-like `4` or `-\pi` but not e.g. `2x` because that depends on the value of `x`. 
+like `4` or `-6.28` but not e.g. `2x` because that depends on the value of `x`.
 
 .. math::
 
@@ -227,22 +233,27 @@ like `4` or `-\pi` but not e.g. `2x` because that depends on the value of `x`.
       &&\\
       \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
       &&\\
-      \frac{d}{dx}\ (1/x) = \displaystyle \frac{-1}{x^2} &
-      \frac{d}{dx}\ (f(x)/g(x)) = \displaystyle\frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
+      \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &
+      \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
       &&\\
       \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
       \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
    \end{matrix}
 
-With these formulas you can find derivatives of long and scary functions
-really easily. For example:
+So, if you want to find the derivative of `x^2` just use the `\frac{d}{dx} x^c`
+rule:
+
+.. math:: \frac{d}{dx} x^2 = 2x^{2-1} = 2x^1 = 2x
+
+Now you can also find derivatives of long and scary functions easily and
+quickly. For example:
 
 .. math::
 
    & \frac{d}{dx} (5x^3-6x^2+7x-123) \\
    =& \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
    =& 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
-   =& 5 \cdot 3x^{3-1} - 6 \cdot 2x + 7 \\
+   =& 5 \cdot 3x^{3-1} - 6 \cdot 2x^{2-1} + 7 \\
    =& 15x^2 - 12x + 7
 
 Of course, there's no need to write down all of these steps.
@@ -265,14 +276,15 @@ You can also use a nice symbolic calculation library, like Python's
 .. code-block:: python
 
    >>> from sympy import *
-   >>> init_printing(use_unicode=True)
+   >>> init_printing()
    >>> x = Symbol('x')
-   >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123)
+   >>> diff(x**2, x)
+   2⋅x
+   >>> diff((2*x)**2, x)
+   8⋅x
+   >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123, x)
        2           
    15⋅x  - 12⋅x + 7
-   >>> diff((2*x)**2)
-   8⋅x
-   >>> 
 
 Here "diff" is short for "differenciate", and it means finding a derivative.
 
@@ -285,10 +297,13 @@ the one we did above:
    ...     return x**2
    ...
    >>> h = Symbol('h')
-   >>> expand((f(x+h)-f(x))/h)
+   >>> (f(x+h)-f(x))/h
+      2          2
+   - x  + (h + x)
+   ───────────────
+          h
+   >>> simplify((f(x+h)-f(x))/h)
    h + 2⋅x
-   >>> 
-
 
 .. _smoothjumps:
 
@@ -347,8 +362,8 @@ graph:
    draw(parabolaaa);
 
 This looks like a parabola, and the equation of a parabola is `h = at^2+bt+c`
-where `a`, `b` and `c` are constants. The changing speed of height is velocity
-`v`:
+where `a`, `b` and `c` are constants. The changing speed of height is the
+falling speed. Let's call that `v` like velocity.
 
 .. math:: v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b
 

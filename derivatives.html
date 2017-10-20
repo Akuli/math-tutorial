@@ -93,30 +93,36 @@ some corner cases.</p>
 </div>
 <div class="section" id="first-example">
 <h2>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h2>
+<p>The graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy:</p>
 <div class="i">
-<p><img src="_images/asymptote/643db37d57fcc9c46c92099743596d97.png" class="align-right"/></p></div><p>The graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy. Let’s find its derivative by plugging in
-<img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the definition we ended up with. If we just try to evaluate it
-at <img class="math" src="_images/math/149ccbe5c545564e85bc7e1f6b90906e58b1e3e2.png" alt="h=0"/> we get <img class="math" src="_images/math/a4bc8eb91ce088e99d63c405b9efb744f717a669.png" alt="\frac 0 0"/> so you might think that we need to evaluate it at
-e.g. <img class="math" src="_images/math/d449b7fdd244422cebef58a3106da423c156cae9.png" alt="h=0.000001"/>, but we don’t! Have a look:</p>
+<p><img src="_images/asymptote/0d17758bc7becb883f48e1bffc1d7082.png"/></p></div><p>Let’s find the derivative of <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> by plugging in <img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the
+definition we ended up with. If we just try to evaluate it at <img class="math" src="_images/math/149ccbe5c545564e85bc7e1f6b90906e58b1e3e2.png" alt="h=0"/> we get
+<img class="math" src="_images/math/a4bc8eb91ce088e99d63c405b9efb744f717a669.png" alt="\frac 0 0"/> so you might think that we need to evaluate it at e.g.
+<img class="math" src="_images/math/d449b7fdd244422cebef58a3106da423c156cae9.png" alt="h=0.000001"/>, but we don’t! Have a look:</p>
+<div class="sidebar">
+<p class="first sidebar-title">Handy thing: <img class="math" src="_images/math/3af270c6cea8ad5a3274672e3c3881053bde1a1c.png" alt="(x+h)^2=x^2+2xh+h^2"/></p>
+<p>Proof:</p>
+<div class="last math">
+<p><img src="_images/math/9c70f8ba22f4fb53c3957199bad7addad60e8543.png" alt="&amp; \ (x+h)^2 \\
+=&amp;\ (x+h)(x+h) \\
+=&amp;\ (x+h)x+(x+h)h \\
+=&amp;\ xx+xh+hx+hh \\
+=&amp;\ x^2+2xh+h^2"/></p>
+</div></div>
 <div class="math">
-<p><img src="_images/math/9a93089abd47447af9af8741fe293525a4b150aa.png" alt="\frac{dy}{dx}  &amp;= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+<p><img src="_images/math/f3b69f6a59804f49a591749724614ff9e590b3ea.png" alt="\frac{dy}{dx}  &amp;= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
                &amp;= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{(x+h)(x+h) - x^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{(x+h)x + (x+h)h - x^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{x^2+hx+xh+h^2-x^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{x^2-x^2+xh+xh+h^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{xh+xh+h^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{(x+x+h)h}{h} \\
-               &amp;= \lim_{h\to0} (x+x+h) \\
-               &amp;= x + x \\
+               &amp;= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{2xh + h^2}{h} \\
+               &amp;= \lim_{h\to0} \frac{(2x+h)h}{h} \\
+               &amp;= \lim_{h\to0} (2x+h) \\
                &amp;= 2x"/></p>
 </div><div class="i">
-<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p></div><p>I think this is cool. We started with a really horribly complicated-looking
-thing, then we made it look even more complicated but finally we arrived at
-just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random value we got out of a
-spooky calculation; for example, at <img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> the derivative is <img class="math" src="_images/math/a2015b6d842a5111f7b8d9a871f42f7dfca8e09c.png" alt="2 \cdot 2 = 4"/>,
-so if we draw a straight line that barely touches <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> at that point its
-slope will also be 4 like in the image at right.</p>
+<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p></div><p>I think this is cool. We started with a complicated-looking thing but finally
+we arrived at just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random value we
+got out of a spooky calculation; for example, at <img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> the derivative is
+<img class="math" src="_images/math/a2015b6d842a5111f7b8d9a871f42f7dfca8e09c.png" alt="2 \cdot 2 = 4"/>, so if we draw a straight line that barely touches <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> at
+<img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> its slope will also be 4 like in the image at right.</p>
 <p>You can also find the derivative of the <img class="math" src="_images/math/219a3762183563eed4c619bcd6b6090104afcf27.png" alt="y=2x+1"/> example we looked at earlier,
 and turns out that <img class="math" src="_images/math/a9917289b7ef43fee7da1e311943f89855cd2cfa.png" alt="\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}"/>. It makes sense
 because derivatives are just like slopes but they also work with curvy things,
@@ -131,16 +137,15 @@ although it doesn’t make much sense because <img class="math" src="_images/mat
 </div>
 <div class="section" id="faster">
 <span id="derivative-rules"></span><h2>Faster!<a class="headerlink" href="#faster" title="Permalink to this headline">¶</a></h2>
-<p>Finding the derivative was kind of complicated and really slow. With these
-handy-dandy rules, you can get <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> from <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> in a matter of seconds. Most of
-these rules are <a class="reference internal" href="explanations.html#derivative-proofs"><span class="std std-ref">easy to prove</span></a> so there is no magic
-involved.</p>
+<p>Finding the derivative was kind of complicated and really slow. These rules
+change everything. Most of these rules are
+<a class="reference internal" href="explanations.html#derivative-proofs"><span class="std std-ref">easy to prove</span></a> so there is no magic involved.</p>
 <p>I have listed many rules here, but <strong>don’t panic</strong>; there’s no need to memorize
 them. As before <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> and <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> can be any functions as long as they have a
 derivative (e.g. <img class="math" src="_images/math/620d3592799463cd9e295c04f3f3e844d072bc74.png" alt="f(x)=\sqrt x - x"/> and <img class="math" src="_images/math/21c08c14d6858e50f35adbcb50d636bd06c771a2.png" alt="g(x)=1"/>), and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> can be any constant
-like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/969d4aaf2ca4b401759470cb0f2c75b4942d8309.png" alt="-\pi"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
+like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/ad5bae922280b62efd3e9f9d3550ac1911f13b78.png" alt="-6.28"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
 <div class="math">
-<p><img src="_images/math/1477f21d1665d4c50394190be29fa800ba7234d4.png" alt="\begin{matrix}
+<p><img src="_images/math/95e7afbc797f728ce7336daf339fb1b81a5edba0.png" alt="\begin{matrix}
    \frac{d}{dx}\ c = 0              &amp; \frac{d}{dx}(c\ f(x)) = c\ f'(x) &amp; \\
    &amp;&amp;\\
    \frac{d}{dx}\ x = 1              &amp; \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &amp; \\
@@ -149,19 +154,23 @@ like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b1
    &amp;&amp;\\
    \frac{d}{dx}\ x^c = c\ x^{c-1}   &amp; \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) &amp; \\
    &amp;&amp;\\
-   \frac{d}{dx}\ (1/x) = \displaystyle \frac{-1}{x^2} &amp;
-   \frac{d}{dx}\ (f(x)/g(x)) = \displaystyle\frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
+   \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &amp;
+   \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
    &amp;&amp;\\
    \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &amp;
    \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
 \end{matrix}"/></p>
-</div><p>With these formulas you can find derivatives of long and scary functions
-really easily. For example:</p>
+</div><p>So, if you want to find the derivative of <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> just use the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/>
+rule:</p>
 <div class="math">
-<p><img src="_images/math/b02b5d6f3d866e6335b9c75660f67b2dc7403950.png" alt="&amp; \frac{d}{dx} (5x^3-6x^2+7x-123) \\
+<p><img src="_images/math/817a90bd1f4c31e80731da4a7c55d3fe892bbdb8.png" alt="\frac{d}{dx} x^2 = 2x^{2-1} = 2x^1 = 2x"/></p>
+</div><p>Now you can also find derivatives of long and scary functions easily and
+quickly. For example:</p>
+<div class="math">
+<p><img src="_images/math/9a60b34341e1fcd4237d5042b7ff7b076b998828.png" alt="&amp; \frac{d}{dx} (5x^3-6x^2+7x-123) \\
 =&amp; \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
 =&amp; 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
-=&amp; 5 \cdot 3x^{3-1} - 6 \cdot 2x + 7 \\
+=&amp; 5 \cdot 3x^{3-1} - 6 \cdot 2x^{2-1} + 7 \\
 =&amp; 15x^2 - 12x + 7"/></p>
 </div><p>Of course, there’s no need to write down all of these steps.</p>
 <p>Note that if you have something like <img class="math" src="_images/math/c6c22a1622778ec604c42302f50d693a94d350c5.png" alt="(2x)^2"/> as opposed to <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> you
@@ -176,14 +185,15 @@ you would plug in <img class="math" src="_images/math/d772eeb4feb38727b849042e3f
 </div><p>You can also use a nice symbolic calculation library, like Python’s
 <a class="reference external" href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">(</span><span class="n">use_unicode</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">123</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">2⋅x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="go">8⋅x</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">123</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="go">    2</span>
 <span class="go">15⋅x  - 12⋅x + 7</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">8⋅x</span>
-<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <p>Here “diff” is short for “differenciate”, and it means finding a derivative.</p>
@@ -193,9 +203,13 @@ the one we did above:</p>
 <span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
 <span class="gp">...</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">expand</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+<span class="go">   2          2</span>
+<span class="go">- x  + (h + x)</span>
+<span class="go">───────────────</span>
+<span class="go">       h</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">simplify</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span><span class="p">)</span>
 <span class="go">h + 2⋅x</span>
-<span class="go">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 </div>
@@ -210,8 +224,8 @@ how to make games with jumps like that.</p>
 graph:</p>
 <div class="i">
 <p><img src="_images/asymptote/e619f2ec5eb10b147d1c48bb7524d709.png"/></p></div><p>This looks like a parabola, and the equation of a parabola is <img class="math" src="_images/math/7b32fef7aa2a343b2d325869eb1ed332d8493279.png" alt="h = at^2+bt+c"/>
-where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/>, <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> are constants. The changing speed of height is velocity
-<img class="math" src="_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/>:</p>
+where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/>, <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> are constants. The changing speed of height is the
+falling speed. Let’s call that <img class="math" src="_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/> like velocity.</p>
 <div class="math">
 <p><img src="_images/math/4d7f6f82295e84381547a3a021efc1201aff7123.png" alt="v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b"/></p>
 </div><p>On the other hand, the changing speed of velocity is the acceleration caused by
@@ -383,7 +397,7 @@ runRepeatedly(function() {
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |

@@ -57,12 +57,21 @@ that aren’t and prove that they actually work.</p>
 <li>The square consists of the green square whose area is <img class="math" src="_images/math/546bfd75f5def7393a4a78b0735a88c29ac92165.png" alt="c^2"/> and 4 yellow
 triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02f2ef15c8d21d2b03.png" alt="\frac{ab}{2}"/> each. Total area is <img class="math" src="_images/math/acc5b8413a1c257dbcba30477cc6814520208ed1.png" alt="c^2 + 4 \frac{ab}{2}"/>.</li>
 </ul>
+<div class="sidebar">
+<p class="first sidebar-title">Handy thing: <img class="math" src="_images/math/1a3447785cc7e51a9d0079209c5d691417a76e34.png" alt="(a+b)^2=a^2+2ab+b^2"/></p>
+<p>Proof:</p>
+<div class="last math">
+<p><img src="_images/math/df780688bd29b86f485305460dbd5edf4d663b79.png" alt="&amp; \ (a+b)^2 \\
+=&amp;\ (a+b)(a+b) \\
+=&amp;\ (a+b)a+(a+b)b \\
+=&amp;\ aa+ba+ab+bb \\
+=&amp;\ a^2+2ab+b^2"/></p>
+</div></div>
 <p>We must get the same area with both ways, so we get this
 <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
 <div class="math">
-<p><img src="_images/math/e47938892044fea6f15afc3307be7c2f1ac62d49.png" alt="(a+b)(a+b) &amp;= c^2 + 4\frac{ab}{2} \\
-(a+b)a+(a+b)b &amp;= c^2 + \frac{4}{2} ab \\
-aa+ba+ab+bb &amp;= c^2 + 2ab \\
+<p><img src="_images/math/602ee19e1ce92eb0de4379af41184003e4ea9537.png" alt="(a+b)(a+b) &amp;= c^2 + 4\frac{ab}{2} \\
+(a+b)^2 &amp;= c^2 + \frac{4}{2} ab \\
 a^2 + 2ab + b^2 &amp;= c^2 + 2ab \\
 a^2 + b^2 &amp;= c^2"/></p>
 </div><div class="i">
@@ -174,9 +183,8 @@ something, <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3c
 <img class="math" src="_images/math/c7f0ebdeb0116be9ebd590efab9209d93fa897aa.png" alt="\Delta y = c \cdot \Delta x"/> and <img class="math" src="_images/math/18d9853f8376b597cdb7892b3ca73697998d56f0.png" alt="\frac{\Delta y}{\Delta x} = c"/>.</p>
 <p>Again, we can confirm this with the definition of derivative:</p>
 <div class="math">
-<p><img src="_images/math/3e013b4e1871fd45edd6d4daaa94c5970bd804d1.png" alt="\frac{d}{dx} cx &amp;= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
+<p><img src="_images/math/a9cd844595b8572ca6349ce546ee0f5e6f6513cd.png" alt="\frac{d}{dx} cx &amp;= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
 &amp;= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-&amp;= \lim_{h\to0} \frac{cx-cx+ch}{h} \\
 &amp;= \lim_{h\to0} \frac{ch}{h} \\
 &amp;= c"/></p>
 </div></div></blockquote>
@@ -289,6 +297,16 @@ but it also works when <img class="math" src="_images/math/ae12a24f88803b5895632
 that the rule isn’t limited to positive integers, but that’s beyond the
 scope of this tutorial.</p>
 </div></blockquote>
+<div class="sidebar">
+<p class="first sidebar-title">Handy thing: <img class="math" src="_images/math/dcbdd9ac140579d6a6f7222a99272f6375eccb68.png" alt="(a-b)(a+b)=a^2-b^2"/></p>
+<p>Proof:</p>
+<div class="math">
+<p><img src="_images/math/011baae1687bfdfd2b3e2ba1268343ea4439eb69.png" alt="&amp; \ (a-b)(a+b) \\
+=&amp;\ (a-b)a+(a-b)b \\
+=&amp;\ aa-ba+ab-bb \\
+=&amp;\ a^2 - b^2"/></p>
+</div><p class="last">In this case we need to plug in <img class="math" src="_images/math/4678777b4146af89c757055a5d6ca66d8e16eb47.png" alt="a=\sqrt{x+h}"/> and <img class="math" src="_images/math/cb2f20b6bddad5c0c45e016ab57cd544de59616c.png" alt="b=\sqrt x"/>.</p>
+</div>
 </div>
 <div class="section" id="id8">
 <h3><img class="math" src="_images/math/427ef2ae4e202154debd5b29d01c7f5999105368.png" alt="\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}"/><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
@@ -297,19 +315,14 @@ scope of this tutorial.</p>
 <img class="math" src="_images/math/e1f2f47dde68244f7a225a6eb728a21cd9794eed.png" alt="\sqrt x = x^\frac{1}{2}"/>, but we proved the <img class="math" src="_images/math/2b8238b123f456cca2392b16b56774f8e678a91c.png" alt="x^c"/> rule only for positive
 integers. Let’s survive without it. Again, it’s a mess, but it works.</p>
 <div class="math">
-<p><img src="_images/math/fe4d26ab4a0714e08f0b5bdc085fd418f53ee65e.png" alt="\frac{d}{dx} \sqrt x
+<p><img src="_images/math/943dfbf943d845259835db87124a420259fbc9d1.png" alt="\frac{d}{dx} \sqrt x
 &amp;= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
-&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)(\sqrt{x+h}+\sqrt x)}{
-                      h \cdot (\sqrt{x+h} + \sqrt x)} \\
-&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x)\sqrt{x+h}
-      +(\sqrt{x+h}-\sqrt x)\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
-&amp;= \lim_{h\to0} \frac{\sqrt{x+h}\sqrt{x+h}
-   \overbrace{-\sqrt x\sqrt{x+h}+\sqrt{x+h}\sqrt x}^\text{this is 0}
-   - \sqrt x\sqrt x}{h \cdot (\sqrt{x+h} + \sqrt x)} \\
-&amp;= \lim_{h\to0} \frac{\left(\sqrt{x+h}\right)^2 - \left(\sqrt x\right)^2}{
-                      h \cdot (\sqrt{x+h} + \sqrt x)} \\
-&amp;= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
-&amp;= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x)} \\
+&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x\ )(\sqrt{x+h}+\sqrt x\ )}{
+                      h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
+&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}\ )^2 - (\sqrt x\ )^2}{
+                      h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
+&amp;= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
+&amp;= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
 &amp;= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
 &amp;= \frac{1}{\sqrt x + \sqrt x} \\
 &amp;= \frac{1}{2\ \sqrt x}"/></p>
@@ -354,7 +367,7 @@ So, if <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84
 <p>If we put all this together we can set <img class="math" src="_images/math/48438feaf697dd21d1d3af56b5e8c1a7666d2ce1.png" alt="k=g(x+h)-g(x)"/>. Now it’s time to
 calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2ec2c4b.png" alt="f'(g(x))g'(x)"/>.</p>
 <div class="math">
-<p><img src="_images/math/35713a9f073efea34d98baed92a476f7bc9101a9.png" alt="&amp;  f'(g(x))g'(x) \\
+<p><img src="_images/math/26eccce69daf401735a16482603fad9ccd883375.png" alt="&amp;  f'(g(x))g'(x) \\
 =&amp; \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
 =&amp; \lim_{k\to0} \lim_{h\to0} \left(
       \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
@@ -364,9 +377,8 @@ calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2
       \cdot \frac{g(x+h)-g(x)}{h}
 \right) \\
 =&amp; \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
-=&amp; \lim_{h\to0} \frac{f(g(x)-g(x)+g(x+h))-f(g(x))}{h} \\
 =&amp; \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-=&amp; \frac{d}{dx} (f(g(x))"/></p>
+=&amp; \frac{d}{dx} f(g(x))"/></p>
 </div><div class="i">
 <p><img src="_images/asymptote/b927351c0ef1b6168ce8b3bb3e9e6d3f.png" class="align-right"/></p></div><p>This looks nice, but we are not done yet! We divided by <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/>. What if
 <img class="math" src="_images/math/3581b4c83622de31c2170c3e26137d2b921f9150.png" alt="k=g(x+h)-g(x)=0"/> when <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84774.png" alt="h \to 0"/> but <img class="math" src="_images/math/d010d8739df6f9919d9e4340196f07afcdddc018.png" alt="h \ne 0"/>? Practically it means that
@@ -383,7 +395,7 @@ doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202
 </div></blockquote>
 </div>
 <div class="section" id="id11">
-<h3><img class="math" src="_images/math/9e753cef600e2c09bc4dfc1603310d00363e082a.png" alt="\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g'(x))^2}"/><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3><img class="math" src="_images/math/10c9190023457e8fb52fb3db9ce4e23fd157c209.png" alt="\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}"/><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>We need these rules that are proved above:</p>
 <blockquote>
@@ -395,10 +407,10 @@ doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202
 </div></blockquote>
 <p>Now this is quite straight-forward.</p>
 <div class="math">
-<p><img src="_images/math/30807561fefcbac49746c5f8dde9fe7f469baf84.png" alt="\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
+<p><img src="_images/math/194844cab07f71ba9f2a1f88ed24fe8a1f1391bc.png" alt="\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
 =&amp; \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
 =&amp; f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
-=&amp; \frac{f'(x)}{g(x)} + f(x) \frac{-1}{(g(x))^2} g'(x) \\
+=&amp; \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
 =&amp; \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
 =&amp; \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}"/></p>
 </div></div></blockquote>
@@ -438,7 +450,7 @@ doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202
       &copy;2017, Akuli.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
