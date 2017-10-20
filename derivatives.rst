@@ -276,7 +276,7 @@ You can also use a nice symbolic calculation library, like Python's
 .. code-block:: python
 
    >>> from sympy import *
-   >>> init_printing(use_unicode=True)
+   >>> init_printing()
    >>> x = Symbol('x')
    >>> diff(x**2, x)
    2⋅x
