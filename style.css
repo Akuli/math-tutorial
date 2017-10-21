@@ -1,0 +1,69 @@
+body {
+    margin: 10px 10px 10px 10px;
+}
+
+.headerlink {
+    color: #ccc;
+}
+
+#content {
+    background-color: white;
+    padding: 10px;
+    float: right;
+    width: calc(100% - 250px);
+}
+
+#sidebar {
+    width: 200px;
+    border-width: 200px;
+    padding: 10px;
+
+    border: 1px solid;
+    border-radius: 10px;
+    color: white;
+    background-color: #555;
+}
+
+@media only screen and (max-width: 900px) {
+    #content {
+        float: none;
+        width: calc(100% - 25px);
+        padding: 10px;
+    }
+
+    #sidebar {
+        width: calc(100% - 25px);
+    }
+}
+
+.inlinemath {
+    vertical-align: middle;
+}
+
+img.blockmath {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.highlight {
+    padding: 1px 0px 1px 10px;
+    border-radius: 10px;
+}
+
+code {
+    background-color: #eee;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+a {
+    color: #067;
+    border-bottom: 1px dotted;
+    text-decoration: none;   /* taken care of with the border-bottom thing */
+}
+
+a:hover {
+    color: #852;
+    border-bottom: 1px solid;
+}

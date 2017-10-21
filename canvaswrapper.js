@@ -3,8 +3,6 @@
 
  i would be ok with using canvases directly but i don't want to force
  people to learn canvases just to read my tutorial
-
- see jsdemo.py for the html that gets added
  */
 
 function CanvasWrapper(canvasId) {
