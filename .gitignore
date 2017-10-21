@@ -2,3 +2,5 @@
 _build/
 env/
 __pycache__/
+html
+imagecache

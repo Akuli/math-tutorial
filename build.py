@@ -10,6 +10,21 @@ import textwrap
 
 from htmlthingy import Builder, tags
 
+
+# TODO: move these to htmlthingy
+os.makedirs('imagecache', exist_ok=True)
+
+def cache_get(filename):
+    cached = os.path.join('imagecache', filename)
+    if os.path.exists(cached):
+        return cached
+    return None
+
+def cache_put(tempfilename, cachefilename):
+    os.makedirs('imagecache', exist_ok=True)
+    shutil.copy(tempfilename, os.path.join('imagecache', cachefilename))
+
+
 builder = Builder()
 
 builder.converter.pygments_style = 'friendly'
@@ -76,11 +91,10 @@ INLINE_MATH_TEMPLATE = r'''
 
 def run_latex(math, textfile, is_inline):
     os.makedirs(os.path.join(builder.outputdir, 'math'), exist_ok=True)
-    outfile = os.path.join(
-        builder.outputdir, 'math',
-        hashlib.md5('wat'.encode('utf-8')).hexdigest() + '.png')
+    pngfilename = hashlib.md5(math.encode('utf-8')).hexdigest() + '.png'
+    outfile = os.path.join(builder.outputdir, 'math', pngfilename)
 
-    if not os.path.isfile(outfile):
+    if cache_get(pngfilename) is None:
         with tempfile.TemporaryDirectory() as tmpdir:
             with open(os.path.join(tmpdir, 'math.tex'), 'w') as file:
                 template = (INLINE_MATH_TEMPLATE if is_inline
@@ -94,8 +108,9 @@ def run_latex(math, textfile, is_inline):
                 ['dvipng', '-o', 'math.png', '-T', 'tight', '-z9',
                  '-gamma', '1.5',  '-D', '110', '-bg', 'Transparent',
                  'math.dvi'], cwd=tmpdir, stdout=subprocess.DEVNULL)
-            shutil.copy(os.path.join(tmpdir, 'math.png'), outfile)
+            cache_put(os.path.join(tmpdir, 'math.png'), pngfilename)
 
+    shutil.copy(cache_get(pngfilename), outfile)
     htmlfile = builder.infile2outfile(textfile)
     relative = os.path.relpath(outfile, os.path.dirname(htmlfile))
     return relative.replace(os.sep, '/')
@@ -107,7 +122,7 @@ def inline_math(match, filename):
     return '<img class="inlinemath" src="%s" />' % path
 
 
-@builder.converter.add_multiliner(r'^math:\n')
+@builder.converter.add_multiliner(r'^math:')
 def multiline_math(match, filename):
     math = textwrap.dedent(match.string[match.end():])
     path = run_latex(math, filename, False)
@@ -117,12 +132,11 @@ def multiline_math(match, filename):
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')
 def asymptote(match, filename):
     code = textwrap.dedent(match.string[match.end():])
+    pngfilename = hashlib.md5(code.encode('utf-8')).hexdigest() + '.png'
     os.makedirs(os.path.join(builder.outputdir, 'asymptote'), exist_ok=True)
-    outfile = os.path.join(
-        builder.outputdir, 'asymptote',
-        hashlib.md5('wat'.encode('utf-8')).hexdigest() + '.png')
+    outfile = os.path.join(builder.outputdir, 'asymptote', pngfilename)
 
-    if not os.path.isfile(outfile):
+    if cache_get(pngfilename) is None:
         with tempfile.TemporaryDirectory() as tmpdir:
             for file in glob.glob('asymptote/*.asy'):
                 shutil.copy(file, tmpdir)
@@ -133,7 +147,9 @@ def asymptote(match, filename):
 
             subprocess.check_call(['asy', '-f', 'png', 'image.asy'],
                                   cwd=tmpdir)
-            shutil.copy(os.path.join(tmpdir, 'image.png'), outfile)
+            cache_put(os.path.join(tmpdir, 'image.png'), pngfilename)
+
+    shutil.copy(cache_get(pngfilename), outfile)
 
     htmlfile = builder.infile2outfile(filename)
     relative = os.path.relpath(outfile, os.path.dirname(htmlfile))

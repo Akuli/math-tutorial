@@ -3,7 +3,7 @@ body {
 }
 
 .headerlink {
-    color: #ccc;
+    color: #eee;
 }
 
 #content {
@@ -52,6 +52,7 @@ div.highlight {
 }
 
 code {
+    white-space: nowrap;
     background-color: #eee;
     padding: 2px;
     border-radius: 5px;
@@ -66,4 +67,15 @@ a {
 a:hover {
     color: #852;
     border-bottom: 1px solid;
+}
+
+p, li {
+    /* font-family is copy/pasted from sphinx */
+    font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro', serif;
+    font-size: 17px;
+    line-height: 140%;
+}
+
+code {
+    font-size: 0.9em;
 }

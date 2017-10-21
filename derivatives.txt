@@ -1,25 +1,20 @@
-.. _derivatives:
-
-Derivatives
-===========
+# Derivatives
 
 This chapter contains more not-so-practical math than the trig and geometry
 chapter, but you may find it surprisingly fun. However, the math is not useless
 gibberish isolated from real life and there's a practical example with a fun
 demonstration game at the end.
 
-What is a derivative?
-~~~~~~~~~~~~~~~~~~~~~
+## What is a derivative?
 
-A *difference* means how much a value changes. For example, if the value of `x`
-is first `5` and then we change it to `6`, `x` changes by `\Delta x = 1`. Here
-`\Delta` is the Greek delta letter, so if someone's code has a variable named
+A *difference* means how much a value changes. For example, if the value of $x$
+is first 5 and then we change it to 6, $x$ changes by $\Delta x = 1$. Here
+$\Delta$ is the Greek delta letter, so if someone's code has a variable named
 ``deltax`` it means this.
 
-Let's draw a graph of something like `y = 2x+1`:
+Let's draw a graph of something like $y = 2x+1$:
 
-.. asymptote::
-
+asymptote:
    size(14cm);
    grid(-1,5,-2,9);
 
@@ -39,36 +34,33 @@ Let's draw a graph of something like `y = 2x+1`:
    draw((0,f(0))--(3,f(0)), smalldashes, L="$\Delta x = 3$", align=N);
    draw((3,f(0))--(3,f(3)), smalldashes, L="$\Delta y = 6$", align=E);
 
-For example, at `x=3` we know that `y = 2x+1 = 2 \cdot 3 + 1 = 7`.
+For example, at $x=3$ we know that $y = 2x+1 = 2 \cdot 3 + 1 = 7$.
 
-.. _slope:
-
+(slope)
 Let's calculate the **slope** of this line:
 
-.. math:: \frac{\Delta y}{\Delta x} = \frac{6}{3} = 2
+math: \frac{\Delta y}{\Delta x} = \frac{6}{3} = 2
 
 The bigger the slope, the faster the line goes up, so the slope describes the
-"**growing speed**" or "**changing speed**". I used the points `(1,0)` and
-`(3,7)` when calculating the slope, but you should get the same slope with any
+"**growing speed**" or "**changing speed**". I used the points $(1,0)$ and
+$(3,7)$ when calculating the slope, but you should get the same slope with any
 pair of points chosen from the line because the height grows at the same speed
 everywhere.
 
-.. TODO: turn "dividing by zero" into a link
+comment: TODO: turn "dividing by zero" into a link
 
-The **derivative** `\frac{dy}{dx}` **is also a "changing speed"**, but `d`
-instead of `\Delta` means that the changes we use for calculating derivatives
+The **derivative** $\frac{dy}{dx}$ **is also a "changing speed"**, but $d$
+instead of $\Delta$ means that the changes we use for calculating derivatives
 are *infinitely* tiny. You might be worried about calculating the
-`\frac{dy}{dx}` because if `dx=0` then we're dividing by zero, but `dx` is not
+$\frac{dy}{dx}$ because if $dx=0$ then we're dividing by zero, but $dx$ is not
 zero; it's just really, really small.
 
-If the graph is not a straight line, we get different `\frac{\Delta y}{\Delta x}`
-ratios depending on which points we choose for calculating `\Delta y` and
-`\Delta x`. The derivative `\frac{dy}{dx}` is not the same number everywhere,
+If the graph is not a straight line, we get different $\frac{\Delta y}{\Delta x}$
+ratios depending on which points we choose for calculating $\Delta y$ and
+$\Delta x$. The derivative $\frac{dy}{dx}$ is not the same number everywhere,
 but let's try to figure out how to calculate it anyway.
 
-.. asymptote::
-   :align: right
-
+asymptote: float:right;
    size(12cm);
 
    real f(real x) { return 0.1*x**3 - 0.1x + 1; }
@@ -93,41 +85,35 @@ but let's try to figure out how to calculate it anyway.
    draw(brace((x,f(x)),(x,f(x+dx)), amplitude=0.1), L="$dy$", align=W);
    draw(brace((x,f(x+dx)+0.05),(x+dx,f(x+dx)+0.05), amplitude=0.1), L="$dx$", align=N);
 
-Let's look at `dy` and `dx` of the graph `y=f(x)`, where `f` can be any
+Let's look at $dy$ and $dx$ of the graph $y=f(x)$, where $f$ can be any
 function that has a derivative. Most functions you'll come across have a
-derivative; if you want to know more, :ref:`click here <has-derivative>`.
+derivative; if you want to know more, :ref:$click here <has-derivative>$.
 
-The image at right seems to say that `f(x) + dy = f(x+dx)`. Let's try to solve
-`\frac{dy}{dx}`:
+The image at right seems to say that $f(x) + dy = f(x+dx)$. Let's try to solve
+$\frac{dy}{dx}$:
 
-.. these are all in one ..math because i want them to be aligned with each
-   other, and having sphinx align them at right is not a problem because
-   they're about same length each
-
-.. math::
+math:
    f(x) + dy &= f(x+dx) \\
    dy &= f(x+dx) - f(x) \\
    \frac{dy}{dx} &= \frac{f(x+dx)-f(x)}{dx}
 
-Most mathematicians don't like the above formula because `dx` is a
+
+Most mathematicians don't like the above formula because $dx$ is a
 "small number" and it isn't really clear how it behaves in different
 situations. Here's a better definition:
 
-.. math::
-   \frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+math: \frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
-The `\lim` thing means that we take the **limit** as `h` approaches 0. It's
-essentially same as our `dx` thing, but more explicit and better defined in
+The $\lim$ thing means that we take the **limit** as $h$ approaches 0. It's
+essentially same as our $dx$ thing, but more explicit and better defined in
 some corner cases.
 
 
-First Example
-~~~~~~~~~~~~~
+## First Example
 
-The graph `y=x^2` is curvy:
+The graph $y=x^2$ is curvy:
 
-.. asymptote::
-
+asymptote:
    size(7cm);
 
    axises(-3,3,-1,7);
@@ -139,24 +125,24 @@ The graph `y=x^2` is curvy:
    draw(xsquared_left, p=blue);
    draw(xsquared_right, p=blue, L=Label(rotate(70)*"$y = x^2$"), align=NW);
 
-Let's find the derivative of `x^2` by plugging in `y=f(x)=x^2` to the
-definition we ended up with. If we just try to evaluate it at `h=0` we get
-`\frac 0 0` so you might think that we need to evaluate it at e.g.
-`h=0.000001`, but we don't! Have a look:
+Let's find the derivative of $x^2$ by plugging in $y=f(x)=x^2$ to the
+definition we ended up with. If we just try to evaluate it at $h=0$ we get
+$\frac 0 0$ so you might think that we need to evaluate it at e.g.
+$h=0.000001$, but we don't! Have a look:
 
-.. sidebar:: Handy thing: `(x+h)^2=x^2+2xh+h^2`
+comment: TODO: create a sidebar thingy
+    .. sidebar:: Handy thing: $(x+h)^2=x^2+2xh+h^2$
 
-   Proof:
+       Proof:
 
-   .. math::
-      & \ (x+h)^2 \\
-      =&\ (x+h)(x+h) \\
-      =&\ (x+h)x+(x+h)h \\
-      =&\ xx+xh+hx+hh \\
-      =&\ x^2+2xh+h^2
+       math:
+          & \ (x+h)^2 \\
+          =&\ (x+h)(x+h) \\
+          =&\ (x+h)x+(x+h)h \\
+          =&\ xx+xh+hx+hh \\
+          =&\ x^2+2xh+h^2
 
-.. math::
-
+math:
    \frac{dy}{dx}  &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
                   &= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
                   &= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
@@ -165,11 +151,8 @@ definition we ended up with. If we just try to evaluate it at `h=0` we get
                   &= \lim_{h\to0} (2x+h) \\
                   &= 2x
 
-.. asymptote::
-   :align: right
-
+asymptote: float:right;
    size(10cm);
-
    axises(-3,6,-1,20);
 
    // this is drawn first so it goes below the x^2 line
@@ -189,41 +172,38 @@ definition we ended up with. If we just try to evaluate it at `h=0` we get
    label("2", (2,0), align=S);
 
 I think this is cool. We started with a complicated-looking thing but finally
-we arrived at just `2x`. What's more, the `2x` is not just a random value we
-got out of a spooky calculation; for example, at `x=2` the derivative is
-`2 \cdot 2 = 4`, so if we draw a straight line that barely touches `y=x^2` at
-`x=2` its slope will also be 4 like in the image at right.
+we arrived at just $2x$. What's more, the $2x$ is not just a random value we
+got out of a spooky calculation; for example, at $x=2$ the derivative is
+$2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
+$x=2$ its slope will also be 4 like in the image at right.
 
-You can also find the derivative of the `y=2x+1` example we looked at earlier,
-and turns out that `\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}`. It makes sense
+You can also find the derivative of the $y=2x+1$ example we looked at earlier,
+and turns out that $\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}$. It makes sense
 because derivatives are just like slopes but they also work with curvy things,
 and there's no difference between a slope and a derivative of a straight line.
 
-.. note::
+comment: TODO: better notes
 
-   The derivative `\frac{dy}{dx}` can be also written as `\frac{d}{dx} y`,
-   although it doesn't make much sense because `dy` doesn't mean `d` times `y`.
+**Note:** The derivative $\frac{dy}{dx}$ can be also written as $\frac{d}{dx} y$,
+although it doesn't make much sense because $dy$ doesn't mean $d$ times $y$.
 
-   Another common style is to put a single quote after a function name, like
-   `f'(x) = \frac{d}{dx} f(x)`.
+Another common style is to put a single quote after a function name, like
+$f'(x) = \frac{d}{dx} f(x)$.
 
 
-.. _derivative-rules:
-
-Faster!
-~~~~~~~
+## Faster!
 
 Finding the derivative was kind of complicated and really slow. These rules
 change everything. Most of these rules are
-:ref:`easy to prove <derivative-proofs>` so there is no magic involved.
+[easy to prove](explanations.html#derivative-proofs) so there is no
+magic involved.
 
 I have listed many rules here, but **don't panic**; there's no need to memorize
-them. As before `f` and `g` can be any functions as long as they have a
-derivative (e.g. `f(x)=\sqrt x - x` and `g(x)=1`), and `c` can be any constant
-like `4` or `-6.28` but not e.g. `2x` because that depends on the value of `x`.
+them. As before $f$ and $g$ can be any functions as long as they have a
+derivative (e.g. $f(x)=\sqrt x - x$ and $g(x)=1$), and $c$ can be any constant
+like $4$ or $-6.28$ but not e.g. $2x$ because that depends on the value of $x$.
 
-.. math::
-
+math:
    \begin{matrix}
       \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
       &&\\
@@ -240,16 +220,15 @@ like `4` or `-6.28` but not e.g. `2x` because that depends on the value of `x`.
       \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
    \end{matrix}
 
-So, if you want to find the derivative of `x^2` just use the `\frac{d}{dx} x^c`
+So, if you want to find the derivative of $x^2$ just use the $\frac{d}{dx} x^c$
 rule:
 
-.. math:: \frac{d}{dx} x^2 = 2x^{2-1} = 2x^1 = 2x
+math: \frac{d}{dx} x^2 = 2x^{2-1} = 2x^1 = 2x
 
 Now you can also find derivatives of long and scary functions easily and
 quickly. For example:
 
-.. math::
-
+math:
    & \frac{d}{dx} (5x^3-6x^2+7x-123) \\
    =& \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
    =& 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
@@ -258,63 +237,57 @@ quickly. For example:
 
 Of course, there's no need to write down all of these steps.
 
-Note that if you have something like `(2x)^2` as opposed to `x^2` you
-need to use the `\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)` rule. In this example,
-you would plug in `f(x)=x^2` and `g(x)=2x` to get this:
+Note that if you have something like $(2x)^2$ as opposed to $x^2$ you
+need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule. In this example,
+you would plug in $f(x)=x^2$ and $g(x)=2x$ to get this:
 
-.. math:: \frac{d}{dx}\ (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
+math: \frac{d}{dx}\ (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
 
-In some cases it's also possible to first open up something like the `(\ \ )^2`:
+In some cases it's also possible to first open up something like the $(\ \ )^2$:
 
-.. math::
+math:
    \frac{d}{dx}\ (2x)^2 = \frac{d}{dx}\ (2^2x^2) = \frac{d}{dx}(4x^2)
    = 4 \cdot \frac{d}{dx} x^2 = 4 \cdot 2x = 8x
 
 You can also use a nice symbolic calculation library, like Python's
-`sympy <http://www.sympy.org>`_ (can be installed with pip):
+[sympy](http://www.sympy.org) (can be installed with pip):
 
-.. code-block:: python
-
-   >>> from sympy import *
-   >>> init_printing()
-   >>> x = Symbol('x')
-   >>> diff(x**2, x)
-   2⋅x
-   >>> diff((2*x)**2, x)
-   8⋅x
-   >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123, x)
-       2           
-   15⋅x  - 12⋅x + 7
+code: python3
+    >>> from sympy import *
+    >>> init_printing()
+    >>> x = Symbol('x')
+    >>> diff(x**2, x)
+    2⋅x
+    >>> diff((2*x)**2, x)
+    8⋅x
+    >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123, x)
+        2           
+    15⋅x  - 12⋅x + 7
 
 Here "diff" is short for "differenciate", and it means finding a derivative.
 
 Libraries like sympy are also useful for doing long and messy calculations like
 the one we did above:
 
-.. code-block:: python
+code: python3
+    >>> def f(x):
+    ...     return x**2
+    ...
+    >>> h = Symbol('h')
+    >>> (f(x+h)-f(x))/h
+       2          2
+    - x  + (h + x)
+    ───────────────
+           h
+    >>> simplify((f(x+h)-f(x))/h)
+    h + 2⋅x
 
-   >>> def f(x):
-   ...     return x**2
-   ...
-   >>> h = Symbol('h')
-   >>> (f(x+h)-f(x))/h
-      2          2
-   - x  + (h + x)
-   ───────────────
-          h
-   >>> simplify((f(x+h)-f(x))/h)
-   h + 2⋅x
-
-.. _smoothjumps:
-
-Example: Smooth Jumps
-~~~~~~~~~~~~~~~~~~~~~
+## Example: Smooth Jumps
 
 Let's say you're making a game where a player can jump over something. If the
 player moves right at a steady speed, which of these jumps looks best?
 
-.. asymptote::
-
+asymptote:
    size(20cm);
 
    draw((0,0)--(0,1)--(1,1)--(1,0.5), smalldashes);
@@ -345,11 +318,10 @@ player moves right at a steady speed, which of these jumps looks best?
 The answer is obvious -- the rightmost jump looks best. It's time to figure out
 how to make games with jumps like that.
 
-Let's say that `t` is time and `h` is the height of our player, so we get this
+Let's say that $t$ is time and $h$ is the height of our player, so we get this
 graph:
 
-.. asymptote::
-
+asymptote:
    size(9cm);
    axises(-0.3, 3.5, -0.4, 2, "$t$", "$h$");
 
@@ -361,24 +333,23 @@ graph:
    }
    draw(parabolaaa);
 
-This looks like a parabola, and the equation of a parabola is `h = at^2+bt+c`
-where `a`, `b` and `c` are constants. The changing speed of height is the
-falling speed. Let's call that `v` like velocity.
+This looks like a parabola, and the equation of a parabola is $h = at^2+bt+c$
+where $a$, $b$ and $c$ are constants. The changing speed of height is the
+falling speed. Let's call that $v$ like velocity.
 
-.. math:: v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b
+math: v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b
 
 On the other hand, the changing speed of velocity is the acceleration caused by
-gravity. Let's call that `g`.
+gravity. Let's call that $g$.
 
-.. math:: g = \frac{dv}{dt} = \frac{d}{dt} (2at+b) = 2a
+math: g = \frac{dv}{dt} = \frac{d}{dt} (2at+b) = 2a
 
-Note how the `t` disappeared and we're left with just the constant `2a`. This
+Note how the $t$ disappeared and we're left with just the constant $2a$. This
 makes sense because the gravity is always the same, no matter what time it is.
 
 This Python program...
 
-.. code-block:: python
-
+code: python3
    height = 0
    velocity = 10
    gravity = 2
@@ -390,8 +361,7 @@ This Python program...
 
 ...prints this awesome parabola:
 
-.. code-block:: none
-
+code:
    O
              O
                      O
@@ -406,10 +376,9 @@ This Python program...
    O
 
 You can use similar code for doing jumps in games. Here's a demo created with
-my canvaswrapper.js_ script. Click it and use arrow keys to move the ball.
+my canvaswrapper.js script. Click it and use arrow keys to move the ball.
 
-.. jsdemo::
-
+canvasdemo:
    const GRAVITY = 1.5;
    var player = {
      x: screen.width/2,    // centered

@@ -1,11 +1,10 @@
-Integrals
-=========
+# Integrals
 
-.. warning::
-   This chapter assumes that you have a good grasp of derivatives, including
-   the ability to recognize that `\frac{dy}{dx}` is a derivative whenever you
-   see it. I highly recommend reading
-   :ref:`my derivative tutorial <derivatives>` first.
+**Warning:**
+This chapter assumes that you have a good grasp of derivatives, including
+the ability to recognize that $\frac{dy}{dx}$ is a derivative whenever you
+see it. I highly recommend reading [the derivative tutorial](derivatives.html)
+first.
 
 There are many practical ways to use derivatives like the game at the end of
 the derivative chapter demonstrates. You probably won't find as many practical
@@ -13,51 +12,49 @@ uses for this chapter as other derivative stuff, but you may find the math
 itself just amazing.
 
 
-The Problem
-~~~~~~~~~~~
+## The Problem
 
 Here's a picture of a few areas:
 
-.. asymptote::
+asymptote:
+    size(25cm);
 
-   size(25cm);
+    transform shift1 = shift(-6,0);
+    transform shift2 = shift(-3,0);
 
-   transform shift1 = shift(-6,0);
-   transform shift2 = shift(-3,0);
+    real a = 2, b = 1.5;
 
-   real a = 2, b = 1.5;
+    filldraw(shift1*((0,0)--(a,0)--(a,b)--(0,b)--cycle), lightblue);
+    label("$6$", shift1*(a/2,0), align=S);
+    label("$4$", shift1*(a,b/2), align=E);
+    label("$6\cdot4=24$", shift1*(a/2,b/2));
 
-   filldraw(shift1*((0,0)--(a,0)--(a,b)--(0,b)--cycle), lightblue);
-   label("$6$", shift1*(a/2,0), align=S);
-   label("$4$", shift1*(a,b/2), align=E);
-   label("$6\cdot4=24$", shift1*(a/2,b/2));
+    filldraw(shift2*((0,0)--(a,0)--(a,b)--cycle), lightblue);
+    label(shift2*(a/2,0), L="$6$", align=S);
+    label(shift2*(a,b/2), L="$4$", align=E);
+    label("$\frac{6\cdot4}{2}=12$", shift2*(a*2/3,b/4));
 
-   filldraw(shift2*((0,0)--(a,0)--(a,b)--cycle), lightblue);
-   label(shift2*(a/2,0), L="$6$", align=S);
-   label(shift2*(a,b/2), L="$4$", align=E);
-   label("$\frac{6\cdot4}{2}=12$", shift2*(a*2/3,b/4));
+    real f(real x) {
+        return 1/(2*sqrt(x));
+    }
 
-   real f(real x) {
-      return 1/(2*sqrt(x));
-   }
+    guide curvie, littlecurvie;
+    for (real x=0.05; x<=3; x+=0.1) {
+        curvie = curvie..(x,f(x));
+        if (1 <= x && x <= 2)
+            littlecurvie = littlecurvie..(x,f(x));
+    }
 
-   guide curvie, littlecurvie;
-   for (real x=0.05; x<=3; x+=0.1) {
-      curvie = curvie..(x,f(x));
-      if (1 <= x && x <= 2)
-         littlecurvie = littlecurvie..(x,f(x));
-   }
+    // this stuff goes below curvie
+    fill((1,0)--(1,f(1))--littlecurvie--(2,f(2))--(2,0)--cycle, lightblue);
+    draw((1,0)--(1,f(1)));
+    draw((2,0)--(2,f(2)));
+    label("???", (1.5,f(1.5)/2));
 
-   // this stuff goes below curvie
-   fill((1,0)--(1,f(1))--littlecurvie--(2,f(2))--(2,0)--cycle, lightblue);
-   draw((1,0)--(1,f(1)));
-   draw((2,0)--(2,f(2)));
-   label("???", (1.5,f(1.5)/2));
-
-   draw(curvie, deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=NE);
-   axises(-0.3,3,-0.3,2.5);
-   label("1", (1,0), align=S);
-   label("2", (2,0), align=S);
+    draw(curvie, deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=NE);
+    axises(-0.3,3,-0.3,2.5);
+    label("1", (1,0), align=S);
+    label("2", (2,0), align=S);
 
 The first two areas are easy to calculate and everything is quite
 self-explanatory, but how the heck are we going to do the third one?
@@ -66,45 +63,42 @@ If this was a question on a codeacademy-like noob programming site you would
 probably write some code that approximates the area by calculating areas of
 little rectangles. This Python program prints ``0.42167045099417744``:
 
-.. asymptote::
-   :align: right
+asymptote: float:right;
+    size(10cm);
+    axises(0.5,2.5,0,0);
 
-   size(10cm);
-   axises(0.5,2.5,0,0);
+    real f(real x) {
+        return 1/(2*sqrt(x));
+    }
 
-   real f(real x) {
-      return 1/(2*sqrt(x));
-   }
+    guide curvie, littlecurvie;
+    for (real x=0.5; x<=2.5; x+=0.1) {
+        curvie = curvie..(x,f(x));
+    }
+    draw(curvie, deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=N);
 
-   guide curvie, littlecurvie;
-   for (real x=0.5; x<=2.5; x+=0.1) {
-      curvie = curvie..(x,f(x));
-   }
-   draw(curvie, deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=N);
-
-   for (real x = 1; x < 2-0.001; x += 0.1) {
-      filldraw((x,0)--(x+0.1,0)--(x+0.1,f(x))--(x,f(x))--cycle, lightblue);
-   }
+    for (real x = 1; x < 2-0.001; x += 0.1) {
+        filldraw((x,0)--(x+0.1,0)--(x+0.1,f(x))--(x,f(x))--cycle, lightblue);
+    }
 
 
-   label("$1$", (1,0), align=S);
-   label("$2$", (2,0), align=S);
+    label("$1$", (1,0), align=S);
+    label("$2$", (2,0), align=S);
 
-.. code-block:: python
+code: python
+    import math
 
-   import math
+    def f(x):
+        return 1/(2 * math.sqrt(x))
 
-   def f(x):
-       return 1/(2 * math.sqrt(x))
+    slice_width = 0.1
 
-   slice_width = 0.1
-
-   result = 0
-   x = 1
-   while x < 2:
-       result += slice_width * f(x)
-       x += slice_width
-   print(result)
+    result = 0
+    x = 1
+    while x < 2:
+        result += slice_width * f(x)
+        x += slice_width
+    print(result)
 
 The answer is not too bad and we could make it much better by adjusting
 ``slice_width``, but I calculated the same area on paper by hand in about
@@ -112,73 +106,68 @@ The answer is not too bad and we could make it much better by adjusting
 This chapter is all about how I did that and why it works.
 
 
-Area to x
-~~~~~~~~~
+## Area to x
 
-.. asymptote::
-   :align: right
+asymptote: float:right;
+    size(12cm);
 
-   size(12cm);
+    real f(real x) { return 0.1*x**3 - 0.1x + 1; }
+    axises(-0.1,2.2,-0.5,f(2));
 
-   real f(real x) { return 0.1*x**3 - 0.1x + 1; }
-   axises(-0.1,2.2,-0.5,f(2));
+    guide slicebetween(guide p, real a, real b) {
+        return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
+    }
 
-   guide slicebetween(guide p, real a, real b) {
-      return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
-   }
+    guide parabolaaa;
+    guide littleparab;
+    for (real x = -0.1; x <= 2; x += 0.05) {
+        parabolaaa = parabolaaa..(x,f(x));
+    }
 
-   guide parabolaaa;
-   guide littleparab;
-   for (real x = -0.1; x <= 2; x += 0.05) {
-       parabolaaa = parabolaaa..(x,f(x));
-   }
+    real x = 1.5;
+    real dx = 0.3;
 
-   real x = 1.5;
-   real dx = 0.3;
+    fill(slicebetween(parabolaaa, 0, x)--(x,0)--(0,0)--cycle, paleyellow);
+    label("$A(x)$", (x/2,f(x/2)/2));
+    axises(-0.1,2.2,-0.5,f(2));
+    draw(parabolaaa, L="$y=f(x)$", align=NW, p=blue);
 
-   fill(slicebetween(parabolaaa, 0, x)--(x,0)--(0,0)--cycle, paleyellow);
-   label("$A(x)$", (x/2,f(x/2)/2));
-   axises(-0.1,2.2,-0.5,f(2));
-   draw(parabolaaa, L="$y=f(x)$", align=NW, p=blue);
+    draw((x,0)--(x,f(x)), lightblue);
+    draw((x+dx,0)--(x+dx,f(x+dx)), lightblue);
+    draw(brace((x,0), (0,0)), L="$x$", align=S);
+    draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
+    draw(brace((x+dx+0.05,f(x)), (x+dx+0.05,0)), L="$f(x)$", align=E);
+    label("$\Delta A$", (x+dx/2,f(x+dx/2)/2));
 
-   draw((x,0)--(x,f(x)), lightblue);
-   draw((x+dx,0)--(x+dx,f(x+dx)), lightblue);
-   draw(brace((x,0), (0,0)), L="$x$", align=S);
-   draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
-   draw(brace((x+dx+0.05,f(x)), (x+dx+0.05,0)), L="$f(x)$", align=E);
-   label("$\Delta A$", (x+dx/2,f(x+dx/2)/2));
+    fill((x,f(x))--(x+dx,f(x))--(x+dx,f(x+dx))--cycle, red);
 
-   fill((x,f(x))--(x+dx,f(x))--(x+dx,f(x+dx))--cycle, red);
+Let's say that our curve is of the form $y=f(x)$ where $f$ is a
+[continuous](explanations.html#which-functions-have-derivatives)
+function. Maybe we could find out what the area $A$ is under the curve
+between 0 and $x$?
 
-Let's say that our curve is of the form `y=f(x)` where `f` is a
-:ref:`continuous <has-derivative>` function. Maybe we could find out what the
-area `A` is under the curve between 0 and `x`?
-
-Let's imagine that we choose some `x` location and *move* it right by `\Delta x`.
-Then the area grows by a slice of width `\Delta x` and height `f(x)`. If we
+Let's imagine that we choose some $x$ location and *move* it right by $\Delta x$.
+Then the area grows by a slice of width $\Delta x$ and height $f(x)$. If we
 assume that the slice is a rectangle we get a small error (red triangle in
-image), but we can calculate the slice's area `\Delta A` with the rectangle
+image), but we can calculate the slice's area $\Delta A$ with the rectangle
 formula:
 
-.. math::
+math:
    \Delta A & \approx f(x) \Delta x \\
    \frac{\Delta A}{\Delta x} & \approx f(x)
 
-Now if we make the `\Delta x` *infinitely* tiny, the red triangle is so small
-compared to `\Delta A` that we can ignore it:
+Now if we make the $\Delta x$ *infinitely* tiny, the red triangle is so small
+compared to $\Delta A$ that we can ignore it:
 
-.. math::
-   \frac{dA}{dx} = f(x)
+math: \frac{dA}{dx} = f(x)
 
 Yes, this is correct! We can use a derivative here. This is precise, so we can
-get rid of `\approx` and replace it with `=`.
+get rid of $\approx$ and replace it with $=$.
 
 So, if we want to calculate areas all we really need is an antiderivative
-function `A` so that `A'(x)=f(x)`, and `A(x)` will be an area to `x`.
+function $A$ so that $A'(x)=f(x)$, and $A(x)$ will be an area to $x$.
 
-.. asymptote::
-   :align: right
-
+asymptote: float:right;
    size(8cm);
 
    real f(real x) {
@@ -204,17 +193,14 @@ function `A` so that `A'(x)=f(x)`, and `A(x)` will be an area to `x`.
    label("2", (2,0), align=S);
 
 
-Our First Integral
-~~~~~~~~~~~~~~~~~~
+## Our First Integral
 
 Let's go back to our original problem. One of
-:ref:`our derivative rules <derivative-rules>` was this:
+[our derivative rules](derivatives.html#faster) was this:
 
-.. math:: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
+math: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
 
-.. asymptote::
-   :align: right
-
+asymptote: float:right;
    size(9cm);
 
    real f(real x) {
@@ -245,16 +231,15 @@ Let's go back to our original problem. One of
    label("$b$", (b,0), align=S);
    label("$A(a)$", (a/2, 0), align=N);
 
-So it looks like the antiderivative function `A` is `A(x) = \sqrt x`. But how
-about `A(x) = \sqrt x + 1`? Its derivative is also `\frac{1}{2 \sqrt x}`
-because `\frac{d}{dx} 1 = 0`. Or how about `\sqrt x + 100` or `\sqrt x - 10`?
-We don't know what `A(x)` is, but we know that `A(x) = \sqrt x + C` where `C`
+So it looks like the antiderivative function $A$ is $A(x) = \sqrt x$. But how
+about $A(x) = \sqrt x + 1$? Its derivative is also $\frac{1}{2 \sqrt x}$
+because $\frac{d}{dx} 1 = 0$. Or how about $\sqrt x + 100$ or $\sqrt x - 10$?
+We don't know what $A(x)$ is, but we know that $A(x) = \sqrt x + C$ where $C$
 is a constant.
 
 Let's try to calculate our area:
 
-.. math::
-
+math:
    A(b)-A(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
                &= \sqrt b + C - \sqrt a - C \\
                &= \sqrt b - \sqrt a \\
@@ -262,97 +247,92 @@ Let's try to calculate our area:
                &= \sqrt 2 - 1 \\
                &= 0.414213562373...
 
-That's all there is to it! `\sqrt 2 - 1` is the precise area. I think this is
+That's all there is to it! $\sqrt 2 - 1$ is the precise area. I think this is
 awesome.
 
 This took quite a while because we went through all the steps needed to
 understand everything, but now that you have seen this once you can do it much
-faster. So, here are the steps for calculating the area under `y=f(x)` between
-`x=a` and `x=b`:
+faster. So, here are the steps for calculating the area under $y=f(x)$ between
+$x=a$ and $x=b$:
 
-1. Find an antiderivative `A(x)`. There are infinitely many antiderivatives,
-   but *any* antiderivative will do because the `C`'s are substracted away.
-2. Calculate `A(b)-A(a)` and you're done.
+1. Find an antiderivative $A(x)$. There are infinitely many antiderivatives,
+but *any* antiderivative will do because the $C$'s are substracted away.
+2. Calculate $A(b)-A(a)$ and you're done.
 
 This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.
 
+asymptote: float:right;
+    size(8cm);
+    real f(real x) {
+        return x**2/3+0.3;
+    }
+    real a = 0.5;
+    real b = 2;
 
-.. asymptote::
-   :align: right
+    guide curvie, littlecurvie;
+    for (real x=-0.05; x<=2.2; x+=0.1) {
+        curvie = curvie..(x,f(x));
+    }
 
-   size(8cm);
-   real f(real x) {
-      return x**2/3+0.3;
-   }
-   real a = 0.5;
-   real b = 2;
+    guide slicebetween(guide p, real a, real b) {
+        return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
+    }
 
-   guide curvie, littlecurvie;
-   for (real x=-0.05; x<=2.2; x+=0.1) {
-      curvie = curvie..(x,f(x));
-   }
+    // this stuff goes below curvie
+    fill((a,0)--(a,f(a))--slicebetween(curvie, a, b)--(b,f(b))--(b,0)--cycle, lightblue);
+    draw((a,0)--(a,f(a)));
+    draw((b,0)--(b,f(b)));
+    label("$\displaystyle\int_a^b f(x) dx$", ((a+b)/2,0), align=N);
 
-   guide slicebetween(guide p, real a, real b) {
-      return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
-   }
+    draw(curvie, L=Label(rotate(35)*"$y=f(x)$"), align=NW);
+    axises(-0.1,2.5,-0.1,2);
+    label("$a$", (a,0), align=S);
+    label("$b$", (b,0), align=S);
 
-   // this stuff goes below curvie
-   fill((a,0)--(a,f(a))--slicebetween(curvie, a, b)--(b,f(b))--(b,0)--cycle, lightblue);
-   draw((a,0)--(a,f(a)));
-   draw((b,0)--(b,f(b)));
-   label("$\displaystyle\int_a^b f(x) dx$", ((a+b)/2,0), align=N);
-
-   draw(curvie, L=Label(rotate(35)*"$y=f(x)$"), align=NW);
-   axises(-0.1,2.5,-0.1,2);
-   label("$a$", (a,0), align=S);
-   label("$b$", (b,0), align=S);
-
-Notation
-~~~~~~~~
+## Notation
 
 Usually this stuff is written like this:
 
-   * The blue area in the image at right is `\int_a^b f(x) dx`. Be careful
-     here -- the `dx` is just a part of the notation and you must not forget
-     it.
-   * The antiderivative of `f(x)` including the `+C` is the same thing without `a`
-     and `b`. So `\int f(x) dx = A(x) + C` where `A'(x) = f(x)`.
-   * `[A(x)]_a^b = A(b)-A(a)`.
+* The blue area in the image at right is $\int_a^b f(x) dx$. Be careful
+here -- the $dx$ is just a part of the notation and you must not forget
+it.
+* The antiderivative of $f(x)$ including the $+C$ is the same thing without
+$a$ and $b$. So $\int f(x) dx = A(x) + C$ where $A'(x) = f(x)$.
+* $[A(x)]_a^b = A(b)-A(a)$.
 
-The integral sign `\int` is a strecthed S like Sum, and `\int_a^b f(x) dx`
-means conceptually a sum of the areas of little `f(x)` by `dx` rectangles.
+The integral sign $\int$ is a strecthed S like Sum, and $\int_a^b f(x) dx$
+means conceptually a sum of the areas of little $f(x)$ by $dx$ rectangles.
 
-For example, with this notation, our `\frac{1}{2 \sqrt x}` thing can be
+For example, with this notation, our $\frac{1}{2 \sqrt x}$ thing can be
 calculated with very little paper like this:
 
-.. math::
+math:
    \int_1^2 \frac{1}{2 \sqrt x}\ dx = \left[\sqrt x\ \right]_1^2
    = \sqrt 2 - \sqrt 1 = \sqrt 2 - 1
 
 This is how I did it in just a few seconds. Note that you can leave out the
-`+C` when calculating areas, but you should include it when calculating
+$+C$ when calculating areas, but you should include it when calculating
 antiderivatives.
 
 
-Integral Rules
-~~~~~~~~~~~~~~
+## Integral Rules
 
-You can turn :ref:`derivative rules <derivative-rules>` into integral rules by
-applying `\int(...)dx` on both sides. Keep in mind that
-`\int f'(x) dx = f(x) + C` and `\frac{d}{dx} \left( \int f(x) dx \right) = f(x)`
-because `\int(...)dx` means antiderivative. For example:
+You can turn [derivative rules](derivatives.html#faster) into integral rules by
+applying $\int(...)dx$ on both sides. Keep in mind that
+$\int f'(x) dx = f(x) + C$ and $\frac{d}{dx} \left( \int f(x) dx \right) = f(x)$
+because $\int(...)dx$ means antiderivative. For example:
 
-.. math::
+math:
    f'(g(x))g'(x) &= \frac{d}{dx}(f(g(x))) \\
    \int f'(g(x))g'(x) dx &= f(g(x)) + C
 
-Here are some handy results of calculations like the one above. Note that `C`
-and `c` are different or use better variable names than I did. You can check
+Here are some handy results of calculations like the one above. Note that $C$
+and $c$ are different or use better variable names than I did. You can check
 these easily by finding the derivative of the right side; it should always be
-whatever is between `\int` and `dx` on the left side.
+whatever is between $\int$ and $dx$ on the left side.
 
-.. math::
+math:
    \int 1\ dx &= x + C \\
    \int c\ dx &= cx + C \\
    \int x\ dx &= \frac{x^2}{2} + C \\
@@ -360,29 +340,29 @@ whatever is between `\int` and `dx` on the left side.
    \int c\ f(x)\ dx &= c \int f(x)dx \\
    \int\left( f(x)+g(x) \right)dx &= \int f(x) dx + \int g(x) dx \\
 
-Note that there's no formula for integrating `f(x)g(x)` unless there's
-something special going on, e.g. one of `f(x)` and `g(x)` is a constant.
+Note that there's no formula for integrating $f(x)g(x)$ unless there's
+something special going on, e.g. one of $f(x)$ and $g(x)$ is a constant.
 
-In our first example I chose `\frac{1}{2 \sqrt x}` just because we know it's
-the derivative of `\sqrt x`. But now we know how to integrate stuff like
-`\frac{1}{\sqrt x}` as well. For example:
+In our first example I chose $\frac{1}{2 \sqrt x}$ just because we know it's
+the derivative of $\sqrt x$. But now we know how to integrate stuff like
+$\frac{1}{\sqrt x}$ as well. For example:
 
-.. math::
+math:
    \int \frac{1}{\sqrt x} dx &= \int \frac{2}{2 \sqrt x} dx \\
    &= \int 2 \frac{1}{2 \sqrt x} dx \\
    &= 2 \int \frac{1}{2 \sqrt x} dx \\
    &= 2 \sqrt x + C
 
-.. math:: \frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}
+math: \frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}
 
-We can also do `\sqrt x` but we need to know that
-`\frac{1}{\ \frac 3 2 \ } = \frac{2}{3}`. I didn't cover this on
-:ref:`the basics page <basics>` but it's quite straight-forward to understand;
-the `2` is below *two* division lines so it must be different from being below
+We can also do $\sqrt x$ but we need to know that
+$\frac{1}{\ \frac 3 2 \ } = \frac{2}{3}$. I didn't cover this on
+[the basics page](basics.html) but it's quite straight-forward to understand;
+the $2$ is below *two* division lines so it must be different from being below
 just one division line. It's a mess and checking the answer with a derivative
 is also a mess, but it works.
 
-.. math::
+math:
    \int \sqrt x dx &= \int x^\frac{1}{2} dx \\
    &= \frac{x^{\frac{1}{2}+1}}{\frac{1}{2} + 1} + C \\
    &= \frac{1}{\frac 1 2 + 1} x^{\frac{1}{2}+1} + C \\
@@ -390,7 +370,7 @@ is also a mess, but it works.
    &= \frac{1}{\ \frac 3 2 \ } x^1 x^\frac{1}{2} + C \\
    &= \frac 2 3 x \sqrt x + C
 
-.. math::
+math:
    \frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right)
    &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0 \\
    &= \frac 2 3 \cdot \frac{d}{dx}(x^1 x^{\frac 1 2}) \\
@@ -401,134 +381,120 @@ is also a mess, but it works.
    &= \sqrt x
 
 
-Example: Smooth Jumps Revisited
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+## Example: Smooth Jumps Revisited
 
 We learned to make a game where a ball jumps in the shape of parabola in
-:ref:`this derivative example <smoothjumps>`. We somehow guessed that the
-natural jumping curve might be a parabola. But now we know how to get from `g`
-being a constant to a parabola. I won't explain things much; I'll just assume
-that you have read the derivative thing linked above.
+[this derivative example](derivatives.html#example-smooth-jumps). We somehow
+guessed that the natural jumping curve might be a parabola. But now we know how
+to get from $g$ being a constant to a parabola. I won't explain things much;
+I'll just assume that you have read the derivative thing linked above.
 
-.. note::
-   Here `v(t)` and `h(t)` mean velocity and height at time `t`. I'm doing that
-   instead of plain `v` and `h` to remind us about the fact that they aren't
-   just constants; they depend on the time. However, `g` is just a constant.
+**Note:**
+Here $v(t)$ and $h(t)$ mean velocity and height at time $t$. I'm doing that
+instead of plain $v$ and $h$ to remind us about the fact that they aren't
+just constants; they depend on the time. However, $g$ is just a constant.
 
-.. math::
+math:
    v(t) &= \int g\ dt = gt + C_1 \\
    h(t) &= \int v(t)dt = \int(gt+C_1)dt = \frac 1 2 gt^2 + C_1 t + C_2
 
-Now if we rename the constants so that `a = \frac 1 2 g`, `b = C_1` and
-`c = C_2` we get `h(t) = at^2+bt+c`, and that's the equation of a parabola.
+Now if we rename the constants so that $a = \frac 1 2 g$, $b = C_1$ and
+$c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.
 
 
-Example: Circle Area
-~~~~~~~~~~~~~~~~~~~~
+## Example: Circle Area
 
-.. note::
-   This section assumes that you know what `\tau` and radians are.
-   :ref:`Click here <radians>` if you don't.
+**Note:** This section assumes that you know what $\tau$ and radians are.
+[Click here](geometry-and-trig.html#radians-and-tau) if you don't.
 
 At some kind of school you may have learned that the area of a circle is
-`\pi r^2` where `\pi = \frac{\tau}{2} \approx 3.14` and `r` is the radius of
+$\pi r^2$ where $\pi = \frac{\tau}{2} \approx 3.14$ and $r$ is the radius of
 the circle. There are a few different ways to divide a circle into a bunch of
 smaller and simpler areas and show that the total area is indeed
-`\frac{\tau}{2} r^2`:
+$\frac{\tau}{2} r^2$:
 
-.. asymptote::
-   :3d:
+asymptote3d:
+    size(18cm);
+    transform trans = identity();
+    real dt = pi/20;     // radians
+    real dx = 0.1;
 
-   size(18cm);
-   transform trans = identity();
-   real dt = pi/20;     // radians
-   real dx = 0.1;
+    void addstuff() {
+        real angle = pi/3;      // radians
 
-   void addstuff() {
-      real angle = pi/3;      // radians
+        draw(trans*unitcircle, deepblue);
+        label(rotate(degrees(angle)-90)*"$\tau r$", trans*(cos(angle),sin(angle)),
+              deepblue, align=NE);
 
-      draw(trans*unitcircle, deepblue);
-      label(rotate(degrees(angle)-90)*"$\tau r$", trans*(cos(angle),sin(angle)),
-            deepblue, align=NE);
+        draw(trans*brace((1,-dx/2), (0,-dx/2)), L=Label("$r$", filltype=Fill(white)), align=S);
+    }
 
-      draw(trans*brace((1,-dx/2), (0,-dx/2)), L=Label("$r$", filltype=Fill(white)), align=S);
-   }
+    draw((-1,0)--(1,0));
+    for (real x = -1; x < 1; x+= dx ) {
+        draw((x,0)--(x,sqrt(1-x**2)), gray);
+    }
+    draw((-1,0)--(1,0), gray);
+    addstuff();
 
-   draw((-1,0)--(1,0));
-   for (real x = -1; x < 1; x+= dx ) {
-      draw((x,0)--(x,sqrt(1-x**2)), gray);
-   }
-   draw((-1,0)--(1,0), gray);
-   addstuff();
+    trans = shift(2.5, 0);
+    for (real r = 0; r < 1; r += dx) {
+        draw(trans*scale(r)*unitcircle, gray);
+    }
+    addstuff();
 
-   trans = shift(2.5, 0);
-   for (real r = 0; r < 1; r += dx) {
-      draw(trans*scale(r)*unitcircle, gray);
-   }
-   addstuff();
-
-   trans = shift(5, 0);
-   for (real t = 0; t < 2*pi; t += dt) {
-      draw(trans*((0,0)--(cos(t),sin(t))), gray);
-   }
-   addstuff();
+    trans = shift(5, 0);
+    for (real t = 0; t < 2*pi; t += dt) {
+        draw(trans*((0,0)--(cos(t),sin(t))), gray);
+    }
+    addstuff();
 
 The idea here is that we can calculate the area of a circle by just integrating
 a bunch of these little area slices. The first one is the most difficult to
 integrate, but the second and third one are something we can do. Let's do the
 second one.
 
-We already used `r` to represent the radius of our blue circle, so let's use
-another letter like `s` to represent the radius of one of the rings between the
+We already used $r$ to represent the radius of our blue circle, so let's use
+another letter like $s$ to represent the radius of one of the rings between the
 gray lines. When integrating vertical slices the area of a slice was
-`f(x)\ dx`, but this time it's `\tau s\ ds` where `\tau s` and `ds` are the
+$f(x)\ dx$, but this time it's $\tau s\ ds$ where $\tau s$ and $ds$ are the
 perimeter and thickness of the rings. This is quite straight-forward:
 
-.. math::
-   \int_0^r \tau s\ ds
-   = \tau \int_0^r s\ ds
-   = \tau \left[\frac 1 2 s^2\right]_0^r
-   = \tau \left( \frac 1 2 r^2 - \frac 1 2 0^2 \right)
-   = \tau \frac 1 2 r^2 = \pi r^2
+math:
+    \int_0^r \tau s\ ds
+    = \tau \int_0^r s\ ds
+    = \tau \left[\frac 1 2 s^2\right]_0^r
+    = \tau \left( \frac 1 2 r^2 - \frac 1 2 0^2 \right)
+    = \tau \frac 1 2 r^2 = \pi r^2
 
-In general, if you see something like `\frac 1 2 r^2` it's possibly the result
-of some integration because `\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r`.
-The `\pi r^2` form kind of hides the integration because `\pi = \frac 1 2 \tau`,
-but rewriting it with `\tau` makes everything clear.
+In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
+of some integration because $\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r$.
+The $\pi r^2$ form kind of hides the integration because $\pi = \frac 1 2 \tau$,
+but rewriting it with $\tau$ makes everything clear.
 
 The derivative of the area is also interesting. It turns out that it's always
-equal to the perimeter `\tau r`:
+equal to the perimeter $\tau r$:
 
-.. math::
-   \frac{d}{dr} \left( \tau \frac 1 2 r^2 \right) =  \tau \frac 1 2 2r = \tau r
+math: \frac{d}{dr} \left( \tau \frac 1 2 r^2 \right) =  \tau \frac 1 2 2r = \tau r
 
-This makes sense because if we increase `r`, the perimeter length determines
+This makes sense because if we increase $r$, the perimeter length determines
 how much the area increases.
 
 
-Going 3D
-~~~~~~~~
+## Going 3D
 
-.. admonition:: Problem
+**Problem:** If the VLC Media Player cone is 200 pixels high, its radius is 50
+pixels and it's 3-dimensional, how many pixels fit inside the cone?
 
-   If the VLC Media Player cone is 200 pixels high, its radius is 50 pixels and
-   it's 3-dimensional, how many pixels fit inside the cone?
+comment: TODO: scale the image to 35%
 
-   .. image:: images/vlc.png
-      :scale: 35%
+image: images/vlc.png
+    width: 35%;
+    height: 35%;
 
-   .. raw:: html
+<small>The image comes from [this wikimedia
+page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
-      <small>
-         The image comes from
-         <a href="https://commons.wikimedia.org/wiki/File:VLC_Icon.svg">
-         this wikimedia page</a>.
-      </small>
-
-.. asymptote::
-   :3d:
-   :align: right
-
+asymptote3d: float:right;
    size(11cm);
    import three;
    import graph3;
@@ -561,22 +527,24 @@ Going 3D
    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
    draw(path3(brace((the_x,f(the_x)),(the_x,0), amplitude=0.2)), L="$f(x)$", align=E);
 
-Here `A(x)` has nothing to do with antiderivatives, it's just the Area of the
-green circle in the picture at right.
+Here $A(x)$ has nothing to do with antiderivatives, it's just the Area of the
+green circle in the image at right.
 
 Integrals are not actually limited to calculating areas in any way. If you look
-at the image, the total volume is `\int_0^h A(x) dx`. Now we just need to
-figure out how to calculate the `A(x)`, and for that we need to know what
-`f(x)` is. Here's everything we know about `f`:
+at the image, the total volume is $\int_0^h A(x) dx$. Now we just need to
+figure out how to calculate the $A(x)$, and for that we need to know what
+$f(x)$ is. Here's everything we know about $f$:
 
-   * The graph `y=f(x)` is a straight line, so
-     :ref:`the derivative must be a constant <slope>`.
-   * When `x=0`, the cone's radius `f(x)` is `0`.
-   * When `x=h`, the cone's radius `f(x)` is `r`.
+<ul>
+<li>The graph $y=f(x)$ is a straight line, so [the derivative must be a
+constant](derivatives.html#slope).</li>
+<li>When $x=0$, the cone's radius $f(x)$ is $0$.</li>
+<li>When $x=h$, the cone's radius $f(x)$ is $r$.</li>
+</ul>
 
 So, we get these equations:
 
-.. math::
+math:
    \left\{\begin{matrix}
       f'(x) = c \\ 
       f(0) = 0 \\ 
@@ -586,31 +554,30 @@ So, we get these equations:
 This isn't difficult to solve by just doing it one thing at a time, but I'll
 skip that because it's boring. Here's the solution:
 
-.. math:: f(x) = \frac r h x
+math: f(x) = \frac r h x
 
-Next we need `A(x)`. In the previous example we figured that the area of a
-circle is `\tau \frac 1 2 r^2` where `r` is the radius, but the green circle's
-radius is `f(x)` instead of `r` so `A(x) = \tau \frac 1 2 (f(x))^2`. Let's do
+Next we need $A(x)$. In the previous example we figured that the area of a
+circle is $\tau \frac 1 2 r^2$ where $r$ is the radius, but the green circle's
+radius is $f(x)$ instead of $r$ so $A(x) = \tau \frac 1 2 (f(x))^2$. Let's do
 this:
 
-.. math::
-   \int_0^h A(x) dx
-   &= \int_0^h \tau \frac 1 2 (f(x))^2 dx \\
-   &= \tau \frac 1 2 \int_0^h (f(x))^2 dx \\
-   &= \tau \frac 1 2 \int_0^h \left( \frac r h x \right) ^2 dx \\
-   &= \tau \frac 1 2 \int_0^h \left( \frac r h \right)^2 x^2\ dx \\
-   &= \tau \frac 1 2 \left( \frac r h \right)^2 \int_0^h x^2\ dx \\
-   &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \left[ \frac{x^3}{3} \right]_0^h \\
-   &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \left(
-         \frac {h^3}{3} - \frac{0^3}{3}
-   \right) \\
-   &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \frac{h^3}{3} \\
-   &= \frac \tau 6 r^2 h
+math:
+    \int_0^h A(x) dx
+    &= \int_0^h \tau \frac 1 2 (f(x))^2 dx \\
+    &= \tau \frac 1 2 \int_0^h (f(x))^2 dx \\
+    &= \tau \frac 1 2 \int_0^h \left( \frac r h x \right) ^2 dx \\
+    &= \tau \frac 1 2 \int_0^h \left( \frac r h \right)^2 x^2\ dx \\
+    &= \tau \frac 1 2 \left( \frac r h \right)^2 \int_0^h x^2\ dx \\
+    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \left[ \frac{x^3}{3} \right]_0^h \\
+    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \left(
+      \frac {h^3}{3} - \frac{0^3}{3}
+    \right) \\
+    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \frac{h^3}{3} \\
+    &= \frac \tau 6 r^2 h
 
-That was a mess, but we're almost done! Now we can just plug in `r=50` and
-`h=200` to get our cone volume.
+That was a mess, but we're almost done! Now we can just plug in $r=50$ and
+$h=200$ to get our cone volume.
 
-.. math::
-   \frac{\tau}{6} \cdot 50^2 \cdot 200 \approx 523600
+math: \frac{\tau}{6} \cdot 50^2 \cdot 200 \approx 523600
 
 That's quite a few pixels.
