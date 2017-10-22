@@ -6,8 +6,8 @@
 <title>Derivatives</title>
 </head>
 <body>
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>This chapter contains more not-so-practical math than the trig and geometry
 chapter, but you may find it surprisingly fun. However, the math is not useless
 gibberish isolated from real life and there's a practical example with a fun
@@ -66,7 +66,9 @@ definition we ended up with. If we just try to evaluate it at <img class="inline
 <img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" /> so you might think that we need to evaluate it at e.g.
 <img class="inlinemath" src="math/f58d3c05a36f8dee4d96f8874be9f16e.png" />, but we don't! Have a look:</p>
 
-<p><img src="math/94c0024f50df59854ddb41cae5ef8b3b.png" class="blockmath" /></p><img src="asymptote/969f40feaa8e24a235fb8ade83c399a3.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
+<div class="floatingbox"><h2> Handy thing: <img class="inlinemath" src="math/838cec74357a4c7c5a4066b808f3b8c9.png" /></h2><p>Proof:</p>
+
+<p><img src="math/ddcbae6858f01dea09f1b9c724ebd03d.png" class="blockmath" /></p></div><p><img src="math/94c0024f50df59854ddb41cae5ef8b3b.png" class="blockmath" /></p><img src="asymptote/969f40feaa8e24a235fb8ade83c399a3.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
 we arrived at just <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" />. What's more, the <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" /> is not just a random value we
 got out of a spooky calculation; for example, at <img class="inlinemath" src="math/566162f3afaf9f5f67e7d7ca7a4b424e.png" /> the derivative is
 <img class="inlinemath" src="math/a516b4ec389fe440150f7c6412631ab8.png" />, so if we draw a straight line that barely touches <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> at
@@ -77,10 +79,11 @@ and turns out that <img class="inlinemath" src="math/5666c048c3e6aeb894ef9de1e90
 because derivatives are just like slopes but they also work with curvy things,
 and there's no difference between a slope and a derivative of a straight line.</p>
 
-<p><b>Note:</b> The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> can be also written as <img class="inlinemath" src="math/7bdae2eac1d9ea96203e434aa509bbe9.png" />,
-although it doesn't make much sense because <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> doesn't mean <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" /> times <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />.</p>
+<div class="box graybox"><h2> Note</h2><p>The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> can be also written as <img class="inlinemath" src="math/7bdae2eac1d9ea96203e434aa509bbe9.png" />,
+although it doesn't make much sense because <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> doesn't mean <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" /> times <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />.
+</p>
 
-<p>Another common style is to put a single quote after a function name, like
+</div><p>Another common style is to put a single quote after a function name, like
 <img class="inlinemath" src="math/e3e396b27470ebc2f29600ab5e1b8d3e.png" />.
 </p>
 
@@ -185,7 +188,7 @@ gravity <span style="color: #666666">=</span> <span style="color: #40a070">2</sp
 O
 </pre></div>
 <p>You can use similar code for doing jumps in games. Here's a demo created with
-my canvaswrapper.js script. Click it and use arrow keys to move the ball.</p>
+my <a href="https://github.com/Akuli/math-tutorial/blob/master/canvaswrapper.js">canvaswrapper.js</a> script. Click it and use arrow keys to move the ball.</p>
 
 <script type="text/javascript" src="canvaswrapper.js"></script><canvas id="canvas1" width="600" height="400" tabindex="1"></canvas><script>var screen = new CanvasWrapper('canvas1');
 

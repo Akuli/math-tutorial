@@ -6,18 +6,18 @@
 <title>Geometry and Trigonometry</title>
 </head>
 <body>
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><b>Geometry and Trigonometry</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><b>Geometry and Trigonometry</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="geometry-and-trigonometry">Geometry and Trigonometry<a class="headerlink" href="#geometry-and-trigonometry" title="Link to this title">¶</a></h1><p>This chapter contains useful stuff that aren't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.</p>
 
-<p><b>Note:</b>
-Usually the y axis is so that more y means up, but in this chapter it's
+<div class="box graybox"><h2> Note</h2><p>Usually the y axis is so that more y means up, but in this chapter it's
 "upside down" and more y means down. Almost all programming things use the
-"more y means down" version and are compatible with this chapter.</p>
+"more y means down" version and are compatible with this chapter.
+</p>
 
-<p>If you're a mathematician everything looks really weird to you, but if
+</div><p>If you're a mathematician everything looks really weird to you, but if
 you're a programmer who wants to get stuff done you'll enjoy not having to
 add minus signs everywhere before using formulas from this tutorial.</p>
 
@@ -71,11 +71,10 @@ conversion functions in standard libraries like Python's <code>math.radians()</c
 <code>math.degrees()</code>.
 </p>
 
-<h2 id="basic-angle-stuff">Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Link to this title">¶</a></h2><p><b>Problem:</b>
-The ball of a ball-and-paddle game is moving at the angle of 0.5 radians and
-it hits a wall at right. How should the angle change?</p>
+<h2 id="basic-angle-stuff">Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>The ball of a ball-and-paddle game is moving at the angle of 0.5 radians
+and it hits a wall at right. How should the angle change?</p>
 
-<p><img src="asymptote/762396cc0436e676b6d18a5e162ba9a8.png" /></p><p>Note that both angles are measured down from a horizontal line clockwise
+<p><img src="asymptote/762396cc0436e676b6d18a5e162ba9a8.png" /></p></div><p>Note that both angles are measured down from a horizontal line clockwise
 because that's a standard in programming. In math, angles are usually measured
 up from a horizontal line and counter-clockwise.</p>
 
@@ -93,20 +92,17 @@ unknown value. For example:</p>
 <p><img src="math/1075a9737ff7be0db6fb36c86b6f4252.png" class="blockmath" /></p><p>It's easy to calculate similar things for other directions. Here are the
 results, where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> is the original angle and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the changed angle:</p>
 
-<p>- If the ball hits left or right wall, <img class="inlinemath" src="math/57d4a791d72f1502550d0c837c92c177.png" />.
-- If the ball hits top or bottom, <img class="inlinemath" src="math/658652aa8bc08f987c23df9001a586d5.png" />.</p>
-
-<p>Note that an angle like <img class="inlinemath" src="math/5d7b9adcbe1c629ec722529dd12e5129.png" /> radians is perfectly valid and equivalent to
+<ul><li>If the ball hits left or right wall, <img class="inlinemath" src="math/57d4a791d72f1502550d0c837c92c177.png" />.</li><li>If the ball hits top or bottom, <img class="inlinemath" src="math/658652aa8bc08f987c23df9001a586d5.png" />.
+</li></ul><p>Note that an angle like <img class="inlinemath" src="math/5d7b9adcbe1c629ec722529dd12e5129.png" /> radians is perfectly valid and equivalent to
 <img class="inlinemath" src="math/37357323d0af5db8e5eb69171458fa43.png" /> radians. If you want to make sure that an angle is between <img class="inlinemath" src="math/cfcd208495d565ef66e7dff9f98764da.png" /> and
 <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />, use something like <code>angle % tau</code> where <code>%</code> is division remainder.
 </p>
 
-<h2 id="trig-with-the-unit-circle">Trig with the Unit Circle<a class="headerlink" href="#trig-with-the-unit-circle" title="Link to this title">¶</a></h2><p><b>Problem:</b> 
-This time the ball moves at the angle of <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />, and it should move 5
+<h2 id="trig-with-the-unit-circle">Trig with the Unit Circle<a class="headerlink" href="#trig-with-the-unit-circle" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>This time the ball moves at the angle of <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />, and it should move 5
 pixels every time the screen is updated. How many pixels should its x and y
 change every time?</p>
 
-<p><img src="asymptote/4a7581f74964581b28a0ae41c546e168.png" /></p><p>Our problem has something to do with sine and cosine. The unit circle is a
+<p><img src="asymptote/4a7581f74964581b28a0ae41c546e168.png" /></p></div><p>Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:</p>
 
@@ -139,7 +135,7 @@ See <a href="explanations.html#accurate-sine-and-cosine-values">this thing</a> i
 wondering how I came up with these values.
 </p>
 
-<h2 id="example-ball-and-paddle">Example: Ball and Paddle<a class="headerlink" href="#example-ball-and-paddle" title="Link to this title">¶</a></h2><p>Here's a minimal game written with my canvaswrapper.js script that
+<h2 id="example-ball-and-paddle">Example: Ball and Paddle<a class="headerlink" href="#example-ball-and-paddle" title="Link to this title">¶</a></h2><p>Here's a minimal game written with my <a href="https://github.com/Akuli/math-tutorial/blob/master/canvaswrapper.js">canvaswrapper.js</a> script that
 demonstrates most things we have learned so far. Click it, press arrow up to
 start the game and then use arrow keys to move the paddle.</p>
 
@@ -326,10 +322,10 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
   });
 });
 </pre></div>
-<h2 id="trig-with-a-triangle">Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Link to this title">¶</a></h2><p><b>Problem:</b> The ball moves 10 pixels down and 20 pixels right. What
-angle is that?</p>
+<h2 id="trig-with-a-triangle">Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>The ball moves 10 pixels down and 20 pixels right. What angle is that?
+</p>
 
-<p>Here's another way to define <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, and another function called
+</div><p>Here's another way to define <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, and another function called
 <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" /> that we haven't used before.</p>
 
 <img src="asymptote/a9eeeac8194970dc8ad83ba22baacbb7.png" style="float:right;" /><p><img src="math/e9b648bac7a9f99ffea6fa6759ba44ab.png" class="blockmath" /></p><p>These things work only if the triangle has an angle that is exactly a quarter
@@ -349,10 +345,10 @@ signs of <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png"
 moving to e.g. top left). It also works if <code>a</code> is 0 and <code>b/a</code> would fail as
 division by zero is undefined.</p>
 
-<p><b>Note:</b>
-Usually people like to put <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> before <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> in different kinds of places, but
-<code>atan2</code> is used like <code>atan2(y_change, x_change)</code>, <b>not</b> like
-<code>atan2(x_change, y_change)</code>.</p>
+<p>note:
+    Usually people like to put <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> before <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> in different kinds of places,
+    but <code>atan2</code> is used like <code>atan2(y_change, x_change)</code>, <b>not</b> like
+    <code>atan2(x_change, y_change)</code>.</p>
 
 <p>Finally, it's time to calculate our stuff:</p>
 
@@ -360,10 +356,12 @@ Usually people like to put <img class="inlinemath" src="math/9dd4e461268c8034f5c
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>atan2(<span style="color: #40a070">10</span>, <span style="color: #40a070">20</span>)
 <span style="color: #888888">0.4636476090008061</span>
 </pre></div>
-<h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><p><b>Problem:</b> The ball moves 10 pixels down and 20 pixels right, just like in
-the previous problem. How many pixels is that in total, measured diagonally?</p>
+<h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>The ball moves 10 pixels down and 20 pixels right, just like in
+the previous problem. How many pixels is that in total, measured
+diagonally?
+</p>
 
-<img src="asymptote/b0297f3f2be1fdfad10c3e289a768634.png" style="float:right;" /><p>Here's a handy equation, also known as the Pythagorean theorem:</p>
+</div><img src="asymptote/b0297f3f2be1fdfad10c3e289a768634.png" style="float:right;" /><p>Here's a handy equation, also known as the Pythagorean theorem:</p>
 
 <p><img src="math/f98fde5a8a2f14e625eb5fceed7050ee.png" class="blockmath" /></p><p>Again, the angle of the corner between a and b must be a quarter turn, like it
 is in the image. If you're wondering how the heck it works see

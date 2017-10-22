@@ -9,7 +9,7 @@ body {
 #content {
     background-color: white;
     padding: 10px;
-    width: calc(100% - 250px);
+    width: calc(100% - 20px);
 }
 
 a {
@@ -25,15 +25,14 @@ a:hover {
 
 #sidebar {
     width: 200px;
-    border-width: 200px;
-    padding: 10px;
+    padding-left: 10px;
     float: right;
 
-    border: 1px solid;
     border-radius: 10px;
-    color: white;
     background-color: #555;
+    color: white;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 #sidebar a {
@@ -45,15 +44,21 @@ a:hover {
     border-bottom: 1px solid;
 }
 
-@media only screen and (max-width: 900px) {
-    #content {
-        float: none;
-        width: calc(100% - 25px);
-        padding: 10px;
-    }
+.box {
+    border-radius: 10px;
+    padding: 15px;
+}
 
+.graybox { background-color: #ccc; }
+.redbox { background-color: #f88; }
+
+@media only screen and (max-width: 600px) {
     #sidebar {
-        width: calc(100% - 25px);
+        width: calc(100% - 20px);
+        float: none;
+    }
+    .box {
+        width: calc(100% - 50px);
     }
 }
 
@@ -98,4 +103,13 @@ code {
     display: inline-block;
     vertical-align: top;
     margin-right: 15px;
+}
+
+.floatingbox {
+    float: right;
+    width: 35%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    background-color: #fe9;
 }
