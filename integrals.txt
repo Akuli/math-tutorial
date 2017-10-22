@@ -59,10 +59,6 @@ asymptote:
 The first two areas are easy to calculate and everything is quite
 self-explanatory, but how the heck are we going to do the third one?
 
-If this was a question on a codeacademy-like noob programming site you would
-probably write some code that approximates the area by calculating areas of
-little rectangles. This Python program prints ``0.42167045099417744``:
-
 asymptote: float:right;
     size(10cm);
     axises(0.5,2.5,0,0);
@@ -84,6 +80,10 @@ asymptote: float:right;
 
     label("$1$", (1,0), align=S);
     label("$2$", (2,0), align=S);
+
+If this was a question on a codeacademy-like noob programming site you would
+probably write some code that approximates the area by calculating areas of
+little rectangles. This Python program prints ``0.42167045099417744``:
 
 code: python
     import math
@@ -535,12 +535,10 @@ at the image, the total volume is $\int_0^h A(x) dx$. Now we just need to
 figure out how to calculate the $A(x)$, and for that we need to know what
 $f(x)$ is. Here's everything we know about $f$:
 
-<ul>
-<li>The graph $y=f(x)$ is a straight line, so [the derivative must be a
-constant](derivatives.html#slope).</li>
-<li>When $x=0$, the cone's radius $f(x)$ is $0$.</li>
-<li>When $x=h$, the cone's radius $f(x)$ is $r$.</li>
-</ul>
+* The graph $y=f(x)$ is a straight line, so [the derivative must be a
+    constant](derivatives.html#slope).
+* When $x=0$, the cone's radius $f(x)$ is $0$.
+* When $x=h$, the cone's radius $f(x)$ is $r$.
 
 So, we get these equations:
 
@@ -564,15 +562,11 @@ this:
 math:
     \int_0^h A(x) dx
     &= \int_0^h \tau \frac 1 2 (f(x))^2 dx \\
-    &= \tau \frac 1 2 \int_0^h (f(x))^2 dx \\
-    &= \tau \frac 1 2 \int_0^h \left( \frac r h x \right) ^2 dx \\
-    &= \tau \frac 1 2 \int_0^h \left( \frac r h \right)^2 x^2\ dx \\
-    &= \tau \frac 1 2 \left( \frac r h \right)^2 \int_0^h x^2\ dx \\
-    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \left[ \frac{x^3}{3} \right]_0^h \\
-    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \left(
-      \frac {h^3}{3} - \frac{0^3}{3}
-    \right) \\
-    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \cdot \frac{h^3}{3} \\
+    &= \int_0^h \tau \frac 1 2 \left( \frac r h x \right)^2 dx \\
+    &= \int_0^h \tau \frac 1 2 \cdot \frac{r^2}{h^2} x^2 dx \\
+    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \int_0^h x^2 dx \\
+    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
+    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
     &= \frac \tau 6 r^2 h
 
 That was a mess, but we're almost done! Now we can just plug in $r=50$ and

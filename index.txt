@@ -1,22 +1,31 @@
 # Math for Programmers
 
-This tutorial contains practical math for programmers who want to get stuff
-done, as well as explanation chapters for those who get interested in how the
+This tutorial contains practical math for programmers who want to get
+stuff done, but also more stuff for people who get interested in how the
 math works.
 
-Start by reading [the basics page](basics.html).
+Start by opening [the basics page](basics.html) and keep it open while
+you read the tutorial. There's nothing wrong with looking up things from
+it as we go.
 
-If you're a game developer or you do something else with xy coordinate things,
-I recommend reading these:
+If you don't know what to start with I recommend [the derivative
+tutorial](derivatives.html). Derivatives are a great example of why I
+like math; calculations that seem like they will be complicated turn out
+to be surprisingly simple in the end. After that, if you got interested
+in how awesome the math is, continue to [the integral
+tutorial](integrals.html) for even more amazing stuff. If you didn't get
+interested in derivatives you probably won't find integrals very
+interesting.
 
-<ul>
-<li>[Geometry and trigonometry tutorial](geometry-and-trig.html)</li>
-<li>[Derivative tutorial](derivatives.html)</li>
-<li>[Integral tutorial](integrals.html)</li>
-</ul>
+If you're a game developer and you want to create 2D games with a
+library that requires you to deal with coordinates, check out [the
+geometry and trigonometry tutorial](geometry-and-trig.html). You'll find
+it useful.
 
-If you're working with something that uses colors, [this chapter](#numbertheory.html)
-explains how ``#ff0000`` is red.
+If you're wondering how color strings like ``#ff0000`` work, see
+[the number theory chapter](numbertheory.html).
 
-Currently the tutorial also contains a few [explanations](explanations.html)
-for people who get interested in why the math works.
+When you're done with reading everything you are interested in or you
+just want to see more math for some reason, check out those parts of
+[the explanation page](explanations.html) that relate to chapters that
+you have read.

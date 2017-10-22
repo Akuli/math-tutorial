@@ -497,9 +497,9 @@ other words, it doesn't matter how $h$ and $k$ relate to each other as long
 as both of them approach 0.
 
 The rule can be used only if $g'(x)$ exists, and thus $g$ must be
-continuous; see $the derivative existence stuff above <#which-functions-have-derivatives>$_.
-So, if $h \to 0$ (read: h approaches 0) then $g(x+h) \to g(x)$ and
-$(g(x+h)-g(x)) \to 0$.
+continuous; see [the derivative existence stuff
+above](#which-functions-have-derivatives). So, if $h \to 0$ (read: h
+approaches 0) then $g(x+h) \to g(x)$ and $(g(x+h)-g(x)) \to 0$.
 
 If we put all this together we can set $k=g(x+h)-g(x)$. Now it's time to
 calculate $f'(g(x))g'(x)$.
