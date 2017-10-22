@@ -13,6 +13,17 @@ body {
     width: calc(100% - 250px);
 }
 
+a {
+    color: #067;
+    border-bottom: 1px dotted;
+    text-decoration: none;   /* taken care of with the border-bottom thing */
+}
+
+a:hover {
+    color: #852;
+    border-bottom: 1px solid;
+}
+
 #sidebar {
     width: 200px;
     border-width: 200px;
@@ -22,6 +33,15 @@ body {
     border-radius: 10px;
     color: white;
     background-color: #555;
+}
+
+#sidebar a {
+    color: #09f;
+}
+
+#sidebar a:hover {
+    color: #d93;
+    border-bottom: 1px solid;
 }
 
 @media only screen and (max-width: 900px) {
@@ -56,17 +76,6 @@ code {
     background-color: #eee;
     padding: 2px;
     border-radius: 5px;
-}
-
-a {
-    color: #067;
-    border-bottom: 1px dotted;
-    text-decoration: none;   /* taken care of with the border-bottom thing */
-}
-
-a:hover {
-    color: #852;
-    border-bottom: 1px solid;
 }
 
 p, li {

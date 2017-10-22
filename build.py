@@ -1,4 +1,5 @@
 import collections
+import functools
 import glob
 import hashlib
 import itertools
@@ -29,27 +30,33 @@ builder = Builder()
 builder.converter.pygments_style = 'friendly'
 
 
+def _link_or_bold(thisfile, name, titletext=None):
+    if titletext is None:
+        titletext = builder.get_title(name + '.txt')
+    if name + '.txt' == thisfile:
+        return '<b>' + titletext + '</b>'
+    return '<a href="%s.html">%s</a>' % (name, titletext)
+
+
+def _create_sidebar_thingy(thisfile, maintitle, names):
+    lines = ['<h3>' + maintitle + '</h3>']
+    lines.append('<ul>')
+    for name in names:
+        lines.append('<li>' + _link_or_bold(thisfile, name) + '</li>')
+    lines.append('</ul>')
+    return '\n'.join(lines)
+
+
 def get_sidebar_content(txtfile):
-    if txtfile == 'index.txt':
-        return None
-    return '<h2>hello world</h1>'
+    thingy = functools.partial(_create_sidebar_thingy, txtfile)
+    return ''.join([
+        '<h2>' + _link_or_bold(txtfile, 'index', "Front Page") + '</h2>',
+        thingy("Chapters", ['derivatives', 'integrals', 'geometry-and-trig',
+                            'numbertheory']),
+        thingy("Other stuff", ['basics', 'explanations']),
+    ])
 
 builder.get_sidebar_content = get_sidebar_content
-
-
-def get_head_extras(txtfile):
-    if txtfile == 'index.txt':
-        # no sidebar, make the main area wider
-        return '''
-        <style>
-        #content {
-            width: calc(100% - 20px);
-        }
-        </style>
-        '''
-    return ''
-
-builder.get_head_extras = get_head_extras
 
 
 # these are based on sphinx stuff (i.e. copied from sphinx)
