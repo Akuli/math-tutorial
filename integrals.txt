@@ -390,14 +390,14 @@ guessed that the natural jumping curve might be a parabola. But now we know how
 to get from $g$ being a constant to a parabola. I won't explain things much;
 I'll just assume that you have read the derivative thing linked above.
 
-**Note:**
-Here $v(t)$ and $h(t)$ mean velocity and height at time $t$. I'm doing that
-instead of plain $v$ and $h$ to remind us about the fact that they aren't
-just constants; they depend on the time. However, $g$ is just a constant.
+graybox: Note
+    Here $v(t)$ and $h(t)$ mean velocity and height at time $t$. I'm doing that
+    instead of plain $v$ and $h$ to remind us about the fact that they aren't
+    just constants; they depend on the time. However, $g$ is just a constant.
 
 math:
-   v(t) &= \int g\ dt = gt + C_1 \\
-   h(t) &= \int v(t)dt = \int(gt+C_1)dt = \frac 1 2 gt^2 + C_1 t + C_2
+    v(t) &= \int g\ dt = gt + C_1 \\
+    h(t) &= \int v(t)dt = \int(gt+C_1)dt = \frac 1 2 gt^2 + C_1 t + C_2
 
 Now if we rename the constants so that $a = \frac 1 2 g$, $b = C_1$ and
 $c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.
