@@ -22,10 +22,15 @@ instructions for every possible platform.
         $ ./build.py
         $ ( yourfavoritebrowser html/index.html &>/dev/null )&
 
-    If you get errors even though you have all the dependencies installed try
-    removing the last `asymptote:` thing from `integrals.txt`. I don't know
-    why but 3D asymptote drawings work just fine on one of my computers but not
-    the other.
+    If you get weird libGL errors the problem is probably something with 3D
+    drawings. You can either google for a "correct" solution or use this
+    horribly dangerous brute-force thing I used:
+
+        $ sudo chmod 777 /dev/dri /dev/dri/*
+
+    The build still errors out randomly. Run it multiple times until it
+    succeeds. When it has succeeded once the 3D images are in `imagecache/` and
+    it'll succeed every time (unless you change the 3D images).
 
 3. Run the crazy script if you dare!
 
