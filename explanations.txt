@@ -150,11 +150,11 @@ asymptote: float:right;
    draw(brace((cost,0), (0,0)), L="$\cos \frac \tau 6$", align=S);
    draw(brace((1.05,sint), (1.05,0)), L="$\sin \frac \tau 6$", align=E);
 
-[Here](???) I said that $\sin \frac \tau 6 = \frac{\sqrt 3}{2}$
-and $\cos \frac \tau 6 = \frac 1 2$. I'm sorry to disappoint you, but there's
-no general and easy way to find accurate $\sin$ and $\cos$ values by hand.
-However, in many cases there's something special about the angles that allows
-us to do some other tricks.
+[Here](geometry-and-trig.html#accurate-sincos) I said that
+$\sin \frac \tau 6 = \frac{\sqrt 3}{2}$ and $\cos \frac \tau 6 = \frac 1 2$.
+I'm sorry to disappoint you, but there's no general and easy way to find
+accurate $\sin$ and $\cos$ values by hand. However, in many cases there's
+something special about the angles that allows us to do some other tricks.
 
 The angle in question is $\frac \tau 6$, a sixth of a turn. If a triangle has
 three sides with equal lengths, the angles will be $\frac \tau 6$ each. That's
@@ -221,7 +221,7 @@ asymptote: float:right;
 
 The graph of the function has a spike in it. Derivatives describe
 "growing speed" and it isn't clear how fast the values grow on top of a
-spike. For example, the [absolute value](basics.html#absoulte-value)
+spike. For example, the [absolute value](basics.html#absolute-value)
 $|x|$ has a derivative everywhere except at $x=0$.
 
 </li></ul>

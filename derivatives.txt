@@ -195,8 +195,8 @@ $f'(x) = \frac{d}{dx} f(x)$.
 
 Finding the derivative was kind of complicated and really slow. These rules
 change everything. Most of these rules are
-[easy to prove](explanations.html#derivative-proofs) so there is no
-magic involved.
+[easy to prove](explanations.html#derivative-rules) so there is no magic
+involved.
 
 I have listed many rules here, but **don't panic**; there's no need to memorize
 them. As before $f$ and $g$ can be any functions as long as they have a

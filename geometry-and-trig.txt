@@ -193,10 +193,8 @@ math:
 It's easy to calculate similar things for other directions. Here are the
 results, where $a$ is the original angle and $b$ is the changed angle:
 
-<ul>
-<li>If the ball hits left or right wall, $b = \frac \tau 2 - a$.</li>
-<li>If the ball hits top or bottom, $b = \tau - a$.</li>
-</ul>
+- If the ball hits left or right wall, $b = \frac \tau 2 - a$.
+- If the ball hits top or bottom, $b = \tau - a$.
 
 Note that an angle like $-2$ radians is perfectly valid and equivalent to
 $\tau-2$ radians. If you want to make sure that an angle is between $0$ and
