@@ -87,7 +87,8 @@ asymptote: float:right;
 
 Let's look at $dy$ and $dx$ of the graph $y=f(x)$, where $f$ can be any
 function that has a derivative. Most functions you'll come across have a
-derivative; if you want to know more, :ref:$click here <has-derivative>$.
+derivative; if you want to know more, [click
+here](explanations.html#which-functions-have-derivatives).
 
 The image at right seems to say that $f(x) + dy = f(x+dx)$. Let's try to solve
 $\frac{dy}{dx}$:
