@@ -9,7 +9,6 @@ body {
 #content {
     background-color: white;
     padding: 10px;
-    float: right;
     width: calc(100% - 250px);
 }
 
@@ -28,11 +27,13 @@ a:hover {
     width: 200px;
     border-width: 200px;
     padding: 10px;
+    float: right;
 
     border: 1px solid;
     border-radius: 10px;
     color: white;
     background-color: #555;
+    margin-bottom: 20px;
 }
 
 #sidebar a {
@@ -91,4 +92,10 @@ code {
 
 .indent {
     margin-left: 2em;
+}
+
+.sidebarblock {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
 }

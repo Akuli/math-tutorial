@@ -30,31 +30,37 @@ builder = Builder()
 builder.converter.pygments_style = 'friendly'
 
 
-def _link_or_bold(thisfile, name, titletext=None):
-    if titletext is None:
-        titletext = builder.get_title(name + '.txt')
-    if name + '.txt' == thisfile:
-        return '<b>' + titletext + '</b>'
-    return '<a href="%s.html">%s</a>' % (name, titletext)
-
-
-def _create_sidebar_thingy(thisfile, maintitle, names):
-    lines = ['<h3>' + maintitle + '</h3>']
-    lines.append('<ul>')
+def _create_sidebar_thingy(thisfile, maintitle, names, extra=''):
+    result = '<div class="sidebarblock">'
+    result += '<h3>' + maintitle + '</h3>'
+    result += '<ul>'
     for name in names:
-        lines.append('<li>' + _link_or_bold(thisfile, name) + '</li>')
-    lines.append('</ul>')
-    return '\n'.join(lines)
+        result += '<li>'
+        titletext = builder.get_title(name + '.txt')
+        if name + '.txt' == thisfile:
+            result += '<b>' + titletext + '</b>'
+        else:
+            result += '<a href="%s.html">%s</a>' % (name, titletext)
+        result += '</li>'
+    result += '</ul>'
+    result += extra
+    result += '</div>'
+    return result
 
 
 def get_sidebar_content(txtfile):
+    if txtfile == 'index.txt':
+        indexlink = ''
+    else:
+        indexlink = '<h3><a href="index.html">Back to front page</a></h3>'
+
     thingy = functools.partial(_create_sidebar_thingy, txtfile)
-    return ''.join([
-        '<h2>' + _link_or_bold(txtfile, 'index', "Front Page") + '</h2>',
+    result = ''.join([
         thingy("Chapters", ['derivatives', 'integrals', 'geometry-and-trig',
                             'numbertheory']),
-        thingy("Other stuff", ['basics', 'explanations']),
+        thingy("Other stuff", ['basics', 'explanations'], indexlink),
     ])
+    return result
 
 builder.get_sidebar_content = get_sidebar_content
 
