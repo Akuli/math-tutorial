@@ -9,9 +9,9 @@ graybox: Note
     "upside down" and more y means down. Almost all programming things use the
     "more y means down" version and are compatible with this chapter.
 
-If you're a mathematician everything looks really weird to you, but if
-you're a programmer who wants to get stuff done you'll enjoy not having to
-add minus signs everywhere before using formulas from this tutorial.
+    If you're a mathematician everything looks really weird to you, but if
+    you're a programmer who wants to get stuff done you'll enjoy not having to
+    add minus signs everywhere before using formulas from this tutorial.
 
 asymptote: float:right; padding-left:5px;
     size(8cm);
