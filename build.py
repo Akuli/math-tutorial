@@ -56,12 +56,11 @@ def get_sidebar_content(txtfile):
         indexlink = '<h3><a href="index.html">Back to front page</a></h3>'
 
     thingy = functools.partial(_create_sidebar_thingy, txtfile)
-    result = ''.join([
+    return ''.join([
         thingy("Chapters", ['derivatives', 'integrals', 'geometry-and-trig',
                             'numbertheory']),
         thingy("Other stuff", ['basics', 'explanations'], indexlink),
     ])
-    return '<div id="sidebar-inner">' + result + '</div>'
 
 builder.get_sidebar_content = get_sidebar_content
 
