@@ -8,7 +8,7 @@ import subprocess
 import tempfile
 import textwrap
 
-from htmlthingy import Builder, tags
+from htmlthingy import Builder, tags, linkcheck
 
 
 # TODO: move these to htmlthingy
@@ -181,3 +181,4 @@ def canvasdemo(match, filename, *,
 
 
 builder.run()
+linkcheck.run(builder.outputdir)
