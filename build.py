@@ -61,7 +61,7 @@ def get_sidebar_content(txtfile):
                             'numbertheory']),
         thingy("Other stuff", ['basics', 'explanations'], indexlink),
     ])
-    return result
+    return '<div id="sidebar-inner">' + result + '</div>'
 
 builder.get_sidebar_content = get_sidebar_content
 

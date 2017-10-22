@@ -24,15 +24,20 @@ a:hover {
 }
 
 #sidebar {
-    width: 200px;
-    padding-left: 10px;
+    width: 250px;
     float: right;
 
     border-radius: 10px;
-    background-color: #555;
+    background-color: #fff;
     color: white;
-    margin-bottom: 20px;
     margin-left: 10px;
+}
+
+#sidebar-inner {
+    background-color: #555;
+    margin: 5px;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 #sidebar a {
