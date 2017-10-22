@@ -4,12 +4,10 @@ This chapter contains useful stuff that aren't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.
 
-comment: add a better ".. note::" replacement
-
-**Note:**
-Usually the y axis is so that more y means up, but in this chapter it's
-"upside down" and more y means down. Almost all programming things use the
-"more y means down" version and are compatible with this chapter.
+graybox: Note
+    Usually the y axis is so that more y means up, but in this chapter it's
+    "upside down" and more y means down. Almost all programming things use the
+    "more y means down" version and are compatible with this chapter.
 
 If you're a mathematician everything looks really weird to you, but if
 you're a programmer who wants to get stuff done you'll enjoy not having to
@@ -122,32 +120,32 @@ conversion functions in standard libraries like Python's ``math.radians()`` and
 
 ## Basic Angle Stuff
 
-**Problem:**
-The ball of a ball-and-paddle game is moving at the angle of 0.5 radians and
-it hits a wall at right. How should the angle change?
+graybox: Problem
+    The ball of a ball-and-paddle game is moving at the angle of 0.5 radians
+    and it hits a wall at right. How should the angle change?
 
-asymptote:
-    import patterns; add("wall",hatch(2mm));
-    size(9cm);
-    real angle = 0.5;
+    asymptote:
+        import patterns; add("wall",hatch(2mm));
+        size(9cm);
+        real angle = 0.5;
 
-    // points of the dotted ball path line
-    pair A = (-cos(angle)*1.5, sin(angle)*1.5);
-    pair B = (0,0);
-    pair C = (-cos(angle)*2, -sin(angle)*2);
+        // points of the dotted ball path line
+        pair A = (-cos(angle)*1.5, sin(angle)*1.5);
+        pair B = (0,0);
+        pair C = (-cos(angle)*2, -sin(angle)*2);
 
-    draw(A--B--C, p=smalldashes+deepblue);
-    dot(C, p=deepblue, L=" the ball", align=S);
+        draw(A--B--C, p=smalldashes+deepblue);
+        dot(C, p=deepblue, L=" the ball", align=S);
 
-    draw((-1.3,C.y/2)--(-0.3,C.y/2), smalldashes);
-    draw(arc((C.x/2,C.y/2), 0.2, -degrees(pi-angle), 0), deepred, L="???");
+        draw((-1.3,C.y/2)--(-0.3,C.y/2), smalldashes);
+        draw(arc((C.x/2,C.y/2), 0.2, -degrees(pi-angle), 0), deepred, L="???");
 
-    draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
-    draw(arc((A.x*2/3,A.y*2/3), 0.4, 0, -degrees(angle)), deepgreen,
-         L="0.5", align=E);
+        draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
+        draw(arc((A.x*2/3,A.y*2/3), 0.4, 0, -degrees(angle)), deepgreen,
+             L="0.5", align=E);
 
-    real wallthickness = 0.15;
-    filldraw((0,-1)--(0,1)--(wallthickness,1)--(wallthickness,-1)--cycle, pattern("wall"));
+        real wallthickness = 0.15;
+        filldraw((0,-1)--(0,1)--(wallthickness,1)--(wallthickness,-1)--cycle, pattern("wall"));
 
 Note that both angles are measured down from a horizontal line clockwise
 because that's a standard in programming. In math, angles are usually measured
@@ -193,8 +191,8 @@ math:
 It's easy to calculate similar things for other directions. Here are the
 results, where $a$ is the original angle and $b$ is the changed angle:
 
-- If the ball hits left or right wall, $b = \frac \tau 2 - a$.
-- If the ball hits top or bottom, $b = \tau - a$.
+* If the ball hits left or right wall, $b = \frac \tau 2 - a$.
+* If the ball hits top or bottom, $b = \tau - a$.
 
 Note that an angle like $-2$ radians is perfectly valid and equivalent to
 $\tau-2$ radians. If you want to make sure that an angle is between $0$ and
@@ -203,36 +201,36 @@ $\tau$, use something like ``angle % tau`` where ``%`` is division remainder.
 
 ## Trig with the Unit Circle
 
-**Problem:** 
-This time the ball moves at the angle of $\tau/6$, and it should move 5
-pixels every time the screen is updated. How many pixels should its x and y
-change every time?
+graybox: Problem
+    This time the ball moves at the angle of $\tau/6$, and it should move 5
+    pixels every time the screen is updated. How many pixels should its x and y
+    change every time?
 
-asymptote:
-    size(10cm);
+    asymptote:
+        size(10cm);
 
-    // start and end of dotted ball path line
-    pair pathstart = (0.7,0);
-    pair pathend = (1.5,-1.5);
+        // start and end of dotted ball path line
+        pair pathstart = (0.7,0);
+        pair pathend = (1.5,-1.5);
 
-    axises(0, 3, 0, -2);
+        axises(0, 3, 0, -2);
 
-    draw(pathstart--pathend, p=smalldashes+deepblue);
-    dot(pathend, deepblue, L=" the ball", align=NE);
+        draw(pathstart--pathend, p=smalldashes+deepblue);
+        dot(pathend, deepblue, L=" the ball", align=NE);
 
-    // where does the ball's path hit the x axis?
-    real deltay = pathend.y-pathstart.y;
-    real deltax = pathend.x-pathstart.x;
-    real s = deltay/deltax;
+        // where does the ball's path hit the x axis?
+        real deltay = pathend.y-pathstart.y;
+        real deltax = pathend.x-pathstart.x;
+        real s = deltay/deltax;
 
-    // y-y_0 = s*(x-x_0)      || x axis is the line y=0
-    // 0-y_0 = s*(x-x_0)
-    // x-x_0 = (0-y_0)/s = -y_0/s
-    // x = x_0 - y_0/s
-    real x = pathstart.x - pathstart.y/s;
-    real t = atan2(deltay, deltax);
+        // y-y_0 = s*(x-x_0)      || x axis is the line y=0
+        // 0-y_0 = s*(x-x_0)
+        // x-x_0 = (0-y_0)/s = -y_0/s
+        // x = x_0 - y_0/s
+        real x = pathstart.x - pathstart.y/s;
+        real t = atan2(deltay, deltax);
 
-    draw(arc((x,0), 0.4, 0, degrees(t)), L="$\frac \tau 6$", align=E);
+        draw(arc((x,0), 0.4, 0, degrees(t)), L="$\frac \tau 6$", align=E);
 
 Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
@@ -384,8 +382,8 @@ canvasdemo:
 
 ## Trig with a Triangle
 
-**Problem:** The ball moves 10 pixels down and 20 pixels right. What
-angle is that?
+graybox: Problem
+    The ball moves 10 pixels down and 20 pixels right. What angle is that?
 
 Here's another way to define $\sin$ and $\cos$, and another function called
 $\tan$ that we haven't used before.
@@ -428,10 +426,10 @@ signs of $a$ and $b$ and does the right thing if they're negative (the ball is
 moving to e.g. top left). It also works if ``a`` is 0 and ``b/a`` would fail as
 division by zero is undefined.
 
-**Note:**
-Usually people like to put $x$ before $y$ in different kinds of places, but
-``atan2`` is used like ``atan2(y_change, x_change)``, **not** like
-``atan2(x_change, y_change)``.
+note:
+    Usually people like to put $x$ before $y$ in different kinds of places,
+    but ``atan2`` is used like ``atan2(y_change, x_change)``, **not** like
+    ``atan2(x_change, y_change)``.
 
 Finally, it's time to calculate our stuff:
 
@@ -442,8 +440,10 @@ code: python3
 
 ## Pythagorean Theorem
 
-**Problem:** The ball moves 10 pixels down and 20 pixels right, just like in
-the previous problem. How many pixels is that in total, measured diagonally?
+graybox: Problem
+    The ball moves 10 pixels down and 20 pixels right, just like in
+    the previous problem. How many pixels is that in total, measured
+    diagonally?
 
 asymptote: float:right;
     size(6cm);

@@ -183,10 +183,9 @@ and turns out that $\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}$. It makes sense
 because derivatives are just like slopes but they also work with curvy things,
 and there's no difference between a slope and a derivative of a straight line.
 
-comment: TODO: better notes
-
-**Note:** The derivative $\frac{dy}{dx}$ can be also written as $\frac{d}{dx} y$,
-although it doesn't make much sense because $dy$ doesn't mean $d$ times $y$.
+graybox: Note
+    The derivative $\frac{dy}{dx}$ can be also written as $\frac{d}{dx} y$,
+    although it doesn't make much sense because $dy$ doesn't mean $d$ times $y$.
 
 Another common style is to put a single quote after a function name, like
 $f'(x) = \frac{d}{dx} f(x)$.

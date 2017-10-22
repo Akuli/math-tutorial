@@ -1,16 +1,17 @@
 # Integrals
 
-**Warning:**
-This chapter assumes that you have a good grasp of derivatives, including
-the ability to recognize that $\frac{dy}{dx}$ is a derivative whenever you
-see it. I highly recommend reading [the derivative tutorial](derivatives.html)
-first.
+comment: FIXHTMLTHINGY: this box kind of sucks :(
+
+redbox: Warning
+    This chapter assumes that you have a good grasp of derivatives, including
+    the ability to recognize that $\frac{dy}{dx}$ is a derivative whenever you
+    see it. I highly recommend reading [the derivative tutorial](derivatives.html)
+    first.
 
 There are many practical ways to use derivatives like the game at the end of
 the derivative chapter demonstrates. You probably won't find as many practical
 uses for this chapter as other derivative stuff, but you may find the math
 itself just amazing.
-
 
 ## The Problem
 
@@ -404,8 +405,9 @@ $c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.
 
 ## Example: Circle Area
 
-**Note:** This section assumes that you know what $\tau$ and radians are.
-[Click here](geometry-and-trig.html#radians-and-tau) if you don't.
+graybox: Note
+    This section assumes that you know what $\tau$ and radians are.
+    [Click here](geometry-and-trig.html#radians-and-tau) if you don't.
 
 At some kind of school you may have learned that the area of a circle is
 $\pi r^2$ where $\pi = \frac{\tau}{2} \approx 3.14$ and $r$ is the radius of
@@ -482,17 +484,16 @@ how much the area increases.
 
 ## Going 3D
 
-**Problem:** If the VLC Media Player cone is 200 pixels high, its radius is 50
-pixels and it's 3-dimensional, how many pixels fit inside the cone?
+graybox: Problem
+    If the VLC Media Player cone is 200 pixels high, its radius is 50
+    pixels and it's 3-dimensional, how many pixels fit inside the cone?
 
-comment: TODO: scale the image to 35%
+    image: images/vlc.png
+        width: 35%;
+        height: 35%;
 
-image: images/vlc.png
-    width: 35%;
-    height: 35%;
-
-<small>The image comes from [this wikimedia
-page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
+    <small>The image comes from [this wikimedia
+    page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
 asymptote3d: float:right;
    size(11cm);
