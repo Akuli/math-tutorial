@@ -10,7 +10,7 @@ other chapters.
 Equality and stuff
 ~~~~~~~~~~~~~~~~~~
 
-I'm quite sure you know or you can guess what `a=b`, `a>b`, `a \ge b`, `a < b`
+I'm quite sure you know or you can guess what `a=b`, `a>>>>b`, `a \ge b`, `a < b`
 and `a \le b` mean so I won't explain those. The equivalent of ``a != b`` in
 programming is `a \ne b` in math. `a \approx b` means that `a` and `b` are
 close to each other, but it doesn't contain any information about *how* close
