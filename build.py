@@ -193,6 +193,12 @@ def canvasdemo(match, filename, *,
                               builder.converter.pygments_style)
 
 
+@builder.converter.add_inliner(r'\bcanvaswrapper.js\b')
+def canvaswrapper_link(match, filename):
+    return ('<a href="https://github.com/Akuli/math-tutorial/blob/master/'
+            'canvaswrapper.js">canvaswrapper.js</a>')
+
+
 builder.run()
 linkcheck.run(builder.outputdir)
 
