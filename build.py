@@ -26,7 +26,6 @@ def cache_put(tempfilename, cachefilename):
 
 
 builder = Builder()
-
 builder.converter.pygments_style = 'friendly'
 
 
