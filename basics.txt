@@ -4,6 +4,15 @@ This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just keep the basics page open while you read
 other chapters.
 
+## Variable Names
+
+Mathematicians use single-letter variable names because math was
+originally written on paper by hand and writing long things by hand
+sucks. There are a few exceptions though; for example, $\sin$ and $\cos$
+are functions with 3-letter names. If they would be called $s$ and $c$
+instead it would be confusing to have a variable named $s$ or $c$, so
+they are written a bit more verbosely.
+
 ## Equality and stuff
 
 I'm quite sure you know or you can guess what $a=b$, $a>b$, $a \ge b$, $a < b$
@@ -193,10 +202,6 @@ code: python3
 Quick note about ``f(x)`` versus ``f x``: if you define your own function
 called $f$ or $g$ you should use $f(x)$, but you can do e.g. $\sin x$ or
 $\cos x$ with some "special" functions for historical reasons.
-
-Also note that mathematicians prefer single-letter variable names because math
-was originally written on paper, and writing long things by hand sucks. Again,
-this doesn't apply to the "special" functions.
 
 
 ## Equations
