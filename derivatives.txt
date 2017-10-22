@@ -185,8 +185,8 @@ graybox: Note
     The derivative $\frac{dy}{dx}$ can be also written as $\frac{d}{dx} y$,
     although it doesn't make much sense because $dy$ doesn't mean $d$ times $y$.
 
-Another common style is to put a single quote after a function name, like
-$f'(x) = \frac{d}{dx} f(x)$.
+    Another common style is to put a single quote after a function name, like
+    $f'(x) = \frac{d}{dx} f(x)$.
 
 
 ## Faster!
