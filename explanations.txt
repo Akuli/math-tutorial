@@ -43,6 +43,16 @@ asymptote:
     draw(C--B2, L="$a$");
     draw(B--A2, L="$a$");
 
+floatingbox: Handy thing: $(a+b)^2=a^2+2ab+b^2$
+   Proof:
+
+   math:
+      & \ (a+b)^2 \\
+      =&\ (a+b)(a+b) \\
+      =&\ (a+b)a+(a+b)b \\
+      =&\ aa+ba+ab+bb \\
+      =&\ a^2+2ab+b^2
+
 We can calculate the total area of the above square in a couple different ways:
 
 comment: fix the list thing
@@ -51,18 +61,6 @@ comment: fix the list thing
 * The square consists of the green square whose area is $c^2$ and 4 yellow
   triangles with area $\frac{ab}{2}$ each. Total area is
   $c^2 + 4 \frac{ab}{2}$.
-
-comment: fix the sidebar thing
-    .. sidebar:: Handy thing: $(a+b)^2=a^2+2ab+b^2$
-
-       Proof:
-
-       math:
-          & \ (a+b)^2 \\
-          =&\ (a+b)(a+b) \\
-          =&\ (a+b)a+(a+b)b \\
-          =&\ aa+ba+ab+bb \\
-          =&\ a^2+2ab+b^2
 
 We must get the same area with both ways, so we get this
 [equation](basics.html#equations):
@@ -101,16 +99,16 @@ we defined $\sin$ and $\cos$ with a unit circle, but then in
 we defined them with a triangle. If we apply the triangle stuff to the
 angle $t$ of the picture at right, we get this:
 
-asymptote: float:right;
-    size(5cm);
-    abctriangle(3,2,lightblue);
-    real t = atan2(2,3);
-    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
-
 math:
     \sin t &= \frac{\sin t}{1} \\
     \cos t &= \frac{\cos t}{1} \\
     \tan t &= \frac{\sin t}{\cos t}
+
+asymptote: float:left; margin-right:15px;
+    size(5cm);
+    abctriangle(3,2,lightblue);
+    real t = atan2(2,3);
+    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 The first two formulas are obviously true with any $t$, but the last one is a
 bit more interesting. We found another way to define $\tan$, and it
@@ -417,18 +415,16 @@ indent:
     that the rule isn't limited to positive integers, but that's beyond the
     scope of this tutorial.
 
-comment:
-    .. sidebar:: Handy thing: $(a-b)(a+b)=a^2-b^2$
+floatingbox: Handy thing: $(a-b)(a+b)=a^2-b^2$
+    Proof:
 
-       Proof:
+    math:
+      & \ (a-b)(a+b) \\
+      =&\ (a-b)a+(a-b)b \\
+      =&\ aa-ba+ab-bb \\
+      =&\ a^2 - b^2
 
-       math:
-          & \ (a-b)(a+b) \\
-          =&\ (a-b)a+(a-b)b \\
-          =&\ aa-ba+ab-bb \\
-          =&\ a^2 - b^2
-
-       In this case we need to plug in $a=\sqrt{x+h}$ and $b=\sqrt x$.
+    In this case we need to plug in $a=\sqrt{x+h}$ and $b=\sqrt x$.
 
 ### $\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}$
 
