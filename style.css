@@ -79,3 +79,7 @@ p, li {
 code {
     font-size: 0.9em;
 }
+
+.indent {
+    margin-left: 2em;
+}
