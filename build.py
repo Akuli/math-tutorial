@@ -195,3 +195,6 @@ def canvasdemo(match, filename, *,
 
 builder.run()
 linkcheck.run(builder.outputdir)
+
+# tell github pages to do the right thing
+open(os.path.join(builder.outputdir, '.nojekyll'), 'x').close()

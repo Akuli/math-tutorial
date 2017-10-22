@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Commit the _build directory to the gh-pages branch.
+"""Commit the html directory to the gh-pages branch and push.
 
 This script is crazy. Use it if you dare!
 """
@@ -61,9 +61,9 @@ def main():
     run(sys.executable, 'build.py')
 
     with tempfile.TemporaryDirectory() as tmpdir:
-        info("copying _build to a temporary directory")
-        tmpdir = os.path.join(tmpdir, '_build')
-        shutil.copytree('_build', tmpdir)
+        info("copying html/ to a temporary directory")
+        tmpdir = os.path.join(tmpdir, 'html')
+        shutil.copytree('html', tmpdir)
 
         with git_stash():
             with switch_branch('gh-pages'):
