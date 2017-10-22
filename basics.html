@@ -1,290 +1,142 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>The Basics</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Geometry and Trigonometry" href="geometry-and-trig.html" />
-    <link rel="prev" title="Math for Programmers" href="index.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="the-basics">
-<span id="basics"></span><h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial assumes that you know most of these things. If you don’t, that’s
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>The Basics</title>
+</head>
+<body>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="content">
+<h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just keep the basics page open while you read
 other chapters.</p>
-<div class="section" id="equality-and-stuff">
-<h2>Equality and stuff<a class="headerlink" href="#equality-and-stuff" title="Permalink to this headline">¶</a></h2>
-<p>I’m quite sure you know or you can guess what <img class="math" src="_images/math/361368edfb979b0fea138b74c7f87da34b92b310.png" alt="a=b"/>, <img class="math" src="_images/math/5c082882c7ae0f3e087db4ef9e1d78bb235cb24e.png" alt="a&gt;&gt;&gt;&gt;b"/>, <img class="math" src="_images/math/dc36094a2373d9170ef12cf087beccd7b2408d77.png" alt="a \ge b"/>, <img class="math" src="_images/math/885207eead57b058d4af891cb502086d69f6a5c7.png" alt="a &lt; b"/>
-and <img class="math" src="_images/math/1ea1576c9dadebf3f20973354205c998396a565a.png" alt="a \le b"/> mean so I won’t explain those. The equivalent of <code class="docutils literal"><span class="pre">a</span> <span class="pre">!=</span> <span class="pre">b</span></code> in
-programming is <img class="math" src="_images/math/66346e0920331a588ae289b564bb95f7426c19fc.png" alt="a \ne b"/> in math. <img class="math" src="_images/math/85a7cc028c00504d67468e3e4f20a6e9cd60f526.png" alt="a \approx b"/> means that <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> are
-close to each other, but it doesn’t contain any information about <em>how</em> close
-to each other the values are.</p>
-</div>
-<div class="section" id="id1">
-<h2>+, -<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>Be careful when you have a minus in front of parentheses, e.g. <img class="math" src="_images/math/f2c8977a34c622098d8bbb75dafaeb90ea316375.png" alt="-(1+2)=-1-2"/>.</p>
-<p>If we have something like <img class="math" src="_images/math/3a84f8f618da5da20e81ee5ccee6558566905c14.png" alt="a+b+c-b"/> we know that’s just <img class="math" src="_images/math/e8bde3ba9126bff08a0ba138b10d6981a8118f81.png" alt="a+c"/> because we’re
-adding <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and then we’re taking it away. Later you’ll notice that we end up
-with this <img class="math" src="_images/math/c361ce70dd2cb2b284e3aa551c217cff2a68b74e.png" alt="x+y-x"/> pattern surprisingly often and things become nice and simple.</p>
+
+<h2 id="equality-and-stuff">Equality and stuff<a class="headerlink" href="#equality-and-stuff" title="Link to this title">¶</a></h2><p>I'm quite sure you know or you can guess what <img class="inlinemath" src="math/7acaac15494e6820b1ed6d8b539af089.png" />, <img class="inlinemath" src="math/46fa7900cc397f3a4b3fa2e72d6885e7.png" />, <img class="inlinemath" src="math/a208c01e821b96c0c957f485907a65b4.png" />, <img class="inlinemath" src="math/9c2309929b5d4e6d89e1f48e3e3d6ebb.png" />
+and <img class="inlinemath" src="math/e8869c3e050e35d3bdbfdd1777e96ea2.png" /> mean so I won't explain those. The equivalent of <code>a != b</code> in
+programming is <img class="inlinemath" src="math/c4e9ca5c895faa198b7e85a0c8e31977.png" /> in math. <img class="inlinemath" src="math/2b00c8a16ba0ed0722fb01e756ee6e8e.png" /> means that <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> are
+close to each other, but it doesn't contain any information about <i>how</i> close
+to each other the values are.
+</p>
+
+<h2 id="2b2c202d">+, -<a class="headerlink" href="#2b2c202d" title="Link to this title">¶</a></h2><p>Be careful when you have a minus in front of parentheses, e.g. <img class="inlinemath" src="math/54ec6fed6ac9d5f20cfb97730d6f4c7a.png" />.</p>
+
+<p>If we have something like <img class="inlinemath" src="math/63a7b1de3d8cb9e289245e67118c436a.png" /> we know that's just <img class="inlinemath" src="math/b778743b8bfe44752a09fad05f764d3b.png" /> because we're
+adding <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and then we're taking it away. Later you'll notice that we end up
+with this <img class="inlinemath" src="math/bf27244f980abbc7fd9d124226681df6.png" /> pattern surprisingly often and things become nice and simple.</p>
+
 <p>In general, you can move things around like this:</p>
-<div class="math">
-<p><img src="_images/math/a4a613667ddbb32826897ed157a4717517a8fca3.png" alt="a+b-c = a-c+b = -c+a+b = ..."/></p>
-</div><p>You get the idea: we can put <img class="math" src="_images/math/51dec11b5d607a82574487497ae69af2c2fea113.png" alt="+a"/>, <img class="math" src="_images/math/4c58d805867829ba220173eb52dd8cb6f2fa514a.png" alt="+b"/> and <img class="math" src="_images/math/ea9726e5c95cd69ea35df4f4792adfdaab865718.png" alt="-c"/> to any order we want, and for
-convenience, we usually write e.g. <img class="math" src="_images/math/816f131d424a7f386abfe78c32f078b878613044.png" alt="a+b"/> instead of <img class="math" src="_images/math/a1391330917c4b8e1e4eef72aec4b86d27f4960a.png" alt="+a+b"/>.</p>
-</div>
-<div class="section" id="id2">
-<h2>*, /<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>In this tutorial, <code class="docutils literal"><span class="pre">a/b</span></code> is written as <img class="math" src="_images/math/50142d8726ee0493b65e7046f97cd2c32ba2e583.png" alt="a/b"/> or <img class="math" src="_images/math/3a437c5f2e7110e024dd0ff40939bf1322d42e40.png" alt="\frac a b"/>, and <code class="docutils literal"><span class="pre">a*b</span></code> is
-written as <img class="math" src="_images/math/9d9ad179e4d24e332b8e8834df2e2532f246b1fb.png" alt="a \cdot b"/> or simply <img class="math" src="_images/math/656ae3ea203842a615a5ac88da20ba695fd77966.png" alt="ab"/>.</p>
+
+<p><img src="math/f99cda00c59543f3cf5efadc68f65531.png" class="blockmath" /></p><p>You get the idea: we can put <img class="inlinemath" src="math/02fbb41700ff02150dc744e1b2961c6e.png" />, <img class="inlinemath" src="math/666dcad127eee73f2ebda991b010392d.png" /> and <img class="inlinemath" src="math/21d45631e3f4d3499ba78b73deaad0f1.png" /> to any order we want, and for
+convenience, we usually write e.g. <img class="inlinemath" src="math/65c884f742c8591808a121a828bc09f8.png" /> instead of <img class="inlinemath" src="math/0c7636d13b304de071910810683a37a4.png" />.
+</p>
+
+<h2 id="2a2c202f">*, /<a class="headerlink" href="#2a2c202f" title="Link to this title">¶</a></h2><p>In this tutorial, <code>a/b</code> is written as <img class="inlinemath" src="math/a7e86136543b019d72468ceebf71fb8e.png" /> or <img class="inlinemath" src="math/bf97403b855d7684b583323d15579b8b.png" />, and <code>a*b</code> is
+written as <img class="inlinemath" src="math/11e60ba50ad18c52fd95e243667a62cd.png" /> or simply <img class="inlinemath" src="math/187ef4436122d1cc2f40dc2b92f0eba0.png" />.</p>
+
 <p>Some handy stuff:</p>
-<div class="math">
-<p><img src="_images/math/90189129a6fd0ffd53c1e39647a02af1495d5180.png" alt="0a = 0"/></p>
-</div><div class="math">
-<p><img src="_images/math/26fdd71b880676ea798ac7bc45f3e401c3fe4786.png" alt="1a = a"/></p>
-</div><div class="math">
-<p><img src="_images/math/28f5e1f9bc77f1d0c4026b5156f2e42468a7e643.png" alt="\frac{a}{1} = a"/></p>
-</div><div class="math">
-<p><img src="_images/math/f23acdaae30a1ce70bf12e2ec51107a557dab407.png" alt="ab = ba"/></p>
-</div><div class="math">
-<p><img src="_images/math/e4ed34f36cbe6c798956ad5a8314b8df39a142af.png" alt="(a+b)c = ac+bc"/></p>
-</div><div class="math">
-<p><img src="_images/math/13025f4cd3439bbe32a56d9f15bdbb711b4ca406.png" alt="(a-b)c = ac-bc"/></p>
-</div><div class="math">
-<p><img src="_images/math/a71768c813a5192bf9cf1dc5ce2e3f228279b5b1.png" alt="\frac{a+b}{c} = \frac a c + \frac b c"/></p>
-</div><div class="math">
-<p><img src="_images/math/8b5f49001944a1cb4a0f0b3a09b25da0a3cd6665.png" alt="\frac{a-b}{c} = \frac a c - \frac b c"/></p>
-</div><div class="math">
-<p><img src="_images/math/ca6f19881af2e9cf11b85c442111d09543b6bc96.png" alt="\frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}"/></p>
-</div><p>You can use these rules left-to-right or right-to-left. For example, if you
-want to calculate <img class="math" src="_images/math/1ece37cbebce2d2e99e8c1f20d28467e2fc9d194.png" alt="(1 + 2) \cdot 3"/> you know you could also do
-<img class="math" src="_images/math/c39c4646afc6ffca4bec81809b1b97b6672e608e.png" alt="1 \cdot 3 + 2 \cdot 3"/>, but you can also calculate <img class="math" src="_images/math/c39c4646afc6ffca4bec81809b1b97b6672e608e.png" alt="1 \cdot 3 + 2 \cdot 3"/>
-like <img class="math" src="_images/math/1ece37cbebce2d2e99e8c1f20d28467e2fc9d194.png" alt="(1 + 2) \cdot 3"/>.</p>
-<p>Note that there is <strong>no</strong> <img class="math" src="_images/math/09a39ace0aa5c31607ba507754071bf97b1b8763.png" alt="\displaystyle\frac{a}{b+c}=\frac a b + \frac a c"/>
-rule; that doesn’t work. This also applies to <img class="math" src="_images/math/5ab6de06d698f8118ddf7d3098b4efea085caae4.png" alt="\displaystyle\frac{a}{b-c}"/>.</p>
-<p>It’s often best to look at which numbers are below a division line and which
-aren’t. For example, if we have <img class="math" src="_images/math/20d93e0e6dded37f0e1bd72ecb1c0b4c1a5dd611.png" alt="\frac 1 2 \cdot 3 \cdot \frac 4 5"/> we know
-that’s <img class="math" src="_images/math/51451d238a31db8f590fd6d8febbb4a4105abfd1.png" alt="\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}"/> because 2 and 5 were below the
-lines but other numbers weren’t.</p>
+
+<p><img src="math/61f98d27b5597a838438921439b0b98b.png" class="blockmath" /></p><p><img src="math/285ce66638de3b21c908e56bed67ec95.png" class="blockmath" /></p><p><img src="math/d101ca0b1ce06453ac64b7edbfed8226.png" class="blockmath" /></p><p><img src="math/a8d7eb99e39d536c35af89b0d570bd10.png" class="blockmath" /></p><p><img src="math/425224ee7a9ffcbc4fc31e83f76c5245.png" class="blockmath" /></p><p><img src="math/0f831a39e8adbe989331b98382cb7785.png" class="blockmath" /></p><p><img src="math/41cd52860f845a095f23f2c494672092.png" class="blockmath" /></p><p><img src="math/2d3902782bd5dca6bb8805c53a0ded8a.png" class="blockmath" /></p><p><img src="math/249232b623af047ac4b0c209d37cd08a.png" class="blockmath" /></p><p>You can use these rules left-to-right or right-to-left. For example, if you
+want to calculate <img class="inlinemath" src="math/816633ee8fc008cd1f86faf4b973d7f3.png" /> you know you could also do
+<img class="inlinemath" src="math/cc3564e29d2aea0118c72bdef676909a.png" />, but you can also calculate <img class="inlinemath" src="math/cc3564e29d2aea0118c72bdef676909a.png" />
+like <img class="inlinemath" src="math/816633ee8fc008cd1f86faf4b973d7f3.png" />.</p>
+
+<p>Note that there is <b>no</b> <img class="inlinemath" src="math/880e15c5a89cda843fea32b3f13cbb86.png" />
+rule; that doesn't work. This also applies to <img class="inlinemath" src="math/dafcf3c320592498f40f6bcdd2595f6b.png" />.</p>
+
+<p>It's often best to look at which numbers are below a division line and which
+aren't. For example, if we have <img class="inlinemath" src="math/76a891008992029007e369c72ca9b287.png" /> we know
+that's <img class="inlinemath" src="math/6c538dd28047d1088b9357cce3a12f00.png" /> because 2 and 5 were below the
+lines but other numbers weren't.</p>
+
 <p>If both the top and bottom are being multiplied by something you can get rid of
 that multiplier. For example:</p>
-<div class="math">
-<p><img src="_images/math/c8b43f22dfcddba97e87b0c821c693c80781eabc.png" alt="\frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0"/></p>
-</div><p id="zerodivision">Remember that you cannot divide anything by zero. See
-<a class="reference external" href="https://youtu.be/BRRolKTlF6Q">Numberphile’s awesome zero video</a> if you’re
-wondering why.</p>
+
+<p><img src="math/8dcf7f14b862e3cd8cc42b0bc248f8c6.png" class="blockmath" /></p><p id="zerodivision">Remember that you cannot divide anything by zero. See
+<a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome zero video</a> if you're
+wondering why.
+</p>
+
 <p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
--‘s cancel out.</p>
-<div class="math">
-<p><img src="_images/math/1a0f9489d50268248d3389b0775f3417e997cf02.png" alt="2 \cdot (-2) = -(2 \cdot 2) = -4"/></p>
-</div><div class="math">
-<p><img src="_images/math/90e1c747e6d027f3dadf842f5a4469dbae984f70.png" alt="(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4"/></p>
-</div><div class="math">
-<p><img src="_images/math/d6ba5b8a6e0cc30a38f9912c4d2c9f3aa17898e4.png" alt="\frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4"/></p>
-</div></div>
-<div class="section" id="absolute-value">
-<span id="abs"></span><h2>Absolute Value<a class="headerlink" href="#absolute-value" title="Permalink to this headline">¶</a></h2>
-<p>The absolute value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> is <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> in math and something like <code class="docutils literal"><span class="pre">abs(x)</span></code> or
-<code class="docutils literal"><span class="pre">Math.abs(x)</span></code> in most programming languages. It’s easiest to think of the
-absolute value as stripping off the minus sign. For example, <img class="math" src="_images/math/06650e682155af5081b8944d79a10396091f2aed.png" alt="|2| = 2"/> and
-<img class="math" src="_images/math/65b62abb642fc821fae6f6ca1f030fcdf7a58079.png" alt="|-3| = 3"/>.</p>
-</div>
-<div class="section" id="powers-and-square-root">
-<h2>Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Permalink to this headline">¶</a></h2>
-<p><img class="math" src="_images/math/584ebd2bfa785749228dad4f14d88b3a377afce6.png" alt="x^y"/> is <code class="docutils literal"><span class="pre">x**y</span></code> or <code class="docutils literal"><span class="pre">pow(x,</span> <span class="pre">y)</span></code> and <img class="math" src="_images/math/a149eafec13abde27505a4576b87cf0018164bc4.png" alt="\sqrt x"/> is <code class="docutils literal"><span class="pre">sqrt(x)</span></code> in most
+-'s cancel out.
+</p>
+
+<p><img src="math/1844f27396e816248d8faa20adbc0eec.png" class="blockmath" /></p><p><img src="math/094399c62f0abd0a4faa2a96a973e88b.png" class="blockmath" /></p><p><img src="math/6ee19c637b52d9382ff5e63d5a8d8676.png" class="blockmath" /></p><h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/cf513decf6e4ace0e25cb1c932aaa049.png" /> in math and something like <code>abs(x)</code> or
+<code>Math.abs(x)</code> in most programming languages. It's easiest to think of the
+absolute value as stripping off the minus sign. For example, <img class="inlinemath" src="math/919ef6e1608321ba933d0b99c539c3b3.png" /> and
+<img class="inlinemath" src="math/11db9d9dbca83c8614eaacc9bb5c2b60.png" />.
+</p>
+
+<h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p><img class="inlinemath" src="math/67d8bd969cb2cf1b378f5e534a19d936.png" /> is <code>x**y</code> or <code>pow(x, y)</code> and <img class="inlinemath" src="math/f108a3d88b22ff91ddbd459b0f359bc9.png" /> is <code>sqrt(x)</code> in most
 programming languages.</p>
-<div class="math">
-<p><img src="_images/math/9f62f31022897143ec879d9b305723cae0fe089d.png" alt="x^5=x\cdot x\cdot x\cdot x\cdot x"/></p>
-</div><div class="math">
-<p><img src="_images/math/ee348abee33d67d772a3f4faa4d14f6f22728851.png" alt="x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot
-          \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}
-        = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}
-        = (xy)^a"/></p>
-</div><div class="math">
-<p><img src="_images/math/cda08ddc858785096fbe994a26bd88e484196bae.png" alt="\frac{x^a}{y^a}
-   = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }
-          {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }
-   = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{
-         a\text{ pcs}}
-   = \left( \frac x y \right)^a"/></p>
-</div><div class="math">
-<p><img src="_images/math/9239e39692846246a9ae0d95446bd6f8905a8066.png" alt="x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}
-         = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot
-           \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}
-         = x^a x^b"/></p>
-</div><div class="math">
-<p><img src="_images/math/c32a03a2f3ad2d6a07e4e47135fe76d2de8dccaf.png" alt="(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}
-           \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}
-        = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
-        = x^{ab}"/></p>
-</div><div class="math">
-<p><img src="_images/math/10ce93dfcf1e5e8b3e2b25ebe96a4998410b369e.png" alt="x^0 = 1"/></p>
-</div><div class="math">
-<p><img src="_images/math/64c3764e0883ae06137fd8491b3038c63d701c8f.png" alt="\sqrt x = x^\frac 1 2"/></p>
-</div><div class="math">
-<p><img src="_images/math/b8ead625a4743fc6d6a7513df41e5f95964ce34f.png" alt="\sqrt a \sqrt b = \sqrt{ab}"/></p>
-</div><div class="math">
-<p><img src="_images/math/5df3131db817508f579bd1ff2ca916cdcd96dc87.png" alt="(\sqrt x\ )^2 = x"/></p>
-</div><div class="math">
-<p><img src="_images/math/0414c32f802b0de1d864768654c5ae3743720bc5.png" alt="\sqrt{x^2} = |x|"/></p>
-</div><p>If you’re wondering why anything to the power of 0 is 1, you can do e.g.
-<img class="math" src="_images/math/5f7365c69b497d40e3ad1a3ab26a6663f07a0fca.png" alt="x^2 = x^{0+2} = x^0 x^2"/>. The equation should be true with any <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, so
-<img class="math" src="_images/math/c19c691e28e60d4468e90b87a3782a3cd502dbef.png" alt="x^0"/> must be 1 because <img class="math" src="_images/math/a864ace89781c3495347b34869e3a7e9bd7897fa.png" alt="x^2 = 1 x^2"/>.</p>
-<p>It’s easiest to think of <img class="math" src="_images/math/a149eafec13abde27505a4576b87cf0018164bc4.png" alt="\sqrt x"/> as the non-negative number that is <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> when
-multiplied with itself. For example, 3 is not negative, so <img class="math" src="_images/math/abe3eae46bcf4a2149622634510657ad48c9e62b.png" alt="\sqrt 9 = 3"/>
-because <img class="math" src="_images/math/cac835ce269f8fde42d757a048a04e753871a523.png" alt="3 \cdot 3 = 9"/>. Similarly e.g. <img class="math" src="_images/math/40b3e95d7404e955461e02c4f8395763a07cf648.png" alt="\sqrt 4 = 2"/>, <img class="math" src="_images/math/e9aa2fb3cc018db42d4e148dfd03930ce327b0ec.png" alt="\sqrt 1 = 1"/> and
-<img class="math" src="_images/math/b6b382bd6b7a07d9b3c01fa6a29995142950f80f.png" alt="\sqrt 0 = 0"/>. No number produces a negative number when multiplied with
-itself, so you cannot do <img class="math" src="_images/math/2c2c9adf25ede95c30802610b5292c3f6ce0ab81.png" alt="\sqrt{-2}"/> (unless you use complex numbers, but they
+
+<p><img src="math/be7e97c232c7f992b83a9fe33d99ed28.png" class="blockmath" /></p><p><img src="math/33896ce276b284879365ecc1ee4380bd.png" class="blockmath" /></p><p><img src="math/ac27e6ca13429a20788c8e006b5d97a0.png" class="blockmath" /></p><p><img src="math/dc30afe361287f0f23a93cfc3b4a2fab.png" class="blockmath" /></p><p><img src="math/bbf2ce1b701764e58cae0002732f6ced.png" class="blockmath" /></p><p><img src="math/74a4cc3ac0d0cf162456b2030b5716b2.png" class="blockmath" /></p><p><img src="math/385eb266d2f0ba451e76e268f927a259.png" class="blockmath" /></p><p><img src="math/119191cd42296455ece9c2186dd0258e.png" class="blockmath" /></p><p><img src="math/10bf4410c560784a811ff4851c23126b.png" class="blockmath" /></p><p><img src="math/2fdf5c76c850f842c037db5f9d42bb20.png" class="blockmath" /></p><p>If you're wondering why anything to the power of 0 is 1, you can do e.g.
+<img class="inlinemath" src="math/648657089e80d9f0ba9bd957bc29087d.png" />. The equation should be true with any <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />, so
+<img class="inlinemath" src="math/d59ac533525f1eee0a1d79683a9c95d5.png" /> must be 1 because <img class="inlinemath" src="math/6c827138adf3db28142562b96522e656.png" />.</p>
+
+<p>It's easiest to think of <img class="inlinemath" src="math/f108a3d88b22ff91ddbd459b0f359bc9.png" /> as the non-negative number that is <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> when
+multiplied with itself. For example, 3 is not negative, so <img class="inlinemath" src="math/9f5655cb731d8f0585bc2771b3eef556.png" />
+because <img class="inlinemath" src="math/225ad5936b238db1af0b1566a0ea8e0b.png" />. Similarly e.g. <img class="inlinemath" src="math/dde4677cef1e77675189adc0149ea3d2.png" />, <img class="inlinemath" src="math/2edb60dc35d5c366a8a4a37dfac2e212.png" /> and
+<img class="inlinemath" src="math/b61f243213c0d28594253bcc19b07c48.png" />. No number produces a negative number when multiplied with
+itself, so you cannot do <img class="inlinemath" src="math/613e5c72cef5ccd9e97c24f1436d0ac3.png" /> (unless you use complex numbers, but they
 are beyond the scope of this tutorial).</p>
-<p>You’re probably wondering how the heck our <img class="math" src="_images/math/d170601e8e6fda89f51a9d97db9adf6ee4070443.png" alt="\sqrt{x^2}=|x|"/> rule works. This
+
+<p>You're probably wondering how the heck our <img class="inlinemath" src="math/959babe8407cdf233d2ae124dc0f8329.png" /> rule works. This
 example should explain everything:</p>
-<div class="math">
-<p><img src="_images/math/4de645845ae1b060a8862396a1e848a03bb6453c.png" alt="\sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqrt{3^2}"/></p>
-</div></div>
-<div class="section" id="functions">
-<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
-<p>Here’s a typical math function:</p>
-<div class="math">
-<p><img src="_images/math/57a1f00dc41339a86fa4adb6f4a7ef84728eee2e.png" alt="f(x) &amp;= 2x \\
-f(6) &amp;= 2 \cdot 6 = 12"/></p>
-</div><p>There is no special syntax for defining a function. All we have is the
+
+<p><img src="math/e95adbf1165da4fbab36678fa55df373.png" class="blockmath" /></p><h2 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this title">¶</a></h2><p>Here's a typical math function:</p>
+
+<p><img src="math/716b8859172a394fcd7e0f9d3d516fe9.png" class="blockmath" /></p><p>There is no special syntax for defining a function. All we have is the
 equal sign, and when defining a function we just say that its value at x is
 equal to something.</p>
-<p>If you’re familiar with a functional programming language like Haskell, then
-you’ll probably realize that the above math looks a lot like this Haskell
+
+<p>If you're familiar with a functional programming language like Haskell, then
+you'll probably realize that the above math looks a lot like this Haskell
 session:</p>
-<div class="highlight-haskell"><div class="highlight"><pre><span></span><span class="kt">Prelude</span><span class="o">&gt;</span> <span class="kr">let</span> <span class="n">f</span> <span class="n">x</span> <span class="ow">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
-<span class="kt">Prelude</span><span class="o">&gt;</span> <span class="n">f</span> <span class="mi">6</span>
-<span class="mi">12</span>
-<span class="kt">Prelude</span><span class="o">&gt;</span>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span> <span style="color: #007020; font-weight: bold">let</span> f x <span style="color: #007020; font-weight: bold">=</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span>x
+<span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span> f <span style="color: #40a070">6</span>
+<span style="color: #40a070">12</span>
+<span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span>
 </pre></div>
-</div>
-<p>If you’re feeling like WTF is this, here’s a Python session that should make
+<p>If you're feeling like WTF is this, here's a Python session that should make
 everything clear.</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
-<span class="go">12</span>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">f</span>(x):
+<span style="color: #c65d09; font-weight: bold">... </span>    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span>x
+<span style="color: #c65d09; font-weight: bold">...</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">6</span>)
+<span style="color: #888888">12</span>
 </pre></div>
-</div>
-<p>Quick note about <code class="docutils literal"><span class="pre">f(x)</span></code> versus <code class="docutils literal"><span class="pre">f</span> <span class="pre">x</span></code>: if you define your own function
-called <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> or <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> you should use <img class="math" src="_images/math/eda52292f6952f7e27fef52e7ce8393981770d2c.png" alt="f(x)"/>, but you can do e.g. <img class="math" src="_images/math/d04fadda1b97dfc957b6fa76684ea7ee244991bb.png" alt="\sin x"/> or
-<img class="math" src="_images/math/b8b83309c496ddeb74169904dd05eaa33f9887db.png" alt="\cos x"/> with some “special” functions for historical reasons.</p>
+<p>Quick note about <code>f(x)</code> versus <code>f x</code>: if you define your own function
+called <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> or <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> you should use <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" />, but you can do e.g. <img class="inlinemath" src="math/cdba58911c590ced3e2435dfa39f6873.png" /> or
+<img class="inlinemath" src="math/96eb9bf5314b593783ee57983efbed9d.png" /> with some "special" functions for historical reasons.</p>
+
 <p>Also note that mathematicians prefer single-letter variable names because math
 was originally written on paper, and writing long things by hand sucks. Again,
-this doesn’t apply to the “special” functions.</p>
-</div>
-<div class="section" id="solving-equations">
-<span id="equations"></span><h2>Solving Equations<a class="headerlink" href="#solving-equations" title="Permalink to this headline">¶</a></h2>
-<p>For example, if you know that <img class="math" src="_images/math/f76aad82b3680b6035af8a55eab335516975baa3.png" alt="2x+1 = 9"/> you can find <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> like this:</p>
-<div class="math">
-<p><img src="_images/math/0f79d1acc8d4040dc67d4742cc26baf262793119.png" alt="2x+1 = 9"/></p>
-</div><div class="math">
-<p><img src="_images/math/020b3d5fec29e567392e7b7b8af6cf0b58ac5017.png" alt="2x = 8"/></p>
-</div><div class="math">
-<p><img src="_images/math/e20a659fb74039915630031e1846d0335d5a71ee.png" alt="x = 4"/></p>
-</div><p>The idea here is that if <img class="math" src="_images/math/257868d7200548aa542cbe8d0808495ecfacfc94.png" alt="2x+1=9"/> then <img class="math" src="_images/math/cae4ab3267ee2f9ec0b70f438dd1cb10cfc9297b.png" alt="(2x+1)-1=9-1"/>; that is, <img class="math" src="_images/math/b71d4e5066753b6fe7197f03c3e377ce9b4cc990.png" alt="2x=8"/>. So you
-can do pretty much anything to both sides of the <img class="math" src="_images/math/f83e0c11055f53d8b8d4d5968e1adb756869862c.png" alt="="/> and the equality will
+this doesn't apply to the "special" functions.
+</p>
+
+<h2 id="equations">Equations<a class="headerlink" href="#equations" title="Link to this title">¶</a></h2><p>For example, if you know that <img class="inlinemath" src="math/175feae6ed99c741026835f5c036d5a9.png" /> you can find <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> like this:</p>
+
+<p><img src="math/b1ce42e12f215c6c5f388ec17dcbe590.png" class="blockmath" /></p><p>The idea here is that if <img class="inlinemath" src="math/a5a26bfedee6b498ecfc7794197137d9.png" /> then <img class="inlinemath" src="math/800d606a1c5b18fab4f44df38e5929ae.png" />; that is, <img class="inlinemath" src="math/e1d072e3de30611949b31a21229cef6a.png" />. So you
+can do pretty much anything to both sides of the <img class="inlinemath" src="math/43ec3e5dee6e706af7766fffea512721.png" /> and the equality will
 still work. I started by substracting 1 from both sides and then I divided
 everything by 2.</p>
-<p>Normal limitations apply here; for example, if you have <img class="math" src="_images/math/f1ab44012cad8dc15b3eb56dd454bbf78d97c23f.png" alt="2x=3x"/> and you divide
-by <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> you get <img class="math" src="_images/math/2b3c3bc7c081fbef8ba77878b8ed89144f59b553.png" alt="2=3"/> and it seems like no <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> can satisfy the equation.
-However, you cannot divide by <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/> and turns out that <img class="math" src="_images/math/a098f6561c6f5328410f2b9133b9db7b9f08e663.png" alt="x=0"/> is a valid solution
-because <img class="math" src="_images/math/fa9dde96e13f76439344167e95bbcca1a1cb1366.png" alt="2 \cdot 0 = 0"/> and <img class="math" src="_images/math/d3f80a5374c6390a50c8aa765220cb9db1c019c1.png" alt="3 \cdot 0 = 0"/>.</p>
+
+<p>Normal limitations apply here; for example, if you have <img class="inlinemath" src="math/4eab02ab3fbcec0f02cc35bb15e61343.png" /> and you divide
+by <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> you get <img class="inlinemath" src="math/d8526ab50063e2025ef690f730cd5542.png" /> and it seems like no <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> can satisfy the equation.
+However, you cannot divide by <img class="inlinemath" src="math/cfcd208495d565ef66e7dff9f98764da.png" /> and turns out that <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> is a valid solution
+because <img class="inlinemath" src="math/df085cde42878bced5d0fc3c5eb55444.png" /> and <img class="inlinemath" src="math/f23013cb370a1ddedc99bbc8b96f5708.png" />.</p>
+
 <p>You can also apply most functions to both sides. For example, you can do this
-with <img class="math" src="_images/math/47a602d47b0c7a02304bef79c050849f30710cbf.png" alt="\sqrt{\ \ }"/>:</p>
-<div class="math">
-<p><img src="_images/math/130f6d6cd9c89a0a35cfc3c6503186741563191e.png" alt="x^2 = 4"/></p>
-</div><div class="math">
-<p><img src="_images/math/d753ff3bb0e4e755a9bf8290b0fc833d3affd083.png" alt="\sqrt{x^2} = \sqrt 4"/></p>
-</div><div class="math">
-<p><img src="_images/math/6c02783dbebf5bd0c3a818441b0b3a8ad95d5899.png" alt="|x| = 2"/></p>
-</div><div class="math">
-<p><img src="_images/math/2ff96435f2627378fe8e30462be2c18cb9ebb56a.png" alt="x = 2 \text{ or } x = -2"/></p>
-</div></div>
-<div class="section" id="see-also">
-<h2>See Also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
-<p>This chapter shows only the things you need in the rest of this tutorial, but
-<a class="reference external" href="http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf">this cheat sheet</a>
-is more complete.</p>
+with <img class="inlinemath" src="math/da175f00ddc2ba16792669e37fdd4b4b.png" />:</p>
+
+<p><img src="math/aaf9990ae27d5ffccd2744e6d6b00b27.png" class="blockmath" /></p><h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Link to this title">¶</a></h2><p>This chapter shows only the things you need in the rest of this tutorial, but
+<a href="http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf">this cheat sheet</a>
+is more complete.
+</p>
+
 </div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Basics</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="geometry-and-trig.html">Geometry and Trigonometry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrals.html">Integrals</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
-</ul>
-
-<br>
-
-<!-- abusing abbr was the first way to dot-underline stuff i found -->
-<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2017, Akuli.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/basics.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

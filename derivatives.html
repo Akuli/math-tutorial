@@ -1,252 +1,177 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Derivatives</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Integrals" href="integrals.html" />
-    <link rel="prev" title="Geometry and Trigonometry" href="geometry-and-trig.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="derivatives">
-<span id="id1"></span><h1>Derivatives<a class="headerlink" href="#derivatives" title="Permalink to this headline">¶</a></h1>
-<p>This chapter contains more not-so-practical math than the trig and geometry
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Derivatives</title>
+</head>
+<body>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="content">
+<h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>This chapter contains more not-so-practical math than the trig and geometry
 chapter, but you may find it surprisingly fun. However, the math is not useless
-gibberish isolated from real life and there’s a practical example with a fun
+gibberish isolated from real life and there's a practical example with a fun
 demonstration game at the end.</p>
-<div class="section" id="what-is-a-derivative">
-<h2>What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Permalink to this headline">¶</a></h2>
-<p>A <em>difference</em> means how much a value changes. For example, if the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>
-is first <img class="math" src="_images/math/01ba33ac52b972aa2cf4a5eba9e2411d8c72e1a3.png" alt="5"/> and then we change it to <img class="math" src="_images/math/84dbdbf879f217a1b808c52681a0f2e2b085ebf3.png" alt="6"/>, <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> changes by <img class="math" src="_images/math/2ad347e394c2bb0bab761a5ca631e42d7c52e139.png" alt="\Delta x = 1"/>. Here
-<img class="math" src="_images/math/4d26a3c646f81ab56cceb818c7801dd1f3cfaaf3.png" alt="\Delta"/> is the Greek delta letter, so if someone’s code has a variable named
-<code class="docutils literal"><span class="pre">deltax</span></code> it means this.</p>
-<p>Let’s draw a graph of something like <img class="math" src="_images/math/9e22a5b659e3f4da2d984512c3061a6f9eb2c22f.png" alt="y = 2x+1"/>:</p>
-<div class="i">
-<p><img src="_images/asymptote/55257dfd94da4c75ef3b65644c69b4f5.png"/></p></div><p>For example, at <img class="math" src="_images/math/db17ff73a1115194f86b62ffb9c159d911990270.png" alt="x=3"/> we know that <img class="math" src="_images/math/7f3298de8e7fefcb9daf5a16f4dc18a469137f0b.png" alt="y = 2x+1 = 2 \cdot 3 + 1 = 7"/>.</p>
-<p id="slope">Let’s calculate the <strong>slope</strong> of this line:</p>
-<div class="math">
-<p><img src="_images/math/55dbe75288f19d3e921e2930fc4365c3be05a64a.png" alt="\frac{\Delta y}{\Delta x} = \frac{6}{3} = 2"/></p>
-</div><p>The bigger the slope, the faster the line goes up, so the slope describes the
-“<strong>growing speed</strong>” or “<strong>changing speed</strong>”. I used the points <img class="math" src="_images/math/1b2d7f08274ff61fe540ead4aad1e73443934abc.png" alt="(1,0)"/> and
-<img class="math" src="_images/math/5b809407edc7fd2c3bee42378e5a94425b6e5149.png" alt="(3,7)"/> when calculating the slope, but you should get the same slope with any
+
+<h2 id="what-is-a-derivative">What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Link to this title">¶</a></h2><p>A <i>difference</i> means how much a value changes. For example, if the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />
+is first 5 and then we change it to 6, <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> changes by <img class="inlinemath" src="math/9e48412271eff0650ed355cbedce7457.png" />. Here
+<img class="inlinemath" src="math/967878d1da852d4b07a961e3168b0fff.png" /> is the Greek delta letter, so if someone's code has a variable named
+<code>deltax</code> it means this.</p>
+
+<p>Let's draw a graph of something like <img class="inlinemath" src="math/4a8fccb45ff2a0ad548464d92965d3b3.png" />:</p>
+
+<p><img src="asymptote/ad32fef189432e5b6695b49c230b0855.png" /></p><p>For example, at <img class="inlinemath" src="math/5870bb658ee9e8a6900c138365d64c80.png" /> we know that <img class="inlinemath" src="math/33a88fa3fde50b0440190113c0bbd932.png" />.</p>
+
+<p id="slope">Let's calculate the <b>slope</b> of this line:
+</p>
+
+<p><img src="math/5743a8dae628a8aa3cae179d5208a364.png" class="blockmath" /></p><p>The bigger the slope, the faster the line goes up, so the slope describes the
+"<b>growing speed</b>" or "<b>changing speed</b>". I used the points <img class="inlinemath" src="math/ec6014ffc3d92709aa6a4fea11bb3788.png" /> and
+<img class="inlinemath" src="math/711e7c26ecc6a8998409e882e5d51384.png" /> when calculating the slope, but you should get the same slope with any
 pair of points chosen from the line because the height grows at the same speed
 everywhere.</p>
-<p>The <strong>derivative</strong> <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> <strong>is also a “changing speed”</strong>, but <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/>
-instead of <img class="math" src="_images/math/4d26a3c646f81ab56cceb818c7801dd1f3cfaaf3.png" alt="\Delta"/> means that the changes we use for calculating derivatives
-are <em>infinitely</em> tiny. You might be worried about calculating the
-<img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> because if <img class="math" src="_images/math/075b9e3d331743ce6d4d35bf75f0fd2e3db90e61.png" alt="dx=0"/> then we’re dividing by zero, but <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is not
-zero; it’s just really, really small.</p>
-<p>If the graph is not a straight line, we get different <img class="math" src="_images/math/e51ba10724f3d8a22a11c015505eece772048615.png" alt="\frac{\Delta y}{\Delta x}"/>
-ratios depending on which points we choose for calculating <img class="math" src="_images/math/8aa1a4cf9bb5d0a602b7d66b617c71634700c91e.png" alt="\Delta y"/> and
-<img class="math" src="_images/math/05899b70d35eb61a85aaaba3affb9c7363f0d633.png" alt="\Delta x"/>. The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> is not the same number everywhere,
-but let’s try to figure out how to calculate it anyway.</p>
-<div class="i">
-<p><img src="_images/asymptote/a9d67f1f1ee463659d8fd8f3cf4169c8.png" class="align-right"/></p></div><p>Let’s look at <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> and <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> of the graph <img class="math" src="_images/math/4f4a8d7754b69178fbc85569f47f90b9989e9310.png" alt="y=f(x)"/>, where <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> can be any
-function that has a derivative. Most functions you’ll come across have a
-derivative; if you want to know more, <a class="reference internal" href="explanations.html#has-derivative"><span class="std std-ref">click here</span></a>.</p>
-<p>The image at right seems to say that <img class="math" src="_images/math/9eb8cf5e319cdc1ad69765f15dc29afef6e6eae8.png" alt="f(x) + dy = f(x+dx)"/>. Let’s try to solve
-<img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/>:</p>
-<div class="math">
-<p><img src="_images/math/15644034a64657e8407f6c84b22809ae91f6344a.png" alt="f(x) + dy &amp;= f(x+dx) \\
-dy &amp;= f(x+dx) - f(x) \\
-\frac{dy}{dx} &amp;= \frac{f(x+dx)-f(x)}{dx}"/></p>
-</div><p>Most mathematicians don’t like the above formula because <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> is a
-“small number” and it isn’t really clear how it behaves in different
-situations. Here’s a better definition:</p>
-<div class="math">
-<p><img src="_images/math/3e8b52ed47f7ced83b0873ffd08ef901f03196c3.png" alt="\frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}"/></p>
-</div><p>The <img class="math" src="_images/math/006e27027dd30b11226eefa4295d2415b066ce23.png" alt="\lim"/> thing means that we take the <strong>limit</strong> as <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> approaches 0. It’s
-essentially same as our <img class="math" src="_images/math/a0fba1111fb08ada16b5c455e227418c0aa07874.png" alt="dx"/> thing, but more explicit and better defined in
-some corner cases.</p>
-</div>
-<div class="section" id="first-example">
-<h2>First Example<a class="headerlink" href="#first-example" title="Permalink to this headline">¶</a></h2>
-<p>The graph <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> is curvy:</p>
-<div class="i">
-<p><img src="_images/asymptote/0d17758bc7becb883f48e1bffc1d7082.png"/></p></div><p>Let’s find the derivative of <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> by plugging in <img class="math" src="_images/math/867cba01b56e2302601d740f4d92a988eca999af.png" alt="y=f(x)=x^2"/> to the
-definition we ended up with. If we just try to evaluate it at <img class="math" src="_images/math/149ccbe5c545564e85bc7e1f6b90906e58b1e3e2.png" alt="h=0"/> we get
-<img class="math" src="_images/math/a4bc8eb91ce088e99d63c405b9efb744f717a669.png" alt="\frac 0 0"/> so you might think that we need to evaluate it at e.g.
-<img class="math" src="_images/math/d449b7fdd244422cebef58a3106da423c156cae9.png" alt="h=0.000001"/>, but we don’t! Have a look:</p>
-<div class="sidebar">
-<p class="first sidebar-title">Handy thing: <img class="math" src="_images/math/3af270c6cea8ad5a3274672e3c3881053bde1a1c.png" alt="(x+h)^2=x^2+2xh+h^2"/></p>
-<p>Proof:</p>
-<div class="last math">
-<p><img src="_images/math/9c70f8ba22f4fb53c3957199bad7addad60e8543.png" alt="&amp; \ (x+h)^2 \\
-=&amp;\ (x+h)(x+h) \\
-=&amp;\ (x+h)x+(x+h)h \\
-=&amp;\ xx+xh+hx+hh \\
-=&amp;\ x^2+2xh+h^2"/></p>
-</div></div>
-<div class="math">
-<p><img src="_images/math/f3b69f6a59804f49a591749724614ff9e590b3ea.png" alt="\frac{dy}{dx}  &amp;= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
-               &amp;= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{2xh + h^2}{h} \\
-               &amp;= \lim_{h\to0} \frac{(2x+h)h}{h} \\
-               &amp;= \lim_{h\to0} (2x+h) \\
-               &amp;= 2x"/></p>
-</div><div class="i">
-<p><img src="_images/asymptote/070e5a4aa12b6224e63597aeeb76b752.png" class="align-right"/></p></div><p>I think this is cool. We started with a complicated-looking thing but finally
-we arrived at just <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/>. What’s more, the <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> is not just a random value we
-got out of a spooky calculation; for example, at <img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> the derivative is
-<img class="math" src="_images/math/a2015b6d842a5111f7b8d9a871f42f7dfca8e09c.png" alt="2 \cdot 2 = 4"/>, so if we draw a straight line that barely touches <img class="math" src="_images/math/b02d64ee3c7c49219c28267a5ec59284c1afaf1c.png" alt="y=x^2"/> at
-<img class="math" src="_images/math/fd1020a6f3bf888d21eaedd655383a1a552dd948.png" alt="x=2"/> its slope will also be 4 like in the image at right.</p>
-<p>You can also find the derivative of the <img class="math" src="_images/math/219a3762183563eed4c619bcd6b6090104afcf27.png" alt="y=2x+1"/> example we looked at earlier,
-and turns out that <img class="math" src="_images/math/a9917289b7ef43fee7da1e311943f89855cd2cfa.png" alt="\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}"/>. It makes sense
+
+<p>The <b>derivative</b> <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> <b>is also a "changing speed"</b>, but <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" />
+instead of <img class="inlinemath" src="math/967878d1da852d4b07a961e3168b0fff.png" /> means that the changes we use for calculating derivatives
+are <i>infinitely</i> tiny. You might be worried about calculating the
+<img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> because if <img class="inlinemath" src="math/f80d7db2dcc93f2c6d9559bb373715c2.png" /> then we're dividing by zero, but <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is not
+zero; it's just really, really small.</p>
+
+<p>If the graph is not a straight line, we get different <img class="inlinemath" src="math/d87922a765f12f89c3c4acbaaf5e468c.png" />
+ratios depending on which points we choose for calculating <img class="inlinemath" src="math/7f5a0c1aa836580b7c14bcd90384f9c9.png" /> and
+<img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> is not the same number everywhere,
+but let's try to figure out how to calculate it anyway.</p>
+
+<img src="asymptote/67caa075ccae9a1b2eecb8f1fa8f2d86.png" style="float:right;" /><p>Let's look at <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> and <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> of the graph <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" />, where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> can be any
+function that has a derivative. Most functions you'll come across have a
+derivative; if you want to know more, <a href="explanations.html#which-functions-have-derivatives">click
+here</a>.</p>
+
+<p>The image at right seems to say that <img class="inlinemath" src="math/ea9c37cbce8a07d1c2b66b335f9ee046.png" />. Let's try to solve
+<img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" />:</p>
+
+<p><img src="math/8e8078dad52edd1920af0de16a17e390.png" class="blockmath" /></p><p>Most mathematicians don't like the above formula because <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is a
+"small number" and it isn't really clear how it behaves in different
+situations. Here's a better definition:</p>
+
+<p><img src="math/16e9125c53f45cf8799912372a4f991e.png" class="blockmath" /></p><p>The <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" /> thing means that we take the <b>limit</b> as <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> approaches 0. It's
+essentially same as our <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> thing, but more explicit and better defined in
+some corner cases.
+</p>
+
+<h2 id="first-example">First Example<a class="headerlink" href="#first-example" title="Link to this title">¶</a></h2><p>The graph <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> is curvy:</p>
+
+<p><img src="asymptote/29215f560407085177ee585fa9ef1b6e.png" /></p><p>Let's find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> by plugging in <img class="inlinemath" src="math/7f185b1869db0b3bcc5f8479a9bd558d.png" /> to the
+definition we ended up with. If we just try to evaluate it at <img class="inlinemath" src="math/2ba1b3acb05d4cc60dedf59890f964f6.png" /> we get
+<img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" /> so you might think that we need to evaluate it at e.g.
+<img class="inlinemath" src="math/f58d3c05a36f8dee4d96f8874be9f16e.png" />, but we don't! Have a look:</p>
+
+<p><img src="math/94c0024f50df59854ddb41cae5ef8b3b.png" class="blockmath" /></p><img src="asymptote/969f40feaa8e24a235fb8ade83c399a3.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
+we arrived at just <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" />. What's more, the <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" /> is not just a random value we
+got out of a spooky calculation; for example, at <img class="inlinemath" src="math/566162f3afaf9f5f67e7d7ca7a4b424e.png" /> the derivative is
+<img class="inlinemath" src="math/a516b4ec389fe440150f7c6412631ab8.png" />, so if we draw a straight line that barely touches <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> at
+<img class="inlinemath" src="math/566162f3afaf9f5f67e7d7ca7a4b424e.png" /> its slope will also be 4 like in the image at right.</p>
+
+<p>You can also find the derivative of the <img class="inlinemath" src="math/45046de61b285009b23590450000d87f.png" /> example we looked at earlier,
+and turns out that <img class="inlinemath" src="math/5666c048c3e6aeb894ef9de1e903de20.png" />. It makes sense
 because derivatives are just like slopes but they also work with curvy things,
-and there’s no difference between a slope and a derivative of a straight line.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>The derivative <img class="math" src="_images/math/f72f4e10a9b667e532983550e82a7362bcd86d1d.png" alt="\frac{dy}{dx}"/> can be also written as <img class="math" src="_images/math/7289590f3a727c0ad7e5fcd0115c76453dd53303.png" alt="\frac{d}{dx} y"/>,
-although it doesn’t make much sense because <img class="math" src="_images/math/c79c965e2ebd7b4cf0724beb64c8929aed7d635d.png" alt="dy"/> doesn’t mean <img class="math" src="_images/math/b9d10b54744d07746b97f53c55eb98046fd76c8c.png" alt="d"/> times <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/>.</p>
-<p class="last">Another common style is to put a single quote after a function name, like
-<img class="math" src="_images/math/39ac67b0fea88a7dafaa411a70fbb7fc45922ad0.png" alt="f'(x) = \frac{d}{dx} f(x)"/>.</p>
-</div>
-</div>
-<div class="section" id="faster">
-<span id="derivative-rules"></span><h2>Faster!<a class="headerlink" href="#faster" title="Permalink to this headline">¶</a></h2>
-<p>Finding the derivative was kind of complicated and really slow. These rules
+and there's no difference between a slope and a derivative of a straight line.</p>
+
+<p><b>Note:</b> The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> can be also written as <img class="inlinemath" src="math/7bdae2eac1d9ea96203e434aa509bbe9.png" />,
+although it doesn't make much sense because <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> doesn't mean <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" /> times <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />.</p>
+
+<p>Another common style is to put a single quote after a function name, like
+<img class="inlinemath" src="math/e3e396b27470ebc2f29600ab5e1b8d3e.png" />.
+</p>
+
+<h2 id="faster">Faster!<a class="headerlink" href="#faster" title="Link to this title">¶</a></h2><p>Finding the derivative was kind of complicated and really slow. These rules
 change everything. Most of these rules are
-<a class="reference internal" href="explanations.html#derivative-proofs"><span class="std std-ref">easy to prove</span></a> so there is no magic involved.</p>
-<p>I have listed many rules here, but <strong>don’t panic</strong>; there’s no need to memorize
-them. As before <img class="math" src="_images/math/875eb40014526135383caa89fd500ae40a835f56.png" alt="f"/> and <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> can be any functions as long as they have a
-derivative (e.g. <img class="math" src="_images/math/620d3592799463cd9e295c04f3f3e844d072bc74.png" alt="f(x)=\sqrt x - x"/> and <img class="math" src="_images/math/21c08c14d6858e50f35adbcb50d636bd06c771a2.png" alt="g(x)=1"/>), and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> can be any constant
-like <img class="math" src="_images/math/ac9730ec5507f699ecf97176a9a6402d6d1a6b16.png" alt="4"/> or <img class="math" src="_images/math/ad5bae922280b62efd3e9f9d3550ac1911f13b78.png" alt="-6.28"/> but not e.g. <img class="math" src="_images/math/11c9796b7e38e42573bc247498791cbb76d0e930.png" alt="2x"/> because that depends on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
-<div class="math">
-<p><img src="_images/math/95e7afbc797f728ce7336daf339fb1b81a5edba0.png" alt="\begin{matrix}
-   \frac{d}{dx}\ c = 0              &amp; \frac{d}{dx}(c\ f(x)) = c\ f'(x) &amp; \\
-   &amp;&amp;\\
-   \frac{d}{dx}\ x = 1              &amp; \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &amp; \\
-   &amp;&amp;\\
-   \frac{d}{dx}\ cx = c             &amp; \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) &amp; \\
-   &amp;&amp;\\
-   \frac{d}{dx}\ x^c = c\ x^{c-1}   &amp; \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) &amp; \\
-   &amp;&amp;\\
-   \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &amp;
-   \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
-   &amp;&amp;\\
-   \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &amp;
-   \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
-\end{matrix}"/></p>
-</div><p>So, if you want to find the derivative of <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> just use the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/>
+<a href="explanations.html#derivative-rules">easy to prove</a> so there is no magic
+involved.</p>
+
+<p>I have listed many rules here, but <b>don't panic</b>; there's no need to memorize
+them. As before <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> can be any functions as long as they have a
+derivative (e.g. <img class="inlinemath" src="math/452ba195c426292b505722cc3fa0f9f3.png" /> and <img class="inlinemath" src="math/16276dace2435af3d6698e25188461ab.png" />), and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> can be any constant
+like <img class="inlinemath" src="math/a87ff679a2f3e71d9181a67b7542122c.png" /> or <img class="inlinemath" src="math/8517688b5139f2bd9d869a95a9a6db8c.png" /> but not e.g. <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" /> because that depends on the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+
+<p><img src="math/b83ee525a36483f71ebff1a58e16d9f4.png" class="blockmath" /></p><p>So, if you want to find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> just use the <img class="inlinemath" src="math/901a4ac1bf0dc042656f4a045eb75433.png" />
 rule:</p>
-<div class="math">
-<p><img src="_images/math/817a90bd1f4c31e80731da4a7c55d3fe892bbdb8.png" alt="\frac{d}{dx} x^2 = 2x^{2-1} = 2x^1 = 2x"/></p>
-</div><p>Now you can also find derivatives of long and scary functions easily and
+
+<p><img src="math/f03d4c0f56b886fd5c0b6f8616ce2f38.png" class="blockmath" /></p><p>Now you can also find derivatives of long and scary functions easily and
 quickly. For example:</p>
-<div class="math">
-<p><img src="_images/math/9a60b34341e1fcd4237d5042b7ff7b076b998828.png" alt="&amp; \frac{d}{dx} (5x^3-6x^2+7x-123) \\
-=&amp; \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
-=&amp; 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
-=&amp; 5 \cdot 3x^{3-1} - 6 \cdot 2x^{2-1} + 7 \\
-=&amp; 15x^2 - 12x + 7"/></p>
-</div><p>Of course, there’s no need to write down all of these steps.</p>
-<p>Note that if you have something like <img class="math" src="_images/math/c6c22a1622778ec604c42302f50d693a94d350c5.png" alt="(2x)^2"/> as opposed to <img class="math" src="_images/math/f6186e86be37b4263ad42603d4d7206f606e11aa.png" alt="x^2"/> you
-need to use the <img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/> rule. In this example,
-you would plug in <img class="math" src="_images/math/d772eeb4feb38727b849042e3ffce8f9a29c0ac4.png" alt="f(x)=x^2"/> and <img class="math" src="_images/math/0a55c8372837cd6b353d0116d76c334ff66d9530.png" alt="g(x)=2x"/> to get this:</p>
-<div class="math">
-<p><img src="_images/math/f2e739a39d6660c450837174058df7dfaea288ac.png" alt="\frac{d}{dx}\ (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x"/></p>
-</div><p>In some cases it’s also possible to first open up something like the <img class="math" src="_images/math/a42dd9a1d8e8ca5681017f64c827060c86da1c64.png" alt="(\ \ )^2"/>:</p>
-<div class="math">
-<p><img src="_images/math/dba10824893f28f0da2f60035293bbe0f1eda26e.png" alt="\frac{d}{dx}\ (2x)^2 = \frac{d}{dx}\ (2^2x^2) = \frac{d}{dx}(4x^2)
-= 4 \cdot \frac{d}{dx} x^2 = 4 \cdot 2x = 8x"/></p>
-</div><p>You can also use a nice symbolic calculation library, like Python’s
-<a class="reference external" href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sympy</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">init_printing</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="go">2⋅x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="go">8⋅x</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">123</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-<span class="go">    2</span>
-<span class="go">15⋅x  - 12⋅x + 7</span>
+
+<p><img src="math/72d34e4e767eaef0dad32885ee3fa749.png" class="blockmath" /></p><p>Of course, there's no need to write down all of these steps.</p>
+
+<p>Note that if you have something like <img class="inlinemath" src="math/a15c72896537a69bef32c65c61a8d307.png" /> as opposed to <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> you
+need to use the <img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" /> rule. In this example,
+you would plug in <img class="inlinemath" src="math/d271cedde6675e55152d3c7a4236f775.png" /> and <img class="inlinemath" src="math/59e1e9ebd809c00d4d27b0fe51e502de.png" /> to get this:</p>
+
+<p><img src="math/36fc6ebd05d802479e95d59db0ca2dc6.png" class="blockmath" /></p><p>In some cases it's also possible to first open up something like the <img class="inlinemath" src="math/825eb58f25f6ec5871bf08a67ada3342.png" />:</p>
+
+<p><img src="math/7acc8ce698b250dce11d191c87aa7ff8.png" class="blockmath" /></p><p>You can also use a nice symbolic calculation library, like Python's
+<a href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>init_printing()
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>x <span style="color: #666666">=</span> Symbol(<span style="color: #4070a0">&#39;x&#39;</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff(x<span style="color: #666666">**</span><span style="color: #40a070">2</span>, x)
+<span style="color: #888888">2⋅x</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff((<span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>, x)
+<span style="color: #888888">8⋅x</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff(<span style="color: #40a070">5</span> <span style="color: #666666">*</span> x<span style="color: #666666">**</span><span style="color: #40a070">3</span> <span style="color: #666666">-</span> <span style="color: #40a070">6</span> <span style="color: #666666">*</span> x<span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">7</span><span style="color: #666666">*</span>x <span style="color: #666666">-</span> <span style="color: #40a070">123</span>, x)
+<span style="color: #888888">    2           </span>
+<span style="color: #888888">15⋅x  - 12⋅x + 7</span>
 </pre></div>
-</div>
-<p>Here “diff” is short for “differenciate”, and it means finding a derivative.</p>
+<p>Here "diff" is short for "differenciate", and it means finding a derivative.</p>
+
 <p>Libraries like sympy are also useful for doing long and messy calculations like
 the one we did above:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span>
-<span class="gp">...</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">h</span> <span class="o">=</span> <span class="n">Symbol</span><span class="p">(</span><span class="s1">&#39;h&#39;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
-<span class="go">   2          2</span>
-<span class="go">- x  + (h + x)</span>
-<span class="go">───────────────</span>
-<span class="go">       h</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">simplify</span><span class="p">((</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span><span class="p">)</span>
-<span class="go">h + 2⋅x</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="example-smooth-jumps">
-<span id="smoothjumps"></span><h2>Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Permalink to this headline">¶</a></h2>
-<p>Let’s say you’re making a game where a player can jump over something. If the
-player moves right at a steady speed, which of these jumps looks best?</p>
-<div class="i">
-<p><img src="_images/asymptote/42dc12d3062f1d9a7f92a01b5118dc42.png"/></p></div><p>The answer is obvious – the rightmost jump looks best. It’s time to figure out
-how to make games with jumps like that.</p>
-<p>Let’s say that <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> is time and <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> is the height of our player, so we get this
-graph:</p>
-<div class="i">
-<p><img src="_images/asymptote/e619f2ec5eb10b147d1c48bb7524d709.png"/></p></div><p>This looks like a parabola, and the equation of a parabola is <img class="math" src="_images/math/7b32fef7aa2a343b2d325869eb1ed332d8493279.png" alt="h = at^2+bt+c"/>
-where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/>, <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> are constants. The changing speed of height is the
-falling speed. Let’s call that <img class="math" src="_images/math/8d230554a01423c4c6560104b2918b65607c9406.png" alt="v"/> like velocity.</p>
-<div class="math">
-<p><img src="_images/math/4d7f6f82295e84381547a3a021efc1201aff7123.png" alt="v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b"/></p>
-</div><p>On the other hand, the changing speed of velocity is the acceleration caused by
-gravity. Let’s call that <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/>.</p>
-<div class="math">
-<p><img src="_images/math/ad22a12ee6285aa647a65ea5f78d66fb547a05b3.png" alt="g = \frac{dv}{dt} = \frac{d}{dt} (2at+b) = 2a"/></p>
-</div><p>Note how the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> disappeared and we’re left with just the constant <img class="math" src="_images/math/f6f76e3321e2f2af192eb390879dcdd466b06a5d.png" alt="2a"/>. This
-makes sense because the gravity is always the same, no matter what time it is.</p>
-<p>This Python program…</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">height</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">velocity</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">gravity</span> <span class="o">=</span> <span class="mi">2</span>
 
-<span class="k">while</span> <span class="n">height</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">*</span><span class="n">height</span> <span class="o">+</span> <span class="s1">&#39;O&#39;</span><span class="p">)</span>
-    <span class="n">height</span> <span class="o">+=</span> <span class="n">velocity</span>
-    <span class="n">velocity</span> <span class="o">-=</span> <span class="n">gravity</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">f</span>(x):
+<span style="color: #c65d09; font-weight: bold">... </span>    <span style="color: #007020; font-weight: bold">return</span> x<span style="color: #666666">**</span><span style="color: #40a070">2</span>
+<span style="color: #c65d09; font-weight: bold">...</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>h <span style="color: #666666">=</span> Symbol(<span style="color: #4070a0">&#39;h&#39;</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(f(x<span style="color: #666666">+</span>h)<span style="color: #666666">-</span>f(x))<span style="color: #666666">/</span>h
+<span style="color: #888888">   2          2</span>
+<span style="color: #888888">- x  + (h + x)</span>
+<span style="color: #888888">───────────────</span>
+<span style="color: #888888">       h</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>simplify((f(x<span style="color: #666666">+</span>h)<span style="color: #666666">-</span>f(x))<span style="color: #666666">/</span>h)
+<span style="color: #888888">h + 2⋅x</span>
 </pre></div>
-</div>
-<p>…prints this awesome parabola:</p>
-<div class="highlight-none"><div class="highlight"><pre><span></span>O
+<h2 id="example-smooth-jumps">Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Link to this title">¶</a></h2><p>Let's say you're making a game where a player can jump over something. If the
+player moves right at a steady speed, which of these jumps looks best?</p>
+
+<p><img src="asymptote/f81491239eb1049c68ba70f3c6c2eb82.png" /></p><p>The answer is obvious – the rightmost jump looks best. It's time to figure out
+how to make games with jumps like that.</p>
+
+<p>Let's say that <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> is time and <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> is the height of our player, so we get this
+graph:</p>
+
+<p><img src="asymptote/b15d00f37c47a32643c44612305b2439.png" /></p><p>This looks like a parabola, and the equation of a parabola is <img class="inlinemath" src="math/cc787ff424536184da6053b3bd5e6d67.png" />
+where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" />, <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> are constants. The changing speed of height is the
+falling speed. Let's call that <img class="inlinemath" src="math/9e3669d19b675bd57058fd4664205d2a.png" /> like velocity.</p>
+
+<p><img src="math/5c051d833f0e5dafc419cbd7e4b8af96.png" class="blockmath" /></p><p>On the other hand, the changing speed of velocity is the acceleration caused by
+gravity. Let's call that <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" />.</p>
+
+<p><img src="math/86259fdb69bddaabfefcba3c9339d919.png" class="blockmath" /></p><p>Note how the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> disappeared and we're left with just the constant <img class="inlinemath" src="math/e36314e624d2b2ca257e1f1ecb381f93.png" />. This
+makes sense because the gravity is always the same, no matter what time it is.</p>
+
+<p>This Python program...</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>height <span style="color: #666666">=</span> <span style="color: #40a070">0</span>
+velocity <span style="color: #666666">=</span> <span style="color: #40a070">10</span>
+gravity <span style="color: #666666">=</span> <span style="color: #40a070">2</span>
+
+<span style="color: #007020; font-weight: bold">while</span> height <span style="color: #666666">&gt;=</span> <span style="color: #40a070">0</span>:
+    <span style="color: #007020">print</span>(<span style="color: #4070a0">&#39; &#39;</span><span style="color: #666666">*</span>height <span style="color: #666666">+</span> <span style="color: #4070a0">&#39;O&#39;</span>)
+    height <span style="color: #666666">+=</span> velocity
+    velocity <span style="color: #666666">-=</span> gravity
+</pre></div>
+<p>...prints this awesome parabola:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>O
           O
                   O
                         O
@@ -259,14 +184,10 @@ makes sense because the gravity is always the same, no matter what time it is.</
           O
 O
 </pre></div>
-</div>
-<p>You can use similar code for doing jumps in games. Here’s a demo created with
-my <a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/jsdemo-setup/canvaswrapper.js">canvaswrapper.js</a> script. Click it and use arrow keys to move the ball.</p>
-<div class="i">
+<p>You can use similar code for doing jumps in games. Here's a demo created with
+my canvaswrapper.js script. Click it and use arrow keys to move the ball.</p>
 
-    <script type="text/javascript" src="canvaswrapper.js"></script>
-    <canvas id="canvas1" width="600" height="400" tabindex="1"></canvas>
-    <script>var screen = new CanvasWrapper('canvas1');
+<script type="text/javascript" src="canvaswrapper.js"></script><canvas id="canvas1" width="600" height="400" tabindex="1"></canvas><script>var screen = new CanvasWrapper('canvas1');
 
 const GRAVITY = 1.5;
 var player = {
@@ -311,102 +232,54 @@ runRepeatedly(function() {
       player.sidewayMovement = 0;
     }
   });
-});</script>
-    </div>      <!-- this finishes self.starttag above -->
-    <p>Here's the code:</p>
-    <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">screen</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CanvasWrapper</span><span class="p">(</span><span class="s1">&#39;canvas1&#39;</span><span class="p">);</span>
+});
+</script><p>Here's the code:</p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">var</span> screen <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> CanvasWrapper(<span style="color: #4070a0">&#39;canvas1&#39;</span>);
 
-<span class="kr">const</span> <span class="nx">GRAVITY</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">player</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">x</span><span class="o">:</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>    <span class="c1">// centered</span>
-  <span class="nx">height</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>            <span class="c1">// distance from bottom of screen to player&#39;s bottom</span>
-  <span class="nx">velocity</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>          <span class="c1">// positive means up</span>
-  <span class="nx">velocityMax</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>      <span class="c1">// velocity immediately after a jump</span>
-  <span class="nx">sidewayMovement</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">// -1 is left, +1 right</span>
-  <span class="nx">sidewaySpeed</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="nx">ballRadius</span><span class="o">:</span> <span class="mi">30</span><span class="p">,</span>
-<span class="p">};</span>
+<span style="color: #007020; font-weight: bold">const</span> GRAVITY <span style="color: #666666">=</span> <span style="color: #40a070">1.5</span>;
+<span style="color: #007020; font-weight: bold">var</span> player <span style="color: #666666">=</span> {
+  x<span style="color: #666666">:</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>,    <span style="color: #60a0b0; font-style: italic">// centered</span>
+  height<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,            <span style="color: #60a0b0; font-style: italic">// distance from bottom of screen to player&#39;s bottom</span>
+  velocity<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,          <span style="color: #60a0b0; font-style: italic">// positive means up</span>
+  velocityMax<span style="color: #666666">:</span> <span style="color: #40a070">30</span>,      <span style="color: #60a0b0; font-style: italic">// velocity immediately after a jump</span>
+  sidewayMovement<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,   <span style="color: #60a0b0; font-style: italic">// -1 is left, +1 right</span>
+  sidewaySpeed<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
+  ballRadius<span style="color: #666666">:</span> <span style="color: #40a070">30</span>,
+};
 
 
-<span class="nx">runRepeatedly</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">drawCircle</span><span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">player</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">player</span><span class="p">.</span><span class="nx">ballRadius</span><span class="p">,</span>
-                    <span class="nx">player</span><span class="p">.</span><span class="nx">ballRadius</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">);</span>
+runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() {
+  screen.fill(<span style="color: #4070a0">&#39;black&#39;</span>);
+  screen.drawCircle(player.x, screen.height<span style="color: #666666">-</span>player.height<span style="color: #666666">-</span>player.ballRadius,
+                    player.ballRadius, <span style="color: #4070a0">&#39;white&#39;</span>);
 
-  <span class="nx">player</span><span class="p">.</span><span class="nx">x</span> <span class="o">+=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">sidewayMovement</span> <span class="o">*</span> <span class="nx">player</span><span class="p">.</span><span class="nx">sidewaySpeed</span><span class="p">;</span>
-  <span class="nx">player</span><span class="p">.</span><span class="nx">height</span> <span class="o">+=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">velocity</span><span class="p">;</span>
-  <span class="nx">player</span><span class="p">.</span><span class="nx">velocity</span> <span class="o">-=</span> <span class="nx">GRAVITY</span><span class="p">;</span>
+  player.x <span style="color: #666666">+=</span> player.sidewayMovement <span style="color: #666666">*</span> player.sidewaySpeed;
+  player.height <span style="color: #666666">+=</span> player.velocity;
+  player.velocity <span style="color: #666666">-=</span> GRAVITY;
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">player</span><span class="p">.</span><span class="nx">height</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// player hits the ground</span>
-    <span class="nx">player</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="nx">player</span><span class="p">.</span><span class="nx">velocity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-  <span class="p">}</span>
+  <span style="color: #007020; font-weight: bold">if</span> (player.height <span style="color: #666666">&lt;</span> <span style="color: #40a070">0</span>) {
+    <span style="color: #60a0b0; font-style: italic">// player hits the ground</span>
+    player.height <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+    player.velocity <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+  }
 
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">getEvents</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">evt</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;keydown&#39;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowLeft&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">player</span><span class="p">.</span><span class="nx">sidewayMovement</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowRight&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">player</span><span class="p">.</span><span class="nx">sidewayMovement</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowUp&#39;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">player</span><span class="p">.</span><span class="nx">velocity</span> <span class="o">=</span> <span class="nx">player</span><span class="p">.</span><span class="nx">velocityMax</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;keyup&#39;</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
-          <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowLeft&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">player</span><span class="p">.</span><span class="nx">sidewayMovement</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span>
-          <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowRight&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">player</span><span class="p">.</span><span class="nx">sidewayMovement</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span> <span class="p">{</span>
-      <span class="c1">// cancel the previous ArrowLeft or ArrowRight press</span>
-      <span class="nx">player</span><span class="p">.</span><span class="nx">sidewayMovement</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-<span class="p">});</span>
+  screen.getEvents().forEach(evt =&gt; {
+    <span style="color: #007020; font-weight: bold">if</span> (evt.type <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;keydown&#39;</span>) {
+      <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowLeft&#39;</span>) {
+        player.sidewayMovement <span style="color: #666666">=</span> <span style="color: #666666">-</span><span style="color: #40a070">1</span>;
+      } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowRight&#39;</span>) {
+        player.sidewayMovement <span style="color: #666666">=</span> <span style="color: #40a070">1</span>;
+      } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowUp&#39;</span>) {
+        player.velocity <span style="color: #666666">=</span> player.velocityMax;
+      }
+    } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.type <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;keyup&#39;</span> <span style="color: #666666">&amp;&amp;</span> (
+          (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowLeft&#39;</span> <span style="color: #666666">&amp;&amp;</span> player.sidewayMovement <span style="color: #666666">==</span> <span style="color: #666666">-</span><span style="color: #40a070">1</span>) <span style="color: #666666">||</span>
+          (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowRight&#39;</span> <span style="color: #666666">&amp;&amp;</span> player.sidewayMovement <span style="color: #666666">==</span> <span style="color: #40a070">1</span>))) {
+      <span style="color: #60a0b0; font-style: italic">// cancel the previous ArrowLeft or ArrowRight press</span>
+      player.sidewayMovement <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+    }
+  });
+});
 </pre></div>
 </div>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><ul>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="geometry-and-trig.html">Geometry and Trigonometry</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Derivatives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrals.html">Integrals</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
-</ul>
-
-<br>
-
-<!-- abusing abbr was the first way to dot-underline stuff i found -->
-<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2017, Akuli.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/derivatives.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

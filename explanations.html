@@ -1,465 +1,192 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Proofs and Explanations</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Number Theory" href="numbertheory.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="proofs-and-explanations">
-<h1>Proofs and Explanations<a class="headerlink" href="#proofs-and-explanations" title="Permalink to this headline">¶</a></h1>
-<p>If you just want to get things done without worrying about why the calculations
-are exactly like they are then you’re in the wrong place, but if you got
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Proofs and Explanations</title>
+</head>
+<body>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><b>Proofs and Explanations</b></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="content">
+<h1 id="proofs-and-explanations">Proofs and Explanations<a class="headerlink" href="#proofs-and-explanations" title="Link to this title">¶</a></h1><p>If you just want to get things done without worrying about why the calculations
+are exactly like they are then you're in the wrong place, but if you got
 interested in the math itself you may enjoy reading some of this stuff.</p>
+
 <p>I used a bunch of spooky formulas in this tutorial. Some of them are
-definitions of e.g. <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> or <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, but in this chapter we’ll focus on those
-that aren’t and prove that they actually work.</p>
-<div class="section" id="pythagorean-theorem">
-<span id="pythagoras-proof"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
-<p>This is a well-known proof and I like it because it’s simple.</p>
-<div class="i">
-<p><img src="_images/asymptote/04f9ceff0a0c1317a75501248107a7ec.png"/></p></div><p>We can calculate the total area of the above square in a couple different ways:</p>
-<ul class="simple">
-<li>The square’s sides are each <img class="math" src="_images/math/816f131d424a7f386abfe78c32f078b878613044.png" alt="a+b"/>, so the area must be <img class="math" src="_images/math/52b952781bf550607851e802822468f34022a391.png" alt="(a+b)(a+b)"/>.</li>
-<li>The square consists of the green square whose area is <img class="math" src="_images/math/546bfd75f5def7393a4a78b0735a88c29ac92165.png" alt="c^2"/> and 4 yellow
-triangles with area <img class="math" src="_images/math/fa2e62c73b4e54d3c0b66d02f2ef15c8d21d2b03.png" alt="\frac{ab}{2}"/> each. Total area is <img class="math" src="_images/math/acc5b8413a1c257dbcba30477cc6814520208ed1.png" alt="c^2 + 4 \frac{ab}{2}"/>.</li>
-</ul>
-<div class="sidebar">
-<p class="first sidebar-title">Handy thing: <img class="math" src="_images/math/1a3447785cc7e51a9d0079209c5d691417a76e34.png" alt="(a+b)^2=a^2+2ab+b^2"/></p>
-<p>Proof:</p>
-<div class="last math">
-<p><img src="_images/math/df780688bd29b86f485305460dbd5edf4d663b79.png" alt="&amp; \ (a+b)^2 \\
-=&amp;\ (a+b)(a+b) \\
-=&amp;\ (a+b)a+(a+b)b \\
-=&amp;\ aa+ba+ab+bb \\
-=&amp;\ a^2+2ab+b^2"/></p>
-</div></div>
-<p>We must get the same area with both ways, so we get this
-<a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
-<div class="math">
-<p><img src="_images/math/602ee19e1ce92eb0de4379af41184003e4ea9537.png" alt="(a+b)(a+b) &amp;= c^2 + 4\frac{ab}{2} \\
-(a+b)^2 &amp;= c^2 + \frac{4}{2} ab \\
-a^2 + 2ab + b^2 &amp;= c^2 + 2ab \\
-a^2 + b^2 &amp;= c^2"/></p>
-</div><div class="i">
-<p><img src="_images/asymptote/3ccb4225da2638c69e63b6c861e7ff09.png" class="align-right"/></p></div></div>
-<div class="section" id="two-ways-to-define-sine-and-cosine">
-<span id="unitcircle-triangle-compat"></span><h2>Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Permalink to this headline">¶</a></h2>
-<p>The y axis of the picture at right goes up because this explanation isn’t
-really useful for programming; it’s just an explanation for people who are
-wondering how <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> appear both in a unit circle and in triangles.</p>
-<p>In <a class="reference internal" href="geometry-and-trig.html#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a> we defined <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and
-<img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> with a unit circle, but then in
-<a class="reference internal" href="geometry-and-trig.html#triangletrig"><span class="std std-ref">the triangle trig section</span></a> we defined them with a
-triangle. If we apply the triangle stuff to the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> of the picture at
-right, we get this:</p>
-<div class="i">
-<p><img src="_images/asymptote/c5f2434be49dec410cd88d319b364549.png" class="align-right"/></p></div><div class="math">
-<p><img src="_images/math/4d51d3613e5319d17929ede605086d8a6bc77ad6.png" alt="\sin t &amp;= \frac{\sin t}{1} \\
-\cos t &amp;= \frac{\cos t}{1} \\
-\tan t &amp;= \frac{\sin t}{\cos t}"/></p>
-</div><p>The first two formulas are obviously true with any <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>, but the last one is a
-bit more interesting. We found another way to define <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, and it
+definitions of e.g. <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> or <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, but in this chapter we'll focus on those
+that aren't and prove that they actually work.
+</p>
+
+<h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><p>This is a well-known proof and I like it because it's simple.</p>
+
+<p><img src="asymptote/d97b9ed8697aa00c2b649df937a0527a.png" /></p><p>We can calculate the total area of the above square in a couple different ways:</p>
+
+<ul><li>The square's sides are each <img class="inlinemath" src="math/65c884f742c8591808a121a828bc09f8.png" />, so the area must be <img class="inlinemath" src="math/6051d4ee7697f10fd00edb5ccc1ebe7e.png" />.</li><li>The square consists of the green square whose area is <img class="inlinemath" src="math/2796af5074a7f27ecccd3cd17e165d53.png" /> and 4 yellow
+  triangles with area <img class="inlinemath" src="math/4fcb01c272e647ff8050bf6babc44d56.png" /> each. Total area is
+  <img class="inlinemath" src="math/736a6167321ea9bc1f64bd304d075961.png" />.
+</li></ul><p>We must get the same area with both ways, so we get this
+<a href="basics.html#equations">equation</a>:</p>
+
+<p><img src="math/eddcd3b681ce6e76fdc25d23bb995676.png" class="blockmath" /></p><img src="asymptote/973547e1780a419891a65352369b11d7.png" style="float:right;" /><h2 id="two-ways-to-define-sine-and-cosine">Two ways to define sine and cosine<a class="headerlink" href="#two-ways-to-define-sine-and-cosine" title="Link to this title">¶</a></h2><p>The y axis of the picture at right goes up because this explanation isn't
+really useful for programming; it's just an explanation for people who are
+wondering how <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" /> appear both in a unit circle and in triangles.</p>
+
+<p>In <a href="geometry-and-trig.html#trig-with-the-unit-circle">the unit circle trig section</a>
+we defined <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" /> with a unit circle, but then in
+<a href="geometry-and-trig.html#trig-with-a-triangle">the triangle trig section</a>
+we defined them with a triangle. If we apply the triangle stuff to the
+angle <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> of the picture at right, we get this:</p>
+
+<img src="asymptote/6c6c82d081ad75ac7e52f17886a0f0f1.png" style="float:right;" /><p><img src="math/0f31e4c921ded713d38167c57120c998.png" class="blockmath" /></p><p>The first two formulas are obviously true with any <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />, but the last one is a
+bit more interesting. We found another way to define <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" />, and it
 also works with a triangle:</p>
-<div class="math">
-<p><img src="_images/math/5bab5b59d603a6dd473500e7fe6a11faa424c481.png" alt="\frac{\sin t}{\cos t} = \frac{b/c}{a/c}
-= \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t"/></p>
-</div></div>
-<div class="section" id="accurate-sine-and-cosine-values">
-<span id="accurate-sincos-explained"></span><h2>Accurate Sine and Cosine Values<a class="headerlink" href="#accurate-sine-and-cosine-values" title="Permalink to this headline">¶</a></h2>
-<div class="i">
-<p><img src="_images/asymptote/77faf56d03cf5c31b27820957e67e3ae.png" class="align-right"/></p></div><p><a class="reference internal" href="geometry-and-trig.html#accurate-sincos"><span class="std std-ref">Here</span></a> I said that <img class="math" src="_images/math/71653fbbc070c14bff2aa2daf584f2059ddfa3b4.png" alt="\sin \frac \tau 6 = \frac{\sqrt 3}{2}"/>
-and <img class="math" src="_images/math/aa3670eca717a1591e703df6cdf229377ae0fb74.png" alt="\cos \frac \tau 6 = \frac 1 2"/>. I’m sorry to disappoint you, but there’s
-no general and easy way to find accurate <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/> values by hand.
-However, in many cases there’s something special about the angles that allows
-us to do some other tricks.</p>
-<p>The angle in question is <img class="math" src="_images/math/cfdef7207cb7a3a87e2430ae1e5b4d682facbf2f.png" alt="\frac \tau 6"/>, a sixth of a turn. If a triangle has
-three sides with equal lengths, the angles will be <img class="math" src="_images/math/cfdef7207cb7a3a87e2430ae1e5b4d682facbf2f.png" alt="\frac \tau 6"/> each. That’s
+
+<p><img src="math/ac82d9f33bf842bb71ffa8beea9257c7.png" class="blockmath" /></p><h2 id="accurate-sine-and-cosine-values">Accurate Sine and Cosine Values<a class="headerlink" href="#accurate-sine-and-cosine-values" title="Link to this title">¶</a></h2><img src="asymptote/11c71d1b1373c2989f57e05b0d4459fa.png" style="float:right;" /><p><a href="geometry-and-trig.html#accurate-sincos">Here</a> I said that
+<img class="inlinemath" src="math/faf62faf63c9230b053418e2c50aed72.png" /> and <img class="inlinemath" src="math/a14f75514bf5c4ac763edffa16a80bf2.png" />.
+I'm sorry to disappoint you, but there's no general and easy way to find
+accurate <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" /> values by hand. However, in many cases there's
+something special about the angles that allows us to do some other tricks.</p>
+
+<p>The angle in question is <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" />, a sixth of a turn. If a triangle has
+three sides with equal lengths, the angles will be <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" /> each. That's
 why we can complete the triangle drawn in unit circle like in the image. The
-angles at top are <img class="math" src="_images/math/d200bb0b0c6c2df4679617cee4ff5e7645157345.png" alt="\frac{\tau}{12}"/> because two <img class="math" src="_images/math/d200bb0b0c6c2df4679617cee4ff5e7645157345.png" alt="\frac{\tau}{12}"/> angles added
-together is <img class="math" src="_images/math/928ac4f4d8929a75a13ac9352da65f1660cb745b.png" alt="\tau/6"/>.</p>
-<p>The radius of the unit circle is 1, so we get this on the <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> axis:</p>
-<div class="math">
-<p><img src="_images/math/4289e2d9732598ede52131aa4164c7b4c97bd4a3.png" alt="\cos \frac \tau 6 + \cos \frac \tau 6 &amp;= 1"/></p>
-</div><div class="math">
-<p><img src="_images/math/969fbafd094606a901807a59e603cf0a9a5df053.png" alt="\cos \frac \tau 6 &amp;= \frac 1 2"/></p>
-</div><p>Now we can apply the Pythagorean theorem (proved
-<a class="reference internal" href="#pythagoras-proof"><span class="std std-ref">above</span></a>) to the yellow triangle and figure out
-<img class="math" src="_images/math/ab5a4e4dd4f136ec39a12453a9bbbf2d2f59ba92.png" alt="\sin \frac \tau 6"/>:</p>
-<div class="math">
-<p><img src="_images/math/7c657da5283bbc4e6c78ef697e19ea3fc2b9eb44.png" alt="\left( \cos \frac \tau 6 \right)^2 + \left( \sin \frac \tau 6 \right)^2 &amp;= 1^2 = 1 \\
-\left( \sin \frac \tau 6 \right)^2 &amp;= 1 - \left( \cos \frac \tau 6 \right)^2 \\
-\sqrt{\left( \sin \frac \tau 6 \right)^2} &amp;= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
-\left| \sin \frac \tau 6 \right| &amp;= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
-   &amp;= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
-   &amp;= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}
-      = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}"/></p>
-</div><p>We know that <img class="math" src="_images/math/ab5a4e4dd4f136ec39a12453a9bbbf2d2f59ba92.png" alt="\sin \frac \tau 6"/> is positive, so
-<img class="math" src="_images/math/559d76e19fcbcdcd3a500fc0175ba976c74c6daa.png" alt="\sin \frac \tau 6 = |\sin \frac \tau 6|"/>.</p>
-</div>
-<div class="section" id="which-functions-have-derivatives">
-<span id="has-derivative"></span><h2>Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Permalink to this headline">¶</a></h2>
-<p>In <a class="reference internal" href="derivatives.html#derivatives"><span class="std std-ref">the derivative chapter</span></a> I said that most functions
-you’ll come across have a derivative. Let’s be a bit more specific. The
-derivative doesn’t exist in these cases:</p>
-<div class="i">
-<p><img src="_images/asymptote/60155662ec87aacddaef70dfae60ede6.png" class="align-right"/></p></div><ul>
-<li><p class="first">The function is not <em>continuous</em>; that is, the graph consists of multiple
-lines. For example, this function is not continuous at <img class="math" src="_images/math/a098f6561c6f5328410f2b9133b9db7b9f08e663.png" alt="x=0"/> and thus
-<img class="math" src="_images/math/7aec50b795b7b1c7bb9cf4898f898392c12d38b8.png" alt="f'(0)"/> is not defined:</p>
-<div class="math">
-<p><img src="_images/math/2432866cfa07f02407685f36dfdd81b5aa8414d1.png" alt="f(x) = \left\{\begin{matrix}
-   1 \text{ if } x \ge 0\\
-   0 \text{ if } x &lt; 0
-\end{matrix}\right."/></p>
-</div></li>
-</ul>
-<div class="i">
-<p><img src="_images/asymptote/e8d92b69dcadc1e4d0691d5d8e46f18e.png" class="align-right"/></p></div><ul class="simple">
-<li>The graph of the function has a spike in it. Derivatives describe
-“growing speed” and it isn’t clear how fast the values grow on top of a
-spike. For example, the <a class="reference internal" href="basics.html#abs"><span class="std std-ref">absolute value</span></a> <img class="math" src="_images/math/a98b89b3c94ca98f63e90a0f6ebcc62f469e71e8.png" alt="|x|"/> has a derivative
-everywhere except at <img class="math" src="_images/math/a098f6561c6f5328410f2b9133b9db7b9f08e663.png" alt="x=0"/>.</li>
-</ul>
-<p>Of course, there are more precise definitions about continuity and “spikes”,
+angles at top are <img class="inlinemath" src="math/f76be45dcf6e5340ceea9611d3dd8e30.png" /> because two <img class="inlinemath" src="math/f76be45dcf6e5340ceea9611d3dd8e30.png" /> angles added
+together is <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" />.</p>
+
+<p>The radius of the unit circle is 1, so we get this on the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> axis:</p>
+
+<p><img src="math/ac0e61775a21257762d528ab3b6d6474.png" class="blockmath" /></p><p>Now we can apply the Pythagorean theorem (proved <a href="#pythagorean-theorem">above</a>)
+to the yellow triangle and figure out <img class="inlinemath" src="math/e60081e56126b94145c26b5d129f36d4.png" />:</p>
+
+<p><img src="math/d49d0f47f59a2be30ddc828882e9638e.png" class="blockmath" /></p><p>We know that <img class="inlinemath" src="math/e60081e56126b94145c26b5d129f36d4.png" /> is positive, so
+<img class="inlinemath" src="math/b2dcc863e00b492eae60882b605db538.png" />.
+</p>
+
+<h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>In <a href="derivatives.html">the derivative chapter</a> I said that most functions
+you'll come across have a derivative. Let's be a bit more specific. The
+derivative doesn't exist in these cases:</p>
+
+<p><ul><li></p>
+
+<img src="asymptote/45cae3c9603598d249bf717d017a203c.png" style="float:right;" /><p>The function is not <i>continuous</i>; that is, the graph consists of multiple
+lines. For example, this function is not continuous at <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> and thus
+<img class="inlinemath" src="math/2bc3b4ce5db539e47bd469d31245629a.png" /> is not defined:</p>
+
+<p><img src="math/6733e8d407b8cfbfcf1b53ec57c50154.png" class="blockmath" /></p><p></li><li></p>
+
+<img src="asymptote/c30ea4d9566657343733b8c3f6d38d71.png" style="float:right;" /><p>The graph of the function has a spike in it. Derivatives describe
+"growing speed" and it isn't clear how fast the values grow on top of a
+spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
+<img class="inlinemath" src="math/cf513decf6e4ace0e25cb1c932aaa049.png" /> has a derivative everywhere except at <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />.</p>
+
+<p></li></ul></p>
+
+<p>Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.</p>
-</div>
-<div class="section" id="derivative-rules">
-<span id="derivative-proofs"></span><h2>Derivative Rules<a class="headerlink" href="#derivative-rules" title="Permalink to this headline">¶</a></h2>
-<p>The derivative chapter contains <a class="reference internal" href="derivatives.html#derivative-rules"><span class="std std-ref">a bunch of rules</span></a>
+
+<h2 id="derivative-rules">Derivative Rules<a class="headerlink" href="#derivative-rules" title="Link to this title">¶</a></h2><p>The derivative chapter contains <a href="derivatives.html#faster">a bunch of rules</a>
 with no explainations or proofs about how they work. These proofs are ordered
-so that they don’t use any derivative rules that haven’t been proved before
+so that they don't use any derivative rules that haven't been proved before
 them.</p>
-<div class="i">
-<p><img src="_images/asymptote/bb4ba3dcc918fdfcff88c522300f30a9.png" class="align-right"/></p></div><div class="section" id="id1">
-<h3><img class="math" src="_images/math/05cfb9e174dcf8c3d320000642d92d18d70f4f7b.png" alt="\frac{d}{dx} c = 0"/><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>The graph <img class="math" src="_images/math/ce81fb1e147ac8bf3ec17ed69a900e58c620f256.png" alt="y=c"/> is a horizontal line, so the slope is zero.</p>
-<p>We can also plug <img class="math" src="_images/math/370df8fb1f1b132f5e8e4bce4c02d3f31d850798.png" alt="f(x)=c"/> into the definition of derivative:</p>
-<div class="math">
-<p><img src="_images/math/db41db0312334f74c41e1a50849d7e8bcbd8c9f5.png" alt="f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h} = \lim_{h\to0} \frac{c-c}{h}
-= \lim_{h\to0} \frac{0}{h} = 0"/></p>
-</div></div></blockquote>
-<div class="i">
-<p><img src="_images/asymptote/3c5d3e6e25a3e7b5887c90f9d4087a62.png" class="align-right"/></p></div></div>
-<div class="section" id="id2">
-<h3><img class="math" src="_images/math/c89953d5ab16b1feefe5c42878559c73d95c9740.png" alt="\frac{d}{dx} cx = c"/><a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>The slope of the line <img class="math" src="_images/math/5ce3d5b61e6cc17c94b09efc9f597efb882ca0ea.png" alt="y=cx"/> is <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> because every time <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> is incremented by
-something, <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/> increments <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> times as much. In other words,
-<img class="math" src="_images/math/c7f0ebdeb0116be9ebd590efab9209d93fa897aa.png" alt="\Delta y = c \cdot \Delta x"/> and <img class="math" src="_images/math/18d9853f8376b597cdb7892b3ca73697998d56f0.png" alt="\frac{\Delta y}{\Delta x} = c"/>.</p>
+
+<img src="asymptote/a7accbe5f96df725d83d6d8e610d46f7.png" style="float:right;" /><h3 id="img-class-inlinemath-src-math-f9c4786fe3ccde95486b27617a82ed28-png"><img class="inlinemath" src="math/f9c4786fe3ccde95486b27617a82ed28.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-f9c4786fe3ccde95486b27617a82ed28-png" title="Link to this title">¶</a></h3><div class="indent"><p>The graph <img class="inlinemath" src="math/5dff4c58922e7a4186824c35108b790c.png" /> is a horizontal line, so the slope is zero.</p>
+
+<p>We can also plug <img class="inlinemath" src="math/6d8c318c91c61e04c68cb7aa0a5d671b.png" /> into the definition of derivative:</p>
+
+<p><img src="math/f9d7a5137967d49a90e2ca7fee2bf61b.png" class="blockmath" /></p></div><img src="asymptote/211a7cae5463e1e055c313b55047ab11.png" style="float:right;" /><h3 id="img-class-inlinemath-src-math-87f291f46af0b40923bba3d69581a8df-png"><img class="inlinemath" src="math/87f291f46af0b40923bba3d69581a8df.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-87f291f46af0b40923bba3d69581a8df-png" title="Link to this title">¶</a></h3><div class="indent"><p>The slope of the line <img class="inlinemath" src="math/343728adf392e1fb8e99a4c859aa9c11.png" /> is <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> because every time <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is incremented by
+something, <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> increments <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> times as much. In other words,
+<img class="inlinemath" src="math/5692bd1bcf7163e0a450af2d12dfab2c.png" /> and <img class="inlinemath" src="math/957ad5192ef3fbf612301150de82bd60.png" />.</p>
+
 <p>Again, we can confirm this with the definition of derivative:</p>
-<div class="math">
-<p><img src="_images/math/a9cd844595b8572ca6349ce546ee0f5e6f6513cd.png" alt="\frac{d}{dx} cx &amp;= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
-&amp;= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-&amp;= \lim_{h\to0} \frac{ch}{h} \\
-&amp;= c"/></p>
-</div></div></blockquote>
-</div>
-<div class="section" id="id3">
-<h3><img class="math" src="_images/math/bab9837984444ba7db4deb91eaa4f998c7f61149.png" alt="\frac{d}{dx}(c\ f(x)) = c\ f'(x)"/><a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>The previous rule actually works with all functions that have a derivative,
-not just <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
-<div class="math">
-<p><img src="_images/math/b8f8e3de7bb4c83a7672c67a45fa57bab4a59096.png" alt="\frac{d}{dx}(c\ f(x)) &amp;= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
-&amp;= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
-&amp;= \lim_{h\to0} \left(c\ \frac{f(x+h)-f(x)}{h} \right) \\
-&amp;= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
-&amp;= c\ f'(x)"/></p>
-</div></div></blockquote>
-<div class="i">
-<p><img src="_images/asymptote/b4fe7d8cf6988a9c984c437f7bee9979.png" class="align-right"/></p></div></div>
-<div class="section" id="id4">
-<h3><img class="math" src="_images/math/668c0b577e9de0a4bc5f0cffe70fb42f7ff3cd99.png" alt="\frac{d}{dx} x = 1"/><a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div>This is just like the <img class="math" src="_images/math/c89953d5ab16b1feefe5c42878559c73d95c9740.png" alt="\frac{d}{dx} cx = c"/> rule, but <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/> and
-<img class="math" src="_images/math/15a31ed72ec98e643bd6c7466c6c3f937e6cc688.png" alt="\Delta y = \Delta x"/>.</div></blockquote>
-</div>
-<div class="section" id="id5">
-<h3><img class="math" src="_images/math/a1cf2413483656a43f1eeff182a6d28e6669a5a4.png" alt="\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)"/><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>This rule is particularly handy for differenciating long functions with many
-things added together. Let’s see what we get with the definition of
+
+<p><img src="math/d907a73d312a1de355fae16860a50fbf.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-d48fd7b37266fa0ede1a969bc9697334-png"><img class="inlinemath" src="math/d48fd7b37266fa0ede1a969bc9697334.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-d48fd7b37266fa0ede1a969bc9697334-png" title="Link to this title">¶</a></h3><div class="indent"><p>The previous rule actually works with all functions that have a derivative,
+not just <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+
+<p><img src="math/4d7a07f87dd5ee0a92c5f6ae94f8b67c.png" class="blockmath" /></p></div><img src="asymptote/6304f5250122a31313d674c9ba553eb1.png" style="float:right;" /><h3 id="img-class-inlinemath-src-math-057898d79e82119bdaed93422bbb19a9-png"><img class="inlinemath" src="math/057898d79e82119bdaed93422bbb19a9.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-057898d79e82119bdaed93422bbb19a9-png" title="Link to this title">¶</a></h3><div class="indent"><p>This is just like the <img class="inlinemath" src="math/87f291f46af0b40923bba3d69581a8df.png" /> rule, but <img class="inlinemath" src="math/27071423b9a403c9ffa1895ef3fefb6e.png" /> and
+<img class="inlinemath" src="math/1e97779695bceace7d8dbefae4e8d7f8.png" />.
+</p>
+
+</div><h3 id="img-class-inlinemath-src-math-971aa78125d98502c307a78e0ad97564-png"><img class="inlinemath" src="math/971aa78125d98502c307a78e0ad97564.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-971aa78125d98502c307a78e0ad97564-png" title="Link to this title">¶</a></h3><div class="indent"><p>This rule is particularly handy for differenciating long functions with many
+things added together. Let's see what we get with the definition of
 derivative.</p>
-<div class="math">
-<p><img src="_images/math/dc604a228ada502d135663c3b6cc8dac42ea81cd.png" alt="\frac{d}{dx} (f(x)+g(x))
-&amp;= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
-&amp;= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
-&amp;= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
-&amp;= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h}\right) \\
-&amp;= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} + \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
-&amp;= f'(x) + g'(x)"/></p>
-</div><p>The <img class="math" src="_images/math/32fefacc75e7c85e1a85d9b40b7ab6c1956a30f0.png" alt="\frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x)"/> rule can be proved in a very
-similar way.</p>
-</div></blockquote>
-</div>
-<div class="section" id="id6">
-<h3><img class="math" src="_images/math/9b0c2c3562d2534afd85381cdd40a92347240b87.png" alt="\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)"/><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>It’s not pretty, but we can use the definition.</p>
-<div class="math">
-<p><img src="_images/math/94ce70e8b81fbf05da94cd5b01fc4f42492f691e.png" alt="&amp;  \frac{d}{dx} (f(x)g(x)) \\
-=&amp; \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
-=&amp; \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
-                      +f(x+h)g(x+h)-f(x)g(x)}{h} \\
-=&amp; \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
-=&amp; \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
-=&amp; \lim_{h\to0} \left(
-      \frac{(f(x+h)-f(x))\ g(x+h)}{h} + \frac{f(x)\ (g(x+h)-g(x))}{h}
-   \right) \\
-=&amp; \lim_{h\to0} \left(
-   \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
-\right) \\
-=&amp; \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
-      + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
-=&amp; \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
-  \left(\lim_{h\to0}g(x+h)\right)
-  + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
-=&amp; f'(x)g(x) + f(x)g'(x)"/></p>
-</div></div></blockquote>
-</div>
-<div class="section" id="id7">
-<h3><img class="math" src="_images/math/8e2eb22c639a44eaad710d7261a791f0298ae29e.png" alt="\frac{d}{dx} x^c = c\ x^{c-1}"/><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>It’s easy to prove that this works for an individual <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> value. For example,
-our very first derivative example shows that <img class="math" src="_images/math/9ae28760b3a23f0c8181fbe2646e23d06877722e.png" alt="\frac{d}{dx} x^2 = 2x"/>. Here
-I’ll prove that this works with all positive integers using a powerful
-technique known as <strong>induction</strong>.</p>
-<p>Let’s start by showing that this works with e.g. <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/>:</p>
-<blockquote>
-<div><img class="math" src="_images/math/a9272716c8ee60310f2eb8148343e27c0f074c26.png" alt="\frac{d}{dx} x^1 = \frac{d}{dx} x = 1 = 1x^0 = 1x^{1-1}"/></div></blockquote>
-<p>Next we’ll prove that <strong>if</strong> the rule works at <img class="math" src="_images/math/ee2f1a8e00432c090b96087cba7d7e97d7a0862f.png" alt="c=k"/> <strong>then</strong> it also works
-at <img class="math" src="_images/math/65a4031594f572672d72c031ba506275e5c2b463.png" alt="c=k+1"/> where <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> is a positive integer. Let’s write things down just to
+
+<p><img src="math/808f4c59d99b74f54b8123e1d4e193c0.png" class="blockmath" /></p><p>The <img class="inlinemath" src="math/5f33b8ec6694c227e017579bb2fdb230.png" /> rule can be proved in a very
+similar way.
+</p>
+
+</div><h3 id="img-class-inlinemath-src-math-d8066452a7caefafc1ec4d4a869c554e-png"><img class="inlinemath" src="math/d8066452a7caefafc1ec4d4a869c554e.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-d8066452a7caefafc1ec4d4a869c554e-png" title="Link to this title">¶</a></h3><div class="indent"><p>It's not pretty, but we can use the definition.</p>
+
+<p><img src="math/9cee3461cd97d26dd6ead4c0226bdcff.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-f1b2f57c7564447818eba5e5773a8ebf-png"><img class="inlinemath" src="math/f1b2f57c7564447818eba5e5773a8ebf.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-f1b2f57c7564447818eba5e5773a8ebf-png" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> value. For example,
+our very first derivative example shows that <img class="inlinemath" src="math/c5e6404d4d17dacab8d9945bb1a638e4.png" />. Here
+I'll prove that this works with all positive integers using a powerful
+technique known as <b>induction</b>.</p>
+
+<p>Let's start by showing that this works with e.g. <img class="inlinemath" src="math/27071423b9a403c9ffa1895ef3fefb6e.png" />:</p>
+
+<p><img src="math/071c1d941742f771a3e47cab9e999022.png" class="blockmath" /></p><p>Next we'll prove that <b>if</b> the rule works at <img class="inlinemath" src="math/589000d5356a8342a2d740d1148bae32.png" /> <b>then</b> it also works
+at <img class="inlinemath" src="math/e048ba34b37023a8ea77013c7efa9a92.png" /> where <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" /> is a positive integer. Let's write things down just to
 be clear:</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">We assume:</th><td class="field-body"><img class="math" src="_images/math/f6cb2d33fb377620c1059cf313204935ff47d01a.png" alt="\frac{d}{dx} x^k = k x^{k-1}"/></td>
-</tr>
-<tr class="field-even field"><th class="field-name">We’ll prove:</th><td class="field-body"><img class="math" src="_images/math/3c1d453c51772d42e84932a79d560ac8591329f9.png" alt="\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}"/></td>
-</tr>
-</tbody>
-</table>
-<p>Let’s use the <img class="math" src="_images/math/12a324efd66e78d76d178c01e573a2354b5935ea.png" alt="\frac{d}{dx}(f(x)g(x))"/> and <img class="math" src="_images/math/055595c47896aa3f90f91888e053739d06507dcc.png" alt="\frac{d}{dx} x"/> rules we
+
+<p><b>We assume:</b> <img class="inlinemath" src="math/6e474f2b13ebb63a2fb1b82136ec90ae.png" /></p>
+
+<p><b>We'll prove:</b> <img class="inlinemath" src="math/4edc493a3d7c441970d852b8fcce2f6e.png" /></p>
+
+<p>Let's use the <img class="inlinemath" src="math/7c9f90c40e6a15bdab05b90feddab615.png" /> and <img class="inlinemath" src="math/d84dc2adcc237df0079a01a51291e11d.png" /> rules we
 proved above and the assumption.</p>
-<div class="math">
-<p><img src="_images/math/eab3b650dc34dcacd729337cb850c94fbc0fee46.png" alt="\frac{d}{dx} x^{k+1}
-&amp;= \frac{d}{dx} (x^k x^1) \\
-&amp;= \frac{d}{dx} (x \cdot x^k) \\
-&amp;= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right) \\
-&amp;= 1x^k + x \cdot k x^{k-1} \\
-&amp;= 1x^k + kx^1x^{k-1} \\
-&amp;= 1x^k + kx^k \\
-&amp;= (1+k)x^k \\
-&amp;= (k+1)x^{(k+1)-1}"/></p>
-</div><p>We proved that if <img class="math" src="_images/math/f6cb2d33fb377620c1059cf313204935ff47d01a.png" alt="\frac{d}{dx} x^k = k x^{k-1}"/> then
-<img class="math" src="_images/math/3c1d453c51772d42e84932a79d560ac8591329f9.png" alt="\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}"/>. Now we know that the rule works
-when <img class="math" src="_images/math/5f46820f1e1705a3945e3aaad7622dcb5f41b8fb.png" alt="c=1"/>, and then if we plug in <img class="math" src="_images/math/e0c697f0cf4a4c09fb151f725bdc6e65c3be447c.png" alt="k=1"/> we know it works when <img class="math" src="_images/math/98ddc75a93c83c1dfae845e656cc87da36617748.png" alt="c=2"/>, and so
+
+<p><img src="math/104ab43c31fb1f48bd37d50fae8ec255.png" class="blockmath" /></p><p>We proved that if <img class="inlinemath" src="math/6e474f2b13ebb63a2fb1b82136ec90ae.png" /> then
+<img class="inlinemath" src="math/4edc493a3d7c441970d852b8fcce2f6e.png" />. Now we know that the rule works
+when <img class="inlinemath" src="math/27071423b9a403c9ffa1895ef3fefb6e.png" />, and then if we plug in <img class="inlinemath" src="math/ceef78b61bf01306cc7e80344c92c19d.png" /> we know it works when <img class="inlinemath" src="math/4847acef124418c705153576282ebd02.png" />, and so
 on.</p>
-<div class="i">
-<p><img src="_images/asymptote/73c41ad0b63c9d17e598bae0608ebcde.png"/></p></div><p>Note that we only proved that the rule works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a positive integer,
-but it also works when <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is e.g. <img class="math" src="_images/math/582d85cfa35dc89f5ae0a4903ea8eef0da364ab7.png" alt="\frac{1}{2}"/>. It’s possible to prove
-that the rule isn’t limited to positive integers, but that’s beyond the
-scope of this tutorial.</p>
-</div></blockquote>
-<div class="sidebar">
-<p class="first sidebar-title">Handy thing: <img class="math" src="_images/math/dcbdd9ac140579d6a6f7222a99272f6375eccb68.png" alt="(a-b)(a+b)=a^2-b^2"/></p>
-<p>Proof:</p>
-<div class="math">
-<p><img src="_images/math/011baae1687bfdfd2b3e2ba1268343ea4439eb69.png" alt="&amp; \ (a-b)(a+b) \\
-=&amp;\ (a-b)a+(a-b)b \\
-=&amp;\ aa-ba+ab-bb \\
-=&amp;\ a^2 - b^2"/></p>
-</div><p class="last">In this case we need to plug in <img class="math" src="_images/math/4678777b4146af89c757055a5d6ca66d8e16eb47.png" alt="a=\sqrt{x+h}"/> and <img class="math" src="_images/math/cb2f20b6bddad5c0c45e016ab57cd544de59616c.png" alt="b=\sqrt x"/>.</p>
-</div>
-</div>
-<div class="section" id="id8">
-<h3><img class="math" src="_images/math/427ef2ae4e202154debd5b29d01c7f5999105368.png" alt="\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}"/><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>We could prove this with the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/> rule because
-<img class="math" src="_images/math/e1f2f47dde68244f7a225a6eb728a21cd9794eed.png" alt="\sqrt x = x^\frac{1}{2}"/>, but we proved the <img class="math" src="_images/math/2b8238b123f456cca2392b16b56774f8e678a91c.png" alt="x^c"/> rule only for positive
-integers. Let’s survive without it. Again, it’s a mess, but it works.</p>
-<div class="math">
-<p><img src="_images/math/943dfbf943d845259835db87124a420259fbc9d1.png" alt="\frac{d}{dx} \sqrt x
-&amp;= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
-&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x\ )(\sqrt{x+h}+\sqrt x\ )}{
-                      h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
-&amp;= \lim_{h\to0} \frac{(\sqrt{x+h}\ )^2 - (\sqrt x\ )^2}{
-                      h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
-&amp;= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
-&amp;= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
-&amp;= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
-&amp;= \frac{1}{\sqrt x + \sqrt x} \\
-&amp;= \frac{1}{2\ \sqrt x}"/></p>
-</div></div></blockquote>
-</div>
-<div class="section" id="id9">
-<h3><img class="math" src="_images/math/15673511ac891f259019b8c0a26e2eeef1619db3.png" alt="\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}"/><a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>We could use the <img class="math" src="_images/math/5f2d13e3b8ec3e1fd8a022eead5f583b2473d69b.png" alt="\frac{d}{dx} x^c"/> rule again because <img class="math" src="_images/math/20aabfac838dcd6d583261303adcdeb8b16c9bc8.png" alt="1/x"/> is actually
-<img class="math" src="_images/math/36e6e129b66ffd554c1fddc3854af6ce260e7007.png" alt="x^{-1}"/>, but as before, we haven’t proved that it works at <img class="math" src="_images/math/070f16c1833eb508ace6b66d585271216f0f599e.png" alt="c=-1"/> so we’ll
+
+<p><img src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.png" /></p><p>Note that we only proved that the rule works when <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is a positive integer,
+but it also works when <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is e.g. <img class="inlinemath" src="math/93b05c90d14a117ba52da1d743a43ab1.png" />. It's possible to prove
+that the rule isn't limited to positive integers, but that's beyond the
+scope of this tutorial.
+</p>
+
+</div><h3 id="img-class-inlinemath-src-math-103e1cf82d4028e40817728146a3d964-png"><img class="inlinemath" src="math/103e1cf82d4028e40817728146a3d964.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-103e1cf82d4028e40817728146a3d964-png" title="Link to this title">¶</a></h3><div class="indent"><p>We could prove this with the <img class="inlinemath" src="math/901a4ac1bf0dc042656f4a045eb75433.png" /> rule because
+<img class="inlinemath" src="math/20dde705a063ad16e93eb0ebf48238c7.png" />, but we proved the <img class="inlinemath" src="math/e165147579ec4ce8bce99b5d00f8fd3c.png" /> rule only for positive
+integers. Let's survive without it. Again, it's a mess, but it works.</p>
+
+<p><img src="math/2972d47fc30a796c54ac97ba4d08a2f6.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-8cd0684703f7931bca03371fe86d604a-png"><img class="inlinemath" src="math/8cd0684703f7931bca03371fe86d604a.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-8cd0684703f7931bca03371fe86d604a-png" title="Link to this title">¶</a></h3><div class="indent"><p>We could use the <img class="inlinemath" src="math/901a4ac1bf0dc042656f4a045eb75433.png" /> rule again because <img class="inlinemath" src="math/61b98bb724d72e0b009c3f523c50cd82.png" /> is actually
+<img class="inlinemath" src="math/48ea9be719fa783b7063fd5c5531521a.png" />, but as before, we haven't proved that it works at <img class="inlinemath" src="math/c06df0b2f6cb0f34a64fe41142c78271.png" /> so we'll
 do this without it.</p>
-<div class="math">
-<p><img src="_images/math/2e91c60cb0ad318f809b05a82fbd07a7a9220bcd.png" alt="\frac{d}{dx} (1/x) &amp;= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 x}{h} \\
-&amp;= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h} \\
-&amp;= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h} \\
-&amp;= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh} \\
-&amp;= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
-&amp;= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
-&amp;= \lim_{h\to0} \frac{-1}{(x+h)x} \\
-&amp;= \frac{-1}{x^2}"/></p>
-</div></div></blockquote>
-</div>
-<div class="section" id="id10">
-<h3><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/><a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>This rule looks simple, but it’s surprisingly difficult to prove correctly
-while keeping it easy to read. Here’s the best proof I managed to make.</p>
-<p>Let’s start by plugging stuff into the definition of derivative:</p>
-<div class="math">
-<p><img src="_images/math/609278ba55d8b53744fe773f512f635c13a7d942.png" alt="g'(x) = \lim_{h\to0} \frac{g(x+h)-g(x)}{h}"/></p>
-</div><div class="math">
-<p><img src="_images/math/22780a30577cf61104040b0fb8b32daa0f9832d6.png" alt="f'(g(x)) = \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k}"/></p>
-</div><div class="i">
-<p><img src="_images/asymptote/6a0d2da7383c4fda6d4e5ae52d526fc1.png" class="align-right"/></p></div><p>Note that I used <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> with one limit and <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> with the other; the limits are
+
+<p><img src="math/2a2856532bf8c662ab374c452894ef96.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-856e7360e9e14bc37ca22a88f8cf4550-png"><img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-856e7360e9e14bc37ca22a88f8cf4550-png" title="Link to this title">¶</a></h3><div class="indent"><p>This rule looks simple, but it's surprisingly difficult to prove correctly
+while keeping it easy to read. Here's the best proof I managed to make.</p>
+
+<p>Let's start by plugging stuff into the definition of derivative:</p>
+
+<p><img src="math/acb8631ac1abf5f1696963321fb7ee14.png" class="blockmath" /></p><p><img src="math/00cb8c45c7065e57dd58fbd558e7a81c.png" class="blockmath" /></p><img src="asymptote/4b96a4d5f2ebb51601ab1ab6a75e017a.png" style="float:right;" /><p>Note that I used <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> with one limit and <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" /> with the other; the limits are
 completely independent of each other and I wanted to make it stand out. In
-other words, it doesn’t matter how <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/> and <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/> relate to each other as long
+other words, it doesn't matter how <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> and <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" /> relate to each other as long
 as both of them approach 0.</p>
-<p>The rule can be used only if <img class="math" src="_images/math/dfabaa32db4e32a14087893651d619aff17ba509.png" alt="g'(x)"/> exists, and thus <img class="math" src="_images/math/307b3725cbb03398131f9ca542d79aff4933195f.png" alt="g"/> must be
-continuous; see <a class="reference external" href="#which-functions-have-derivatives">the derivative existence stuff above</a>.
-So, if <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84774.png" alt="h \to 0"/> (read: h approaches 0) then <img class="math" src="_images/math/06e56635f587d774b9f30350b6dd80b414b61635.png" alt="g(x+h) \to g(x)"/> and
-<img class="math" src="_images/math/a1e9d386aa984c2a6fec30d98e450dcfed6dea04.png" alt="(g(x+h)-g(x)) \to 0"/>.</p>
-<p>If we put all this together we can set <img class="math" src="_images/math/48438feaf697dd21d1d3af56b5e8c1a7666d2ce1.png" alt="k=g(x+h)-g(x)"/>. Now it’s time to
-calculate <img class="math" src="_images/math/302ed84840aad033c38a14a209f4c785b2ec2c4b.png" alt="f'(g(x))g'(x)"/>.</p>
-<div class="math">
-<p><img src="_images/math/26eccce69daf401735a16482603fad9ccd883375.png" alt="&amp;  f'(g(x))g'(x) \\
-=&amp; \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
-=&amp; \lim_{k\to0} \lim_{h\to0} \left(
-      \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
-\right) \\
-=&amp; \lim_{h\to0} \left(
-      \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
-      \cdot \frac{g(x+h)-g(x)}{h}
-\right) \\
-=&amp; \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
-=&amp; \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-=&amp; \frac{d}{dx} f(g(x))"/></p>
-</div><div class="i">
-<p><img src="_images/asymptote/b927351c0ef1b6168ce8b3bb3e9e6d3f.png" class="align-right"/></p></div><p>This looks nice, but we are not done yet! We divided by <img class="math" src="_images/math/0b7c1e16a3a8a849bb8ffdcdbf86f65fd1f30438.png" alt="k"/>. What if
-<img class="math" src="_images/math/3581b4c83622de31c2170c3e26137d2b921f9150.png" alt="k=g(x+h)-g(x)=0"/> when <img class="math" src="_images/math/322649b1cf2f4d6b7a213c4dffbcb3daa3c84774.png" alt="h \to 0"/> but <img class="math" src="_images/math/d010d8739df6f9919d9e4340196f07afcdddc018.png" alt="h \ne 0"/>? Practically it means that
-the graph <img class="math" src="_images/math/c8b7507d86751bbc4e8bfb5a5b626b87d2a55241.png" alt="y=g(x)"/> is a horizontal and straight line around <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> because
-<img class="math" src="_images/math/e524283c92c29894380f55200192d96e80954915.png" alt="g(x+h)=g(x)"/> with a small <img class="math" src="_images/math/293fb39e1b93282c804a86186e721b32f829f1b2.png" alt="h"/>. So, we can say that <img class="math" src="_images/math/3b34403af1c50199c4c06b1d11904c977d935988.png" alt="g(x)=c"/> on this
-interval (<img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> is a constant) and prove this case separately:</p>
-<div class="math">
-<p><img src="_images/math/d7de58f5c3d2dd0e6f81b7871294f87d8da8b356.png" alt="f(g(x))g'(x) = f(c) \left(\frac{d}{dx} c\right) = f(c) \cdot 0 = 0"/></p>
-</div><div class="math">
-<p><img src="_images/math/bc9987dc57c8bf414874cead4817002dd235fb52.png" alt="\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0"/></p>
-</div><p>Look carefully: <img class="math" src="_images/math/20899d0f30b50538355af0ac4c4a643f0d4ba7f7.png" alt="\frac{d}{dx} f(c) = 0"/> because we differenciated <img class="math" src="_images/math/0814556d52bf073d8cfc06adae041e777a976fee.png" alt="f(c)"/>
-with respect to <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>, so <img class="math" src="_images/math/0814556d52bf073d8cfc06adae041e777a976fee.png" alt="f(c)"/> was actually yet another constant because it
-doesn’t depend on the value of <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/>.</p>
-</div></blockquote>
-</div>
-<div class="section" id="id11">
-<h3><img class="math" src="_images/math/10c9190023457e8fb52fb3db9ce4e23fd157c209.png" alt="\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}"/><a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<blockquote>
-<div><p>We need these rules that are proved above:</p>
-<blockquote>
-<div><ul class="simple">
-<li><img class="math" src="_images/math/9b0c2c3562d2534afd85381cdd40a92347240b87.png" alt="\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)"/></li>
-<li><img class="math" src="_images/math/d08771ce5334857616cd148c6028a41e606b02b0.png" alt="\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}"/></li>
-<li><img class="math" src="_images/math/2f10db0296367cd827b61192c10652d23014bf3b.png" alt="\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)"/></li>
-</ul>
-</div></blockquote>
-<p>Now this is quite straight-forward.</p>
-<div class="math">
-<p><img src="_images/math/194844cab07f71ba9f2a1f88ed24fe8a1f1391bc.png" alt="\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
-=&amp; \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
-=&amp; f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
-=&amp; \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
-=&amp; \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
-=&amp; \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}"/></p>
-</div></div></blockquote>
-</div>
-</div>
-</div>
 
+<p>The rule can be used only if <img class="inlinemath" src="math/a1627a9956cf861e19c02dbeed3126c2.png" /> exists, and thus <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> must be
+continuous; see <a href="#which-functions-have-derivatives">the derivative existence stuff
+above</a>. So, if <img class="inlinemath" src="math/9d4bc0f01913766d3661654f39403e28.png" /> (read: h
+approaches 0) then <img class="inlinemath" src="math/1b8cc0de3268c62ab495d85bdd30b3c0.png" /> and <img class="inlinemath" src="math/e943357c528a9ee88f7347b03b63f965.png" />.</p>
 
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><ul>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="geometry-and-trig.html">Geometry and Trigonometry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrals.html">Integrals</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Proofs and Explanations</a></li>
-</ul>
+<p>If we put all this together we can set <img class="inlinemath" src="math/55788c149440c4a7a8912da86743a9fc.png" />. Now it's time to
+calculate <img class="inlinemath" src="math/bba33b6c234fb7d02fb28be428e2f177.png" />.</p>
 
-<br>
+<p><img src="math/026421c9dde85abd73d9ffce4aa09fe9.png" class="blockmath" /></p><img src="asymptote/f1ecd1c6fdb99e14f2195fabab5db4dd.png" style="float:right;" /><p>This looks nice, but we are not done yet! We divided by <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" />. What if
+<img class="inlinemath" src="math/4931411fd72295d0ab0439e8f9cfefa2.png" /> when <img class="inlinemath" src="math/9d4bc0f01913766d3661654f39403e28.png" /> but <img class="inlinemath" src="math/9c78583b715a91d39939e897f6cb2616.png" />? Practically it means that
+the graph <img class="inlinemath" src="math/d13f453d5a25ba83fd2f3ecc74880538.png" /> is a horizontal and straight line around <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> because
+<img class="inlinemath" src="math/4f3f1df7045ded7289cfdd19e0142db6.png" /> with a small <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" />. So, we can say that <img class="inlinemath" src="math/d41540eb07faa71dcab1f3d9e79f4cf1.png" /> on this
+interval (<img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is a constant) and prove this case separately:</p>
 
-<!-- abusing abbr was the first way to dot-underline stuff i found -->
-<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2017, Akuli.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/explanations.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
+<p><img src="math/b9134549ccb41278eb6956de9de72564.png" class="blockmath" /></p><p><img src="math/52c27bf18f4ae743bc76720fbdd98998.png" class="blockmath" /></p><p>Look carefully: <img class="inlinemath" src="math/7856270fe16a99e90fe2cfd61724fb63.png" /> because we differenciated <img class="inlinemath" src="math/13f62c9aa3411c74f55faa6850ff5fb2.png" />
+with respect to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />, so <img class="inlinemath" src="math/13f62c9aa3411c74f55faa6850ff5fb2.png" /> was actually yet another constant because it
+doesn't depend on the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.
+</p>
 
-    
+</div><h3 id="img-class-inlinemath-src-math-9e11f374aaa2840aa80fa548326e2b4f-png"><img class="inlinemath" src="math/9e11f374aaa2840aa80fa548326e2b4f.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-9e11f374aaa2840aa80fa548326e2b4f-png" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
 
-    
-  </body>
+<ul><li><img class="inlinemath" src="math/d8066452a7caefafc1ec4d4a869c554e.png" /></li><li><img class="inlinemath" src="math/fe79cdf863608d24879884829ea3459d.png" /></li><li><img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" />
+</li></ul><p>Now this is quite straight-forward.</p>
+
+<p><img src="math/41db6944cdc68be690389f2c54f1e29f.png" class="blockmath" /></p></div></div>
+</body>
 </html>

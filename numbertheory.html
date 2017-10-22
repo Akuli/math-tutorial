@@ -1,166 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Number Theory</title>
+</head>
+<body>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><b>Number Theory</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="content">
+<h1 id="number-theory">Number Theory<a class="headerlink" href="#number-theory" title="Link to this title">¶</a></h1><p>This section is currently kind of incomplete. It needs to be expanded to
+contain more stuff that people are often interested in, e.g. prime numbers.
+</p>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Number Theory</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Proofs and Explanations" href="explanations.html" />
-    <link rel="prev" title="Integrals" href="integrals.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="number-theory">
-<h1>Number Theory<a class="headerlink" href="#number-theory" title="Permalink to this headline">¶</a></h1>
-<p>This section is currently kind of incomplete. It needs to be expanded to
-contain more stuff that people are often interested in, e.g. prime numbers.</p>
-<div class="section" id="hexadecimal-colors">
-<h2>Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Permalink to this headline">¶</a></h2>
-<p>You might have seen weird colors before, like <code class="docutils literal"><span class="pre">#ff0000</span></code> is somehow magically
-red or <code class="docutils literal"><span class="pre">#0000ff</span></code> is blue. This section is all about what the heck happens in
+<h2 id="hexadecimal-colors">Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Link to this title">¶</a></h2><p>You might have seen weird colors before, like <code>#ff0000</code> is somehow magically
+red or <code>#0000ff</code> is blue. This section is all about what the heck happens in
 this color notation.</p>
-<p>Let’s start with an example. If we have a number like 2017, it really means this:</p>
-<div class="math">
-<p><img src="_images/math/024ec5eacb3267b73cb7388370b88707e4b716ee.png" alt="2017 &amp;= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
-     &amp;= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0"/></p>
-</div><p>The idea with <strong>hexadecimal</strong> is that instead of using 10 as a magic number we
-use 16. That’s why hexadecimal is also called <strong>base 16</strong>. But the problem is
+
+<p>Let's start with an example. If we have a number like 2017, it really means this:</p>
+
+<p><img src="math/30c7eda8285d3eae740cc0009d1b9cb5.png" class="blockmath" /></p><p>The idea with <b>hexadecimal</b> is that instead of using 10 as a magic number we
+use 16. That's why hexadecimal is also called <b>base 16</b>. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
 B=11, C=12, D=13, E=14 and F=15. For example:</p>
-<div class="math">
-<p><img src="_images/math/2de02ebf219355d3e8e068fdb83942d599371a69.png" alt="\text{0xCAFE}  &amp;= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +
-                  \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
-               &amp;= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
-               &amp;= 51966"/></p>
-</div><p>Here 0x means heXadecimal. Mathematicians don’t use it, but I used it here
-because it’s very common in programming. Note that the first character is a
+
+<p><img src="math/7fa4abda5bc22503ba5d099524c3b2d6.png" class="blockmath" /></p><p>Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
+because it's very common in programming. Note that the first character is a
 zero, not the letter O.</p>
+
 <p>The sane way to calculate the last step is to use a programming interpreter or
-calculator of your choice. Don’t try to do it by hand.</p>
+calculator of your choice. Don't try to do it by hand.</p>
+
 <p>Most programming languages have very good support for hexadecimal and a few
-other bases. For example, here’s Python:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mh">0xcafe</span>
-<span class="go">51966</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mh">0xc</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mh">0xa</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mh">0xf</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="mh">0xe</span>
-<span class="go">51966</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="mi">12</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">16</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">*</span> <span class="mi">16</span> <span class="o">+</span> <span class="mi">14</span>
-<span class="go">51966</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">hex</span><span class="p">(</span><span class="mi">51966</span><span class="p">)</span>
-<span class="go">&#39;0xcafe&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;cafe&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
-<span class="go">51966</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;i went to a </span><span class="si">%x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="mi">51966</span>
-<span class="go">&#39;i went to a cafe&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="s1">&#39;i went to a {:x}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">51966</span><span class="p">)</span>
-<span class="go">&#39;i went to a cafe&#39;</span>
+other bases. For example, here's Python:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">0xcafe</span>
+<span style="color: #888888">51966</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">0xc</span> <span style="color: #666666">*</span> <span style="color: #40a070">16</span><span style="color: #666666">**</span><span style="color: #40a070">3</span> <span style="color: #666666">+</span> <span style="color: #40a070">0xa</span> <span style="color: #666666">*</span> <span style="color: #40a070">16</span><span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">0xf</span> <span style="color: #666666">*</span> <span style="color: #40a070">16</span> <span style="color: #666666">+</span> <span style="color: #40a070">0xe</span>
+<span style="color: #888888">51966</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">12</span> <span style="color: #666666">*</span> <span style="color: #40a070">16</span><span style="color: #666666">**</span><span style="color: #40a070">3</span> <span style="color: #666666">+</span> <span style="color: #40a070">10</span> <span style="color: #666666">*</span> <span style="color: #40a070">16</span><span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">15</span> <span style="color: #666666">*</span> <span style="color: #40a070">16</span> <span style="color: #666666">+</span> <span style="color: #40a070">14</span>
+<span style="color: #888888">51966</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">hex</span>(<span style="color: #40a070">51966</span>)
+<span style="color: #888888">&#39;0xcafe&#39;</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">int</span>(<span style="color: #4070a0">&#39;cafe&#39;</span>, <span style="color: #40a070">16</span>)
+<span style="color: #888888">51966</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #4070a0">&#39;i went to a </span><span style="color: #70a0d0; font-style: italic">%x</span><span style="color: #4070a0">&#39;</span> <span style="color: #666666">%</span> <span style="color: #40a070">51966</span>
+<span style="color: #888888">&#39;i went to a cafe&#39;</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #4070a0">&#39;i went to a </span><span style="color: #70a0d0; font-style: italic">{:x}</span><span style="color: #4070a0">&#39;</span><span style="color: #666666">.</span>format(<span style="color: #40a070">51966</span>)
+<span style="color: #888888">&#39;i went to a cafe&#39;</span>
 </pre></div>
-</div>
-<p>Now let’s have a look at the colors. Another common way to represent colors is
-<code class="docutils literal"><span class="pre">rgb(R,G,B)</span></code> where R, G and B are red, green and blue values between
-0 and 255. For example, <code class="docutils literal"><span class="pre">rgb(255,0,0)</span></code> is red because the red value is at
-maximum and other values are 0. <code class="docutils literal"><span class="pre">rgb(0,0,0)</span></code> is black and
-<code class="docutils literal"><span class="pre">rgb(255,255,255)</span></code> is white.</p>
-<p>You might have noticed that <img class="math" src="_images/math/a095cf6c4145dd72c1bb57e19b963428d29597f4.png" alt="0=\text{0x0}"/> and
-<img class="math" src="_images/math/967ba383bf9e7cc19f1b487d58fbcfabffafbfbe.png" alt="255 = 15 \cdot 16 + 15 = \text{0xFF}"/>, and that’s not just a random
-coincidence. A color like <code class="docutils literal"><span class="pre">#RRGGBB</span></code> is actually <code class="docutils literal"><span class="pre">rgb(RR,GG,BB)</span></code> where
-<code class="docutils literal"><span class="pre">RR</span></code>, <code class="docutils literal"><span class="pre">GG</span></code> and <code class="docutils literal"><span class="pre">BB</span></code> are hexadecimal. For example,
-<code class="docutils literal"><span class="pre">#ff0000</span> <span class="pre">=</span> <span class="pre">rgb(0xff,0x00,0x00)</span> <span class="pre">=</span> <span class="pre">rgb(255,0,0)</span></code>.</p>
+<p>Now let's have a look at the colors. Another common way to represent colors is
+<code>rgb(R,G,B)</code> where R, G and B are red, green and blue values between
+0 and 255. For example, <code>rgb(255,0,0)</code> is red because the red value is at
+maximum and other values are 0. <code>rgb(0,0,0)</code> is black and
+<code>rgb(255,255,255)</code> is white.</p>
+
+<p>You might have noticed that <img class="inlinemath" src="math/a655a766e0d17a602684fe06772ba5e2.png" /> and
+<img class="inlinemath" src="math/f5719c7d664537f90344e675cb644e50.png" />, and that's not just a random
+coincidence. A color like <code>#RRGGBB</code> is actually <code>rgb(RR,GG,BB)</code> where
+<code>RR</code>, <code>GG</code> and <code>BB</code> are hexadecimal. For example,
+<code>#ff0000 = rgb(0xff,0x00,0x00) = rgb(255,0,0)</code>.</p>
+
 <p>These Python functions convert RGB colors to hexadecimal and back:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hex2rgb</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">)</span> <span class="o">==</span> <span class="mi">7</span> <span class="ow">and</span> <span class="n">hexcolor</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;#&#39;</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">],</span> <span class="mi">16</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">hexcolor</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="mi">16</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">rgb2hex</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># string formatting magic: %02x means hexadecimal padded with</span>
-    <span class="c1"># zeros until it&#39;s at least 2 characters wide</span>
-    <span class="k">return</span> <span class="s1">&#39;#</span><span class="si">%02x%02x%02x</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">hex2rgb</span>(hexcolor):
+    <span style="color: #007020; font-weight: bold">assert</span> <span style="color: #007020">len</span>(hexcolor) <span style="color: #666666">==</span> <span style="color: #40a070">7</span> <span style="color: #007020; font-weight: bold">and</span> hexcolor[<span style="color: #40a070">0</span>] <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;#&#39;</span>
+    <span style="color: #007020; font-weight: bold">return</span> (<span style="color: #007020">int</span>(hexcolor[<span style="color: #40a070">1</span>:<span style="color: #40a070">3</span>], <span style="color: #40a070">16</span>), <span style="color: #007020">int</span>(hexcolor[<span style="color: #40a070">3</span>:<span style="color: #40a070">5</span>], <span style="color: #40a070">16</span>), <span style="color: #007020">int</span>(hexcolor[<span style="color: #40a070">5</span>:<span style="color: #40a070">7</span>], <span style="color: #40a070">16</span>))
+
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">rgb2hex</span>(r, g, b):
+    <span style="color: #60a0b0; font-style: italic"># string formatting magic: %02x means hexadecimal padded with</span>
+    <span style="color: #60a0b0; font-style: italic"># zeros until it&#39;s at least 2 characters wide</span>
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #4070a0">&#39;#</span><span style="color: #70a0d0; font-style: italic">%02x%02x%02x</span><span style="color: #4070a0">&#39;</span> <span style="color: #666666">%</span> (r, g, b)
 </pre></div>
-</div>
-<p>Here’s a usage example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hex2rgb</span><span class="p">(</span><span class="s1">&#39;#ff00ff&#39;</span><span class="p">)</span>
-<span class="go">(255, 0, 255)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">rgb2hex</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
-<span class="go">&#39;#ff00ff&#39;</span>
+<p>Here's a usage example:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;&gt;&gt;</span> hex2rgb(<span style="color: #4070a0">&#39;#ff00ff&#39;</span>)
+(<span style="color: #40a070">255</span>, <span style="color: #40a070">0</span>, <span style="color: #40a070">255</span>)
+<span style="color: #666666">&gt;&gt;&gt;</span> rgb2hex(<span style="color: #40a070">255</span>, <span style="color: #40a070">0</span>, <span style="color: #40a070">255</span>)
+<span style="color: #4070a0">&#39;#ff00ff&#39;</span>
 </pre></div>
+<p>Note that most color parsers support specifying colors so that e.g. <code>#f0f</code>
+and <code>#fff000fff</code> are equivalent to <code>#ff00ff</code>, but the above program doesn't
+support that.
+</p>
+
 </div>
-<p>Note that most color parsers support specifying colors so that e.g. <code class="docutils literal"><span class="pre">#f0f</span></code>
-and <code class="docutils literal"><span class="pre">#fff000fff</span></code> are equivalent to <code class="docutils literal"><span class="pre">#ff00ff</span></code>, but the above program doesn’t
-support that.</p>
-</div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><ul>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="geometry-and-trig.html">Geometry and Trigonometry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrals.html">Integrals</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Number Theory</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
-</ul>
-
-<br>
-
-<!-- abusing abbr was the first way to dot-underline stuff i found -->
-<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2017, Akuli.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/numbertheory.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>

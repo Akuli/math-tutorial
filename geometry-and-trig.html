@@ -1,199 +1,149 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Geometry and Trigonometry</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true,
-        SOURCELINK_SUFFIX: '.txt'
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Derivatives" href="derivatives.html" />
-    <link rel="prev" title="The Basics" href="basics.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head>
-  <body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
-            
-  <div class="section" id="geometry-and-trigonometry">
-<h1>Geometry and Trigonometry<a class="headerlink" href="#geometry-and-trigonometry" title="Permalink to this headline">¶</a></h1>
-<p>This chapter contains useful stuff that aren’t too difficult to get started
-with. You’ll find it especially useful if you like writing games, and this
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Geometry and Trigonometry</title>
+</head>
+<body>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><b>Geometry and Trigonometry</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="content">
+<h1 id="geometry-and-trigonometry">Geometry and Trigonometry<a class="headerlink" href="#geometry-and-trigonometry" title="Link to this title">¶</a></h1><p>This chapter contains useful stuff that aren't too difficult to get started
+with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>Usually the y axis is so that more y means up, but in this chapter it’s
-“upside down” and more y means down. Almost all programming things use the
-“more y means down” version and are compatible with this chapter.</p>
-<p class="last">If you’re a mathematician everything looks really weird to you, but if
-you’re a programmer who wants to get stuff done you’ll enjoy not having to
+
+<p><b>Note:</b>
+Usually the y axis is so that more y means up, but in this chapter it's
+"upside down" and more y means down. Almost all programming things use the
+"more y means down" version and are compatible with this chapter.</p>
+
+<p>If you're a mathematician everything looks really weird to you, but if
+you're a programmer who wants to get stuff done you'll enjoy not having to
 add minus signs everywhere before using formulas from this tutorial.</p>
-</div>
-<div class="i">
-<p><img src="_images/asymptote/8eab71d0089187484a40fc2855a7d52b.png" class="align-right"/></p></div><div class="section" id="radians-and-tau">
-<span id="radians"></span><h2>Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Permalink to this headline">¶</a></h2>
-<p>Angles are often measured in radians. The angles in the pictures at right are
+
+<img src="asymptote/8ddeb2c0e59514352b553bd5bb261ede.png" style="float:right; padding-left:5px;" /><img src="asymptote/cdc74b2fa9923423f52862ac567ec8a5.png" style="float:right; padding-left:5px;" /><h2 id="radians-and-tau">Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Link to this title">¶</a></h2><p>Angles are often measured in radians. The angles in the pictures at right are
 both one radian. The angle is always 1 radian if the arc and radius lengths are
-equal, and it doesn’t matter what that length is.</p>
-<div class="i">
-<p><img src="_images/asymptote/c25e92e1ae3e41bd8ffd452b569a58cb.png" class="align-right"/></p></div><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
-there’s some room left over. To be more precise, we can add 6.2831853…
-slices. This number is called tau and written with the Greek tau letter <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>.
-So, a full turn is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians. Be careful not to confuse <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> with other
-letters like <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>.</p>
-<p>The yellow slice at right shows another way to define an angle in radians, and
-it’s compatible with the green slices because if we set <img class="math" src="_images/math/1657526a3368c9bb89dfaf86fa28ee7bdac60b56.png" alt="b=r"/> the angle is
-<img class="math" src="_images/math/d8784147651611acfd14a4ebcb9b5ffc68cdb4ac.png" alt="r/r=1"/> radian.</p>
+equal, and it doesn't matter what that length is.</p>
+
+<img src="asymptote/8b6ace74c6f849404001519f231b56a0.png" style="float:left; padding-right:20px;" /><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
+there's some room left over. To be more precise, we can add 6.2831853...
+slices. This number is called tau and written with the Greek tau letter <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />.
+So, a full turn is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians. Be careful not to confuse <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> with other
+letters like <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
+
+<img src="asymptote/b7f5f05a915a2557b2e86ee4bc94e875.png" style="float:right;" /><p>The yellow slice at left shows another way to define an angle in radians, and
+it's compatible with the green slices because if we set <img class="inlinemath" src="math/225f9ff198eeedcb0c110f45fc7ef39f.png" /> the angle is
+<img class="inlinemath" src="math/933a3fd95e03791593f4b932ae9e6e04.png" /> radian.</p>
+
 <p>Sometimes the yellow slice definition is handier; for example, if we draw a
-full circle we know the angle in the center is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians (full turn), so
+full circle we know the angle in the center is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians (full turn), so
 we get this:</p>
-<div class="i">
-<p><img src="_images/asymptote/bdf4139b16cfee3c4fe985cb51160b56.png" class="align-right"/></p></div><div class="math">
-<p><img src="_images/math/38466eb51d171603d86a4112e2ce0b84a69b910f.png" alt="\frac b r &amp;= \tau \\
-b &amp;= \tau r"/></p>
-</div><p>So we can multiply with tau to get from a radius to a perimeter. This is how
-<img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> is usually defined.</p>
-<p>Some programming languages like new Pythons have a <code class="docutils literal"><span class="pre">tau</span></code> constant, but if
-your favorite language doesn’t, use <code class="docutils literal"><span class="pre">2*pi</span></code> instead. Here pi is the more
-well-known circle constant <img class="math" src="_images/math/ab71c50e984f198097bef56502d59573c7c4897b.png" alt="\pi = \tau/2 = 3.14159265..."/>, and almost all
-programming languages have something like <code class="docutils literal"><span class="pre">math.pi</span></code> or <code class="docutils literal"><span class="pre">Math.PI</span></code>. I find
-<img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> easier to work with than <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> because if I see <img class="math" src="_images/math/140467d9b0b530c28668cf5c004b19b1b6ff383b.png" alt="\tau/4"/> somewhere I
-know immediately that it’s a quarter turn, but <img class="math" src="_images/math/4ee0672a9e081e5ecb0c6b521863831e0ab3a68b.png" alt="\pi/2"/> isn’t as obvious. Of
-course, you can use <img class="math" src="_images/math/b7793e4f08d00aca47e272dcdfeb70f933dac222.png" alt="\pi"/> if you prefer it over <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>.</p>
-</div>
-<div class="section" id="degrees">
-<h2>Degrees<a class="headerlink" href="#degrees" title="Permalink to this headline">¶</a></h2>
-<p>Degrees are an alternative to radians, and they work so that 360° is a full
+
+<img src="asymptote/252e9ab0d34a1791201c03cbbbc8537e.png" style="float:right; margin: 0,0,0,20px;" /><p><img src="math/a650bf80b25a2fb8af7f8509c35136ca.png" class="blockmath" /></p><p>So we can multiply with tau to get from a radius to a perimeter. This is how
+<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> is usually defined.</p>
+
+<p>Some programming languages like new Pythons have a <code>tau</code> constant, but if
+your favorite language doesn't, use <code>2*pi</code> instead. Here pi is the more
+well-known circle constant <img class="inlinemath" src="math/475b5741d41195a162d7e7801bc4377f.png" />, and almost all
+programming languages have something like <code>math.pi</code> or <code>Math.PI</code>. I find
+<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> easier to work with than <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> because if I see <img class="inlinemath" src="math/3647dc184901b3ad134ff555024108f3.png" /> somewhere I
+know immediately that it's a quarter turn, but <img class="inlinemath" src="math/d97ed75815d5454312793e69228fd04f.png" /> isn't as obvious. Of
+course, you can use <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> if you prefer it over <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />.
+</p>
+
+<h2 id="degrees">Degrees<a class="headerlink" href="#degrees" title="Link to this title">¶</a></h2><p>Degrees are an alternative to radians, and they work so that 360° is a full
 turn. Here ° is the degree symbol, and 360 is just an arbitary number that
 someone has chosen a long time ago.</p>
-<p>If you need to convert between radians and degrees, use the fact that 360
-degrees is <img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/> radians. Here’s a Python example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">degrees2radians</span><span class="p">(</span><span class="n">degrees</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">degrees</span> <span class="o">/</span> <span class="mi">360</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">tau</span>
 
-<span class="k">def</span> <span class="nf">radians2degrees</span><span class="p">(</span><span class="n">radians</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">radians</span> <span class="o">/</span> <span class="n">math</span><span class="o">.</span><span class="n">tau</span> <span class="o">*</span> <span class="mi">360</span>
+<p>If you need to convert between radians and degrees, use the fact that 360
+degrees is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians. Here's a Python example:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">degrees2radians</span>(degrees):
+    <span style="color: #007020; font-weight: bold">return</span> degrees <span style="color: #666666">/</span> <span style="color: #40a070">360</span> <span style="color: #666666">*</span> math<span style="color: #666666">.</span>tau
+
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">radians2degrees</span>(radians):
+    <span style="color: #007020; font-weight: bold">return</span> radians <span style="color: #666666">/</span> math<span style="color: #666666">.</span>tau <span style="color: #666666">*</span> <span style="color: #40a070">360</span>
 </pre></div>
-</div>
-<p>Use <code class="docutils literal"><span class="pre">180</span></code> and <code class="docutils literal"><span class="pre">pi</span></code> instead of <code class="docutils literal"><span class="pre">360</span></code> and <code class="docutils literal"><span class="pre">tau</span></code> if your programming
-language doesn’t have a <code class="docutils literal"><span class="pre">tau</span></code> constant. You can also do something like
-<code class="docutils literal"><span class="pre">TAU</span> <span class="pre">=</span> <span class="pre">2*Math.PI</span></code>. Or better yet, some programming languages feature
-conversion functions in standard libraries like Python’s <code class="docutils literal"><span class="pre">math.radians()</span></code> and
-<code class="docutils literal"><span class="pre">math.degrees()</span></code>.</p>
-</div>
-<div class="section" id="basic-angle-stuff">
-<h2>Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-problem admonition">
-<p class="first admonition-title">Problem</p>
-<p>The ball of a ball-and-paddle game is moving at the angle of 0.5 radians and
+<p>Use <code>180</code> and <code>pi</code> instead of <code>360</code> and <code>tau</code> if your programming
+language doesn't have a <code>tau</code> constant. You can also do something like
+<code>TAU = 2*Math.PI</code>. Or better yet, some programming languages feature
+conversion functions in standard libraries like Python's <code>math.radians()</code> and
+<code>math.degrees()</code>.
+</p>
+
+<h2 id="basic-angle-stuff">Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Link to this title">¶</a></h2><p><b>Problem:</b>
+The ball of a ball-and-paddle game is moving at the angle of 0.5 radians and
 it hits a wall at right. How should the angle change?</p>
-<div class="last i">
-<p><img src="_images/asymptote/37336a474be7b84dc60ef66a1e7d6bd2.png"/></p></div></div>
-<p>Note that both angles are measured down from a horizontal line clockwise
-because that’s a standard in programming. In math, angles are usually measured
+
+<p><img src="asymptote/762396cc0436e676b6d18a5e162ba9a8.png" /></p><p>Note that both angles are measured down from a horizontal line clockwise
+because that's a standard in programming. In math, angles are usually measured
 up from a horizontal line and counter-clockwise.</p>
+
 <p>We can solve our problem by taking the 0.5 radian angle sign and moving it like
 this:</p>
-<div class="i">
-<p><img src="_images/asymptote/4592e000612c80679a55bec9ca9be929.png"/></p></div><p>Now you can see that the angles add up to half turn, and that’s <img class="math" src="_images/math/6fe0d8f1efe1705d0fcca082c8f3a71566f1892e.png" alt="\tau/2 = \pi"/>
-radians, so we get this <a class="reference internal" href="basics.html#equations"><span class="std std-ref">equation</span></a>:</p>
-<div class="math">
-<p><img src="_images/math/6b50d09656c7111c5cf5d284c0749ed12ae17e25.png" alt="0.5 + \text{???} &amp;= \frac \tau 2 \\
-\text{???} &amp;= \frac \tau 2 - 0.5 \\
-\text{???} &amp;\approx 2.64"/></p>
-</div><p>I did the last step with Python.</p>
-<p>In math it’s common to use a letter instead of “???” to represent an
+
+<p><img src="asymptote/66ead1ba69afa6f7fd4384a24fb6b764.png" /></p><p>Now you can see that the angles add up to half turn, and that's <img class="inlinemath" src="math/2b52e395446666dd5ebf332001259749.png" />
+radians, so we get this <a href="basics.html#equations">equation</a>:</p>
+
+<p><img src="math/fad328e4f0bb66a5418acd0a5e122989.png" class="blockmath" /></p><p>I did the last step with Python.</p>
+
+<p>In math it's common to use a letter instead of "???" to represent an
 unknown value. For example:</p>
-<div class="math">
-<p><img src="_images/math/0cc6fa658f2965761f9635886b5e6594bb879760.png" alt="0.5 + b &amp;= \frac \tau 2 \\
-b &amp;= \frac \tau 2 - 0.5 \approx 2.64"/></p>
-</div><p>It’s easy to calculate similar things for other directions. Here are the
-results, where <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> is the original angle and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> is the changed angle:</p>
-<blockquote>
-<div><ul class="simple">
-<li>If the ball hits left or right wall, <img class="math" src="_images/math/8c4be7bda6ea7097359f18ebb855302f1efd2c15.png" alt="b = \frac \tau 2 - a"/>.</li>
-<li>If the ball hits top or bottom, <img class="math" src="_images/math/4a5303c4df47d6238994fded44227f6eee33e581.png" alt="b = \tau - a"/>.</li>
-</ul>
-</div></blockquote>
-<p>Note that an angle like <img class="math" src="_images/math/be7947a4ba3d626aef83ede57b8d49318984d84e.png" alt="-2"/> radians is perfectly valid and equivalent to
-<img class="math" src="_images/math/7bf0482ba651964f9690832e4f1bbfcdb01b4b72.png" alt="\tau-2"/> radians. If you want to make sure that an angle is between <img class="math" src="_images/math/532f3248d6552e7ac6b785bd935f404ad593e6a9.png" alt="0"/> and
-<img class="math" src="_images/math/557d5fad862c9046d26e1a930f45a550c146d592.png" alt="\tau"/>, use something like <code class="docutils literal"><span class="pre">angle</span> <span class="pre">%</span> <span class="pre">tau</span></code> where <code class="docutils literal"><span class="pre">%</span></code> is division remainder.</p>
-</div>
-<div class="section" id="trig-aka-trigonometry-with-the-unit-circle">
-<span id="unitcircletrig"></span><h2>Trig (aka trigonometry) with the Unit Circle<a class="headerlink" href="#trig-aka-trigonometry-with-the-unit-circle" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-problem admonition">
-<p class="first admonition-title">Problem</p>
-<p>This time the ball moves at the angle of <img class="math" src="_images/math/928ac4f4d8929a75a13ac9352da65f1660cb745b.png" alt="\tau/6"/>, and it should move 5
+
+<p><img src="math/1075a9737ff7be0db6fb36c86b6f4252.png" class="blockmath" /></p><p>It's easy to calculate similar things for other directions. Here are the
+results, where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> is the original angle and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the changed angle:</p>
+
+<p>- If the ball hits left or right wall, <img class="inlinemath" src="math/57d4a791d72f1502550d0c837c92c177.png" />.
+- If the ball hits top or bottom, <img class="inlinemath" src="math/658652aa8bc08f987c23df9001a586d5.png" />.</p>
+
+<p>Note that an angle like <img class="inlinemath" src="math/5d7b9adcbe1c629ec722529dd12e5129.png" /> radians is perfectly valid and equivalent to
+<img class="inlinemath" src="math/37357323d0af5db8e5eb69171458fa43.png" /> radians. If you want to make sure that an angle is between <img class="inlinemath" src="math/cfcd208495d565ef66e7dff9f98764da.png" /> and
+<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />, use something like <code>angle % tau</code> where <code>%</code> is division remainder.
+</p>
+
+<h2 id="trig-with-the-unit-circle">Trig with the Unit Circle<a class="headerlink" href="#trig-with-the-unit-circle" title="Link to this title">¶</a></h2><p><b>Problem:</b> 
+This time the ball moves at the angle of <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />, and it should move 5
 pixels every time the screen is updated. How many pixels should its x and y
 change every time?</p>
-<div class="last i">
-<p><img src="_images/asymptote/02b97f950e657a023f9bd9368a21495a.png"/></p></div></div>
-<p>Our problem has something to do with sine and cosine. The unit circle is a
-circle with radius 1 placed in the middle of the xy plane. Here’s a picture that
+
+<p><img src="asymptote/4a7581f74964581b28a0ae41c546e168.png" /></p><p>Our problem has something to do with sine and cosine. The unit circle is a
+circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:</p>
-<div class="i">
-<p><img src="_images/asymptote/466bfe7e473a2186df03f7b1487de347.png"/></p></div><p>This is really simple: the x coordinate is <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> and the y coordinate is
-<img class="math" src="_images/math/fbee44673e644df2dfabeb625ffd88a8a0a0a6ac.png" alt="\sin t"/>. But the radius of the unit circle is 1 instead of our 5, so we need
+
+<p><img src="asymptote/e8d8ed1cc6f73ba506522bdb94e15ab4.png" /></p><p>This is really simple: the x coordinate is <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" /> and the y coordinate is
+<img class="inlinemath" src="math/5732d78efedc927ac0d505b0b839d142.png" />. But the radius of the unit circle is 1 instead of our 5, so we need
 to multiply everything by 5 to scale it up. We get this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ball</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">tau</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
-<span class="n">ball</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">5</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">tau</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>ball<span style="color: #666666">.</span>x <span style="color: #666666">+=</span> <span style="color: #40a070">5</span><span style="color: #666666">*</span>cos(tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
+ball<span style="color: #666666">.</span>y <span style="color: #666666">+=</span> <span style="color: #40a070">5</span><span style="color: #666666">*</span>sin(tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
 </pre></div>
-</div>
-<p>Note that <code class="docutils literal"><span class="pre">cos()</span></code> and <code class="docutils literal"><span class="pre">sin()</span></code> functions use radians by default in almost
-all programming languages. Let’s try this out with Python just to make sure
+<p>Note that <code>cos()</code> and <code>sin()</code> functions use radians by default in almost
+all programming languages. Let's try this out with Python just to make sure
 that everything works:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">tau</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
-<span class="go">0.8660254037844386</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">tau</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
-<span class="go">0.5000000000000001</span>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
+<span style="color: #888888">0.8660254037844386</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>cos(math<span style="color: #666666">.</span>tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
+<span style="color: #888888">0.5000000000000001</span>
 </pre></div>
-</div>
-<p>These results make sense because the angle <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/> in the above image looks like
-it’s about a sixth of a turn (or <img class="math" src="_images/math/928ac4f4d8929a75a13ac9352da65f1660cb745b.png" alt="\tau/6"/>), so <img class="math" src="_images/math/2d1751926c48f0cc5c67f1070a63f0ddff7180b6.png" alt="\sin(\tau/6)"/> should be close
-to 1 because the circle’s bottom is at <img class="math" src="_images/math/2b834b23cee7309ea7a9ea5fcedf9f258875c702.png" alt="y=1"/>. Similarly, the <img class="math" src="_images/math/3cd71feb124c0caec58a46de8daa035523d8af90.png" alt="\cos t"/> marked on
+<p>These results make sense because the angle <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> in the above image looks like
+it's about a sixth of a turn (or <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />), so <img class="inlinemath" src="math/18181cefaa890d68e04d3e0bf9ade269.png" /> should be close
+to 1 because the circle's bottom is at <img class="inlinemath" src="math/6a267007228f9f654a0d28dec6932c31.png" />. Similarly, the <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" /> marked on
 the picture seems to be about half of the radius, and the radius is 1.</p>
-<p id="accurate-sincos"><code class="docutils literal"><span class="pre">0.5000000000000001</span></code> is obviously not an accurate result, but it’s good
+
+<p id="accurate-sincos"><code>0.5000000000000001</code> is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
-<img class="math" src="_images/math/71653fbbc070c14bff2aa2daf584f2059ddfa3b4.png" alt="\sin \frac \tau 6 = \frac{\sqrt 3}{2}"/> and <img class="math" src="_images/math/aa3670eca717a1591e703df6cdf229377ae0fb74.png" alt="\cos \frac \tau 6 = \frac 1 2"/>.
-See <a class="reference internal" href="explanations.html#accurate-sincos-explained"><span class="std std-ref">this thing</span></a> if you’re wondering how I
-came up with these values.</p>
-</div>
-<div class="section" id="example-ball-and-paddle">
-<h2>Example: Ball and Paddle<a class="headerlink" href="#example-ball-and-paddle" title="Permalink to this headline">¶</a></h2>
-<p>Here’s a minimal game written with my <a class="reference external" href="https://github.com/Akuli/math-tutorial/blob/master/jsdemo-setup/canvaswrapper.js">canvaswrapper.js</a> script that
+<img class="inlinemath" src="math/faf62faf63c9230b053418e2c50aed72.png" /> and <img class="inlinemath" src="math/a14f75514bf5c4ac763edffa16a80bf2.png" />.
+See <a href="explanations.html#accurate-sine-and-cosine-values">this thing</a> if you're
+wondering how I came up with these values.
+</p>
+
+<h2 id="example-ball-and-paddle">Example: Ball and Paddle<a class="headerlink" href="#example-ball-and-paddle" title="Link to this title">¶</a></h2><p>Here's a minimal game written with my canvaswrapper.js script that
 demonstrates most things we have learned so far. Click it, press arrow up to
 start the game and then use arrow keys to move the paddle.</p>
-<div class="i">
 
-    <script type="text/javascript" src="canvaswrapper.js"></script>
-    <canvas id="canvas1" width="600" height="400" tabindex="1"></canvas>
-    <script>var screen = new CanvasWrapper('canvas1');
+<script type="text/javascript" src="canvaswrapper.js"></script><canvas id="canvas1" width="600" height="400" tabindex="1"></canvas><script>var screen = new CanvasWrapper('canvas1');
 
 const TAU = Math.PI*2;
 
@@ -283,278 +233,210 @@ runRepeatedly(function() {
       paddle.movement = 0;
     }
   });
-});</script>
-    </div>      <!-- this finishes self.starttag above -->
-    <p>Here's the code:</p>
-    <div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">screen</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CanvasWrapper</span><span class="p">(</span><span class="s1">&#39;canvas1&#39;</span><span class="p">);</span>
+});
+</script><p>Here's the code:</p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">var</span> screen <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> CanvasWrapper(<span style="color: #4070a0">&#39;canvas1&#39;</span>);
 
-<span class="kr">const</span> <span class="nx">TAU</span> <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span>
+<span style="color: #007020; font-weight: bold">const</span> TAU <span style="color: #666666">=</span> <span style="color: #007020">Math</span>.PI<span style="color: #666666">*</span><span style="color: #40a070">2</span>;
 
-<span class="kd">var</span> <span class="nx">paddle</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">length</span><span class="o">:</span> <span class="mi">200</span><span class="p">,</span>
-  <span class="nx">thickness</span><span class="o">:</span> <span class="mi">15</span><span class="p">,</span>
-  <span class="nx">speed</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="nx">movement</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>             <span class="c1">// -1 means left, 0 means right</span>
-<span class="p">};</span>
-<span class="nx">paddle</span><span class="p">.</span><span class="nx">top</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span> <span class="o">-</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="p">;</span>
+<span style="color: #007020; font-weight: bold">var</span> paddle <span style="color: #666666">=</span> {
+  length<span style="color: #666666">:</span> <span style="color: #40a070">200</span>,
+  thickness<span style="color: #666666">:</span> <span style="color: #40a070">15</span>,
+  speed<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
+  movement<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,             <span style="color: #60a0b0; font-style: italic">// -1 means left, 0 means right</span>
+};
+paddle.top <span style="color: #666666">=</span> screen.height <span style="color: #666666">-</span> paddle.thickness;
 
-<span class="kd">var</span> <span class="nx">ball</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">radius</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="nx">speed</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
-  <span class="nx">moving</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-<span class="p">};</span>
+<span style="color: #007020; font-weight: bold">var</span> ball <span style="color: #666666">=</span> {
+  radius<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
+  speed<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
+  moving<span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">false</span>,
+};
 
-<span class="kd">function</span> <span class="nx">resetGame</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-  <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-  <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
-  <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="mf">0.75</span><span class="o">*</span><span class="nx">TAU</span><span class="p">;</span>
-  <span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
+<span style="color: #007020; font-weight: bold">function</span> resetGame() {
+  paddle.centerx <span style="color: #666666">=</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>;
+  ball.centerx <span style="color: #666666">=</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>;
+  ball.centery <span style="color: #666666">=</span> screen.height<span style="color: #666666">-</span>paddle.thickness<span style="color: #666666">-</span>ball.radius;
+  ball.angle <span style="color: #666666">=</span> <span style="color: #40a070">0.75</span><span style="color: #666666">*</span>TAU;
+  ball.moving <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">false</span>;
+}
 
-<span class="nx">resetGame</span><span class="p">();</span>
-<span class="nx">runRepeatedly</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;black&#39;</span><span class="p">);</span>
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">drawRectangle</span><span class="p">(</span>
-    <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="p">,</span>
-    <span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="p">,</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="p">,</span> <span class="s1">&#39;#00ff00&#39;</span><span class="p">);</span>
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">drawCircle</span><span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span><span class="p">,</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span><span class="p">,</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">,</span> <span class="s1">&#39;white&#39;</span><span class="p">);</span>
+resetGame();
+runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() {
+  screen.fill(<span style="color: #4070a0">&#39;black&#39;</span>);
+  screen.drawRectangle(
+    paddle.centerx<span style="color: #666666">-</span>paddle.length<span style="color: #666666">/</span><span style="color: #40a070">2</span>, screen.height<span style="color: #666666">-</span>paddle.thickness,
+    paddle.length, paddle.thickness, <span style="color: #4070a0">&#39;#00ff00&#39;</span>);
+  screen.drawCircle(ball.centerx, ball.centery, ball.radius, <span style="color: #4070a0">&#39;white&#39;</span>);
 
-  <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">resetGame</span><span class="p">();</span>
-      <span class="k">return</span><span class="p">;</span>
-    <span class="p">}</span>
+  <span style="color: #007020; font-weight: bold">if</span> (ball.moving) {
+    <span style="color: #007020; font-weight: bold">if</span> (ball.centery <span style="color: #666666">&gt;</span> screen.height) {
+      resetGame();
+      <span style="color: #007020; font-weight: bold">return</span>;
+    }
 
-    <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">+=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">);</span>
-    <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">+=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">speed</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">);</span>
+    ball.centerx <span style="color: #666666">+=</span> ball.speed <span style="color: #666666">*</span> <span style="color: #007020">Math</span>.cos(ball.angle);
+    ball.centery <span style="color: #666666">+=</span> ball.speed <span style="color: #666666">*</span> <span style="color: #007020">Math</span>.sin(ball.angle);
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&lt;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>     <span class="c1">// bumps left wall</span>
-      <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="nx">TAU</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
-      <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>   <span class="c1">// right wall</span>
-      <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="nx">TAU</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
-      <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">width</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">&lt;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>          <span class="c1">// top</span>
-      <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="nx">TAU</span> <span class="o">-</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
-      <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">=</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">&gt;</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">)</span> <span class="p">{</span>
-      <span class="c1">// paddle?</span>
-      <span class="nx">paddleLeft</span> <span class="o">=</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">-</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-      <span class="nx">paddleRight</span> <span class="o">=</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">+</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">length</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">paddleLeft</span> <span class="o">&lt;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&amp;&amp;</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">&lt;</span> <span class="nx">paddleRight</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// yes, it hits the paddle</span>
-        <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">=</span> <span class="nx">TAU</span> <span class="o">-</span> <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span><span class="p">;</span>
-        <span class="nx">ball</span><span class="p">.</span><span class="nx">centery</span> <span class="o">=</span> <span class="nx">screen</span><span class="p">.</span><span class="nx">height</span><span class="o">-</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">thickness</span><span class="o">-</span><span class="nx">ball</span><span class="p">.</span><span class="nx">radius</span><span class="p">;</span>
+    <span style="color: #007020; font-weight: bold">if</span> (ball.centerx <span style="color: #666666">&lt;</span> ball.radius) {     <span style="color: #60a0b0; font-style: italic">// bumps left wall</span>
+      ball.angle <span style="color: #666666">=</span> TAU<span style="color: #666666">/</span><span style="color: #40a070">2</span> <span style="color: #666666">-</span> ball.angle;
+      ball.centerx <span style="color: #666666">=</span> ball.radius;
+    } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (ball.centerx <span style="color: #666666">&gt;</span> screen.width<span style="color: #666666">-</span>ball.radius) {   <span style="color: #60a0b0; font-style: italic">// right wall</span>
+      ball.angle <span style="color: #666666">=</span> TAU<span style="color: #666666">/</span><span style="color: #40a070">2</span> <span style="color: #666666">-</span> ball.angle;
+      ball.centerx <span style="color: #666666">=</span> screen.width<span style="color: #666666">-</span>ball.radius;
+    } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (ball.centery <span style="color: #666666">&lt;</span> ball.radius) {          <span style="color: #60a0b0; font-style: italic">// top</span>
+      ball.angle <span style="color: #666666">=</span> TAU <span style="color: #666666">-</span> ball.angle;
+      ball.centery <span style="color: #666666">=</span> ball.radius;
+    } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (ball.centery <span style="color: #666666">&gt;</span> screen.height<span style="color: #666666">-</span>paddle.thickness<span style="color: #666666">-</span>ball.radius) {
+      <span style="color: #60a0b0; font-style: italic">// paddle?</span>
+      paddleLeft <span style="color: #666666">=</span> paddle.centerx <span style="color: #666666">-</span> paddle.length<span style="color: #666666">/</span><span style="color: #40a070">2</span>;
+      paddleRight <span style="color: #666666">=</span> paddle.centerx <span style="color: #666666">+</span> paddle.length<span style="color: #666666">/</span><span style="color: #40a070">2</span>;
+      <span style="color: #007020; font-weight: bold">if</span> (paddleLeft <span style="color: #666666">&lt;</span> ball.centerx <span style="color: #666666">&amp;&amp;</span> ball.centerx <span style="color: #666666">&lt;</span> paddleRight) {
+        <span style="color: #60a0b0; font-style: italic">// yes, it hits the paddle</span>
+        ball.angle <span style="color: #666666">=</span> TAU <span style="color: #666666">-</span> ball.angle;
+        ball.centery <span style="color: #666666">=</span> screen.height<span style="color: #666666">-</span>paddle.thickness<span style="color: #666666">-</span>ball.radius;
 
-        <span class="c1">// also adjust the angle depending on which side of the paddle the</span>
-        <span class="c1">// ball hits</span>
-        <span class="nx">ball</span><span class="p">.</span><span class="nx">angle</span> <span class="o">+=</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">-</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span><span class="p">)</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="nx">paddle</span><span class="p">.</span><span class="nx">centerx</span> <span class="o">+=</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span><span class="o">*</span><span class="nx">paddle</span><span class="p">.</span><span class="nx">speed</span><span class="p">;</span>
-  <span class="p">}</span>
+        <span style="color: #60a0b0; font-style: italic">// also adjust the angle depending on which side of the paddle the</span>
+        <span style="color: #60a0b0; font-style: italic">// ball hits</span>
+        ball.angle <span style="color: #666666">+=</span> (ball.centerx <span style="color: #666666">-</span> paddle.centerx) <span style="color: #666666">/</span> <span style="color: #40a070">100</span>;
+      }
+    }
+    paddle.centerx <span style="color: #666666">+=</span> paddle.movement<span style="color: #666666">*</span>paddle.speed;
+  }
 
-  <span class="nx">screen</span><span class="p">.</span><span class="nx">getEvents</span><span class="p">().</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">evt</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;keydown&#39;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowLeft&#39;</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowRight&#39;</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-        <span class="p">}</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowUp&#39;</span><span class="p">)</span> <span class="p">{</span>
-          <span class="nx">ball</span><span class="p">.</span><span class="nx">moving</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-          <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;keyup&#39;</span> <span class="o">&amp;&amp;</span> <span class="p">(</span>
-          <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowLeft&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">||</span>
-          <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">key</span> <span class="o">==</span> <span class="s1">&#39;ArrowRight&#39;</span> <span class="o">&amp;&amp;</span> <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)))</span> <span class="p">{</span>
-      <span class="c1">// cancel the previous ArrowLeft or ArrowRight press</span>
-      <span class="nx">paddle</span><span class="p">.</span><span class="nx">movement</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
-  <span class="p">});</span>
-<span class="p">});</span>
+  screen.getEvents().forEach(evt =&gt; {
+    <span style="color: #007020; font-weight: bold">if</span> (evt.type <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;keydown&#39;</span>) {
+      <span style="color: #007020; font-weight: bold">if</span> (ball.moving) {
+        <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowLeft&#39;</span>) {
+          paddle.movement <span style="color: #666666">=</span> <span style="color: #666666">-</span><span style="color: #40a070">1</span>;
+        } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowRight&#39;</span>) {
+          paddle.movement <span style="color: #666666">=</span> <span style="color: #40a070">1</span>;
+        }
+      } <span style="color: #007020; font-weight: bold">else</span> {
+        <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowUp&#39;</span>) {
+          ball.moving <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">true</span>;
+          <span style="color: #007020; font-weight: bold">return</span>;
+        }
+      }
+    } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.type <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;keyup&#39;</span> <span style="color: #666666">&amp;&amp;</span> (
+          (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowLeft&#39;</span> <span style="color: #666666">&amp;&amp;</span> paddle.movement <span style="color: #666666">==</span> <span style="color: #666666">-</span><span style="color: #40a070">1</span>) <span style="color: #666666">||</span>
+          (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowRight&#39;</span> <span style="color: #666666">&amp;&amp;</span> paddle.movement <span style="color: #666666">==</span> <span style="color: #40a070">1</span>))) {
+      <span style="color: #60a0b0; font-style: italic">// cancel the previous ArrowLeft or ArrowRight press</span>
+      paddle.movement <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+    }
+  });
+});
 </pre></div>
-</div>
-</div>
-<div class="section" id="trig-with-a-triangle">
-<span id="triangletrig"></span><h2>Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-problem admonition">
-<p class="first admonition-title">Problem</p>
-<p class="last">The ball moves 10 pixels down and 20 pixels right. What angle is that?</p>
-</div>
-<p>Here’s another way to define <img class="math" src="_images/math/d6e3e3606422fc39649bb08a7636ac09e426e92f.png" alt="\sin"/> and <img class="math" src="_images/math/bbf74ba620672f12d367df81fdd066d0e236c0cb.png" alt="\cos"/>, and another function called
-<img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/> that we haven’t used before.</p>
-<div class="i">
-<p><img src="_images/asymptote/6be200d872b812bea087400ccc82eb2d.png" class="align-right"/></p></div><div class="math">
-<p><img src="_images/math/06d0337a475709b7fa90dd8226296a4ac97432e5.png" alt="\sin t &amp;= \frac b c \\
-\cos t &amp;= \frac a c \\
-\tan t &amp;= \frac b a"/></p>
-</div><p>These things work only if the triangle has an angle that is exactly a quarter
+<h2 id="trig-with-a-triangle">Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Link to this title">¶</a></h2><p><b>Problem:</b> The ball moves 10 pixels down and 20 pixels right. What
+angle is that?</p>
+
+<p>Here's another way to define <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, and another function called
+<img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" /> that we haven't used before.</p>
+
+<img src="asymptote/a9eeeac8194970dc8ad83ba22baacbb7.png" style="float:right;" /><p><img src="math/e9b648bac7a9f99ffea6fa6759ba44ab.png" class="blockmath" /></p><p>These things work only if the triangle has an angle that is exactly a quarter
 turn, and the little box at bottom right means just that. These definitions are
 compatible with the unit circle stuff above; see
-<a class="reference internal" href="explanations.html#unitcircle-triangle-compat"><span class="std std-ref">this thing</span></a>.</p>
-<div class="i">
-<p><img src="_images/asymptote/063aaba126958fcdd43568ff046e2ed8.png" class="align-right"/></p></div><p>The green triangle is just like the blue one, but I flipped it so that we can
-calculate the stuff by plugging in <img class="math" src="_images/math/5b6b6850eb07770ddaa7ab59766192428ad32111.png" alt="a=20"/> and <img class="math" src="_images/math/5b570faa96e9e3673ecfbfaaa06e2f6feac5160f.png" alt="b=10"/> without worrying about
-which way things go. Let’s figure out how to calculate the <img class="math" src="_images/math/5ec053cf70dc1c98cc297322250569eda193e7a4.png" alt="t"/>:</p>
-<div class="math">
-<p><img src="_images/math/bf2a85468c0db0a52e8abfc1d97a29b53355bef0.png" alt="\tan t &amp;= \frac b a \\
-t &amp;= \arctan{\frac b a} = \text{atan2}(b, a)"/></p>
-</div><p>Here <img class="math" src="_images/math/726e3cfd2e5301f8ecd2b95a6681bf663ebeb6f7.png" alt="\arctan"/> is the inverse of <img class="math" src="_images/math/8a9624abde60beb2b4d6a8c3b0f6574e1826667a.png" alt="\tan"/>, so <img class="math" src="_images/math/65583f0d3949b2faea8d86f010af0b4d5b020969.png" alt="\arctan (\tan t) = t"/>. Most
-programming languages have an <code class="docutils literal"><span class="pre">atan(x)</span></code> function that returns <img class="math" src="_images/math/151f9aa8667657d9baa719a843e7306d84434c03.png" alt="\arctan x"/>,
-but I don’t recommend using it in this case; the <code class="docutils literal"><span class="pre">atan2(b,a)</span></code> function
-returns <img class="math" src="_images/math/c67802de7f967aa6627113150a28eb0322bc7663.png" alt="\arctan{\frac b a}"/> and I recommend it instead. <code class="docutils literal"><span class="pre">atan2</span></code> looks at the
-signs of <img class="math" src="_images/math/bd9d9c7512c898e0a254a0882184197bc1bd9c9f.png" alt="a"/> and <img class="math" src="_images/math/57c9d14bb082716df9000146882ce365335d08f1.png" alt="b"/> and does the right thing if they’re negative (the ball is
-moving to e.g. top left). It also works if <code class="docutils literal"><span class="pre">a</span></code> is 0 and <code class="docutils literal"><span class="pre">b/a</span></code> would fail as
+<a href="explanations.html#two-ways-to-define-sine-and-cosine">this thing</a>.</p>
+
+<img src="asymptote/365dcade757917502d80db23ccb4d5d3.png" style="float:right;" /><p>The green triangle is just like the blue one, but I flipped it so that we can
+calculate the stuff by plugging in <img class="inlinemath" src="math/fef27623febd2ae03afe7a22d034ac5b.png" /> and <img class="inlinemath" src="math/0daca570410e633ef534e720f5d54852.png" /> without worrying about
+which way things go. Let's figure out how to calculate the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />:</p>
+
+<p><img src="math/cd2abafe01cfb485050cf9223573f78d.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/88ff4a6f25e9a1675fc702f8ee41a28a.png" /> is the inverse of <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" />, so <img class="inlinemath" src="math/4ed921efd32595a9cbd97f70f42ff237.png" />. Most
+programming languages have an <code>atan(x)</code> function that returns <img class="inlinemath" src="math/be0e21a53d044912466e8b6663cdb405.png" />,
+but I don't recommend using it in this case; the <code>atan2(b,a)</code> function
+returns <img class="inlinemath" src="math/4612b7103d7c30a41904296a605f431e.png" /> and I recommend it instead. <code>atan2</code> looks at the
+signs of <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and does the right thing if they're negative (the ball is
+moving to e.g. top left). It also works if <code>a</code> is 0 and <code>b/a</code> would fail as
 division by zero is undefined.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Usually people like to put <img class="math" src="_images/math/a59f68a4202623bb859a7093f0316bf466e6f75d.png" alt="x"/> before <img class="math" src="_images/math/276f7e256cbddeb81eee42e1efc348f3cb4ab5f8.png" alt="y"/> in different kinds of places, but
-<code class="docutils literal"><span class="pre">atan2</span></code> is used like <code class="docutils literal"><span class="pre">atan2(y_change,</span> <span class="pre">x_change)</span></code>, <strong>not</strong> like
-<code class="docutils literal"><span class="pre">atan2(x_change,</span> <span class="pre">y_change)</span></code>.</p>
-</div>
-<p>Finally, it’s time to calculate our stuff:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">atan2</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">atan2</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="go">0.4636476090008061</span>
+
+<p><b>Note:</b>
+Usually people like to put <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> before <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> in different kinds of places, but
+<code>atan2</code> is used like <code>atan2(y_change, x_change)</code>, <b>not</b> like
+<code>atan2(x_change, y_change)</code>.</p>
+
+<p>Finally, it's time to calculate our stuff:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #007020; font-weight: bold">import</span> atan2
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>atan2(<span style="color: #40a070">10</span>, <span style="color: #40a070">20</span>)
+<span style="color: #888888">0.4636476090008061</span>
 </pre></div>
-</div>
-</div>
-<div class="section" id="pythagorean-theorem">
-<span id="pythagoras"></span><h2>Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-problem admonition">
-<p class="first admonition-title">Problem</p>
-<p class="last">The ball moves 10 pixels down and 20 pixels right, just like in the previous
-problem. How many pixels is that in total, measured diagonally?</p>
-</div>
-<div class="i">
-<p><img src="_images/asymptote/dcfa1dfaaa79d2945672d01b3daa7570.png" class="align-right"/></p></div><p>Here’s a handy equation, also known as the Pythagorean theorem:</p>
-<div class="math">
-<p><img src="_images/math/9246fb1b97bca90f5ce4df821f407ee7a78c9f95.png" alt="a^2 + b^2 = c^2"/></p>
-</div><p>Again, the angle of the corner between a and b must be a quarter turn, like it
-is in the image. If you’re wondering how the heck it works see
-<a class="reference internal" href="explanations.html#pythagoras-proof"><span class="std std-ref">this proof</span></a>.</p>
-<p>Let’s solve <img class="math" src="_images/math/ae12a24f88803b5895632e4848d87d46483c492c.png" alt="c"/> from the equation by applying <img class="math" src="_images/math/47a602d47b0c7a02304bef79c050849f30710cbf.png" alt="\sqrt{\ \ }"/> on both sides:</p>
-<div class="math">
-<p><img src="_images/math/6e42ec5ab7d35e9bcaffd656e9808936551903d3.png" alt="\sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c"/></p>
-</div><p>Here <img class="math" src="_images/math/4d0d4bc59dc067e9d36107da1c30a3374b590682.png" alt="|c|"/> is <a class="reference internal" href="basics.html#abs"><span class="std std-ref">the absolute value</span></a>. The last step assumes <img class="math" src="_images/math/9e5f2ec2545958904136473d00f3743ab766004f.png" alt="c \ge 0"/>,
-but that’s not a problem because a triangle with a negative side length doesn’t
-make much sense.</p>
-<p>“Hypotenuse” is a fancy word that means the longest side of a triangle with a
-quarter-turn angle, and that’s why some programming languages have a
-<code class="docutils literal"><span class="pre">hypot(a,</span> <span class="pre">b)</span></code> function that returns <img class="math" src="_images/math/57ad1444ff76049cec3cb823a5b5b4a4a9fcb503.png" alt="\sqrt{a^2 + b^2}"/>.</p>
-<p>Let’s calculate the distance:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">hypot</span><span class="p">,</span> <span class="n">sqrt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">hypot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-<span class="go">22.360679774997898</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">20</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
-<span class="go">22.360679774997898</span>
+<h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><p><b>Problem:</b> The ball moves 10 pixels down and 20 pixels right, just like in
+the previous problem. How many pixels is that in total, measured diagonally?</p>
+
+<img src="asymptote/b0297f3f2be1fdfad10c3e289a768634.png" style="float:right;" /><p>Here's a handy equation, also known as the Pythagorean theorem:</p>
+
+<p><img src="math/f98fde5a8a2f14e625eb5fceed7050ee.png" class="blockmath" /></p><p>Again, the angle of the corner between a and b must be a quarter turn, like it
+is in the image. If you're wondering how the heck it works see
+<a href="explanations.html#pythagorean-theorem">this proof</a>.</p>
+
+<p>Let's solve <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> from the equation by applying <img class="inlinemath" src="math/da175f00ddc2ba16792669e37fdd4b4b.png" /> on both sides:</p>
+
+<p><img src="math/18e0903219269d504f9da35b9a87b654.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/8479cef10a03961354aa94cb0b522dc9.png" /> is <a href="basics.html#absolute-value">the absolute value</a>. The last
+step assumes <img class="inlinemath" src="math/3f42f9a2cf87ec23780682aa5d81f95d.png" />, but that's not a problem because a triangle with
+a negative side length doesn't make much sense.</p>
+
+<p>"Hypotenuse" is a fancy word that means the longest side of a triangle with a
+quarter-turn angle, and that's why some programming languages have a
+<code>hypot(a, b)</code> function that returns <img class="inlinemath" src="math/49a12ba4c3e7dcb2a56081b67324dc91.png" />.</p>
+
+<p>Let's calculate the distance:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #007020; font-weight: bold">import</span> hypot, sqrt
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>hypot(<span style="color: #40a070">10</span>, <span style="color: #40a070">20</span>)
+<span style="color: #888888">22.360679774997898</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>sqrt(<span style="color: #40a070">10</span><span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">20</span><span style="color: #666666">**</span><span style="color: #40a070">2</span>)
+<span style="color: #888888">22.360679774997898</span>
 </pre></div>
-</div>
-</div>
-<div class="section" id="vectors">
-<h2>Vectors<a class="headerlink" href="#vectors" title="Permalink to this headline">¶</a></h2>
-<div class="i">
-<p><img src="_images/asymptote/ff64846c3565873d1fe366eb57ac2669.png" class="align-right"/></p></div><p>A point is simply a pair of x and y coordinates, and a vector represents the
-difference between two points. For example, if we have the points <img class="math" src="_images/math/43c55690dcb39b7b2a37bf3ba4f365c12bb79398.png" alt="A=(1,2)"/> and
-<img class="math" src="_images/math/570f76b28105e04d716df4cfff657839bea16132.png" alt="B=(3,5)"/>, the vector from A to B is
-<img class="math" src="_images/math/c16efb1bebe36fd8d1d00f38bd67eb399693166a.png" alt="\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j"/>. Here
-<img class="math" src="_images/math/5946ce0745c4b974284697e6137d58e8687cf614.png" alt="\bar i"/> and <img class="math" src="_images/math/75e12d28652bf0210a38052d424bc0247cbc9db1.png" alt="\bar j"/> are vectors that go right and up by 1 unit, respectively.</p>
-<p>A vector like <img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/> can be also written as <img class="math" src="_images/math/a87a5513cba799e00d2a31f9bc1a103049718655.png" alt="&lt;x,y&gt;"/>. Use
+<h2 id="vectors">Vectors<a class="headerlink" href="#vectors" title="Link to this title">¶</a></h2><img src="asymptote/3ab1343d79c1ee771d20dcd1eeef5566.png" style="float:right;" /><p>A point is simply a pair of x and y coordinates, and a vector represents the
+difference between two points. For example, if we have the points <img class="inlinemath" src="math/ea55273b1ce070424fbe13c45d6270c9.png" /> and
+<img class="inlinemath" src="math/ef624b5778b8523126644acae2e90d0c.png" />, the vector from <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> to <img class="inlinemath" src="math/9d5ed678fe57bcca610140957afab571.png" /> is
+<img class="inlinemath" src="math/161e1a0aca6f0798cf541fd74161b09c.png" />. Here
+<img class="inlinemath" src="math/c507cd1c30750bac21069bcca5228874.png" /> and <img class="inlinemath" src="math/566c5d57c8c3f63e6ad9e818677f2ef3.png" /> are vectors that go right and up by 1 unit, respectively.</p>
+
+<p>A vector like <img class="inlinemath" src="math/1b04e810f0960954248ec7142498f38e.png" /> can be also written as <img class="inlinemath" src="math/b7c2a05d0e6220189f3a032840d30b44.png" />. Use
 whatever style you want.</p>
+
 <p>We could also use vectors to do similar things as in
-<a class="reference internal" href="#unitcircletrig"><span class="std std-ref">the unit circle trig section</span></a>. The advantage with
-vectors is that moving the ball is really easy:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">ball</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span>
-<span class="n">ball</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span>
+<a href="#trig-with-the-unit-circle">the unit circle trigonometry section</a>. The
+advantage with vectors is that moving the ball is really easy:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>ball<span style="color: #666666">.</span>x <span style="color: #666666">+=</span> speed_vector<span style="color: #666666">.</span>x
+ball<span style="color: #666666">.</span>y <span style="color: #666666">+=</span> speed_vector<span style="color: #666666">.</span>y
 </pre></div>
-</div>
 <p>A disadvantage is that if we want to change the angle that the ball moves at
-we can’t just do <code class="docutils literal"><span class="pre">moving_angle</span> <span class="pre">+=</span> <span class="pre">something</span></code>. We’ll look into how this is
+we can't just do <code>moving_angle += something</code>. We'll look into how this is
 done in a moment.</p>
-<div class="i">
-<p><img src="_images/asymptote/41c32bc31b5e10bed168af0f29500e31.png" class="align-right"/></p></div><p>Another nice thing about vectors is that they can be +’ed together easily. For
+
+<img src="asymptote/1d56d60ce083eb0e030b6b9149d03559.png" style="float:right;" /><p>Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
-units to right, we move a total of 8 units to right and 4 units up. That’s how
-<img class="math" src="_images/math/e62871e3a581b45639eb16d77a1a2c9fc309ddb0.png" alt="3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j"/>.</p>
-<div class="i">
-<p><img src="_images/asymptote/e2869864fd44f18676db15d1792021f1.png" class="align-left"/></p></div><p>These vector calculations are just like the
-<a class="reference internal" href="#pythagoras"><span class="std std-ref">Pythagorean theorem</span></a> and
-<a class="reference internal" href="#unitcircletrig"><span class="std std-ref">unit circle trig</span></a> stuff above:</p>
-<div class="math">
-<p><img src="_images/math/ddd8397b7b5aa9b57baccd943d469dba67325125.png" alt="l &amp;= \sqrt{a^2+b^2} = \text{hypot}(a, b) \\
-t &amp;= \text{atan2}(b,a) \\
-a &amp;= l \cdot \cos t \\
-b &amp;= l \cdot \sin t"/></p>
-</div><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="math" src="_images/math/ee3662170a5c6a5c81a1dddf0de4c3fab3de3f29.png" alt="&lt;1,2&gt;"/>,
-its length is <img class="math" src="_images/math/d66ed1ec2f96b2793e15ea6680eb96d013d056e4.png" alt="\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24"/> and the angle is
-<img class="math" src="_images/math/d2e7966bc61621be1cd7829b98e34cccdd939129.png" alt="\text{atan2}(2,1) \approx 1.107"/> radians. On the other hand,
-<img class="math" src="_images/math/aab779a70c2f8510ebcf150097d48e8760764593.png" alt="2.24 \cdot \cos 1.107 \approx 1"/> and <img class="math" src="_images/math/873a8c6dde1cb61f312fdc696c51edc70309cc9b.png" alt="2.24 \cdot \sin 1.107 \approx 2"/>.</p>
+units to right, we move a total of 8 units to right and 4 units up. That's how
+<img class="inlinemath" src="math/cfaeccd8b035e766aa99ee8a95b2719b.png" />.</p>
+
+<img src="asymptote/f1eecbe789755b721714036a2053f479.png" style="float:right;" /><p>These vector calculations are just like the
+<a href="#pythagorean-theorem">Pythagorean theorem</a> and
+<a href="#trig-with-the-unit-circle">unit circle trig</a> stuff above:</p>
+
+<p><img src="math/ccaccaa962d9dde2f078aa821adbc811.png" class="blockmath" /></p><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="inlinemath" src="math/10adba9a4d1293648444f90c1f98f4af.png" />,
+its length is <img class="inlinemath" src="math/bd11a1b602bc901206b5050eb613ad94.png" /> and the angle is
+<img class="inlinemath" src="math/065b95059e37aefbd526a727abb61ae0.png" /> radians. On the other hand,
+<img class="inlinemath" src="math/90c34faac4edd32a19eed1985f8bdf4b.png" /> and <img class="inlinemath" src="math/b8618aaaf743919e595ba22376c872c0.png" />.</p>
+
 <p>One way to change the angle of a vector is to first convert it to a length and
 an angle, change that angle and create a new vector. It looks like this in
 pseudo-ish code:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">length</span> <span class="o">=</span> <span class="n">hypot</span><span class="p">(</span><span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
-<span class="n">speed_vector</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">new_angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
-<span class="n">speed_vector</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">new_angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">length</span>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>length <span style="color: #666666">=</span> hypot(speed_vector<span style="color: #666666">.</span>x, speed_vector<span style="color: #666666">.</span>y)
+speed_vector<span style="color: #666666">.</span>x <span style="color: #666666">=</span> cos(new_angle) <span style="color: #666666">*</span> length
+speed_vector<span style="color: #666666">.</span>y <span style="color: #666666">=</span> sin(new_angle) <span style="color: #666666">*</span> length
 </pre></div>
-</div>
-<div class="section" id="example-vector-class-in-python">
-<h3>Example: Vector class in Python<a class="headerlink" href="#example-vector-class-in-python" title="Permalink to this headline">¶</a></h3>
-<p>Here’s a <code class="docutils literal"><span class="pre">Vector</span></code> class I implemented in Python running with
-<a class="reference external" href="https://repl.it/">repl.it</a>. A <code class="docutils literal"><span class="pre">Vector(x,</span> <span class="pre">y)</span></code> represents
-<img class="math" src="_images/math/32f9ec98633b9d4369239d778d0a84b99dfd733f.png" alt="x \bar i + y \bar j"/>. I didn’t add operator overloading because I wanted to
-keep everything nice and simple. Click the “play”-shaped button at top to run
+<h3 id="example-vector-class-in-python">Example: Vector class in Python<a class="headerlink" href="#example-vector-class-in-python" title="Link to this title">¶</a></h3><p>Here's a <code>Vector</code> class I implemented in Python running with
+<a href="https://repl.it/">repl.it</a>. A <code>Vector(x, y)</code> represents
+<img class="inlinemath" src="math/1b04e810f0960954248ec7142498f38e.png" />. I didn't add operator overloading because I wanted to
+keep everything nice and simple. Click the "play"-shaped button at top to run
 the code and then use the Python shell at right.</p>
-<iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MeIW"></iframe></div>
+
+<p><iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MeIW"></iframe></p>
+
 </div>
-</div>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><ul>
-<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
-</ul>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Geometry and Trigonometry</a></li>
-<li class="toctree-l1"><a class="reference internal" href="derivatives.html">Derivatives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="integrals.html">Integrals</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="numbertheory.html">Number Theory</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="explanations.html">Proofs and Explanations</a></li>
-</ul>
-
-<br>
-
-<!-- abusing abbr was the first way to dot-underline stuff i found -->
-<h3><abbr><a href="index.html">Back to front page</a></abbr></h3>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2017, Akuli.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
-      
-      |
-      <a href="_sources/geometry-and-trig.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+</body>
 </html>
