@@ -30,7 +30,8 @@ instructions for every possible platform.
 
     The build still errors out randomly. Run it multiple times until it
     succeeds. When it has succeeded once the 3D images are in `imagecache/` and
-    it'll succeed every time (unless you change the 3D images).
+    it'll succeed every time (unless you change the 3D images or delete them
+    from `imagecache/`).
 
 3. Run the crazy script if you dare!
 
