@@ -61,7 +61,7 @@ asymptote: float:right;
     draw((arc((0,0), 1, 0, degrees(angle))), L="$b$");
     draw((arc((0,0), 0.3, 0, degrees(angle))), blue, L="$b/r$");
 
-The yellow slice at left shows another way to define an angle in radians, and
+The yellow slice at right shows another way to define an angle in radians, and
 it's compatible with the green slices because if we set $b=r$ the angle is
 $r/r=1$ radian.
 
