@@ -1,9 +1,10 @@
 # Derivatives
 
-This chapter contains more not-so-practical math than the trig and geometry
-chapter, but you may find it surprisingly fun. However, the math is not useless
-gibberish isolated from real life and there's a practical example with a fun
-demonstration game at the end.
+Derivatives are one of my favorite things in math. At first they seem
+like calculating their values will be quite complicated, but it turns
+out to be surprisingly easy. Derivatives are also not useless gibberish
+isolated from real life, and there's a practical demonstration about how
+they are useful at the end of the chapter.
 
 ## What is a derivative?
 
