@@ -1,7 +1,7 @@
 # The Basics
 
 This tutorial assumes that you know most of these things. If you don't, that's
-not a problem at all and you can just keep the basics page open while you read
+not a problem at all and you can just **keep this page open** while you read
 other chapters.
 
 ## Variable Names
@@ -15,11 +15,9 @@ they are written a bit more verbosely.
 
 ## Equality and stuff
 
-I'm quite sure you know or you can guess what $a=b$, $a>b$, $a \ge b$, $a < b$
-and $a \le b$ mean so I won't explain those. The equivalent of ``a != b`` in
-programming is $a \ne b$ in math. $a \approx b$ means that $a$ and $b$ are
-close to each other, but it doesn't contain any information about *how* close
-to each other the values are.
+I'm quite sure you know or you can guess what $a=b$, $a \ne b$, $a>b$,
+$a \ge b$, $a < b$, $a \le b$ and $a \approx b$ mean so I won't explain
+those.
 
 
 ## +, -

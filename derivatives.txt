@@ -92,7 +92,8 @@ derivative; if you want to know more, [click
 here](explanations.html#which-functions-have-derivatives).
 
 The image at right seems to say that $f(x) + dy = f(x+dx)$. Let's try to solve
-$\frac{dy}{dx}$:
+$\frac{dy}{dx}$ (see [the equation thing on the basics
+page](basics.html#equations)):
 
 math:
    f(x) + dy &= f(x+dx) \\
@@ -106,7 +107,7 @@ situations. Here's a better definition:
 
 math: \frac{dy}{dx} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
-The $\lim$ thing means that we take the **limit** as $h$ approaches 0. It's
+The $\lim$ thing means that we take the **limit** as $h$ goes to 0. It's
 essentially same as our $dx$ thing, but more explicit and better defined in
 some corner cases.
 
@@ -232,8 +233,8 @@ math:
 There are a couple more things we need: $\frac{d}{dx}(cx)=c$ because if
 $x$ is incremented by something then $cx$ increments $c$ times as much,
 and $\frac{d}{dx} c = 0$ because $c$ never changes regardless of the
-value of $x$. You can also use the definition of derivative if you don't
-believe these things.
+value of $x$. You can also use the definition of derivative to show that
+these work.
 
 So, with all that we can calculate the derivative easily:
 
@@ -244,9 +245,12 @@ math:
     =& 6 \cdot 2x + 7 \\
     =& 12x + 7
 
-Of course, there are many more derivative rules than the ones we have
-used so far. Refer to [the summary page](summary.html#derivative-rules)
-for more.
+graybox: See Also
+
+    The summary page has a derivative section with [many more
+    rules](summary.html#derivative-rules). You may need them if you want
+    to find derivatives of different functions than the functions in
+    this chapter.
 
 You can also use a nice symbolic calculation library, like Python's
 [sympy](http://www.sympy.org) (can be installed with pip):
