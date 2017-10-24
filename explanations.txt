@@ -231,66 +231,27 @@ but this should be enough to give you some kind of idea about the limitations.
 
 ## Derivative Rules
 
-The derivative chapter contains [a bunch of rules](derivatives.html#faster)
-with no explainations or proofs about how they work. These proofs are ordered
-so that they don't use any derivative rules that haven't been proved before
-them.
-
-asymptote: float:right;
-   size(7cm);
-   real xmin = -2;
-   real xmax = 3;
-   real c = 3;
-   axises(xmin,xmax,-1,6);
-
-   draw((xmin,c)--(0,c), blue);
-   draw((0,c)--(xmax,c), blue, L="$y=c$");
-   draw(brace((-1,0),(-1,c)), L="$c$", align=W);
-
 ### $\frac{d}{dx} c = 0$
 
 indent:
-    The graph $y=c$ is a horizontal line, so the slope is zero.
-
-    We can also plug $f(x)=c$ into the definition of derivative:
-
     math:
+        f(x) &= c \\
         f'(x) &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
               &= \lim_{h\to0} \frac{c-c}{h} = \lim_{h\to0} \frac{0}{h} = 0
 
-asymptote: float:right;
-    size(9cm);
-    real xmax = 5;
-    real c = 2;
-    //grid(-1,xmax,-1*c,xmax*c);
-    axises(-1,xmax,-1*c,xmax*c);
-
-    draw((-1,-1*c)--(xmax,xmax*c), blue,
-        L=rotate(degrees(atan(c)))*Label("$y=cx$"), align=NW);
-    draw((1,c)--(3,c), smalldashes, L="$\Delta x$");
-    draw((3,c)--(3,3c), smalldashes, L="$\Delta y$");
-
-### $\frac{d}{dx} cx = c$
+### $\frac{d}{dx} x = 1$
 
 indent:
-    The slope of the line $y=cx$ is $c$ because every time $x$ is incremented by
-    something, $y$ increments $c$ times as much. In other words,
-    $\Delta y = c \cdot \Delta x$ and $\frac{\Delta y}{\Delta x} = c$.
-
-    Again, we can confirm this with the definition of derivative:
-
     math:
-        \frac{d}{dx} cx &= \lim_{h\to0} \frac{c\cdot(x+h)-cx}{h} \\
-        &= \lim_{h\to0} \frac{cx+ch-cx}{h} \\
-        &= \lim_{h\to0} \frac{ch}{h} \\
-        &= c
+        f(x) &= x \\
+        f'(x) &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+              &= \lim_{h\to0} \frac{(x+h)-x}{h} \\
+              &= \lim_{h\to0} \frac h h \\
+              &= 1
 
 ### $\frac{d}{dx}(c\ f(x)) = c\ f'(x)$
 
 indent:
-    The previous rule actually works with all functions that have a derivative,
-    not just $x$.
-
     math:
         \frac{d}{dx}(c\ f(x)) &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
         &= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
@@ -298,29 +259,18 @@ indent:
         &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
         &= c\ f'(x)
 
-asymptote: float:right;
-   size(6cm);
-   real xmax = 7;
-   real ymax = 6;
-   grid(-1,xmax,-1,ymax);
-   axises(-1,xmax,-1,ymax);
-   draw((-1,-1)--(ymax,ymax), blue, L=rotate(45)*Label("$y=x$"), align=NW);
-   draw((2,2)--(5,2), smalldashes, L="$\Delta x$");
-   draw((5,2)--(5,5), smalldashes, L="$\Delta y$");
-
-### $\frac{d}{dx} x = 1$
+### $\frac{d}{dx}\ cx = c$
 
 indent:
-    This is just like the $\frac{d}{dx} cx = c$ rule, but $c=1$ and
-    $\Delta y = \Delta x$.
+    math: f(x) &= x
+
+    math: f'(x) = 1
+
+    math: \frac{d}{dx}\ cx &= \frac{d}{dx} (c\ f(x)) = c\ f'(x) = c \cdot 1 = c
 
 ### $\frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x)$
 
 indent:
-    This rule is particularly handy for differenciating long functions with many
-    things added together. Let's see what we get with the definition of
-    derivative.
-
     math:
         \frac{d}{dx} (f(x)+g(x))
         &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
@@ -330,14 +280,18 @@ indent:
         &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} + \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
         &= f'(x) + g'(x)
 
-    The $\frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x)$ rule can be proved in a very
-    similar way.
+### $\frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x)$
+
+indent:
+    math:
+        \frac{d}{dx} (f(x)+g(x)) &= \frac{d}{dx}(f(x)+(-1\ g(x))) \\
+        &= \frac{d}{dx} f(x) + \frac{d}{dx}(-1\ g(x)) \\
+        &= f'(x) + (-1) \frac{d}{dx} g(x) \\
+        &= f'(x) - g'(x)
 
 ### $\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$
 
 indent:
-    It's not pretty, but we can use the definition.
-
     math:
         &  \frac{d}{dx} (f(x)g(x)) \\
         =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
@@ -431,7 +385,7 @@ floatingbox: Handy thing: $(a-b)(a+b)=a^2-b^2$
 indent:
     We could prove this with the $\frac{d}{dx} x^c$ rule because
     $\sqrt x = x^\frac{1}{2}$, but we proved the $x^c$ rule only for positive
-    integers. Let's survive without it. Again, it's a mess, but it works.
+    integers. Let's survive without it.
 
     math:
         \frac{d}{dx} \sqrt x

@@ -192,61 +192,61 @@ graybox: Note
 
 ## Faster!
 
-Finding the derivative was kind of complicated and really slow. These rules
-change everything. Most of these rules are
-[easy to prove](explanations.html#derivative-rules) so there is no magic
-involved.
-
-I have listed many rules here, but **don't panic**; there's no need to memorize
-them. As before $f$ and $g$ can be any functions as long as they have a
-derivative (e.g. $f(x)=\sqrt x - x$ and $g(x)=1$), and $c$ can be any constant
-like $4$ or $-6.28$ but not e.g. $2x$ because that depends on the value of $x$.
+Let's say that you want to calculate something like this:
 
 math:
-   \begin{matrix}
-      \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
-      &&\\
-      \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
-      &&\\
-      \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
-      &&\\
-      \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
-      &&\\
-      \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &
-      \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
-      &&\\
-      \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
-      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
-   \end{matrix}
+    \frac{d}{dx} (6x^2+7x-123)
 
-So, if you want to find the derivative of $x^2$ just use the $\frac{d}{dx} x^c$
-rule:
-
-math: \frac{d}{dx} x^2 = 2x^{2-1} = 2x^1 = 2x
-
-Now you can also find derivatives of long and scary functions easily and
-quickly. For example:
+That would be a horribly complicated calculation with the $\lim$ thing.
+Let's be a bit more clever. We have a bunch of things being added and
+substracted together, so maybe we could deal with them somehow? Let's
+say that we want to find the derivative of $f(x)+g(x)$ where $f$ and $g$
+can be any functions (as long as the derivative exists). They could be
+for example $f(x)=6x^2$ and $g(x)=7x-123$, but let's see what we get if
+we don't plug in any values:
 
 math:
-   & \frac{d}{dx} (5x^3-6x^2+7x-123) \\
-   =& \frac{d}{dx}(5x^3) - \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}123 \\
-   =& 5 \frac{d}{dx}(x^3) - 6 \frac{d}{dx}(x^2) + 7 - 0 \\
-   =& 5 \cdot 3x^{3-1} - 6 \cdot 2x^{2-1} + 7 \\
-   =& 15x^2 - 12x + 7
+    \frac{d}{dx}(f(x)+g(x))
+    &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
+    &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
+    &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
+    &= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right)\\
+    &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} + \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+    &= \frac{d}{dx} f(x) + \frac{d}{dx} g(x)
 
-Of course, there's no need to write down all of these steps.
+That's quite nice! So if we want to find the derivative of a bunch of
+things added together we can just find derivatives of each thing one by
+one. The same thing also works with $-$ instead of $+$·
 
-Note that if you have something like $(2x)^2$ as opposed to $x^2$ you
-need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule. In this example,
-you would plug in $f(x)=x^2$ and $g(x)=2x$ to get this:
-
-math: \frac{d}{dx}\ (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2 \cdot 2x \cdot 2 = 8x
-
-In some cases it's also possible to first open up something like the $(\ \ )^2$:
+We can actually take a step further and find the derivative of $c\ f(x)$
+where $c$ is any constant, e.g. $6$:
 
 math:
-   \frac{d}{dx}\ (2x)^2 = \frac{d}{dx}\ (2^2x^2) = \frac{d}{dx}(4x^2)
-   = 4 \cdot \frac{d}{dx} x^2 = 4 \cdot 2x = 8x
+    \frac{d}{dx}(c\ f(x))
+    &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
+    &= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
+    &= \lim_{h\to0} \left( c\ \frac{f(x+h)-f(x)}{h} \right) \\
+    &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+    &= c \cdot \frac{d}{dx} f(x)
+
+There are a couple more things we need: $\frac{d}{dx}(cx)=c$ because if
+$x$ is incremented by something then $cx$ increments $c$ times as much,
+and $\frac{d}{dx} c = 0$ because $c$ never changes regardless of the
+value of $x$. You can also use the definition of derivative if you don't
+believe these things.
+
+So, with all that we can calculate the derivative easily:
+
+math:
+    &  \frac{d}{dx} (6x^2+7x-123) \\
+    =& \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123) \\
+    =& 6 \cdot \frac{d}{dx}(x^2) + 7 - 0 \\
+    =& 6 \cdot 2x + 7 \\
+    =& 12x + 7
+
+Of course, there are many more derivative rules than the ones we have
+used so far. Refer to [the summary page](summary.html#derivative-rules)
+for more.
 
 You can also use a nice symbolic calculation library, like Python's
 [sympy](http://www.sympy.org) (can be installed with pip):
@@ -260,7 +260,7 @@ code: python3
     >>> diff((2*x)**2, x)
     8⋅x
     >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123, x)
-        2           
+        2
     15⋅x  - 12⋅x + 7
 
 Here "diff" is short for "differenciate", and it means finding a derivative.

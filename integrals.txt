@@ -106,7 +106,6 @@ The answer is not too bad and we could make it much better by adjusting
 **10 seconds** and I got a precise answer instead of a decimal approximation.
 This chapter is all about how I did that and why it works.
 
-
 ## Area to x
 
 asymptote: float:right;
@@ -129,7 +128,7 @@ asymptote: float:right;
     real dx = 0.3;
 
     fill(slicebetween(parabolaaa, 0, x)--(x,0)--(0,0)--cycle, paleyellow);
-    label("$A(x)$", (x/2,f(x/2)/2));
+    label("$F(x)$", (x/2,f(x/2)/2));
     axises(-0.1,2.2,-0.5,f(2));
     draw(parabolaaa, L="$y=f(x)$", align=NW, p=blue);
 
@@ -138,35 +137,36 @@ asymptote: float:right;
     draw(brace((x,0), (0,0)), L="$x$", align=S);
     draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
     draw(brace((x+dx+0.05,f(x)), (x+dx+0.05,0)), L="$f(x)$", align=E);
-    label("$\Delta A$", (x+dx/2,f(x+dx/2)/2));
+    label("$\Delta F$", (x+dx/2,f(x+dx/2)/2));
 
     fill((x,f(x))--(x+dx,f(x))--(x+dx,f(x+dx))--cycle, red);
 
 Let's say that our curve is of the form $y=f(x)$ where $f$ is a
 [continuous](explanations.html#which-functions-have-derivatives)
-function. Maybe we could find out what the area $A$ is under the curve
-between 0 and $x$?
+function. Maybe we could find out what the area $F(x)$ is under the
+curve between 0 and $x$?
 
-Let's imagine that we choose some $x$ location and *move* it right by $\Delta x$.
-Then the area grows by a slice of width $\Delta x$ and height $f(x)$. If we
-assume that the slice is a rectangle we get a small error (red triangle in
-image), but we can calculate the slice's area $\Delta A$ with the rectangle
-formula:
+Let's imagine that we choose some $x$ location and *move* it right by
+$\Delta x$. Then the area grows by a slice of width $\Delta x$ and
+height $f(x)$. If we assume that the slice is a rectangle we get a small
+error (red triangle in image), but we can calculate the slice's area
+$\Delta F$ with the rectangle formula:
 
 math:
-   \Delta A & \approx f(x) \Delta x \\
-   \frac{\Delta A}{\Delta x} & \approx f(x)
+   \Delta F & \approx f(x) \Delta x \\
+   \frac{\Delta F}{\Delta x} & \approx f(x)
 
-Now if we make the $\Delta x$ *infinitely* tiny, the red triangle is so small
-compared to $\Delta A$ that we can ignore it:
+Now if we make the $\Delta x$ *infinitely* tiny, the red triangle is so
+small compared to $\Delta F$ that we can ignore it:
 
-math: \frac{dA}{dx} = f(x)
+math:
+    \frac{dF}{dx} &= f(x) \\
 
-Yes, this is correct! We can use a derivative here. This is precise, so we can
-get rid of $\approx$ and replace it with $=$.
+Yes, this is correct! The derivative of $F$ is $f$. This is precise, so
+we can get rid of $\approx$ and replace it with $=$.
 
 So, if we want to calculate areas all we really need is an antiderivative
-function $A$ so that $A'(x)=f(x)$, and $A(x)$ will be an area to $x$.
+function $F$ so that $F'(x)=f(x)$, and $F(x)$ will be an area to $x$.
 
 asymptote: float:right;
    size(8cm);
@@ -197,7 +197,7 @@ asymptote: float:right;
 ## Our First Integral
 
 Let's go back to our original problem. One of
-[our derivative rules](derivatives.html#faster) was this:
+[the derivative rules on the summary page](summary.html#derivative-rules) was this:
 
 math: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
 
@@ -224,24 +224,24 @@ asymptote: float:right;
    fill((0,0)--(0,f(0))--slicebetween(curvie, 0.1, a)--(a,0)--cycle, lightyellow);
    draw((a,0)--(a,f(a)));
    draw((b,0)--(b,f(b)));
-   label(rotate(90)*"$A(b)-A(a)$", (b-0.1, 0), align=NW);
+   label(rotate(90)*"$F(b)-F(a)$", (b-0.1, 0), align=NW);
 
    draw(curvie, L=Label(rotate(55)*"$y=f(x)$"), align=NW);
    axises(-0.3,2.5,-0.3,3);
    label("$a$", (a,0), align=S);
    label("$b$", (b,0), align=S);
-   label("$A(a)$", (a/2, 0), align=N);
+   label("$F(a)$", (a/2, 0), align=N);
 
-So it looks like the antiderivative function $A$ is $A(x) = \sqrt x$. But how
-about $A(x) = \sqrt x + 1$? Its derivative is also $\frac{1}{2 \sqrt x}$
-because $\frac{d}{dx} 1 = 0$. Or how about $\sqrt x + 100$ or $\sqrt x - 10$?
-We don't know what $A(x)$ is, but we know that $A(x) = \sqrt x + C$ where $C$
-is a constant.
+So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
+But how about $F(x) = \sqrt x + 1$? Its derivative is also
+$\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
+$\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
+know that $F(x) = \sqrt x + C$ where $C$ is a constant.
 
 Let's try to calculate our area:
 
 math:
-   A(b)-A(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
+   F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
                &= \sqrt b + C - \sqrt a - C \\
                &= \sqrt b - \sqrt a \\
                &= \sqrt 2 - \sqrt 1 \\
@@ -256,9 +256,9 @@ understand everything, but now that you have seen this once you can do it much
 faster. So, here are the steps for calculating the area under $y=f(x)$ between
 $x=a$ and $x=b$:
 
-1. Find an antiderivative $A(x)$. There are infinitely many antiderivatives,
+1. Find an antiderivative $F(x)$. There are infinitely many antiderivatives,
 but *any* antiderivative will do because the $C$'s are substracted away.
-2. Calculate $A(b)-A(a)$ and you're done.
+2. Calculate $F(b)-F(a)$ and you're done.
 
 This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.
@@ -299,8 +299,8 @@ Usually this stuff is written like this:
 here -- the $dx$ is just a part of the notation and you must not forget
 it.
 * The antiderivative of $f(x)$ including the $+C$ is the same thing without
-$a$ and $b$. So $\int f(x) dx = A(x) + C$ where $A'(x) = f(x)$.
-* $[A(x)]_a^b = A(b)-A(a)$.
+$a$ and $b$. So $\int f(x) dx = F(x) + C$ where $F'(x) = f(x)$.
+* $[F(x)]_a^b = F(b)-F(a)$.
 
 The integral sign $\int$ is a strecthed S like Sum, and $\int_a^b f(x) dx$
 means conceptually a sum of the areas of little $f(x)$ by $dx$ rectangles.
@@ -527,9 +527,6 @@ asymptote3d: float:right;
    draw(path3(brace((h,-r),(0,-r))), L="$h$", align=S);
    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
    draw(path3(brace((the_x,f(the_x)),(the_x,0), amplitude=0.2)), L="$f(x)$", align=E);
-
-Here $A(x)$ has nothing to do with antiderivatives, it's just the Area of the
-green circle in the image at right.
 
 Integrals are not actually limited to calculating areas in any way. If you look
 at the image, the total volume is $\int_0^h A(x) dx$. Now we just need to

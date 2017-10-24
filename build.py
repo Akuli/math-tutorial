@@ -59,7 +59,8 @@ def get_sidebar_content(txtfile):
     return ''.join([
         thingy("Chapters", ['derivatives', 'integrals', 'geometry-and-trig',
                             'numbertheory']),
-        thingy("Other stuff", ['basics', 'explanations'], indexlink),
+        thingy("Other stuff", ['basics', 'explanations', 'summary'],
+               indexlink),
     ])
 
 builder.get_sidebar_content = get_sidebar_content

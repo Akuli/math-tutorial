@@ -1,0 +1,272 @@
+# Summary
+
+This page contains important and hard-to-remember things from other
+chapters all in one place to make them easier to find. You can look for
+stuff you need from this page or you can use it to find something
+interesting to read.
+
+redbox: Note
+    This page contains summaries, not introductions. I don't expect you
+    to read it and then master everything it's talking about, so also
+    read the human-friendly introductions in other chapters when needed.
+
+## Slopes
+
+graybox: See Also
+    There isn't a separate chapter about slopes because there isn't much
+    to them, but [the derivative chapter](derivatives.html#what-is-a-derivative)
+    contains an introduction.
+
+Notation: if $x$ is first 3 and we change it to 4, the *difference* of
+these values is $\Delta x = 4-3 = 1$.
+
+asymptote:
+    size(10cm);
+    real f(real x) {
+        return 2*x+1;
+    }
+    grid(-1,3,f(-1),f(3));
+    axises(-1,3,f(-1),f(3));
+    draw((-1,f(-1))--(3,f(3)));
+
+    real a=0.5, b=2, diff=0.2;
+    draw(brace((b,f(a)-diff), (a,f(a)-diff)), L="$\Delta x$", align=S);
+    draw(brace((b+diff,f(b)), (b+diff,f(a))), L="$\Delta y$" ,align=E);
+
+Only straight lines have slopes. The slope of the line in the picture
+above is $s = \frac{\Delta y}{\Delta x}$, so it determines how much $y$
+changes compared to $x$ because $\Delta y = s \cdot \Delta x$.
+
+Boring detail: vertical lines don't have slopes because the $x$ value is
+always the same, so $\Delta x = 0$ regardless of the two points chosen
+for calculating $\frac{\Delta y}{\Delta x}$ and we get division by zero.
+
+asymptote: float:right;
+    size(12cm);
+
+    real f(real x) {
+        x += 0.5;      // lol
+        return 0.1*x**3 - 0.1x + 1;
+    }
+   axises(-0.1,2,-0.5,2);
+
+   guide parabolaaa;
+   for (real x = -0.1; x <= 1.7; x += 0.05) {
+       parabolaaa = parabolaaa..(x,f(x));
+   }
+   draw(parabolaaa, p=heavyred);
+   label((1.2,f(1.2)), L=rotate(45)*"$y=f(x)$", p=heavyred, align=N);
+
+   real x = 0.7;
+   real dx = 0.3;
+
+   draw((x,0)--(x,f(x)), lightblue);
+   draw((x+dx,0)--(x+dx,f(x+dx)), lightblue);
+   draw(brace((x,0), (0,0)), L="$x$", align=S);
+   draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
+   draw(brace((x,0), (x,f(x))), L="$f(x)$", align=W);
+   draw(brace((x+dx,f(x+dx)), (x+dx,0)), L="$f(x+\Delta x)$", align=E);
+   draw(brace((x,f(x)),(x,f(x+dx)), amplitude=0.1), L="$\Delta y$", align=W);
+   draw(brace((x,f(x+dx)+0.05),(x+dx,f(x+dx)+0.05), amplitude=0.1), L="$\Delta x$", align=N);
+
+## Derivatives
+
+Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
+$\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
+calculations so the "smallness" is explicit and well-defined.
+
+Definition of derivative:
+
+math:
+    \frac{dy}{dx} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
+    &= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)-f(x)}{\Delta x} \\
+    &= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+
+Notation:
+
+math: \frac{d\left(f(x)\right)}{dx} = \frac{d}{dx} f(x) = f'(x)
+
+The derivative $f'(x)$ is the slope of a line that just touches $y=f(x)$
+at $x$.
+
+(derivative-rules)
+Handy rules:
+
+math:
+   \begin{matrix}
+      \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
+      &&\\
+      \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
+      &&\\
+      \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
+      &&\\
+      \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
+      &&\\
+      \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &
+      \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
+      &&\\
+      \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
+      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
+   \end{matrix}
+
+graybox: See Also
+    All of these rules are proved [here](explanations.html#derivative-rules).
+    I have spent quite a bit of time with creating good but human-readable
+    proofs and you may find them interesting.
+
+Note that if you have something like $(2x)^2$ as opposed to $x^2$ you
+need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,
+remember to multiply by $g'(x)$. For example:
+
+math: \frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x
+
+asymptote: float:right;
+    size(8cm);
+    real f(real x) {
+        return x**2/4+0.5;
+    }
+    real a = 0.3;
+    real b = 2;
+
+    guide curvie, littlecurvie;
+    for (real x=-0.05; x<=2.2; x+=0.1) {
+        curvie = curvie..(x,f(x));
+    }
+
+    guide slicebetween(guide p, real a, real b) {
+        return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
+    }
+
+    // this stuff goes below curvie
+    fill((a,0)--(a,f(a))--slicebetween(curvie, a, b)--(b,f(b))--(b,0)--cycle, lightblue);
+    draw((a,0)--(a,f(a)));
+    draw((b,0)--(b,f(b)));
+    label("$F(b)-F(a)$", ((a+b)/2,0), align=N);
+
+    draw(curvie, L=Label(rotate(25)*"$y=f(x)$"), align=NW);
+    axises(-0.1,2.5,-0.1,1.5);
+    label("$a$", (a,0), align=S);
+    label("$b$", (b,0), align=S);
+
+## Integrals
+
+Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
+antiderivative of $f$, i.e. $F'(x)=f(x)$.
+
+Notation:
+
+* $\int_a^b f(x)\ dx$ is the area in the picture.
+* $\int f(x)\ dx = F(x) + C$ where $F'(x)=f(x)$.
+* $\left[F(x)\right]_a^b = F(b)-F(a)$.
+
+3D volume $V$:
+
+asymptote3d:
+    import solids;
+    size(15cm);
+
+    axises3d(0.5,3,0,0,0,0);
+
+    currentprojection = perspective(camera=(4,2,7), up=Y);
+
+    real f(real x) { return sin(x)/3; }
+    pair F(real x) { return (x,f(x)); }
+
+    surface disc(real x) {
+        return surface((x,0,0)--(x,f(x),0), c=O, axis=X);
+    }
+
+    real a=1, b=2.5, the_x = 1.4;
+
+    path thegraph = graph(F,a,b,operator ..);
+    surface rotated = surface(revolution(path3(thegraph),X,0,360));
+    draw(rotated, yellow+opacity(0.5));
+
+    draw(disc(a), yellow+opacity(0.6));
+    draw(disc(the_x), green);
+    draw(disc(b), yellow);
+    label(XY()*"$a$", (a,0,0), align=NE);
+    label(XY()*"$x$", (the_x,0,0), align=NE);
+    label(XY()*"$b$", (b,0,0), align=NE);
+
+    triple arrowstart = (the_x+0.6,0,0.4);
+    draw(arrowstart--(the_x+0.2,0,0.4), darkgreen, arrow=Arrow3(size=0.7cm));
+    label(XY()*"$A(x)$", arrowstart, darkgreen, align=E);
+
+math: V = \int_a^b A(x)\ dx
+
+asymptote: float:right; padding-left:10px;
+    size(4cm);
+    real angle = 0.7;
+    fill(((0,0)--arc((0,0), 1, 0, degrees(angle))--cycle), lightyellow);
+    draw(((0,0)--(1,0)));
+    draw(((0,0)--(cos(angle),sin(angle))), L="$r$", align=N);
+    draw((arc((0,0), 1, 0, degrees(angle))), L="$b$");
+    draw((arc((0,0), 0.3, 0, degrees(angle))), blue, L="$b/r$");
+
+asymptote: float:right; padding-left:10px;
+    size(4cm);
+    draw(unitcircle, smalldashes);
+    fill((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle, palegreen);
+    draw((1,0)--(0,0), blue, L="$a$", align=S);
+    draw((0,0)--(cos(1),sin(1)), blue, L="$a$", align=NW);
+    draw(arc((0,0), 1, 0, degrees(1.)), blue, L="$a$");
+    draw(arc((0,0), 0.3, 0, degrees(1.)), purple, L=rotate(degrees(0.5))*"$1$");
+
+## Geometry and Trig
+
+The angle of the green-ish slice at right is 1 radian. The angle of the
+yellow slice is $b/r$ radians.
+
+asymptote: float:right; margin: 0,0,0,20px;
+    size(5cm);
+    filldraw(unitcircle, lightyellow);
+    label(rotate(degrees(2.)-90)*"$\tau r$", (cos(2),sin(2)), align=N);
+    draw(((0,0)--(1,0)), L="$r$", align=N);
+
+A full turn is $\text{tau} = \tau \approx 6.28$ radians, and a half turn
+is $\pi = \frac \tau 2 \approx 3.14$ radians. The perimeter of a circle
+is $\tau r$ where $r$ is the radius.
+
+360 degrees (or 360° for short) is a full turn.
+
+Conversion functions:
+
+code: javascript
+    const TAU = 2*Math.PI;
+    function toRadians(degrees) { return degrees/360*TAU; }
+    function toDegrees(radians) { return radians/TAU*360; }
+
+Unit circle:
+
+asymptote:
+    size(9cm);
+
+    axises(-1.2,1.6,1.2,-1.8);
+    real t = radians(55);
+
+    draw(unitcircle);
+    draw((0,0)--(cos(t),-sin(t)), L="1", align=S);
+    dot((cos(t),-sin(t)), p=dotpen);
+    draw(arc((0,0), 0.3, -degrees(t), 0), L="$t$");
+
+    draw(brace((cos(t),-1), (0,-1)), deepblue, L="$\cos t$", align=S);
+    draw(brace((cos(t)+0.15,0), (cos(t)+0.15,-sin(t))), darkorange, L="$\sin t$", align=E);
+
+A triangle with a quarter-turn corner and a bunch of math:
+
+asymptote: float:right;
+    size(6cm);
+    abctriangle(3,2, lightgreen);
+    real t = atan2(2,3);
+    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
+
+math:
+    &\sin t = \frac b c \\
+    &\cos t = \frac a c \\
+    &\tan t = \frac b a \\
+    &t = \text{atan2}(b,a) \\
+    &a^2 + b^2 = c^2
+
+Most programming languages have a ``hypot(a, b)`` function that returns
+$\sqrt{a^2+b^2}$. You can use it for calculating $c$ in the above image.
