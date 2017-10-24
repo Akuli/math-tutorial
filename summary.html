@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Summary</title>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><b>Summary</b></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this title">¶</a></h1><p>This page contains important and hard-to-remember things from other
+chapters all in one place to make them easier to find. You can look for
+stuff you need from this page or you can use it to find something
+interesting to read.</p>
+
+<div class="box redbox"><h2> Note</h2><p>This page contains summaries, not introductions. I don't expect you
+to read it and then master everything it's talking about, so also
+read the human-friendly introductions in other chapters when needed.
+</p>
+
+</div><h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><div class="box graybox"><h2> See Also</h2><p>There isn't a separate chapter about slopes because there isn't much
+to them, but <a href="derivatives.html#what-is-a-derivative">the derivative chapter</a>
+contains an introduction.
+</p>
+
+</div><p>Notation: if <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is first 3 and we change it to 4, the <i>difference</i> of
+these values is <img class="inlinemath" src="math/c5e6b904eff1e1357140eabafdd293c4.png" />.</p>
+
+<p><img src="asymptote/8b4b7c6cc6318a12730386a10e2fb28c.png" /></p><p>Only straight lines have slopes. The slope of the line in the picture
+above is <img class="inlinemath" src="math/198e6379646e5f40664edb77ef5e0eba.png" />, so it determines how much <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />
+changes compared to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> because <img class="inlinemath" src="math/b0c4492289848fd9b878aaab2fcc66c0.png" />.</p>
+
+<p>Boring detail: vertical lines don't have slopes because the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> value is
+always the same, so <img class="inlinemath" src="math/341de38403902f0e9213da4a660a1764.png" /> regardless of the two points chosen
+for calculating <img class="inlinemath" src="math/d87922a765f12f89c3c4acbaaf5e468c.png" /> and we get division by zero.</p>
+
+<img src="asymptote/055ce943efb49d99b175a706c0c4688f.png" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is like <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />, but infinitely small. Use e.g.
+<img class="inlinemath" src="math/3f37312a57828c90ab078a6b1cb6bc8a.png" /> instead of <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> when doing actual
+calculations so the "smallness" is explicit and well-defined.</p>
+
+<p>Definition of derivative:</p>
+
+<p><img src="math/f44d28e705aa3ac686a2b2122aff80a5.png" class="blockmath" /></p><p>Notation:</p>
+
+<p><img src="math/926020e910d8e0621e2a61a887f6fbf6.png" class="blockmath" /></p><p>The derivative <img class="inlinemath" src="math/74caf4d1ec90d3a36ea7c7bbfe65b516.png" /> is the slope of a line that just touches <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" />
+at <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+
+<p id="derivative-rules">Handy rules:
+</p>
+
+<p><img src="math/b83ee525a36483f71ebff1a58e16d9f4.png" class="blockmath" /></p><div class="box graybox"><h2> See Also</h2><p>All of these rules are proved <a href="explanations.html#derivative-rules">here</a>.
+I have spent quite a bit of time with creating good but human-readable
+proofs and you may find them interesting.
+</p>
+
+</div><p>Note that if you have something like <img class="inlinemath" src="math/a15c72896537a69bef32c65c61a8d307.png" /> as opposed to <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> you
+need to use the <img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" /> rule; that is,
+remember to multiply by <img class="inlinemath" src="math/a1627a9956cf861e19c02dbeed3126c2.png" />. For example:</p>
+
+<p><img src="math/403cb81736ec2d107db031580ec70397.png" class="blockmath" /></p><img src="asymptote/65767356d9ed296f259b871b229ba67b.png" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> from <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> to <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is <img class="inlinemath" src="math/05dce1fc5a99f01613a3515624d217df.png" /> where <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> is an
+antiderivative of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />, i.e. <img class="inlinemath" src="math/45e93d791033f046d3e15b12c566df97.png" />.</p>
+
+<p>Notation:</p>
+
+<ul><li><img class="inlinemath" src="math/3c0e4608b57fd3fa5a57cdc23312f7bd.png" /> is the area in the picture.</li><li><img class="inlinemath" src="math/c59db99225bf9400e94cedc7de6fcb74.png" /> where <img class="inlinemath" src="math/45e93d791033f046d3e15b12c566df97.png" />.</li><li><img class="inlinemath" src="math/4e6b540386ffa7d422bda5e9b5d35569.png" />.
+</li></ul><p>3D volume <img class="inlinemath" src="math/5206560a306a2e085a437fd258eb57ce.png" />:</p>
+
+<p><img src="asymptote/81de0378f65cba393c099ad2935729fc.png" /></p><p><img src="math/790506397767db46ece8b55a1e00a35f.png" class="blockmath" /></p><img src="asymptote/a297a385dbe9eafd953545ab92d14a5e.png" style="float:right; padding-left:10px;" /><img src="asymptote/61839f53e7ff918bf6a749da7416197f.png" style="float:right; padding-left:10px;" /><h2 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h2><p>The angle of the green-ish slice at right is 1 radian. The angle of the
+yellow slice is <img class="inlinemath" src="math/dc3b0d80037875d0b523e8c2d45875fb.png" /> radians.</p>
+
+<img src="asymptote/bab3f40b2d60aad9b73890e7bd032f51.png" style="float:right; margin: 0,0,0,20px;" /><p>A full turn is <img class="inlinemath" src="math/333b61572f6d481ab852f49998e7c110.png" /> radians, and a half turn
+is <img class="inlinemath" src="math/281821b1f7db2d27354686f9a5570fac.png" /> radians. The perimeter of a circle
+is <img class="inlinemath" src="math/24ed1d8bda9032a2bc7f9cdc1dc6306b.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius.</p>
+
+<p>360 degrees (or 360° for short) is a full turn.</p>
+
+<p>Conversion functions:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">const</span> TAU <span style="color: #666666">=</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #007020">Math</span>.PI;
+<span style="color: #007020; font-weight: bold">function</span> toRadians(degrees) { <span style="color: #007020; font-weight: bold">return</span> degrees<span style="color: #666666">/</span><span style="color: #40a070">360</span><span style="color: #666666">*</span>TAU; }
+<span style="color: #007020; font-weight: bold">function</span> toDegrees(radians) { <span style="color: #007020; font-weight: bold">return</span> radians<span style="color: #666666">/</span>TAU<span style="color: #666666">*</span><span style="color: #40a070">360</span>; }
+</pre></div>
+<p>Unit circle:</p>
+
+<p><img src="asymptote/e8d8ed1cc6f73ba506522bdb94e15ab4.png" /></p><p>A triangle with a quarter-turn corner and a bunch of math:</p>
+
+<img src="asymptote/360ef43321e8d2901abae1513fc78bfb.png" style="float:right;" /><p><img src="math/ff806896169fa8045f8326b3def44662.png" class="blockmath" /></p><p>Most programming languages have a <code>hypot(a, b)</code> function that returns
+<img class="inlinemath" src="math/0f6b8e39c7c8a53464afccb74eb48c66.png" />. You can use it for calculating <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> in the above image.
+</p>
+
+</div>
+</body>
+</html>

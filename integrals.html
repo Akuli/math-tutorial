@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>Integrals</b></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>Integrals</b></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h1><div class="box redbox"><h2> Warning</h2><p>This chapter assumes that you have a good grasp of derivatives, including
 the ability to recognize that <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> is a derivative whenever you
 see it. I highly recommend reading <a href="derivatives.html">the derivative tutorial</a>
@@ -45,41 +45,40 @@ x <span style="color: #666666">=</span> <span style="color: #40a070">1</span>
 <p>The answer is not too bad and we could make it much better by adjusting
 <code>slice_width</code>, but I calculated the same area on paper by hand in about
 <b>10 seconds</b> and I got a precise answer instead of a decimal approximation.
-This chapter is all about how I did that and why it works.
-</p>
+This chapter is all about how I did that and why it works.</p>
 
-<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img src="asymptote/82ff61e366e09561c1bc9a2b420758c5.png" style="float:right;" /><p>Let's say that our curve is of the form <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a
+<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img src="asymptote/fbcc7c55997c8f93fcc047f69b938226.png" style="float:right;" /><p>Let's say that our curve is of the form <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a
 <a href="explanations.html#which-functions-have-derivatives">continuous</a>
-function. Maybe we could find out what the area <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> is under the curve
-between 0 and <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />?</p>
+function. Maybe we could find out what the area <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> is under the
+curve between 0 and <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />?</p>
 
-<p>Let's imagine that we choose some <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> location and <i>move</i> it right by <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />.
-Then the area grows by a slice of width <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> and height <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" />. If we
-assume that the slice is a rectangle we get a small error (red triangle in
-image), but we can calculate the slice's area <img class="inlinemath" src="math/30eaa39b08a11bf0f9745efda6f9e55c.png" /> with the rectangle
-formula:</p>
+<p>Let's imagine that we choose some <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> location and <i>move</i> it right by
+<img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. Then the area grows by a slice of width <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> and
+height <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" />. If we assume that the slice is a rectangle we get a small
+error (red triangle in image), but we can calculate the slice's area
+<img class="inlinemath" src="math/a4bc0985744caf49a4893e42cc5c24b2.png" /> with the rectangle formula:</p>
 
-<p><img src="math/60406f8430837d45f0a2a63af1fd6928.png" class="blockmath" /></p><p>Now if we make the <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> <i>infinitely</i> tiny, the red triangle is so small
-compared to <img class="inlinemath" src="math/30eaa39b08a11bf0f9745efda6f9e55c.png" /> that we can ignore it:</p>
+<p><img src="math/116aac444653c2190f9cfb1e50ea785a.png" class="blockmath" /></p><p>Now if we make the <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> <i>infinitely</i> tiny, the red triangle is so
+small compared to <img class="inlinemath" src="math/a4bc0985744caf49a4893e42cc5c24b2.png" /> that we can ignore it:</p>
 
-<p><img src="math/ae191a075984bb8380d07d645926e947.png" class="blockmath" /></p><p>Yes, this is correct! We can use a derivative here. This is precise, so we can
-get rid of <img class="inlinemath" src="math/fb4f353ef9a72c24566678c957a5ae9f.png" /> and replace it with <img class="inlinemath" src="math/43ec3e5dee6e706af7766fffea512721.png" />.</p>
+<p><img src="math/eab87df2d4b9c3fb1f83eb9bbfb3a9f0.png" class="blockmath" /></p><p>Yes, this is correct! The derivative of <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> is <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />. This is precise, so
+we can get rid of <img class="inlinemath" src="math/fb4f353ef9a72c24566678c957a5ae9f.png" /> and replace it with <img class="inlinemath" src="math/43ec3e5dee6e706af7766fffea512721.png" />.</p>
 
 <p>So, if we want to calculate areas all we really need is an antiderivative
-function <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> so that <img class="inlinemath" src="math/30c867f5b2bb5dd64ded6bb9acbe3019.png" />, and <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" /> will be an area to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+function <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> so that <img class="inlinemath" src="math/45e93d791033f046d3e15b12c566df97.png" />, and <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> will be an area to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
 
 <img src="asymptote/f34ffa7d6a1bce159ff4253ee154b7dd.png" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
-<a href="derivatives.html#faster">our derivative rules</a> was this:</p>
+<a href="summary.html#derivative-rules">the derivative rules on the summary page</a> was this:</p>
 
-<p><img src="math/04e4cfa87eb7aebecb4320b7b3061687.png" class="blockmath" /></p><img src="asymptote/088152810b81078cd73561a9ed4fb26a.png" style="float:right;" /><p>So it looks like the antiderivative function <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> is <img class="inlinemath" src="math/147767e17a061e46a936049e90493d59.png" />. But how
-about <img class="inlinemath" src="math/c68bacabaa72665aa122b96756e3baf9.png" />? Its derivative is also <img class="inlinemath" src="math/f792df21d1d673ef7a496bbdf2991514.png" />
-because <img class="inlinemath" src="math/a798b6b97c3b6fd9647fc86eaaa073dc.png" />. Or how about <img class="inlinemath" src="math/da79613e3d8d6c2a503191ba96571756.png" /> or <img class="inlinemath" src="math/23c9b34945dc7c155dcb016fd421bd18.png" />?
-We don't know what <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" /> is, but we know that <img class="inlinemath" src="math/e8adacd80a07954d7d29ca9f83581d2c.png" /> where <img class="inlinemath" src="math/0d61f8370cad1d412f80b84d143e1257.png" />
-is a constant.</p>
+<p><img src="math/04e4cfa87eb7aebecb4320b7b3061687.png" class="blockmath" /></p><img src="asymptote/1ddd73205fff03dee46853f214048988.png" style="float:right;" /><p>So it looks like the antiderivative function <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> is <img class="inlinemath" src="math/5dd2d3c3aa63e042fc1057e0f334b7fc.png" />.
+But how about <img class="inlinemath" src="math/6013c25a47bbb70b387f68a00916c329.png" />? Its derivative is also
+<img class="inlinemath" src="math/f792df21d1d673ef7a496bbdf2991514.png" /> because <img class="inlinemath" src="math/a798b6b97c3b6fd9647fc86eaaa073dc.png" />. Or how about
+<img class="inlinemath" src="math/da79613e3d8d6c2a503191ba96571756.png" /> or <img class="inlinemath" src="math/23c9b34945dc7c155dcb016fd421bd18.png" />? We don't know what <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> is, but we
+know that <img class="inlinemath" src="math/4e93e70d60f9ea683a235bfcac485e75.png" /> where <img class="inlinemath" src="math/0d61f8370cad1d412f80b84d143e1257.png" /> is a constant.</p>
 
 <p>Let's try to calculate our area:</p>
 
-<p><img src="math/7e41dc8e5bc156edf8e557667e5dc1fe.png" class="blockmath" /></p><p>That's all there is to it! <img class="inlinemath" src="math/47033336fbe2edbc97aec5cabebf3a31.png" /> is the precise area. I think this is
+<p><img src="math/cb2cbcb88d677e7d0486eaeb47343e90.png" class="blockmath" /></p><p>That's all there is to it! <img class="inlinemath" src="math/47033336fbe2edbc97aec5cabebf3a31.png" /> is the precise area. I think this is
 awesome.</p>
 
 <p>This took quite a while because we went through all the steps needed to
@@ -87,8 +86,8 @@ understand everything, but now that you have seen this once you can do it much
 faster. So, here are the steps for calculating the area under <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> between
 <img class="inlinemath" src="math/50a20ce04c291ac897290a4f2e3bc9e2.png" /> and <img class="inlinemath" src="math/e89da0c0c73b56b18d920816a6df9829.png" />:</p>
 
-<ol><li>Find an antiderivative <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />. There are infinitely many antiderivatives,
-but <i>any</i> antiderivative will do because the <img class="inlinemath" src="math/0d61f8370cad1d412f80b84d143e1257.png" />'s are substracted away.</li><li>Calculate <img class="inlinemath" src="math/b9732b215fa6fe3f44cc1e6ba50c2f0b.png" /> and you're done.
+<ol><li>Find an antiderivative <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" />. There are infinitely many antiderivatives,
+but <i>any</i> antiderivative will do because the <img class="inlinemath" src="math/0d61f8370cad1d412f80b84d143e1257.png" />'s are substracted away.</li><li>Calculate <img class="inlinemath" src="math/05dce1fc5a99f01613a3515624d217df.png" /> and you're done.
 </li></ol><p>This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.</p>
 
@@ -97,7 +96,7 @@ fundamental theorem of calculus.</p>
 <ul><li>The blue area in the image at right is <img class="inlinemath" src="math/24719e95ebfc37780cd10efa87e81e05.png" />. Be careful
 here – the <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is just a part of the notation and you must not forget
 it.</li><li>The antiderivative of <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> including the <img class="inlinemath" src="math/13fc32afdcb87685cf0ab8d7c230bbe3.png" /> is the same thing without
-<img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" />. So <img class="inlinemath" src="math/d2c29329065f671a1f97a42a98abb8f4.png" /> where <img class="inlinemath" src="math/a230338cf7ca1389f49bf9cfa46e66c9.png" />.</li><li><img class="inlinemath" src="math/aa0b2523d87fddc09df98eefb5977479.png" />.
+<img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" />. So <img class="inlinemath" src="math/540469868c9957b6fbdf666fe854f05a.png" /> where <img class="inlinemath" src="math/a5d6f1a7618d3e88ed9c22a9ccaf6ba2.png" />.</li><li><img class="inlinemath" src="math/a40060f1c404b30bac2c7652e5d20a8e.png" />.
 </li></ul><p>The integral sign <img class="inlinemath" src="math/05ac7a592ac15a18edc4cd1610e87ea8.png" /> is a strecthed S like Sum, and <img class="inlinemath" src="math/24719e95ebfc37780cd10efa87e81e05.png" />
 means conceptually a sum of the areas of little <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> by <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> rectangles.</p>
 
@@ -188,10 +187,7 @@ pixels and it's 3-dimensional, how many pixels fit inside the cone?</p>
 page</a>.</small>
 </p>
 
-</div><img src="asymptote/19aa9d253faa2d6d67ef1519b0edd7fd.png" style="float:right;" /><p>Here <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" /> has nothing to do with antiderivatives, it's just the Area of the
-green circle in the image at right.</p>
-
-<p>Integrals are not actually limited to calculating areas in any way. If you look
+</div><img src="asymptote/19aa9d253faa2d6d67ef1519b0edd7fd.png" style="float:right;" /><p>Integrals are not actually limited to calculating areas in any way. If you look
 at the image, the total volume is <img class="inlinemath" src="math/4918a2c572823a9649e4b2a795e90061.png" />. Now we just need to
 figure out how to calculate the <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />, and for that we need to know what
 <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> is. Here's everything we know about <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />:</p>

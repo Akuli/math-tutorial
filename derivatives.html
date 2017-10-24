@@ -7,11 +7,12 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>This chapter contains more not-so-practical math than the trig and geometry
-chapter, but you may find it surprisingly fun. However, the math is not useless
-gibberish isolated from real life and there's a practical example with a fun
-demonstration game at the end.</p>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>Derivatives are one of my favorite things in math. At first they seem
+like calculating their values will be quite complicated, but it turns
+out to be surprisingly easy. Derivatives are also not useless gibberish
+isolated from real life, and there's a practical demonstration about how
+they are useful at the end of the chapter.</p>
 
 <h2 id="what-is-a-derivative">What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Link to this title">¶</a></h2><p>A <i>difference</i> means how much a value changes. For example, if the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />
 is first 5 and then we change it to 6, <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> changes by <img class="inlinemath" src="math/9e48412271eff0650ed355cbedce7457.png" />. Here
@@ -48,13 +49,14 @@ derivative; if you want to know more, <a href="explanations.html#which-functions
 here</a>.</p>
 
 <p>The image at right seems to say that <img class="inlinemath" src="math/ea9c37cbce8a07d1c2b66b335f9ee046.png" />. Let's try to solve
-<img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" />:</p>
+<img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> (see <a href="basics.html#equations">the equation thing on the basics
+page</a>):</p>
 
 <p><img src="math/8e8078dad52edd1920af0de16a17e390.png" class="blockmath" /></p><p>Most mathematicians don't like the above formula because <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is a
 "small number" and it isn't really clear how it behaves in different
 situations. Here's a better definition:</p>
 
-<p><img src="math/16e9125c53f45cf8799912372a4f991e.png" class="blockmath" /></p><p>The <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" /> thing means that we take the <b>limit</b> as <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> approaches 0. It's
+<p><img src="math/16e9125c53f45cf8799912372a4f991e.png" class="blockmath" /></p><p>The <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" /> thing means that we take the <b>limit</b> as <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> goes to 0. It's
 essentially same as our <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> thing, but more explicit and better defined in
 some corner cases.
 </p>
@@ -86,31 +88,39 @@ although it doesn't make much sense because <img class="inlinemath" src="math/8e
 <img class="inlinemath" src="math/e3e396b27470ebc2f29600ab5e1b8d3e.png" />.
 </p>
 
-</div><h2 id="faster">Faster!<a class="headerlink" href="#faster" title="Link to this title">¶</a></h2><p>Finding the derivative was kind of complicated and really slow. These rules
-change everything. Most of these rules are
-<a href="explanations.html#derivative-rules">easy to prove</a> so there is no magic
-involved.</p>
+</div><h2 id="faster">Faster!<a class="headerlink" href="#faster" title="Link to this title">¶</a></h2><p>Let's say that you want to calculate something like this:</p>
 
-<p>I have listed many rules here, but <b>don't panic</b>; there's no need to memorize
-them. As before <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> can be any functions as long as they have a
-derivative (e.g. <img class="inlinemath" src="math/452ba195c426292b505722cc3fa0f9f3.png" /> and <img class="inlinemath" src="math/16276dace2435af3d6698e25188461ab.png" />), and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> can be any constant
-like <img class="inlinemath" src="math/a87ff679a2f3e71d9181a67b7542122c.png" /> or <img class="inlinemath" src="math/8517688b5139f2bd9d869a95a9a6db8c.png" /> but not e.g. <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" /> because that depends on the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+<p><img src="math/2fe7fd6a1b19e0df69a1154e39f489f4.png" class="blockmath" /></p><p>That would be a horribly complicated calculation with the <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" /> thing.
+Let's be a bit more clever. We have a bunch of things being added and
+substracted together, so maybe we could deal with them somehow? Let's
+say that we want to find the derivative of <img class="inlinemath" src="math/f070deff5c0629450c5a975b58c3c33a.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" />
+can be any functions (as long as the derivative exists). They could be
+for example <img class="inlinemath" src="math/27951896440f1f87773079e66afc3ea5.png" /> and <img class="inlinemath" src="math/a623a9aa12f51bf5ab3f5f20ca4cb14c.png" />, but let's see what we get if
+we don't plug in any values:</p>
 
-<p><img src="math/b83ee525a36483f71ebff1a58e16d9f4.png" class="blockmath" /></p><p>So, if you want to find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> just use the <img class="inlinemath" src="math/901a4ac1bf0dc042656f4a045eb75433.png" />
-rule:</p>
+<p><img src="math/de8998c9b2d2b4b8468f8c188b445e7a.png" class="blockmath" /></p><p>That's quite nice! So if we want to find the derivative of a bunch of
+things added together we can just find derivatives of each thing one by
+one. The same thing also works with <img class="inlinemath" src="math/336d5ebc5436534e61d16e63ddfca327.png" /> instead of <img class="inlinemath" src="math/26b17225b626fb9238849fd60eabdf60.png" />·</p>
 
-<p><img src="math/f03d4c0f56b886fd5c0b6f8616ce2f38.png" class="blockmath" /></p><p>Now you can also find derivatives of long and scary functions easily and
-quickly. For example:</p>
+<p>We can actually take a step further and find the derivative of <img class="inlinemath" src="math/59af385f17bb6c55092f1a8295664057.png" />
+where <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is any constant, e.g. <img class="inlinemath" src="math/1679091c5a880faf6fb5e6087eb1b2dc.png" />:</p>
 
-<p><img src="math/72d34e4e767eaef0dad32885ee3fa749.png" class="blockmath" /></p><p>Of course, there's no need to write down all of these steps.</p>
+<p><img src="math/e75e679e759823c22ae10f5454f85f38.png" class="blockmath" /></p><p>There are a couple more things we need: <img class="inlinemath" src="math/1fadfdee1d42eab9f4aeff45e25f70e8.png" /> because if
+<img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is incremented by something then <img class="inlinemath" src="math/0bdff8095c8bf1b38775bf35547a1317.png" /> increments <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> times as much,
+and <img class="inlinemath" src="math/f9c4786fe3ccde95486b27617a82ed28.png" /> because <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> never changes regardless of the
+value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />. You can also use the definition of derivative to show that
+these work.</p>
 
-<p>Note that if you have something like <img class="inlinemath" src="math/a15c72896537a69bef32c65c61a8d307.png" /> as opposed to <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> you
-need to use the <img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" /> rule. In this example,
-you would plug in <img class="inlinemath" src="math/d271cedde6675e55152d3c7a4236f775.png" /> and <img class="inlinemath" src="math/59e1e9ebd809c00d4d27b0fe51e502de.png" /> to get this:</p>
+<p>So, with all that we can calculate the derivative easily:</p>
 
-<p><img src="math/36fc6ebd05d802479e95d59db0ca2dc6.png" class="blockmath" /></p><p>In some cases it's also possible to first open up something like the <img class="inlinemath" src="math/825eb58f25f6ec5871bf08a67ada3342.png" />:</p>
+<p><img src="math/b9728f29ed07709a9e57517445c8affc.png" class="blockmath" /></p><div class="box graybox"><h2> See Also</h2><p>
+The summary page has a derivative section with <a href="summary.html#derivative-rules">many more
+rules</a>. You may need them if you want
+to find derivatives of different functions than the functions in
+this chapter.
+</p>
 
-<p><img src="math/7acc8ce698b250dce11d191c87aa7ff8.png" class="blockmath" /></p><p>You can also use a nice symbolic calculation library, like Python's
+</div><p>You can also use a nice symbolic calculation library, like Python's
 <a href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
@@ -121,7 +131,7 @@ you would plug in <img class="inlinemath" src="math/d271cedde6675e55152d3c7a4236
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff((<span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>, x)
 <span style="color: #888888">8⋅x</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff(<span style="color: #40a070">5</span> <span style="color: #666666">*</span> x<span style="color: #666666">**</span><span style="color: #40a070">3</span> <span style="color: #666666">-</span> <span style="color: #40a070">6</span> <span style="color: #666666">*</span> x<span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">7</span><span style="color: #666666">*</span>x <span style="color: #666666">-</span> <span style="color: #40a070">123</span>, x)
-<span style="color: #888888">    2           </span>
+<span style="color: #888888">    2</span>
 <span style="color: #888888">15⋅x  - 12⋅x + 7</span>
 </pre></div>
 <p>Here "diff" is short for "differenciate", and it means finding a derivative.</p>
