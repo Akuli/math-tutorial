@@ -27,12 +27,12 @@ math:
                   &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
                   &= 51966
 
+The sane way to calculate the last step is to use a programming interpreter or
+calculator of your choice. Don't try to do it by hand.
+
 Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
 because it's very common in programming. Note that the first character is a
 zero, not the letter O.
-
-The sane way to calculate the last step is to use a programming interpreter or
-calculator of your choice. Don't try to do it by hand.
 
 Most programming languages have very good support for hexadecimal and a few
 other bases. For example, here's Python:
@@ -52,6 +52,13 @@ code: python3
    'i went to a cafe'
    >>> 'i went to a {:x}'.format(51966)
    'i went to a cafe'
+
+graybox: See Also
+    As you can see, it's possible to represent some words with
+    hexadecimal numbers. There's [a nice list of funny hexadecimal
+    numbers that are actually being
+    used](https://en.wikipedia.org/wiki/Hexspeak#Notable_magic_numbers)
+    on Wikipedia.
 
 Now let's have a look at the colors. Another common way to represent colors is
 ``rgb(R,G,B)`` where R, G and B are red, green and blue values between

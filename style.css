@@ -114,3 +114,16 @@ p, li {
     margin-left: 10px;
     background-color: #fe9;
 }
+
+table {
+    border: 1px solid;
+    border-collapse: collapse;
+}
+th {
+    border-bottom: 1px solid;
+}
+th, td {
+    border-left: 1px solid;
+    border-right: 1px solid;
+    padding: 3px;
+}

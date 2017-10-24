@@ -319,34 +319,22 @@ antiderivatives.
 
 ## Integral Rules
 
-You can turn [derivative rules](derivatives.html#faster) into integral rules by
-applying $\int(...)dx$ on both sides. Keep in mind that
-$\int f'(x) dx = f(x) + C$ and $\frac{d}{dx} \left( \int f(x) dx \right) = f(x)$
-because $\int(...)dx$ means antiderivative. For example:
+You can turn [derivative rules](summary.html#derivative-rules) into
+integral rules by applying $\int(...)dx$ on both sides. Keep in mind
+that $\int f'(x) dx = f(x) + C$ and
+$\frac{d}{dx} \left( \int f(x) dx \right) = f(x)$ because $\int(...)dx$
+means antiderivative. For example:
 
 math:
    f'(g(x))g'(x) &= \frac{d}{dx}(f(g(x))) \\
    \int f'(g(x))g'(x) dx &= f(g(x)) + C
 
-Here are some handy results of calculations like the one above. Note that $C$
-and $c$ are different or use better variable names than I did. You can check
-these easily by finding the derivative of the right side; it should always be
-whatever is between $\int$ and $dx$ on the left side.
-
-math:
-   \int 1\ dx &= x + C \\
-   \int c\ dx &= cx + C \\
-   \int x\ dx &= \frac{x^2}{2} + C \\
-   \int x^c\ dx &= \frac{x^{c+1}}{c+1} + C \\
-   \int c\ f(x)\ dx &= c \int f(x)dx \\
-   \int\left( f(x)+g(x) \right)dx &= \int f(x) dx + \int g(x) dx \\
-
-Note that there's no formula for integrating $f(x)g(x)$ unless there's
-something special going on, e.g. one of $f(x)$ and $g(x)$ is a constant.
+As with derivatives, there's [a handy list of integral
+rules](summary.html#integral-rules) on the summary page.
 
 In our first example I chose $\frac{1}{2 \sqrt x}$ just because we know it's
-the derivative of $\sqrt x$. But now we know how to integrate stuff like
-$\frac{1}{\sqrt x}$ as well. For example:
+the derivative of $\sqrt x$, but with the summary page we can also integrate
+stuff like $\frac{1}{\sqrt x}$:
 
 math:
    \int \frac{1}{\sqrt x} dx &= \int \frac{2}{2 \sqrt x} dx \\

@@ -159,6 +159,28 @@ Notation:
 * $\int f(x)\ dx = F(x) + C$ where $F'(x)=f(x)$.
 * $\left[F(x)\right]_a^b = F(b)-F(a)$.
 
+(integral-rules)
+Handy integral rules (note that $C$ and $c$ are different or use less
+retarded variable names than I used):
+
+math:
+    \begin{matrix}
+        \int 1\ dx = x + C &
+        \int c\ dx = cx + C & \\
+        &&\\
+        \int x\ dx = \displaystyle\frac{x^2}{2} + C &
+        \int x^c\ dx = \displaystyle\frac{x^{c+1}}{c+1} + C & \\
+        &&\\
+    \end{matrix}
+
+math: \textstyle\int c\ f(x)\ dx &= c \cdot \textstyle\int f(x)dx
+
+math: \textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x) dx + \int g(x) dx
+
+You can prove these easily by finding the derivative of the right side;
+it's always equal to whatever is between $\int$ and $dx$ on the left
+side.
+
 3D volume $V$:
 
 asymptote3d:
@@ -268,5 +290,66 @@ math:
     &t = \text{atan2}(b,a) \\
     &a^2 + b^2 = c^2
 
-Most programming languages have a ``hypot(a, b)`` function that returns
+Some programming languages have a ``hypot(a, b)`` function that returns
 $\sqrt{a^2+b^2}$. You can use it for calculating $c$ in the above image.
+
+## Other Bases
+
+<table>
+<tr><th>Name</th><th>Base number</th><th>Prefix in programming</th></tr>
+<tr><td>binary</td><td>2</td><td>``0b``</td></tr>
+<tr><td>octal</td><td>8</td><td>``0o``</td></tr>
+<tr><td>decimal</td><td>10</td><td>no prefix needed</td></tr>
+<tr><td>hexadecimal</td><td>16</td><td>``0x``</td></tr>
+</tr>
+</table>
+
+We only have 10 digits but we need 16 for hexadecimal, so we also use
+A=10, B=11, C=12, ..., F=15.
+
+Examples:
+
+math:
+    2017    &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+            &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0 \\
+
+math:
+    \text{0xCAFE}
+    &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16 + \text{0xE} \\
+    &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
+    &= 51966
+
+Python example:
+
+code: python3
+    >>> 0b1111011
+    123
+    >>> 0o777
+    511
+    >>> 0xcafe
+    51966
+    >>> int('cafe', 16)
+    51966
+
+Other languages have features like Python's ``int('cafe', 16)`` (e.g.
+``parseInt('cafe', 16)`` in JavaScript), but the prefixed numbers work
+as is in most languages.
+
+## Hexadecimal Colors
+
+code:
+    #cafeee = rgb(0xca,0xfe,0xee) = rgb(202,254,238)
+
+I calculated ``0xca``, ``0xfe`` and ``0xee`` with Python.
+
+Conversion functions:
+
+code: python3
+    def hex2rgb(hexcolor):
+        assert len(hexcolor) == 7 and hexcolor[0] == '#'
+        return (int(hexcolor[1:3], 16), int(hexcolor[3:5], 16), int(hexcolor[5:7], 16))
+
+    def rgb2hex(r, g, b):
+        # string formatting magic: %02x means hexadecimal padded with
+        # zeros until it's at least 2 characters wide
+        return '#%02x%02x%02x' % (r, g, b)
