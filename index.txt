@@ -2,17 +2,22 @@
 
 This tutorial contains practical math for programmers who want to get
 stuff done, but also more stuff for people who get interested in how the
-math works.
+math works. It assumes that you have some experience with programming,
+but you'll probably understand most of it without programming skills.
 
 Start by opening [the basics page](basics.html) and keep it open while
 you read the tutorial. There's nothing wrong with looking up things from
 it as we go.
 
+If you came here because you want to calculate some specific thing, go
+to [the summary page](summary.html) to get a nice and concise list of
+things that are shown in this tutorial.
+
 If you don't know what to start with I recommend [the derivative
 tutorial](derivatives.html). Derivatives are a great example of why I
 like math; calculations that seem like they will be complicated turn out
-to be surprisingly simple in the end. After that, if you got interested
-in how awesome the math is, continue to [the integral
+to be surprisingly simple and doable in the end. After that, if you got
+interested in how awesome the math is, continue to [the integral
 tutorial](integrals.html) for even more amazing stuff. If you didn't get
 interested in derivatives you probably won't find integrals very
 interesting.
