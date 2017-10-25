@@ -1,0 +1,216 @@
+# Common Graphs
+
+This page contains a bunch of graphs that we use in other chapters.
+
+## Lines
+
+comment: TODO: explain what is a constant on the basics page
+
+In this section, $a$ and $s$ can be any constants, and $s$ is
+[the slope](derivatives.html#what-is-a-derivative). In general, the
+equation of any non-vertical line is $y=sx+a$ where $s$ and $a$ can be
+0, positive or negative.
+
+asymptote: float:left;
+    size(8cm);
+    import graph;
+    real xmin=-3, xmax=3, slope = 0.7;
+    real f(real x) { return slope*x; }
+    axises(xmin,xmax,slope*xmin,slope*xmax+1);
+    draw(graph(f,xmin,-1), blue);
+    draw(graph(f,-1,xmax), blue, L=rotate(degrees(atan(slope)))*"$y=sx,s>0$", align=N);
+
+asymptote: float:left;
+    size(9.5cm);
+    import graph;
+    real xmin=-3, xmax=3, slope = -0.7;
+    real f(real x) { return slope*x; }
+    axises(xmin,xmax,-slope*xmin,-slope*xmax+1);
+    draw(graph(f,xmin,1), blue, L=rotate(degrees(atan(slope)))*"$y=sx,s<0$", align=N);
+    draw(graph(f,1,xmax), blue);
+
+<div style="clear:both;"></div>
+
+asymptote: float:left;
+    size(7cm);
+    import graph;
+    real xymin=-3, xymax=3;
+    grid(xymin,xymax,xymin,xymax);
+    axises(xymin,xymax+1,xymin,xymax+1);
+    real f(real x) { return x; }
+    draw(graph(f,xymin,0), blue);
+    draw(graph(f,0,xymax), blue, L=rotate(45)*"$y=x$", align=N);
+
+asymptote: float:left;
+    size(7cm);
+    import graph;
+    real a = 3;
+    axises(-a,a,-1,a+2);
+    draw((-a,a)--(0,a), blue);
+    draw((0,a)--(a,a), blue, L="$y=a$", align=N);
+    draw(brace((-a/2,0),(-a/2,a)), L="$a$", align=W);
+
+asymptote: float:left;
+    size(8cm);
+    import graph;
+    real xmin=-3, xmax=3, slope = 0.7, a=1;
+    real f(real x) { return slope*x+a; }
+    axises(xmin,xmax,slope*xmin,slope*xmax+1);
+    draw(graph(f,xmin,-1), blue);
+    draw(graph(f,-1,xmax), blue, L=rotate(degrees(atan(slope)))*"$y=sx+a$", align=N);
+    draw(brace((0.2,a),(0.2,0)), L="$a$", align=E);
+
+<div style="clear:both;"></div>
+
+## Parabolas
+
+Here $a$, $d$ and $e$ are constants. You'll see later why I skipped $b$ and $c$.
+
+asymptote: float:left;
+    size(12cm);
+    import graph;
+    real xmin=-2.5, xmax=2.5;
+    real f(real x) { return x**2; }
+    grid(floor(xmin),ceil(xmax),-1,ceil(f(xmax)));
+    axises(floor(xmin),xmax+1,-1,f(xmax)+1);
+    draw(graph(f,xmin,0), blue);
+    draw(graph(f,0,xmax), blue, L=rotate(70)*"$y=x^2$");
+
+    for (real x = ceil(xmin); x <= xmax; x += 1) {
+        if (x != 0)
+            label((x,0), L="$"+(string)x+"$", align=S);
+    }
+    for (real y = 1; y<=f(xmax); y+=1) {
+        label((0,y), L="$"+(string)y+"$", align=W);
+    }
+
+asymptote: float:left;
+    size(10cm);
+    import graph;
+    real xmin=-2, xmax=2, c=1;
+    real f(real x) { return x**2+c; }
+    axises(xmin,xmax+1,-1,f(xmax)+1);
+    draw(graph(f,xmin,0.8), blue);
+    draw(graph(f,0.8,xmax), blue, L=rotate(70)*"$y=x^2+d,\ d>0$");
+    draw(brace((0.3,c),(0.3,0)), L="$d$", align=E);
+
+asymptote: float:left;
+    size(9cm);
+    import graph;
+    real xmin=-0.5, xmax=4.5;
+    real a=(xmin+xmax)/2;
+    real f(real x) { return (x-a)**2; }
+    axises(floor(xmin),xmax+1,-1,f(xmax)+1);
+    draw(graph(f,xmin,3.2), blue);
+    draw(graph(f,3.2,xmax), blue, L=rotate(70)*"$y=(x-e)^2,\ \ e>0$");
+    draw(brace((a,-0.2),(0,-0.2)), L="$e$", align=S);
+
+<div style="clear:both;"></div>
+
+asymptote: float:left;
+    size(10cm);
+    import graph;
+    real xmin=-2, xmax=2, a=2;
+    real f(real x) { return a*x**2; }
+    axises(xmin,xmax+1,-1,f(xmax)+1);
+    draw(graph(f,xmin,1), blue);
+    draw(graph(f,1,xmax), blue, L=rotate(75)*"$y=ax^2, a>0$");
+
+    assert(f(1) == a);
+    draw((1,0)--(1,a), smalldashes, L="$a$", align=E);
+    label((1,0), L="$1$", align=S);
+
+asymptote: float:left;
+    size(10cm);
+    import graph;
+    real xmin=-1.5, xmax=1.5, a=-2;
+    real f(real x) { return a*x**2; }
+    axises(xmin,xmax+0.5,f(xmax),1);
+    draw(graph(f,xmin,-1), blue, L=rotate(77)*"$y=ax^2,\ a<0$");
+    draw(graph(f,-1,xmax), blue);
+
+    assert(f(1) == a);
+    draw((1,0)--(1,a), smalldashes, L="$|a|$", align=E);
+    label((1,0), L="$1$", align=N);
+
+<div style="clear:both;"></div>
+
+floatingbox: Handy thing: $(x-e)^2=x^2-2xe+e^2$
+    Proof:
+
+    math:
+        & \ (x-e)^2 \\
+        =&\ (x-e)(x-e) \\
+        =&\ (x-e)x-(x-e)e \\
+        =&\ (xx-ex)-(xe-ee) \\
+        =&\ xx-ex-xe+ee \\
+        =&\ x^2-2xe+e^2
+
+The equations of all these parabolas seem to be of the form
+$y=a\cdot(x-e)^2+d$. Let's expand that a bit:
+
+math:
+    y &= a\cdot(x-e)^2+d \\
+    &= a\cdot(x^2-2xe+e^2)+d \\
+    &= ax^2-2aex+ae^2+d
+
+Now if we set $b=-2ae$ and $c=ae^2+d$, then $b$ and $c$ are also
+constants because they don't depend on the value of $x$. So we get this:
+
+math:
+    y = ax^2+bx+c
+
+Equations of all parabolas that open up or down are like this.
+Note that $a \ne 0$ because $y=bx+c$ is a straight line.
+
+## Sine and Cosine
+
+See [this thing](geometry-and-trig.html#radians-and-tau) if you don't
+know what $\tau$ and radians are, and [this
+thing](geometry-and-trig.html#trig-with-the-unit-circle) for a more
+detailed introduction to $\sin$, $\cos$ and the unit circle. Note that
+the graphs have a $t$ axis instead of an $x$ axis, and that $t$ is the
+same as the $t$ in the unit circle as radians.
+
+asymptote: float:left;
+    size(9cm);
+    axises(-1.2,1.6,-1.2,1.8);
+    real t = radians(55);
+    draw(unitcircle);
+    draw((0,0)--(cos(t),sin(t)), L="1", align=N);
+    draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
+    draw(brace((0,1), (cos(t),1)), deepblue, L="$\cos t$", align=N);
+    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin t$", align=E);
+
+comment: TODO: avoid copy/pasting the same code twice somehow?
+
+asymptote:
+    import graph;
+    size(20cm);
+    real a=-1, b=9;
+    axises(a,b+1,-1.8,2.3, xlabel="$t$");
+    real f(real t){return sin(t);}
+    draw(graph(f, a, b), darkorange);
+    draw((a,1)--(b,1), smalldashes, L="$y=1$", align=N);
+    draw((a,-1)--(b,-1), smalldashes, L="$y=-1$", align=S);
+
+    label("$y=\sin t$", (tau/4,0.4), darkorange);
+    label("$\tau/2$", (tau/2,0), align=SW); dot((tau/2,0),dotpen);
+    label("$\tau$", (tau,0), align=SE); dot((tau,0),dotpen);
+
+asymptote:
+    import graph;
+    size(20cm);
+    real a=-1, b=9;
+    axises(a,b+1,-1.8,2.3, xlabel="$t$");
+    real f(real t){return cos(t);}
+    draw(graph(f, a, b), blue);
+    draw((a,1)--(b,1), smalldashes, L="$y=1$", align=N);
+    draw((a,-1)--(b,-1), smalldashes, L="$y=-1$", align=S);
+
+    label("$y=\cos t$", (tau/2,-0.4), blue);
+    label("$\tau/4$", (tau/4,0), align=SW); dot((tau/4,0),dotpen);
+    label("$3\tau/4$", (3tau/4,0), align=SE); dot((3tau/4,0),dotpen);
+    label("$5\tau/4$", (5tau/4,0), align=SW); dot((5tau/4,0),dotpen);
+
+<div style="clear:both;"></div>

@@ -114,20 +114,7 @@ some corner cases.
 
 ## First Example
 
-The graph $y=x^2$ is curvy:
-
-asymptote:
-   size(7cm);
-
-   axises(-3,3,-1,7);
-   grid(-3,3,-1,7);
-
-   guide xsquared_left, xsquared_right;
-   for (real x = -2.5; x <= 0; x+= 1/8) { xsquared_left  = xsquared_left ..(x,x**2); }
-   for (real x = 0 ; x <= 2.5; x+= 1/8) { xsquared_right = xsquared_right..(x,x**2); }
-   draw(xsquared_left, p=blue);
-   draw(xsquared_right, p=blue, L=Label(rotate(70)*"$y = x^2$"), align=NW);
-
+[The graph $y=x^2$ is a parabola.](graphs.html#parabolas)
 Let's find the derivative of $x^2$ by plugging in $y=f(x)=x^2$ to the
 definition we ended up with. If we just try to evaluate it at $h=0$ we get
 $\frac 0 0$ so you might think that we need to evaluate it at e.g.
@@ -336,9 +323,10 @@ asymptote:
    }
    draw(parabolaaa);
 
-This looks like a parabola, and the equation of a parabola is $h = at^2+bt+c$
-where $a$, $b$ and $c$ are constants. The changing speed of height is the
-falling speed. Let's call that $v$ like velocity.
+[This graph looks like a parabola, so its equation is $h=at^2+bt+c$
+where $a$, $b$ and $c$ are constants.](graphs.html#parabolas) The
+changing speed of height is the falling speed. Let's call that $v$ like
+velocity.
 
 math: v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b
 

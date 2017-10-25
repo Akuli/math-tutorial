@@ -290,17 +290,13 @@ Unit circle:
 
 asymptote:
     size(9cm);
-
-    axises(-1.2,1.6,1.2,-1.8);
+    axises(-1.2,1.6,-1.2,1.8);
     real t = radians(55);
-
     draw(unitcircle);
-    draw((0,0)--(cos(t),-sin(t)), L="1", align=S);
-    dot((cos(t),-sin(t)), p=dotpen);
-    draw(arc((0,0), 0.3, -degrees(t), 0), L="$t$");
-
-    draw(brace((cos(t),-1), (0,-1)), deepblue, L="$\cos t$", align=S);
-    draw(brace((cos(t)+0.15,0), (cos(t)+0.15,-sin(t))), darkorange, L="$\sin t$", align=E);
+    draw((0,0)--(cos(t),sin(t)), L="1", align=N);
+    draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
+    draw(brace((0,1), (cos(t),1)), deepblue, L="$\cos t$", align=N);
+    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin t$", align=E);
 
 A triangle with a quarter-turn corner and a bunch of math:
 

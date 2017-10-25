@@ -127,3 +127,7 @@ th, td {
     border-right: 1px solid;
     padding: 3px;
 }
+
+.asymptote {
+    margin: 15px;
+}

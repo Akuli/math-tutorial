@@ -105,7 +105,7 @@ math:
     \tan t &= \frac{\sin t}{\cos t}
 
 asymptote: float:left; margin-right:15px;
-    size(5cm);
+    size(4cm);
     abctriangle(3,2,lightblue);
     real t = atan2(2,3);
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$");

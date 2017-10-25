@@ -4,7 +4,7 @@ This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just **keep this page open** while you read
 other chapters.
 
-## Variable Names
+## Variables
 
 Mathematicians use single-letter variable names because math was
 originally written on paper by hand and writing long things by hand
@@ -12,6 +12,11 @@ sucks. There are a few exceptions though; for example, $\sin$ and $\cos$
 are functions with 3-letter names. If they would be called $s$ and $c$
 instead it would be confusing to have a variable named $s$ or $c$, so
 they are written a bit more verbosely.
+
+A variable is considered to be a *constant* if its value doesn't depend
+on $x$ (or sometimes some other variable we're talking about. For
+example, $5$ and $-12$ are constants, but $x+1$ is not a constant
+because $x+1$ gets different values depending on what $x$ is.
 
 ## Equality and stuff
 
@@ -22,7 +27,8 @@ those.
 
 ## +, -
 
-Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$.
+Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
+and $-(1-2)=-1+2$.
 
 If we have something like $a+b+c-b$ we know that's just $a+c$ because we're
 adding $b$ and then we're taking it away. Later you'll notice that we end up

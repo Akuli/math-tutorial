@@ -59,7 +59,7 @@ def get_sidebar_content(txtfile):
     return ''.join([
         thingy("Chapters", ['derivatives', 'integrals', 'geometry-and-trig',
                             'numbertheory']),
-        thingy("Other stuff", ['basics', 'explanations', 'summary'],
+        thingy("Other stuff", ['basics', 'summary', 'graphs', 'explanations'],
                indexlink),
     ])
 
@@ -166,7 +166,9 @@ def asymptote(match, filename):
 
     htmlfile = builder.infile2outfile(filename)
     relative = os.path.relpath(outfile, os.path.dirname(htmlfile))
-    yield tags.image(relative.replace(os.sep, '/'), match.group(2))
+
+    html = tags.image(relative.replace(os.sep, '/'), match.group(2))
+    return html.replace('<img', '<img class="asymptote"', 1)
 
 
 # TODO: don't hard-code width and height?
