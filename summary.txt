@@ -181,7 +181,36 @@ You can prove these easily by finding the derivative of the right side;
 it's always equal to whatever is between $\int$ and $dx$ on the left
 side.
 
-3D volume $V$:
+Circle area: $A = \displaystyle \frac 1 2 \tau r^2 = \pi r^2$
+
+indent:
+  asymptote:
+    size(4cm);
+    filldraw(unitcircle, palegreen);
+    draw((0,0)--(1,0), L="$r$", align=N);
+    label((-0.4,0), L="$A$");
+
+Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$
+
+indent:
+  asymptote:
+    size(12cm);
+    import graph;
+
+    real a=10, b=15, xmin=-0.5, xmax=16;
+    axises(xmin,xmax+1,xmin,4);
+
+    real f(real x) { return -sin(x)+2; }
+    draw(graph(f, xmin, a), blue, L="$y=f(x)$", align=N);
+    draw(graph(f, a, b), red, L="$s$", align=N);
+    draw(graph(f, b, xmax), blue);
+
+    draw((a,0)--(a,f(a)), smalldashes);
+    draw((b,0)--(b,f(b)), smalldashes);
+    label((a,0), L="$a$", align=S);
+    label((b,0), L="$b$", align=S);
+
+3D volume: $V = \displaystyle\int_a^b A(x)\ dx$
 
 asymptote3d:
     import solids;
@@ -214,8 +243,6 @@ asymptote3d:
     triple arrowstart = (the_x+0.6,0,0.4);
     draw(arrowstart--(the_x+0.2,0,0.4), darkgreen, arrow=Arrow3(size=0.7cm));
     label(XY()*"$A(x)$", arrowstart, darkgreen, align=E);
-
-math: V = \int_a^b A(x)\ dx
 
 asymptote: float:right; padding-left:10px;
     size(4cm);
@@ -291,7 +318,7 @@ math:
     &a^2 + b^2 = c^2
 
 Some programming languages have a ``hypot(a, b)`` function that returns
-$\sqrt{a^2+b^2}$. You can use it for calculating $c$ in the above image.
+$\sqrt{a^2+b^2}$. You can use it for calculating $c$.
 
 ## Other Bases
 
@@ -319,7 +346,7 @@ math:
     &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
     &= 51966
 
-Python example:
+Python examples:
 
 code: python3
     >>> 0b1111011
