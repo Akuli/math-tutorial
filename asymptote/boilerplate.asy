@@ -1,3 +1,6 @@
+// just for convenience in other files
+import graph;
+
 // TODO: get rid of corner90 and bracedistance because picture-specific
 //       values turned out to be a better idea
 // TODO: stop using a weird mixture of mm and raw numbers?

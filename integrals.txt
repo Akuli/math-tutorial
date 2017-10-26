@@ -18,7 +18,6 @@ itself just amazing.
 Here's a picture of a few areas:
 
 asymptote:
-    import graph;
     size(25cm);
 
     transform shift1 = shift(-6,0);
@@ -56,7 +55,6 @@ self-explanatory, but how the heck are we going to do the third one?
 
 asymptote: float:right;
     size(10cm);
-    import graph;
     axises(0.5,2.5,0,0);
 
     real f(real x) { return 1/(2*sqrt(x)); }
@@ -96,7 +94,6 @@ This chapter is all about how I did that and why it works.
 
 asymptote: float:right;
     size(12cm);
-    import graph;
 
     real f(real x) { return 0.1*x**3 - 0.1x + 1; }
     axises(-0.1,2.2,-0.5,f(2));
@@ -147,7 +144,6 @@ function $F$ so that $F'(x)=f(x)$, and $F(x)$ will be an area to $x$.
 
 asymptote: float:right;
    size(8cm);
-   import graph;
    real f(real x) { return 1/(2*sqrt(x)); }
 
    // this stuff goes below the curve
@@ -171,7 +167,6 @@ math: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
 
 asymptote: float:right;
    size(9cm);
-   import graph;
 
    real f(real x) { return (x+1)**2/3 + 0.1; }
    real a = 1;
@@ -223,7 +218,6 @@ fundamental theorem of calculus.
 
 asymptote: float:right;
     size(8cm);
-    import graph;
     real f(real x) { return x**2/3+0.3; }
     real a = 0.5;
     real b = 2;
@@ -424,7 +418,6 @@ how much the area increases.
 
 asymptote: float:right;
     size(9cm);
-    import graph;
 
     real a = -0.1, b = 1, the_x = 0.6, dx = 0.3;
     real f(real x) { return x**2/2 + 0.3; }
@@ -470,7 +463,6 @@ math: \frac{ds}{dx} = \sqrt{1+\left(\frac{dy}{dx}\right)^2} = \sqrt{1+(f'(x))^2}
 
 asymptote: float:right;
     size(6cm);
-    import graph;
 
     real a=3.5, b=6.5, xmin=2, xmax=8;
     axises(xmin,xmax+1,0,0);
@@ -506,7 +498,6 @@ graybox: Problem
     asymptote:
         size(10cm);
         axises(-0.1,2.5,-0.1,1.5);
-        import graph;
         real f(real x) {
             return 2*x-x**2;
         }
@@ -563,7 +554,6 @@ graybox: Problem
 asymptote3d: float:right;
    size(11cm);
    import three;
-   import graph3;
    currentlight = White;
 
    real h = 4.5;

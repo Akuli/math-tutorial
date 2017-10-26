@@ -63,7 +63,6 @@ but let's try to figure out how to calculate it anyway.
 
 asymptote: float:right;
    size(12cm);
-   import graph;
 
    real f(real x) { return 0.1*x**3 - 0.1x + 1; }
    axises(-0.1,2.2,-0.5,f(2));
@@ -137,7 +136,6 @@ math:
 
 asymptote: float:right;
    size(10cm);
-   import graph;
    axises(-3,6,-1,20);
 
    // this is drawn first so it goes below the x^2 line
@@ -273,7 +271,6 @@ player moves right at a steady speed, which of these jumps looks best?
 
 asymptote:
    size(20cm);
-   import graph;
 
    draw((0,0)--(0,1)--(1,1)--(1,0.5), smalldashes);
    dot((1,0.5));
@@ -304,7 +301,6 @@ graph:
 
 asymptote:
    size(9cm);
-   import graph;
    axises(-0.3, 3.5, -0.4, 2, "$t$", "$h$");
 
    real f(real x) { return -x**2 + 3*x - 0.5; }

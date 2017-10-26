@@ -431,7 +431,6 @@ indent:
 
     asymptote: float:right;
         size(9cm);
-        import graph;
         real xymin = -0.2;
         real xymax = 1.5;
         real the_x = 0.5;      // there's also a loop variable called x (lol)
@@ -477,7 +476,6 @@ indent:
         =& \frac{d}{dx} f(g(x))
 
     asymptote: float:right;
-        import graph;
         size(9cm);
         real xymin = -0.2;
         real xymax = 1.5;

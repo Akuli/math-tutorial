@@ -122,7 +122,6 @@ math: \frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8
 
 asymptote: float:right;
     size(8cm);
-    import graph;
     real f(real x) {
         return x**2/4+0.5;
     }
@@ -187,7 +186,6 @@ Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$
 indent:
   asymptote:
     size(12cm);
-    import graph;
 
     real a=10, b=15, xmin=-0.5, xmax=16;
     axises(xmin,xmax+1,xmin,4);

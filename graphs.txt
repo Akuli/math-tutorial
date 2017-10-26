@@ -13,7 +13,6 @@ equation of any non-vertical line is $y=sx+a$ where $s$ and $a$ can be
 
 asymptote: float:left;
     size(8cm);
-    import graph;
     real xmin=-3, xmax=3, slope = 0.7;
     real f(real x) { return slope*x; }
     axises(xmin,xmax,slope*xmin,slope*xmax+1);
@@ -22,7 +21,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(9.5cm);
-    import graph;
     real xmin=-3, xmax=3, slope = -0.7;
     real f(real x) { return slope*x; }
     axises(xmin,xmax,-slope*xmin,-slope*xmax+1);
@@ -33,7 +31,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(7cm);
-    import graph;
     real xymin=-3, xymax=3;
     grid(xymin,xymax,xymin,xymax);
     axises(xymin,xymax+1,xymin,xymax+1);
@@ -43,7 +40,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(7cm);
-    import graph;
     real a = 3;
     axises(-a,a,-1,a+2);
     draw((-a,a)--(0,a), blue);
@@ -52,7 +48,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(8cm);
-    import graph;
     real xmin=-3, xmax=3, slope = 0.7, a=1;
     real f(real x) { return slope*x+a; }
     axises(xmin,xmax,slope*xmin,slope*xmax+1);
@@ -68,7 +63,6 @@ Here $a$, $d$ and $e$ are constants. You'll see later why I skipped $b$ and $c$.
 
 asymptote: float:left;
     size(12cm);
-    import graph;
     real xmin=-2.5, xmax=2.5;
     real f(real x) { return x**2; }
     grid(floor(xmin),ceil(xmax),-1,ceil(f(xmax)));
@@ -86,7 +80,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(10cm);
-    import graph;
     real xmin=-2, xmax=2, c=1;
     real f(real x) { return x**2+c; }
     axises(xmin,xmax+1,-1,f(xmax)+1);
@@ -96,7 +89,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(9cm);
-    import graph;
     real xmin=-0.5, xmax=4.5;
     real a=(xmin+xmax)/2;
     real f(real x) { return (x-a)**2; }
@@ -109,7 +101,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(10cm);
-    import graph;
     real xmin=-2, xmax=2, a=2;
     real f(real x) { return a*x**2; }
     axises(xmin,xmax+1,-1,f(xmax)+1);
@@ -122,7 +113,6 @@ asymptote: float:left;
 
 asymptote: float:left;
     size(10cm);
-    import graph;
     real xmin=-1.5, xmax=1.5, a=-2;
     real f(real x) { return a*x**2; }
     axises(xmin,xmax+0.5,f(xmax),1);
@@ -185,7 +175,6 @@ asymptote: float:left;
 comment: TODO: avoid copy/pasting the same code twice somehow?
 
 asymptote:
-    import graph;
     size(20cm);
     real a=-1, b=9;
     axises(a,b+1,-1.8,2.3, xlabel="$t$");
@@ -199,7 +188,6 @@ asymptote:
     label("$\tau$", (tau,0), align=SE); dot((tau,0),dotpen);
 
 asymptote:
-    import graph;
     size(20cm);
     real a=-1, b=9;
     axises(a,b+1,-1.8,2.3, xlabel="$t$");
