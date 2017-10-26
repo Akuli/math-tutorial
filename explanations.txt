@@ -431,6 +431,7 @@ indent:
 
     asymptote: float:right;
         size(9cm);
+        import graph;
         real xymin = -0.2;
         real xymax = 1.5;
         real the_x = 0.5;      // there's also a loop variable called x (lol)
@@ -439,12 +440,7 @@ indent:
         axises(xymin,xymax,xymin,xymax);
 
         real g(real x) { return sin(x+0.5); }
-
-        path ggraph;
-        for (real x = xymin; x < xymax; x += 1/16) {
-            ggraph = ggraph..(x,g(x));
-        }
-        draw(ggraph, blue, L=rotate(20)*Label("$y=g(x)$"), align=N);
+        draw(graph(g, xymin, xymax), blue, L=rotate(20)*"$y=g(x)$", align=N);
 
         draw((the_x,0)--(the_x,g(the_x)), lightblue);
         draw((the_x+h,0)--(the_x+h,g(the_x+h)), lightblue);
@@ -481,6 +477,7 @@ indent:
         =& \frac{d}{dx} f(g(x))
 
     asymptote: float:right;
+        import graph;
         size(9cm);
         real xymin = -0.2;
         real xymax = 1.5;
@@ -500,12 +497,7 @@ indent:
                 return cos(x-flatleft);
             return cos(x-flatright);
         }
-
-        path ggraph;
-        for (real x = xymin; x < xymax; x += 1/16) {
-            ggraph = ggraph..(x,g(x));
-        }
-        draw(ggraph, blue, L="$y=g(x)$", align=N);
+        draw(graph(g, xymin, xymax), blue, L="$y=g(x)$", align=N);
 
         draw((the_x,0)--(the_x,g(the_x)), lightblue);
         draw((the_x+h,0)--(the_x+h,g(the_x+h)), lightblue);

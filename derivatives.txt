@@ -63,16 +63,12 @@ but let's try to figure out how to calculate it anyway.
 
 asymptote: float:right;
    size(12cm);
+   import graph;
 
    real f(real x) { return 0.1*x**3 - 0.1x + 1; }
    axises(-0.1,2.2,-0.5,f(2));
 
-   guide parabolaaa;
-   for (real x = -0.1; x <= 2; x += 0.05) {
-       parabolaaa = parabolaaa..(x,f(x));
-   }
-   //pathlabel(L=Label("MidPoint"), parabolaaa, position=0.5, align=Relative(W), sloped=true);
-   draw(parabolaaa, L="$y=f(x)$", align=NW, p=heavyred);
+    draw(graph(f, -0.1, 2), heavyred, L="$y=f(x)$", align=NW);
 
    real x = 1.5;
    real dx = 0.1;
@@ -141,6 +137,7 @@ math:
 
 asymptote: float:right;
    size(10cm);
+   import graph;
    axises(-3,6,-1,20);
 
    // this is drawn first so it goes below the x^2 line
@@ -150,11 +147,8 @@ asymptote: float:right;
    draw((0.8,tangent(0.8))--(6,tangent(6)), p=darkorange,
         L=rotate(degrees(atan(4)))*Label("this thing's slope is 4", position=Relative(0.6)));
 
-   guide xsquared;
-   for (real x = -3; x <= 4.5; x+= 1/16) {
-       xsquared = xsquared..(x,x**2);
-   }
-   draw(xsquared, p=blue, L=Label(rotate(75)*"$y = x^2$"), align=NW);
+   real square(real x) { return x**2; }
+   draw(graph(square, -3,4.5), blue, L=rotate(75)*"$y = x^2$", align=NW);
 
    draw((2,0)--(2,2**2), smalldashes);
    label("2", (2,0), align=S);
@@ -279,6 +273,7 @@ player moves right at a steady speed, which of these jumps looks best?
 
 asymptote:
    size(20cm);
+   import graph;
 
    draw((0,0)--(0,1)--(1,1)--(1,0.5), smalldashes);
    dot((1,0.5));
@@ -298,11 +293,7 @@ asymptote:
        return -2x**2 + 15*x - 27.2;
    }
 
-   guide parabolaaa;
-   for (real x = 3; x <= 4.2; x += 0.05) {
-       parabolaaa = parabolaaa..(x,f(x));
-   }
-   draw(parabolaaa, smalldashes);
+    draw(graph(f, 3, 4.2), smalldashes);
    dot((4.2, f(4.2)));
 
 The answer is obvious -- the rightmost jump looks best. It's time to figure out
@@ -313,15 +304,11 @@ graph:
 
 asymptote:
    size(9cm);
+   import graph;
    axises(-0.3, 3.5, -0.4, 2, "$t$", "$h$");
 
    real f(real x) { return -x**2 + 3*x - 0.5; }
-
-   guide parabolaaa;
-   for (real x = 0; x <= 3; x += 0.1) {
-       parabolaaa = parabolaaa..(x,f(x));
-   }
-   draw(parabolaaa);
+   draw(graph(f, 0, 3));
 
 [This graph looks like a parabola, so its equation is $h=at^2+bt+c$
 where $a$, $b$ and $c$ are constants.](graphs.html#parabolas) The

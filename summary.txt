@@ -122,28 +122,20 @@ math: \frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8
 
 asymptote: float:right;
     size(8cm);
+    import graph;
     real f(real x) {
         return x**2/4+0.5;
     }
     real a = 0.3;
     real b = 2;
 
-    guide curvie, littlecurvie;
-    for (real x=-0.05; x<=2.2; x+=0.1) {
-        curvie = curvie..(x,f(x));
-    }
-
-    guide slicebetween(guide p, real a, real b) {
-        return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
-    }
-
     // this stuff goes below curvie
-    fill((a,0)--(a,f(a))--slicebetween(curvie, a, b)--(b,f(b))--(b,0)--cycle, lightblue);
+    fill((a,0)--(a,f(a))--graph(f,a,b)--(b,f(b))--(b,0)--cycle, lightblue);
     draw((a,0)--(a,f(a)));
     draw((b,0)--(b,f(b)));
     label("$F(b)-F(a)$", ((a+b)/2,0), align=N);
 
-    draw(curvie, L=Label(rotate(25)*"$y=f(x)$"), align=NW);
+    draw(graph(f,-0.05,2.2), L=rotate(25)*"$y=f(x)$", align=NW);
     axises(-0.1,2.5,-0.1,1.5);
     label("$a$", (a,0), align=S);
     label("$b$", (b,0), align=S);

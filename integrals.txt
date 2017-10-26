@@ -18,6 +18,7 @@ itself just amazing.
 Here's a picture of a few areas:
 
 asymptote:
+    import graph;
     size(25cm);
 
     transform shift1 = shift(-6,0);
@@ -39,20 +40,13 @@ asymptote:
         return 1/(2*sqrt(x));
     }
 
-    guide curvie, littlecurvie;
-    for (real x=0.05; x<=3; x+=0.1) {
-        curvie = curvie..(x,f(x));
-        if (1 <= x && x <= 2)
-            littlecurvie = littlecurvie..(x,f(x));
-    }
-
-    // this stuff goes below curvie
-    fill((1,0)--(1,f(1))--littlecurvie--(2,f(2))--(2,0)--cycle, lightblue);
+    // this stuff goes below the y=1/(2*sqrt(x))
+    fill((1,0)--(1,f(1))--graph(f,1,2)--(2,f(2))--(2,0)--cycle, lightblue);
     draw((1,0)--(1,f(1)));
     draw((2,0)--(2,f(2)));
     label("???", (1.5,f(1.5)/2));
 
-    draw(curvie, deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=NE);
+    draw(graph(f, 0.05, 3), deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=NE);
     axises(-0.3,3,-0.3,2.5);
     label("1", (1,0), align=S);
     label("2", (2,0), align=S);
@@ -62,23 +56,15 @@ self-explanatory, but how the heck are we going to do the third one?
 
 asymptote: float:right;
     size(10cm);
+    import graph;
     axises(0.5,2.5,0,0);
 
-    real f(real x) {
-        return 1/(2*sqrt(x));
-    }
-
-    guide curvie, littlecurvie;
-    for (real x=0.5; x<=2.5; x+=0.1) {
-        curvie = curvie..(x,f(x));
-    }
-    draw(curvie, deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=N);
+    real f(real x) { return 1/(2*sqrt(x)); }
+    draw(graph(f, 0.5, 2.5), deepgreen, L="$y=\frac{1}{2 \sqrt x}$", align=N);
 
     for (real x = 1; x < 2-0.001; x += 0.1) {
         filldraw((x,0)--(x+0.1,0)--(x+0.1,f(x))--(x,f(x))--cycle, lightblue);
     }
-
-
     label("$1$", (1,0), align=S);
     label("$2$", (2,0), align=S);
 
@@ -110,27 +96,18 @@ This chapter is all about how I did that and why it works.
 
 asymptote: float:right;
     size(12cm);
+    import graph;
 
     real f(real x) { return 0.1*x**3 - 0.1x + 1; }
     axises(-0.1,2.2,-0.5,f(2));
 
-    guide slicebetween(guide p, real a, real b) {
-        return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
-    }
-
-    guide parabolaaa;
-    guide littleparab;
-    for (real x = -0.1; x <= 2; x += 0.05) {
-        parabolaaa = parabolaaa..(x,f(x));
-    }
-
     real x = 1.5;
     real dx = 0.3;
 
-    fill(slicebetween(parabolaaa, 0, x)--(x,0)--(0,0)--cycle, paleyellow);
+    fill(graph(f,0,x)--(x,0)--(0,0)--cycle, paleyellow);
     label("$F(x)$", (x/2,f(x/2)/2));
     axises(-0.1,2.2,-0.5,f(2));
-    draw(parabolaaa, L="$y=f(x)$", align=NW, p=blue);
+    draw(graph(f,-0.1,2), L="$y=f(x)$", align=NW, p=blue);
 
     draw((x,0)--(x,f(x)), lightblue);
     draw((x+dx,0)--(x+dx,f(x+dx)), lightblue);
@@ -170,25 +147,16 @@ function $F$ so that $F'(x)=f(x)$, and $F(x)$ will be an area to $x$.
 
 asymptote: float:right;
    size(8cm);
+   import graph;
+   real f(real x) { return 1/(2*sqrt(x)); }
 
-   real f(real x) {
-      return 1/(2*sqrt(x));
-   }
-
-   guide curvie, littlecurvie;
-   for (real x=0.05; x<=3; x+=0.1) {
-      curvie = curvie..(x,f(x));
-      if (1 <= x && x <= 2)
-         littlecurvie = littlecurvie..(x,f(x));
-   }
-
-   // this stuff goes below curvie
-   fill((1,0)--(1,f(1))--littlecurvie--(2,f(2))--(2,0)--cycle, lightblue);
+   // this stuff goes below the curve
+   fill((1,0)--(1,f(1))--graph(f,1,2)--(2,f(2))--(2,0)--cycle, lightblue);
    draw((1,0)--(1,f(1)));
    draw((2,0)--(2,f(2)));
    label("???", (1.5,f(1.5)/2));
 
-   draw(curvie, deepgreen, L="$y=f(x)=\frac{1}{2 \sqrt x}$", align=NE);
+   draw(graph(f,0.05,3), deepgreen, L="$y=f(x)=\frac{1}{2 \sqrt x}$", align=NE);
    axises(-0.3,3,-0.3,2.5);
    label("1", (1,0), align=S);
    label("2", (2,0), align=S);
@@ -203,30 +171,20 @@ math: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
 
 asymptote: float:right;
    size(9cm);
+   import graph;
 
-   real f(real x) {
-      return (x+1)**2/3 + 0.1;
-   }
+   real f(real x) { return (x+1)**2/3 + 0.1; }
    real a = 1;
    real b = 1.8;
 
-   guide curvie, littlecurvie;
-   for (real x=-0.1; x<=2; x+=0.1) {
-      curvie = curvie..(x,f(x));
-   }
-
-   guide slicebetween(guide p, real a, real b) {
-      return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
-   }
-
    // this stuff goes below curvie
-   fill((a,0)--(a,f(a))--slicebetween(curvie, a, b)--(b,f(b))--(b,0)--cycle, lightblue);
-   fill((0,0)--(0,f(0))--slicebetween(curvie, 0.1, a)--(a,0)--cycle, lightyellow);
+   fill((a,0)--(a,f(a))--graph(f,a,b)--(b,f(b))--(b,0)--cycle, lightblue);
+   fill((0,0)--(0,f(0))--graph(f,0.1,a)--(a,0)--cycle, lightyellow);
    draw((a,0)--(a,f(a)));
    draw((b,0)--(b,f(b)));
    label(rotate(90)*"$F(b)-F(a)$", (b-0.1, 0), align=NW);
 
-   draw(curvie, L=Label(rotate(55)*"$y=f(x)$"), align=NW);
+   draw(graph(f,-0.1,2), L=Label(rotate(55)*"$y=f(x)$"), align=NW);
    axises(-0.3,2.5,-0.3,3);
    label("$a$", (a,0), align=S);
    label("$b$", (b,0), align=S);
@@ -265,9 +223,8 @@ fundamental theorem of calculus.
 
 asymptote: float:right;
     size(8cm);
-    real f(real x) {
-        return x**2/3+0.3;
-    }
+    import graph;
+    real f(real x) { return x**2/3+0.3; }
     real a = 0.5;
     real b = 2;
 
@@ -276,18 +233,14 @@ asymptote: float:right;
         curvie = curvie..(x,f(x));
     }
 
-    guide slicebetween(guide p, real a, real b) {
-        return firstcut(firstcut(p, (a,-10)--(a,10)).after, (b,-10)--(b,10)).before;
-    }
-
     // this stuff goes below curvie
-    fill((a,0)--(a,f(a))--slicebetween(curvie, a, b)--(b,f(b))--(b,0)--cycle, lightblue);
+    fill((a,0)--(a,f(a))--graph(f,a,b)--(b,f(b))--(b,0)--cycle, lightblue);
     draw((a,0)--(a,f(a)));
     draw((b,0)--(b,f(b)));
     label("$\displaystyle\int_a^b f(x) dx$", ((a+b)/2,0), align=N);
 
-    draw(curvie, L=Label(rotate(35)*"$y=f(x)$"), align=NW);
     axises(-0.1,2.5,-0.1,2);
+    draw(graph(f,-0.05,2.2), L=Label(rotate(35)*"$y=f(x)$"), align=NW);
     label("$a$", (a,0), align=S);
     label("$b$", (b,0), align=S);
 
@@ -625,7 +578,7 @@ asymptote3d: float:right;
    axises3d(-0.5,h+1,-r-0.5,r+0.5,0,0);
 
    draw(surface((0,0,0)--(h,r, 0), c=O, axis=X), yellow+opacity(0.3));
-   draw((-0.5,f(-0.5),0)--(h+1,f(h+1),0), heavyred,
+   draw(path3(graph(f,-0.5,h+1)), heavyred,
         L=Label(rotate(10)*"$y=f(x)$", position=Relative(0.8)), align=N);
 
    real angle = 3.6;
