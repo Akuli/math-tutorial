@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><b>Geometry and Trigonometry</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><b>Geometry and Trigonometry</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="geometry-and-trigonometry">Geometry and Trigonometry<a class="headerlink" href="#geometry-and-trigonometry" title="Link to this title">¶</a></h1><p>This chapter contains useful stuff that aren't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.</p>
@@ -21,17 +21,17 @@ you're a programmer who wants to get stuff done you'll enjoy not having to
 add minus signs everywhere before using formulas from this tutorial.
 </p>
 
-</div><img src="asymptote/8ddeb2c0e59514352b553bd5bb261ede.png" style="float:right; padding-left:5px;" /><img src="asymptote/cdc74b2fa9923423f52862ac567ec8a5.png" style="float:right; padding-left:5px;" /><h2 id="radians-and-tau">Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Link to this title">¶</a></h2><p>Angles are often measured in radians. The angles in the pictures at right are
+</div><img class="asymptote" src="asymptote/8ddeb2c0e59514352b553bd5bb261ede.png" style="float:right; padding-left:5px;" /><img class="asymptote" src="asymptote/cdc74b2fa9923423f52862ac567ec8a5.png" style="float:right; padding-left:5px;" /><h2 id="radians-and-tau">Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Link to this title">¶</a></h2><p>Angles are often measured in radians. The angles in the pictures at right are
 both one radian. The angle is always 1 radian if the arc and radius lengths are
 equal, and it doesn't matter what that length is.</p>
 
-<img src="asymptote/8b6ace74c6f849404001519f231b56a0.png" style="float:left; padding-right:20px;" /><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
+<img class="asymptote" src="asymptote/8b6ace74c6f849404001519f231b56a0.png" style="float:left; padding-right:20px;" /><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
 there's some room left over. To be more precise, we can add 6.2831853...
 slices. This number is called tau and written with the Greek tau letter <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />.
 So, a full turn is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians. Be careful not to confuse <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> with other
 letters like <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
 
-<img src="asymptote/b7f5f05a915a2557b2e86ee4bc94e875.png" style="float:right;" /><p>The yellow slice at right shows another way to define an angle in radians, and
+<img class="asymptote" src="asymptote/b7f5f05a915a2557b2e86ee4bc94e875.png" style="float:right;" /><p>The yellow slice at right shows another way to define an angle in radians, and
 it's compatible with the green slices because if we set <img class="inlinemath" src="math/225f9ff198eeedcb0c110f45fc7ef39f.png" /> the angle is
 <img class="inlinemath" src="math/933a3fd95e03791593f4b932ae9e6e04.png" /> radian.</p>
 
@@ -39,7 +39,7 @@ it's compatible with the green slices because if we set <img class="inlinemath" 
 full circle we know the angle in the center is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians (full turn), so
 we get this:</p>
 
-<img src="asymptote/252e9ab0d34a1791201c03cbbbc8537e.png" style="float:right; margin: 0,0,0,20px;" /><p><img src="math/a650bf80b25a2fb8af7f8509c35136ca.png" class="blockmath" /></p><p>So we can multiply with tau to get from a radius to a perimeter. This is how
+<img class="asymptote" src="asymptote/252e9ab0d34a1791201c03cbbbc8537e.png" style="float:right; margin: 0,0,0,20px;" /><p><img src="math/a650bf80b25a2fb8af7f8509c35136ca.png" class="blockmath" /></p><p>So we can multiply with tau to get from a radius to a perimeter. This is how
 <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> is usually defined.</p>
 
 <p>Some programming languages like new Pythons have a <code>tau</code> constant, but if
@@ -74,14 +74,14 @@ conversion functions in standard libraries like Python's <code>math.radians()</c
 <h2 id="basic-angle-stuff">Basic Angle Stuff<a class="headerlink" href="#basic-angle-stuff" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>The ball of a ball-and-paddle game is moving at the angle of 0.5 radians
 and it hits a wall at right. How should the angle change?</p>
 
-<p><img src="asymptote/762396cc0436e676b6d18a5e162ba9a8.png" /></p></div><p>Note that both angles are measured down from a horizontal line clockwise
+<p><img class="asymptote" src="asymptote/762396cc0436e676b6d18a5e162ba9a8.png" /></p></div><p>Note that both angles are measured down from a horizontal line clockwise
 because that's a standard in programming. In math, angles are usually measured
 up from a horizontal line and counter-clockwise.</p>
 
 <p>We can solve our problem by taking the 0.5 radian angle sign and moving it like
 this:</p>
 
-<p><img src="asymptote/66ead1ba69afa6f7fd4384a24fb6b764.png" /></p><p>Now you can see that the angles add up to half turn, and that's <img class="inlinemath" src="math/2b52e395446666dd5ebf332001259749.png" />
+<p><img class="asymptote" src="asymptote/66ead1ba69afa6f7fd4384a24fb6b764.png" /></p><p>Now you can see that the angles add up to half turn, and that's <img class="inlinemath" src="math/2b52e395446666dd5ebf332001259749.png" />
 radians, so we get this <a href="basics.html#equations">equation</a>:</p>
 
 <p><img src="math/fad328e4f0bb66a5418acd0a5e122989.png" class="blockmath" /></p><p>I did the last step with Python.</p>
@@ -102,11 +102,11 @@ results, where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e26977266
 pixels every time the screen is updated. How many pixels should its x and y
 change every time?</p>
 
-<p><img src="asymptote/4a7581f74964581b28a0ae41c546e168.png" /></p></div><p>Our problem has something to do with sine and cosine. The unit circle is a
+<p><img class="asymptote" src="asymptote/4a7581f74964581b28a0ae41c546e168.png" /></p></div><p>Our problem has something to do with sine and cosine. The unit circle is a
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:</p>
 
-<p><img src="asymptote/e8d8ed1cc6f73ba506522bdb94e15ab4.png" /></p><p>This is really simple: the x coordinate is <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" /> and the y coordinate is
+<p><img class="asymptote" src="asymptote/e8d8ed1cc6f73ba506522bdb94e15ab4.png" /></p><p>This is really simple: the x coordinate is <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" /> and the y coordinate is
 <img class="inlinemath" src="math/5732d78efedc927ac0d505b0b839d142.png" />. But the radius of the unit circle is 1 instead of our 5, so we need
 to multiply everything by 5 to scale it up. We get this:</p>
 
@@ -328,12 +328,12 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
 </div><p>Here's another way to define <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, and another function called
 <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" /> that we haven't used before.</p>
 
-<img src="asymptote/a9eeeac8194970dc8ad83ba22baacbb7.png" style="float:right;" /><p><img src="math/e9b648bac7a9f99ffea6fa6759ba44ab.png" class="blockmath" /></p><p>These things work only if the triangle has an angle that is exactly a quarter
+<img class="asymptote" src="asymptote/a9eeeac8194970dc8ad83ba22baacbb7.png" style="float:right;" /><p><img src="math/e9b648bac7a9f99ffea6fa6759ba44ab.png" class="blockmath" /></p><p>These things work only if the triangle has an angle that is exactly a quarter
 turn, and the little box at bottom right means just that. These definitions are
 compatible with the unit circle stuff above; see
 <a href="explanations.html#two-ways-to-define-sine-and-cosine">this thing</a>.</p>
 
-<img src="asymptote/365dcade757917502d80db23ccb4d5d3.png" style="float:right;" /><p>The green triangle is just like the blue one, but I flipped it so that we can
+<img class="asymptote" src="asymptote/365dcade757917502d80db23ccb4d5d3.png" style="float:right;" /><p>The green triangle is just like the blue one, but I flipped it so that we can
 calculate the stuff by plugging in <img class="inlinemath" src="math/fef27623febd2ae03afe7a22d034ac5b.png" /> and <img class="inlinemath" src="math/0daca570410e633ef534e720f5d54852.png" /> without worrying about
 which way things go. Let's figure out how to calculate the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />:</p>
 
@@ -361,7 +361,7 @@ the previous problem. How many pixels is that in total, measured
 diagonally?
 </p>
 
-</div><img src="asymptote/b0297f3f2be1fdfad10c3e289a768634.png" style="float:right;" /><p>Here's a handy equation, also known as the Pythagorean theorem:</p>
+</div><img class="asymptote" src="asymptote/b0297f3f2be1fdfad10c3e289a768634.png" style="float:right;" /><p>Here's a handy equation, also known as the Pythagorean theorem:</p>
 
 <p><img src="math/f98fde5a8a2f14e625eb5fceed7050ee.png" class="blockmath" /></p><p>Again, the angle of the corner between a and b must be a quarter turn, like it
 is in the image. If you're wondering how the heck it works see
@@ -385,7 +385,7 @@ quarter-turn angle, and that's why some programming languages have a
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>sqrt(<span style="color: #40a070">10</span><span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">20</span><span style="color: #666666">**</span><span style="color: #40a070">2</span>)
 <span style="color: #888888">22.360679774997898</span>
 </pre></div>
-<h2 id="vectors">Vectors<a class="headerlink" href="#vectors" title="Link to this title">¶</a></h2><img src="asymptote/3ab1343d79c1ee771d20dcd1eeef5566.png" style="float:right;" /><p>A point is simply a pair of x and y coordinates, and a vector represents the
+<h2 id="vectors">Vectors<a class="headerlink" href="#vectors" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/3ab1343d79c1ee771d20dcd1eeef5566.png" style="float:right;" /><p>A point is simply a pair of x and y coordinates, and a vector represents the
 difference between two points. For example, if we have the points <img class="inlinemath" src="math/ea55273b1ce070424fbe13c45d6270c9.png" /> and
 <img class="inlinemath" src="math/ef624b5778b8523126644acae2e90d0c.png" />, the vector from <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> to <img class="inlinemath" src="math/9d5ed678fe57bcca610140957afab571.png" /> is
 <img class="inlinemath" src="math/161e1a0aca6f0798cf541fd74161b09c.png" />. Here
@@ -405,12 +405,12 @@ ball<span style="color: #666666">.</span>y <span style="color: #666666">+=</span
 we can't just do <code>moving_angle += something</code>. We'll look into how this is
 done in a moment.</p>
 
-<img src="asymptote/1d56d60ce083eb0e030b6b9149d03559.png" style="float:right;" /><p>Another nice thing about vectors is that they can be +'ed together easily. For
+<img class="asymptote" src="asymptote/1d56d60ce083eb0e030b6b9149d03559.png" style="float:right;" /><p>Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That's how
 <img class="inlinemath" src="math/cfaeccd8b035e766aa99ee8a95b2719b.png" />.</p>
 
-<img src="asymptote/f1eecbe789755b721714036a2053f479.png" style="float:right;" /><p>These vector calculations are just like the
+<img class="asymptote" src="asymptote/f1eecbe789755b721714036a2053f479.png" style="float:right;" /><p>These vector calculations are just like the
 <a href="#pythagorean-theorem">Pythagorean theorem</a> and
 <a href="#trig-with-the-unit-circle">unit circle trig</a> stuff above:</p>
 

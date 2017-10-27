@@ -7,24 +7,31 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just <b>keep this page open</b> while you read
 other chapters.</p>
 
-<h2 id="variable-names">Variable Names<a class="headerlink" href="#variable-names" title="Link to this title">¶</a></h2><p>Mathematicians use single-letter variable names because math was
+<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Link to this title">¶</a></h2><p>Mathematicians use single-letter variable names because math was
 originally written on paper by hand and writing long things by hand
 sucks. There are a few exceptions though; for example, <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />
 are functions with 3-letter names. If they would be called <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" /> and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />
 instead it would be confusing to have a variable named <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" /> or <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />, so
 they are written a bit more verbosely.</p>
 
+<p id="constants">A variable is considered to be a <i>constant</i> if its value doesn't depend
+on <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> (or sometimes some other variable we're talking about). For
+example, <img class="inlinemath" src="math/e4da3b7fbbce2345d7772b0674a318d5.png" /> and <img class="inlinemath" src="math/29fe3cef22985ae07803bf456b8947dc.png" /> are constants, but <img class="inlinemath" src="math/cf267a0bc414e4ea2681d6bd522a8992.png" /> is not a constant
+because <img class="inlinemath" src="math/cf267a0bc414e4ea2681d6bd522a8992.png" /> gets different values depending on what <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is.
+</p>
+
 <h2 id="equality-and-stuff">Equality and stuff<a class="headerlink" href="#equality-and-stuff" title="Link to this title">¶</a></h2><p>I'm quite sure you know or you can guess what <img class="inlinemath" src="math/7acaac15494e6820b1ed6d8b539af089.png" />, <img class="inlinemath" src="math/c4e9ca5c895faa198b7e85a0c8e31977.png" />, <img class="inlinemath" src="math/46fa7900cc397f3a4b3fa2e72d6885e7.png" />,
 <img class="inlinemath" src="math/a208c01e821b96c0c957f485907a65b4.png" />, <img class="inlinemath" src="math/9c2309929b5d4e6d89e1f48e3e3d6ebb.png" />, <img class="inlinemath" src="math/e8869c3e050e35d3bdbfdd1777e96ea2.png" /> and <img class="inlinemath" src="math/2b00c8a16ba0ed0722fb01e756ee6e8e.png" /> mean so I won't explain
 those.
 </p>
 
-<h2 id="2b2c202d">+, -<a class="headerlink" href="#2b2c202d" title="Link to this title">¶</a></h2><p>Be careful when you have a minus in front of parentheses, e.g. <img class="inlinemath" src="math/54ec6fed6ac9d5f20cfb97730d6f4c7a.png" />.</p>
+<h2 id="2b2c202d">+, -<a class="headerlink" href="#2b2c202d" title="Link to this title">¶</a></h2><p>Be careful when you have a minus in front of parentheses, e.g. <img class="inlinemath" src="math/54ec6fed6ac9d5f20cfb97730d6f4c7a.png" />
+and <img class="inlinemath" src="math/5e254a153a13bf2fd14eff6324861c6b.png" />.</p>
 
 <p>If we have something like <img class="inlinemath" src="math/63a7b1de3d8cb9e289245e67118c436a.png" /> we know that's just <img class="inlinemath" src="math/b778743b8bfe44752a09fad05f764d3b.png" /> because we're
 adding <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and then we're taking it away. Later you'll notice that we end up
@@ -133,7 +140,20 @@ because <img class="inlinemath" src="math/df085cde42878bced5d0fc3c5eb55444.png" 
 <p>You can also apply most functions to both sides. For example, you can do this
 with <img class="inlinemath" src="math/da175f00ddc2ba16792669e37fdd4b4b.png" />:</p>
 
-<p><img src="math/aaf9990ae27d5ffccd2744e6d6b00b27.png" class="blockmath" /></p><h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Link to this title">¶</a></h2><p>This chapter shows only the things you need in the rest of this tutorial, but
+<p><img src="math/aaf9990ae27d5ffccd2744e6d6b00b27.png" class="blockmath" /></p><h2 id="areas">Areas<a class="headerlink" href="#areas" title="Link to this title">¶</a></h2><p>If you are a programmer you'll probably understand areas best as the
+number of pixels in a shape. For example, if you create a GUI program
+that creates a 300 by 200 window, it contains <img class="inlinemath" src="math/eb3809a3966ce8743f1efef35832040b.png" />
+pixels.</p>
+
+<img class="asymptote" src="asymptote/ddc918b5986e0cfd9c33e51b88f88bce.png" style="float:left;" /><img class="asymptote" src="asymptote/1128e86ff9794273a1e16868d2d62d93.png" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<p>The triangle area thing is actually quite straight-forward to understand.
+Let's draw a rectangle around the triangle like this:</p>
+
+<p><img class="asymptote" src="asymptote/9ec2e5f48a2ac18ca3bb870719ed541c.png" /></p><p>Now you can see that the triangle splits both pieces of the rectangle in
+half, so the triangle area must be half of the rectangle area <img class="inlinemath" src="math/3cf4046014cbdfaa7ea8e6904ab04608.png" />.</p>
+
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Link to this title">¶</a></h2><p>This chapter shows only the things you need in the rest of this tutorial, but
 <a href="http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf">this cheat sheet</a>
 is more complete.
 </p>

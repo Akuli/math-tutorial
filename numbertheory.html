@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><b>Number Theory</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><b>Number Theory</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="number-theory">Number Theory<a class="headerlink" href="#number-theory" title="Link to this title">¶</a></h1><p>This section is currently kind of incomplete. It needs to be expanded to
 contain more stuff that people are often interested in, e.g. prime numbers.
 </p>
@@ -23,12 +23,12 @@ use 16. That's why hexadecimal is also called <b>base 16</b>. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
 B=11, C=12, D=13, E=14 and F=15. For example:</p>
 
-<p><img src="math/7fa4abda5bc22503ba5d099524c3b2d6.png" class="blockmath" /></p><p>Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
+<p><img src="math/7fa4abda5bc22503ba5d099524c3b2d6.png" class="blockmath" /></p><p>The sane way to calculate the last step is to use a programming interpreter or
+calculator of your choice. Don't try to do it by hand.</p>
+
+<p>Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
 because it's very common in programming. Note that the first character is a
 zero, not the letter O.</p>
-
-<p>The sane way to calculate the last step is to use a programming interpreter or
-calculator of your choice. Don't try to do it by hand.</p>
 
 <p>Most programming languages have very good support for hexadecimal and a few
 other bases. For example, here's Python:</p>
@@ -48,7 +48,14 @@ other bases. For example, here's Python:</p>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #4070a0">&#39;i went to a </span><span style="color: #70a0d0; font-style: italic">{:x}</span><span style="color: #4070a0">&#39;</span><span style="color: #666666">.</span>format(<span style="color: #40a070">51966</span>)
 <span style="color: #888888">&#39;i went to a cafe&#39;</span>
 </pre></div>
-<p>Now let's have a look at the colors. Another common way to represent colors is
+<div class="box graybox"><h2> See Also</h2><p>As you can see, it's possible to represent some words with
+hexadecimal numbers. There's <a href="https://en.wikipedia.org/wiki/Hexspeak#Notable_magic_numbers">a nice list of funny hexadecimal
+numbers that are actually being
+used</a>
+on Wikipedia.
+</p>
+
+</div><p>Now let's have a look at the colors. Another common way to represent colors is
 <code>rgb(R,G,B)</code> where R, G and B are red, green and blue values between
 0 and 255. For example, <code>rgb(255,0,0)</code> is red because the red value is at
 maximum and other values are 0. <code>rgb(0,0,0)</code> is black and

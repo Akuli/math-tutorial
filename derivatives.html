@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="explanations.html">Proofs and Explanations</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><b>Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>Derivatives are one of my favorite things in math. At first they seem
 like calculating their values will be quite complicated, but it turns
 out to be surprisingly easy. Derivatives are also not useless gibberish
@@ -21,7 +21,7 @@ is first 5 and then we change it to 6, <img class="inlinemath" src="math/9dd4e46
 
 <p>Let's draw a graph of something like <img class="inlinemath" src="math/4a8fccb45ff2a0ad548464d92965d3b3.png" />:</p>
 
-<p><img src="asymptote/ad32fef189432e5b6695b49c230b0855.png" /></p><p>For example, at <img class="inlinemath" src="math/5870bb658ee9e8a6900c138365d64c80.png" /> we know that <img class="inlinemath" src="math/33a88fa3fde50b0440190113c0bbd932.png" />.</p>
+<p><img class="asymptote" src="asymptote/ad32fef189432e5b6695b49c230b0855.png" /></p><p>For example, at <img class="inlinemath" src="math/5870bb658ee9e8a6900c138365d64c80.png" /> we know that <img class="inlinemath" src="math/33a88fa3fde50b0440190113c0bbd932.png" />.</p>
 
 <p id="slope">Let's calculate the <b>slope</b> of this line:
 </p>
@@ -43,7 +43,7 @@ ratios depending on which points we choose for calculating <img class="inlinemat
 <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> is not the same number everywhere,
 but let's try to figure out how to calculate it anyway.</p>
 
-<img src="asymptote/67caa075ccae9a1b2eecb8f1fa8f2d86.png" style="float:right;" /><p>Let's look at <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> and <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> of the graph <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" />, where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> can be any
+<img class="asymptote" src="asymptote/6eb2ea6417cbb27687f37f7ca5b829e0.png" style="float:right;" /><p>Let's look at <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> and <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> of the graph <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" />, where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> can be any
 function that has a derivative. Most functions you'll come across have a
 derivative; if you want to know more, <a href="explanations.html#which-functions-have-derivatives">click
 here</a>.</p>
@@ -61,16 +61,15 @@ essentially same as our <img class="inlinemath" src="math/acd2b09d39705a84bff035
 some corner cases.
 </p>
 
-<h2 id="first-example">First Example<a class="headerlink" href="#first-example" title="Link to this title">¶</a></h2><p>The graph <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> is curvy:</p>
-
-<p><img src="asymptote/29215f560407085177ee585fa9ef1b6e.png" /></p><p>Let's find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> by plugging in <img class="inlinemath" src="math/7f185b1869db0b3bcc5f8479a9bd558d.png" /> to the
+<h2 id="first-example">First Example<a class="headerlink" href="#first-example" title="Link to this title">¶</a></h2><p><a href="graphs.html#parabolas">The graph <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> is a parabola.</a>
+Let's find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> by plugging in <img class="inlinemath" src="math/7f185b1869db0b3bcc5f8479a9bd558d.png" /> to the
 definition we ended up with. If we just try to evaluate it at <img class="inlinemath" src="math/2ba1b3acb05d4cc60dedf59890f964f6.png" /> we get
 <img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" /> so you might think that we need to evaluate it at e.g.
 <img class="inlinemath" src="math/f58d3c05a36f8dee4d96f8874be9f16e.png" />, but we don't! Have a look:</p>
 
 <div class="floatingbox"><h2> Handy thing: <img class="inlinemath" src="math/838cec74357a4c7c5a4066b808f3b8c9.png" /></h2><p>Proof:</p>
 
-<p><img src="math/ddcbae6858f01dea09f1b9c724ebd03d.png" class="blockmath" /></p></div><p><img src="math/94c0024f50df59854ddb41cae5ef8b3b.png" class="blockmath" /></p><img src="asymptote/969f40feaa8e24a235fb8ade83c399a3.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
+<p><img src="math/ddcbae6858f01dea09f1b9c724ebd03d.png" class="blockmath" /></p></div><p><img src="math/94c0024f50df59854ddb41cae5ef8b3b.png" class="blockmath" /></p><img class="asymptote" src="asymptote/70d42219b1c46cc9f2f1a3ae567da8ef.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
 we arrived at just <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" />. What's more, the <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" /> is not just a random value we
 got out of a spooky calculation; for example, at <img class="inlinemath" src="math/566162f3afaf9f5f67e7d7ca7a4b424e.png" /> the derivative is
 <img class="inlinemath" src="math/a516b4ec389fe440150f7c6412631ab8.png" />, so if we draw a straight line that barely touches <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> at
@@ -154,15 +153,16 @@ the one we did above:</p>
 <h2 id="example-smooth-jumps">Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Link to this title">¶</a></h2><p>Let's say you're making a game where a player can jump over something. If the
 player moves right at a steady speed, which of these jumps looks best?</p>
 
-<p><img src="asymptote/f81491239eb1049c68ba70f3c6c2eb82.png" /></p><p>The answer is obvious – the rightmost jump looks best. It's time to figure out
+<p><img class="asymptote" src="asymptote/7e9197d1a759d35761b51c123fd5416b.png" /></p><p>The answer is obvious – the rightmost jump looks best. It's time to figure out
 how to make games with jumps like that.</p>
 
 <p>Let's say that <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> is time and <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> is the height of our player, so we get this
 graph:</p>
 
-<p><img src="asymptote/b15d00f37c47a32643c44612305b2439.png" /></p><p>This looks like a parabola, and the equation of a parabola is <img class="inlinemath" src="math/cc787ff424536184da6053b3bd5e6d67.png" />
-where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" />, <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> are constants. The changing speed of height is the
-falling speed. Let's call that <img class="inlinemath" src="math/9e3669d19b675bd57058fd4664205d2a.png" /> like velocity.</p>
+<p><img class="asymptote" src="asymptote/fc88711b46cb5bd2b1dca7e1eba9278a.png" /></p><p><a href="graphs.html#parabolas">This graph looks like a parabola, so its equation is <img class="inlinemath" src="math/3f43ec57439b2a949c6fd711c4779e26.png" />
+where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" />, <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> are constants.</a> The
+changing speed of height is the falling speed. Let's call that <img class="inlinemath" src="math/9e3669d19b675bd57058fd4664205d2a.png" /> like
+velocity.</p>
 
 <p><img src="math/5c051d833f0e5dafc419cbd7e4b8af96.png" class="blockmath" /></p><p>On the other hand, the changing speed of velocity is the acceleration caused by
 gravity. Let's call that <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" />.</p>
