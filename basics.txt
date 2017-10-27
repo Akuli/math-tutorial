@@ -236,6 +236,46 @@ math:
     |x| =& 2 \\
     x=2 \text{ or}&\text{ } x=-2
 
+## Areas
+
+If you are a programmer you'll probably understand areas best as the
+number of pixels in a shape. For example, if you create a GUI program
+that creates a 300 by 200 window, it contains $300 \cdot 200 = 60000$
+pixels.
+
+asymptote: float:left;
+    size(5cm);
+    real w=3, h=2;
+    filldraw((0,0)--(0,h)--(w,h)--(w,0)--cycle, paleyellow);
+    label((w/2,h/2), L="$A=ab$");
+    label((w/2,0), L="$a$", align=S);
+    label((w,h/2), L="$b$", align=E);
+
+asymptote: float:left;
+    size(9cm);
+    real a=3, h=2, offset=1;
+    filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
+    label((a/2,0), L="$a$", align=S);
+    draw((offset,0)--(offset,h), smalldashes, L="$h$", align=W);
+    label((offset+(a-offset)/3,h/4), L="$A=\displaystyle\frac{ah}{2}$");
+
+<div style="clear:both;"></div>
+
+The triangle area thing is actually quite straight-forward to understand.
+Let's draw a rectangle around the triangle like this:
+
+asymptote:
+    size(5cm);
+    real a=3, h=2, offset=1;
+    filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
+    label((a/2,0), L="$a$", align=S);
+    draw((offset,0)--(offset,h), smalldashes);
+    draw((0,0)--(0,h), smalldashes, L="$h$", align=W);
+    draw((0,h)--(a,h)--(a,0), smalldashes);
+
+Now you can see that the triangle splits both pieces of the rectangle in
+half, so the triangle area must be half of the rectangle area $ah$.
+
 ## See Also
 
 This chapter shows only the things you need in the rest of this tutorial, but

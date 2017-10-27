@@ -10,6 +10,39 @@ redbox: Note
     to read it and then master everything it's talking about, so also
     read the human-friendly introductions in other chapters when needed.
 
+## Common Areas
+
+You may need to use [integrals](#integrals) if you want to calculate an
+area that is not listed here.
+
+asymptote: float:left;
+    size(5cm);
+    real w=3, h=2;
+    filldraw((0,0)--(0,h)--(w,h)--(w,0)--cycle, paleyellow);
+    label((w/2,h/2), L="$A=ab$");
+    label((w/2,0), L="$a$", align=S);
+    label((w,h/2), L="$b$", align=E);
+
+asymptote: float:left;
+    size(8cm);
+    real a=3, h=2, offset=1;
+    filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
+    label((a/2,0), L="$a$", align=S);
+    draw((offset,0)--(offset,h), smalldashes, L="$h$", align=W);
+    label((offset+(a-offset)/3,h/3), L="$A=\frac{ah}{2}$");
+
+asymptote: float:left;
+    size(7cm);
+    filldraw(unitcircle, paleblue);
+    real angle=-0.6;
+    draw((0,0)--(cos(angle),sin(angle)), L="$r$");
+    label((0,0.3), L="$A=\pi r^2 = \frac 1 2 \tau r^2$");
+
+<div style="clear:both;"></div>
+
+Most of the areas are explained [here](basics.html#areas), and the circle
+is explained [here](integrals.html#example-circle-area).
+
 ## Slopes
 
 graybox: See Also
@@ -142,13 +175,17 @@ asymptote: float:right;
 ## Integrals
 
 Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
-antiderivative of $f$, i.e. $F'(x)=f(x)$.
+anti[derivative](#derivatives) of $f$, i.e. $F'(x)=f(x)$.
 
 Notation:
 
 * $\int_a^b f(x)\ dx$ is the area in the picture.
 * $\int f(x)\ dx = F(x) + C$ where $F'(x)=f(x)$.
 * $\left[F(x)\right]_a^b = F(b)-F(a)$.
+
+Example (remember that $\frac{d}{dx} x^2 = 2x$):
+
+math: \int_1^2 2x\ dx = \left[x^2\right]_1^2 = 2^2-1^2 = 4-1 = 3
 
 (integral-rules)
 Handy integral rules (note that $C$ and $c$ are different or use less
@@ -171,15 +208,6 @@ math: \textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x) dx + \int 
 You can prove these easily by finding the derivative of the right side;
 it's always equal to whatever is between $\int$ and $dx$ on the left
 side.
-
-Circle area: $A = \displaystyle \frac 1 2 \tau r^2 = \pi r^2$
-
-indent:
-  asymptote:
-    size(4cm);
-    filldraw(unitcircle, palegreen);
-    draw((0,0)--(1,0), L="$r$", align=N);
-    label((-0.4,0), L="$A$");
 
 Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$
 
