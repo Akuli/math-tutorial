@@ -13,8 +13,9 @@ are functions with 3-letter names. If they would be called $s$ and $c$
 instead it would be confusing to have a variable named $s$ or $c$, so
 they are written a bit more verbosely.
 
+(constants)
 A variable is considered to be a *constant* if its value doesn't depend
-on $x$ (or sometimes some other variable we're talking about. For
+on $x$ (or sometimes some other variable we're talking about). For
 example, $5$ and $-12$ are constants, but $x+1$ is not a constant
 because $x+1$ gets different values depending on what $x$ is.
 

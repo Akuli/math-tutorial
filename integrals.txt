@@ -1,7 +1,5 @@
 # Integrals
 
-comment: FIXHTMLTHINGY: this box kind of sucks :(
-
 redbox: Warning
     This chapter assumes that you have a good grasp of derivatives, including
     the ability to recognize that $\frac{dy}{dx}$ is a derivative whenever you
