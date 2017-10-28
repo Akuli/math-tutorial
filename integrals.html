@@ -187,14 +187,11 @@ positive, and obviously <img class="inlinemath" src="math/a1b19be32027828ea8bb7b
 was negative for some reason, <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> would be also negative and the
 minus signs would cancel out.</p>
 
-<p>The smaller the bit of the curve we're looking at, the less the
-curvature matters:</p>
+<p>Let's say that the length of a curve to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/c8680fa208df369c16fc14c68f7d5242.png" />, just like
+<a href="#area-to-x">we did with areas</a>. The smaller the bit of the curve we're
+looking at, the less the curvature matters:</p>
 
-<p><img src="math/007d58ad0e6148a7f1b8332676667496.png" class="blockmath" /></p><img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p>Now if we say that the length of the curve to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/c8680fa208df369c16fc14c68f7d5242.png" /> (just like
-<a href="#area-to-x">we did with areas</a>), we know that we can calculate the arc
-length between <img class="inlinemath" src="math/50a20ce04c291ac897290a4f2e3bc9e2.png" /> and <img class="inlinemath" src="math/e89da0c0c73b56b18d920816a6df9829.png" /> like this:</p>
-
-<p><img src="math/ba08d19d1843885635d0ee1eb9b215d2.png" class="blockmath" /></p><p>That took a while, but we're done! This arc length thing is yet another
+<img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p><img src="math/46d052719a63ffdf41f0488adce045ed.png" class="blockmath" /></p><p><img src="math/f723fbf85b584113d2df604d8099f38c.png" class="blockmath" /></p><p>That took a while, but we're done! This arc length thing is yet another
 one of my favorite math things.</p>
 
 <h2 id="example-more-jumping">Example: more jumping<a class="headerlink" href="#example-more-jumping" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>A player jumps along the graph <img class="inlinemath" src="math/dce1baa300c2aaa73586198894272496.png" />. How long is the arc that
@@ -205,7 +202,7 @@ that is, when <img class="inlinemath" src="math/fab37d6c4a697fe660387d3ff8e889a4
 
 <p><img src="math/a6c9d34e693c7e89b577cbedf7ebd0f9.png" class="blockmath" /></p><p>Now we can just plug in <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" />, <img class="inlinemath" src="math/19bf9442bea375a24abb4c22e9951a92.png" /> and <img class="inlinemath" src="math/44a24e296e537705f8fdfbe5c0d502d2.png" /> to our formula.</p>
 
-<p><img src="math/241c71ef20d868ecdc7107c07c6a6ff2.png" class="blockmath" /></p><p><img src="math/01db96fc61e3aa0161e4688e6a2bf915.png" class="blockmath" /></p><p>Use your favorite symbolic calculation library for calculating the
+<p><img src="math/241c71ef20d868ecdc7107c07c6a6ff2.png" class="blockmath" /></p><p><img src="math/7a10c93bbccf9c2338b20d929fd91a0b.png" class="blockmath" /></p><p>Use your favorite symbolic calculation library for calculating the
 integral. I couldn't do it by hand, but I got it done with
 <a href="http://www.sympy.org">sympy</a>:</p>
 
@@ -229,27 +226,32 @@ pixels and it's 3-dimensional, how many pixels fit inside the cone?</p>
 page</a>.</small>
 </p>
 
-</div><img class="asymptote" src="asymptote/5be9f0f0fc944759dbd60bb8f58990af.png" style="float:right;" /><p>Integrals are not actually limited to calculating areas in any way. If you look
+</div><img class="asymptote" src="asymptote/8b4875fb4008dcdb212b18e594d11dd5.png" style="float:right;" /><p>Integrals are not actually limited to calculating areas in any way. If you look
 at the image, the total volume is <img class="inlinemath" src="math/4918a2c572823a9649e4b2a795e90061.png" />. Now we just need to
 figure out how to calculate the <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />, and for that we need to know what
-<img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> is. Here's everything we know about <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />:</p>
+<img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> is.</p>
 
-<ul><li>The graph <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> is a straight line, so <a href="derivatives.html#slope">the derivative must be a
-    constant</a>.</li><li>When <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />, the cone's radius <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> is <img class="inlinemath" src="math/cfcd208495d565ef66e7dff9f98764da.png" />.</li><li>When <img class="inlinemath" src="math/9db38bb5171679dbaf65053e9e5f9594.png" />, the cone's radius <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> is <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" />.
-</li></ul><p>So, we get these equations:</p>
+<p>Let's start by drawing <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> in a 2D plane without the 3D stuff:</p>
 
-<p><img src="math/1fda98fcb53c1e9d9d8f4d59360648e5.png" class="blockmath" /></p><p>This isn't difficult to solve by just doing it one thing at a time, but I'll
-skip that because it's boring. Here's the solution:</p>
+<p><img class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.png" /></p><p>Based on <a href="graphs.html#lines">the graphs page</a> and <a href="derivatives.html#slope">the slope thing on the
+derivative page</a>, <img class="inlinemath" src="math/d53d1fb5ddf109b3c49961503984cfe2.png" /> where the slope is
+<img class="inlinemath" src="math/b5093232bcabf30661aaa4a2735e22e8.png" />. So <img class="inlinemath" src="math/9d85915cfd460b8acfb877cef7f4f1fd.png" />.</p>
 
-<p><img src="math/8632628c43a48bb4fde55dbef779b5ac.png" class="blockmath" /></p><p>Next we need <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />. <a href="#example-circle-area">Earlier in this chapter</a> we
-figured that the area of a circle is <img class="inlinemath" src="math/7612182fa2fa127f559a5bbc6a9ff3b1.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is
-the radius, but the green circle's radius is <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> instead of <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> so
-<img class="inlinemath" src="math/658a649a45bac970d17f8cd4e08c42c2.png" />. Let's do this:</p>
+<p>Next we need <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />. <a href="#example-circle-area">Earlier in this chapter</a> we
+figured that the area of a circle is <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius,
+but the green circle's radius is <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> instead of <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> so
+<img class="inlinemath" src="math/c93d0e79220938675ad742072bdd4299.png" />. Let's do this:</p>
 
-<p><img src="math/e1c5b9a702a6f608574e739072d275a9.png" class="blockmath" /></p><p>That was a mess, but we're almost done! Now we can just plug in <img class="inlinemath" src="math/34fb735b1183c40204e0245bee08c5f2.png" /> and
-<img class="inlinemath" src="math/df7602ff66028bbe7c731f6e1fd54af8.png" /> to get our cone volume.</p>
+<p><img src="math/47dbd74b9f7e4aeb4bfa413b917e81fd.png" class="blockmath" /></p><img class="asymptote" src="asymptote/d2ec8c7a1acd9e034294badf961e3e6a.png" style="float:right;" /><p>That was a mess, but we're almost done!</p>
 
-<p><img src="math/1703cb90fb8a98aae98faf8feee316f6.png" class="blockmath" /></p><p>That's quite a few pixels.
+<p>Note that the area of the base circle is <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" />, and <img class="inlinemath" src="math/ac5df3e4484a2c999639c8e242f063bb.png" /> would
+be the volume of a <i>cylinder</i> that barely fits around the VLC cone. So,
+in the image at right, the cylinder's volume is exactly three times the
+cone's volume regardless of their sizes. I think this is quite nice.</p>
+
+<p>So, now we can just plug in <img class="inlinemath" src="math/34fb735b1183c40204e0245bee08c5f2.png" /> and <img class="inlinemath" src="math/df7602ff66028bbe7c731f6e1fd54af8.png" /> to get our cone volume.</p>
+
+<p><img src="math/815094db9a8fa425797ad07b58a0068f.png" class="blockmath" /></p><p>That's quite a few pixels.
 </p>
 
 </div>
