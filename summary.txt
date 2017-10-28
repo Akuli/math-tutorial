@@ -17,11 +17,11 @@ area that is not listed here.
 
 asymptote: float:left;
     size(5cm);
-    real w=3, h=2;
-    filldraw((0,0)--(0,h)--(w,h)--(w,0)--cycle, paleyellow);
-    label((w/2,h/2), L="$A=ab$");
-    label((w/2,0), L="$a$", align=S);
-    label((w,h/2), L="$b$", align=E);
+    real a=3, b=2;
+    filldraw((0,0)--(0,b)--(a,b)--(a,0)--cycle, paleyellow);
+    label((a/2,b/2), L="$A=ab$");
+    label((a/2,0), L="$a$", align=S);
+    label((a,b/2), L="$b$", align=E);
 
 asymptote: float:left;
     size(8cm);
@@ -60,7 +60,7 @@ asymptote3d: float:left;
 
     draw(scale(r1,r2,1)*surface(unitcircle3), darkorange+opacity(0.5));
     draw(scale(r1,r2,h)*unitcylinder, darkorange+opacity(0.5));
-    draw(shift(0,0,h)*scale(r1,r2,1)*surface(unitcircle3), yellow+opacity(0.8));
+    draw(shift(0,0,h)*scale(r1,r2,1)*surface(unitcircle3), darkorange+opacity(0.5));
     label((0,0,h/2), L="$V=Ah$");
     label((1,0.7,0), L="$A$", align=N);
 
@@ -84,8 +84,9 @@ asymptote3d: float:left;
 
 <div style="clear:both;"></div>
 
-Most of the areas are explained [here](basics.html#areas), and the circle
-is explained [here](integrals.html#example-circle-area).
+The circle area is explained [here](integrals.html#example-circle-area),
+the cone volume is explained [here](integrals.html#going-3d), and everything
+else is explained [here](basics.html#areas).
 
 ## Slopes
 
@@ -150,7 +151,10 @@ asymptote: float:right;
 
 Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
 $\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
-calculations so the "smallness" is explicit and well-defined.
+calculations so the "smallness" is explicit and well-defined. The $\lim$
+thing means the limit as $\Delta x$ goes to 0, e.g.
+$\displaystyle\lim_{a\to0} \textstyle\frac{2a}{a} = 2$ even though
+$\frac{2 \cdot 0}{0} = \frac{0}{0}$ is not defined.
 
 Definition of derivative:
 
@@ -162,9 +166,6 @@ math:
 Notation:
 
 math: \frac{d\left(f(x)\right)}{dx} = \frac{d}{dx} f(x) = f'(x)
-
-The derivative $f'(x)$ is the slope of a line that just touches $y=f(x)$
-at $x$.
 
 (derivative-rules)
 Handy rules:
@@ -264,7 +265,7 @@ indent:
     size(12cm);
 
     real a=10, b=15, xmin=-0.5, xmax=16;
-    axises(xmin,xmax+1,xmin,4);
+    axises(xmin,xmax+1,xmin,5);
 
     real f(real x) { return -sin(x)+2; }
     draw(graph(f, xmin, a), blue, L="$y=f(x)$", align=N);
@@ -295,13 +296,10 @@ asymptote3d:
     surface rotated = surface(revolution(path3(thegraph),X,0,360));
     draw(rotated, yellow+opacity(0.5));
 
-    surface disc(real x) {
-        return surface((x,0,0)--(x,f(x),0), c=O, axis=X);
-    }
-
-    draw(disc(a), yellow+opacity(0.6));
-    draw(disc(the_x), green);
-    draw(disc(b), yellow);
+    surface unitdisc = surface(path3(unitcircle, YZplane));
+    draw(shift(a,0,0)*scale(1,f(a),f(a))*unitdisc, yellow+opacity(0.6));
+    draw(shift(the_x,0,0)*scale(1,f(the_x),f(the_x))*unitdisc, green);
+    draw(shift(b,0,0)*scale(1,f(b),f(b))*unitdisc, yellow);
     label(XY()*"$a$", (a,0,0), align=NE);
     label(XY()*"$x$", (the_x,0,0), align=NE);
     label(XY()*"$b$", (b,0,0), align=NE);
@@ -310,8 +308,8 @@ asymptote3d:
     draw(arrowstart--(the_x+0.2,0,0.4), darkgreen, arrow=Arrow3(size=0.7cm));
     label(XY()*"$A(x)$", arrowstart, darkgreen, align=E);
 
-asymptote: float:right; padding-left:10px;
-    size(4cm);
+asymptote: float:right;
+    size(8cm);
     real angle = 0.7;
     fill(((0,0)--arc((0,0), 1, 0, degrees(angle))--cycle), lightyellow);
     draw(((0,0)--(1,0)));
@@ -319,8 +317,13 @@ asymptote: float:right; padding-left:10px;
     draw((arc((0,0), 1, 0, degrees(angle))), L="$b$");
     draw((arc((0,0), 0.3, 0, degrees(angle))), blue, L="$b/r$");
 
-asymptote: float:right; padding-left:10px;
-    size(4cm);
+    transform trans = shift(0.5,-1)*scale(0.5);
+    filldraw(trans*unitcircle, lightyellow);
+    label(rotate(degrees(2.)-90)*"$\tau r$", trans*(cos(2),sin(2)), align=N);
+    draw(trans*((0,0)--(1,0)), L="$r$", align=N);
+
+asymptote: float:right;
+    size(3.5cm);
     draw(unitcircle, smalldashes);
     fill((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle, palegreen);
     draw((1,0)--(0,0), blue, L="$a$", align=S);
@@ -332,12 +335,6 @@ asymptote: float:right; padding-left:10px;
 
 The angle of the green-ish slice at right is 1 radian. The angle of the
 yellow slice is $b/r$ radians.
-
-asymptote: float:right; margin: 0,0,0,20px;
-    size(5cm);
-    filldraw(unitcircle, lightyellow);
-    label(rotate(degrees(2.)-90)*"$\tau r$", (cos(2),sin(2)), align=N);
-    draw(((0,0)--(1,0)), L="$r$", align=N);
 
 A full turn is $\text{tau} = \tau \approx 6.28$ radians, and a half turn
 is $\pi = \frac \tau 2 \approx 3.14$ radians. The perimeter of a circle
