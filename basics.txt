@@ -256,9 +256,9 @@ asymptote: float:left;
     size(9cm);
     real a=3, h=2, offset=1;
     filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
-    label((a/2,0), L="$a$", align=S);
     draw((offset,0)--(offset,h), smalldashes, L="$h$", align=W);
     label((offset+(a-offset)/3,h/4), L="$A=\displaystyle\frac{ah}{2}$");
+    draw(brace((a,-0.1), (0,-0.1)), L="$a$", align=S);
 
 <div style="clear:both;"></div>
 
@@ -276,6 +276,44 @@ asymptote:
 
 Now you can see that the triangle splits both pieces of the rectangle in
 half, so the triangle area must be half of the rectangle area $ah$.
+
+## Volumes
+
+A volume is really the same thing as an area, but for 3D things. If the
+window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$
+pixels would fit inside it.
+
+asymptote3d: float:left;
+    size(7cm);
+
+    real a=2, b=3, c=4;
+    currentprojection = perspective(camera=(-5a,-1b,2c), up=Z);
+
+    draw(scale(a,b,c)*unitcube, yellow+opacity(0.6));
+    label((a/2,0,0), L="$a$", align=SE);
+    label((0,b/2,0), L="$b$", align=S);
+    label((0,b,c/2), L="$c$", align=W);
+    label((a/2,b/2,c/2), L="$V=abc$");
+
+asymptote3d: float:left;
+    size(7cm);
+
+    real r1=2, r2=3, h=4;
+    currentprojection = perspective(camera=(2h,1.5h,2h), up=Z);
+
+    draw(scale(r1,r2,1)*surface(unitcircle3), mediumblue+opacity(0.7));
+    draw(scale(r1,r2,h)*unitcylinder, mediumblue+opacity(0.5));
+    draw(shift(0,0,h)*scale(r1,r2,1)*surface(unitcircle3), yellow+opacity(0.8));
+    label((0,0,h/2), L="$V=Ah$");
+    label((1,1,h), L="$A$", align=N);
+
+    draw(path3(brace((r2,h),(r2,0)), YZplane), L="$h$", align=E);
+
+<div style="clear:both;"></div>
+
+The $V=abc$ thing is actually just a special case of the $V=Ah$
+cylinder. The shape of the cylinder's base can be anything, and in the
+$abc$ thing the base area is $ab$ and the height is $c$.
 
 ## See Also
 

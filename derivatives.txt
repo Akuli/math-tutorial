@@ -13,6 +13,7 @@ is first 5 and then we change it to 6, $x$ changes by $\Delta x = 1$. Here
 $\Delta$ is the Greek delta letter, so if someone's code has a variable named
 ``deltax`` it means this.
 
+(slope)
 Let's draw a graph of something like $y = 2x+1$:
 
 asymptote:
@@ -37,7 +38,6 @@ asymptote:
 
 For example, at $x=3$ we know that $y = 2x+1 = 2 \cdot 3 + 1 = 7$.
 
-(slope)
 Let's calculate the **slope** of this line:
 
 math: \frac{\Delta y}{\Delta x} = \frac{6}{3} = 2

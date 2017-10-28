@@ -10,7 +10,7 @@ redbox: Note
     to read it and then master everything it's talking about, so also
     read the human-friendly introductions in other chapters when needed.
 
-## Common Areas
+## Common Areas and Volumes
 
 You may need to use [integrals](#integrals) if you want to calculate an
 area that is not listed here.
@@ -37,6 +37,50 @@ asymptote: float:left;
     real angle=-0.6;
     draw((0,0)--(cos(angle),sin(angle)), L="$r$");
     label((0,0.3), L="$A=\pi r^2 = \frac 1 2 \tau r^2$");
+
+<div style="clear:both;"></div>
+
+asymptote3d: float:left;
+    size(7cm);
+
+    real a=2, b=3, c=4;
+    currentprojection = perspective(camera=(-5a,-1b,2c), up=Z);
+
+    draw(scale(a,b,c)*unitcube, yellow+opacity(0.6));
+    label((a/2,0,0), L="$a$", align=SE);
+    label((0,b/2,0), L="$b$", align=S);
+    label((0,b,c/2), L="$c$", align=W);
+    label((a/2,b/2,c/2), L="$V=abc$");
+
+asymptote3d: float:left;
+    size(7cm);
+
+    real r1=2, r2=3, h=4;
+    currentprojection = perspective(camera=(2h,1.5h,2h), up=Z);
+
+    draw(scale(r1,r2,1)*surface(unitcircle3), darkorange+opacity(0.5));
+    draw(scale(r1,r2,h)*unitcylinder, darkorange+opacity(0.5));
+    draw(shift(0,0,h)*scale(r1,r2,1)*surface(unitcircle3), yellow+opacity(0.8));
+    label((0,0,h/2), L="$V=Ah$");
+    label((1,0.7,0), L="$A$", align=N);
+
+    draw(path3(brace((r2,h),(r2,0)), YZplane), L="$h$", align=E);
+
+asymptote3d: float:left;
+    size(9cm);
+    import three;
+
+    real r1=1, r2=2, h=4.5;
+    currentprojection = perspective(camera=(10,5,15), up=Z);
+    currentlight = White;
+
+    draw(scale(r1,r2,1)*surface(unitcircle3), blue+opacity(0.8));
+    draw(scale(r1,r2,h)*unitcone, blue+opacity(0.5));
+    label((0.3,0.1,0), L="$A$", align=N);
+    label((0,-0.2,0.4*h), L="$V = \displaystyle\frac{Ah}{3}$");
+
+    draw((0,0,h)--(0,r2,h), smalldashes);
+    draw(shift(0,0.2,0)*path3(brace((r2,h),(r2,0)), YZplane), L="$h$", align=E);
 
 <div style="clear:both;"></div>
 
@@ -245,15 +289,15 @@ asymptote3d:
     real f(real x) { return sin(x)/3; }
     pair F(real x) { return (x,f(x)); }
 
-    surface disc(real x) {
-        return surface((x,0,0)--(x,f(x),0), c=O, axis=X);
-    }
-
     real a=1, b=2.5, the_x = 1.4;
 
     path thegraph = graph(F,a,b,operator ..);
     surface rotated = surface(revolution(path3(thegraph),X,0,360));
     draw(rotated, yellow+opacity(0.5));
+
+    surface disc(real x) {
+        return surface((x,0,0)--(x,f(x),0), c=O, axis=X);
+    }
 
     draw(disc(a), yellow+opacity(0.6));
     draw(disc(the_x), green);
@@ -360,8 +404,8 @@ math:
 
 math:
     \text{0xCAFE}
-    &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16 + \text{0xE} \\
-    &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
+    &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0\\
+    &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \cdot 1 \\
     &= 51966
 
 Python examples:

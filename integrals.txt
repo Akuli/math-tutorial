@@ -454,10 +454,9 @@ positive, and obviously $\Delta s$ was also positive. Or if $\Delta x$
 was negative for some reason, $\Delta s$ would be also negative and the
 minus signs would cancel out.
 
-The smaller the bit of the curve we're looking at, the less the
-curvature matters:
-
-math: \frac{ds}{dx} = \sqrt{1+\left(\frac{dy}{dx}\right)^2} = \sqrt{1+(f'(x))^2}
+Let's say that the length of a curve to $x$ is $s(x)$, just like
+[we did with areas](#area-to-x). The smaller the bit of the curve we're
+looking at, the less the curvature matters:
 
 asymptote: float:right;
     size(6cm);
@@ -475,14 +474,15 @@ asymptote: float:right;
     label((a,0), L="$a$", align=S);
     label((b,0), L="$b$", align=S);
 
-Now if we say that the length of the curve to $x$ is $s(x)$ (just like
-[we did with areas](#area-to-x)), we know that we can calculate the arc
-length between $x=a$ and $x=b$ like this:
+math:
+    \frac{\Delta s}{\Delta x} &\approx \sqrt{1 + \left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    \frac{ds}{dx} &= \sqrt{1+\left(\frac{dy}{dx}\right)^2} \\
+    s'(x) &= \sqrt{1+(f'(x))^2}
 
 math:
     s(b)-s(a) &= [s(x)]_a^b \\
-    &= \int_a^b \left( \frac{ds}{dx} \right) dx \\
-    &= \int_a^b \sqrt{1+(f'(x))^2} dx
+    &= \int_a^b s'(x)\ dx \\
+    &= \int_a^b \sqrt{1+(f'(x))^2}\ dx
 
 That took a while, but we're done! This arc length thing is yet another
 one of my favorite math things.
@@ -515,7 +515,7 @@ Now we can just plug in $a=0$, $b=2$ and $f(x)=2x-x^2$ to our formula.
 math: f(x) &= 2x-x^2 \\ f'(x) &= 2-2x
 
 math:
-    & \int_0^2 \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx
+    & \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx
     \approx 2.96
 
 Use your favorite symbolic calculation library for calculating the
@@ -554,8 +554,7 @@ asymptote3d: float:right;
    import three;
    currentlight = White;
 
-   real h = 4.5;
-   real r = 1;
+   real h=4.5, r=1;
    real the_x = 3.2;
 
    real f(real x) {
@@ -584,45 +583,63 @@ asymptote3d: float:right;
 Integrals are not actually limited to calculating areas in any way. If you look
 at the image, the total volume is $\int_0^h A(x) dx$. Now we just need to
 figure out how to calculate the $A(x)$, and for that we need to know what
-$f(x)$ is. Here's everything we know about $f$:
+$f(x)$ is.
 
-* The graph $y=f(x)$ is a straight line, so [the derivative must be a
-    constant](derivatives.html#slope).
-* When $x=0$, the cone's radius $f(x)$ is $0$.
-* When $x=h$, the cone's radius $f(x)$ is $r$.
+Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:
 
-So, we get these equations:
+asymptote:
+    size(8cm);
+    real h=5, r=2;      // cheating: these don't match the 3D version
+    axises(-1,h+2,-1,r+1);
+    real f(real x) { return (r/h)*x; }
+    draw(graph(f, -1, h+1), heavyred, L=rotate(degrees(atan2(r,h)))*"$y=f(x)$", align=N);
+    draw((h,0)--(h,r), smalldashes, L="$r$");
+    draw(brace((h,-0.2),(0,-0.2)), L="$h$", align=S);
 
-math:
-   \left\{\begin{matrix}
-      f'(x) = c \\ 
-      f(0) = 0 \\ 
-      f(h) = r
-   \end{matrix}\right.
-
-This isn't difficult to solve by just doing it one thing at a time, but I'll
-skip that because it's boring. Here's the solution:
-
-math: f(x) = \frac r h x
+Based on [the graphs page](graphs.html#lines) and [the slope thing on the
+derivative page](derivatives.html#slope), $f(x) = sx$ where the slope is
+$s = \frac{\Delta y}{\Delta x} = \frac r h$. So $f(x)=\frac r h x$.
 
 Next we need $A(x)$. [Earlier in this chapter](#example-circle-area) we
-figured that the area of a circle is $\tau \frac 1 2 r^2$ where $r$ is
-the radius, but the green circle's radius is $f(x)$ instead of $r$ so
-$A(x) = \tau \frac 1 2 (f(x))^2$. Let's do this:
+figured that the area of a circle is $\pi r^2$ where $r$ is the radius,
+but the green circle's radius is $f(x)$ instead of $r$ so
+$A(x) = \pi (f(x))^2$. Let's do this:
 
 math:
     \int_0^h A(x) dx
-    &= \int_0^h \tau \frac 1 2 (f(x))^2 dx \\
-    &= \int_0^h \tau \frac 1 2 \left( \frac r h x \right)^2 dx \\
-    &= \int_0^h \tau \frac 1 2 \cdot \frac{r^2}{h^2} x^2 dx \\
-    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \int_0^h x^2 dx \\
-    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
-    &= \tau \frac 1 2 \cdot \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
-    &= \frac \tau 6 r^2 h
+    &= \int_0^h \pi (f(x))^2 dx \\
+    &= \int_0^h \pi \left( \frac r h x \right)^2 dx \\
+    &= \int_0^h \pi \frac{r^2}{h^2} x^2 dx \\
+    &= \pi \frac{r^2}{h^2} \int_0^h x^2 dx \\
+    &= \pi \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
+    &= \pi \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
+    &= \frac{\pi r^2 h}{3}
 
-That was a mess, but we're almost done! Now we can just plug in $r=50$ and
-$h=200$ to get our cone volume.
+asymptote3d: float:right;
+    size(10cm);
+    import three;
+    currentlight = White;
 
-math: \frac{\tau}{6} \cdot 50^2 \cdot 200 \approx 523600
+    real h=4.5, r=1;
+    currentprojection = perspective(camera=(r,1.5h,2h), up=Y);
+
+    draw(path3(brace((0,h+0.1),(r,h+0.1))), L="$r$", align=N);
+    draw(path3(brace((r+0.1,h),(r+0.1,0))), L="$h$", align=E);
+    draw((-r,h+1,0)--(-0.5r,h,0.2r), arrow=Arrow3(size=0.7cm));
+    label((-r,h+1,0), L="$\pi r^2$", align=N);
+    draw(surface((r,0,0)--(0,h,0), c=O, axis=Y), red);
+    draw(surface((r,0,0)--(r,h,0), c=O, axis=Y), yellow+opacity(0.7));
+    draw(surface((0,h,0)--(0,h,r), c=O, axis=Y), yellow+opacity(0.7));
+
+That was a mess, but we're almost done!
+
+Note that the area of the base circle is $\pi r^2$, and $\pi r^2 h$ would
+be the volume of a *cylinder* that barely fits around the VLC cone. So,
+in the image at right, the cylinder's volume is exactly three times the
+cone's volume regardless of their sizes. I think this is quite nice.
+
+So, now we can just plug in $r=50$ and $h=200$ to get our cone volume.
+
+math: \frac{\pi r^2 h}{3} = \frac{\pi \cdot 50^2 \cdot 200}{3} \approx 523600
 
 That's quite a few pixels.
