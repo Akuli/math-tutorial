@@ -336,18 +336,15 @@ math:
 Now if we rename the constants so that $a = \frac 1 2 g$, $b = C_1$ and
 $c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.
 
-
 ## Example: Circle Area
 
 graybox: Note
     This section assumes that you know what $\pi$ and $\tau$ are. [Click
     here](summary.html#geometry-and-trig) if you don't.
 
-At some kind of school you may have learned that the area of a circle is
-$\pi r^2$ where $\pi = \frac{\tau}{2} \approx 3.14$ and $r$ is the radius of
-the circle. There are a few different ways to divide a circle into a bunch of
-smaller and simpler areas and show that the total area is indeed
-$\frac{\tau}{2} r^2$:
+Let's try to figure out how to calculate the area of a circle if we know
+the radius. There are a few different ways to divide a circle into a
+bunch of smaller and simpler areas:
 
 asymptote:
     size(18cm);
@@ -363,6 +360,7 @@ asymptote:
               deepblue, align=NE);
 
         draw(trans*brace((1,-dx/2), (0,-dx/2)), L=Label("$r$", filltype=Fill(white)), align=S);
+        trans = trans*shift(2.5,0);
     }
 
     draw((-1,0)--(1,0));
@@ -372,13 +370,11 @@ asymptote:
     draw((-1,0)--(1,0), gray);
     addstuff();
 
-    trans = shift(2.5, 0);
     for (real r = 0; r < 1; r += dx) {
         draw(trans*scale(r)*unitcircle, gray);
     }
     addstuff();
 
-    trans = shift(5, 0);
     for (real t = 0; t < 2*pi; t += dt) {
         draw(trans*((0,0)--(cos(t),sin(t))), gray);
     }

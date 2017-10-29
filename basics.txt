@@ -257,13 +257,13 @@ asymptote: float:left;
     real a=3, h=2, offset=1;
     filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
     draw((offset,0)--(offset,h), smalldashes, L="$h$", align=W);
+    label((a/2,0), L="$a$", align=S);
     label((offset+(a-offset)/3,h/4), L="$A=\displaystyle\frac{ah}{2}$");
-    draw(brace((a,-0.1), (0,-0.1)), L="$a$", align=S);
 
 <div style="clear:both;"></div>
 
-The triangle area thing is actually quite straight-forward to understand.
-Let's draw a rectangle around the triangle like this:
+The yellow area is simple, but the triangle area is also easy to
+understand. Let's draw a rectangle around the triangle like this:
 
 asymptote:
     size(5cm);
@@ -279,8 +279,8 @@ half, so the triangle area must be half of the rectangle area $ah$.
 
 ## Volumes
 
-A volume is really the same thing as an area, but for 3D things. If the
-window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$
+A volume is really the same thing as an area, but for 3D things. If our
+300 by 200 window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$
 pixels would fit inside it.
 
 asymptote3d: float:left;

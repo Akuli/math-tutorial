@@ -145,3 +145,141 @@ code: python3
 
 In cases like this I don't recommend worrying about what ``asinh`` is.
 The important thing is that we can convert the answer to a float.
+
+Calculating the precise value of the integral with sympy takes a while,
+but it does it faster if we tell it to just evaluate the whole thing
+with floats. The answer is not as precise, but the error is hardly
+noticable.
+
+code: python3
+    >>> Integral(sqrt(1 + (2-2*x)**2), (x,0,2)).evalf()
+    2.95788571508920
+
+## Boring Trapezoid Area
+
+This section has nothing to do with integrals, but we need it in the
+next section. Let's find the area of shapes like this:
+
+asymptote:
+    size(8cm);
+    real topw=3, bottomw=5, halfh=1;   // must be topw < bottomw
+    real offset=0.7;
+    real c = (topw+bottomw)/2;
+    filldraw((-offset,-halfh)--(offset,halfh)--(offset+topw,halfh)--(-offset+bottomw,-halfh)--cycle, paleblue);
+    draw((0,0)--(c,0), L="$c$", align=N);
+    draw(brace((-offset+bottomw+0.1,halfh), (-offset+bottomw+0.1,-halfh)), L="$h$", align=E);
+    draw(brace((2c/3,0), (2c/3,-halfh)), L="$\frac h 2$", align=E);
+
+The line with length $c$ is centered between the topmost and the
+bottommost line, and all horizontally drawn lines are parallel with each
+other.
+
+Let's cut off and rotate the ends:
+
+asymptote:
+    size(8cm);
+    real topw=3, bottomw=5, halfh=1;   // must be topw < bottomw
+    real offset=0.7;
+    real c = (topw+bottomw)/2;
+    filldraw((-offset,-halfh)--(offset,halfh)--(offset+topw,halfh)--(-offset+bottomw,-halfh)--cycle, paleblue);
+    draw((0,0)--(c,0), smalldashes);
+    draw((0,-halfh)--(0,0), red);
+    draw((c,-halfh)--(c,0), red);
+
+    draw(arc((0,0), 0.7, 210,80), arrow=Arrow(size=0.5cm));
+    draw(arc((c,0), 0.7, -50,80), arrow=Arrow(size=0.5cm));
+
+asymptote:
+    size(8cm);
+    real topw=3, bottomw=5, halfh=1;   // must be topw < bottomw
+    real offset=0.7;
+    real c = (topw+bottomw)/2;
+    filldraw(box((0,-halfh),(c,halfh)), paleblue);
+    draw((0,0)--(c,0), smalldashes, L="$c$", align=N);
+    draw(brace((c+0.1,halfh), (c+0.1,-halfh)), L="$h$", align=E);
+    draw((0,0)--(offset,halfh));
+    draw((offset+topw,halfh)--(c,0));
+
+The area is obviously just $ch$.
+
+## My Thick Line Area Thing
+
+I'm sure someone has invented this before me, but I haven't found a name
+for this yet. That's why the title above is like it is.
+
+Let's try to figure out how to calculate an area like this if we know
+nothing but $t$ and $l$:
+
+asymptote:
+    size(10cm);
+    real halft=0.4;
+    path upper  = arc((-2,0),1-halft,-90,0)--arc((0,0),1+halft,180,0);
+    path middle = arc((-2,0),1,-90,0)--arc((0,0),1,180,0);
+    path lower  = arc((-2,0),1+halft,-90,0)--arc((0,0),1-halft,180,0);
+    filldraw(upper--reverse(lower)--cycle, lightgray);
+    draw(middle, heavyred, L=rotate(-15)*"$l$", align=W);
+
+    draw(brace((-2.1,-1-halft),(-2.1,-1+halft)), L="$t$", align=W);
+    draw(brace((1+halft,-0.1),(1-halft,-0.1)), L="$t$", align=S);
+
+    real some_angle=2.1;
+    pair P = (cos(some_angle),sin(some_angle));
+    draw(brace(P,(P.x*(1-halft),P.y*(1-halft)),0.2), L="$t/2$", align=E);
+    draw(brace((P.x*(1+halft),P.y*(1+halft)),P,0.2), L="$t/2$", align=E);
+
+The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
+when things are curved like this. Note that the distance between the red
+line and the black lines is always the same; calculating this would be
+more difficult if the thickness wasn't the same $t$ everywhere.
+
+asymptote:float:right;
+    size(10cm);
+    real halft=0.3, theta=0.7, thetamax=1.2, deltatheta=0.2;
+    real leftw=sin(deltatheta)*(1-halft);
+    real rightw=sin(deltatheta)*(1+halft);
+    path basictrapezoid = (-halft,-leftw/2)--(-halft,leftw/2)--(halft,rightw/2)--(halft,-rightw/2)--cycle;
+
+    fill(rarc((0,0),1+halft,theta-deltatheta/2,0)--
+         rarc((0,0),1-halft,0,theta-deltatheta/2)--cycle, lightgray);
+    draw(rarc((0,0),1+halft,thetamax,0)--rarc((0,0),1-halft,0,thetamax));
+    draw(rarc((0,0),1,0,thetamax), heavyred);
+    draw(shift(cos(theta),sin(theta))*rrotate(theta)*basictrapezoid, blue);
+    draw(brace((1+halft,-0.05),(1-halft,-0.05)), L="$t$", align=S);
+    label((cos(theta),sin(theta)), L=rrotate(theta-tau/4)*"$\Delta b$", align=NE);
+
+    label((cos(theta/2)+halft/2,sin(theta/2)), L="$A(b)$");
+    draw(brace((1,0),(cos(theta-deltatheta/2),sin(theta-deltatheta/2))), L="$b$", align=W);
+
+Let's start by thinking about a small, trapezoid-shaped piece of the
+area like in the image at right. Now everything is quite straight-forward
+and a lot like in [the circle example](integrals.html#example-circle-area).
+
+math:
+    \Delta A &\approx \Delta b \cdot t \\
+    \frac{\Delta A}{\Delta b} &\approx t \\
+    \frac{dA}{db} &= t \\
+    A(b) &= \int t\ db = tb + C
+
+<br>
+
+math: A(0) &= 0 \\ t \cdot 0 + C &= 0 \\ C &= 0
+
+<br>
+
+math: A(l)=tl+C=tl+0=tl
+
+## Example: Circle Area #2
+
+graybox:
+    This section assumes that you know what $\tau$ is. [Click
+    here](summary.html#geometry-and-trig)
+    if you don't.
+
+The length of the red line in the upper image is $l=\tau R$, so the area
+is $tl=t \tau R$.
+
+Now all we need to do is to make the radius of the center circle 0 like
+in the lower image. Let's se $t=r$ and $R=r/2$, so we get this:
+
+math:
+    A = t \tau R = r \tau \frac r 2 = \frac 1 2 \tau r^2 = \pi r^2
