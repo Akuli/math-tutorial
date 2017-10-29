@@ -157,6 +157,7 @@ got out of a spooky calculation; for example, at $x=2$ the derivative is
 $2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
 $x=2$ its slope will also be 4 like in the image at right.
 
+(derivative-is-slope)
 You can also find the derivative of the $y=2x+1$ example we looked at earlier,
 and turns out that $\frac{dy}{dx}=2=\frac{\Delta y}{\Delta x}$. It makes sense
 because derivatives are just like slopes but they also work with curvy things,

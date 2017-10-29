@@ -18,9 +18,10 @@ tutorial](derivatives.html). Derivatives are a great example of why I
 like math; calculations that seem like they will be complicated turn out
 to be surprisingly simple and doable in the end. After that, if you got
 interested in how awesome the math is, continue to [the integral
-tutorial](integrals.html) for even more amazing stuff. If you didn't get
-interested in derivatives you probably won't find integrals very
-interesting.
+tutorial](integrals.html) for more amazing stuff, and if you are still
+interested you can also read [the more integrals chapter](more-integrals.html).
+If you didn't get interested in derivatives but you read and understood
+it you might still find integrals interesting.
 
 If you're a game developer and you want to create 2D games with a
 library that requires you to deal with coordinates, check out [the

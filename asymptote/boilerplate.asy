@@ -39,3 +39,10 @@ void abctriangle(real x, real y, pen fillcolor=mediumblue) {
     draw((x,0)--(x,y), L="$b$", align=E);
     draw((x,y)--(0,0), L="$c$", align=(y > 0 ? N : S));
 }
+
+// arc with radians
+path rarc(pair c, real r, real angle1, real angle2) { return arc(c, r, degrees(angle1), degrees(angle2)); }
+
+// rotate with radians
+transform rrotate(real angle) { return rotate(degrees(angle)); }
+transform rrotate(real angle, pair z) { return rotate(degrees(angle), z); }

@@ -64,6 +64,7 @@ asymptote: float:right;
     label("$1$", (1,0), align=S);
     label("$2$", (2,0), align=S);
 
+(noob-rectangles)
 If this was a question on a codeacademy-like noob programming site you would
 probably write some code that approximates the area by calculating areas of
 little rectangles. This Python program prints ``0.42167045099417744``:

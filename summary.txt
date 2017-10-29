@@ -361,6 +361,7 @@ asymptote:
     draw(brace((0,1), (cos(t),1)), deepblue, L="$\cos t$", align=N);
     draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin t$", align=E);
 
+(trianglestuff)
 A triangle with a quarter-turn corner and a bunch of math:
 
 asymptote: float:right;
