@@ -247,7 +247,7 @@ math:
         &&\\
     \end{matrix}
 
-math: \textstyle\int c\ f(x)\ dx &= c \cdot \textstyle\int f(x)\ dx
+math: \textstyle\int a\ f(x)\ dx &= a \textstyle\int f(x)\ dx
 
 math: \textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x)\ dx + \int g(x)\ dx
 
@@ -338,7 +338,7 @@ yellow slice is $b/r$ radians.
 
 A full turn is $\text{tau} = \tau \approx 6.28$ radians, and a half turn
 is $\pi = \frac \tau 2 \approx 3.14$ radians. The perimeter of a circle
-is $\tau r$ where $r$ is the radius.
+is $\tau r = 2\pi r$ where $r$ is the radius.
 
 360 degrees (or 360° for short) is a full turn.
 

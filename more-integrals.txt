@@ -21,7 +21,7 @@ asymptote:
 
 The length of the blue arc in the above image is quite easy to calculate.
 We can just complete it to a full circle, and we know [its perimeter
-length is $3\tau$](geometry-and-trig.html#radians-and-tau) so half of
+length is $3\tau$](summary.html#geometry-and-trig) so half of
 that is $3\tau/2 \approx 9.42$. But that's just a special case. What if
 we want to calculate the length of an arc taken from *any* $y=f(x)$ graph?
 

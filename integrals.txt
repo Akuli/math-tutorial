@@ -340,8 +340,8 @@ $c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.
 ## Example: Circle Area
 
 graybox: Note
-    This section assumes that you know what $\tau$ and radians are.
-    [Click here](geometry-and-trig.html#radians-and-tau) if you don't.
+    This section assumes that you know what $\pi$ and $\tau$ are. [Click
+    here](summary.html#geometry-and-trig) if you don't.
 
 At some kind of school you may have learned that the area of a circle is
 $\pi r^2$ where $\pi = \frac{\tau}{2} \approx 3.14$ and $r$ is the radius of
@@ -349,7 +349,7 @@ the circle. There are a few different ways to divide a circle into a bunch of
 smaller and simpler areas and show that the total area is indeed
 $\frac{\tau}{2} r^2$:
 
-asymptote3d:
+asymptote:
     size(18cm);
     transform trans = identity();
     real dt = pi/20;     // radians
@@ -387,33 +387,50 @@ asymptote3d:
 The idea here is that we can calculate the area of a circle by just integrating
 a bunch of these little area slices. The first one is the most difficult to
 integrate, but the second and third one are something we can do. Let's do the
-second one.
+third one.
 
-We already used $r$ to represent the radius of our blue circle, so let's use
-another letter like $s$ to represent the radius of one of the rings between the
-gray lines. When integrating vertical slices the area of a slice was
-$f(x)\ dx$, but this time it's $\tau s\ ds$ where $\tau s$ and $ds$ are the
-perimeter and thickness of the rings. This is quite straight-forward:
+asymptote: float:right;
+    size(8cm);
+    real t = 0.9, dt=0.4;  // radians
+
+    fill((0,0)--rarc((0,0),1,0,t)--cycle, paleblue);
+    fill((0,0)--rarc((0,0),1,t,t+dt)--cycle, palegreen);
+    label((cos(t/2)*0.65,sin(t/2)*0.65), L="$A(b)$");
+    label((cos(t+dt/2)*0.75,sin(t+dt/2)*0.75), L=rrotate(t)*"$\Delta A$");
+
+    draw((0,0)--(1,0));
+    draw((0,0)--(cos(t),sin(t)));
+    draw((0,0)--(cos(t+dt),sin(t+dt)), L="$r$", align=W);
+    draw(rarc((0,0),1,0,t), L="$b$");
+    draw(rarc((0,0),1,t,t+dt), L=rrotate(t+dt/2-tau/4)*"$\Delta b$");
+    draw(rarc((0,0),1,t+dt,tau));
+
+The green area in the image at right looks kind of like a triangle with
+height $r$ and base $\Delta b$, but the base is annoyingly curvy. If we
+make it smaller, the base gets straighter, so we get this:
 
 math:
-    \int_0^r \tau s\ ds
-    = \tau \int_0^r s\ ds
-    = \tau \left[\frac 1 2 s^2\right]_0^r
-    = \tau \left( \frac 1 2 r^2 - \frac 1 2 0^2 \right)
-    = \tau \frac 1 2 r^2 = \pi r^2
+    \Delta A &\approx \frac{\Delta b \cdot r}{2} \\
+    \frac{\Delta A}{\Delta b} &\approx \frac r 2 \\
+    A'(b) = \frac{dA}{db} &= \frac r 2 \\
+    A(b) &= \int \frac r 2\ db = \frac r 2 b + C
+
+If $b=0$, then $A(b)=0$.
+
+math: A(0) = \frac r 2 0 + C &= 0 \\ C &= 0
+
+math: A(b) = \frac r 2 b
+
+If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area:
+
+math: A(\tau r) = \frac r 2 \tau r = \frac 1 2 \tau r^2 = \pi r^2
 
 In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
 of some integration because $\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r$.
 The $\pi r^2$ form kind of hides the integration because $\pi = \frac 1 2 \tau$,
-but rewriting it with $\tau$ makes everything clear.
-
-The derivative of the area is also interesting. It turns out that it's always
-equal to the perimeter $\tau r$:
-
-math: \frac{d}{dr} \left( \tau \frac 1 2 r^2 \right) =  \tau \frac 1 2 2r = \tau r
-
-This makes sense because if we increase $r$, the perimeter length determines
-how much the area increases.
+but rewriting it with $\tau$ makes everything clear. On the other hand,
+$\pi r^2$ is slightly easier to use *because* the $\frac 1 2$ is hidden. That's
+why this tutorial uses $\pi$ when it comes to circle areas.
 
 ## Going 3D
 
