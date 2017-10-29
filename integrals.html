@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>Integrals</b></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>Integrals</b></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h1><div class="box redbox"><h2> Warning</h2><p>This chapter assumes that you have a good grasp of derivatives, including
 the ability to recognize that <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> is a derivative whenever you
 see it. I highly recommend reading <a href="derivatives.html">the derivative tutorial</a>
@@ -24,9 +24,10 @@ itself just amazing.</p>
 <p><img class="asymptote" src="asymptote/88d3349b3334c96021479da1deec3e8e.png" /></p><p>The first two areas are easy to calculate and everything is quite
 self-explanatory, but how the heck are we going to do the third one?</p>
 
-<img class="asymptote" src="asymptote/2ea5288a9d6e3dc2827f56ee961fe4a4.png" style="float:right;" /><p>If this was a question on a codeacademy-like noob programming site you would
+<img class="asymptote" src="asymptote/2ea5288a9d6e3dc2827f56ee961fe4a4.png" style="float:right;" /><p id="noob-rectangles">If this was a question on a codeacademy-like noob programming site you would
 probably write some code that approximates the area by calculating areas of
-little rectangles. This Python program prints <code>0.42167045099417744</code>:</p>
+little rectangles. This Python program prints <code>0.42167045099417744</code>:
+</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
 
@@ -140,84 +141,35 @@ just constants; they depend on the time. However, <img class="inlinemath" src="m
 </p>
 
 </div><p><img src="math/342d89d8a7ae44519a083c3430d518fa.png" class="blockmath" /></p><p>Now if we rename the constants so that <img class="inlinemath" src="math/419ff2381b0db649c07c9fe6a1ebeb3f.png" />, <img class="inlinemath" src="math/bb7a028e5dd0d3ba2339be49161b11aa.png" /> and
-<img class="inlinemath" src="math/3dbd327d9dc5f3bb699caf635becce36.png" /> we get <img class="inlinemath" src="math/7c87db479d0d651f6808201439553b96.png" />, and that's the equation of a parabola.
+<img class="inlinemath" src="math/3dbd327d9dc5f3bb699caf635becce36.png" /> we get <img class="inlinemath" src="math/7c87db479d0d651f6808201439553b96.png" />, and that's the equation of a parabola.</p>
+
+<h2 id="example-circle-area">Example: Circle Area<a class="headerlink" href="#example-circle-area" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Note</h2><p>This section assumes that you know what <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> and <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> are. <a href="summary.html#geometry-and-trig">Click
+here</a> if you don't.
 </p>
 
-<h2 id="example-circle-area">Example: Circle Area<a class="headerlink" href="#example-circle-area" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Note</h2><p>This section assumes that you know what <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> and radians are.
-<a href="geometry-and-trig.html#radians-and-tau">Click here</a> if you don't.
-</p>
+</div><p>Let's try to figure out how to calculate the area of a circle if we know
+the radius. There are a few different ways to divide a circle into a
+bunch of smaller and simpler areas:</p>
 
-</div><p>At some kind of school you may have learned that the area of a circle is
-<img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> where <img class="inlinemath" src="math/2d7d81989760a8d3f14b8aee2247adea.png" /> and <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius of
-the circle. There are a few different ways to divide a circle into a bunch of
-smaller and simpler areas and show that the total area is indeed
-<img class="inlinemath" src="math/a76d75f5fc7ebcad31a68377053c446c.png" />:</p>
-
-<p><img class="asymptote" src="asymptote/f969f1f5c2d6c700f6b9557637d302ec.png" /></p><p>The idea here is that we can calculate the area of a circle by just integrating
+<p><img class="asymptote" src="asymptote/157e148a5308f5c674a6e33487841661.png" /></p><p>The idea here is that we can calculate the area of a circle by just integrating
 a bunch of these little area slices. The first one is the most difficult to
 integrate, but the second and third one are something we can do. Let's do the
-second one.</p>
+third one.</p>
 
-<p>We already used <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> to represent the radius of our blue circle, so let's use
-another letter like <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" /> to represent the radius of one of the rings between the
-gray lines. When integrating vertical slices the area of a slice was
-<img class="inlinemath" src="math/825606e8b0637d43b92263f84944aa20.png" />, but this time it's <img class="inlinemath" src="math/84eb53f71b65ff4a813353106cf6d57d.png" /> where <img class="inlinemath" src="math/47df543b03e87be0b8ef1acabdf0422e.png" /> and <img class="inlinemath" src="math/522748524ad010358705b6852b81be4c.png" /> are the
-perimeter and thickness of the rings. This is quite straight-forward:</p>
+<img class="asymptote" src="asymptote/f8f3101e526df608e7f02b13f3fa6b49.png" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
+height <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> and base <img class="inlinemath" src="math/596c0cc2af83f55173d257517e8f1c47.png" />, but the base is annoyingly curvy. If we
+make it smaller, the base gets straighter, so we get this:</p>
 
-<p><img src="math/d052627666a9368113ba24aeae257a16.png" class="blockmath" /></p><p>In general, if you see something like <img class="inlinemath" src="math/8f8065fbcbb5fb697d80d3f18c4c73e1.png" /> it's possibly the result
+<p><img src="math/003d254edb7ed2461c1e83970617b51a.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/f6d5eef5ee5e51fc839bb54201c62e3b.png" />, then <img class="inlinemath" src="math/cd264c9a404a0909b55924e5f7ffdf05.png" />.</p>
+
+<p><img src="math/f62ff0f3fb4dc9e59be5dacc5730b54d.png" class="blockmath" /></p><p><img src="math/ab9d0cd2cc81f590e8e13c2cb338441e.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the whole perimeter <img class="inlinemath" src="math/24ed1d8bda9032a2bc7f9cdc1dc6306b.png" />, then <img class="inlinemath" src="math/539437a02c5885c575788009383e96c8.png" /> is the circle area:</p>
+
+<p><img src="math/7049798f8bfa5ed0acb9c612cab73cf7.png" class="blockmath" /></p><p>In general, if you see something like <img class="inlinemath" src="math/8f8065fbcbb5fb697d80d3f18c4c73e1.png" /> it's possibly the result
 of some integration because <img class="inlinemath" src="math/b09ff48623072588b9f4a0fa6368257b.png" />.
 The <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> form kind of hides the integration because <img class="inlinemath" src="math/d5bd00eca82ed85e3d222a898fa864d6.png" />,
-but rewriting it with <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> makes everything clear.</p>
-
-<p>The derivative of the area is also interesting. It turns out that it's always
-equal to the perimeter <img class="inlinemath" src="math/24ed1d8bda9032a2bc7f9cdc1dc6306b.png" />:</p>
-
-<p><img src="math/49fb4e5ed95235dac565fe4ba01e9e1f.png" class="blockmath" /></p><p>This makes sense because if we increase <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" />, the perimeter length determines
-how much the area increases.</p>
-
-<img class="asymptote" src="asymptote/74a5e74008ae74c94edac7a005981103.png" style="float:right;" /><h2 id="arc-length">Arc Length<a class="headerlink" href="#arc-length" title="Link to this title">¶</a></h2><p>Let's have a look at our good old <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> graph and think about what
-the change of arc length <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> is when <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> changes by <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />.
-As you can see in the picture at right, we can apply <a href="geometry-and-trig.html#pythagorean-theorem">the Pythagorean
-theorem</a>, but the graph
-might not be perfectly straight so the result is not necessarily
-accurate. We get this mess:</p>
-
-<p><img src="math/7183c8c596707327b2d87fdeda3fff47.png" class="blockmath" /></p><p>In the last step I assumed that we moved <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> right so <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> was
-positive, and obviously <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> was also positive. Or if <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />
-was negative for some reason, <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> would be also negative and the
-minus signs would cancel out.</p>
-
-<p>Let's say that the length of a curve to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/c8680fa208df369c16fc14c68f7d5242.png" />, just like
-<a href="#area-to-x">we did with areas</a>. The smaller the bit of the curve we're
-looking at, the less the curvature matters:</p>
-
-<img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p><img src="math/46d052719a63ffdf41f0488adce045ed.png" class="blockmath" /></p><p><img src="math/f723fbf85b584113d2df604d8099f38c.png" class="blockmath" /></p><p>That took a while, but we're done! This arc length thing is yet another
-one of my favorite math things.</p>
-
-<h2 id="example-more-jumping">Example: more jumping<a class="headerlink" href="#example-more-jumping" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>A player jumps along the graph <img class="inlinemath" src="math/dce1baa300c2aaa73586198894272496.png" />. How long is the arc that
-the player's path traces above the x axis?</p>
-
-<p><img class="asymptote" src="asymptote/bb9861a78a5f0e2c6bbe2d5d61ae4942.png" /></p></div><p>First things first – let's figure out when the graph hits the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> axis;
-that is, when <img class="inlinemath" src="math/fab37d6c4a697fe660387d3ff8e889a4.png" />:</p>
-
-<p><img src="math/a6c9d34e693c7e89b577cbedf7ebd0f9.png" class="blockmath" /></p><p>Now we can just plug in <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" />, <img class="inlinemath" src="math/19bf9442bea375a24abb4c22e9951a92.png" /> and <img class="inlinemath" src="math/44a24e296e537705f8fdfbe5c0d502d2.png" /> to our formula.</p>
-
-<p><img src="math/241c71ef20d868ecdc7107c07c6a6ff2.png" class="blockmath" /></p><p><img src="math/7a10c93bbccf9c2338b20d929fd91a0b.png" class="blockmath" /></p><p>Use your favorite symbolic calculation library for calculating the
-integral. I couldn't do it by hand, but I got it done with
-<a href="http://www.sympy.org">sympy</a>:</p>
-
-<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>init_printing()
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>x <span style="color: #666666">=</span> Symbol(<span style="color: #4070a0">&#39;x&#39;</span>)
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>integrate(sqrt(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">2</span><span style="color: #666666">-</span><span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>), (x,<span style="color: #40a070">0</span>,<span style="color: #40a070">2</span>))
-<span style="color: #888888">asinh(2)</span>
-<span style="color: #888888">──────── + √5</span>
-<span style="color: #888888">   2</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">float</span>(integrate(sqrt(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">2</span><span style="color: #666666">-</span><span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>), (x,<span style="color: #40a070">0</span>,<span style="color: #40a070">2</span>)))
-<span style="color: #888888">2.957885715089195</span>
-</pre></div>
-<p>In cases like this I don't recommend worrying about what <code>asinh</code> is.
-The important thing is that we can convert the answer to a float.</p>
+but rewriting it with <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> makes everything clear. On the other hand,
+<img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> is slightly easier to use <i>because</i> the <img class="inlinemath" src="math/d54f6ce67b75f58dac81e59a9f85fc22.png" /> is hidden. That's
+why this tutorial uses <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> when it comes to circle areas.</p>
 
 <h2 id="going-3d">Going 3D<a class="headerlink" href="#going-3d" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>If the VLC Media Player cone is 200 pixels high, its radius is 50
 pixels and it's 3-dimensional, how many pixels fit inside the cone?</p>
