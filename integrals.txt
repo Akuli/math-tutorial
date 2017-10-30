@@ -461,7 +461,7 @@ area is kind of like a bunch of infinitely thin height slices stacked
 together, and we can calculate them with integrals.
 
 [A volume](basics.html#volumes) is like a bunch of thin area slices
-stacked together, so if we integrate areas we get a volume.
+stacked together, so if we integrate areas we get volumes.
 
 asymptote3d: float:right;
    size(11cm);
