@@ -1,10 +1,10 @@
 # Integrals
 
-redbox: Warning
+redbox:
     This chapter assumes that you have a good grasp of derivatives, including
-    the ability to recognize that $\frac{dy}{dx}$ is a derivative whenever you
-    see it. I highly recommend reading [the derivative tutorial](derivatives.html)
-    first.
+    the ability to recognize that $\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$
+    is a derivative whenever you see it. I highly recommend reading [the derivative
+    tutorial](derivatives.html) first.
 
 There are many practical ways to use derivatives like the game at the end of
 the derivative chapter demonstrates. You probably won't find as many practical
@@ -101,7 +101,7 @@ asymptote: float:right;
     real dx = 0.3;
 
     fill(graph(f,0,x)--(x,0)--(0,0)--cycle, paleyellow);
-    label("$F(x)$", (x/2,f(x/2)/2));
+    label("$A(x)$", (x/2,f(x/2)/2));
     axises(-0.1,2.2,-0.5,f(2));
     draw(graph(f,-0.1,2), L="$y=f(x)$", align=NW, p=blue);
 
@@ -110,36 +110,47 @@ asymptote: float:right;
     draw(brace((x,0), (0,0)), L="$x$", align=S);
     draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
     draw(brace((x+dx+0.05,f(x)), (x+dx+0.05,0)), L="$f(x)$", align=E);
-    label("$\Delta F$", (x+dx/2,f(x+dx/2)/2));
+    label("$\Delta A$", (x+dx/2,f(x+dx/2)/2));
 
     fill((x,f(x))--(x+dx,f(x))--(x+dx,f(x+dx))--cycle, red);
 
 Let's say that our curve is of the form $y=f(x)$ where $f$ is a
 [continuous](explanations.html#which-functions-have-derivatives)
-function. Maybe we could find out what the area $F(x)$ is under the
+function. Maybe we could find out what the Area $F(x)$ is under the
 curve between 0 and $x$?
 
-Let's imagine that we choose some $x$ location and *move* it right by
-$\Delta x$. Then the area grows by a slice of width $\Delta x$ and
-height $f(x)$. If we assume that the slice is a rectangle we get a small
-error (red triangle in image), but we can calculate the slice's area
-$\Delta F$ with the rectangle formula:
+Let's choose some $x$ location and *move* it right by $\Delta x$. Then
+we could calculate the change of area $\Delta A$ in a couple different
+ways:
+
+* $A(x)$ is the area to the beginning of the slice and $A(x + \Delta x)$
+  is the area to the end of the slice, so $\Delta A = A(x+\Delta x)-A(x)$.
+* The $\Delta A$ area looks kind of like an $f(x)$ by $\Delta x$ rectangle,
+  so $\Delta A \approx f(x) \Delta x$. This ignores the area of the red
+  triangle in the image, so it is not precise.
+
+We get this:
 
 math:
-   \Delta F & \approx f(x) \Delta x \\
-   \frac{\Delta F}{\Delta x} & \approx f(x)
+    A(x+\Delta x)-A(x) &\approx f(x)\Delta x \\
+    \frac{A(x+\Delta x)-A(x)}{\Delta x} &\approx f(x)
 
-Now if we make the $\Delta x$ *infinitely* tiny, the red triangle is so
-small compared to $\Delta F$ that we can ignore it:
+The thinner the slice is, the smaller the red triangle-ish area is
+compared to the entire slice area. So, if we make the slice *infinitely*
+thin, we don't need to care about the red area:
 
 math:
-    \frac{dF}{dx} &= f(x) \\
+    \lim_{\Delta x \to 0} \frac{A(x+\Delta x)-A(x)}{\Delta x} &= f(x) \\
+    A'(x) &= f(x)
 
-Yes, this is correct! The derivative of $F$ is $f$. This is precise, so
-we can get rid of $\approx$ and replace it with $=$.
+Yes, this is correct! The derivative of the area function is $f$. This
+is precise, so we can get rid of $\approx$ and replace it with $=$. So,
+if we want to calculate areas all we really need is an antiderivative.
 
-So, if we want to calculate areas all we really need is an antiderivative
-function $F$ so that $F'(x)=f(x)$, and $F(x)$ will be an area to $x$.
+I used $A$ here to denote the antiderivative because $A$ is a letter
+that often describes an area, but a more common style is to say that the
+antiderivative of $f$ is $F$. We'll use this big $F$ style in the rest
+of the tutorial.
 
 asymptote: float:right;
    size(8cm);
@@ -386,13 +397,12 @@ integrate, but the second and third one are something we can do. Let's do the
 third one.
 
 asymptote: float:right;
-    size(8cm);
+    size(7cm);
     real t = 0.9, dt=0.4;  // radians
 
     fill((0,0)--rarc((0,0),1,0,t)--cycle, paleblue);
     fill((0,0)--rarc((0,0),1,t,t+dt)--cycle, palegreen);
     label((cos(t/2)*0.65,sin(t/2)*0.65), L="$A(b)$");
-    label((cos(t+dt/2)*0.75,sin(t+dt/2)*0.75), L=rrotate(t)*"$\Delta A$");
 
     draw((0,0)--(1,0));
     draw((0,0)--(cos(t),sin(t)));
@@ -402,24 +412,31 @@ asymptote: float:right;
     draw(rarc((0,0),1,t+dt,tau));
 
 The green area in the image at right looks kind of like a triangle with
-height $r$ and base $\Delta b$, but the base is annoyingly curvy. If we
-make it smaller, the base gets straighter, so we get this:
+base $\Delta b$ and height $r$. The slice area is $A(b+\Delta b)-A(b)$.
 
 math:
-    \Delta A &\approx \frac{\Delta b \cdot r}{2} \\
-    \frac{\Delta A}{\Delta b} &\approx \frac r 2 \\
-    A'(b) = \frac{dA}{db} &= \frac r 2 \\
-    A(b) &= \int \frac r 2\ db = \frac r 2 b + C
+    A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2} \\
+    \frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx \frac r 2 \\
+    \lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= \frac r 2 \\
+    A'(b) &= \frac r 2 \\
+    A(b) &= \int \frac r 2\ db = \frac{rb}{2} + C
 
 If $b=0$, then $A(b)=0$.
 
-math: A(0) = \frac r 2 0 + C &= 0 \\ C &= 0
+math: A(0) = \frac{r \cdot 0}{2} + C &= 0 \\ C &= 0
 
-math: A(b) = \frac r 2 b
+If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area.
 
-If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area:
+math: A(\tau r) = \frac{r \tau r}{2}+0 = \frac 1 2 \tau r^2 = \pi r^2
 
-math: A(\tau r) = \frac r 2 \tau r = \frac 1 2 \tau r^2 = \pi r^2
+Alternatively, after figuring out $A(b) = \frac{rb}{2}+C$ we could also
+do this:
+
+math:
+    A(\tau r)-A(0)
+    &= \left(\frac{r\cdot\tau r}{2}+C\right)-\left(\frac{r\cdot0}{2}+C\right) \\
+    &= \frac 1 2 \tau r^2 +C-0-C \\
+    &= \frac 1 2 \tau r^2 = \pi r^2
 
 In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
 of some integration because $\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r$.
@@ -488,14 +505,15 @@ asymptote:
     draw((h,0)--(h,r), smalldashes, L="$r$");
     draw(brace((h,-0.2),(0,-0.2)), L="$h$", align=S);
 
-Based on [the graphs page](graphs.html#lines) and [the slope thing on the
-derivative page](derivatives.html#slope), $f(x) = sx$ where the slope is
-$s = \frac{\Delta y}{\Delta x} = \frac r h$. So $f(x)=\frac r h x$.
+Now we can use [the graphs page](graphs.html#lines) and [the slope thing
+on the derivative page](derivatives.html#slope):
 
-Next we need $A(x)$. [Earlier in this chapter](#example-circle-area) we
-figured that the area of a circle is $\pi r^2$ where $r$ is the radius,
-but the green circle's radius is $f(x)$ instead of $r$ so
-$A(x) = \pi (f(x))^2$. Let's do this:
+math: f(x) = sx = \frac{\Delta y}{\Delta x} x = \frac r h x
+
+Next we need $A(x)$. [Above](#example-circle-area) we figured that the
+area of a circle is $\pi r^2$ where $r$ is the radius, but the green
+circle's radius is $f(x)$ instead of $r$ so $A(x) = \pi (f(x))^2$.
+Let's do this:
 
 math:
     \int_0^h A(x) dx
