@@ -144,7 +144,7 @@ Yes, this is correct! The derivative of the area function is $f$. This
 is precise, so we can get rid of $\approx$ and replace it with $=$. So,
 if we want to calculate areas all we really need is an antiderivative.
 
-redbox:
+graybox:
     I used $A$ here to denote the antiderivative because $A$ is a letter
     that often describes an area, but a more common style is to say that
     the antiderivative of $f$ is $F$. We'll use this big $F$ style in
