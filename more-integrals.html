@@ -23,22 +23,24 @@ length is <img class="inlinemath" src="math/3342ab0df235760665c5598015dbea13.png
 that is <img class="inlinemath" src="math/6f2ce0f314269d4876ed5b9c17822cc3.png" />. But that's just a special case. What if
 we want to calculate the length of an arc taken from <i>any</i> <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> graph?</p>
 
-<img class="asymptote" src="asymptote/698e70fadd8063139ef4df830462718f.png" style="float:right;" /><p>Let's assume that <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> <a href="explanations.html#which-functions-have-derivatives">has a
-derivative</a> and
-think about what the change of arc length <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> is when <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />
-changes by <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. As you can see in the picture at right, we can
-apply <a href="geometry-and-trig.html#pythagorean-theorem">the Pythagorean theorem</a>,
-but <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> is measured over a graph that might curve a bit so the
-result is not perfectly accurate. We get this mess:</p>
+<p>Let's assume that <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a function that <a href="explanations.html#which-functions-have-derivatives">has a
+derivative</a>, and say
+that the length of an arc to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/c8680fa208df369c16fc14c68f7d5242.png" />, just like <a href="integrals.html#area-to-x">we did with
+areas</a>. We get this:</p>
 
-<p><img src="math/7183c8c596707327b2d87fdeda3fff47.png" class="blockmath" /></p><p>In the last step I assumed that we moved <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> right so <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> was
-positive, and obviously <img class="inlinemath" src="math/a1b19be32027828ea8bb7bafac75c0d3.png" /> was also positive.</p>
+<p><img class="asymptote" src="asymptote/dccacf3170a6f46771728cd11a782b28.png" /></p><p>Now you can see a little triangle in the picture so we can apply <a href="geometry-and-trig.html#pythagorean-theorem">the
+Pythagorean theorem</a>, but as
+usual, the result is not perfectly accurate because the graph is not
+guaranteed to be straight. We get this mess:</p>
 
-<p>Let's say that the length of an arc to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/c8680fa208df369c16fc14c68f7d5242.png" />, just like <a href="integrals.html#area-to-x">we did
-with areas</a>. The smaller the bit of the curve
-we're looking at, the less curvy it is and the more accurate this is:</p>
+<p><img src="math/8090af808fb55c74089eaa71c13736f5.png" class="blockmath" /></p><p>In the last step I assumed that we moved <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> right so <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> was
+positive, and obviously the change of the arc length <img class="inlinemath" src="math/4d9106417f1df009e3ea664e83d30702.png" />
+was also positive.</p>
 
-<p><img src="math/46d052719a63ffdf41f0488adce045ed.png" class="blockmath" /></p><img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p><br></p>
+<p>The smaller the bit of the curve we're looking at, the less curvy it is
+and the more accurate this is:</p>
+
+<p><img src="math/72e00857bf0df66326d8fc6fe234ef25.png" class="blockmath" /></p><img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p><br></p>
 
 <p><img src="math/f723fbf85b584113d2df604d8099f38c.png" class="blockmath" /></p><p>That took a while, but we're done! This arc length thing is yet another
 one of my favorite math stuff.</p>
@@ -102,21 +104,24 @@ more difficult if the thickness wasn't the same <img class="inlinemath" src="mat
 area like in the image at right. Now everything is quite straight-forward
 and a lot like in <a href="integrals.html#example-circle-area">the circle example</a>.</p>
 
-<p><img src="math/b9d86ba091a339019803be20ae028177.png" class="blockmath" /></p><p><br></p>
+<p><img src="math/364faf56f64f6cd9c99d36bfa896cbcd.png" class="blockmath" /></p><p><br></p>
 
-<p><img src="math/8f1ec120b5a3765f2335109c6c4df154.png" class="blockmath" /></p><p><br></p>
-
-<p><img src="math/341beee3b076588fe973c8e72ed0d6d1.png" class="blockmath" /></p><h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> is. <a href="summary.html#geometry-and-trig">Click
+<p><img src="math/c84681aeeb1d68d877f5b1a201431638.png" class="blockmath" /></p><h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> is. <a href="summary.html#geometry-and-trig">Click
 here</a>
 if you don't.
 </p>
 
-</div><p>The length of the red line in the upper image is <img class="inlinemath" src="math/1b2fc8f73e0763e381b1509cb1f556dd.png" />, so the area
-is <img class="inlinemath" src="math/ad12ead7b2480ae845ef8f122a30b88c.png" />.</p>
+</div><p>So far we have <a href="integrals.html#example-circle-area">calculated a circle area with an
+integral</a>, but now we can do it
+without thinking about any integrals.</p>
 
-<p>Now all we need to do is to make the radius of the center circle 0 like
-in the lower image. Let's se <img class="inlinemath" src="math/3de13055eb2b55dfc6f9d64a2e497198.png" /> and <img class="inlinemath" src="math/4b68fc1a9b800dac41dd92dcba03eb7e.png" />, so we get this:</p>
+<p>This thing's area is obviously <img class="inlinemath" src="math/e4b95ea399c60b5761c728868f4370e4.png" />:</p>
 
-<p><img src="math/c3386d33f31bc9201d56698e1ea38e07.png" class="blockmath" /></p></div>
+<p><img class="asymptote" src="asymptote/49d04478a7ef03c432fbea137bbc0da2.png" /></p><p>If we set <img class="inlinemath" src="math/747fc075c107be74df789384b5aeeb67.png" />, the inner circle's radius becomes 0:</p>
+
+<p><img class="asymptote" src="asymptote/9b1ed15fde987e41f12cf08719fe8368.png" /></p><p>The area is <img class="inlinemath" src="math/bdddbb580b8d4507f4f09aa6636ad12a.png" />.
+</p>
+
+</div>
 </body>
 </html>

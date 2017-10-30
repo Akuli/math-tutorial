@@ -8,10 +8,10 @@
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>Integrals</b></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h1><div class="box redbox"><h2> Warning</h2><p>This chapter assumes that you have a good grasp of derivatives, including
-the ability to recognize that <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> is a derivative whenever you
-see it. I highly recommend reading <a href="derivatives.html">the derivative tutorial</a>
-first.
+<h1 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h1><div class="box redbox"><p>This chapter assumes that you have a good grasp of derivatives, including
+the ability to recognize that <img class="inlinemath" src="math/b1060a92e931578719fe2439a916f5ff.png" />
+is a derivative whenever you see it. I highly recommend reading <a href="derivatives.html">the derivative
+tutorial</a> first.
 </p>
 
 </div><p>There are many practical ways to use derivatives like the game at the end of
@@ -48,25 +48,33 @@ x <span style="color: #666666">=</span> <span style="color: #40a070">1</span>
 <b>10 seconds</b> and I got a precise answer instead of a decimal approximation.
 This chapter is all about how I did that and why it works.</p>
 
-<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/bf548fb4bba9f66717e832a381b61831.png" style="float:right;" /><p>Let's say that our curve is of the form <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a
+<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/3789da55e37445ff5d17806fd865fee9.png" style="float:right;" /><p>Let's say that our curve is of the form <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a
 <a href="explanations.html#which-functions-have-derivatives">continuous</a>
-function. Maybe we could find out what the area <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> is under the
+function. Maybe we could find out what the Area <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> is under the
 curve between 0 and <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />?</p>
 
-<p>Let's imagine that we choose some <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> location and <i>move</i> it right by
-<img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. Then the area grows by a slice of width <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> and
-height <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" />. If we assume that the slice is a rectangle we get a small
-error (red triangle in image), but we can calculate the slice's area
-<img class="inlinemath" src="math/a4bc0985744caf49a4893e42cc5c24b2.png" /> with the rectangle formula:</p>
+<p>Let's choose some <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> location and <i>move</i> it right by <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. Then
+we could calculate the change of area <img class="inlinemath" src="math/30eaa39b08a11bf0f9745efda6f9e55c.png" /> in a couple different
+ways:</p>
 
-<p><img src="math/116aac444653c2190f9cfb1e50ea785a.png" class="blockmath" /></p><p>Now if we make the <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> <i>infinitely</i> tiny, the red triangle is so
-small compared to <img class="inlinemath" src="math/a4bc0985744caf49a4893e42cc5c24b2.png" /> that we can ignore it:</p>
+<ul><li><img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" /> is the area to the beginning of the slice and <img class="inlinemath" src="math/713a822f4c8384976a57219e37425533.png" />
+  is the area to the end of the slice, so <img class="inlinemath" src="math/14dbfcbfdfffdf0ddf57d2289e3cf81e.png" />.</li><li>The <img class="inlinemath" src="math/30eaa39b08a11bf0f9745efda6f9e55c.png" /> area looks kind of like an <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> by <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> rectangle,
+  so <img class="inlinemath" src="math/80fdc22417e6a977dec202291e2c4b50.png" />. This ignores the area of the red
+  triangle in the image, so it is not precise.
+</li></ul><p>We get this:</p>
 
-<p><img src="math/eab87df2d4b9c3fb1f83eb9bbfb3a9f0.png" class="blockmath" /></p><p>Yes, this is correct! The derivative of <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> is <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />. This is precise, so
-we can get rid of <img class="inlinemath" src="math/fb4f353ef9a72c24566678c957a5ae9f.png" /> and replace it with <img class="inlinemath" src="math/43ec3e5dee6e706af7766fffea512721.png" />.</p>
+<p><img src="math/d9e517890c93177b8a8a38ceeb8bdb97.png" class="blockmath" /></p><p>The thinner the slice is, the smaller the red triangle-ish area is
+compared to the entire slice area. So, if we make the slice <i>infinitely</i>
+thin, we don't need to care about the red area:</p>
 
-<p>So, if we want to calculate areas all we really need is an antiderivative
-function <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> so that <img class="inlinemath" src="math/45e93d791033f046d3e15b12c566df97.png" />, and <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> will be an area to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+<p><img src="math/fe25ff8d6cb4fb542cf7a91bfdf3c94a.png" class="blockmath" /></p><p>Yes, this is correct! The derivative of the area function is <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />. This
+is precise, so we can get rid of <img class="inlinemath" src="math/fb4f353ef9a72c24566678c957a5ae9f.png" /> and replace it with <img class="inlinemath" src="math/43ec3e5dee6e706af7766fffea512721.png" />. So,
+if we want to calculate areas all we really need is an antiderivative.</p>
+
+<p>I used <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> here to denote the antiderivative because <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> is a letter
+that often describes an area, but a more common style is to say that the
+antiderivative of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" />. We'll use this big <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> style in the rest
+of the tutorial.</p>
 
 <img class="asymptote" src="asymptote/a43eb04844e5faeccc3b18a7c755cb48.png" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
 <a href="summary.html#derivative-rules">the derivative rules on the summary page</a> was this:</p>
@@ -156,15 +164,17 @@ a bunch of these little area slices. The first one is the most difficult to
 integrate, but the second and third one are something we can do. Let's do the
 third one.</p>
 
-<img class="asymptote" src="asymptote/f8f3101e526df608e7f02b13f3fa6b49.png" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
-height <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> and base <img class="inlinemath" src="math/596c0cc2af83f55173d257517e8f1c47.png" />, but the base is annoyingly curvy. If we
-make it smaller, the base gets straighter, so we get this:</p>
+<img class="asymptote" src="asymptote/9182d7d00470be4f039f4ba058182934.png" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
+base <img class="inlinemath" src="math/596c0cc2af83f55173d257517e8f1c47.png" /> and height <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" />. The slice area is <img class="inlinemath" src="math/b9c24eca2457da0483523b47844ffc57.png" />.</p>
 
-<p><img src="math/003d254edb7ed2461c1e83970617b51a.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/f6d5eef5ee5e51fc839bb54201c62e3b.png" />, then <img class="inlinemath" src="math/cd264c9a404a0909b55924e5f7ffdf05.png" />.</p>
+<p><img src="math/a49d9fb9b8f2bd730249d74aa1f40265.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/f6d5eef5ee5e51fc839bb54201c62e3b.png" />, then <img class="inlinemath" src="math/cd264c9a404a0909b55924e5f7ffdf05.png" />.</p>
 
-<p><img src="math/f62ff0f3fb4dc9e59be5dacc5730b54d.png" class="blockmath" /></p><p><img src="math/ab9d0cd2cc81f590e8e13c2cb338441e.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the whole perimeter <img class="inlinemath" src="math/24ed1d8bda9032a2bc7f9cdc1dc6306b.png" />, then <img class="inlinemath" src="math/539437a02c5885c575788009383e96c8.png" /> is the circle area:</p>
+<p><img src="math/2c7e1aca3a756e6a3b1183d8ab59c10d.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the whole perimeter <img class="inlinemath" src="math/24ed1d8bda9032a2bc7f9cdc1dc6306b.png" />, then <img class="inlinemath" src="math/539437a02c5885c575788009383e96c8.png" /> is the circle area.</p>
 
-<p><img src="math/7049798f8bfa5ed0acb9c612cab73cf7.png" class="blockmath" /></p><p>In general, if you see something like <img class="inlinemath" src="math/8f8065fbcbb5fb697d80d3f18c4c73e1.png" /> it's possibly the result
+<p><img src="math/c0879dec696f2fe3ea9412c8f1c9fe66.png" class="blockmath" /></p><p>Alternatively, after figuring out <img class="inlinemath" src="math/b44b1277f6a3f46e485e72d752427065.png" /> we could also
+do this:</p>
+
+<p><img src="math/888f7e80378213a22289f109e2f7a023.png" class="blockmath" /></p><p>In general, if you see something like <img class="inlinemath" src="math/8f8065fbcbb5fb697d80d3f18c4c73e1.png" /> it's possibly the result
 of some integration because <img class="inlinemath" src="math/b09ff48623072588b9f4a0fa6368257b.png" />.
 The <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> form kind of hides the integration because <img class="inlinemath" src="math/d5bd00eca82ed85e3d222a898fa864d6.png" />,
 but rewriting it with <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> makes everything clear. On the other hand,
@@ -185,14 +195,13 @@ figure out how to calculate the <img class="inlinemath" src="math/7852db5d43d5ab
 
 <p>Let's start by drawing <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> in a 2D plane without the 3D stuff:</p>
 
-<p><img class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.png" /></p><p>Based on <a href="graphs.html#lines">the graphs page</a> and <a href="derivatives.html#slope">the slope thing on the
-derivative page</a>, <img class="inlinemath" src="math/d53d1fb5ddf109b3c49961503984cfe2.png" /> where the slope is
-<img class="inlinemath" src="math/b5093232bcabf30661aaa4a2735e22e8.png" />. So <img class="inlinemath" src="math/9d85915cfd460b8acfb877cef7f4f1fd.png" />.</p>
+<p><img class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.png" /></p><p>Now we can use <a href="graphs.html#lines">the graphs page</a> and <a href="derivatives.html#slope">the slope thing
+on the derivative page</a>:</p>
 
-<p>Next we need <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />. <a href="#example-circle-area">Earlier in this chapter</a> we
-figured that the area of a circle is <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius,
-but the green circle's radius is <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> instead of <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> so
-<img class="inlinemath" src="math/c93d0e79220938675ad742072bdd4299.png" />. Let's do this:</p>
+<p><img src="math/56cd907b263cae53c77fe1352f060f4e.png" class="blockmath" /></p><p>Next we need <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />. <a href="#example-circle-area">Above</a> we figured that the
+area of a circle is <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius, but the green
+circle's radius is <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> instead of <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> so <img class="inlinemath" src="math/c93d0e79220938675ad742072bdd4299.png" />.
+Let's do this:</p>
 
 <p><img src="math/47dbd74b9f7e4aeb4bfa413b917e81fd.png" class="blockmath" /></p><img class="asymptote" src="asymptote/d2ec8c7a1acd9e034294badf961e3e6a.png" style="float:right;" /><p>That was a mess, but we're almost done!</p>
 
