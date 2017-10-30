@@ -456,6 +456,13 @@ graybox: Problem
     <small>The image comes from [this wikimedia
     page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
+So far we have integrated a bunch of slices and we got areas. An area is
+kind of like a bunch of infinitely narrow height slices stacked
+together, and we can calculate them with integrals.
+
+[A volume](basics.html#volumes) is like a bunch of area slices stacked
+together, so if we integrate areas we get a volume.
+
 asymptote3d: float:right;
    size(11cm);
    import three;
@@ -487,10 +494,9 @@ asymptote3d: float:right;
    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
    draw(path3(brace((the_x,f(the_x)),(the_x,0), amplitude=0.2)), L="$f(x)$", align=E);
 
-Integrals are not actually limited to calculating areas in any way. If you look
-at the image, the total volume is $\int_0^h A(x) dx$. Now we just need to
-figure out how to calculate the $A(x)$, and for that we need to know what
-$f(x)$ is.
+If you look at the image, the total volume is $\int_0^h A(x) dx$. Now we
+just need to figure out how to calculate the $A(x)$, and for that we
+need to know what $f(x)$ is.
 
 Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:
 
