@@ -456,12 +456,12 @@ graybox: Problem
     <small>The image comes from [this wikimedia
     page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
-So far we have integrated a bunch of slices and we got areas. An area is
-kind of like a bunch of infinitely narrow height slices stacked
+So far we have integrated a bunch of $f(x)$ slices and we got areas. An
+area is kind of like a bunch of infinitely thin height slices stacked
 together, and we can calculate them with integrals.
 
-[A volume](basics.html#volumes) is like a bunch of area slices stacked
-together, so if we integrate areas we get a volume.
+[A volume](basics.html#volumes) is like a bunch of thin area slices
+stacked together, so if we integrate areas we get a volume.
 
 asymptote3d: float:right;
    size(11cm);
