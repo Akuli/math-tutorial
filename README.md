@@ -48,7 +48,7 @@ instructions for every possible platform.
     drawings. You can either google for a "correct" solution or use this
     horribly dangerous brute-force thing I used:
 
-        $ sudo chmod 777 /dev/dri /dev/dri/*
+        $ sudo chmod 777 /dev/dri/card0
 
     Compiling 3D images still fails randomly. Run the build script multiple
     times until it succeeds. When it has succeeded once the 3D images are in
