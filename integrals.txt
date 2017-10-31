@@ -173,6 +173,12 @@ Let's go back to our original problem. One of
 
 math: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
 
+So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
+But how about $F(x) = \sqrt x + 1$? Its derivative is also
+$\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
+$\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
+know that $F(x) = \sqrt x + C$ where $C$ is a constant.
+
 asymptote: float:right;
    size(9cm);
 
@@ -192,12 +198,6 @@ asymptote: float:right;
    label("$a$", (a,0), align=S);
    label("$b$", (b,0), align=S);
    label("$F(a)$", (a/2, 0), align=N);
-
-So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
-But how about $F(x) = \sqrt x + 1$? Its derivative is also
-$\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
-$\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
-know that $F(x) = \sqrt x + C$ where $C$ is a constant.
 
 Let's try to calculate our area:
 
@@ -456,12 +456,59 @@ graybox: Problem
     <small>The image comes from [this wikimedia
     page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
-So far we have integrated a bunch of $f(x)$ slices and we got areas. An
-area is kind of like a bunch of infinitely thin height slices stacked
-together, and we can calculate them with integrals.
+Integrals are actually not limited to areas, and going 3D is relatively
+straight-forward. Here $V(x)$ represents the volume to $x$.
 
-[A volume](basics.html#volumes) is like a bunch of thin area slices
-stacked together, so if we integrate areas we get volumes.
+asymptote3d: float:left;
+    size(10cm);
+
+    currentprojection = perspective(camera=(6,2,10), up=Y);
+    real f(real x) { return sin(x)+1.5; }
+    real a=0, the_x=2;
+    axises3d(-2,the_x+2,-4,4,0,0);
+
+    pen graphpen=yellow, slicepen=red+opacity(0.7);
+    draw(surface(path3(graph(f,a,the_x)), c=O, axis=X), graphpen);
+    draw(surface((the_x,0,0)--(the_x,f(the_x),0), c=O, axis=X), slicepen);
+
+    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
+    label(ZY()*"$A(x)$", (the_x+0.05,0,0.1), white, align=S);
+
+    triple[] arrowends={(1.5,0.7,0),(3.5,2,0)};
+    draw(arrowends[0]--arrowends[1]);
+    label(arrowends[1], L="$V(x)$", align=NE);
+
+asymptote3d: float:left;
+    size(10cm);
+
+    currentprojection = perspective(camera=(3,2,10), up=Y);
+    real f(real x) { return sin(x)+1.5; }
+    real a=0, b=5, the_x=2, dx=0.5;
+    axises3d(-1,b+1,-3,4,0,0);
+
+    pen graphpen=yellow, slicepen=red+opacity(0.6);
+
+    draw(surface(path3(graph(f,a,the_x)), c=O, axis=X), graphpen);
+    draw(surface(path3(graph(f,the_x+dx,b)), c=O, axis=X), graphpen);
+
+    draw(surface(path3((the_x,f(the_x))--(the_x+dx,f(the_x))), c=O, axis=X), slicepen);
+    draw(surface((the_x,0,0)--(the_x,f(the_x),0), c=O, axis=X), slicepen);
+    draw(surface((the_x+dx,0,0)--(the_x+dx,f(the_x),0), c=O, axis=X), slicepen);
+
+    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
+    label(XY()*"$\Delta x$", (the_x+dx/2,f(the_x),0), align=N);
+
+<div style="clear:both;"></div>
+
+We get this stuff that looks a lot like our area stuff above:
+
+math:
+    V(x+\Delta x)-V(x) &\approx A(x) \cdot \Delta x \\
+    \frac{V(x+\Delta x)-V(x)}{\Delta x} &\approx A(x) \\
+    \lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x) \\
+    V'(x) &= A(x)
+
+math: V(b)-V(a) = \left[V(x)\right]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx
 
 asymptote3d: float:right;
    size(11cm);
@@ -494,10 +541,8 @@ asymptote3d: float:right;
    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
    draw(path3(brace((the_x,f(the_x)),(the_x,0), amplitude=0.2)), L="$f(x)$", align=E);
 
-If you look at the image, the total volume is $\int_0^h A(x) dx$. Now we
-just need to figure out how to calculate the $A(x)$, and for that we
-need to know what $f(x)$ is.
-
+Let's solve our VLC problem. If you look at the image at right, all we
+really need is $A(x)$, but for that we need to know what $f(x)$ is.
 Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:
 
 asymptote:
