@@ -2,7 +2,8 @@
 
 redbox:
     This chapter assumes that you have a good grasp of derivatives, including
-    the ability to recognize that $\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$
+    the ability to recognize that
+    $\displaystyle\lim_{\Delta x \to0}\textstyle\frac{f(x+\Delta x)-f(x)}{\Delta x}$
     is a derivative whenever you see it. I highly recommend reading [the derivative
     tutorial](derivatives.html) first.
 
