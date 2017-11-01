@@ -327,15 +327,15 @@ math:
 ## Integrating with Python
 
 Of course, [sympy](http://www.sympy.org) does integrals really nicely.
+It doesn't add $+C$ for some reason, so you need to remember it
+yourself. The $+C$ is not just some useless gibberish that you need to
+remember just because it's annoying, and sometimes forgetting it would
+screw things up (see the jump example below).
 
 code: python3
     >>> from sympy import *
     >>> init_printing()
     >>> x = Symbol('x')
-    >>> integrate(1/(2*sqrt(x)), x)
-    √x
-    >>> integrate(sqrt(x), x)
-    KeyboardInterrupt
     >>> integrate(1/(2*sqrt(x)), x)
     √x
     >>> integrate(1/(2*sqrt(x)), (x, 1, 2))     # area between x=1 and x=2
@@ -346,8 +346,8 @@ code: python3
     ──────
       3   
 
-The answers are sometimes in a different form than how I wrote them in
-this tutorial, but they are still correct. For example:
+Sometimes the answers look different than the answers we ended up with,
+but they are still correct. For example:
 
 math:
     \frac{2x^{3/2}}{3}
