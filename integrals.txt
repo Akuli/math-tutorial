@@ -2,7 +2,8 @@
 
 redbox:
     This chapter assumes that you have a good grasp of derivatives, including
-    the ability to recognize that $\displaystyle\lim_{h\to0}\frac{f(x+h)-f(x)}{h}$
+    the ability to recognize that
+    $\displaystyle\lim_{\Delta x \to0}\textstyle\frac{f(x+\Delta x)-f(x)}{\Delta x}$
     is a derivative whenever you see it. I highly recommend reading [the derivative
     tutorial](derivatives.html) first.
 
@@ -456,8 +457,8 @@ graybox: Problem
     <small>The image comes from [this wikimedia
     page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
-Integrals are actually not limited to areas, and going 3D is relatively
-straight-forward. Here $V(x)$ represents the volume to $x$.
+Integrals are actually not limited to areas, and they also work nicely
+with 3D stuff. Here $V(x)$ represents the volume to $x$.
 
 asymptote3d: float:left;
     size(10cm);
@@ -496,7 +497,12 @@ asymptote3d: float:left;
     draw(surface((the_x+dx,0,0)--(the_x+dx,f(the_x),0), c=O, axis=X), slicepen);
 
     draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
-    label(XY()*"$\Delta x$", (the_x+dx/2,f(the_x),0), align=N);
+    draw(path3(brace((the_x,f(the_x)),(the_x+dx,f(the_x)), amplitude=0.2)),
+         L="$\Delta x$", align=N);
+
+    triple[] arrowends={(the_x+0.7dx, f(the_x+dx),0),(3.5,2.5,0)};
+    draw(arrowends[0]--arrowends[1]);
+    label(arrowends[1], L="$A(x) \cdot \Delta x$", align=E);
 
 <div style="clear:both;"></div>
 
