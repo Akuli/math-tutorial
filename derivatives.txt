@@ -7,8 +7,8 @@ isolated from real life, and there's a practical demonstration about how
 they are useful at the end of the chapter.
 
 graybox:
-    The limit and slope stuff is kind of boring, but we need them for
-    the fun stuff. Try to read patiently.
+    This chapter starts with some boring stuff, but we need it for fun
+    stuff. Try to read patiently.
 
 ## Limits
 
@@ -49,7 +49,7 @@ math:
 I won't list all the things we can do to limits and why because the
 rules are quite straight-forward and the why part is boring.
 
-## What is a derivative?
+## Slopes
 
 A *difference* means how much a value changes. For example, if the value of $x$
 is first 5 and then we change it to 6, $x$ changes by $\Delta x = 1$. Here
@@ -88,6 +88,8 @@ The bigger the slope, the faster the line goes up, so the slope describes the
 $(3,7)$ when calculating the slope, but you should get the same slope with any
 pair of points chosen from the line because the height grows at the same speed
 everywhere.
+
+## What is a derivative?
 
 asymptote: float:right;
     size(10cm);
@@ -217,7 +219,6 @@ got out of a spooky calculation; for example, at $x=2$ the derivative is
 $2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
 $x=2$ its slope will also be 4 like in the image at right.
 
-(derivative-is-slope)
 You can also find the derivative of the $y=2x+1$ example we looked at earlier,
 and turns out that it's 2, just like the slope was. This makes sense because
 derivatives are like slopes but they also work with curvy things, and there's no
@@ -260,7 +261,8 @@ math:
     &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
     &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
     &= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right)\\
-    &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} + \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
+    &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
+     + \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
     &= \frac{d}{dx} f(x) + \frac{d}{dx} g(x)
 
 That's quite nice! So if we want to find the derivative of a bunch of
@@ -282,7 +284,7 @@ There are a couple more things we need: $\frac{d}{dx}(cx)=c$ because if
 $x$ is incremented by something then $cx$ increments $c$ times as much,
 and $\frac{d}{dx} c = 0$ because $c$ never changes regardless of the
 value of $x$. You can also use the definition of derivative to show that
-these work.
+these work, [like this](explanations.html#derivative-rules).
 
 So, with all that we can calculate the derivative easily:
 
@@ -425,7 +427,7 @@ canvasdemo:
    const GRAVITY = 1.5;
    var ball = {
      x: screen.width/2,    // centered
-     height: 0,            // distance from bottom of screen to player's bottom
+     height: 0,            // distance from bottom of screen to ball's bottom
      velocity: 0,          // positive means up
      velocityMax: 30,      // velocity immediately after a jump
      sidewayMovement: 0,   // -1 is left, +1 right
