@@ -14,7 +14,42 @@ out to be surprisingly easy. Derivatives are also not useless gibberish
 isolated from real life, and there's a practical demonstration about how
 they are useful at the end of the chapter.</p>
 
-<h2 id="what-is-a-derivative">What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Link to this title">¶</a></h2><p>A <i>difference</i> means how much a value changes. For example, if the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />
+<div class="box graybox"><p>This chapter starts with some boring stuff, but we need it for fun
+stuff. Try to read patiently.
+</p>
+
+</div><h2 id="limits">Limits<a class="headerlink" href="#limits" title="Link to this title">¶</a></h2><p>Things like <img class="inlinemath" src="math/e79208a155b9fba922dec6f01012e023.png" /> seem to be <img class="inlinemath" src="math/c81e728d9d4c2f636f067f89cc14862c.png" /> with any <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />. But there's one
+exception: if <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />, then <img class="inlinemath" src="math/e79208a155b9fba922dec6f01012e023.png" /> is <img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" /> and thus not
+defined.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">123</span><span style="color: #666666">/</span><span style="color: #40a070">123</span>
+<span style="color: #888888">2.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">0</span><span style="color: #666666">/</span><span style="color: #40a070">0</span>
+<span style="color: #0044DD">Traceback (most recent call last):</span>
+  File <span style="color: #007020">&quot;&lt;stdin&gt;&quot;</span>, line <span style="color: #40a070">1</span>, in &lt;module&gt;
+<span style="color: #FF0000">ZeroDivisionError</span>: division by zero
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">0.00000001</span><span style="color: #666666">/</span><span style="color: #40a070">0.00000001</span>
+<span style="color: #888888">2.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span>(<span style="color: #666666">-</span><span style="color: #40a070">0.00000001</span>)<span style="color: #666666">/</span>(<span style="color: #666666">-</span><span style="color: #40a070">0.00000001</span>)
+<span style="color: #888888">2.0</span>
+</pre></div>
+<p>No matter how near zero <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is we get 2, even if <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is negative. In
+these cases, mathematicians say that
+<img class="inlinemath" src="math/548e78554c5048acec7450b85a998151.png" />. Here lim means
+that we take the <i>limit</i> as <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> goes to 0. We get <img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" /> if we try
+to do <img class="inlinemath" src="math/b59436751a0f85be782577e5451e5b94.png" />, but the limit still exists.</p>
+
+<p>The limit does not exist if we get something like <img class="inlinemath" src="math/262e8067abc6ee8ec91bae4791deb4e5.png" /> or
+<img class="inlinemath" src="math/38651be9fe9075037cf34de2b76b9aaa.png" /> as opposed to <img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" />. See <a href="https://youtu.be/BRRolKTlF6Q?t=2m57s">this
+video</a> for a really nice example
+that also shows why.</p>
+
+<p>We can also do things like this:</p>
+
+<p><img src="math/f508b456188fe58bcdc8a064621df7bc.png" class="blockmath" /></p><p>I won't list all the things we can do to limits and why because the
+rules are quite straight-forward and the why part is boring.</p>
+
+<h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>A <i>difference</i> means how much a value changes. For example, if the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />
 is first 5 and then we change it to 6, <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> changes by <img class="inlinemath" src="math/9e48412271eff0650ed355cbedce7457.png" />. Here
 <img class="inlinemath" src="math/967878d1da852d4b07a961e3168b0fff.png" /> is the Greek delta letter, so if someone's code has a variable named
 <code>deltax</code> it means this.</p>
@@ -22,7 +57,7 @@ is first 5 and then we change it to 6, <img class="inlinemath" src="math/9dd4e46
 <p id="slope">Let's draw a graph of something like <img class="inlinemath" src="math/4a8fccb45ff2a0ad548464d92965d3b3.png" />:
 </p>
 
-<p><img class="asymptote" src="asymptote/ad32fef189432e5b6695b49c230b0855.png" /></p><p>For example, at <img class="inlinemath" src="math/5870bb658ee9e8a6900c138365d64c80.png" /> we know that <img class="inlinemath" src="math/33a88fa3fde50b0440190113c0bbd932.png" />.</p>
+<p><img class="asymptote" src="asymptote/658b8e18cb886d602ec57f584063b949.png" /></p><p>For example, at <img class="inlinemath" src="math/5870bb658ee9e8a6900c138365d64c80.png" /> we know that <img class="inlinemath" src="math/33a88fa3fde50b0440190113c0bbd932.png" />.</p>
 
 <p>Let's calculate the <b>slope</b> of this line:</p>
 
@@ -32,73 +67,78 @@ is first 5 and then we change it to 6, <img class="inlinemath" src="math/9dd4e46
 pair of points chosen from the line because the height grows at the same speed
 everywhere.</p>
 
-<p>The <b>derivative</b> <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> <b>is also a "changing speed"</b>, but <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" />
-instead of <img class="inlinemath" src="math/967878d1da852d4b07a961e3168b0fff.png" /> means that the changes we use for calculating derivatives
-are <i>infinitely</i> tiny. You might be worried about calculating the
-<img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> because if <img class="inlinemath" src="math/f80d7db2dcc93f2c6d9559bb373715c2.png" /> then we're dividing by zero, but <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is not
-zero; it's just really, really small.</p>
+<h2 id="what-is-a-derivative">What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/43594100434e615b4b3437202c444388.png" style="float:right;" /><p>What if we could extend this slope thing to curvy graphs? At first sight it
+might seem like we won't get a useful growing speed out of this because we get
+different slopes depending on which points we choose as shown in the image at
+right.</p>
 
-<p>If the graph is not a straight line, we get different <img class="inlinemath" src="math/d87922a765f12f89c3c4acbaaf5e468c.png" />
-ratios depending on which points we choose for calculating <img class="inlinemath" src="math/7f5a0c1aa836580b7c14bcd90384f9c9.png" /> and
-<img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> is not the same number everywhere,
-but let's try to figure out how to calculate it anyway.</p>
+<p>But what if we try to get the growing speed at some specific point, like
+<img class="inlinemath" src="math/62e62b09682343672422866bb5bbf021.png" />
+instead of a plain <img class="inlinemath" src="math/d87922a765f12f89c3c4acbaaf5e468c.png" />? Let's see what we get
+from a <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> graph where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a function:</p>
 
-<img class="asymptote" src="asymptote/6eb2ea6417cbb27687f37f7ca5b829e0.png" style="float:right;" /><p>Let's look at <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> and <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> of the graph <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" />, where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> can be any
-function that has a derivative. Most functions you'll come across have a
-derivative; if you want to know more, <a href="explanations.html#which-functions-have-derivatives">click
-here</a>.</p>
+<p><img class="asymptote" src="asymptote/850c13f0c13e3b03f1e0b31c7c4a47d0.png" /></p><p>Based on the image, if we take the length of the vertical <img class="inlinemath" src="math/a85f5dcfe160d24aba738b5a4cd06278.png" />
+line and take off the length of the <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> line, we're left with just
+<img class="inlinemath" src="math/7f5a0c1aa836580b7c14bcd90384f9c9.png" />. So <img class="inlinemath" src="math/ee5c9d2768444130ea3dd559ac8dbc0d.png" />:</p>
 
-<p>The image at right seems to say that <img class="inlinemath" src="math/ea9c37cbce8a07d1c2b66b335f9ee046.png" />. Let's try to solve
-<img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> (see <a href="basics.html#equations">the equation thing on the basics
-page</a>):</p>
+<p><img src="math/544f2fd514e8e7e23312a0488fb2c45e.png" class="blockmath" /></p><p>I finished by replacing <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> with <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> because <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> is easier and
+faster to write than <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />.</p>
 
-<p><img src="math/8e8078dad52edd1920af0de16a17e390.png" class="blockmath" /></p><p>Most mathematicians don't like the above formula because <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is a
-"small number" and it isn't really clear how it behaves in different
-situations. Here's a better definition:</p>
+<p>This "growing speed at x" value is known as <b>the derivative</b> of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />.
+Sometimes the derivative doesn't exist, but most functions you'll come
+across have the derivative. <a href="explanations.html#which-functions-have-derivatives">Click
+here</a> if you want to
+know more.</p>
 
-<p><img src="math/16e9125c53f45cf8799912372a4f991e.png" class="blockmath" /></p><p>The <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" /> thing means that we take the <b>limit</b> as <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> goes to 0. It's
-essentially same as our <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> thing, but more explicit and better defined in
-some corner cases.
+<div class="box graybox"><p>At this point you're probably feeling like this is just some
+theorethical gibberish that has nothing to do with real life, but
+that's not the case. Keep reading.
 </p>
 
-<h2 id="first-example">First Example<a class="headerlink" href="#first-example" title="Link to this title">¶</a></h2><p><a href="graphs.html#parabolas">The graph <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> is a parabola.</a>
-Let's find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> by plugging in <img class="inlinemath" src="math/7f185b1869db0b3bcc5f8479a9bd558d.png" /> to the
-definition we ended up with. If we just try to evaluate it at <img class="inlinemath" src="math/2ba1b3acb05d4cc60dedf59890f964f6.png" /> we get
-<img class="inlinemath" src="math/8b9d8d4766e2abc43d0f572d2a9edba7.png" /> so you might think that we need to evaluate it at e.g.
-<img class="inlinemath" src="math/f58d3c05a36f8dee4d96f8874be9f16e.png" />, but we don't! Have a look:</p>
+</div><p><a href="graphs.html#parabolas">The graph <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> is a parabola.</a>
+Let's find the derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> by plugging in <img class="inlinemath" src="math/d271cedde6675e55152d3c7a4236f775.png" /> to the lim
+thing we ended up with:</p>
 
 <div class="floatingbox"><h2> Handy thing: <img class="inlinemath" src="math/838cec74357a4c7c5a4066b808f3b8c9.png" /></h2><p>Proof:</p>
 
-<p><img src="math/ddcbae6858f01dea09f1b9c724ebd03d.png" class="blockmath" /></p></div><p><img src="math/94c0024f50df59854ddb41cae5ef8b3b.png" class="blockmath" /></p><img class="asymptote" src="asymptote/70d42219b1c46cc9f2f1a3ae567da8ef.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
+<p><img src="math/ddcbae6858f01dea09f1b9c724ebd03d.png" class="blockmath" /></p></div><p><img src="math/58fcace29f5a876dcfb86021eaacf58e.png" class="blockmath" /></p><img class="asymptote" src="asymptote/70d42219b1c46cc9f2f1a3ae567da8ef.png" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
 we arrived at just <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" />. What's more, the <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" /> is not just a random value we
 got out of a spooky calculation; for example, at <img class="inlinemath" src="math/566162f3afaf9f5f67e7d7ca7a4b424e.png" /> the derivative is
 <img class="inlinemath" src="math/a516b4ec389fe440150f7c6412631ab8.png" />, so if we draw a straight line that barely touches <img class="inlinemath" src="math/6e3935bb1907e05aef6649527518e040.png" /> at
 <img class="inlinemath" src="math/566162f3afaf9f5f67e7d7ca7a4b424e.png" /> its slope will also be 4 like in the image at right.</p>
 
-<p id="derivative-is-slope">You can also find the derivative of the <img class="inlinemath" src="math/45046de61b285009b23590450000d87f.png" /> example we looked at earlier,
-and turns out that <img class="inlinemath" src="math/5666c048c3e6aeb894ef9de1e903de20.png" />. It makes sense
-because derivatives are just like slopes but they also work with curvy things,
-and there's no difference between a slope and a derivative of a straight line.
-</p>
+<p>You can also find the derivative of the <img class="inlinemath" src="math/45046de61b285009b23590450000d87f.png" /> example we looked at earlier,
+and turns out that it's 2, just like the slope was. This makes sense because
+derivatives are like slopes but they also work with curvy things, and there's no
+difference between a slope and a derivative of a straight line.</p>
 
-<div class="box graybox"><h2> Note</h2><p>The derivative <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" /> can be also written as <img class="inlinemath" src="math/7bdae2eac1d9ea96203e434aa509bbe9.png" />,
-although it doesn't make much sense because <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> doesn't mean <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" /> times <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />.</p>
+<div class="box graybox"><p>The derivative <img class="inlinemath" src="math/77e1c527f603347ff0967b6be96f1b24.png" />
+is often written as <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" />. Historically <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> and <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> were
+infinitely tiny changes of <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> and <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />, but nowadays limits are
+preferred over "infinitely small numbers".</p>
 
-<p>Another common style is to put a single quote after a function name, like
-<img class="inlinemath" src="math/e3e396b27470ebc2f29600ab5e1b8d3e.png" />.
+<p>It's also common to write <img class="inlinemath" src="math/7bdae2eac1d9ea96203e434aa509bbe9.png" /> instead of <img class="inlinemath" src="math/3baffd623d24688b6229e8808f4dd24a.png" />,
+although it doesn't make much sense because <img class="inlinemath" src="math/8e7dd5d3e76aa952e21999a5537dcffb.png" /> doesn't mean <img class="inlinemath" src="math/8277e0910d750195b448797616e091ad.png" /> times <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />.
+Another common style is to put a single quote after a function name, like
+<img class="inlinemath" src="math/e3e396b27470ebc2f29600ab5e1b8d3e.png" />.</p>
+
+<p>Sometimes programmers write <code>dy</code> when they really mean <code>deltay</code>.
+It doesn't really make sense either, but <code>dy</code> is much less typing
+than <code>deltay</code>.
 </p>
 
 </div><h2 id="faster">Faster!<a class="headerlink" href="#faster" title="Link to this title">¶</a></h2><p>Let's say that you want to calculate something like this:</p>
 
 <p><img src="math/2fe7fd6a1b19e0df69a1154e39f489f4.png" class="blockmath" /></p><p>That would be a horribly complicated calculation with the <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" /> thing.
-Let's be a bit more clever. We have a bunch of things being added and
-substracted together, so maybe we could deal with them somehow? Let's
-say that we want to find the derivative of <img class="inlinemath" src="math/f070deff5c0629450c5a975b58c3c33a.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" />
-can be any functions (as long as the derivative exists). They could be
-for example <img class="inlinemath" src="math/27951896440f1f87773079e66afc3ea5.png" /> and <img class="inlinemath" src="math/a623a9aa12f51bf5ab3f5f20ca4cb14c.png" />, but let's see what we get if
-we don't plug in any values:</p>
+Let's be a bit more clever.</p>
 
-<p><img src="math/de8998c9b2d2b4b8468f8c188b445e7a.png" class="blockmath" /></p><p>That's quite nice! So if we want to find the derivative of a bunch of
+<p>We have a bunch of things with <img class="inlinemath" src="math/26b17225b626fb9238849fd60eabdf60.png" /> and <img class="inlinemath" src="math/336d5ebc5436534e61d16e63ddfca327.png" /> in between, so maybe we could
+deal with them somehow? Let's say that we want to find the derivative of
+<img class="inlinemath" src="math/f070deff5c0629450c5a975b58c3c33a.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> can be any functions (as long as the
+derivative exists). They could be for example <img class="inlinemath" src="math/27951896440f1f87773079e66afc3ea5.png" /> and
+<img class="inlinemath" src="math/a623a9aa12f51bf5ab3f5f20ca4cb14c.png" />, but let's see what we get if we don't plug in any values:</p>
+
+<p><img src="math/50b1fdd58d292ba0daa747f017ecae6d.png" class="blockmath" /></p><p>That's quite nice! So if we want to find the derivative of a bunch of
 things added together we can just find derivatives of each thing one by
 one. The same thing also works with <img class="inlinemath" src="math/336d5ebc5436534e61d16e63ddfca327.png" /> instead of <img class="inlinemath" src="math/26b17225b626fb9238849fd60eabdf60.png" />·</p>
 
@@ -109,7 +149,7 @@ where <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />
 <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is incremented by something then <img class="inlinemath" src="math/0bdff8095c8bf1b38775bf35547a1317.png" /> increments <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> times as much,
 and <img class="inlinemath" src="math/f9c4786fe3ccde95486b27617a82ed28.png" /> because <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> never changes regardless of the
 value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />. You can also use the definition of derivative to show that
-these work.</p>
+these work, <a href="explanations.html#derivative-rules">like this</a>.</p>
 
 <p>So, with all that we can calculate the derivative easily:</p>
 
@@ -205,7 +245,7 @@ my <a href="https://github.com/Akuli/math-tutorial/blob/master/canvaswrapper.js"
 const GRAVITY = 1.5;
 var ball = {
   x: screen.width/2,    // centered
-  height: 0,            // distance from bottom of screen to player's bottom
+  height: 0,            // distance from bottom of screen to ball's bottom
   velocity: 0,          // positive means up
   velocityMax: 30,      // velocity immediately after a jump
   sidewayMovement: 0,   // -1 is left, +1 right
@@ -251,7 +291,7 @@ runRepeatedly(function() {
 <span style="color: #007020; font-weight: bold">const</span> GRAVITY <span style="color: #666666">=</span> <span style="color: #40a070">1.5</span>;
 <span style="color: #007020; font-weight: bold">var</span> ball <span style="color: #666666">=</span> {
   x<span style="color: #666666">:</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>,    <span style="color: #60a0b0; font-style: italic">// centered</span>
-  height<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,            <span style="color: #60a0b0; font-style: italic">// distance from bottom of screen to player&#39;s bottom</span>
+  height<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,            <span style="color: #60a0b0; font-style: italic">// distance from bottom of screen to ball&#39;s bottom</span>
   velocity<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,          <span style="color: #60a0b0; font-style: italic">// positive means up</span>
   velocityMax<span style="color: #666666">:</span> <span style="color: #40a070">30</span>,      <span style="color: #60a0b0; font-style: italic">// velocity immediately after a jump</span>
   sidewayMovement<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,   <span style="color: #60a0b0; font-style: italic">// -1 is left, +1 right</span>
