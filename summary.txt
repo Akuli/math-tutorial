@@ -90,11 +90,6 @@ else is explained [here](basics.html#areas).
 
 ## Slopes
 
-graybox: See Also
-    There isn't a separate chapter about slopes because there isn't much
-    to them, but [the derivative chapter](derivatives.html#what-is-a-derivative)
-    contains an introduction.
-
 Notation: if $x$ is first 3 and we change it to 4, the *difference* of
 these values is $\Delta x = 4-3 = 1$.
 

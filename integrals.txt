@@ -174,6 +174,12 @@ Let's go back to our original problem. One of
 
 math: \frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
 
+So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
+But how about $F(x) = \sqrt x + 1$? Its derivative is also
+$\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
+$\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
+know that $F(x) = \sqrt x + C$ where $C$ is a constant.
+
 asymptote: float:right;
    size(9cm);
 
@@ -193,12 +199,6 @@ asymptote: float:right;
    label("$a$", (a,0), align=S);
    label("$b$", (b,0), align=S);
    label("$F(a)$", (a/2, 0), align=N);
-
-So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
-But how about $F(x) = \sqrt x + 1$? Its derivative is also
-$\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
-$\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
-know that $F(x) = \sqrt x + C$ where $C$ is a constant.
 
 Let's try to calculate our area:
 
@@ -226,7 +226,7 @@ This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.
 
 asymptote: float:right;
-    size(8cm);
+    size(7cm);
     real f(real x) { return x**2/3+0.3; }
     real a = 0.5;
     real b = 2;
@@ -240,7 +240,6 @@ asymptote: float:right;
     fill((a,0)--(a,f(a))--graph(f,a,b)--(b,f(b))--(b,0)--cycle, lightblue);
     draw((a,0)--(a,f(a)));
     draw((b,0)--(b,f(b)));
-    label("$\displaystyle\int_a^b f(x) dx$", ((a+b)/2,0), align=N);
 
     axises(-0.1,2.5,-0.1,2);
     draw(graph(f,-0.05,2.2), L=Label(rotate(35)*"$y=f(x)$"), align=NW);
@@ -251,11 +250,11 @@ asymptote: float:right;
 
 Usually this stuff is written like this:
 
-* The blue area in the image at right is $\int_a^b f(x) dx$. Be careful
+* The blue area in the image at right is $\int_a^b f(x)\ dx$. Be careful
 here -- the $dx$ is just a part of the notation and you must not forget
 it.
 * The antiderivative of $f(x)$ including the $+C$ is the same thing without
-$a$ and $b$. So $\int f(x) dx = F(x) + C$ where $F'(x) = f(x)$.
+$a$ and $b$. So $\int f(x)\ dx = F(x) + C$ where $F'(x) = f(x)$.
 * $[F(x)]_a^b = F(b)-F(a)$.
 
 The integral sign $\int$ is a strecthed S like Sum, and $\int_a^b f(x) dx$
@@ -277,13 +276,13 @@ antiderivatives.
 
 You can turn [derivative rules](summary.html#derivative-rules) into
 integral rules by applying $\int(...)dx$ on both sides. Keep in mind
-that $\int f'(x) dx = f(x) + C$ and
-$\frac{d}{dx} \left( \int f(x) dx \right) = f(x)$ because $\int(...)dx$
+that $\int f'(x)\ dx = f(x) + C$ and
+$\frac{d}{dx} \left( \int f(x)\ dx \right) = f(x)$ because $\int(...)dx$
 means antiderivative. For example:
 
 math:
    f'(g(x))g'(x) &= \frac{d}{dx}(f(g(x))) \\
-   \int f'(g(x))g'(x) dx &= f(g(x)) + C
+   \int f'(g(x))g'(x)\ dx &= f(g(x)) + C
 
 As with derivatives, there's [a handy list of integral
 rules](summary.html#integral-rules) on the summary page.
@@ -293,9 +292,9 @@ the derivative of $\sqrt x$, but with the summary page we can also integrate
 stuff like $\frac{1}{\sqrt x}$:
 
 math:
-   \int \frac{1}{\sqrt x} dx &= \int \frac{2}{2 \sqrt x} dx \\
-   &= \int 2 \frac{1}{2 \sqrt x} dx \\
-   &= 2 \int \frac{1}{2 \sqrt x} dx \\
+   \int \frac{1}{\sqrt x}\ dx
+   &= \int 2 \frac{1}{2 \sqrt x}\ dx \\
+   &= 2 \int \frac{1}{2 \sqrt x}\ dx \\
    &= 2 \sqrt x + C
 
 math: \frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}
@@ -308,11 +307,11 @@ just one division line. It's a mess and checking the answer with a derivative
 is also a mess, but it works.
 
 math:
-   \int \sqrt x dx &= \int x^\frac{1}{2} dx \\
-   &= \frac{x^{\frac{1}{2}+1}}{\frac{1}{2} + 1} + C \\
-   &= \frac{1}{\frac 1 2 + 1} x^{\frac{1}{2}+1} + C \\
-   &= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac{1}{2}} + C \\
-   &= \frac{1}{\ \frac 3 2 \ } x^1 x^\frac{1}{2} + C \\
+   \int \sqrt x\ dx &= \int x^\frac 1 2\ dx \\
+   &= \frac{x^{\frac{1}{2}+1}}{\frac 1 2 + 1} + C \\
+   &= \frac{1}{\frac 1 2 + 1} x^{\frac 1 2 + 1} + C \\
+   &= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac 1 2} + C \\
+   &= \frac{1}{\ \frac 3 2 \ } x^1 x^{\frac 1 2} + C \\
    &= \frac 2 3 x \sqrt x + C
 
 math:
@@ -325,6 +324,36 @@ math:
    &= x^{\frac 1 2} \\
    &= \sqrt x
 
+## Integrating with Python
+
+Of course, [sympy](http://www.sympy.org) does integrals really nicely.
+It doesn't add $+C$ for some reason, so you need to remember it
+yourself. The $+C$ is not just some useless gibberish that you need to
+remember just because it's annoying, and sometimes forgetting it would
+screw things up (see the jump example below).
+
+code: python3
+    >>> from sympy import *
+    >>> init_printing()
+    >>> x = Symbol('x')
+    >>> integrate(1/(2*sqrt(x)), x)
+    √x
+    >>> integrate(1/(2*sqrt(x)), (x, 1, 2))     # area between x=1 and x=2
+    -1 + √2
+    >>> integrate(sqrt(x), x)
+       3/2
+    2⋅x   
+    ──────
+      3   
+
+Sometimes the answers look different than the answers we ended up with,
+but they are still correct. For example:
+
+math:
+    \frac{2x^{3/2}}{3}
+    = \frac{2x^{1+\frac 1 2}}{3}
+    = \frac{2x^1x^{1/2}}{3}
+    = \frac 2 3 x \sqrt x
 
 ## Example: Smooth Jumps Revisited
 
@@ -334,21 +363,21 @@ guessed that the natural jumping curve might be a parabola. But now we know how
 to get from $g$ being a constant to a parabola. I won't explain things much;
 I'll just assume that you have read the derivative thing linked above.
 
-graybox: Note
+graybox:
     Here $v(t)$ and $h(t)$ mean velocity and height at time $t$. I'm doing that
     instead of plain $v$ and $h$ to remind us about the fact that they aren't
     just constants; they depend on the time. However, $g$ is just a constant.
 
 math:
     v(t) &= \int g\ dt = gt + C_1 \\
-    h(t) &= \int v(t)dt = \int(gt+C_1)dt = \frac 1 2 gt^2 + C_1 t + C_2
+    h(t) &= \int v(t)\ dt = \int(gt+C_1)\ dt = \frac 1 2 gt^2 + C_1 t + C_2
 
 Now if we rename the constants so that $a = \frac 1 2 g$, $b = C_1$ and
 $c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.
 
 ## Example: Circle Area
 
-graybox: Note
+graybox:
     This section assumes that you know what $\pi$ and $\tau$ are. [Click
     here](summary.html#geometry-and-trig) if you don't.
 
@@ -457,12 +486,65 @@ graybox: Problem
     <small>The image comes from [this wikimedia
     page](https://commons.wikimedia.org/wiki/File:VLC_Icon.svg).</small>
 
-So far we have integrated a bunch of $f(x)$ slices and we got areas. An
-area is kind of like a bunch of infinitely thin height slices stacked
-together, and we can calculate them with integrals.
+Integrals are actually not limited to areas, and they also work nicely
+with 3D stuff. Here $V(x)$ represents the volume to $x$.
 
-[A volume](basics.html#volumes) is like a bunch of thin area slices
-stacked together, so if we integrate areas we get volumes.
+asymptote3d: float:left;
+    size(10cm);
+
+    currentprojection = perspective(camera=(6,2,10), up=Y);
+    real f(real x) { return sin(x)+1.5; }
+    real a=0, the_x=2;
+    axises3d(-2,the_x+2,-4,4,0,0);
+
+    pen graphpen=yellow, slicepen=red+opacity(0.7);
+    draw(surface(path3(graph(f,a,the_x)), c=O, axis=X), graphpen);
+    draw(surface((the_x,0,0)--(the_x,f(the_x),0), c=O, axis=X), slicepen);
+
+    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
+    label(ZY()*minipage("\centering\scriptsize \textbf{\LARGE {$A(x)$}}",8cm),
+          (the_x+0.05,0,0.1), white, align=S);
+
+    triple[] arrowends={(1.5,0.7,0),(3.5,2,0)};
+    draw(arrowends[0]--arrowends[1]);
+    label(arrowends[1], L="$V(x)$", align=NE);
+
+asymptote3d: float:left;
+    size(10cm);
+
+    currentprojection = perspective(camera=(3,2,10), up=Y);
+    real f(real x) { return sin(x)+1.5; }
+    real a=0, b=5, the_x=2, dx=0.5;
+    axises3d(-1,b+1,-3,4,0,0);
+
+    pen graphpen=yellow, slicepen=red+opacity(0.6);
+
+    draw(surface(path3(graph(f,a,the_x)), c=O, axis=X), graphpen);
+    draw(surface(path3(graph(f,the_x+dx,b)), c=O, axis=X), graphpen);
+
+    draw(surface(path3((the_x,f(the_x))--(the_x+dx,f(the_x))), c=O, axis=X), slicepen);
+    draw(surface((the_x,0,0)--(the_x,f(the_x),0), c=O, axis=X), slicepen);
+    draw(surface((the_x+dx,0,0)--(the_x+dx,f(the_x),0), c=O, axis=X), slicepen);
+
+    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
+    draw(path3(brace((the_x,f(the_x)),(the_x+dx,f(the_x)), amplitude=0.2)),
+         L="$\Delta x$", align=N);
+
+    triple[] arrowends={(the_x+0.7dx, f(the_x+dx),0),(3.5,2.5,0)};
+    draw(arrowends[0]--arrowends[1]);
+    label(arrowends[1], L="$A(x) \cdot \Delta x$", align=E);
+
+<div style="clear:both;"></div>
+
+We get this stuff that looks a lot like our area stuff above:
+
+math:
+    V(x+\Delta x)-V(x) &\approx A(x) \cdot \Delta x \\
+    \frac{V(x+\Delta x)-V(x)}{\Delta x} &\approx A(x) \\
+    \lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x) \\
+    V'(x) &= A(x)
+
+math: V(b)-V(a) = \left[V(x)\right]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx
 
 asymptote3d: float:right;
    size(11cm);
@@ -495,10 +577,8 @@ asymptote3d: float:right;
    draw(path3(brace((0,f(the_x)),(the_x,f(the_x)))), L="$x$", align=N);
    draw(path3(brace((the_x,f(the_x)),(the_x,0), amplitude=0.2)), L="$f(x)$", align=E);
 
-If you look at the image, the total volume is $\int_0^h A(x) dx$. Now we
-just need to figure out how to calculate the $A(x)$, and for that we
-need to know what $f(x)$ is.
-
+Let's solve our VLC problem. If you look at the image at right, all we
+really need is $A(x)$, but for that we need to know what $f(x)$ is.
 Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:
 
 asymptote:
@@ -521,11 +601,11 @@ circle's radius is $f(x)$ instead of $r$ so $A(x) = \pi (f(x))^2$.
 Let's do this:
 
 math:
-    \int_0^h A(x) dx
-    &= \int_0^h \pi (f(x))^2 dx \\
-    &= \int_0^h \pi \left( \frac r h x \right)^2 dx \\
-    &= \int_0^h \pi \frac{r^2}{h^2} x^2 dx \\
-    &= \pi \frac{r^2}{h^2} \int_0^h x^2 dx \\
+    \int_0^h A(x)\ dx
+    &= \int_0^h \pi (f(x))^2\ dx \\
+    &= \int_0^h \pi \left( \frac r h x \right)^2\ dx \\
+    &= \int_0^h \pi \frac{r^2}{h^2} x^2\ dx \\
+    &= \pi \frac{r^2}{h^2} \int_0^h x^2\ dx \\
     &= \pi \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
     &= \pi \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
     &= \frac{\pi r^2 h}{3}

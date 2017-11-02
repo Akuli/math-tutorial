@@ -7,9 +7,9 @@ This page contains a bunch of graphs that we use in other chapters.
 comment: TODO: explain what is a constant on the basics page
 
 In this section, $a$ and $s$ can be any constants, and $s$ is
-[the slope](derivatives.html#what-is-a-derivative). In general, the
-equation of any non-vertical line is $y=sx+a$ where $s$ and $a$ can be
-0, positive or negative.
+[the slope](derivatives.html#slopes). In general, the equation of any
+non-vertical line is $y=sx+a$ where $s$ and $a$ can be 0, positive or
+negative. The slope of the $y=a$ line is 0 because $a=0x+a$.
 
 asymptote: float:left;
     size(8cm);
