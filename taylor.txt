@@ -126,6 +126,10 @@ that doesn't need to be 0. Here's a more generalized Taylor polynominal:
 math:
     P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
 
+The Taylor polynominal with $a=0$ is also known as a Maclaurin polynominal. You
+don't need to remember that in this tutorial, but if someone talks about a
+Maclaurin polynominal they mean this.
+
 ## The Magic Sine
 
 This is the real thing. We'll write our own ``sin(x)`` function.
@@ -191,10 +195,12 @@ code: python3
                 result += thingy
         return result
 
-    tau = 6.28
-    print(taylorsin(tau/8))
+    tau = 6.2831853
+    print(taylorsin(tau/8))      # 0.7071067805519556
     import math
-    print(math.sin(math.tau/8))
+    print(math.sin(math.tau/8))  # 0.7071067811865475
+
+I think this is just amazing.
 
 If you look at how Python's ``math.sin()`` is implemented it just calls C
 ``sin()``, and that uses taylor polynominals just like our code. The C code is
