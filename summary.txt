@@ -385,7 +385,7 @@ math:
             + \frac{f^{(n)}(a)}{n!}(x-a)^n
 
 Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
-derivative, e.g. $f^{(5)}(x)=f'''''(x)$. Many programming languages have a
+derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
 ``factorial(n)`` function that returns $n!$.
 
 Choosing $a=0$ usually results in simple $P_n$ polynominals.
@@ -422,9 +422,9 @@ math:
     \log_b \frac x y &= \log_b x - \log_a y \\
     \log_b x &= \frac{\log_a x}{\log_a b}
 
-Euler's number: $e = \displaystyle\lim_{n\to\infty} \left(1+\frac 1 n\right)^n$
+Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\left((1+t)^{\frac 1 t}\right)$
 
-$\ln x$ means $log_e x$.
+$\ln x$ means $\log_e x$.
 
 ## Other Bases
 
