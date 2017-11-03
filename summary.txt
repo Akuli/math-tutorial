@@ -375,6 +375,33 @@ math:
 Some programming languages have a ``hypot(a, b)`` function that returns
 $\sqrt{a^2+b^2}$. You can use it for calculating $c$.
 
+## Taylor Polynominals
+
+The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are good
+when $x \approx a$. A bigger $n$ means a more accurate value.
+
+math:
+    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
+            + \frac{f^{(n)}(a)}{n!}(x-a)^n
+
+Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
+derivative, e.g. $f^{(5)}(x)=f'''''(x)$. Many programming languages have a
+``factorial(n)`` function that returns $n!$.
+
+Choosing $a=0$ usually results in simple $P_n$ polynominals.
+
+## Taylor Series
+
+Here sin and cos work with radians.
+
+math:
+    \sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
+                - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
+    \cos x &= x - \frac{x^2}{2!} + \frac{x^4}{4!}
+                - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+    e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!}
+             + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+
 ## Other Bases
 
 <table>

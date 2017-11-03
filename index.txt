@@ -1,5 +1,7 @@
 # Math for Programmers
 
+comment: TODO: add taylor stuff here
+
 This tutorial contains practical math for programmers who want to get
 stuff done, but also more stuff for people who get interested in how the
 math works. It assumes that you have some experience with programming,

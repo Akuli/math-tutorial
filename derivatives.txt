@@ -84,10 +84,10 @@ Let's calculate the **slope** of this line:
 math: \frac{\Delta y}{\Delta x} = \frac{6}{3} = 2
 
 The bigger the slope, the faster the line goes up, so the slope describes the
-"**growing speed**" or "**changing speed**". I used the points $(1,0)$ and
-$(3,7)$ when calculating the slope, but you should get the same slope with any
-pair of points chosen from the line because the height grows at the same speed
-everywhere.
+"**growing speed**" or "**changing speed**". I used the $(x,y)$ points $(1,0)$
+and $(3,7)$ when calculating the slope, but you should get the same slope with
+any pair of points chosen from the line because the height grows at the same
+speed everywhere.
 
 ## What is a derivative?
 
