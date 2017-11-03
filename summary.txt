@@ -401,6 +401,7 @@ math:
                 - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
     e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!}
              + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+
 ## Exponents and Logarithms
 
 Exponent functions are like $f(x)=a^x$ where $a$ is a constant.
