@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Taylor Polynominals</title>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><b>Taylor Polynominals</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="taylor-polynominals">Taylor Polynominals<a class="headerlink" href="#taylor-polynominals" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>sin(<span style="color: #40a070">1</span>)
+<span style="color: #888888">0.8660254037844386</span>
+</pre></div>
+<p>In this chapter we'll learn how these functions work, and we'll also write our
+own sin and cos implementations that would be good enough for pretty much
+everything.</p>
+
+<div class="box redbox"><p>This tutorial uses <a href="geometry-and-trig.html#radians-and-tau">radians</a>,
+<a href="geometry-and-trig.html#trig-with-the-unit-circle">unit circle trig</a> and
+<a href="derivatives.html">derivatives</a>. Be sure to learn these things first.
+</p>
+
+</div><h2 id="wtf-are-taylor-polynominals">WTF are Taylor polynominals?<a class="headerlink" href="#wtf-are-taylor-polynominals" title="Link to this title">¶</a></h2><p>Here are a few graphs:</p>
+
+<p><img class="asymptote" src="asymptote/f853e0dfe319a5e47addb750e5f78dec.png" /></p><p>The red graph is a complicated curve that the other graphs are trying to
+approximate.</p>
+
+<p>Let's make some notes based on the graphs:</p>
+
+<ul><li>All graphs have the same height at 0, so <img class="inlinemath" src="math/5a2af51947ccb827f4a6bf9946efe37b.png" />.</li><li><img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766b41.png" /> and <img class="inlinemath" src="math/2d70da379b3ffb56bd104b348ba21c55.png" /> go to the same direction as <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> at 0, so
+  <img class="inlinemath" src="math/29620630d6905aa545928137bfd00626.png" />.</li><li>This one isn't as obvious as other stuff above, but anyway,
+  <img class="inlinemath" src="math/3ba40ba310c9965abf31dd6443525f63.png" />.
+</li></ul><p>Here <img class="inlinemath" src="math/78b6da7ea43e85631a1b96523b7066ea.png" /> means the derivative of the derivative.</p>
+
+<p>Let's find the equations of <img class="inlinemath" src="math/44a61841b7c1b2cecc926e984df951ab.png" />, <img class="inlinemath" src="math/36278b4bb8f70408894b5e9dfcb60886.png" /> and <img class="inlinemath" src="math/89ef646e1721fff27c097cff44503319.png" />. The <img class="inlinemath" src="math/5b7c5aa2a2a15bd892afe579eef0906e.png" /> is easy:</p>
+
+<p><img src="math/bad128ec80642073161d3cffddc5d6b3.png" class="blockmath" /></p><p>It's also easy to get started with <img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766b41.png" />.</p>
+
+<p><img src="math/5406d9462731ba4b24e090ad1e9fb488.png" class="blockmath" /></p><p>If you know <a href="integrals.html">integrals</a> you can calculate this yourself. Just
+note that <img class="inlinemath" src="math/2bc3b4ce5db539e47bd469d31245629a.png" /> is a constant because it doesn't depend on the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.
+Anyway, the only <img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766b41.png" /> that satisfies these things is here:</p>
+
+<p><img src="math/293f8c297fa951dd7c71380451c50dba.png" class="blockmath" /></p><p>Here I used the fact that <img class="inlinemath" src="math/bb85921abd146854190e2720f7e25ae7.png" />. You'll see why later.</p>
+
+<p>Let's find <img class="inlinemath" src="math/2d70da379b3ffb56bd104b348ba21c55.png" /> and yet another polynominal <img class="inlinemath" src="math/c0ac8b12bab590e951e0afb93938cdcb.png" /> similarly:</p>
+
+<p><img src="math/81532670eddccc9724f9af9fb6232d14.png" class="blockmath" /></p><p>So, here are all the results we have gotten so far, written in a way that makes
+the pattern quite obvious.</p>
+
+<p><img src="math/8caa0c26013aae0d384555849616d6ef.png" class="blockmath" /></p><p>Next we'll write the rule for calculating <img class="inlinemath" src="math/378d6cdd7c4799427471290542a78833.png" /> for any <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />, but we need more
+notation:</p>
+
+<ul><li><img class="inlinemath" src="math/bd9841a11a78574aad8602b07c855e4b.png" /> is the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th derivative of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />, e.g. <img class="inlinemath" src="math/e0a83df9ffb901ca6f3908ebc9185c71.png" />.</li><li><img class="inlinemath" src="math/54ddde9f6131b5c5db2160d297b00598.png" />. Most programming languages have a
+  <code>factorial(n)</code> function that returns <img class="inlinemath" src="math/388f554901ba5d77339eec8b26beebea.png" />.
+</li></ul><p>Let's do this.</p>
+
+<p><img src="math/bf253d3861cc966bfe3801ba440dd3d4.png" class="blockmath" /></p><p>This is known as the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th Taylor polynominal. Note that we got this beautiful
+bit of magic-like math from basically nothing with just derivatives and
+antiderivatives.</p>
+
+<p>We used <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> here as a "magic number" that we always put to <img class="inlinemath" src="math/23bafa2d03bfea63981f09d7a8ecc455.png" />, but
+that doesn't need to be 0. Here's a more generalized Taylor polynominal:</p>
+
+<p><img src="math/9bb77026900ca2613c764b7e053490f8.png" class="blockmath" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
+
+<p>We need to know that <img class="inlinemath" src="math/30a19fc8d8ea6eb3146333dc3436951c.png" /> and
+<img class="inlinemath" src="math/57efdd5c4c49ad171d4cc09aaa94d2b2.png" />. Unfortunately this tutorial contains no proof
+about this yet, but I'm planning on making one soon.</p>
+
+<p>So, we get this:</p>
+
+<p><img src="math/2eaaef8a93ad30d6c33b927769e82f30.png" class="blockmath" /></p><p>The pattern is obvious.</p>
+
+<p>Now let's plug in some values. With <a href="summary.html#geometry-and-trig">the unit
+circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741adb28fba0d84.png" /> and
+<img class="inlinemath" src="math/a3f9046e95416bca98432879d8cd880f.png" /> because the <img class="inlinemath" src="math/90cbc22edf225adf8a68974f51227f05.png" /> point <img class="inlinemath" src="math/ec6014ffc3d92709aa6a4fea11bb3788.png" /> corresponds to the angle 0.</p>
+
+<p><img src="math/8c1e776279f4ea9faee12457e63afedc.png" class="blockmath" /></p><p>So we have this:</p>
+
+<p><img src="math/b6bbe3fdf9dd9f53db1e98af61f7a7b3.png" class="blockmath" /></p><p>That's all there's to it! Here's an awesome Python program:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># python has math.factorial, but this is here just to show that there&#39;s</span>
+<span style="color: #60a0b0; font-style: italic"># no magic involved</span>
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">factorial</span>(n):
+    result <span style="color: #666666">=</span> <span style="color: #40a070">1</span>
+    <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">1</span>, n<span style="color: #666666">+</span><span style="color: #40a070">1</span>):     <span style="color: #60a0b0; font-style: italic"># 1, 2, ..., n</span>
+        result <span style="color: #666666">=</span> result <span style="color: #666666">*</span> i
+    <span style="color: #007020; font-weight: bold">return</span> result
+
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">taylorsin</span>(x):
+    result <span style="color: #666666">=</span> x
+    <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">3</span>, <span style="color: #40a070">100</span>, <span style="color: #40a070">2</span>):      <span style="color: #60a0b0; font-style: italic"># 3, 5, ..., 99</span>
+        thingy <span style="color: #666666">=</span> x<span style="color: #666666">**</span>i<span style="color: #666666">/</span>factorial(i)
+        <span style="color: #007020; font-weight: bold">if</span> i <span style="color: #666666">%</span> <span style="color: #40a070">4</span> <span style="color: #666666">==</span> <span style="color: #40a070">3</span>:      <span style="color: #60a0b0; font-style: italic"># 3, 7, 11, ...</span>
+            result <span style="color: #666666">-=</span> thingy
+        <span style="color: #007020; font-weight: bold">else</span>:
+            result <span style="color: #666666">+=</span> thingy
+    <span style="color: #007020; font-weight: bold">return</span> result
+
+tau <span style="color: #666666">=</span> <span style="color: #40a070">6.28</span>
+<span style="color: #007020">print</span>(taylorsin(tau<span style="color: #666666">/</span><span style="color: #40a070">8</span>))
+<span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #007020">print</span>(math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>tau<span style="color: #666666">/</span><span style="color: #40a070">8</span>))
+</pre></div>
+<p>If you look at how Python's <code>math.sin()</code> is implemented it just calls C
+<code>sin()</code>, and that uses taylor polynominals just like our code. The C code is
+more complicated than our <code>taylorsin()</code> because it uses taylor polynominals at
+other places than <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />, but the basic idea is the same.</p>
+
+<p>If we could somehow continue this forever instead of stopping at e.g. <img class="inlinemath" src="math/f2b279b413e38fa66df3d6e737d32bd0.png" /> we
+would get perfectly precise sin values. I'm not going to talk about the details
+of why that happens, but this works for sin, cos and many other things. An
+infinitely continuing Taylor polynominal is also known as a Taylor series.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of <img class="inlinemath" src="math/96eb9bf5314b593783ee57983efbed9d.png" /> and <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />. See <a href="explog.html#the-e-constant">this
+page</a> if you don't know what <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> is or what the
+derivative of <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" /> is.</p>
+
+<p>Check your answers with your favorite programming language and <a href="summary.html#taylor-series">the summary
+page's Taylor series section</a>.
+</p>
+
+</div></div>
+</body>
+</html>
