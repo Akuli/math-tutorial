@@ -59,7 +59,8 @@ asymptote: float:left;
 
 ## Parabolas
 
-Here $a$, $d$ and $e$ are constants. You'll see later why I skipped $b$ and $c$.
+Here $a$, $d$ and $t$ are constants. I skipped $e$ because it has [a special
+meaning](explog.html#e) in math, and you'll see why I skipped $b$ and $c$ later.
 
 asymptote: float:left;
     size(12cm);
