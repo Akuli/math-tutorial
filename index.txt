@@ -1,6 +1,6 @@
 # Math for Programmers
 
-comment: TODO: add taylor stuff here
+comment: TODO: add taylor stuff here and in general update this
 
 This tutorial contains practical math for programmers who want to get
 stuff done, but also more stuff for people who get interested in how the
@@ -32,8 +32,3 @@ it useful.
 
 If you're wondering how color strings like ``#ff0000`` work, see
 [the number theory chapter](numbertheory.html).
-
-When you're done with reading everything you are interested in or you
-just want to see more math for some reason, check out those parts of
-[the explanation page](explanations.html) that relate to chapters that
-you have read.

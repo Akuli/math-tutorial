@@ -59,7 +59,7 @@ def get_sidebar_content(txtfile):
     return ''.join([
         thingy("Chapters", '''derivatives more-derivatives integrals
             more-integrals geometry-and-trig explog taylor numbertheory'''),
-        thingy("Other stuff", 'basics summary graphs explanations',
+        thingy("Other stuff", 'basics graphs summary',
                indexlink),
     ])
 

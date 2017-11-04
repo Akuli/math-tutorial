@@ -278,9 +278,8 @@ the picture seems to be about half of the radius, and the radius is 1.
 ``0.5000000000000001`` is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
 $\sin \frac \tau 6 = \frac{\sqrt 3}{2}$ and $\cos \frac \tau 6 = \frac 1 2$.
-See [this thing](explanations.html#accurate-sine-and-cosine-values) if you're
-wondering how I came up with these values.
-
+See [this thing](more-geometry-and-trig.html#accurate-sine-and-cosine-values) if
+you're wondering how I came up with these values.
 
 ## Example: Ball and Paddle
 
@@ -389,7 +388,7 @@ Here's another way to define $\sin$ and $\cos$, and another function called
 $\tan$ that we haven't used before.
 
 asymptote: float:right;
-    size(9cm);
+    size(6cm);
     abctriangle(3,2);
     real t = atan2(2,3);
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
@@ -399,13 +398,13 @@ math:
     \cos t &= \frac a c \\
     \tan t &= \frac b a
 
-These things work only if the triangle has an angle that is exactly a quarter
-turn, and the little box at bottom right means just that. These definitions are
-compatible with the unit circle stuff above; see
-[this thing](explanations.html#two-ways-to-define-sine-and-cosine).
+We'll talk about compatibility with the unit circle definitions
+[later](more-geometry-and-trig.html#unit-circle-or-triangle). These things work
+only if the triangle has an angle that is exactly a quarter turn, and the little
+box at bottom right means just that.
 
 asymptote: float:right;
-    size(9cm);
+    size(6cm);
     abctriangle(3,-2, lightgreen);
     real t = atan2(-2,3);
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$", align=E);
@@ -426,7 +425,7 @@ signs of $a$ and $b$ and does the right thing if they're negative (the ball is
 moving to e.g. top left). It also works if ``a`` is 0 and ``b/a`` would fail as
 division by zero is undefined.
 
-note:
+graybox:
     Usually people like to put $x$ before $y$ in different kinds of places,
     but ``atan2`` is used like ``atan2(y_change, x_change)``, **not** like
     ``atan2(x_change, y_change)``.
@@ -454,8 +453,8 @@ Here's a handy equation, also known as the Pythagorean theorem:
 math: a^2 + b^2 = c^2
 
 Again, the angle of the corner between a and b must be a quarter turn, like it
-is in the image. If you're wondering how the heck it works see
-[this proof](explanations.html#pythagorean-theorem).
+is in the image. We'll prove that this theorem actually works
+[later](more-geometry-and-trig.html#pythagorean-theorem-proof).
 
 Let's solve $c$ from the equation by applying $\sqrt{\ \ }$ on both sides:
 
