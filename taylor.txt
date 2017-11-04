@@ -5,7 +5,7 @@ So far we have calculated sine and cosine values with Python.
 code: python3
     >>> import math
     >>> math.sin(1)
-    0.8660254037844386
+    0.8414709848078965
 
 In this chapter we'll learn how these functions work, and we'll also write our
 own sin and cos implementations that would be good enough for pretty much
@@ -169,12 +169,12 @@ So we have this:
 
 math:
     \sin x &=   f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2
-                + \frac{f'''(0)}{3!}x^3 + \frac{f'''(0)}{4!}x^4 + ... \\
+                + \frac{f'''(0)}{3!}x^3 + \frac{f''''(0)}{4!}x^4 + ... \\
     &=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4
         + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
     &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...
 
-That's all there's to it! Here's an awesome Python program:
+That's all there is to it! Here's an awesome Python program:
 
 code: python3
     # python has math.factorial, but this is here just to show that there's
@@ -195,12 +195,11 @@ code: python3
                 result += thingy
         return result
 
-    tau = 6.2831853
-    print(taylorsin(tau/8))      # 0.7071067805519556
+    print(taylorsin(1))     # 0.8414709848078965
     import math
-    print(math.sin(math.tau/8))  # 0.7071067811865475
+    print(math.sin(1))      # also 0.8414709848078965
 
-I think this is just amazing.
+I think this is amazing.
 
 If you look at how Python's ``math.sin()`` is implemented it just calls C
 ``sin()``, and that uses taylor polynominals just like our code. The C code is
@@ -214,8 +213,8 @@ infinitely continuing Taylor polynominal is also known as a Taylor series.
 
 graybox: Exercise
     Find the Taylor series of $\cos x$ and $e^x$. See [this
-    page](explog.html#the-e-constant) if you don't know what $e$ is or what the
+    thing](explog.html#the-e-constant) if you don't know what $e$ is or what the
     derivative of $e^x$ is.
 
-    Check your answers with your favorite programming language and [the summary
-    page's Taylor series section](summary.html#taylor-series).
+    Check your answers with your favorite programming language and [the Taylor
+    series section](summary.html#taylor-series) on the summary page.

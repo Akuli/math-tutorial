@@ -59,8 +59,7 @@ asymptote: float:left;
 
 ## Parabolas
 
-Here $a$, $d$ and $t$ are constants. I skipped $e$ because it has [a special
-meaning](explog.html#e) in math, and you'll see why I skipped $b$ and $c$ later.
+Here $a$, $t$ and $u$ are constants.
 
 asymptote: float:left;
     size(12cm);
@@ -85,8 +84,8 @@ asymptote: float:left;
     real f(real x) { return x**2+c; }
     axises(xmin,xmax+1,-1,f(xmax)+1);
     draw(graph(f,xmin,0.8), blue);
-    draw(graph(f,0.8,xmax), blue, L=rotate(70)*"$y=x^2+d,\ d>0$");
-    draw(brace((0.3,c),(0.3,0)), L="$d$", align=E);
+    draw(graph(f,0.8,xmax), blue, L=rotate(70)*"$y=x^2+u,\ u>0$");
+    draw(brace((0.3,c),(0.3,0)), L="$u$", align=E);
 
 asymptote: float:left;
     size(9cm);
@@ -95,8 +94,8 @@ asymptote: float:left;
     real f(real x) { return (x-a)**2; }
     axises(floor(xmin),xmax+1,-1,f(xmax)+1);
     draw(graph(f,xmin,3.2), blue);
-    draw(graph(f,3.2,xmax), blue, L=rotate(70)*"$y=(x-e)^2,\ \ e>0$");
-    draw(brace((a,-0.2),(0,-0.2)), L="$e$", align=S);
+    draw(graph(f,3.2,xmax), blue, L=rotate(70)*"$y=(x-t)^2,\ \ t>0$");
+    draw(brace((a,-0.2),(0,-0.2)), L="$t$", align=S);
 
 <div style="clear:both;"></div>
 
@@ -126,26 +125,26 @@ asymptote: float:left;
 
 <div style="clear:both;"></div>
 
-floatingbox: Handy thing: $(x-e)^2=x^2-2xe+e^2$
+floatingbox: Handy thing: $(x-t)^2=x^2-2tx+t^2$
     Proof:
 
     math:
-        & \ (x-e)^2 \\
-        =&\ (x-e)(x-e) \\
-        =&\ (x-e)x-(x-e)e \\
-        =&\ (xx-ex)-(xe-ee) \\
-        =&\ xx-ex-xe+ee \\
-        =&\ x^2-2xe+e^2
+        & \ (x-t)^2 \\
+        =&\ (x-t)(x-t) \\
+        =&\ (x-t)x-(x-t)t \\
+        =&\ (xx-tx)-(xt-tt) \\
+        =&\ xx-tx-xt+tt \\
+        =&\ x^2-2tx+t^2
 
 The equations of all these parabolas seem to be of the form
-$y=a\cdot(x-e)^2+d$. Let's expand that a bit:
+$y=a\cdot(x-t)^2+u$. Let's expand that a bit:
 
 math:
-    y &= a\cdot(x-e)^2+d \\
-    &= a\cdot(x^2-2xe+e^2)+d \\
-    &= ax^2-2aex+ae^2+d
+    y &= a\cdot(x-t)^2+u \\
+    &= a\cdot(x^2-2tx+t^2)+u \\
+    &= ax^2-2atx+at^2+u
 
-Now if we set $b=-2ae$ and $c=ae^2+d$, then $b$ and $c$ are also
+Now if we set $b=-2at$ and $c=at^2+u$, then $b$ and $c$ are also
 constants because they don't depend on the value of $x$. So we get this:
 
 math:
@@ -153,6 +152,66 @@ math:
 
 Equations of all parabolas that open up or down are like this.
 Note that $a \ne 0$ because $y=bx+c$ is a straight line.
+
+## Exponents and Logarithms
+
+All of these graphs have an area where they get closer and closer to an axis but
+they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
+$\displaystyle\lim_{x\to-\infty}a^x=0$.
+
+There's a detailed introduction to exponents and logarithms [here](explog.html).
+
+asymptote: float:left;
+    size(12cm);
+    real xminmax=1.8;
+    real f(real x) { return e**x; }
+    real ymax = ceil(e**xminmax);
+    axises(-xminmax,xminmax,-0.5,ymax);
+    draw(graph(f,-xminmax,xminmax), blue,
+         L=Label(rotate(75)*"$y=a^x, a>1$", position=Relative(0.75)), align=E);
+    draw((1,0)--(1,f(1)), deepgreen+smalldashes, L="$a$");
+    label((1,0), L="1", align=S);
+    dot((0,1), p=dotpen, L="1", align=NW);
+
+asymptote: float:left;
+    size(12cm);
+    real xminmax=1.8;
+    real f(real x) { return (1/e)**x; }
+    real ymax = ceil(e**xminmax);
+    axises(-xminmax,xminmax,-0.5,ymax);
+    draw(graph(f,-xminmax,xminmax), blue,
+         L=Label(rotate(-70)*"$y=a^x, 0<a<1$", position=Relative(0.5)), align=W);
+    draw((1,0)--(1,f(1)), deepgreen, L="$a$", align=W);
+    label((1,0), L="1", align=S);
+    label((0,1), L="1", align=NE);
+
+<div style="clear:both;"></div>
+
+asymptote: float:left;
+    size(12cm);
+    real yminmax=1.8;
+    real f(real x) { return log(x); }   // ln
+    real xmax = ceil(e**yminmax);
+    axises(-0.5,xmax,-yminmax,yminmax);
+    draw(graph(f,e**(-yminmax),xmax), blue,
+         L=Label(rotate(90-75)*"$y=\log_a x, a>1$", position=Relative(0.75)), align=N);
+    draw((0,1)--(e,1), deepgreen+smalldashes, L="$a$", align=N);
+    label((0,1), L="1", align=W);
+    label((1,0), L="1", align=S);
+
+asymptote: float:left;
+    size(12cm);
+    real yminmax=1.8;
+    real f(real x) { return -log(x); }   // log_(1/e)
+    real xmax = ceil(e**yminmax);
+    axises(-0.5,xmax,-yminmax,yminmax+0.5);
+    draw(graph(f,e**(-yminmax),xmax), blue,
+         L=Label(rotate(-(90-75))*"$y=\log_a x, 0<a<1$", position=Relative(0.75)), align=N);
+    draw((0,1)--(1/e,1), deepgreen, L="$a$", align=S);
+    label((0,1), L="1", align=W);
+    label((1,0), L="1", align=S);
+
+<div style="clear:both;"></div>
 
 ## Sine and Cosine
 

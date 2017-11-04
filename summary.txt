@@ -377,8 +377,8 @@ $\sqrt{a^2+b^2}$. You can use it for calculating $c$.
 
 ## Taylor Polynominals
 
-The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are good
-when $x \approx a$. A bigger $n$ means a more accurate value.
+The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are most
+accurate when $x \approx a$. A bigger $n$ means a more accurate value.
 
 math:
     P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
@@ -397,14 +397,16 @@ Here sin and cos work with radians.
 math:
     \sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
                 - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
-    \cos x &= x - \frac{x^2}{2!} + \frac{x^4}{4!}
+    \cos x &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
                 - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
     e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!}
              + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
 
 ## Exponents and Logarithms
 
-Exponent functions are like $f(x)=a^x$ where $a$ is a constant.
+Exponent functions are like $f(x)=a^x$ where $a$ is positive and $a \ne 1$.
+A function like $f(x)=1^x$ isn't really an exponent function because it's really
+just $f(x)=1$.
 
 Logarithms are the inverse of exponents. If $y = b^x$, then $\log_b y = x$
 where the base $b>0$ and $b \ne 1$.
@@ -413,6 +415,7 @@ math:
     \log_b(b^x) &= x \\
     x^{\log_b x} &= x
 
+(logs-are-useful)
 These things make logarithms useful. Here $a$ and $b$ are positive and not 1,
 $x>0$ and $y>0$.
 
@@ -422,7 +425,7 @@ math:
     \log_b \frac x y &= \log_b x - \log_a y \\
     \log_b x &= \frac{\log_a x}{\log_a b}
 
-Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\left((1+t)^{\frac 1 t}\right)$
+Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$
 
 $\ln x$ means $\log_e x$.
 
