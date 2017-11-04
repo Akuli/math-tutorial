@@ -26,7 +26,7 @@ that is $3\tau/2 \approx 9.42$. But that's just a special case. What if
 we want to calculate the length of an arc taken from *any* $y=f(x)$ graph?
 
 Let's assume that $f$ is a function that [has a
-derivative](explanations.html#which-functions-have-derivatives), and say
+derivative](more-derivatives.html#which-functions-have-derivatives), and say
 that the length of an arc to $x$ is $s(x)$, just like [we did with
 areas](integrals.html#area-to-x). We get this:
 

@@ -116,7 +116,7 @@ asymptote: float:right;
     fill((x,f(x))--(x+dx,f(x))--(x+dx,f(x+dx))--cycle, red);
 
 Let's say that our curve is of the form $y=f(x)$ where $f$ is a
-[continuous](explanations.html#which-functions-have-derivatives)
+[continuous](more-derivatives.html#which-functions-have-derivatives)
 function. Then we'll choose some $x$ location and *move* it right by
 $\Delta x$. Then we could calculate the change of area $\Delta A$ in a
 couple different ways:

@@ -183,9 +183,9 @@ math:
    \end{matrix}
 
 graybox: See Also
-    All of these rules are proved [here](explanations.html#derivative-rules).
-    I have spent quite a bit of time with creating good but human-readable
-    proofs and you may find them interesting.
+    Some of the simplest rules are explained in [the first derivative
+    chapter](derivatives.html) and most of the other rules are proved in
+    [the second derivative chapter](more-derivatives.html#derivative-rules).
 
 Note that if you have something like $(2x)^2$ as opposed to $x^2$ you
 need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,

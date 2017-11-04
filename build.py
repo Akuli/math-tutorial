@@ -35,7 +35,7 @@ def _create_sidebar_thingy(thisfile, maintitle, names, extra=''):
     result = '<div class="sidebarblock">'
     result += '<h3>' + maintitle + '</h3>'
     result += '<ul>'
-    for name in names:
+    for name in names.split():
         result += '<li>'
         titletext = builder.get_title(name + '.txt')
         if name + '.txt' == thisfile:
@@ -57,10 +57,9 @@ def get_sidebar_content(txtfile):
 
     thingy = functools.partial(_create_sidebar_thingy, txtfile)
     return ''.join([
-        thingy("Chapters", ['derivatives', 'integrals', 'more-integrals',
-                            'geometry-and-trig', 'explog', 'taylor',
-                            'numbertheory']),
-        thingy("Other stuff", ['basics', 'summary', 'graphs', 'explanations'],
+        thingy("Chapters", '''derivatives more-derivatives integrals
+            more-integrals geometry-and-trig explog taylor numbertheory'''),
+        thingy("Other stuff", 'basics summary graphs explanations',
                indexlink),
     ])
 
