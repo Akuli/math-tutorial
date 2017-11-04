@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Exponent Functions and Logarithms</title>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><b>Exponent Functions and Logarithms</b></li><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="exponent-functions-and-logarithms">Exponent Functions and Logarithms<a class="headerlink" href="#exponent-functions-and-logarithms" title="Link to this title">¶</a></h1><p>The above title sounds really boring, so I wonder how you ended up reading this
+thing. The mathematician inside may might find some of this interesting though.</p>
+
+<div class="box redbox"><p>This chapter assumes that you know <a href="derivatives.html">derivatives</a>.
+</p>
+
+</div><h2 id="exponent-functions">Exponent Functions<a class="headerlink" href="#exponent-functions" title="Link to this title">¶</a></h2><p>The graph page contains some <a href="graphs.html#exponents-and-logarithms">exponent and logarithm
+graphs</a>, but calculating values for
+drawing them requires things like <img class="inlinemath" src="math/3b337a2c86bbc018e9a1090ea01f130c.png" /> if <img class="inlinemath" src="math/d3289a96da4c1cf6ce57b2b76b80b965.png" />. Turns out that
+<img class="inlinemath" src="math/6e1ff4c34d09f97208bf6f6c4ad655e2.png" />. For example:</p>
+
+<p><img src="math/230b7bfa531f6b21925880cf1a204820.png" class="blockmath" /></p><p>These results agree with the graphs.</p>
+
+<h2 id="the-e-constant">The e constant<a class="headerlink" href="#the-e-constant" title="Link to this title">¶</a></h2><p>Let's try to find the derivative of <img class="inlinemath" src="math/e0eb3765928a114d9b90fae391633c1f.png" /> where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> is a constant:</p>
+
+<p><img src="math/049614401fe74f2f088d4baa2b2e683f.png" class="blockmath" /></p><p>Note that the only <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> in what we ended up with is outside the lim, so the
+entire lim thing is actually yet another constant. So, wouldn't it be handy if
+the whole lim thing was just 1? Then <img class="inlinemath" src="math/7ff97ac7ab33793d92b3b384ae706d2b.png" /> would be just <img class="inlinemath" src="math/e0eb3765928a114d9b90fae391633c1f.png" />.</p>
+
+<p>Turns out that there's only one <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> value that satisfies this, and
+mathematicians call that number <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" />.</p>
+
+<p><img src="math/03bcca2d3312d679ca8cf2fe279510d5.png" class="blockmath" /></p><p><img src="math/0e1df756cc746187661d2b1d3fdb30d5.png" class="blockmath" /></p><p>The <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" /> thing is really same as the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> thing with <img class="inlinemath" src="math/e2a09ad393fb005d194f82bcb361fd0a.png" />. So if <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" /> approaches
+infinity, <img class="inlinemath" src="math/081f24de64fdecd48cf8666336343a70.png" /> approaches 0 because dividing by a big number results in a
+small number.</p>
+
+<p>Let's make sure that the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> thing works with the derivative thing. It doesn't
+matter how <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> and our <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> relate to each other as long as they both to to 0, so
+let's set <img class="inlinemath" src="math/8ecb5b8b032b0845004c54bd4fe98a93.png" /> and calculate the derivative:</p>
+
+<p><img src="math/2bbb6c7d0191af2acfe0a958a7614671.png" class="blockmath" /></p><p>Let's also calculate an approximate value of <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> and check the answer:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>n <span style="color: #666666">=</span> <span style="color: #40a070">10000000000</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">1</span><span style="color: #666666">/</span>n))<span style="color: #666666">**</span>n
+<span style="color: #888888">2.7182820532347876</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>e
+<span style="color: #888888">2.718281828459045</span>
+</pre></div>
+<p>I think this is quite nice. We got this magic <img class="inlinemath" src="math/7c2f0e57d638624771a6c79fb361d6ed.png" /> number out of pretty
+much nowhere. You'll be amazed by all the places where it occurs.</p>
+
+<p>Many programming languages have an <code>exp(x)</code> function that returns <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />, and
+it's usually more precise than e.g. <code>pow(e, x)</code> or <code>e**x</code>, although the
+difference is hardly noticable:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>exp(<span style="color: #40a070">3</span>)
+<span style="color: #888888">20.085536923187668</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>e<span style="color: #666666">**</span><span style="color: #40a070">3</span>
+<span style="color: #888888">20.085536923187664</span>
+</pre></div>
+<div class="box graybox"><h2> See Also</h2><p><a href="https://youtu.be/AuA2EAgAegE">This video</a> contains a different kind of
+introduction to <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> with more facts but less details.
+</p>
+
+</div><h2 id="logarithms">Logarithms<a class="headerlink" href="#logarithms" title="Link to this title">¶</a></h2><p>A logarithm is the inverse of an exponent. If <img class="inlinemath" src="math/5f88188e3b5559691f39eb56b14efb21.png" />, then <img class="inlinemath" src="math/aa4a6c958282147bd42d3abf65d7a634.png" />. You
+can also think of logarithms like <img class="inlinemath" src="math/8ecb1c6a4c5ece5b49e2d1112bac1567.png" /> and <img class="inlinemath" src="math/1cc3333248e210b2aa9e8d9ffbd93570.png" />. The
+<img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is known as the base of the logarithm.</p>
+
+<p>The inversiness looks like this in graphs:</p>
+
+<p><img class="asymptote" src="asymptote/f641959abce815ace3d0d3909777b4ac.png" /></p><p>Note that the <img class="inlinemath" src="math/5f84e3dc6967c1a91547a57bea1185f5.png" /> graph does not exist in the <img class="inlinemath" src="math/97fdf90850f660f05349f4ad145b62dc.png" /> area because <img class="inlinemath" src="math/90242046cd58574ef28e78f7b4c2b572.png" />
+with any <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />. You cannot take any logarithm of a zero or a negative value.</p>
+
+<p>The base <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> logarithm <img class="inlinemath" src="math/1e359b371e3a042d078b2f11e260778a.png" /> is often written as <img class="inlinemath" src="math/2e2d2bfd8d38a8371cedaa366a5c07ab.png" />. The n is short
+for "natural", and <img class="inlinemath" src="math/09f81a4c140a1024aeb41311877c86ac.png" /> is called natural because it appears surprisingly
+often in all kinds of places because of the <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" />.</p>
+
+<p>Many programming languages and calculators have a <code>log(x)</code> function, and
+usually it returns <img class="inlinemath" src="math/2e2d2bfd8d38a8371cedaa366a5c07ab.png" />, <img class="inlinemath" src="math/a63142baed44f1cd626fe29e48b98f6e.png" />, <img class="inlinemath" src="math/09bc4cdcce7de56da7a4abd567ff6d11.png" /> or <img class="inlinemath" src="math/2e2d2bfd8d38a8371cedaa366a5c07ab.png" />. If you aren't
+sure what <code>log(x)</code> does, you can try it like this:</p>
+
+<p><img src="math/d23f0e95d28d41b69adf264f238a6ee7.png" class="blockmath" /></p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(<span style="color: #40a070">2</span>)
+<span style="color: #888888">0.6931471805599453</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(<span style="color: #40a070">10</span>)
+<span style="color: #888888">2.302585092994046</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(math<span style="color: #666666">.</span>e)
+<span style="color: #888888">1.0</span>
+</pre></div>
+<p>Python's <code>math.log(x)</code> seems to return <img class="inlinemath" src="math/2e2d2bfd8d38a8371cedaa366a5c07ab.png" />.</p>
+
+<p>The summary page contains <a href="summary.html#logs-are-useful">a bunch of formulas</a>
+that make logarithms very useful. This tutorial doesn't contain proofs of them
+yet, but I'll probably add the proofs soon.</p>
+
+<p>For example, if you have something like <img class="inlinemath" src="math/a58600e1111833de0011639a793811cf.png" /> and <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> is known to be positive,
+you also know that <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is positive (look at <a href="graphs.html#exponents-and-logarithms">the
+graphs</a>) and you can take a logarithm on
+either side:</p>
+
+<p><img src="math/99218eb29bee0946caea01f143f55742.png" class="blockmath" /></p><p>Of course, you can take any logarithm you want instead of <img class="inlinemath" src="math/5204fde33a37283fecb530a5edc7016a.png" />.</p>
+
+<p>Use the <img class="inlinemath" src="math/d03e776f52450d735ade907e3b32e297.png" /> formula if your favorite
+programming language doesn't have a logarithm function that returns what you
+want:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">function</span> log4(x) {
+    <span style="color: #60a0b0; font-style: italic">// this works with any logarithm, so i don&#39;t even need to care about</span>
+    <span style="color: #60a0b0; font-style: italic">// which logarithm Math.log is in javascript</span>
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020">Math</span>.log(x) <span style="color: #666666">/</span> <span style="color: #007020">Math</span>.log(<span style="color: #40a070">4</span>);
+}
+</pre></div>
+<p>Most programming languages have a few different logarithm functions like e.g.
+<code>log2</code> and <code>log10</code>, and some allow specifying a base like <code>math.log(x, 4)</code>
+in Python.
+</p>
+
+</div>
+</body>
+</html>
