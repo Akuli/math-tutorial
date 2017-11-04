@@ -2,9 +2,13 @@
 
 Derivatives are one of my favorite things in math. At first they seem
 like calculating their values will be quite complicated, but it turns
-out to be surprisingly easy. Derivatives are also not useless gibberish
-isolated from real life, and there's a practical demonstration about how
-they are useful at the end of the chapter.
+out to be surprisingly easy.
+
+Derivatives are also not useless gibberish isolated from real life. There's a
+practical demonstration game at the end of the chapter, and we can use them in
+surprisingly many places like [implementing our own sin function](taylor.html).
+If you have no idea what sin and cos are that's not a problem, and you don't
+need them for learning derivatives.
 
 graybox:
     This chapter starts with some boring stuff, but we need it for fun
@@ -311,11 +315,8 @@ code: python3
     >>> x = Symbol('x')
     >>> diff(x**2, x)
     2⋅x
-    >>> diff((2*x)**2, x)
-    8⋅x
-    >>> diff(5 * x**3 - 6 * x**2 + 7*x - 123, x)
-        2
-    15⋅x  - 12⋅x + 7
+    >>> diff(6 * x**2 + 7*x - 123, x)
+    12⋅x + 7
 
 Here "diff" is short for "differenciate", and it means finding a derivative.
 

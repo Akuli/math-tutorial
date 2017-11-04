@@ -134,6 +134,7 @@ floatingbox: Handy thing: $(x-t)^2=x^2-2tx+t^2$
         =&\ (x-t)x-(x-t)t \\
         =&\ (xx-tx)-(xt-tt) \\
         =&\ xx-tx-xt+tt \\
+        =&\ xx-(tx+tx)+tt \\
         =&\ x^2-2tx+t^2
 
 The equations of all these parabolas seem to be of the form
