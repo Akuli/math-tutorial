@@ -50,7 +50,7 @@ infinity, $t=1/n$ approaches 0 because dividing by a big number results in a
 small number.
 
 Let's make sure that the $t$ thing works with the derivative thing. It doesn't
-matter how $t$ and our $h$ relate to each other as long as they both to to 0, so
+matter how $t$ and our $h$ relate to each other as long as they both go to 0, so
 let's set $t=h$ and calculate the derivative:
 
 math:

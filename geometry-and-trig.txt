@@ -98,7 +98,7 @@ course, you can use $\pi$ if you prefer it over $\tau$.
 ## Degrees
 
 Degrees are an alternative to radians, and they work so that 360° is a full
-turn. Here ° is the degree symbol, and 360 is just an arbitary number that
+turn. Here ° is the degree symbol, and 360 is just an arbitrary number that
 someone has chosen a long time ago.
 
 If you need to convert between radians and degrees, use the fact that 360
