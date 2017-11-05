@@ -7,8 +7,8 @@ out to be surprisingly easy.
 Derivatives are also not useless gibberish isolated from real life. There's a
 practical demonstration game at the end of the chapter, and we can use them in
 surprisingly many places like [implementing our own sin function](taylor.html).
-If you have no idea what sin and cos are that's not a problem, and you don't
-need them for learning derivatives.
+If you have no idea what sin is that's not a problem, and you don't need it for
+learning derivatives.
 
 graybox:
     This chapter starts with some boring stuff, but we need it for fun
