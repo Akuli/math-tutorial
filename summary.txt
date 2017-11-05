@@ -344,6 +344,7 @@ code: javascript
     function toRadians(degrees) { return degrees/360*TAU; }
     function toDegrees(radians) { return radians/TAU*360; }
 
+(unitcircle)
 Unit circle:
 
 asymptote:
@@ -400,8 +401,7 @@ math:
                 - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
     \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
                 - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
-    e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!}
-             + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+    e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
 
 ## Exponents and Logarithms
 

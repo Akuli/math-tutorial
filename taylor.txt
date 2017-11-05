@@ -183,7 +183,7 @@ math:
 The pattern is obvious.
 
 Now let's plug in some values. With [the unit
-circle](summary.html#geometry-and-trig) we know that $\cos 0 = 1$ and
+circle](summary.html#unitcircle) we know that $\cos 0 = 1$ and
 $\sin 0 = 0$ because the $(x,y)$ point $(1,0)$ corresponds to the angle 0.
 
 math:

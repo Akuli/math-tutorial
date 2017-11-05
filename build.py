@@ -60,7 +60,7 @@ def get_sidebar_content(txtfile):
         thingy("Useful", 'derivatives geometry-and-trig numbertheory'),
         thingy("Kinda fun", 'integrals more-integrals'),
         thingy("Mathy", 'more-derivatives more-geometry-and-trig explog'),
-        thingy("Mind-blowing", 'taylor'),
+        thingy("Mind-blowing", 'taylor eulerformula'),
         thingy("Other stuff", 'basics graphs summary',
                indexlink),
     ])
