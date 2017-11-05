@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trigonometry</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><b>Taylor Polynominals</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="summary.html">Summary</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="explanations.html">Proofs and Explanations</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><b>Taylor Polynominals</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="taylor-polynominals">Taylor Polynominals<a class="headerlink" href="#taylor-polynominals" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
@@ -57,22 +57,23 @@ notation:</p>
   <code>factorial(n)</code> function that returns <img class="inlinemath" src="math/388f554901ba5d77339eec8b26beebea.png" />.
 </li></ul><p>Let's do this.</p>
 
-<p><img src="math/bf253d3861cc966bfe3801ba440dd3d4.png" class="blockmath" /></p><p>This is known as the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th Taylor polynominal. Note that we got this beautiful
-bit of magic-like math from basically nothing with just derivatives and
-antiderivatives.</p>
+<p><img src="math/bf253d3861cc966bfe3801ba440dd3d4.png" class="blockmath" /></p><p>This is known as the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th Taylor polynominal.</p>
 
 <p>We used <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> here as a "magic number" that we always put to <img class="inlinemath" src="math/23bafa2d03bfea63981f09d7a8ecc455.png" />, but
 that doesn't need to be 0. Here's a more generalized Taylor polynominal:</p>
 
-<p><img src="math/9bb77026900ca2613c764b7e053490f8.png" class="blockmath" /></p><p>The Taylor polynominal with <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" /> is also known as a Maclaurin polynominal. You
+<p><img src="math/929a878774ac609f42b14ca3a8a3f94d.png" class="blockmath" /></p><p>The Taylor polynominal with <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" /> is also known as a Maclaurin polynominal. You
 don't need to remember that in this tutorial, but if someone talks about a
 Maclaurin polynominal they mean this.</p>
 
-<h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
+<p>Taylor polynominals are usually accurate near <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and less accurate far from
+<img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" />. These graphs demonstrate that:</p>
+
+<p><img class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.png" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
 
 <p>We need to know that <img class="inlinemath" src="math/30a19fc8d8ea6eb3146333dc3436951c.png" /> and
-<img class="inlinemath" src="math/57efdd5c4c49ad171d4cc09aaa94d2b2.png" />. Unfortunately this tutorial contains no proof
-about this yet, but I'm planning on making one soon.</p>
+<img class="inlinemath" src="math/57efdd5c4c49ad171d4cc09aaa94d2b2.png" />. These rules are proved
+<a href="more-geometry-and-trig.html#derivative-of-sine">here</a>.</p>
 
 <p>So, we get this:</p>
 
@@ -108,17 +109,18 @@ circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741ad
 <span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
 <span style="color: #007020">print</span>(math<span style="color: #666666">.</span>sin(<span style="color: #40a070">1</span>))      <span style="color: #60a0b0; font-style: italic"># also 0.8414709848078965</span>
 </pre></div>
-<p>I think this is amazing.</p>
+<p>I think this is amazing, and the most amazing thing about this is that we got
+everything out of basically nothing with just derivatives and antiderivatives.</p>
 
 <p>If you look at how Python's <code>math.sin()</code> is implemented it just calls C
 <code>sin()</code>, and that uses taylor polynominals just like our code. The C code is
 more complicated than our <code>taylorsin()</code> because it uses taylor polynominals at
 other places than <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />, but the basic idea is the same.</p>
 
-<p>If we could somehow continue this forever instead of stopping at e.g. <img class="inlinemath" src="math/f2b279b413e38fa66df3d6e737d32bd0.png" /> we
-would get perfectly precise sin values. I'm not going to talk about the details
-of why that happens, but this works for sin, cos and many other things. An
-infinitely continuing Taylor polynominal is also known as a Taylor series.</p>
+<p>If we could somehow continue this forever instead of stopping at e.g. <code>i=99</code>
+we would get perfectly precise sin values. I'm not going to talk about the
+details of why that happens, but this works for sin, cos and many other things.
+An infinitely continuing Taylor polynominal is also known as a Taylor <i>series</i>.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of <img class="inlinemath" src="math/96eb9bf5314b593783ee57983efbed9d.png" /> and <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />. See <a href="explog.html#the-e-constant">this
 thing</a> if you don't know what <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> is or what the

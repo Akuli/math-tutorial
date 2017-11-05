@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>More Derivatives</title>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>More Derivatives</b></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="more-derivatives">More Derivatives<a class="headerlink" href="#more-derivatives" title="Link to this title">¶</a></h1><p>This chapter contains derivative stuff that most people probably find boring,
+but you might like some of it. It assumes that you have read <a href="derivatives.html">the first
+derivative chapter</a>.</p>
+
+<h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>In the first derivative chapter I said that most functions you'll come across
+have a derivative. Let's be a bit more specific. The derivative doesn't exist in
+these cases:</p>
+
+<p><ul><li></p>
+
+<p>The function is not <i>continuous</i>; that is, the graph consists of multiple
+lines. For example, this function is not continuous at <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> and thus
+<img class="inlinemath" src="math/2bc3b4ce5db539e47bd469d31245629a.png" /> is not defined:</p>
+
+<p><img src="math/6733e8d407b8cfbfcf1b53ec57c50154.png" class="blockmath" /></p><p><img class="asymptote" src="asymptote/d7ef1a5b2b4155f3aa442109bcea2fbe.png" /></p><p></li><li></p>
+
+<p>The graph of the function has a spike in it. Derivatives describe
+"growing speed" and it isn't clear how fast the values grow on top of a
+spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
+<img class="inlinemath" src="math/cf513decf6e4ace0e25cb1c932aaa049.png" /> has a derivative everywhere except at <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />.</p>
+
+<p><img class="asymptote" src="asymptote/c30ea4d9566657343733b8c3f6d38d71.png" /></p><p></li></ul></p>
+
+<p>Of course, there are more precise definitions about continuity and "spikes",
+but this should be enough to give you some kind of idea about the limitations.</p>
+
+<p>The existence of this limit implies all these things:</p>
+
+<p><img src="math/74f30780f1d5323f8c0f1d99e791e0a0.png" class="blockmath" /></p><p>For example (here <img class="inlinemath" src="math/772354f3c4e409f88acad450e9a8584e.png" /> means that <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> approaches 0 from the positive
+direction, or from right in a graph):</p>
+
+<p><img src="math/deee53f86139bf300741beb6c92a0f11.png" class="blockmath" /></p><p>0 and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> are very different, so the limit just doesn't exist. Similarly
+we'd get <img class="inlinemath" src="math/c4ca4238a0b923820dcc509a6f75849b.png" /> and <img class="inlinemath" src="math/6bb61e3b7bce0931da574d19d1d82c88.png" /> if we tried to evaluate <img class="inlinemath" src="math/c542c9f2c18d8cb8df74d5173401a363.png" /> at <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />.</p>
+
+<h2 id="chain-rule">Chain Rule<a class="headerlink" href="#chain-rule" title="Link to this title">¶</a></h2><p>Let's say you want to find the derivative of <img class="inlinemath" src="math/a15c72896537a69bef32c65c61a8d307.png" />. The derivative of <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" />
+is just <img class="inlinemath" src="math/2204c2b4d60ae2fd5279ec54cfaed2a4.png" />, so isn't the derivative of <img class="inlinemath" src="math/a15c72896537a69bef32c65c61a8d307.png" /> then <img class="inlinemath" src="math/408b77481ff025a215e007074113edd6.png" />?
+<b>No, it's not!</b></p>
+
+<p>When things are nested like this you need to multiply by the derivative of the
+inner stuff.</p>
+
+<p><img src="math/bf97ff5b6b062f6fe96337e029f04413.png" class="blockmath" /></p><p>This is known as the chain rule, and it looks like this in a general <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" />
+form:</p>
+
+<p><img src="math/77e448829c1af7825709755512fa5224.png" class="blockmath" /></p><p>There's a proof below.</p>
+
+<h2 id="derivative-rules">Derivative Rules<a class="headerlink" href="#derivative-rules" title="Link to this title">¶</a></h2><p>Libraries like sympy are sure handy for finding derivatives, but we can also
+find the derivative of pretty much anything by hand. In <a href="derivatives.html">the first derivative
+chapter</a> we learned to find the derivatives of <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />, <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> and
+<img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" />. And if <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> are functions that have a derivative, we know what the
+derivative of <img class="inlinemath" src="math/f070deff5c0629450c5a975b58c3c33a.png" /> or <img class="inlinemath" src="math/5a49ec3ca727d34fb9565844fd4ceb57.png" /> is.</p>
+
+<p>We can do a lot more, and there's <a href="summary.html#derivative-rules">a concise list of derivative
+rules</a> on the summary page. Most of the rules are
+proved here, and they are ordered so that they don't use anything that has not
+been proved before them.</p>
+
+<h3 id="img-class-inlinemath-src-math-d8066452a7caefafc1ec4d4a869c554e-png"><img class="inlinemath" src="math/d8066452a7caefafc1ec4d4a869c554e.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-d8066452a7caefafc1ec4d4a869c554e-png" title="Link to this title">¶</a></h3><div class="indent"><p>This is messy, but it works.</p>
+
+<p><img src="math/9cee3461cd97d26dd6ead4c0226bdcff.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-f1b2f57c7564447818eba5e5773a8ebf-png"><img class="inlinemath" src="math/f1b2f57c7564447818eba5e5773a8ebf.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-f1b2f57c7564447818eba5e5773a8ebf-png" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> value. For example,
+our very first derivative example shows that <img class="inlinemath" src="math/c5e6404d4d17dacab8d9945bb1a638e4.png" />. Here
+I'll prove that this works with all positive integers using a powerful
+technique known as <b>induction</b>.</p>
+
+<p>Let's start by showing that this works with <img class="inlinemath" src="math/27071423b9a403c9ffa1895ef3fefb6e.png" />:</p>
+
+<p><img src="math/071c1d941742f771a3e47cab9e999022.png" class="blockmath" /></p><p>Next we'll prove that <b>if</b> the rule works at <img class="inlinemath" src="math/589000d5356a8342a2d740d1148bae32.png" /> <b>then</b> it also works
+at <img class="inlinemath" src="math/e048ba34b37023a8ea77013c7efa9a92.png" /> where <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" /> is a positive integer. Let's write things down just to
+be clear:</p>
+
+<p><b>We assume:</b> <img class="inlinemath" src="math/6e474f2b13ebb63a2fb1b82136ec90ae.png" /></p>
+
+<p><b>We'll prove:</b> <img class="inlinemath" src="math/4edc493a3d7c441970d852b8fcce2f6e.png" /></p>
+
+<p>Let's use the <img class="inlinemath" src="math/7c9f90c40e6a15bdab05b90feddab615.png" /> and <img class="inlinemath" src="math/d84dc2adcc237df0079a01a51291e11d.png" /> rules we
+proved above and the assumption.</p>
+
+<p><img src="math/104ab43c31fb1f48bd37d50fae8ec255.png" class="blockmath" /></p><p>We proved that if <img class="inlinemath" src="math/6e474f2b13ebb63a2fb1b82136ec90ae.png" /> then
+<img class="inlinemath" src="math/4edc493a3d7c441970d852b8fcce2f6e.png" />. Now we know that the rule works
+when <img class="inlinemath" src="math/27071423b9a403c9ffa1895ef3fefb6e.png" />, and then if we plug in <img class="inlinemath" src="math/ceef78b61bf01306cc7e80344c92c19d.png" /> we know it works when <img class="inlinemath" src="math/4847acef124418c705153576282ebd02.png" />, and so
+on.</p>
+
+<p><img class="asymptote" src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.png" /></p><p>Note that we only proved that the rule works when <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is a positive integer,
+but it also works when <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is e.g. <img class="inlinemath" src="math/93b05c90d14a117ba52da1d743a43ab1.png" />. It's possible to prove
+that the rule isn't limited to positive integers, but that's beyond the
+scope of this tutorial.
+</p>
+
+</div><div class="floatingbox"><h2> Handy thing: <img class="inlinemath" src="math/9b51c744c0d93a2d852a08382fb833ec.png" /></h2><p>Proof:</p>
+
+<p><img src="math/068687bce19ace30b28a0d16db096962.png" class="blockmath" /></p><p>In this case we need to plug in <img class="inlinemath" src="math/825cd0f4ded2bc8d50b7552c45653d77.png" /> and <img class="inlinemath" src="math/a70343ce9d3ce25c81d3f73a3e1a5d32.png" />.
+</p>
+
+</div><h3 id="img-class-inlinemath-src-math-103e1cf82d4028e40817728146a3d964-png"><img class="inlinemath" src="math/103e1cf82d4028e40817728146a3d964.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-103e1cf82d4028e40817728146a3d964-png" title="Link to this title">¶</a></h3><div class="indent"><p>We could prove this with the <img class="inlinemath" src="math/901a4ac1bf0dc042656f4a045eb75433.png" /> rule because
+<img class="inlinemath" src="math/20dde705a063ad16e93eb0ebf48238c7.png" />, but we proved the <img class="inlinemath" src="math/e165147579ec4ce8bce99b5d00f8fd3c.png" /> rule only for positive
+integers. Let's survive without it.</p>
+
+<p><img src="math/2972d47fc30a796c54ac97ba4d08a2f6.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-8cd0684703f7931bca03371fe86d604a-png"><img class="inlinemath" src="math/8cd0684703f7931bca03371fe86d604a.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-8cd0684703f7931bca03371fe86d604a-png" title="Link to this title">¶</a></h3><div class="indent"><p>We could use the <img class="inlinemath" src="math/901a4ac1bf0dc042656f4a045eb75433.png" /> rule again because <img class="inlinemath" src="math/61b98bb724d72e0b009c3f523c50cd82.png" /> is actually
+<img class="inlinemath" src="math/48ea9be719fa783b7063fd5c5531521a.png" />, but as before, we haven't proved that it works at <img class="inlinemath" src="math/c06df0b2f6cb0f34a64fe41142c78271.png" /> so we'll
+do this without it.</p>
+
+<p><img src="math/2a2856532bf8c662ab374c452894ef96.png" class="blockmath" /></p></div><h3 id="img-class-inlinemath-src-math-856e7360e9e14bc37ca22a88f8cf4550-png"><img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-856e7360e9e14bc37ca22a88f8cf4550-png" title="Link to this title">¶</a></h3><div class="indent"><p>This rule looks simple, but it's surprisingly difficult to prove correctly
+while keeping it easy to read. Here's the best proof I managed to make.</p>
+
+<p>Let's start by plugging stuff into the definition of derivative:</p>
+
+<p><img src="math/acb8631ac1abf5f1696963321fb7ee14.png" class="blockmath" /></p><p><img src="math/00cb8c45c7065e57dd58fbd558e7a81c.png" class="blockmath" /></p><img class="asymptote" src="asymptote/c332da017f76bc60b6127cdf557b08c2.png" style="float:right;" /><p>Note that I used <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> with one limit and <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" /> with the other; the limits are
+completely independent of each other and I wanted to make it stand out. In
+other words, it doesn't matter how <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> and <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" /> relate to each other as long
+as both of them approach 0.</p>
+
+<p>The rule can be used only if <img class="inlinemath" src="math/a1627a9956cf861e19c02dbeed3126c2.png" /> exists, and thus <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> must be
+continuous; see <a href="#which-functions-have-derivatives">the derivative existence stuff
+above</a>. So, if <img class="inlinemath" src="math/9d4bc0f01913766d3661654f39403e28.png" /> (read: h
+approaches 0) then <img class="inlinemath" src="math/1b8cc0de3268c62ab495d85bdd30b3c0.png" /> and <img class="inlinemath" src="math/e943357c528a9ee88f7347b03b63f965.png" />.</p>
+
+<p>If we put all this together we can set <img class="inlinemath" src="math/55788c149440c4a7a8912da86743a9fc.png" />. Now it's time to
+calculate <img class="inlinemath" src="math/bba33b6c234fb7d02fb28be428e2f177.png" />.</p>
+
+<p><img src="math/026421c9dde85abd73d9ffce4aa09fe9.png" class="blockmath" /></p><img class="asymptote" src="asymptote/4e51968114d716fd3f385598fd228c9b.png" style="float:right;" /><p>This looks nice, but we are not done yet! We divided by <img class="inlinemath" src="math/8ce4b16b22b58894aa86c421e8759df3.png" />. What if
+<img class="inlinemath" src="math/4931411fd72295d0ab0439e8f9cfefa2.png" /> when <img class="inlinemath" src="math/9d4bc0f01913766d3661654f39403e28.png" /> but <img class="inlinemath" src="math/9c78583b715a91d39939e897f6cb2616.png" />? Practically it means that
+the graph <img class="inlinemath" src="math/d13f453d5a25ba83fd2f3ecc74880538.png" /> is a horizontal and straight line around <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> because
+<img class="inlinemath" src="math/4f3f1df7045ded7289cfdd19e0142db6.png" /> with a small <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" />. So, we can say that <img class="inlinemath" src="math/d41540eb07faa71dcab1f3d9e79f4cf1.png" /> on this
+interval (<img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is a constant) and prove this case separately:</p>
+
+<p><img src="math/b9134549ccb41278eb6956de9de72564.png" class="blockmath" /></p><p><img src="math/52c27bf18f4ae743bc76720fbdd98998.png" class="blockmath" /></p><p>Look carefully: <img class="inlinemath" src="math/7856270fe16a99e90fe2cfd61724fb63.png" /> because we differenciated <img class="inlinemath" src="math/13f62c9aa3411c74f55faa6850ff5fb2.png" />
+with respect to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />, so <img class="inlinemath" src="math/13f62c9aa3411c74f55faa6850ff5fb2.png" /> was actually yet another constant because it
+doesn't depend on the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.
+</p>
+
+</div><h3 id="img-class-inlinemath-src-math-9e11f374aaa2840aa80fa548326e2b4f-png"><img class="inlinemath" src="math/9e11f374aaa2840aa80fa548326e2b4f.png" /><a class="headerlink" href="#img-class-inlinemath-src-math-9e11f374aaa2840aa80fa548326e2b4f-png" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
+
+<ul><li><img class="inlinemath" src="math/d8066452a7caefafc1ec4d4a869c554e.png" /></li><li><img class="inlinemath" src="math/fe79cdf863608d24879884829ea3459d.png" /></li><li><img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" />
+</li></ul><p>Now this is quite straight-forward.</p>
+
+<p><img src="math/41db6944cdc68be690389f2c54f1e29f.png" class="blockmath" /></p></div></div>
+</body>
+</html>
