@@ -353,8 +353,9 @@ asymptote:
     draw(unitcircle);
     draw((0,0)--(cos(t),sin(t)), L="1", align=N);
     draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
-    draw(brace((0,1), (cos(t),1)), deepblue, L="$\cos t$", align=N);
-    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin t$", align=E);
+    draw(brace((0,1), (cos(t),1)), deepblue);
+    label((0,1), deepblue, L="$\cos(t)$", align=NE);
+    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin(t)$", align=E);
 
 (trianglestuff)
 A triangle with a quarter-turn corner and a bunch of math:
@@ -366,9 +367,9 @@ asymptote: float:right;
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 math:
-    &\sin t = \frac b c \\
-    &\cos t = \frac a c \\
-    &\tan t = \frac b a = \frac{b/c}{a/c} = \frac{\sin t}{\cos t}\\
+    &\sin(t) = \frac b c \\
+    &\cos(t) = \frac a c \\
+    &\tan(t) = \frac b a = \frac{b/c}{a/c} = \frac{\sin(t)}{\cos(t)}\\
     &t = \text{atan2}(b,a) \\
     &a^2 + b^2 = c^2
 
@@ -395,9 +396,9 @@ Choosing $a=0$ usually results in simple $P_n$ polynominals.
 Here sin and cos work with [radians](#geometry-and-trig).
 
 math:
-    \sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
+    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
                 - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
-    \cos x &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
+    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
                 - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
     e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!}
              + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
@@ -405,29 +406,29 @@ math:
 ## Exponents and Logarithms
 
 Exponent functions are like $f(x)=a^x$ where $a$ is positive and $a \ne 1$.
-A function like $f(x)=1^x$ isn't really an exponent function because it's really
-just $f(x)=1$.
+A function like $f(x)=1^x$ isn't really an exponent function because it's just
+$f(x)=1$.
 
-Logarithms are the inverse of exponents. If $y = b^x$, then $\log_b y = x$
+Logarithms are the inverse of exponents. If $y = b^x$, then $\log_b(y) = x$
 where the base $b>0$ and $b \ne 1$.
 
 math:
     \log_b(b^x) &= x \\
-    x^{\log_b x} &= x
+    x^{\log_b(x)} &= x
 
 (logs-are-useful)
 These things make logarithms useful. Here $a$ and $b$ are positive and not 1,
 $x>0$ and $y>0$.
 
 math:
-    \log_b(x^y) &= y\ \log_b x \\
-    \log_b(xy) &= \log_b x + \log_b y \\
-    \log_b \frac x y &= \log_b x - \log_a y \\
-    \log_b x &= \frac{\log_a x}{\log_a b}
+    \log_b(x^y) &= y\ \log_b(x) \\
+    \log_b(xy) &= \log_b(x) + \log_b(y) \\
+    \log_b\left(\frac x y\right) &= \log_b(x) - \log_b(y) \\
+    \log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
 
 Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$
 
-$\ln x$ means $\log_e x$.
+$\ln(x)$ means $\log_e(x)$.
 
 ## Other Bases
 

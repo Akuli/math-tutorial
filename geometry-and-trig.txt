@@ -247,11 +247,11 @@ asymptote:
     dot((cos(t),-sin(t)), p=dotpen);
     draw(arc((0,0), 0.3, -degrees(t), 0), L="$t$");
 
-    draw(brace((cos(t),-1), (0,-1)), deepblue, L="$\cos t$", align=S);
-    draw(brace((cos(t)+0.15,0), (cos(t)+0.15,-sin(t))), darkorange, L="$\sin t$", align=E);
+    draw(brace((cos(t),-1), (0,-1)), deepblue, L="$\cos(t)$", align=S);
+    draw(brace((cos(t)+0.15,0), (cos(t)+0.15,-sin(t))), darkorange, L="$\sin(t)$", align=E);
 
-This is really simple: the x coordinate is $\cos t$ and the y coordinate is
-$\sin t$. But the radius of the unit circle is 1 instead of our 5, so we need
+This is really simple: the x coordinate is $\cos(t)$ and the y coordinate is
+$\sin(t)$. But the radius of the unit circle is 1 instead of our 5, so we need
 to multiply everything by 5 to scale it up. We get this:
 
 code: python3
@@ -271,14 +271,15 @@ code: python3
 
 These results make sense because the angle $t$ in the above image looks like
 it's about a sixth of a turn (or $\tau/6$), so $\sin(\tau/6)$ should be close
-to 1 because the circle's bottom is at $y=1$. Similarly, the $\cos t$ marked on
+to 1 because the circle's bottom is at $y=1$. Similarly, the $\cos(t)$ marked on
 the picture seems to be about half of the radius, and the radius is 1.
 
 (accurate-sincos)
 ``0.5000000000000001`` is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
-$\sin \frac \tau 6 = \frac{\sqrt 3}{2}$ and $\cos \frac \tau 6 = \frac 1 2$.
-See [this thing](more-geometry-and-trig.html#accurate-sine-and-cosine-values) if
+$\sin\left(\frac \tau 6\right) = \frac{\sqrt 3}{2}$ and
+$\cos\left(\frac \tau 6\right) = \frac 1 2$. See [this
+thing](more-geometry-and-trig.html#accurate-sine-and-cosine-values) if
 you're wondering how I came up with these values.
 
 ## Example: Ball and Paddle
@@ -394,9 +395,9 @@ asymptote: float:right;
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 math:
-    \sin t &= \frac b c \\
-    \cos t &= \frac a c \\
-    \tan t &= \frac b a
+    \sin(t) &= \frac b c \\
+    \cos(t) &= \frac a c \\
+    \tan(t) &= \frac b a
 
 We'll talk about compatibility with the unit circle definitions
 [later](more-geometry-and-trig.html#unit-circle-or-triangle). These things work
@@ -414,16 +415,16 @@ calculate the stuff by plugging in $a=20$ and $b=10$ without worrying about
 which way things go. Let's figure out how to calculate the $t$:
 
 math:
-    \tan t &= \frac b a \\
-    t &= \arctan{\frac b a} = \text{atan2}(b, a)
+    \tan(t) &= \frac b a \\
+    t &= \arctan\left(\frac b a\right) = \text{atan2}(b, a)
 
-Here $\arctan$ is the inverse of $\tan$, so $\arctan (\tan t) = t$. Most
+Here $\arctan$ is the inverse of $\tan$, so $\arctan(\tan(t)) = t$. Most
 programming languages have an ``atan(x)`` function that returns $\arctan x$,
 but I don't recommend using it in this case; the ``atan2(b,a)`` function
-returns $\arctan{\frac b a}$ and I recommend it instead. ``atan2`` looks at the
-signs of $a$ and $b$ and does the right thing if they're negative (the ball is
-moving to e.g. top left). It also works if ``a`` is 0 and ``b/a`` would fail as
-division by zero is undefined.
+returns $\arctan\left(\frac b a\right)$ and I recommend it instead. ``atan2``
+looks at the signs of $a$ and $b$ and does the right thing if they're negative
+(the ball is moving to e.g. top left). It also works if ``a`` is 0 and ``b/a``
+would fail as division by zero is undefined.
 
 graybox:
     Usually people like to put $x$ before $y$ in different kinds of places,
@@ -563,13 +564,13 @@ These vector calculations are just like the
 math:
     l &= \sqrt{a^2+b^2} = \text{hypot}(a, b) \\
     t &= \text{atan2}(b,a) \\
-    a &= l \cdot \cos t \\
-    b &= l \cdot \sin t
+    a &= l \cdot \cos(t) \\
+    b &= l \cdot \sin(t)
 
 Example: if we move 1 unit to the right and 2 units up, our vector is $<1,2>$,
 its length is $\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24$ and the angle is
 $\text{atan2}(2,1) \approx 1.107$ radians. On the other hand,
-$2.24 \cdot \cos 1.107 \approx 1$ and $2.24 \cdot \sin 1.107 \approx 2$.
+$2.24 \cdot \cos(1.107) \approx 1$ and $2.24 \cdot \sin(1.107) \approx 2$.
 
 One way to change the angle of a vector is to first convert it to a length and
 an angle, change that angle and create a new vector. It looks like this in

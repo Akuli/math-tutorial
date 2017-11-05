@@ -91,8 +91,8 @@ graybox: See Also
 
 ## Logarithms
 
-A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b y$. You
-can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b x} = x$. The
+A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
+can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b(x)} = x$. The
 $b$ is known as the base of the logarithm.
 
 The inversiness looks like this in graphs:
@@ -107,22 +107,22 @@ asymptote:
     label((1,0), L="1", align=S);
     label((0,1), L="1", align=NW);
     draw(graph(exp2,xymin,expmax), blue, L=rotate(55)*"$y=2^x$", align=NW);
-    draw(graph(log2,exp2(xymin),exp2(expmax)), heavyred, L=rotate(22)*"$y=\log_2 x$", align=SE);
+    draw(graph(log2,exp2(xymin),exp2(expmax)), heavyred,
+         L=rotate(22)*"$y=\log_2(x)$", align=SE);
 
 Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
 with any $x$. You cannot take any logarithm of a zero or a negative value.
 
-The base $e$ logarithm $\log_e x$ is often written as $\ln x$. The n is short
+The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
 for "natural", and $\log_e$ is called natural because it appears surprisingly
 often in all kinds of places because of the $e$.
 
 Many programming languages and calculators have a ``log(x)`` function, and
-usually it returns $\ln x$, $\log_2 x$ or $\log_{10} x$. If you aren't sure
+usually it returns $\ln(x)$, $\log_2(x)$ or $\log_{10}(x)$. If you aren't sure
 which logarithm it is, you can try it like this:
 
 math:
-    b^0 &= 1 \\
-    0 &= \log_b 1
+    \log_b(b) = \log_b(b^1) = 1
 
 code: python3
     >>> import math
@@ -133,7 +133,7 @@ code: python3
     >>> math.log(math.e)
     1.0
 
-Python's ``math.log(x)`` seems to return $\ln x$.
+Python's ``math.log(x)`` seems to return $\ln(x)$.
 
 The summary page contains [a bunch of formulas](summary.html#logs-are-useful)
 that make logarithms very useful. This tutorial doesn't contain proofs of them
@@ -147,13 +147,12 @@ either side:
 math:
     a^b &= c \\
     \ln(a^b) &= \ln c \\
-    b \ln a &= \ln c
+    b \ln(a) &= \ln c
 
 Of course, you can take any logarithm you want instead of $\ln$.
 
-Use the $\log_b x = \frac{\log_a x}{\log_a b}$ formula if your favorite
-programming language doesn't have a logarithm function that returns what you
-want:
+Use the $\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ formula if your
+programming language doesn't have a logarithm that returns what you want:
 
 code: javascript
     function log4(x) {

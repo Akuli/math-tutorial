@@ -233,8 +233,9 @@ asymptote: float:left;
     draw(unitcircle);
     draw((0,0)--(cos(t),sin(t)), L="1", align=N);
     draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
-    draw(brace((0,1), (cos(t),1)), deepblue, L="$\cos t$", align=N);
-    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin t$", align=E);
+    draw(brace((0,1), (cos(t),1)), deepblue);
+    label((0,1), deepblue, L="$\cos(t)$", align=NE);
+    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin(t)$", align=E);
 
 comment: TODO: avoid copy/pasting the same code twice somehow?
 
@@ -247,7 +248,7 @@ asymptote:
     draw((a,1)--(b,1), smalldashes, L="$y=1$", align=N);
     draw((a,-1)--(b,-1), smalldashes, L="$y=-1$", align=S);
 
-    label("$y=\sin t$", (tau/4,0.4), darkorange);
+    label("$y=\sin(t)$", (tau/4,0.3), darkorange);
     label("$\tau/2$", (tau/2,0), align=SW); dot((tau/2,0),dotpen);
     label("$\tau$", (tau,0), align=SE); dot((tau,0),dotpen);
 
@@ -260,7 +261,7 @@ asymptote:
     draw((a,1)--(b,1), smalldashes, L="$y=1$", align=N);
     draw((a,-1)--(b,-1), smalldashes, L="$y=-1$", align=S);
 
-    label("$y=\cos t$", (tau/2,-0.4), blue);
+    label("$y=\cos(t)$", (tau/2,-0.3), blue);
     label("$\tau/4$", (tau/4,0), align=SW); dot((tau/4,0),dotpen);
     label("$3\tau/4$", (3tau/4,0), align=SE); dot((3tau/4,0),dotpen);
     label("$5\tau/4$", (5tau/4,0), align=SW); dot((5tau/4,0),dotpen);

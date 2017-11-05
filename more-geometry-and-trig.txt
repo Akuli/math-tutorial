@@ -135,13 +135,14 @@ asymptote:
     size(12cm);
 
     axises(-1.1,1.3,-1.1,1.3);
-    real t = pi/3;          // 60°
+    real t = 1.2;
     real tradius = 0.2;     // radius of t's arc thingy
 
     draw(unitcircle);
     fill((0,0)--(cos(t),0)--(cos(t),sin(t))--cycle, yellow);
-    draw((0,0)--(cos(t),0), L="$\cos t$");
-    draw((cos(t),0)--(cos(t),sin(t)), L="$\sin t$");
+    draw((0,0)--(cos(t),0));
+    label((0,0), L="$\cos(t)$", align=SE);
+    draw((cos(t),0)--(cos(t),sin(t)), L="$\sin(t)$");
     draw((cos(t),sin(t))--(0,0), L="1");
 
     draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
@@ -149,9 +150,9 @@ asymptote:
 We get this by applying triangle trig to the yellow triangle:
 
 math:
-    \sin t &= \frac{\sin t}{1} \\
-    \cos t &= \frac{\cos t}{1} \\
-    \tan t &= \frac{\sin t}{\cos t}
+    \sin(t) &= \frac{\sin(t)}{1} \\
+    \cos(t) &= \frac{\cos(t)}{1} \\
+    \tan(t) &= \frac{\sin(t)}{\cos(t)}
 
 The first two formulas are obviously true with any $t$, but the last one is a
 bit more interesting. We found another way to define $\tan$, and it
@@ -163,10 +164,14 @@ asymptote: float:right;
     draw(rarc((0,0), 1, 0, atan2(2,3)), L="$t$");
 
 math:
-    \frac{\sin t}{\cos t} = \frac{b/c}{a/c}
-    = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan t
+    \frac{\sin(t)}{\cos(t)} = \frac{b/c}{a/c}
+    = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan(t)
 
 ## Accurate Sine and Cosine Values
+
+graybox:
+    In this section, $\cos^2(t)$ means $(\cos(t))^2$. It's confusing at first,
+    but it's used often because it's much easier to read and type.
 
 asymptote: float:right;
    size(10cm);
@@ -189,36 +194,37 @@ asymptote: float:right;
    draw(arc((cost,sint), tradius, 180+degrees(t), 270), L="$\frac{\tau}{12}$");
    draw(arc((cost,sint), tradius, -90, -degrees(t)), L="$\frac{\tau}{12}$");
 
-   draw(brace((1,0), (cost,0)), L="$\cos \frac \tau 6$", align=S);
-   draw(brace((cost,0), (0,0)), L="$\cos \frac \tau 6$", align=S);
-   draw(brace((1.05,sint), (1.05,0)), L="$\sin \frac \tau 6$", align=E);
+   draw(brace((1,0), (cost,0)), L="$\cos\left(\frac \tau 6\right)$", align=S);
+   draw(brace((cost,0), (0,0)), L="$\cos\left(\frac \tau 6\right)$", align=S);
+   draw(brace((1.05,sint), (1.05,0)), L="$\sin\left( \frac \tau 6\right)$", align=E);
 
 [Here](geometry-and-trig.html#accurate-sincos) I said that
-$\sin \frac \tau 6 = \frac{\sqrt 3}{2}$ and $\cos \frac \tau 6 = \frac 1 2$.
-I'm sorry to disappoint you, but there's no general and easy way to find
-accurate $\sin$ and $\cos$ values by hand. However, in many cases there's
-something special about the angles that allows us to do some other tricks.
+$\sin\left(\frac \tau 6\right) = \frac{\sqrt 3}{2}$ and
+$\cos\left(\frac \tau 6\right) = \frac 1 2$. I'm sorry to disappoint you, but
+there's no general and easy way to find accurate $\sin$ and $\cos$ values by
+hand. However, in many cases there's something special about the angles that
+allows us to do some other tricks.
 
 The angle in question is $\frac \tau 6$, a sixth of a turn. If a triangle has
-three sides with equal lengths, the angles will be $\frac \tau 6$ each. That's
-why we can complete the triangle drawn in unit circle like in the image. The
-angles at top are $\frac{\tau}{12}$ because two $\frac{\tau}{12}$ angles added
-together is $\frac \tau 6$.
+three sides with equal lengths, the angles will be $\frac{\tau/2}{3}=\frac\tau6$
+each. That's why we can complete the triangle drawn in unit circle like in the
+image. The angles at top are $\frac{\tau}{12}$ because two $\frac{\tau}{12}$
+angles added together is $\frac \tau 6$.
 
 The radius of the unit circle is 1, so we get this on the $x$ axis:
 
 math:
-    \cos \frac \tau 6 + \cos \frac \tau 6 &= 1 \\
-    \cos \frac \tau 6 &= \frac 1 2
+    \cos\left(\frac \tau 6\right) + \cos\left(\frac \tau 6\right) &= 1 \\
+    \cos\left(\frac \tau 6\right) &= \frac 1 2
 
 Now we can apply the Pythagorean theorem (proved [above](#pythagorean-theorem-proof))
 to the yellow triangle and figure out $\sin \frac \tau 6$:
 
 math:
-   \left( \cos \frac \tau 6 \right)^2 + \left( \sin \frac \tau 6 \right)^2 &= 1^2 = 1 \\
-   \left( \sin \frac \tau 6 \right)^2 &= 1 - \left( \cos \frac \tau 6 \right)^2 \\
-   \sqrt{\left( \sin \frac \tau 6 \right)^2} &= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
-   \left| \sin \frac \tau 6 \right| &= \sqrt{1 - \left( \cos \frac \tau 6 \right)^2} \\
+   \cos^2\left( \frac \tau 6 \right) + \sin^2\left( \frac \tau 6 \right) &= 1^2 = 1 \\
+   \sin^2\left( \frac \tau 6 \right) &= 1 - \cos^2\left( \frac \tau 6 \right) \\
+   \sqrt{\sin^2\left( \frac \tau 6 \right)} &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
+   \left| \sin \frac \tau 6 \right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
       &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
       &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}
          = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}
@@ -227,10 +233,10 @@ We know that $\sin \frac \tau 6$ is positive, so
 $\sin \frac \tau 6 = |\sin \frac \tau 6|$.
 
 Applying the Pythagorean theorem gave us
-$\left(\cos\frac\tau6\right)^2+\left(\sin\frac\tau6\right)^2=1$, and that isn't
+$\cos^2\left(\frac\tau6\right)+\sin^2\left(\frac\tau6\right)=1$, and that isn't
 limited to $\frac\tau6$ in any way. We could draw a similar yellow triangle with
-any angle $t$ and we'd get the same result, so $(\sin t)^2+(\cos t)^2=1$ with
-any $t$.
+any angle $t$ and we'd get the same result, so $\sin^2(t)+\cos^2(t)=1$ with any
+$t$.
 
 ## Why is cosine called cosine?
 
@@ -254,10 +260,10 @@ math:
 We also know these things:
 
 math:
-    &\cos t = \frac a c \\
-    &\sin u = \frac a c
+    &\cos(t) = \frac a c \\
+    &\sin(u) = \frac a c
 
-So, $\displaystyle\cos t = \sin u = \sin \left( \frac \tau 4 - t \right)$.
+So, $\displaystyle\cos(t) = \sin(u) = \sin \left( \frac \tau 4 - t \right)$.
 
 Only angles between 0 and $\frac \tau 4$ make sense as triangle corners, but
 this works with any other angle as well. Just look at [the
@@ -287,7 +293,7 @@ asymptote: float:right;
 
 ## Derivative of Sine
 
-Let's start by finding the derivative of $\sin t$ in radians.
+Let's start by finding the derivative of $\sin(t)$ in radians.
 
 By definition, the angle in the image at right is $t=b/r$ radians. But if we do
 the same thing in a unit circle we know the radius is 1, so $t=b/1=b$. This is
@@ -314,14 +320,14 @@ asymptote:
 
     draw((cos(t+dt),sin(t+dt))--(0,sin(t+dt)), smalldashes);
     draw(brace((-bracedist,0),(-bracedist,sin(t+dt))), L="$\sin(t+\Delta t)$", align=W);
-    draw((cos(t),sin(t))--(cos(t),0), smalldashes, L=rotate(90)*"$\sin t\ $\ ");
+    draw((cos(t),sin(t))--(cos(t),0), smalldashes, L=rotate(90)*"$\sin(t)\ $\ ");
 
 Here we have $\Delta t$ in two different places and you should understand how.
 The bottom of the blue area is parallel with the x axis, and that's how $t$
 appears there as well.
 
-If we take $\sin(t+\Delta t)$ and we take away $\sin t$ we're left with the
-height of the blue area, so the blue area's height is $\sin(t+\Delta t)-\sin t$.
+If we take $\sin(t+\Delta t)$ and we take away $\sin(t)$ we're left with the
+height of the blue area, so the blue area's height is $\sin(t+\Delta t)-\sin(t)$.
 
 The blue area is kind of like a triangle, and with a very small $\Delta t$ it's
 even more like a triangle. Let's draw a picture of just that:
@@ -347,7 +353,7 @@ asymptote:
     draw(rarc((w,0),0.8,atan2(h,-w),tau/2), L="$s$");
     draw(rarc((0,h),0.6,-tau/4,atan2(-h,w)), L="$u$");
 
-    draw(brace((-0.1,0),(-0.1,h)), L=rotate(90)*"$\sin(t+\Delta t)-\sin t$", align=W);
+    draw(brace((-0.1,0),(-0.1,h)), L=rotate(90)*"$\sin(t+\Delta t)-\sin(t)$", align=W);
 
 You might be just looking at this and feeling like $u=t$, but let's prove that
 correctly. Based on the drawing, $s+t = \frac \tau 4$ because they add up to a
@@ -369,19 +375,19 @@ Now we can apply triangle trig to the $u$. I'm using $\approx$ here because the
 $\Delta t$ line is actually a bit curvy in the circle image.
 
 math:
-    \cos u &\approx \frac{\sin(t+\Delta t)-\sin t}{\Delta t} \\
-    \cos t &\approx \frac{\sin(t+\Delta t)-\sin t}{\Delta t} \\
-    \cos t &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin t}{\Delta t} \\
-    \cos t &= \frac{d}{dt} \sin t
+    \cos(u) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
+    \cos(t) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
+    \cos(t) &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
+    \cos(t) &= \frac{d}{dt} \sin(t)
 
 I think this is quite nice.
 
 ## Derivative of Cosine
 
 Based on [the graphs](graphs.html#sine-and-cosine), sin and cos are the same
-thing but with a small offset. We know that $\frac{d}{dt}\sin t=\cos t$, so
+thing but with a small offset. We know that $\frac{d}{dt}\sin(t)=\cos(t)$, so
 finding the derivative of $\sin$ just shifted the graph a bit. The graph of
-$-\sin t$ looks a lot like what might be the derivative of $\cos t$:
+$-\sin(t)$ looks a lot like what might be the derivative of $\cos(t)$:
 
 asymptote:
     size(18cm);
@@ -394,28 +400,28 @@ asymptote:
     draw(graph(coss,xmin,xmax), deepgreen+smalldashes);
     draw(graph(msin,xmin,xmax), blue);
 
-    label((tau/4,1), heavyred, L="$y=\sin t$", align=N);
-    label((tau/2,-1), deepgreen, L="$y=\cos t$", align=S);
-    label((3tau/4,1), blue, L="$y=-\sin t$", align=N);
+    label((tau/4,1), heavyred, L="$y=\sin(t)$", align=N);
+    label((tau/2,-1), deepgreen, L="$y=\cos(t)$", align=S);
+    label((3tau/4,1), blue, L="$y=-\sin(t)$", align=N);
 
-Let's prove that $\frac{d}{dt} \cos t = -\sin t$. This will be much easier than
-the $\sin$ derivative because now we know that $\frac{d}{dt} \sin t = \cos t$
-and $\cos t = \sin \left( \frac \tau 4 - t \right)$, see
+Let's prove that $\frac{d}{dt} \cos(t) = -\sin(t)$. This will be much easier than
+the $\sin$ derivative because now we know that $\frac{d}{dt} \sin(t) = \cos(t)$
+and $\cos(t) = \sin \left( \frac \tau 4 - t \right)$, see
 [above](#why-is-cosine-called-cosine). We just need to remember [the chain
 rule](more-derivatives.html#chain-rule).
 
 math:
-    \frac{d}{dt} \cos t &= \frac{d}{dt} \sin\left( \frac\tau4 - t \right) \\
+    \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac\tau4 - t \right) \\
     &= \cos\left( \frac\tau4 - t \right) \cdot \frac{d}{dt}\left( \frac\tau4 - t \right) \\
     &= \cos\left( \frac\tau4 - t \right) \cdot (-1) \\
     &= -\cos\left( \frac\tau4 - t \right) \\
 
-Now we just need to prove that $-\sin t = -\cos\left( \frac\tau4 - t \right)$
-using our $\cos t = \sin \left( \frac \tau 4 - t \right)$ thing.
+Now we just need to prove that $-\sin(t) = -\cos\left( \frac\tau4 - t \right)$
+using our $\cos(t) = \sin \left( \frac \tau 4 - t \right)$ thing.
 
 math:
-    -\sin t &= -\cos\left( \frac\tau4 - t \right) \\
-    \sin t &= \cos\left( \frac\tau4 - t \right) \\
+    -\sin(t) &= -\cos\left( \frac\tau4 - t \right) \\
+    \sin(t) &= \cos\left( \frac\tau4 - t \right) \\
     &= \sin\left(\frac\tau4 - \left( \frac\tau4 - t \right)\right) \\
     &= \sin\left(\frac\tau4 - \frac\tau4 + t \right) \\
-    &= \sin t
+    &= \sin(t)
