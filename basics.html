@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just <b>keep this page open</b> while you read
 other chapters.</p>
@@ -15,9 +15,10 @@ other chapters.</p>
 <h2 id="variables">Variables<a class="headerlink" href="#variables" title="Link to this title">¶</a></h2><p>Mathematicians use single-letter variable names because math was
 originally written on paper by hand and writing long things by hand
 sucks. There are a few exceptions though; for example, <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />
-are functions with 3-letter names. If they would be called <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" /> and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />
-instead it would be confusing to have a variable named <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" /> or <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />, so
-they are written a bit more verbosely.</p>
+are functions with 3-letter names. (I don't assume that you know
+anything else about <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" /> yet.) If they would be called <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" />
+and <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> instead it would be confusing to have a variable named <img class="inlinemath" src="math/03c7c0ace395d80182db07ae2c30f034.png" /> or
+<img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />, so they are written a bit more verbosely.</p>
 
 <p id="constants">A variable is considered to be a <i>constant</i> if its value doesn't depend
 on <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> (or sometimes some other variable we're talking about). For
@@ -90,8 +91,7 @@ programming languages.</p>
 multiplied with itself. For example, 3 is not negative, so <img class="inlinemath" src="math/9f5655cb731d8f0585bc2771b3eef556.png" />
 because <img class="inlinemath" src="math/225ad5936b238db1af0b1566a0ea8e0b.png" />. Similarly e.g. <img class="inlinemath" src="math/dde4677cef1e77675189adc0149ea3d2.png" />, <img class="inlinemath" src="math/2edb60dc35d5c366a8a4a37dfac2e212.png" /> and
 <img class="inlinemath" src="math/b61f243213c0d28594253bcc19b07c48.png" />. No number produces a negative number when multiplied with
-itself, so you cannot do <img class="inlinemath" src="math/613e5c72cef5ccd9e97c24f1436d0ac3.png" /> (unless you use complex numbers, but they
-are beyond the scope of this tutorial).</p>
+itself, so you cannot do e.g. <img class="inlinemath" src="math/613e5c72cef5ccd9e97c24f1436d0ac3.png" />.</p>
 
 <p>You're probably wondering how the heck our <img class="inlinemath" src="math/959babe8407cdf233d2ae124dc0f8329.png" /> rule works. This
 example should explain everything:</p>
@@ -122,7 +122,9 @@ everything clear.</p>
 </pre></div>
 <p>Quick note about <code>f(x)</code> versus <code>f x</code>: if you define your own function
 called <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> or <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> you should use <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" />, but you can do e.g. <img class="inlinemath" src="math/cdba58911c590ced3e2435dfa39f6873.png" /> or
-<img class="inlinemath" src="math/96eb9bf5314b593783ee57983efbed9d.png" /> with some "special" functions for historical reasons.
+<img class="inlinemath" src="math/96eb9bf5314b593783ee57983efbed9d.png" /> with some "special" functions for historical reasons. This tutorial
+uses <img class="inlinemath" src="math/3e21673ce6c9b09f9ec50b7237248576.png" /> and <img class="inlinemath" src="math/7b8d097ebe7de2080ff1dc9a2b6f0807.png" /> everywhere because most programmers are familiar
+with that.
 </p>
 
 <h2 id="equations">Equations<a class="headerlink" href="#equations" title="Link to this title">¶</a></h2><p>For example, if you know that <img class="inlinemath" src="math/175feae6ed99c741026835f5c036d5a9.png" /> you can find <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> like this:</p>

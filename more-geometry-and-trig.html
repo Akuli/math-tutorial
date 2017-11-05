@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>More Geometry and Trig</b></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><b>More Geometry and Trig</b></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="more-geometry-and-trig">More Geometry and Trig<a class="headerlink" href="#more-geometry-and-trig" title="Link to this title">¶</a></h1><p>Now you should have a good grasp of geometry and trig basics. In this chapter
 we'll learn more stuff and focus on some of the things that you might be
 wondering after reading the previous chapter. Here <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> axises go up instead of
@@ -48,44 +48,49 @@ the unit circle if you need to work with angles that are not between <img class=
 
 <p>Let's make sure that the definitions are compatible with each other:</p>
 
-<p><img class="asymptote" src="asymptote/973547e1780a419891a65352369b11d7.png" /></p><p>We get this by applying triangle trig to the yellow triangle:</p>
+<p><img class="asymptote" src="asymptote/f4847776ade7d455b8c7a8ce7dd1adac.png" /></p><p>We get this by applying triangle trig to the yellow triangle:</p>
 
-<p><img src="math/0f31e4c921ded713d38167c57120c998.png" class="blockmath" /></p><p>The first two formulas are obviously true with any <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />, but the last one is a
+<p><img src="math/dc178ca38a19d63c5b6a8c69992d523b.png" class="blockmath" /></p><p>The first two formulas are obviously true with any <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />, but the last one is a
 bit more interesting. We found another way to define <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" />, and it
 also works with a triangle:</p>
 
-<img class="asymptote" src="asymptote/fa11e54385c7608713bdf9aff31ed887.png" style="float:right;" /><p><img src="math/ac82d9f33bf842bb71ffa8beea9257c7.png" class="blockmath" /></p><h2 id="accurate-sine-and-cosine-values">Accurate Sine and Cosine Values<a class="headerlink" href="#accurate-sine-and-cosine-values" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/11c71d1b1373c2989f57e05b0d4459fa.png" style="float:right;" /><p><a href="geometry-and-trig.html#accurate-sincos">Here</a> I said that
-<img class="inlinemath" src="math/faf62faf63c9230b053418e2c50aed72.png" /> and <img class="inlinemath" src="math/a14f75514bf5c4ac763edffa16a80bf2.png" />.
-I'm sorry to disappoint you, but there's no general and easy way to find
-accurate <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" /> values by hand. However, in many cases there's
-something special about the angles that allows us to do some other tricks.</p>
+<img class="asymptote" src="asymptote/fa11e54385c7608713bdf9aff31ed887.png" style="float:right;" /><p><img src="math/41e0d09b9fad302d38eaeede3961e613.png" class="blockmath" /></p><h2 id="accurate-sine-and-cosine-values">Accurate Sine and Cosine Values<a class="headerlink" href="#accurate-sine-and-cosine-values" title="Link to this title">¶</a></h2><div class="box graybox"><p>In this section, <img class="inlinemath" src="math/8e42877bb05dff7cd6d5548c9d85569b.png" /> means <img class="inlinemath" src="math/56cbe9adcac5b129573ee3769c40986c.png" />. It's confusing at first,
+but it's used often because it's much easier to read and type.
+</p>
+
+</div><img class="asymptote" src="asymptote/ebd65539ff69057bf7984427dbb98984.png" style="float:right;" /><p><a href="geometry-and-trig.html#accurate-sincos">Here</a> I said that
+<img class="inlinemath" src="math/ee94960087f8199f13e90b172b33c526.png" /> and
+<img class="inlinemath" src="math/9bfdfa519977e76026be64b071197648.png" />. I'm sorry to disappoint you, but
+there's no general and easy way to find accurate <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" /> values by
+hand. However, in many cases there's something special about the angles that
+allows us to do some other tricks.</p>
 
 <p>The angle in question is <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" />, a sixth of a turn. If a triangle has
-three sides with equal lengths, the angles will be <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" /> each. That's
-why we can complete the triangle drawn in unit circle like in the image. The
-angles at top are <img class="inlinemath" src="math/f76be45dcf6e5340ceea9611d3dd8e30.png" /> because two <img class="inlinemath" src="math/f76be45dcf6e5340ceea9611d3dd8e30.png" /> angles added
-together is <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" />.</p>
+three sides with equal lengths, the angles will be <img class="inlinemath" src="math/9be9b955b164b325bc4baf1be83ac287.png" />
+each. That's why we can complete the triangle drawn in unit circle like in the
+image. The angles at top are <img class="inlinemath" src="math/f76be45dcf6e5340ceea9611d3dd8e30.png" /> because two <img class="inlinemath" src="math/f76be45dcf6e5340ceea9611d3dd8e30.png" />
+angles added together is <img class="inlinemath" src="math/d87f8956a5f4dd2f765ea37bada1aca9.png" />.</p>
 
 <p>The radius of the unit circle is 1, so we get this on the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> axis:</p>
 
-<p><img src="math/ac0e61775a21257762d528ab3b6d6474.png" class="blockmath" /></p><p>Now we can apply the Pythagorean theorem (proved <a href="#pythagorean-theorem-proof">above</a>)
+<p><img src="math/26136300f44d6df72e2cefbea4fe5a14.png" class="blockmath" /></p><p>Now we can apply the Pythagorean theorem (proved <a href="#pythagorean-theorem-proof">above</a>)
 to the yellow triangle and figure out <img class="inlinemath" src="math/e60081e56126b94145c26b5d129f36d4.png" />:</p>
 
-<p><img src="math/d49d0f47f59a2be30ddc828882e9638e.png" class="blockmath" /></p><p>We know that <img class="inlinemath" src="math/e60081e56126b94145c26b5d129f36d4.png" /> is positive, so
+<p><img src="math/dd38189337916c07254392ec898ab716.png" class="blockmath" /></p><p>We know that <img class="inlinemath" src="math/e60081e56126b94145c26b5d129f36d4.png" /> is positive, so
 <img class="inlinemath" src="math/b2dcc863e00b492eae60882b605db538.png" />.</p>
 
 <p>Applying the Pythagorean theorem gave us
-<img class="inlinemath" src="math/1bfc8d4d29d152066d21f73d1d349626.png" />, and that isn't
+<img class="inlinemath" src="math/2ca79e70ddbb2fc85440f17cc2bee8fe.png" />, and that isn't
 limited to <img class="inlinemath" src="math/4be5ec3c3ee1d6c9fa04f7acf6c13c4c.png" /> in any way. We could draw a similar yellow triangle with
-any angle <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> and we'd get the same result, so <img class="inlinemath" src="math/930d277a63198a407636fc28562b625e.png" /> with
-any <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
+any angle <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> and we'd get the same result, so <img class="inlinemath" src="math/23c2939dee027fbcdfc506a3ef7d9041.png" /> with any
+<img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
 
 <h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/33ea3a39ff8652f7119f63ee4ec5b61c.png" style="float:right;" /><p>Let's have a look at the blue triangle. We know that it's a triangle, so the sum
 of angles must be <img class="inlinemath" src="math/96a0bfcb67d5cf08085dcf6a6ffb1090.png" />.</p>
 
 <p><img src="math/e3e71fa338b351fe20f20b2f6840a03d.png" class="blockmath" /></p><p>We also know these things:</p>
 
-<p><img src="math/5b14a11c51b2f6f3de026df1d9d3c377.png" class="blockmath" /></p><p>So, <img class="inlinemath" src="math/226ea576667a5c6f27aa760463f290fa.png" />.</p>
+<p><img src="math/21620aac6606032c9bcd2996fd7cd64a.png" class="blockmath" /></p><p>So, <img class="inlinemath" src="math/f9ea7014ec791a6d38e7e758481751a7.png" />.</p>
 
 <p>Only angles between 0 and <img class="inlinemath" src="math/216ab14d54362ef58ae39558c7e4b0c6.png" /> make sense as triangle corners, but
 this works with any other angle as well. Just look at <a href="graphs.html#sine-and-cosine">the
@@ -98,7 +103,7 @@ added together, the angles "complete" to <img class="inlinemath" src="math/9cb03
 <p><img src="math/46bf4c0adb8237d01d768ce66a27ab01.png" class="blockmath" /></p><p>Actually "cos" is short for "complement sine" as it's just the sine of the
 complement.</p>
 
-<img class="asymptote" src="asymptote/56d73b11763facb0dbd7871900870302.png" style="float:right;" /><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's start by finding the derivative of <img class="inlinemath" src="math/5732d78efedc927ac0d505b0b839d142.png" /> in radians.</p>
+<img class="asymptote" src="asymptote/56d73b11763facb0dbd7871900870302.png" style="float:right;" /><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's start by finding the derivative of <img class="inlinemath" src="math/b8ec708cc383b1dcbec78f84f362faf5.png" /> in radians.</p>
 
 <p>By definition, the angle in the image at right is <img class="inlinemath" src="math/ffd57cbb548894ff3977956d5f1168e8.png" /> radians. But if we do
 the same thing in a unit circle we know the radius is 1, so <img class="inlinemath" src="math/01713920a331ad0627420cdc249326c6.png" />. This is
@@ -106,17 +111,17 @@ one of the reasons why the unit circle and radians are so handy.</p>
 
 <p>Here's another drawing with more stuff in it:</p>
 
-<p><img class="asymptote" src="asymptote/50aa38dce2f45b3637b6ff5f7f495a2b.png" /></p><p>Here we have <img class="inlinemath" src="math/5a72f1304af0783657605aed0e38201a.png" /> in two different places and you should understand how.
+<p><img class="asymptote" src="asymptote/74e94285aaf56b11207d7910c38f989c.png" /></p><p>Here we have <img class="inlinemath" src="math/5a72f1304af0783657605aed0e38201a.png" /> in two different places and you should understand how.
 The bottom of the blue area is parallel with the x axis, and that's how <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />
 appears there as well.</p>
 
-<p>If we take <img class="inlinemath" src="math/ec4c1ed95a15066178c817e92ccab3de.png" /> and we take away <img class="inlinemath" src="math/5732d78efedc927ac0d505b0b839d142.png" /> we're left with the
-height of the blue area, so the blue area's height is <img class="inlinemath" src="math/713e5f95d2fba3513a65cc7308d4fc4f.png" />.</p>
+<p>If we take <img class="inlinemath" src="math/ec4c1ed95a15066178c817e92ccab3de.png" /> and we take away <img class="inlinemath" src="math/b8ec708cc383b1dcbec78f84f362faf5.png" /> we're left with the
+height of the blue area, so the blue area's height is <img class="inlinemath" src="math/f50fdf9037d3bceffc79a1dca4f5a38d.png" />.</p>
 
 <p>The blue area is kind of like a triangle, and with a very small <img class="inlinemath" src="math/5a72f1304af0783657605aed0e38201a.png" /> it's
 even more like a triangle. Let's draw a picture of just that:</p>
 
-<p><img class="asymptote" src="asymptote/2f159c06e6edf54978d1c1a3f14928de.png" /></p><p>You might be just looking at this and feeling like <img class="inlinemath" src="math/66604eb2523a8bdc8a5c6f1685719f7a.png" />, but let's prove that
+<p><img class="asymptote" src="asymptote/43c2fefa730bdeaeb581cc3ef5adfdad.png" /></p><p>You might be just looking at this and feeling like <img class="inlinemath" src="math/66604eb2523a8bdc8a5c6f1685719f7a.png" />, but let's prove that
 correctly. Based on the drawing, <img class="inlinemath" src="math/b7ec7507312168d882de17c6a3cd1c4c.png" /> because they add up to a
 quarter-turn corner, and <img class="inlinemath" src="math/27b8919fc91ecc8524140b3685e62f1c.png" /> because we can use
 <a href="#triangle-angle-sum">the triangle angle sum</a>.</p>
@@ -124,22 +129,22 @@ quarter-turn corner, and <img class="inlinemath" src="math/27b8919fc91ecc8524140
 <p><img src="math/0cc30a4f561308b8a8d0ea58fa6d69c0.png" class="blockmath" /></p><p><img src="math/6acca4a1f64ddc741ca00ebc78510a44.png" class="blockmath" /></p><p>Now we can apply triangle trig to the <img class="inlinemath" src="math/7b774effe4a349c6dd82ad4f4f21d34c.png" />. I'm using <img class="inlinemath" src="math/fb4f353ef9a72c24566678c957a5ae9f.png" /> here because the
 <img class="inlinemath" src="math/5a72f1304af0783657605aed0e38201a.png" /> line is actually a bit curvy in the circle image.</p>
 
-<p><img src="math/d3fe041d418037669bc67b6f09d91b38.png" class="blockmath" /></p><p>I think this is quite nice.</p>
+<p><img src="math/6be3ef820ec6f7dcf474e6c9b06e7168.png" class="blockmath" /></p><p>I think this is quite nice.</p>
 
 <h2 id="derivative-of-cosine">Derivative of Cosine<a class="headerlink" href="#derivative-of-cosine" title="Link to this title">¶</a></h2><p>Based on <a href="graphs.html#sine-and-cosine">the graphs</a>, sin and cos are the same
-thing but with a small offset. We know that <img class="inlinemath" src="math/760d0ccba419c688e596e5b293f49f3b.png" />, so
+thing but with a small offset. We know that <img class="inlinemath" src="math/cedf68c122edc8be872d8b42edde19fb.png" />, so
 finding the derivative of <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> just shifted the graph a bit. The graph of
-<img class="inlinemath" src="math/66d1a629267aa0403c961b784dc0a9ce.png" /> looks a lot like what might be the derivative of <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" />:</p>
+<img class="inlinemath" src="math/8c14800bf01200973c5287686be36af3.png" /> looks a lot like what might be the derivative of <img class="inlinemath" src="math/76269c809ed95f49bdba4964a309a176.png" />:</p>
 
-<p><img class="asymptote" src="asymptote/5831ef7065d5899146171ea528531398.png" /></p><p>Let's prove that <img class="inlinemath" src="math/7bf1c8fa262905b60854cece5f3877e9.png" />. This will be much easier than
-the <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> derivative because now we know that <img class="inlinemath" src="math/f254da9291b06b95958e9aea1593f489.png" />
-and <img class="inlinemath" src="math/24b035a231ec5c478b38df01e6422c99.png" />, see
+<p><img class="asymptote" src="asymptote/538409b9c2965200165524cb00489c2b.png" /></p><p>Let's prove that <img class="inlinemath" src="math/f0fc5450597bdbac061bc0eaae315b08.png" />. This will be much easier than
+the <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> derivative because now we know that <img class="inlinemath" src="math/5411d9520f88a0e515fa743ba6a71375.png" />
+and <img class="inlinemath" src="math/7b4b56f39d313a32ebd0f579d5e4521d.png" />, see
 <a href="#why-is-cosine-called-cosine">above</a>. We just need to remember <a href="more-derivatives.html#chain-rule">the chain
 rule</a>.</p>
 
-<p><img src="math/7c949cacc1acb349efdb6eeb373026d8.png" class="blockmath" /></p><p>Now we just need to prove that <img class="inlinemath" src="math/58fc6b299f78e06f07b95f661169cee7.png" />
-using our <img class="inlinemath" src="math/24b035a231ec5c478b38df01e6422c99.png" /> thing.</p>
+<p><img src="math/3dbe1d73d7ec34702fe1f2aa3364a452.png" class="blockmath" /></p><p>Now we just need to prove that <img class="inlinemath" src="math/950c729ee3742c28cc866433b5ded9ff.png" />
+using our <img class="inlinemath" src="math/7b4b56f39d313a32ebd0f579d5e4521d.png" /> thing.</p>
 
-<p><img src="math/2f0d92f60991a7e93edf8c2296fd4abe.png" class="blockmath" /></p></div>
+<p><img src="math/fb92bff2896f261b4c504d4d0762f418.png" class="blockmath" /></p></div>
 </body>
 </html>

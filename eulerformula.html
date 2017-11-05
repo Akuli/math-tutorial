@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Euler's Formula</title>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynominals</a></li><li><b>Euler's Formula</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h1><p>In this chapter you'll learn the most amazing math thing I have seen.</p>
+
+<div class="box redbox"><p>Be sure to learn <a href="geometry-and-trig.html#radians-and-tau">radians</a>,
+<a href="geometry-and-trig.html#trig-with-the-unit-circle">sin, cos</a>,
+<a href="derivatives.html">derivatives</a> and <a href="taylor.html">Taylor polynominals</a>
+before reading this chapter. That's lots of stuff to learn, but this chapter
+is definitely worth the effort. For best results, you should ideally have a
+look at proofs or other justifications of everything except definitions
+(e.g. you know how <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> is defined in a unit circle and you have read <a href="more-geometry-and-trig.html#derivative-of-sine">the
+sin derivative proof</a>).</p>
+
+<p>With all that out of the way, <b>this chapter will blow up your mind</b>.
+Proceed at your own risk.
+</p>
+
+</div><h2 id="imaginary-numbers">Imaginary Numbers<a class="headerlink" href="#imaginary-numbers" title="Link to this title">¶</a></h2><p>In <a href="basics.html">the basics section</a> I said that you cannot do things like
+<img class="inlinemath" src="math/d4c2efeae4a3424da6bb388e41e87557.png" />, but now we'll do that.</p>
+
+<p><img src="math/f0d862ce25878f871930e8d6edfcdd41.png" class="blockmath" /></p><p>So if you do <img class="inlinemath" src="math/260022a00a39c9788963d41f295955a5.png" /> you get <img class="inlinemath" src="math/6cef55b03e14bfcabbb9bf6930757cf5.png" />. Obviously this weird
+"number" is not between <img class="inlinemath" src="math/aad18c0a88969b4c1bdc3711475796c2.png" /> and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> because no number in that range
+behaves like this. It's something else, and the <img class="inlinemath" src="math/865c0c0b4ab0e063e5caa3387c1a8741.png" /> is short for <i>imaginary</i>.
+The numbers between <img class="inlinemath" src="math/aad18c0a88969b4c1bdc3711475796c2.png" /> and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> are known as <i>real</i> numbers, but
+<img class="inlinemath" src="math/aad18c0a88969b4c1bdc3711475796c2.png" /> and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> are not real because they behave very differently than
+real numbers.</p>
+
+<p>A <i>complex number</i> is something real plus something imaginary, and they are
+often represented in a 2D plane. Like this:</p>
+
+<p><img class="asymptote" src="asymptote/6e3caa08549321ea30b0f81fdf464fb6.png" /></p><p>Re is short for Real and Im for Imaginary.</p>
+
+<p>Note how the words "imaginary" and "complex" reflect people's attitudes to these
+numbers. At first they were considered nonsense, but nowadays there are many
+uses for complex numbers. This tutorial focuses on a very important way to use
+them.</p>
+
+<h2 id="the-magic">The Magic<a class="headerlink" href="#the-magic" title="Link to this title">¶</a></h2><p>Let's calculate some powers of <img class="inlinemath" src="math/865c0c0b4ab0e063e5caa3387c1a8741.png" />. We'll need them later.</p>
+
+<p><img src="math/ce02d5d8369f6bc8b3300592f82cafe3.png" class="blockmath" /></p><p>We can see a pattern.</p>
+
+<p>In <a href="taylor.html">the Taylor chapter</a> we created these kinda-mind-blowing series
+representations:</p>
+
+<p><img src="math/5cffdedf2020fe7a36fee8ac742dc65e.png" class="blockmath" /></p><p>Let's try to calculate <img class="inlinemath" src="math/3ab3871f6c567484e5be7ebf300d39f1.png" /> where <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> is a real number and let the magic
+happen.</p>
+
+<p><img src="math/9319402fbced59646896f5e5644a5ba9.png" class="blockmath" /></p><p><b>Boom.</b> Can you believe that. We started with <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> which we got out of
+<a href="explog.html#the-e-constant">exponentials and derivatives</a> and the <img class="inlinemath" src="math/865c0c0b4ab0e063e5caa3387c1a8741.png" />, but we
+ended up with trig functions that are defined in a unit circle!</p>
+
+<p>This is crazness is known as Euler's formula. Speaking of Euler, he's known for
+<a href="https://en.wikipedia.org/wiki/Leonhard_Euler#Contributions_to_mathematics_and_physics">many many other math
+things</a>
+as well, and I find it really amazing how much awesome math stuff he did. Even
+things like the <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> notation with parentheses and the concept of a function
+are from him.</p>
+
+<p>After all the amazement, let's have a look at what we got. We know that <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />
+is the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> coordinate and <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> is the <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> coordinate in a unit circle (see
+<a href="summary.html#geometry-and-trig">this thing</a>), and a moment ago we drew a
+<img class="inlinemath" src="math/eaaed9d0be37d864661f7cf0a90c65e2.png" />-plane. Actually the formula represents a unit circle in
+<img class="inlinemath" src="math/eaaed9d0be37d864661f7cf0a90c65e2.png" /> plane!</p>
+
+<p><img class="asymptote" src="asymptote/5e4be315ad27dbd92b3f9e943a902073.png" /></p><p>Just looking at the above drawing, everything else makes sense perfectly except
+the <img class="inlinemath" src="math/3ab3871f6c567484e5be7ebf300d39f1.png" /> label. It's just crazy.</p>
+
+<h2 id="example-trig-identities">Example: Trig Identities<a class="headerlink" href="#example-trig-identities" title="Link to this title">¶</a></h2><p>Let's draw another unit circle with angles <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> and <img class="inlinemath" src="math/b7cc4b6b2b8c0f37377b5cc259385de0.png" />. The things in
+parentheses are <img class="inlinemath" src="math/90cbc22edf225adf8a68974f51227f05.png" /> coordinates.</p>
+
+<p><img class="asymptote" src="asymptote/5b2e8ee6cf79c13e94dccd88eaee0f59.png" /></p><p>The black dots are aligned horizontally so <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> coordinates are the same and
+<img class="inlinemath" src="math/ce14d6116d162b9428929a8b44c4dc2f.png" />. But the <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> coordinates are opposite, so
+<img class="inlinemath" src="math/71716506997e0b8a7faa5c911df7d117.png" />. These work with any <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
+
+<p>Let's plug some stuff to Euler's formula and use these trig things:</p>
+
+<p><img src="math/92132ecbd3cdad9799bce1867a35672c.png" class="blockmath" /></p><p><img src="math/0f53e5ddd46f2bf1ec5206b71aa4962a.png" class="blockmath" /></p><p>Now your mind should be <b>really</b> blown up.</p>
+
+<p><img src="math/8301d59e9b6dfc3cd9465068a53e8955.png" class="blockmath" /></p><div class="floatingbox"><h2> Handy thing: <img class="inlinemath" src="math/85479e5367635eab8037243a9a4bb87e.png" /></h2><p>Proof:</p>
+
+<p><img src="math/068687bce19ace30b28a0d16db096962.png" class="blockmath" /></p><p>In this case we need to plug in <img class="inlinemath" src="math/24b5ef5c5162fa703e4e85ee3d553b57.png" /> and <img class="inlinemath" src="math/33c82c23fb536aade5caebb774c761db.png" />.
+</p>
+
+</div><p>Equally head-exploding.</p>
+
+<p>For example, let's try to find another way to represent <img class="inlinemath" src="math/0c3f29cd2df8b8739040dd6f59ff137f.png" />:</p>
+
+<p><img src="math/76ab59ffee3e3c23e41aa58db47d2829.png" class="blockmath" /></p><p>This is just the tip of the iceberg. It's possible to find dozens of handy-dandy
+trig equations like this. Most trig things can be proved without Euler's
+formula, but this magic way can be much easier and faster.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>This is a true story. A friend of mine had watched a youtube video that used
+this formula, and he wanted to see a proof of it:</p>
+
+<p><img src="math/7f3359992eab96313c553b45078ea450.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/c86d78c8797be2e0e4ce432eb97145f1.png" /> means <img class="inlinemath" src="math/d5c85874f749da308da411457fcda433.png" />, and people use the <img class="inlinemath" src="math/6da7bf2a127aabb69fa9a1eab94b2796.png" /> notation
+because it's easier and faster to write although it doesn't make much sense.
+Prove the above formula.</p>
+
+<p>There are many ways to do this and the way I managed to do it is really long
+compared to e.g. <a href="https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities#Double-angle_identities">Wikipedia's
+proof</a>.
+If you want to try to do it like I did, prove these things in this order:</p>
+
+<ul><li><img class="inlinemath" src="math/8185cdc8c833b47cb6c927fb4c818ee0.png" /></li><li><img class="inlinemath" src="math/12613cf0fe51de94c7f8525afd7c8db7.png" /></li><li><img class="inlinemath" src="math/b73b8e70bf51ee30beb040349f82a03b.png" /></li><li><img class="inlinemath" src="math/e61bc88983b97e9a7a015d87756dbe10.png" />
+</li></ul><p>Then I used the <img class="inlinemath" src="math/3c6044bd76ed4d63cbc33eacae714cca.png" /> thing we
+learned <a href="more-geometry-and-trig.html#unit-circle-or-triangle">here</a> and the
+<img class="inlinemath" src="math/618a99a40efe168bae768f7656d51b43.png" /> thing that we proved above.
+</p>
+
+</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img class="asymptote" src="asymptote/0ce6b3b5b0229d75b8ed399420771472.png" /></p><p>If we plug in <img class="inlinemath" src="math/1d87301bcaa79e70771485df675eb5a8.png" /> we get this:</p>
+
+<p><img src="math/f050f52a10c6f2a8a2ceeb572e5f9683.png" class="blockmath" /></p><p>This makes sense because if we start at 1 and rotate a full turn (<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />
+radians), we get back to where we started.</p>
+
+<p>But if we don't rotate at all we also end up at 1:</p>
+
+<p><img src="math/66fa14c13e6bc84912b63a7c1c7c9837.png" class="blockmath" /></p><p>Equations like <img class="inlinemath" src="math/a24505eb07ad9bdb8f217ff8a4564456.png" /> have an infinite number of solutions because any
+number of full turns produces the 1.</p>
+
+<p>We could also plug in <img class="inlinemath" src="math/0fe5ce4302516a373f0ecdfa089fbe1d.png" /> to go a half turn and end up at <img class="inlinemath" src="math/6bb61e3b7bce0931da574d19d1d82c88.png" />,
+and we get a very famous equation:</p>
+
+<p><img src="math/85b859feb50f4972f09453343e506727.png" class="blockmath" /></p></div>
+</body>
+</html>

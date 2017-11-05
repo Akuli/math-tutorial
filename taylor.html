@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><b>Taylor Polynominals</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Polynominals</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="taylor-polynominals">Taylor Polynominals<a class="headerlink" href="#taylor-polynominals" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
@@ -71,21 +71,21 @@ Maclaurin polynominal they mean this.</p>
 
 <p><img class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.png" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
 
-<p>We need to know that <img class="inlinemath" src="math/30a19fc8d8ea6eb3146333dc3436951c.png" /> and
-<img class="inlinemath" src="math/57efdd5c4c49ad171d4cc09aaa94d2b2.png" />. These rules are proved
+<p>We need to know that <img class="inlinemath" src="math/120727074f706985eb77ec84be750d1f.png" /> and
+<img class="inlinemath" src="math/e5ecaafd81133f3b42596fd6cc5d8722.png" />. These rules are proved
 <a href="more-geometry-and-trig.html#derivative-of-sine">here</a>.</p>
 
 <p>So, we get this:</p>
 
-<p><img src="math/2eaaef8a93ad30d6c33b927769e82f30.png" class="blockmath" /></p><p>The pattern is obvious.</p>
+<p><img src="math/66bfd61a884789fd7a3d327b60936207.png" class="blockmath" /></p><p>The pattern is obvious.</p>
 
-<p>Now let's plug in some values. With <a href="summary.html#geometry-and-trig">the unit
+<p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit
 circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741adb28fba0d84.png" /> and
 <img class="inlinemath" src="math/a3f9046e95416bca98432879d8cd880f.png" /> because the <img class="inlinemath" src="math/90cbc22edf225adf8a68974f51227f05.png" /> point <img class="inlinemath" src="math/ec6014ffc3d92709aa6a4fea11bb3788.png" /> corresponds to the angle 0.</p>
 
 <p><img src="math/8c1e776279f4ea9faee12457e63afedc.png" class="blockmath" /></p><p>So we have this:</p>
 
-<p><img src="math/bfa58878cafa88b234676ac9cf7f9000.png" class="blockmath" /></p><p>That's all there is to it! Here's an awesome Python program:</p>
+<p><img src="math/a76ff0b4220f2ab39f117655391f6dfe.png" class="blockmath" /></p><p>That's all there is to it! Here's an awesome Python program:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># python has math.factorial, but this is here just to show that there&#39;s</span>
 <span style="color: #60a0b0; font-style: italic"># no magic involved</span>
@@ -122,12 +122,11 @@ we would get perfectly precise sin values. I'm not going to talk about the
 details of why that happens, but this works for sin, cos and many other things.
 An infinitely continuing Taylor polynominal is also known as a Taylor <i>series</i>.</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of <img class="inlinemath" src="math/96eb9bf5314b593783ee57983efbed9d.png" /> and <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />. See <a href="explog.html#the-e-constant">this
+<div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of <img class="inlinemath" src="math/7b8d097ebe7de2080ff1dc9a2b6f0807.png" /> and <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />. See <a href="explog.html#the-e-constant">this
 thing</a> if you don't know what <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> is or what the
-derivative of <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" /> is.</p>
-
-<p>Check your answers with your favorite programming language and <a href="summary.html#taylor-series">the Taylor
-series section</a> on the summary page.
+derivative of <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" /> is. Check your answers with your favorite programming
+language and <a href="summary.html#taylor-series">the Taylor series section</a> on the
+summary page.
 </p>
 
 </div></div>

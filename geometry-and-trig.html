@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Chapters</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li><li><b>Geometry and Trig</b></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><b>Geometry and Trig</b></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynominals</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h1><p>This chapter contains useful stuff that aren't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.</p>
@@ -106,8 +106,8 @@ change every time?</p>
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:</p>
 
-<p><img class="asymptote" src="asymptote/e8d8ed1cc6f73ba506522bdb94e15ab4.png" /></p><p>This is really simple: the x coordinate is <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" /> and the y coordinate is
-<img class="inlinemath" src="math/5732d78efedc927ac0d505b0b839d142.png" />. But the radius of the unit circle is 1 instead of our 5, so we need
+<p><img class="asymptote" src="asymptote/ea6dbd965c9d46737f487e1b5aab8157.png" /></p><p>This is really simple: the x coordinate is <img class="inlinemath" src="math/76269c809ed95f49bdba4964a309a176.png" /> and the y coordinate is
+<img class="inlinemath" src="math/b8ec708cc383b1dcbec78f84f362faf5.png" />. But the radius of the unit circle is 1 instead of our 5, so we need
 to multiply everything by 5 to scale it up. We get this:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>ball<span style="color: #666666">.</span>x <span style="color: #666666">+=</span> <span style="color: #40a070">5</span><span style="color: #666666">*</span>cos(tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
@@ -125,13 +125,14 @@ that everything works:</p>
 </pre></div>
 <p>These results make sense because the angle <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> in the above image looks like
 it's about a sixth of a turn (or <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />), so <img class="inlinemath" src="math/18181cefaa890d68e04d3e0bf9ade269.png" /> should be close
-to 1 because the circle's bottom is at <img class="inlinemath" src="math/6a267007228f9f654a0d28dec6932c31.png" />. Similarly, the <img class="inlinemath" src="math/4d3eb39ad6e06c939af4dee7de899759.png" /> marked on
+to 1 because the circle's bottom is at <img class="inlinemath" src="math/6a267007228f9f654a0d28dec6932c31.png" />. Similarly, the <img class="inlinemath" src="math/76269c809ed95f49bdba4964a309a176.png" /> marked on
 the picture seems to be about half of the radius, and the radius is 1.</p>
 
 <p id="accurate-sincos"><code>0.5000000000000001</code> is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
-<img class="inlinemath" src="math/faf62faf63c9230b053418e2c50aed72.png" /> and <img class="inlinemath" src="math/a14f75514bf5c4ac763edffa16a80bf2.png" />.
-See <a href="more-geometry-and-trig.html#accurate-sine-and-cosine-values">this thing</a> if
+<img class="inlinemath" src="math/ee94960087f8199f13e90b172b33c526.png" /> and
+<img class="inlinemath" src="math/9bfdfa519977e76026be64b071197648.png" />. See <a href="more-geometry-and-trig.html#accurate-sine-and-cosine-values">this
+thing</a> if
 you're wondering how I came up with these values.
 </p>
 
@@ -328,7 +329,7 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
 </div><p>Here's another way to define <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, and another function called
 <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" /> that we haven't used before.</p>
 
-<img class="asymptote" src="asymptote/74cbd34ca0945193971abf3e99d5ee37.png" style="float:right;" /><p><img src="math/e9b648bac7a9f99ffea6fa6759ba44ab.png" class="blockmath" /></p><p>We'll talk about compatibility with the unit circle definitions
+<img class="asymptote" src="asymptote/74cbd34ca0945193971abf3e99d5ee37.png" style="float:right;" /><p><img src="math/e85c476776cc951a53a30ef2f9bf007e.png" class="blockmath" /></p><p>We'll talk about compatibility with the unit circle definitions
 <a href="more-geometry-and-trig.html#unit-circle-or-triangle">later</a>. These things work
 only if the triangle has an angle that is exactly a quarter turn, and the little
 box at bottom right means just that.</p>
@@ -337,13 +338,13 @@ box at bottom right means just that.</p>
 calculate the stuff by plugging in <img class="inlinemath" src="math/fef27623febd2ae03afe7a22d034ac5b.png" /> and <img class="inlinemath" src="math/0daca570410e633ef534e720f5d54852.png" /> without worrying about
 which way things go. Let's figure out how to calculate the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />:</p>
 
-<p><img src="math/cd2abafe01cfb485050cf9223573f78d.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/88ff4a6f25e9a1675fc702f8ee41a28a.png" /> is the inverse of <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" />, so <img class="inlinemath" src="math/4ed921efd32595a9cbd97f70f42ff237.png" />. Most
+<p><img src="math/6a514fc2f9b17551bf4176d245ef467d.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/88ff4a6f25e9a1675fc702f8ee41a28a.png" /> is the inverse of <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" />, so <img class="inlinemath" src="math/d80139f91c876748f39d2e2792ebf940.png" />. Most
 programming languages have an <code>atan(x)</code> function that returns <img class="inlinemath" src="math/be0e21a53d044912466e8b6663cdb405.png" />,
 but I don't recommend using it in this case; the <code>atan2(b,a)</code> function
-returns <img class="inlinemath" src="math/4612b7103d7c30a41904296a605f431e.png" /> and I recommend it instead. <code>atan2</code> looks at the
-signs of <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and does the right thing if they're negative (the ball is
-moving to e.g. top left). It also works if <code>a</code> is 0 and <code>b/a</code> would fail as
-division by zero is undefined.</p>
+returns <img class="inlinemath" src="math/c7a813c357962e69e76ff33cd4a9a6a7.png" /> and I recommend it instead. <code>atan2</code>
+looks at the signs of <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and does the right thing if they're negative
+(the ball is moving to e.g. top left). It also works if <code>a</code> is 0 and <code>b/a</code>
+would fail as division by zero is undefined.</p>
 
 <div class="box graybox"><p>Usually people like to put <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> before <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> in different kinds of places,
 but <code>atan2</code> is used like <code>atan2(y_change, x_change)</code>, <b>not</b> like
@@ -414,10 +415,10 @@ units to right, we move a total of 8 units to right and 4 units up. That's how
 <a href="#pythagorean-theorem">Pythagorean theorem</a> and
 <a href="#trig-with-the-unit-circle">unit circle trig</a> stuff above:</p>
 
-<p><img src="math/ccaccaa962d9dde2f078aa821adbc811.png" class="blockmath" /></p><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="inlinemath" src="math/10adba9a4d1293648444f90c1f98f4af.png" />,
+<p><img src="math/44fcc17fc27cd874831514dcd801712a.png" class="blockmath" /></p><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="inlinemath" src="math/10adba9a4d1293648444f90c1f98f4af.png" />,
 its length is <img class="inlinemath" src="math/bd11a1b602bc901206b5050eb613ad94.png" /> and the angle is
 <img class="inlinemath" src="math/065b95059e37aefbd526a727abb61ae0.png" /> radians. On the other hand,
-<img class="inlinemath" src="math/90c34faac4edd32a19eed1985f8bdf4b.png" /> and <img class="inlinemath" src="math/b8618aaaf743919e595ba22376c872c0.png" />.</p>
+<img class="inlinemath" src="math/1fc87d9c0ef7953a3f19cb0efdb1604f.png" /> and <img class="inlinemath" src="math/33b5ae983f8a58a1f9b9807338d5285f.png" />.</p>
 
 <p>One way to change the angle of a vector is to first convert it to a length and
 an angle, change that angle and create a new vector. It looks like this in
