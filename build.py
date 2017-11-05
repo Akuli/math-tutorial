@@ -57,9 +57,10 @@ def get_sidebar_content(txtfile):
 
     thingy = functools.partial(_create_sidebar_thingy, txtfile)
     return ''.join([
-        thingy("Chapters", '''derivatives more-derivatives integrals
-            more-integrals geometry-and-trig more-geometry-and-trig
-            explog taylor numbertheory'''),
+        thingy("Useful", 'derivatives geometry-and-trig numbertheory'),
+        thingy("Kinda fun", 'integrals more-integrals'),
+        thingy("Mathy", 'more-derivatives more-geometry-and-trig explog'),
+        thingy("Mind-blowing", 'taylor'),
         thingy("Other stuff", 'basics graphs summary',
                indexlink),
     ])
