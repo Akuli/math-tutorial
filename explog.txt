@@ -136,8 +136,7 @@ code: python3
 Python's ``math.log(x)`` seems to return $\ln(x)$.
 
 The summary page contains [a bunch of formulas](summary.html#logs-are-useful)
-that make logarithms very useful. This tutorial doesn't contain proofs of them
-yet, but I'll probably add the proofs soon.
+that make logarithms very useful. The proofs are below.
 
 For example, if you have something like $a^b=c$ and $a$ is known to be positive,
 you also know that $c$ is positive (look at [the
@@ -164,3 +163,43 @@ code: javascript
 Most programming languages have a few different logarithm functions like e.g.
 ``log2`` and ``log10``, and some allow specifying a base like ``math.log(x, 4)``
 in Python.
+
+## Logarithm Rule Proofs
+
+If you don't like proofs then don't read these. The proofs are here just because
+I didn't feel like making a "More Logarithms" chapter just for them.
+
+Here $x>0$, $y>0$, $a>0$, $a\ne1$, $b>0$ and $b\ne1$. The proofs are ordered so
+that they don't use anything that hasn't been proved before them, but they use
+things that directly follow from the inversiness like $b^{\log_b(x)}=x$.
+
+math:
+    x^y &= x^y \\
+    b^{\log_b(x^y)} &= \left(b^{\log_b(x)}\right)^y \\
+    b^{\log_b(x^y)} &= b^{\log_b(x) \cdot y} \\
+    \log_b(x^y) &= \log_b(x) \cdot y
+
+<br>
+
+math:
+    xy &= xy \\
+    b^{\log_b(xy)} &= b^{\log_b(x)}\ b^{\log_b(y)} \\
+    b^{\log_b(xy)} &= b^{\log_b(x) + \log_b(y)} \\
+    \log_b(xy) &= \log_b(x) + \log_b(y)
+
+<br>
+
+math:
+    \log_b\left( \frac x y \right) &= \log_b\left( x \frac 1 y \right) \\
+    &= \log_b x + \log_b \left(\frac 1 y\right) \\
+    &= \log_b x + \log_b \left(y^{-1}\right) \\
+    &= \log_b x + (-1)\log_b(y) \\
+    &= \log_b x - \log_b(y)
+
+<br>
+
+math:
+    \log_a(x) &= \log_a(x) \\
+    \log_a\left( b^{\log_b(x)} \right) &= \log_a(x) \\
+    \log_b(x)\ \log_a(b) &= \log_a(x) \\
+    \log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
