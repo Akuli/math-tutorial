@@ -392,7 +392,7 @@ Choosing $a=0$ usually results in simple $P_n$ polynominals.
 
 ## Taylor Series
 
-Here sin and cos work with radians.
+Here sin and cos work with [radians](#geometry-and-trig).
 
 math:
     \sin x &= x - \frac{x^3}{3!} + \frac{x^5}{5!}

@@ -1,4 +1,4 @@
-# Geometry and Trigonometry
+# Geometry and Trig
 
 This chapter contains useful stuff that aren't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this

@@ -48,7 +48,7 @@ asymptote:
 Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.
 
-Note that the existence of this limit implies all this:
+The existence of this limit implies all these things:
 
 math: f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
@@ -64,9 +64,28 @@ math:
     &\lim_{h\to0^-} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^-} \frac{0-1}{h}
     = \lim_{h\to0^+} \frac{-1}{-h} = \lim_{h\to0^+} \frac{1}{h} = \infty
 
-We got 0 and $\infty$ and they are very different, so the limit just doesn't
-exist. Similarly we'd get $1$ and $-1$ if we tried to evaluate $\frac{d}{dx}|x|$
-at $x=0$.
+0 and $\infty$ are very different, so the limit just doesn't exist. Similarly
+we'd get $1$ and $-1$ if we tried to evaluate $\frac{d}{dx}|x|$ at $x=0$.
+
+## Chain Rule
+
+Let's say you want to find the derivative of $(2x)^2$. The derivative of $x^2$
+is just $2x$, so isn't the derivative of $(2x)^2$ then $2(2x)=4x$?
+**No, it's not!**
+
+When things are nested like this you need to multiply by the derivative of the
+inner stuff.
+
+math:
+    \frac{d}{dx}(2x)^2 = 2(2x)\ \frac{d}{dx}(2x) = 2(2x)2=8x
+
+This is known as the chain rule, and it looks like this in a general $f$ and $g$
+form:
+
+math:
+    \frac{d}{dx}f(g(x)) = f'(g(x))g'(x)
+
+There's a proof below.
 
 ## Derivative Rules
 
@@ -77,10 +96,9 @@ $x^2$. And if $f$ and $g$ are functions that have a derivative, we know what the
 derivative of $f(x)+g(x)$ or $f(x)-g(x)$ is.
 
 We can do a lot more, and there's [a concise list of derivative
-rules](summary.html#derivative-rules) on the summary page.
-
-Most of the rules are proved here, and they are ordered so that they don't use
-anything that has not been proved before them.
+rules](summary.html#derivative-rules) on the summary page. Most of the rules are
+proved here, and they are ordered so that they don't use anything that has not
+been proved before them.
 
 ### $\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$
 

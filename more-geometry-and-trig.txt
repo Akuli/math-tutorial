@@ -72,6 +72,56 @@ math:
     a^2 + 2ab + b^2 &= c^2 + 2ab \\
     a^2 + b^2 &= c^2
 
+## Triangle Angle Sum
+
+asymptote:
+    size(10cm);
+    pair A=(0,0), B=(1.5,2.5), C=(4,0);
+    real rinner=0.6,router=0.4;     // inner and outer radius
+    real dashedlen=0.8;     // len of dashed lines
+
+    real atan2v(pair v) { return atan2(v.y,v.x); }
+    filldraw(A--C--B--cycle, rgb(0.8,1,0.8));
+
+    draw(rarc(A, rinner, atan2v(C-A), atan2v(B-A)), blue, L="$a$");
+    draw(rarc(B, rinner, atan2v(A-B), atan2v(C-B)), blue, L="$b$");
+    draw(rarc(C, rinner, atan2v(B-C), atan2v(A-C)), blue, L="$c$");
+
+    draw(rarc(A, router, atan2v(A-C), atan2v(B-A)), heavyred);
+    draw(rarc(B, router, atan2v(B-A), atan2v(C-B)), heavyred);
+    draw(rarc(C, router, atan2v(A-C), atan2v(C-B)+tau), heavyred);
+
+    draw(A--A+unit(A-C)*dashedlen, smalldashes);
+    draw(C--C+unit(C-B)*dashedlen, smalldashes);
+    draw(B--B+unit(B-A)*dashedlen, smalldashes);
+
+    draw(shift(C.x/2,0)*scale(0.2)*((1,1)--(0,0)--(1,-1)));
+
+    pair arrowstart=(1.5,-1), arrowend=(C.x/2,0);
+    draw(arrowstart--(arrowend-0.3*unit(arrowend-arrowstart)), arrow=Arrow(size=5mm));
+    label(arrowstart, L="start here", align=S);
+
+In the above picture, the red angle is a half turn minus the blue angle, and we
+know that half turn is $\tau/2$ radians. So, let's start at the little arrow at
+bottom and move along the edges clockwise until we arrive at the arrow again.
+The red angles represent how much we need to turn at each corner, and those
+turns are $\frac\tau2-a$, $\frac\tau2-b$ and $\frac\tau2-c$.
+
+But in total we turned a full turn or $\tau$ radians:
+
+math:
+    \tau &= \left(\frac\tau2-a\right) + \left(\frac\tau2-b\right) + \left(\frac\tau2-c\right) \\
+    &= \frac\tau2 - a + \frac\tau2 - b + \frac\tau2 - c \\
+    &= \frac\tau2+\frac\tau2+\frac\tau2 -a-b-c \\
+    &= 3\frac\tau2 -a-b-c \\
+    a+b+c &= 3\frac\tau2-\tau \\
+    &= 3\frac\tau2 - 2\frac\tau2 \\
+    &= (3-2)\frac\tau2 \\
+    &= \frac\tau2
+
+So if we add together all the angles of a triangle we get a half turn. This
+doesn't seem very amazingly impressive but we'll find this useful later.
+
 ## Unit circle or triangle?
 
 Sine and cosine can be defined with a unit circle or with a triangle. The
@@ -175,3 +225,197 @@ math:
 
 We know that $\sin \frac \tau 6$ is positive, so
 $\sin \frac \tau 6 = |\sin \frac \tau 6|$.
+
+Applying the Pythagorean theorem gave us
+$\left(\cos\frac\tau6\right)^2+\left(\sin\frac\tau6\right)^2=1$, and that isn't
+limited to $\frac\tau6$ in any way. We could draw a similar yellow triangle with
+any angle $t$ and we'd get the same result, so $(\sin t)^2+(\cos t)^2=1$ with
+any $t$.
+
+## Why is cosine called cosine?
+
+asymptote: float:right;
+    size(6cm);
+    real w=3, h=2;
+    abctriangle(w,h);
+    draw(rarc((0,0),1,0,atan2(h,w)), L="$t$");
+    draw(rarc((w,h),0.7,-tau/4,atan2(-h,-w)), L="$u$", align=S);
+
+Let's have a look at the blue triangle. We know that it's a triangle, so the sum
+of angles must be $\frac \tau 2$.
+
+math:
+    t + u + \frac \tau 4 &= \frac\tau2 \\
+    t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} \\
+    t + u + \frac \tau 4 &= \frac\tau4 + \frac\tau4 \\
+    t + u &= \frac\tau4 \\
+    u &= \frac \tau 4 - t
+
+We also know these things:
+
+math:
+    &\cos t = \frac a c \\
+    &\sin u = \frac a c
+
+So, $\displaystyle\cos t = \sin u = \sin \left( \frac \tau 4 - t \right)$.
+
+Only angles between 0 and $\frac \tau 4$ make sense as triangle corners, but
+this works with any other angle as well. Just look at [the
+graphs](graphs.html#sine-and-cosine); the $\frac \tau 4$ offset is quite
+obvious.
+
+The angle $\frac\tau4 - t$ is also known as the *complement* angle because when
+added together, the angles "complete" to $\frac\tau4$:
+
+math:
+    \left( \frac \tau 4 - t \right) + t = \frac \tau 4
+
+Actually "cos" is short for "complement sine" as it's just the sine of the
+complement.
+
+asymptote: float:right;
+    size(6cm);
+    real t1=0.4,t2=1.4;
+    real tavg=(t1+t2)/2;
+
+    fill((0,0)--rarc((0,0),1,t1,t2)--cycle, yellow);
+    draw(unitcircle);
+    draw((0,0)--(cos(t1),sin(t1)), L="$r$", align=S);
+    draw((0,0)--(cos(t2),sin(t2)));
+    draw(rarc((0,0),0.3,t1,t2), L="$t$");
+    label((cos(tavg),sin(tavg)), L="$b$", align=NE);
+
+## Derivative of Sine
+
+Let's start by finding the derivative of $\sin t$ in radians.
+
+By definition, the angle in the image at right is $t=b/r$ radians. But if we do
+the same thing in a unit circle we know the radius is 1, so $t=b/1=b$. This is
+one of the reasons why the unit circle and radians are so handy.
+
+Here's another drawing with more stuff in it:
+
+asymptote:
+    size(16cm);
+    axises(-1.1,1.3,-1.1,1.3);
+
+    real t=0.8, dt=0.3;
+    real bracedist=0.05;
+
+    draw(unitcircle);
+    filldraw((0,0)--rarc((0,0),1,t,t+dt)--cycle, yellow);
+    filldraw((cos(t+dt),sin(t))--rarc((0,0),1,t,t+dt)--cycle, lightblue);
+
+    draw(rarc((0,0),0.15,0,t), L="$t$");
+    draw(rarc((cos(t),sin(t)),0.15,tau/2,tau/2+t), L="$t$");
+
+    draw(rarc((0,0),0.4,t,t+dt), L="\ $\ \Delta t$", align=N); // spaces are for alignment (lol)
+    label((cos(t+dt/2),sin(t+dt/2)), L=rrotate(t+dt/2-tau/4)*"$\Delta t$", align=NE);
+
+    draw((cos(t+dt),sin(t+dt))--(0,sin(t+dt)), smalldashes);
+    draw(brace((-bracedist,0),(-bracedist,sin(t+dt))), L="$\sin(t+\Delta t)$", align=W);
+    draw((cos(t),sin(t))--(cos(t),0), smalldashes, L=rotate(90)*"$\sin t\ $\ ");
+
+Here we have $\Delta t$ in two different places and you should understand how.
+The bottom of the blue area is parallel with the x axis, and that's how $t$
+appears there as well.
+
+If we take $\sin(t+\Delta t)$ and we take away $\sin t$ we're left with the
+height of the blue area, so the blue area's height is $\sin(t+\Delta t)-\sin t$.
+
+The blue area is kind of like a triangle, and with a very small $\Delta t$ it's
+even more like a triangle. Let's draw a picture of just that:
+
+asymptote:
+    size(9cm);
+    real w=2.7, h=2;
+
+    real bottomx=2/3*w, bottomy=-1/3*(w/h)*w;
+    pair circlecenter=(0,-(w/h)*w);
+
+    fill((0,bottomy)--(0,0)--(w,0)--(bottomx,bottomy)--cycle, yellow);
+    draw((w,0)--(bottomx,bottomy));
+    filldraw((0,0)--(w,0)--(0,h)--cycle, lightblue);
+
+    label((w/2,h/2), L=rrotate(atan2(-h,w))*"$\Delta t$", align=NE);
+
+    path corner90=scale(0.25)*((1,0)--(1,1)--(0,1));
+    draw(corner90);
+    draw(shift(w,0)*rrotate(tau/2-atan2(h,w))*corner90);
+
+    draw(rarc((w,0),0.6,tau/2,tau+atan2(-w,-h)), L="$t$");
+    draw(rarc((w,0),0.8,atan2(h,-w),tau/2), L="$s$");
+    draw(rarc((0,h),0.6,-tau/4,atan2(-h,w)), L="$u$");
+
+    draw(brace((-0.1,0),(-0.1,h)), L=rotate(90)*"$\sin(t+\Delta t)-\sin t$", align=W);
+
+You might be just looking at this and feeling like $u=t$, but let's prove that
+correctly. Based on the drawing, $s+t = \frac \tau 4$ because they add up to a
+quarter-turn corner, and $s+u+\frac\tau4 = \frac \tau 2$ because we can use
+[the triangle angle sum](#triangle-angle-sum).
+
+math:
+    s+t &= \frac \tau 4 \\
+    s &= \frac \tau 4 - t
+
+math:
+    \frac\tau4+s+u &= \frac\tau2 \\
+    \frac\tau4+\left(\frac\tau4-t\right)+u &= 2\frac{\tau}{2\cdot2} \\
+    \frac\tau4+\frac\tau4-t+u &= 2\frac\tau4 \\
+    2\frac\tau4-t+u &= 2\frac\tau4 \\
+    u&=t
+
+Now we can apply triangle trig to the $u$. I'm using $\approx$ here because the
+$\Delta t$ line is actually a bit curvy in the circle image.
+
+math:
+    \cos u &\approx \frac{\sin(t+\Delta t)-\sin t}{\Delta t} \\
+    \cos t &\approx \frac{\sin(t+\Delta t)-\sin t}{\Delta t} \\
+    \cos t &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin t}{\Delta t} \\
+    \cos t &= \frac{d}{dt} \sin t
+
+I think this is quite nice.
+
+## Derivative of Cosine
+
+Based on [the graphs](graphs.html#sine-and-cosine), sin and cos are the same
+thing but with a small offset. We know that $\frac{d}{dt}\sin t=\cos t$, so
+finding the derivative of $\sin$ just shifted the graph a bit. The graph of
+$-\sin t$ looks a lot like what might be the derivative of $\cos t$:
+
+asymptote:
+    size(18cm);
+    real xmin=-0.5, xmax=8.5;
+    axises(xmin,xmax+0.5,-1.1,2, xlabel="$t$");
+    real sinn(real t) { return sin(t); }
+    real coss(real t) { return cos(t); }
+    real msin(real t) { return -sin(t); }
+    draw(graph(sinn,xmin,xmax), heavyred+smalldashes);
+    draw(graph(coss,xmin,xmax), deepgreen+smalldashes);
+    draw(graph(msin,xmin,xmax), blue);
+
+    label((tau/4,1), heavyred, L="$y=\sin t$", align=N);
+    label((tau/2,-1), deepgreen, L="$y=\cos t$", align=S);
+    label((3tau/4,1), blue, L="$y=-\sin t$", align=N);
+
+Let's prove that $\frac{d}{dt} \cos t = -\sin t$. This will be much easier than
+the $\sin$ derivative because now we know that $\frac{d}{dt} \sin t = \cos t$
+and $\cos t = \sin \left( \frac \tau 4 - t \right)$, see
+[above](#why-is-cosine-called-cosine). We just need to remember [the chain
+rule](more-derivatives.html#chain-rule).
+
+math:
+    \frac{d}{dt} \cos t &= \frac{d}{dt} \sin\left( \frac\tau4 - t \right) \\
+    &= \cos\left( \frac\tau4 - t \right) \cdot \frac{d}{dt}\left( \frac\tau4 - t \right) \\
+    &= \cos\left( \frac\tau4 - t \right) \cdot (-1) \\
+    &= -\cos\left( \frac\tau4 - t \right) \\
+
+Now we just need to prove that $-\sin t = -\cos\left( \frac\tau4 - t \right)$
+using our $\cos t = \sin \left( \frac \tau 4 - t \right)$ thing.
+
+math:
+    -\sin t &= -\cos\left( \frac\tau4 - t \right) \\
+    \sin t &= \cos\left( \frac\tau4 - t \right) \\
+    &= \sin\left(\frac\tau4 - \left( \frac\tau4 - t \right)\right) \\
+    &= \sin\left(\frac\tau4 - \frac\tau4 + t \right) \\
+    &= \sin t

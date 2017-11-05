@@ -59,7 +59,10 @@ asymptote: float:left;
 
 ## Parabolas
 
-Here $a$, $t$ and $u$ are constants.
+Here $a$, $t$ and $u$ are constants. The graphs are drawn with $t>0$ and $u>0$
+for simplicity, but $t$ and $u$ can be 0 or negative as well. For example, more
+$u$ seems to mean that the graph moves up, so e.g. $u=-2$ would bring the graph
+down.
 
 asymptote: float:left;
     size(12cm);

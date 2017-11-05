@@ -117,8 +117,8 @@ for "natural", and $\log_e$ is called natural because it appears surprisingly
 often in all kinds of places because of the $e$.
 
 Many programming languages and calculators have a ``log(x)`` function, and
-usually it returns $\ln x$, $\log_2 x$, $\log_10 x$ or $\ln x$. If you aren't
-sure what ``log(x)`` does, you can try it like this:
+usually it returns $\ln x$, $\log_2 x$ or $\log_{10} x$. If you aren't sure
+which logarithm it is, you can try it like this:
 
 math:
     b^0 &= 1 \\

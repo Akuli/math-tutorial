@@ -116,27 +116,57 @@ Let's do this.
 math:
     P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n
 
-This is known as the $n$'th Taylor polynominal. Note that we got this beautiful
-bit of magic-like math from basically nothing with just derivatives and
-antiderivatives.
+This is known as the $n$'th Taylor polynominal.
 
 We used $x=0$ here as a "magic number" that we always put to $f(\ \ )$, but
 that doesn't need to be 0. Here's a more generalized Taylor polynominal:
 
 math:
-    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
+    P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
 
 The Taylor polynominal with $a=0$ is also known as a Maclaurin polynominal. You
 don't need to remember that in this tutorial, but if someone talks about a
 Maclaurin polynominal they mean this.
+
+Taylor polynominals are usually accurate near $a$ and less accurate far from
+$a$. These graphs demonstrate that:
+
+asymptote:
+    size(9cm);
+    real f(real x) { return 0.5*(x-0.3)**3-(x-0.3)**2+1.5; }
+    real xmin=-0.8, xmax=2.5, ymax=3, a=1;
+    axises(xmin,xmax,f(xmin),ymax);
+
+    real fderivative(real x) {
+        real h = 0.00001;
+        return (f(x+h)-f(x))/h;
+    }
+    real fdoublederivative(real x) {
+        real h = 0.00001;
+        return (fderivative(x+h)-fderivative(x))/h;
+    }
+    real P0(real x) { return f(a); }
+    real P1(real x) { return fderivative(a)*(x-a) + P0(x); }
+    real P2(real x) { return fdoublederivative(0)/2*(x-a)**2 + P1(x); }
+
+    draw(graph(P0, xmin, xmax), deepgreen);
+    draw(graph(P1, xmin, xmax), blue);
+    draw(graph(P2, -0.3, 1.8), darkorange);
+
+    // this must be on top of everything else
+    draw(graph(f,xmin,xmax), heavyred);
+    label((2.3,f(2.3)), heavyred, L=rotate(65)*"$y=f(x)$", align=NW);
+
+    draw((a,0)--(a,f(a)), smalldashes);
+    label((a,0), L="$a$", align=S);
 
 ## The Magic Sine
 
 This is the real thing. We'll write our own ``sin(x)`` function.
 
 We need to know that $\frac{d}{dx} \sin x = \cos x$ and
-$\frac{d}{dx} \cos x = -\sin x$. Unfortunately this tutorial contains no proof
-about this yet, but I'm planning on making one soon.
+$\frac{d}{dx} \cos x = -\sin x$. These rules are proved
+[here](more-geometry-and-trig.html#derivative-of-sine).
 
 So, we get this:
 
@@ -199,17 +229,18 @@ code: python3
     import math
     print(math.sin(1))      # also 0.8414709848078965
 
-I think this is amazing.
+I think this is amazing, and the most amazing thing about this is that we got
+everything out of basically nothing with just derivatives and antiderivatives.
 
 If you look at how Python's ``math.sin()`` is implemented it just calls C
 ``sin()``, and that uses taylor polynominals just like our code. The C code is
 more complicated than our ``taylorsin()`` because it uses taylor polynominals at
 other places than $x=0$, but the basic idea is the same.
 
-If we could somehow continue this forever instead of stopping at e.g. $k=99$ we
-would get perfectly precise sin values. I'm not going to talk about the details
-of why that happens, but this works for sin, cos and many other things. An
-infinitely continuing Taylor polynominal is also known as a Taylor series.
+If we could somehow continue this forever instead of stopping at e.g. ``i=99``
+we would get perfectly precise sin values. I'm not going to talk about the
+details of why that happens, but this works for sin, cos and many other things.
+An infinitely continuing Taylor polynominal is also known as a Taylor *series*.
 
 graybox: Exercise
     Find the Taylor series of $\cos x$ and $e^x$. See [this
