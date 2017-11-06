@@ -10,6 +10,16 @@ redbox: Note
     to read it and then master everything it's talking about, so also
     read the human-friendly introductions in other chapters when needed.
 
+## Handy Things
+
+These things are straight-forward to prove, and you can see proofs of these
+here and there in this tutorial.
+
+math:
+    (a+b)^2 &= a^2+2ab+b^2 \\
+    (a-b)^2 &= a^2-2ab+b^2 \\
+    a^2-b^2 &= (a-b)(a+b)
+
 ## Common Areas and Volumes
 
 You may need to use [integrals](#integrals) if you want to calculate an
@@ -358,6 +368,8 @@ asymptote:
     label((0,1), deepblue, L="$\cos(t)$", align=NE);
     draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin(t)$", align=E);
 
+Notation: $\sin^2(t)$ means $(\sin(t))^2$.
+
 (trianglestuff)
 A triangle with a quarter-turn corner and a bunch of math:
 
@@ -370,38 +382,33 @@ asymptote: float:right;
 math:
     &\sin(t) = \frac b c \\
     &\cos(t) = \frac a c \\
-    &\tan(t) = \frac b a = \frac{b/c}{a/c} = \frac{\sin(t)}{\cos(t)}\\
+    &\tan(t) = \frac b a \\
     &t = \text{atan2}(b,a) \\
     &a^2 + b^2 = c^2
 
 Some programming languages have a ``hypot(a, b)`` function that returns
 $\sqrt{a^2+b^2}$. You can use it for calculating $c$.
 
-## Taylor Polynominals
+The sum of all angles of a triangle is always $\frac \tau 2$.
 
-The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are most
-accurate when $x \approx a$. A bigger $n$ means a more accurate value.
-
-math:
-    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
-            + \frac{f^{(n)}(a)}{n!}(x-a)^n
-
-Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
-derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
-``factorial(n)`` function that returns $n!$.
-
-Choosing $a=0$ usually results in simple $P_n$ polynominals.
-
-## Taylor Series
-
-Here sin and cos work with [radians](#geometry-and-trig).
+Handy trig formulas, $n$ can be any integer:
 
 math:
-    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
-                - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
-    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
-                - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
-    e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+    &\sin^2(t) + \cos^2(t) = 1 \\
+    &\sin(t) = -\sin(-t) = \sin(t+n\tau) \\
+    &\cos(t) = \cos(-t) = \cos(t+n\tau) \\
+    &\tan(t) = \frac{\sin(t)}{\cos(t)} = \tan\left(t+n\frac\tau2\right) \\
+    &\sin(2t) = 2\sin(t)\cos(t) \\
+    &\cos(2t) = \cos^2(t)-\sin^2(t) \\
+    &\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)} \\
+    &\sin^2(t) = \frac{1-\cos(2t)}{2} \\
+    &\cos^2(t) = \frac{1+\cos(2t)}{2}
+
+Most of these are proved in [the more trig chapter](more-geometry-and-trig.html)
+or [the Euler formula chapter](eulerformula.html).
+
+This list is not meant to be complete and I'll probably add a wikipedia link
+here soon.
 
 ## Exponents and Logarithms
 
@@ -429,6 +436,38 @@ math:
 Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$
 
 $\ln(x)$ means $\log_e(x)$.
+
+## Taylor Polynominals
+
+The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are most
+accurate when $x \approx a$. A bigger $n$ means a more accurate value.
+
+math:
+    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
+            + \frac{f^{(n)}(a)}{n!}(x-a)^n
+
+Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
+derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
+``factorial(n)`` function that returns $n!$.
+
+Choosing $a=0$ usually results in simple $P_n$ polynominals.
+
+## Series Representations
+
+Here sin and cos work with [radians](#geometry-and-trig).
+
+math:
+    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
+                - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
+    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
+                - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+    e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+
+## Euler's Formula
+
+math: e^{it}=\cos(t)+i\sin(t),\ i=\sqrt{-1}
+
+This crazy thing is not a joke. [Read more here.](eulerformula.html)
 
 ## Other Bases
 

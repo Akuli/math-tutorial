@@ -246,5 +246,5 @@ graybox: Exercise
     Find the Taylor series of $\cos(x)$ and $e^x$. See [this
     thing](explog.html#the-e-constant) if you don't know what $e$ is or what the
     derivative of $e^x$ is. Check your answers with your favorite programming
-    language and [the Taylor series section](summary.html#taylor-series) on the
-    summary page.
+    language and [the Taylor series section](summary.html#series-representations)
+    on the summary page.
