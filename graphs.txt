@@ -161,7 +161,8 @@ Note that $a \ne 0$ because $y=bx+c$ is a straight line.
 
 All of these graphs have an area where they get closer and closer to an axis but
 they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
-$\displaystyle\lim_{x\to-\infty}a^x=0$.
+$\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$ and
+$\displaystyle\lim_{x\to\infty}a^x=0$ if $0<a<1$.
 
 There's a detailed introduction to exponents and logarithms [here](explog.html).
 
