@@ -39,14 +39,21 @@ asymptote:
     grid(-5,5,-5,5);
     axises(-5,6,-5,6, xlabel="Re", ylabel="Im");
 
-    for (real re=1; re<5; ++re)
-        dot((re,0), p=dotpen, L="$"+(string)re+"$", align=S);
-    for (real im/*lol*/=1; im<4; ++im)
-        dot((0,im), p=dotpen, L="$"+(im==0 ? "" : (string)im)+"i$", align=E);
-    for (pair z : new pair[] { (4,3), (4,-3), (-3,-1) }) {
-        string re=(string)z.x, im=(string)z.y+"i";
+    for (pair z : new pair[] {
+            (1,0),(2,0),(3,0),(4,0),
+            (0,1),(0,2),(0,3),(0,4),
+            (4,3), (4,-3), (-3,-1) }) {
+        string re=(string)z.x, im=(string)z.y;
         if (z.y > 0) im="+"+im;
-        dot(z, L="$"+re+im+"$", p=dotpen, align=(z.y > 0 ? N : S));
+        if (z.y == 0) im="";
+        if (z.y == -1) im="-";
+        if (z.x == 0) {
+            re="";
+            if (z.y > 0) im=(string)z.y;    // remove +
+        }
+        if (z.y == 1) im="";    // the i will be added later
+        if (z.y != 0) im += "i";
+        dot(z, L="$"+re+im+"$", p=dotpen, align=(z.y > 0 ? (z.x==0 ? W : N) : S));
     }
 
 Re is short for Real and Im for Imaginary.
