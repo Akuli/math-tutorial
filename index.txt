@@ -1,34 +1,34 @@
 # Math for Programmers
 
-comment: TODO: add taylor stuff here and in general update this
+Math looks like a mess of symbols if you aren't familiar with it, but the
+purpose of symbols and concepts is to decrease annoying repetition. For example,
+it's much easier to write $2+3$ than "the number of apples you get if I give you
+two apples and John gives you three apples". The math itself is independent from
+everything and mathematicians don't make it up, they just discover things about
+how numbers behave in different cases.
 
-This tutorial contains practical math for programmers who want to get
-stuff done, but also more stuff for people who get interested in how the
-math works. It assumes that you have some experience with programming,
-but you'll probably understand most of it without programming skills.
+This tutorial contains practical math for programmers who want to get stuff
+done, but also math that is really fun on its own even though most people won't
+find it practical. I assume that you have some experience with programming, but
+you'll probably understand most of this tutorial without programming skills.
 
-Start by opening [the basics page](basics.html) and keep it open while
-you read the tutorial. There's nothing wrong with looking up things from
-it as we go.
+Start by opening [the basics page](basics.html) and keep it open while you read
+the tutorial. There's nothing wrong with looking up things from it as you go.
 
-If you came here because you want to calculate some specific thing, go
-to [the summary page](summary.html) to get a nice and concise list of
-things that are shown in this tutorial.
+If you came here because you want to calculate some specific thing, go to [the
+summary page](summary.html) to get a nice and concise list of things that are
+shown in this tutorial.
 
 If you don't know what to start with I recommend [the derivative
-tutorial](derivatives.html). Derivatives are a great example of why I
-like math; calculations that seem like they will be complicated turn out
-to be surprisingly simple and doable in the end. After that, if you got
-interested in how awesome the math is, continue to [the integral
-tutorial](integrals.html) for more amazing stuff, and if you are still
-interested you can also read [the more integrals chapter](more-integrals.html).
-If you didn't get interested in derivatives but you read and understood
-it you might still find integrals interesting.
+tutorial](derivatives.html). Derivatives are a nice example of why I like math;
+calculations that seem like they will be complicated turn out to be doable in
+the end, and we can develop a bunch of handy rules to make things even easier.
+After that, if you got interested in the math itself, you have a few options:
 
-If you're a game developer and you want to create 2D games with a
-library that requires you to deal with coordinates, check out [the
-geometry and trigonometry tutorial](geometry-and-trig.html). You'll find
-it useful.
-
-If you're wondering how color strings like ``#ff0000`` work, see
-[the number theory chapter](numbertheory.html).
+* You can [read more about derivatives](more-derivatives.html).
+* You can continue to [the integral tutorial](integrals.html) to learn about a
+  surprising way to use derivatives.
+* You can read stuff in the mind-blowing section at right. Be sure to learn all
+  the required skills listed in the beginning of each chapter; otherwise you'll
+  miss the mind-blowiness by not understanding everything. Note that I'm not
+  responsible for exploding brains.
