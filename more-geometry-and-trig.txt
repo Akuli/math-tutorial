@@ -170,8 +170,8 @@ math:
 ## Accurate Sine and Cosine Values
 
 graybox:
-    In this section, $\cos^2(t)$ means $(\cos(t))^2$. It's confusing at first,
-    but it's used often because it's much easier to read and type.
+    Here $\cos^2(t)$ means $(\cos(t))^2$, and people use the $\cos^2$ notation
+    because it's easier and faster to write although it doesn't make much sense.
 
 asymptote: float:right;
    size(10cm);
@@ -207,9 +207,10 @@ allows us to do some other tricks.
 
 The angle in question is $\frac \tau 6$, a sixth of a turn. If a triangle has
 three sides with equal lengths, the angles will be $\frac{\tau/2}{3}=\frac\tau6$
-each. That's why we can complete the triangle drawn in unit circle like in the
-image. The angles at top are $\frac{\tau}{12}$ because two $\frac{\tau}{12}$
-angles added together is $\frac \tau 6$.
+each (see [triangle angle sum](#triangle-angle-sum) above). That's why we can
+complete the triangle drawn in unit circle like in the image. The angles at top
+are $\frac{\tau}{12}$ because two $\frac{\tau}{12}$ angles added together is
+$\frac \tau 6$.
 
 The radius of the unit circle is 1, so we get this on the $x$ axis:
 
