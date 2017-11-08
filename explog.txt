@@ -18,11 +18,16 @@ math:
     2^{-2} &= \frac{1}{2^2} = \frac 1 4 \\
     2^{-3} &= \frac{1}{2^3} = \frac 1 8
 
-These results agree with the graphs.
+These results agree with the graphs because if $x$ gets smaller, then $a^x$ also
+gets smaller if $a>1$.
 
 ## The e constant
 
-Let's try to find the derivative of $a^x$ where $a$ is a constant:
+graybox: See Also
+    [This video](https://youtu.be/AuA2EAgAegE) contains a different kind of
+    introduction to $e$ with more facts but less details.
+
+Let's try to find the derivative of $a^x$ where $a$ is a constant and $a>0$:
 
 math:
     \frac{d}{dx} a^x &= \lim_{h \to 0} \frac{a^{x+h}-a^x}{h} \\
@@ -85,10 +90,6 @@ code: python3
     >>> math.e**3
     20.085536923187664
 
-graybox: See Also
-    [This video](https://youtu.be/AuA2EAgAegE) contains a different kind of
-    introduction to $e$ with more facts but less details.
-
 ## Logarithms
 
 A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
@@ -138,18 +139,6 @@ Python's ``math.log(x)`` seems to return $\ln(x)$.
 The summary page contains [a bunch of formulas](summary.html#logs-are-useful)
 that make logarithms very useful. The proofs are below.
 
-For example, if you have something like $a^b=c$ and $a$ is known to be positive,
-you also know that $c$ is positive (look at [the
-graphs](graphs.html#exponents-and-logarithms)) and you can take a logarithm on
-either side:
-
-math:
-    a^b &= c \\
-    \ln(a^b) &= \ln c \\
-    b \ln(a) &= \ln c
-
-Of course, you can take any logarithm you want instead of $\ln$.
-
 Use the $\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ formula if your
 programming language doesn't have a logarithm that returns what you want:
 
@@ -177,7 +166,8 @@ math:
     x^y &= x^y \\
     b^{\log_b(x^y)} &= \left(b^{\log_b(x)}\right)^y \\
     b^{\log_b(x^y)} &= b^{\log_b(x) \cdot y} \\
-    \log_b(x^y) &= \log_b(x) \cdot y
+    \log_b(x^y) &= \log_b(x) \cdot y \\
+        &= y \log_b(x)
 
 <br>
 
@@ -203,3 +193,38 @@ math:
     \log_a\left( b^{\log_b(x)} \right) &= \log_a(x) \\
     \log_b(x)\ \log_a(b) &= \log_a(x) \\
     \log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
+
+## Derivative of an exponent function
+
+Let's try to find the derivative of $a^x$ where $a$ can be any positive number,
+not just $e$.
+
+[Earlier](#the-e-constant) we figured out this:
+
+math: \frac{d}{dx} a^x = a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h} \\
+
+But now we know that $\frac{d}{dx} e^x = e^x$ and we also know logarithms. Let's
+try to do something.
+
+math:
+    a^x = e^{\ln(a^x)} = e^{x \ln(a)}
+
+Here I used the $\log_b(x^y)=y \log_b(x)$ formula that we proved above. So it
+looks like we could do this (remember that $a$ is a constant so $\ln(a)$ is also
+a constant and use [the chain rule](more-derivatives.html#chain-rule)):
+
+math:
+    \frac{d}{dx} a^x
+        = \frac{d}{dx} e^{x \ln(a)}
+        = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x} \cdot \frac{d}{dx}(x \ln(a))
+        = a^x \ln(a)
+
+That's quite nice, but now we also have this:
+
+math:
+    \frac{d}{dx} a^x &= \frac{d}{dx} a^x \\
+    a^x \ln(a) &= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h} \\
+    \ln(a) &= \lim_{h\to0} \frac{a^h-1}{h}
+
+This is why the base $e$ logarithm is known as the *natural* logarithm, or $\ln$
+for short. It appears "naturally" in surprising places.

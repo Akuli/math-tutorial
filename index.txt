@@ -28,7 +28,7 @@ After that, if you got interested in the math itself, you have a few options:
 * You can [read more about derivatives](more-derivatives.html).
 * You can continue to [the integral tutorial](integrals.html) to learn about a
   surprising way to use derivatives.
-* You can read stuff in the mind-blowing section at right. Be sure to learn all
-  the required skills listed in the beginning of each chapter; otherwise you'll
-  miss the mind-blowiness by not understanding everything. Note that I'm not
-  responsible for exploding brains.
+* You can read stuff of the mind-blowing section in the sidebar. Be sure to
+  learn all the required skills listed in the beginning of each chapter;
+  otherwise you'll miss the mind-blowiness by not understanding everything. Note
+  that I'm not responsible for exploding brains.

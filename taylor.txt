@@ -204,7 +204,24 @@ math:
         + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
     &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...
 
-That's all there is to it! Here's an awesome Python program:
+That looks quite nice, so let's draw a graph and see if it actually works.
+
+asymptote:
+    size(18cm);
+    real pminmax=5.9, xmin=-8, xmax=15, yminmax=6;
+    real f(real x) { return sin(x); }
+    real P(real x) { return x - x^3/factorial(3) + x^5/factorial(5)
+                            - x^7/factorial(7) + x^9/factorial(9); }
+    axises(xmin,xmax+1,-yminmax,yminmax);
+    draw(graph(P, -pminmax, pminmax), blue);
+    draw(graph(f, xmin, xmax), heavyred);
+    label((3tau/4,-1), heavyred, L="$y=\sin(x)$", align=S);
+    label((pminmax,P(pminmax)-1), blue,
+          L="$y=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}$", align=E);
+
+I think this is just awesome.
+
+Here's our $\sin(x)$ implementation:
 
 code: python3
     # python has math.factorial, but this is here just to show that there's
@@ -217,7 +234,7 @@ code: python3
 
     def taylorsin(x):
         result = x
-        for i in range(3, 100, 2):      # 3, 5, ..., 99
+        for i in range(3, 20, 2):       # 3, 5, 7, ..., 19
             thingy = x**i/factorial(i)
             if i % 4 == 3:      # 3, 7, 11, ...
                 result -= thingy
