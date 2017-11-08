@@ -107,9 +107,15 @@ asymptote:
     axises(xymin,exp2(expmax),xymin,exp2(expmax));
     label((1,0), L="1", align=S);
     label((0,1), L="1", align=NW);
-    draw(graph(exp2,xymin,expmax), blue, L=rotate(55)*"$y=2^x$", align=NW);
-    draw(graph(log2,exp2(xymin),exp2(expmax)), heavyred,
-         L=rotate(22)*"$y=\log_2(x)$", align=SE);
+    draw(graph(exp2,xymin,expmax), blue);
+    draw(graph(log2,exp2(xymin),exp2(expmax)), heavyred, align=SE);
+
+    real bluelabelx=2, bluelabelrot=70,
+         redlabelx=5, redlabelrot=15;
+    label((bluelabelx,exp2(bluelabelx)), blue, L=rotate(bluelabelrot)*"$y=2^x$", align=NW);
+    label((bluelabelx,exp2(bluelabelx)), blue, L=rotate(bluelabelrot)*"$x=\log_2(y)$", align=E);
+    label((redlabelx,log2(redlabelx)), heavyred, L=rotate(redlabelrot)*"$y=\log_2(x)$", align=N);
+    label((redlabelx,log2(redlabelx)), heavyred, L=rotate(redlabelrot)*"$x=2^y$", align=SE);
 
 Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
 with any $x$. You cannot take any logarithm of a zero or a negative value.
@@ -194,29 +200,28 @@ math:
     \log_b(x)\ \log_a(b) &= \log_a(x) \\
     \log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
 
-## Derivative of an exponent function
+## Derivative of any exponent function
 
-Let's try to find the derivative of $a^x$ where $a$ can be any positive number,
-not just $e$.
-
-[Earlier](#the-e-constant) we figured out this:
+[Earlier](#the-e-constant) we tried to find the derivative of $a^x$ where $a>0$
+and we ended up wit this:
 
 math: \frac{d}{dx} a^x = a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h} \\
 
 But now we know that $\frac{d}{dx} e^x = e^x$ and we also know logarithms. Let's
-try to do something.
+keep working on the derivative.
 
 math:
     a^x = e^{\ln(a^x)} = e^{x \ln(a)}
 
 Here I used the $\log_b(x^y)=y \log_b(x)$ formula that we proved above. So it
-looks like we could do this (remember that $a$ is a constant so $\ln(a)$ is also
-a constant and use [the chain rule](more-derivatives.html#chain-rule)):
+looks like we could do this (remember to use [the chain
+rule](more-derivatives.html#chain-rule)):
 
 math:
     \frac{d}{dx} a^x
         = \frac{d}{dx} e^{x \ln(a)}
-        = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x} \cdot \frac{d}{dx}(x \ln(a))
+        = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x}
+        \cdot \frac{d}{dx}(x \underbrace{\ln(a)}_\text{constant})
         = a^x \ln(a)
 
 That's quite nice, but now we also have this:
@@ -228,3 +233,49 @@ math:
 
 This is why the base $e$ logarithm is known as the *natural* logarithm, or $\ln$
 for short. It appears "naturally" in surprising places.
+
+## Derivative of a logarithm
+
+Let's try to find $\frac{d}{dx} \ln(x)$ where $x>0$. We'll use the
+$\ln(x/y)=\ln(x)-\ln(y)$ and $\ln(x^y)=y\ln(x)$ rules right to left.
+
+math:
+    \frac{d}{dx} \ln(x)
+    &= \lim_{h\to0} \frac{\ln(x+h)-\ln(x)}{h} \\
+    &= \lim_{h\to0} \frac{\ln\left(\frac{x+h}{x}\right)}{h} \\
+    &= \lim_{h\to0} \left(\frac 1 h \ln\left(\frac{x+h}{x}\right)\right) \\
+    &= \lim_{h\to0} \ln\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right) \\
+
+Now we'll apply the $\ln(a)=\displaystyle\lim_{h\to0}\textstyle\frac{a^h-1}{h}$
+thing we ended up with last time. It doesn't matter how the $h$ in this thing
+and the $h$ in our $\ln$ derivative thing relate to each other as long as they
+both go to 0, so we need just one $\lim$.
+
+math:
+    \lim_{h\to0} \ln\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)
+    &= \lim_{h\to0} \frac{\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)^h - 1}{h} \\
+    &= \lim_{h\to0} \frac{\left(\frac{x+h}{x}\right)^{\frac 1 h h} - 1}{h} \\
+    &= \lim_{h\to0} \frac{\left(\frac{x+h}{x}\right)^1 - 1}{h} \\
+    &= \lim_{h\to0} \frac{\frac{x+h}{x} - 1}{h} \\
+    &= \lim_{h\to0} \frac{\frac x x + \frac h x - 1}{h} \\
+    &= \lim_{h\to0} \frac{1 + \frac h x - 1}{h} \\
+    &= \lim_{h\to0} \frac{\left(\frac h x\right)}{h} \\
+    &= \lim_{h\to0} \frac{h}{xh} \\
+    &= \frac{1}{x}
+
+So we had these horrible messes but we ended up with just $\frac 1 x$. I think
+this is nice.
+
+Let's generalize this a bit with the
+$\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ rule:
+
+math:
+    \frac{d}{dx} \log_b(x)
+    &= \frac{d}{dx} \left(\frac{\ln(x)}{\ln(b)}\right) \\
+    &= \frac{d}{dx} \Biggl(\underbrace{\frac{1}{\ln(b)}}_\text{constant}\ln(x)\Biggr) \\
+    &= \frac{1}{\ln(b)} \cdot \frac{d}{dx} \ln(x) \\
+    &= \frac{1}{\ln(b)} \cdot \frac 1 x \\
+    &= \frac{1}{x \ln(b)}
+
+Again, the natural logarithm appears in a calculation that seems to have nothing
+to do with $e$.

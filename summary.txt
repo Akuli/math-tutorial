@@ -193,13 +193,19 @@ math:
       &&\\
       \frac{d}{dx} \sin(x) = \cos(x) & \frac{d}{dx} e^x = e^x \\
       &&\\
-      \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a)
+      \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a) \\
+      &&\\
+      \frac{d}{dx}\ln(x) = \displaystyle\frac 1 x &
+      \frac{d}{dx} \log_b(x) = \displaystyle\frac{1}{x\ln(b)}
    \end{matrix}
 
 graybox: See Also
     Some of the simplest rules are explained in [the first derivative
     chapter](derivatives.html) and most of the other rules are proved in
     [the second derivative chapter](more-derivatives.html#derivative-rules).
+    Sin and cos derivatives are proved
+    [here](more-geometry-and-trig.html#derivative-of-sine) and the logarithm
+    stuff is proved [here](explog.html#derivative-of-any-exponent-function).
 
 Note that if you have something like $(2x)^2$ as opposed to $x^2$ you
 need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,
