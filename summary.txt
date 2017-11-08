@@ -189,7 +189,11 @@ math:
       \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
       &&\\
       \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
-      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
+      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)\\
+      &&\\
+      \frac{d}{dx} \sin(x) = \cos(x) & \frac{d}{dx} e^x = e^x \\
+      &&\\
+      \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a)
    \end{matrix}
 
 graybox: See Also
