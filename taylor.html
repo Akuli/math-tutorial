@@ -85,7 +85,11 @@ circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741ad
 
 <p><img src="math/8c1e776279f4ea9faee12457e63afedc.png" class="blockmath" /></p><p>So we have this:</p>
 
-<p><img src="math/a76ff0b4220f2ab39f117655391f6dfe.png" class="blockmath" /></p><p>That's all there is to it! Here's an awesome Python program:</p>
+<p><img src="math/a76ff0b4220f2ab39f117655391f6dfe.png" class="blockmath" /></p><p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
+
+<p><img class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.png" /></p><p>I think this is just awesome.</p>
+
+<p>Here's our <img class="inlinemath" src="math/3e21673ce6c9b09f9ec50b7237248576.png" /> implementation:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># python has math.factorial, but this is here just to show that there&#39;s</span>
 <span style="color: #60a0b0; font-style: italic"># no magic involved</span>
@@ -97,7 +101,7 @@ circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741ad
 
 <span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">taylorsin</span>(x):
     result <span style="color: #666666">=</span> x
-    <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">3</span>, <span style="color: #40a070">100</span>, <span style="color: #40a070">2</span>):      <span style="color: #60a0b0; font-style: italic"># 3, 5, ..., 99</span>
+    <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">3</span>, <span style="color: #40a070">20</span>, <span style="color: #40a070">2</span>):       <span style="color: #60a0b0; font-style: italic"># 3, 5, 7, ..., 19</span>
         thingy <span style="color: #666666">=</span> x<span style="color: #666666">**</span>i<span style="color: #666666">/</span>factorial(i)
         <span style="color: #007020; font-weight: bold">if</span> i <span style="color: #666666">%</span> <span style="color: #40a070">4</span> <span style="color: #666666">==</span> <span style="color: #40a070">3</span>:      <span style="color: #60a0b0; font-style: italic"># 3, 7, 11, ...</span>
             result <span style="color: #666666">-=</span> thingy
