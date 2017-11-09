@@ -544,7 +544,7 @@ math:
     \lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x) \\
     V'(x) &= A(x)
 
-math: V(b)-V(a) = \left[V(x)\right]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx
+math: V(b)-V(a) = \bigl[V(x)\bigr]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx
 
 asymptote3d: float:right;
    size(11cm);

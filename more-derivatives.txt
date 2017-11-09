@@ -111,9 +111,10 @@ indent:
         =& \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
                             +f(x+h)g(x+h)-f(x)g(x)}{h} \\
         =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
-        =& \lim_{h\to0} \frac{(f(x+h)-f(x))g(x+h)+f(x)(g(x+h)-g(x))}{h} \\
+        =& \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \\
         =& \lim_{h\to0} \left(
-            \frac{(f(x+h)-f(x))\ g(x+h)}{h} + \frac{f(x)\ (g(x+h)-g(x))}{h}
+            \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h}
+            + \frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h}
          \right) \\
         =& \lim_{h\to0} \left(
          \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
@@ -203,12 +204,13 @@ indent:
     math:
         \frac{d}{dx} \sqrt x
         &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
-        &= \lim_{h\to0} \frac{(\sqrt{x+h}-\sqrt x\ )(\sqrt{x+h}+\sqrt x\ )}{
-                            h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
-        &= \lim_{h\to0} \frac{(\sqrt{x+h}\ )^2 - (\sqrt x\ )^2}{
-                            h \cdot (\sqrt{x+h} + \sqrt x\ )} \\
-        &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
-        &= \lim_{h\to0} \frac{h}{h\cdot(\sqrt{x+h} + \sqrt x\ )} \\
+        &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}-\sqrt x\ \bigr)
+                              \bigl(\sqrt{x+h}+\sqrt x\ \bigr)}{
+                                h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
+        &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}\ \bigr)^2-\bigl(\sqrt x\ \bigr)^2}{
+                            h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
+        &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
+        &= \lim_{h\to0} \frac{h}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
         &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
         &= \frac{1}{\sqrt x + \sqrt x} \\
         &= \frac{1}{2\ \sqrt x}
@@ -281,10 +283,13 @@ indent:
             \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
         \right) \\
         =& \lim_{h\to0} \left(
-            \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{g(x+h)-g(x)}
+            \frac{f\bigl(g(x)+g(x+h)-g(x)\bigr)-f(g(x))}{g(x+h)-g(x)}
             \cdot \frac{g(x+h)-g(x)}{h}
         \right) \\
-        =& \lim_{h\to0} \frac{f(g(x)+g(x+h)-g(x))-f(g(x))}{h} \\
+        =& \lim_{h\to0} \left(
+            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}
+            \cdot \frac{g(x+h)-g(x)}{h}
+        \right) \\
         =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
         =& \frac{d}{dx} f(g(x))
 
@@ -347,7 +352,7 @@ indent:
     math:
         \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
         =& \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
-        =& f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\left(\frac{1}{g(x)}\right)\right) \\
+        =& f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\Bigl(\frac{1}{g(x)}\Bigr)\right) \\
         =& \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
         =& \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
         =& \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}

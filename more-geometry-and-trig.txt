@@ -225,7 +225,7 @@ math:
    \cos^2\left( \frac \tau 6 \right) + \sin^2\left( \frac \tau 6 \right) &= 1^2 = 1 \\
    \sin^2\left( \frac \tau 6 \right) &= 1 - \cos^2\left( \frac \tau 6 \right) \\
    \sqrt{\sin^2\left( \frac \tau 6 \right)} &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
-   \left| \sin \frac \tau 6 \right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
+   \left| \sin\left( \frac \tau 6 \right)\right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
       &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
       &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}
          = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}
@@ -248,13 +248,12 @@ asymptote: float:right;
     draw(rarc((0,0),1,0,atan2(h,w)), L="$t$");
     draw(rarc((w,h),0.7,-tau/4,atan2(-h,-w)), L="$u$", align=S);
 
-Let's have a look at the blue triangle. We know that it's a triangle, so the sum
-of angles must be $\frac \tau 2$.
+Let's have a look at the blue triangle. We know that it's a triangle, so [the
+sum of the angles must be $\frac \tau 2$](#triangle-angle-sum).
 
 math:
     t + u + \frac \tau 4 &= \frac\tau2 \\
-    t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} \\
-    t + u + \frac \tau 4 &= \frac\tau4 + \frac\tau4 \\
+    t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} = \frac\tau4 + \frac\tau4 \\
     t + u &= \frac\tau4 \\
     u &= \frac \tau 4 - t
 
@@ -324,7 +323,7 @@ asymptote:
     draw((cos(t),sin(t))--(cos(t),0), smalldashes, L=rotate(90)*"$\sin(t)\ $\ ");
 
 Here we have $\Delta t$ in two different places and you should understand how.
-The bottom of the blue area is parallel with the x axis, and that's how $t$
+The bottom of the blue area is parallel to the x axis, and that's how $t$
 appears there as well.
 
 If we take $\sin(t+\Delta t)$ and we take away $\sin(t)$ we're left with the
@@ -414,7 +413,7 @@ rule](more-derivatives.html#chain-rule).
 math:
     \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac\tau4 - t \right) \\
     &= \cos\left( \frac\tau4 - t \right) \cdot \frac{d}{dt}\left( \frac\tau4 - t \right) \\
-    &= \cos\left( \frac\tau4 - t \right) \cdot (-1) \\
+    &= \cos\left( \frac\tau4 - t \right) \cdot (0-1) \\
     &= -\cos\left( \frac\tau4 - t \right) \\
 
 Now we just need to prove that $-\sin(t) = -\cos\left( \frac\tau4 - t \right)$
@@ -423,6 +422,6 @@ using our $\cos(t) = \sin \left( \frac \tau 4 - t \right)$ thing.
 math:
     -\sin(t) &= -\cos\left( \frac\tau4 - t \right) \\
     \sin(t) &= \cos\left( \frac\tau4 - t \right) \\
-    &= \sin\left(\frac\tau4 - \left( \frac\tau4 - t \right)\right) \\
+    &= \sin\biggl(\frac\tau4 - \left( \frac\tau4 - t \right)\biggr) \\
     &= \sin\left(\frac\tau4 - \frac\tau4 + t \right) \\
     &= \sin(t)

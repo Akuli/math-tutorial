@@ -61,9 +61,9 @@ usual, the result is not perfectly accurate because the graph is not
 guaranteed to be straight. We get this mess:
 
 math:
-    (s(x+\Delta x)-s(x))^2 &\approx (\Delta x)^2 + (f(x+\Delta x)-f(x))^2 \\
-    |s(x+\Delta x)-s(x)| &\approx \sqrt{(\Delta x)^2 + (f(x+\Delta x)-f(x))^2} \\
-    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{(f(x+\Delta x)-f(x))^2}{(\Delta x)^2}} \\
+    (s(x+\Delta x)-s(x))^2 &\approx (\Delta x)^2 + \bigl(f(x+\Delta x)-f(x)\bigr)^2 \\
+    |s(x+\Delta x)-s(x)| &\approx \sqrt{(\Delta x)^2 + \bigl(f(x+\Delta x)-f(x)\bigr)^2} \\
+    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{\bigl(f(x+\Delta x)-f(x)\bigr)^2}{(\Delta x)^2}} \\
     &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
     &\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2\right)} \\
     &\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
