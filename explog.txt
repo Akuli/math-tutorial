@@ -203,7 +203,7 @@ math:
 ## Derivative of any exponent function
 
 [Earlier](#the-e-constant) we tried to find the derivative of $a^x$ where $a>0$
-and we ended up wit this:
+and we ended up with this:
 
 math: \frac{d}{dx} a^x = a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h} \\
 

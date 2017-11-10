@@ -261,7 +261,7 @@ $g(x)=7x-123$, but let's see what we get if we don't plug in any values:
 
 math:
     \frac{d}{dx}(f(x)+g(x))
-    &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
+    &= \lim_{h\to0} \frac{\bigl(f(x+h)+g(x+h)\bigr)-\bigl(f(x)+g(x)\bigr)}{h} \\
     &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
     &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
     &= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right)\\
@@ -284,10 +284,10 @@ math:
     &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
     &= c \cdot \frac{d}{dx} f(x)
 
-There are a couple more things we need: $\frac{d}{dx}(cx)=c$ because if
-$x$ is incremented by something then $cx$ increments $c$ times as much,
-and $\frac{d}{dx} c = 0$ because $c$ never changes regardless of the
-value of $x$. You can also use the definition of derivative to show that
+We need a couple more things: $\frac{d}{dx}x=1$ because
+$\displaystyle\lim_{\Delta x \to 0} \textstyle\frac{\Delta x}{\Delta x}=1$, and
+$\frac{d}{dx} c = 0$ because $c$ never changes regardless of the value of $x$
+and $\Delta c = 0$. You can also use the definition of derivative to show that
 these work.
 
 So, with all that we can calculate the derivative easily:
@@ -295,8 +295,8 @@ So, with all that we can calculate the derivative easily:
 math:
     &  \frac{d}{dx} (6x^2+7x-123) \\
     =& \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123) \\
-    =& 6 \cdot \frac{d}{dx}(x^2) + 7 - 0 \\
-    =& 6 \cdot 2x + 7 \\
+    =& 6 \cdot \frac{d}{dx}(x^2) + 7 \cdot \frac{d}{dx} x - 0 \\
+    =& 6 \cdot 2x + 7 \cdot 1 \\
     =& 12x + 7
 
 graybox: See Also

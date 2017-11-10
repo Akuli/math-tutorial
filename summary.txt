@@ -450,7 +450,7 @@ $\ln(x)$ means $\log_e(x)$.
 ## Taylor Polynominals
 
 The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are most
-accurate when $x \approx a$. A bigger $n$ means a more accurate value.
+accurate if $n$ is big and $x \approx a$.
 
 math:
     P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
