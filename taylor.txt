@@ -1,4 +1,4 @@
-# Taylor Polynominals
+# Taylor Polynomials
 
 So far we have calculated sine and cosine values with Python.
 
@@ -16,7 +16,7 @@ redbox:
     [unit circle trig](geometry-and-trig.html#trig-with-the-unit-circle) and
     [derivatives](derivatives.html). Be sure to learn these things first.
 
-## WTF are Taylor polynominals?
+## WTF are Taylor polynomials?
 
 Here are a few graphs:
 
@@ -82,7 +82,7 @@ math:
 
 Here I used the fact that $P_0(x) = f(0)$. You'll see why later.
 
-Let's find $P_2$ and yet another polynominal $P_3$ similarly:
+Let's find $P_2$ and yet another polynomial $P_3$ similarly:
 
 math:
     &P_2''(x) = f''(0) \text{ and } P_2'(0) = f'(0) \text{ and } P_2(0) = f(0) \\
@@ -116,19 +116,19 @@ Let's do this.
 math:
     P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n
 
-This is known as the $n$'th Taylor polynominal.
+This is known as the $n$'th Taylor polynomial.
 
 We used $x=0$ here as a "magic number" that we always put to $f(\ \ )$, but
-that doesn't need to be 0. Here's a more generalized Taylor polynominal:
+that doesn't need to be 0. Here's a more generalized Taylor polynomial:
 
 math:
     P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
 
-The Taylor polynominal with $a=0$ is also known as a Maclaurin polynominal. You
+The Taylor polynomial with $a=0$ is also known as a Maclaurin polynomial. You
 don't need to remember that in this tutorial, but if someone talks about a
-Maclaurin polynominal they mean this.
+Maclaurin polynomial they mean this.
 
-Taylor polynominals are usually accurate near $a$ and less accurate far from
+Taylor polynomials are usually accurate near $a$ and less accurate far from
 $a$. These graphs demonstrate that:
 
 asymptote:
@@ -250,14 +250,14 @@ I think this is amazing, and the most amazing thing about this is that we got
 everything out of basically nothing with just derivatives and antiderivatives.
 
 If you look at how Python's ``math.sin()`` is implemented it just calls C
-``sin()``, and that uses taylor polynominals just like our code. The C code is
-more complicated than our ``taylorsin()`` because it uses taylor polynominals at
+``sin()``, and that uses taylor polynomials just like our code. The C code is
+more complicated than our ``taylorsin()`` because it uses taylor polynomials at
 other places than $x=0$, but the basic idea is the same.
 
 If we could somehow continue this forever instead of stopping at e.g. ``i=99``
 we would get perfectly precise sin values. I'm not going to talk about the
 details of why that happens, but this works for sin, cos and many other things.
-An infinitely continuing Taylor polynominal is also known as a Taylor *series*.
+An infinitely continuing Taylor polynomial is also known as a Taylor *series*.
 
 graybox: Exercise
     Find the Taylor series of $\cos(x)$ and $e^x$. See [this

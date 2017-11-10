@@ -447,9 +447,9 @@ Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim
 
 $\ln(x)$ means $\log_e(x)$.
 
-## Taylor Polynominals
+## Taylor Polynomials
 
-The $P_n(x)$ polynominals return approximate values of $f(x)$, and they are most
+The $P_n(x)$ polynomials return approximate values of $f(x)$, and they are most
 accurate if $n$ is big and $x \approx a$.
 
 math:
@@ -460,7 +460,7 @@ Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
 derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
 ``factorial(n)`` function that returns $n!$.
 
-Choosing $a=0$ usually results in simple $P_n$ polynominals.
+Choosing $a=0$ usually results in simple $P_n$ polynomials.
 
 ## Series Representations
 

@@ -6,7 +6,7 @@ redbox:
     Be sure to learn [radians](geometry-and-trig.html#radians-and-tau),
     [sin, cos](geometry-and-trig.html#trig-with-the-unit-circle),
     [derivatives](derivatives.html), [e](explog.html#the-e-constant) and
-    [Taylor polynominals](taylor.html) before reading this chapter. That's lots
+    [Taylor polynomials](taylor.html) before reading this chapter. That's lots
     of stuff to learn, but this chapter is definitely worth the effort. For best
     results, you should ideally have a look at proofs or other justifications of
     everything except definitions (e.g. you know how $\sin$ is defined in a unit
