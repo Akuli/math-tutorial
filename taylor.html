@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>Taylor Polynominals</title>
+<title>Taylor Polynomials</title>
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Polynominals</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="taylor-polynominals">Taylor Polynominals<a class="headerlink" href="#taylor-polynominals" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Polynomials</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>sin(<span style="color: #40a070">1</span>)
@@ -23,7 +23,7 @@ everything.</p>
 <a href="derivatives.html">derivatives</a>. Be sure to learn these things first.
 </p>
 
-</div><h2 id="wtf-are-taylor-polynominals">WTF are Taylor polynominals?<a class="headerlink" href="#wtf-are-taylor-polynominals" title="Link to this title">¶</a></h2><p>Here are a few graphs:</p>
+</div><h2 id="wtf-are-taylor-polynomials">WTF are Taylor polynomials?<a class="headerlink" href="#wtf-are-taylor-polynomials" title="Link to this title">¶</a></h2><p>Here are a few graphs:</p>
 
 <p><img class="asymptote" src="asymptote/f853e0dfe319a5e47addb750e5f78dec.png" /></p><p>The red graph is a complicated curve that the other graphs are trying to
 approximate.</p>
@@ -45,7 +45,7 @@ Anyway, the only <img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766
 
 <p><img src="math/293f8c297fa951dd7c71380451c50dba.png" class="blockmath" /></p><p>Here I used the fact that <img class="inlinemath" src="math/bb85921abd146854190e2720f7e25ae7.png" />. You'll see why later.</p>
 
-<p>Let's find <img class="inlinemath" src="math/2d70da379b3ffb56bd104b348ba21c55.png" /> and yet another polynominal <img class="inlinemath" src="math/c0ac8b12bab590e951e0afb93938cdcb.png" /> similarly:</p>
+<p>Let's find <img class="inlinemath" src="math/2d70da379b3ffb56bd104b348ba21c55.png" /> and yet another polynomial <img class="inlinemath" src="math/c0ac8b12bab590e951e0afb93938cdcb.png" /> similarly:</p>
 
 <p><img src="math/81532670eddccc9724f9af9fb6232d14.png" class="blockmath" /></p><p>So, here are all the results we have gotten so far, written in a way that makes
 the pattern quite obvious.</p>
@@ -57,16 +57,16 @@ notation:</p>
   <code>factorial(n)</code> function that returns <img class="inlinemath" src="math/388f554901ba5d77339eec8b26beebea.png" />.
 </li></ul><p>Let's do this.</p>
 
-<p><img src="math/bf253d3861cc966bfe3801ba440dd3d4.png" class="blockmath" /></p><p>This is known as the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th Taylor polynominal.</p>
+<p><img src="math/bf253d3861cc966bfe3801ba440dd3d4.png" class="blockmath" /></p><p>This is known as the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th Taylor polynomial.</p>
 
 <p>We used <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> here as a "magic number" that we always put to <img class="inlinemath" src="math/23bafa2d03bfea63981f09d7a8ecc455.png" />, but
-that doesn't need to be 0. Here's a more generalized Taylor polynominal:</p>
+that doesn't need to be 0. Here's a more generalized Taylor polynomial:</p>
 
-<p><img src="math/929a878774ac609f42b14ca3a8a3f94d.png" class="blockmath" /></p><p>The Taylor polynominal with <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" /> is also known as a Maclaurin polynominal. You
+<p><img src="math/929a878774ac609f42b14ca3a8a3f94d.png" class="blockmath" /></p><p>The Taylor polynomial with <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" /> is also known as a Maclaurin polynomial. You
 don't need to remember that in this tutorial, but if someone talks about a
-Maclaurin polynominal they mean this.</p>
+Maclaurin polynomial they mean this.</p>
 
-<p>Taylor polynominals are usually accurate near <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and less accurate far from
+<p>Taylor polynomials are usually accurate near <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and less accurate far from
 <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" />. These graphs demonstrate that:</p>
 
 <p><img class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.png" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
@@ -117,14 +117,14 @@ circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741ad
 everything out of basically nothing with just derivatives and antiderivatives.</p>
 
 <p>If you look at how Python's <code>math.sin()</code> is implemented it just calls C
-<code>sin()</code>, and that uses taylor polynominals just like our code. The C code is
-more complicated than our <code>taylorsin()</code> because it uses taylor polynominals at
+<code>sin()</code>, and that uses taylor polynomials just like our code. The C code is
+more complicated than our <code>taylorsin()</code> because it uses taylor polynomials at
 other places than <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />, but the basic idea is the same.</p>
 
 <p>If we could somehow continue this forever instead of stopping at e.g. <code>i=99</code>
 we would get perfectly precise sin values. I'm not going to talk about the
 details of why that happens, but this works for sin, cos and many other things.
-An infinitely continuing Taylor polynominal is also known as a Taylor <i>series</i>.</p>
+An infinitely continuing Taylor polynomial is also known as a Taylor <i>series</i>.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of <img class="inlinemath" src="math/7b8d097ebe7de2080ff1dc9a2b6f0807.png" /> and <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />. See <a href="explog.html#the-e-constant">this
 thing</a> if you don't know what <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> is or what the
