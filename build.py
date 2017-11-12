@@ -9,6 +9,7 @@ import shutil
 import subprocess
 import tempfile
 import textwrap
+import xml.etree.ElementTree
 
 from htmlthingy import Builder, tags, linkcheck
 
@@ -96,11 +97,11 @@ def multiline_math(match, filename):
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')
 def asymptote(match, filename):
     code = textwrap.dedent(match.string[match.end():])
-    pngfilename = hashlib.md5(code.encode('utf-8')).hexdigest() + '.png'
+    svgfilename = hashlib.md5(code.encode('utf-8')).hexdigest() + '.svg'
     os.makedirs(os.path.join(builder.outputdir, 'asymptote'), exist_ok=True)
-    outfile = os.path.join(builder.outputdir, 'asymptote', pngfilename)
+    outfile = os.path.join(builder.outputdir, 'asymptote', svgfilename)
 
-    if cache_get(pngfilename) is None:
+    if cache_get(svgfilename) is None:
         with tempfile.TemporaryDirectory() as tmpdir:
             for file in glob.glob('asymptote/*.asy'):
                 shutil.copy(file, tmpdir)
@@ -109,17 +110,24 @@ def asymptote(match, filename):
                 file.write('import boilerplate%s;\n' % (match.group(1) or ''))
                 file.write(textwrap.dedent(match.string[match.end():]))
 
-            subprocess.check_call(['asy', '-f', 'png', 'image.asy'],
+            subprocess.check_call(['asy', '-fsvg', '--libgs=', 'image.asy'],
                                   cwd=tmpdir)
-            cache_put(os.path.join(tmpdir, 'image.png'), pngfilename)
+            cache_put(os.path.join(tmpdir, 'image.svg'), svgfilename)
 
-    shutil.copy(cache_get(pngfilename), outfile)
+    shutil.copy(cache_get(svgfilename), outfile)
+
+    # figure out the correct size (lol)
+    attribs = xml.etree.ElementTree.parse(outfile).getroot().attrib
+    assert attribs['width'].endswith('pt') and attribs['height'].endswith('pt')
+    size = (round(float(attribs['width'][:-2])),
+            round(float(attribs['height'][:-2])))
 
     htmlfile = builder.infile2outfile(filename)
     relative = os.path.relpath(outfile, os.path.dirname(htmlfile))
 
     html = tags.image(relative.replace(os.sep, '/'), match.group(2))
-    return html.replace('<img', '<img class="asymptote"', 1)
+    return html.replace(
+        '<img', '<img width="%s" height="%s" class="asymptote"' % size, 1)
 
 
 # TODO: don't hard-code width and height?
