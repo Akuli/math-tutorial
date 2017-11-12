@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>Summary</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
@@ -21,7 +35,11 @@ read the human-friendly introductions in other chapters when needed.
 </div><h2 id="handy-things">Handy Things<a class="headerlink" href="#handy-things" title="Link to this title">¶</a></h2><p>These things are straight-forward to prove, and you can see proofs of these
 here and there in this tutorial.</p>
 
-<p><img src="math/f8892116d344e2500fb0aee41500fa4c.png" class="blockmath" /></p><h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
+$$\begin{align}
+(a+b)^2 &= a^2+2ab+b^2 \\
+(a-b)^2 &= a^2-2ab+b^2 \\
+a^2-b^2 &= (a-b)(a+b)
+\end{align}$$<h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
 area that is not listed here.</p>
 
 <img class="asymptote" src="asymptote/6a154f536537db2fc78182f5e33f472c.png" style="float:left;" /><img class="asymptote" src="asymptote/e95699102aeb509875e4810f9e606b35.png" style="float:left;" /><img class="asymptote" src="asymptote/6bb00a798325e82c9a0d3f619db881d5.png" style="float:left;" /><p><div style="clear:both;"></div></p>
@@ -32,32 +50,60 @@ area that is not listed here.</p>
 the cone volume is explained <a href="integrals.html#going-3d">here</a>, and everything
 else is explained <a href="basics.html#areas">here</a>.</p>
 
-<h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>Notation: if <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is first 3 and we change it to 4, the <i>difference</i> of
-these values is <img class="inlinemath" src="math/c5e6b904eff1e1357140eabafdd293c4.png" />.</p>
+<h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>Notation: if $x$ is first 3 and we change it to 4, the <i>difference</i> of
+these values is $\Delta x = 4-3 = 1$.</p>
 
 <p><img class="asymptote" src="asymptote/8b4b7c6cc6318a12730386a10e2fb28c.png" /></p><p>Only straight lines have slopes. The slope of the line in the picture
-above is <img class="inlinemath" src="math/198e6379646e5f40664edb77ef5e0eba.png" />, so it determines how much <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" />
-changes compared to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> because <img class="inlinemath" src="math/b0c4492289848fd9b878aaab2fcc66c0.png" />.</p>
+above is $s = \frac{\Delta y}{\Delta x}$, so it determines how much $y$
+changes compared to $x$ because $\Delta y = s \cdot \Delta x$.</p>
 
-<p>Boring detail: vertical lines don't have slopes because the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> value is
-always the same, so <img class="inlinemath" src="math/341de38403902f0e9213da4a660a1764.png" /> regardless of the two points chosen
-for calculating <img class="inlinemath" src="math/d87922a765f12f89c3c4acbaaf5e468c.png" /> and we get division by zero.</p>
+<p>Boring detail: vertical lines don't have slopes because the $x$ value is
+always the same, so $\Delta x = 0$ regardless of the two points chosen
+for calculating $\frac{\Delta y}{\Delta x}$ and we get division by zero.</p>
 
-<img class="asymptote" src="asymptote/055ce943efb49d99b175a706c0c4688f.png" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is like <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />, but infinitely small. Use e.g.
-<img class="inlinemath" src="math/3f37312a57828c90ab078a6b1cb6bc8a.png" /> instead of <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> when doing actual
-calculations so the "smallness" is explicit and well-defined. The <img class="inlinemath" src="math/6fc219cdeba331e561d143441aa359eb.png" />
-thing means the limit as <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> goes to 0, e.g.
-<img class="inlinemath" src="math/b5a30f8a2205e9456595a39973d7a4d1.png" /> even though
-<img class="inlinemath" src="math/431feec964806506a4d792b77b7f1463.png" /> is not defined.</p>
+<img class="asymptote" src="asymptote/055ce943efb49d99b175a706c0c4688f.png" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
+$\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
+calculations so the "smallness" is explicit and well-defined. The $\lim$
+thing means the limit as $\Delta x$ goes to 0, e.g.
+$\displaystyle\lim_{a\to0} \textstyle\frac{2a}{a} = 2$ even though
+$\frac{2 \cdot 0}{0} = \frac{0}{0}$ is not defined.</p>
 
 <p>Definition of derivative:</p>
 
-<p><img src="math/f44d28e705aa3ac686a2b2122aff80a5.png" class="blockmath" /></p><p>Notation:</p>
+$$\begin{align}
+\frac{dy}{dx} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
+&= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)-f(x)}{\Delta x} \\
+&= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
+\end{align}$$<p>Notation:</p>
 
-<p><img src="math/926020e910d8e0621e2a61a887f6fbf6.png" class="blockmath" /></p><p id="derivative-rules">Handy rules:
+$$\begin{align}\frac{d\left(f(x)\right)}{dx} = \frac{d}{dx} f(x) = f'(x)
+\end{align}$$<p id="derivative-rules">Handy rules:
 </p>
 
-<p><img src="math/c152dd87748f5ae113fb7ffe9c331625.png" class="blockmath" /></p><div class="box graybox"><h2> See Also</h2><p>Some of the simplest rules are explained in <a href="derivatives.html">the first derivative
+$$\begin{align}
+\begin{matrix}
+   \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
+   &&\\
+   \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
+   &&\\
+   \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
+   &&\\
+   \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
+   &&\\
+   \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &
+   \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
+   &&\\
+   \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
+   \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)\\
+   &&\\
+   \frac{d}{dx} \sin(x) = \cos(x) & \frac{d}{dx} e^x = e^x \\
+   &&\\
+   \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a) \\
+   &&\\
+   \frac{d}{dx}\ln(x) = \displaystyle\frac 1 x &
+   \frac{d}{dx} \log_b(x) = \displaystyle\frac{1}{x\ln(b)}
+\end{matrix}
+\end{align}$$<div class="box graybox"><h2> See Also</h2><p>Some of the simplest rules are explained in <a href="derivatives.html">the first derivative
 chapter</a> and most of the other rules are proved in
 <a href="more-derivatives.html#derivative-rules">the second derivative chapter</a>.
 Sin and cos derivatives are proved
@@ -65,40 +111,53 @@ Sin and cos derivatives are proved
 stuff is proved <a href="explog.html#derivative-of-any-exponent-function">here</a>.
 </p>
 
-</div><p>Note that if you have something like <img class="inlinemath" src="math/a15c72896537a69bef32c65c61a8d307.png" /> as opposed to <img class="inlinemath" src="math/32f5240d0dbf2ccbe75ef7f8ef2015e0.png" /> you
-need to use the <img class="inlinemath" src="math/856e7360e9e14bc37ca22a88f8cf4550.png" /> rule; that is,
-remember to multiply by <img class="inlinemath" src="math/a1627a9956cf861e19c02dbeed3126c2.png" />. For example:</p>
+</div><p>Note that if you have something like $(2x)^2$ as opposed to $x^2$ you
+need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,
+remember to multiply by $g'(x)$. For example:</p>
 
-<p><img src="math/403cb81736ec2d107db031580ec70397.png" class="blockmath" /></p><img class="asymptote" src="asymptote/42b158db2f56846ea45f8e3e8bb4783e.png" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> from <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> to <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is <img class="inlinemath" src="math/05dce1fc5a99f01613a3515624d217df.png" /> where <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> is an
-anti<a href="#derivatives">derivative</a> of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />, i.e. <img class="inlinemath" src="math/45e93d791033f046d3e15b12c566df97.png" />.</p>
+$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x
+\end{align}$$<img class="asymptote" src="asymptote/42b158db2f56846ea45f8e3e8bb4783e.png" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
+anti<a href="#derivatives">derivative</a> of $f$, i.e. $F'(x)=f(x)$.</p>
 
 <p>Notation:</p>
 
-<ul><li><img class="inlinemath" src="math/3c0e4608b57fd3fa5a57cdc23312f7bd.png" /> is the area in the picture.</li><li><img class="inlinemath" src="math/c59db99225bf9400e94cedc7de6fcb74.png" /> where <img class="inlinemath" src="math/45e93d791033f046d3e15b12c566df97.png" />.</li><li><img class="inlinemath" src="math/4e6b540386ffa7d422bda5e9b5d35569.png" />.
-</li></ul><p>Example (remember that <img class="inlinemath" src="math/c5e6404d4d17dacab8d9945bb1a638e4.png" />):</p>
+<ul><li>$\int_a^b f(x)\ dx$ is the area in the picture.</li><li>$\int f(x)\ dx = F(x) + C$ where $F'(x)=f(x)$.</li><li>$\left[F(x)\right]_a^b = F(b)-F(a)$.
+</li></ul><p>Example (remember that $\frac{d}{dx} x^2 = 2x$):</p>
 
-<p><img src="math/3ec5025b9ec662133f9d012415e27253.png" class="blockmath" /></p><p id="integral-rules">Here are some handy antiderivative rules. The <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> can be any
+$$\begin{align}\int_1^3 2x\ dx = \left[x^2\right]_1^3 = 3^2-1^2 = 9-1 = 8
+\end{align}$$<p id="integral-rules">Here are some handy antiderivative rules. The $a$ can be any
 <a href="basics.html#constants">constant</a> and it has nothing to do with the left
-side of an area, and <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> and <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> can be any continuous functions.
+side of an area, and $f$ and $g$ can be any continuous functions.
 </p>
 
-<p><img src="math/0683ddc59255d08222399fb494d6bd41.png" class="blockmath" /></p><p><img src="math/c3f0963ca837c20514648035216d94c5.png" class="blockmath" /></p><p><img src="math/a62a93e85f6811a94668e61eb82e411a.png" class="blockmath" /></p><p>In some cases it makes sense to use <a href="#derivative-rules">derivative rules</a>
+$$\begin{align}
+\begin{matrix}
+    \int 1\ dx = x + C &
+    \int a\ dx = ax + C & \\
+    &&\\
+    \int x\ dx = \displaystyle\frac{x^2}{2} + C &
+    \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C & \\
+    &&\\
+\end{matrix}
+\end{align}$$$$\begin{align}\textstyle\int a\ f(x)\ dx &= a \textstyle\int f(x)\ dx
+\end{align}$$$$\begin{align}\textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x)\ dx + \int g(x)\ dx
+\end{align}$$<p>In some cases it makes sense to use <a href="#derivative-rules">derivative rules</a>
 right-to-left.</p>
 
 <p>You can prove these easily by finding the derivative of the right side;
-it's always equal to whatever is between <img class="inlinemath" src="math/05ac7a592ac15a18edc4cd1610e87ea8.png" /> and <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> on the left
+it's always equal to whatever is between $\int$ and $dx$ on the left
 side.</p>
 
-<p>Arc length: <img class="inlinemath" src="math/7dc2ae0f89837074fc326b64ea682c76.png" /></p>
+<p>Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$</p>
 
-<div class="indent"><p><img class="asymptote" src="asymptote/8659b4af7ccbe48019dfeb2dc7b847a9.png" /></p></div><p>3D volume: <img class="inlinemath" src="math/8ee2922264f5fa725ac1ee0829862445.png" /></p>
+<div class="indent"><p><img class="asymptote" src="asymptote/8659b4af7ccbe48019dfeb2dc7b847a9.png" /></p></div><p>3D volume: $V = \displaystyle\int_a^b A(x)\ dx$</p>
 
 <p><img class="asymptote" src="asymptote/f19f9d9f0ad54deca55310acd671a9fb.png" /></p><img class="asymptote" src="asymptote/2032bd46dd50ad4ad3875f20074dc82e.png" style="float:right;" /><img class="asymptote" src="asymptote/b903e1c25aee12f3760495035ad9a331.png" style="float:right;" /><h2 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h2><p>The angle of the green-ish slice at right is 1 radian. The angle of the
-yellow slice is <img class="inlinemath" src="math/dc3b0d80037875d0b523e8c2d45875fb.png" /> radians.</p>
+yellow slice is $b/r$ radians.</p>
 
-<p>A full turn is <img class="inlinemath" src="math/333b61572f6d481ab852f49998e7c110.png" /> radians, and a half turn
-is <img class="inlinemath" src="math/281821b1f7db2d27354686f9a5570fac.png" /> radians. The perimeter of a circle
-is <img class="inlinemath" src="math/5da4a8eb83ea71fb3d467be93d957c9d.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius.</p>
+<p>A full turn is $\text{tau} = \tau \approx 6.28$ radians, and a half turn
+is $\pi = \frac \tau 2 \approx 3.14$ radians. The perimeter of a circle
+is $\tau r = 2\pi r$ where $r$ is the radius.</p>
 
 <p>360 degrees (or 360° for short) is a full turn.</p>
 
@@ -111,51 +170,85 @@ is <img class="inlinemath" src="math/5da4a8eb83ea71fb3d467be93d957c9d.png" /> wh
 <p id="unitcircle">Unit circle:
 </p>
 
-<p><img class="asymptote" src="asymptote/508f3c99d0ced21a931310a9d92adff6.png" /></p><p>Notation: <img class="inlinemath" src="math/0378a74bbe0eaba52798efd8c12a2c46.png" /> means <img class="inlinemath" src="math/aad8406ca79b3ea72addbf92a5e068b8.png" />.</p>
+<p><img class="asymptote" src="asymptote/508f3c99d0ced21a931310a9d92adff6.png" /></p><p>Notation: $\sin^2(t)$ means $(\sin(t))^2$.</p>
 
 <p id="trianglestuff">A triangle with a quarter-turn corner and a bunch of math:
 </p>
 
-<img class="asymptote" src="asymptote/360ef43321e8d2901abae1513fc78bfb.png" style="float:right;" /><p><img src="math/fdf93193944be6c85c7368f9d97287cc.png" class="blockmath" /></p><p>Some programming languages have a <code>hypot(a, b)</code> function that returns
-<img class="inlinemath" src="math/0f6b8e39c7c8a53464afccb74eb48c66.png" />. You can use it for calculating <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" />.</p>
+<img class="asymptote" src="asymptote/360ef43321e8d2901abae1513fc78bfb.png" style="float:right;" />$$\begin{align}
+&\sin(t) = \frac b c \\
+&\cos(t) = \frac a c \\
+&\tan(t) = \frac b a \\
+&t = \text{atan2}(b,a) \\
+&a^2 + b^2 = c^2
+\end{align}$$<p>Some programming languages have a <code>hypot(a, b)</code> function that returns
+$\sqrt{a^2+b^2}$. You can use it for calculating $c$.</p>
 
-<p>The sum of all angles of a triangle is always <img class="inlinemath" src="math/96a0bfcb67d5cf08085dcf6a6ffb1090.png" />.</p>
+<p>The sum of all angles of a triangle is always $\frac \tau 2$.</p>
 
-<p>Handy trig formulas, <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" /> can be any integer:</p>
+<p>Handy trig formulas, $n$ can be any integer:</p>
 
-<p><img src="math/2fc503b8b9c0e168b45901ef2dcb5c6d.png" class="blockmath" /></p><p>Most of these are proved in <a href="more-geometry-and-trig.html">the more trig chapter</a>
+$$\begin{align}
+&\sin^2(t) + \cos^2(t) = 1 \\
+&\sin(t) = -\sin(-t) = \sin(t+n\tau) \\
+&\cos(t) = \cos(-t) = \cos(t+n\tau) \\
+&\tan(t) = \frac{\sin(t)}{\cos(t)} = \tan\left(t+n\frac\tau2\right) \\
+&\sin(2t) = 2\sin(t)\cos(t) \\
+&\cos(2t) = \cos^2(t)-\sin^2(t) \\
+&\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)} \\
+&\sin^2(t) = \frac{1-\cos(2t)}{2} \\
+&\cos^2(t) = \frac{1+\cos(2t)}{2}
+\end{align}$$<p>Most of these are proved in <a href="more-geometry-and-trig.html">the more trig chapter</a>
 or <a href="eulerformula.html">the Euler formula chapter</a>.</p>
 
 <p>This list is not meant to be complete and I'll probably add a wikipedia link
 here soon.</p>
 
-<h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>Exponent functions are like <img class="inlinemath" src="math/e87571e2f13a2c98689e676c3e91d59a.png" /> where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> is positive and <img class="inlinemath" src="math/2eaee4eaa23e29ba1c61b044a6489a3d.png" />.
-A function like <img class="inlinemath" src="math/965eeb1ae4862f414fbb5ac44a6a8357.png" /> isn't really an exponent function because it's just
-<img class="inlinemath" src="math/546e912f7f43b2233ac97a4ecf33883e.png" />.</p>
+<h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>Exponent functions are like $f(x)=a^x$ where $a$ is positive and $a \ne 1$.
+A function like $f(x)=1^x$ isn't really an exponent function because it's just
+$f(x)=1$.</p>
 
-<p>Logarithms are the inverse of exponents. If <img class="inlinemath" src="math/6822417a6b48c05caf78cff7b1d079f9.png" />, then <img class="inlinemath" src="math/f1d206cda583ec2b31d5ab87e353865a.png" />
-where the base <img class="inlinemath" src="math/539fa66a54d60fdbd6278ccebed13ddd.png" /> and <img class="inlinemath" src="math/3791d81db7401413b3ae9e4e7e453367.png" />.</p>
+<p>Logarithms are the inverse of exponents. If $y = b^x$, then $\log_b(y) = x$
+where the base $b>0$ and $b \ne 1$.</p>
 
-<p><img src="math/55784ff42ffb138026957aef3d56b741.png" class="blockmath" /></p><p id="logs-are-useful">These things make logarithms useful. Here <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> are positive and not 1,
-<img class="inlinemath" src="math/887fb68a10cbd4369b27c90bee0334d8.png" /> and <img class="inlinemath" src="math/34b506d4a8cb0a7bc03701bec2c7691c.png" />.
+$$\begin{align}
+\log_b(b^x) &= x \\
+x^{\log_b(x)} &= x
+\end{align}$$<p id="logs-are-useful">These things make logarithms useful. Here $a$ and $b$ are positive and not 1,
+$x>0$ and $y>0$.
 </p>
 
-<p><img src="math/44154bf59df316e58b2d8ce41db5c0e8.png" class="blockmath" /></p><p>Euler's number: <img class="inlinemath" src="math/2339f5acee503000fa7359e41c72300f.png" /></p>
+$$\begin{align}
+\log_b(x^y) &= y\ \log_b(x) \\
+\log_b(xy) &= \log_b(x) + \log_b(y) \\
+\log_b\left(\frac x y\right) &= \log_b(x) - \log_b(y) \\
+\log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
+\end{align}$$<p>Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$</p>
 
-<p><img class="inlinemath" src="math/082b0e41ac5d0f86aa6e51587580f3b7.png" /> means <img class="inlinemath" src="math/e71d330a491cb26e0c0e45fc7b9d9862.png" />.</p>
+<p>$\ln(x)$ means $\log_e(x)$.</p>
 
-<h2 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h2><p>The <img class="inlinemath" src="math/378d6cdd7c4799427471290542a78833.png" /> polynomials return approximate values of <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" />, and they are most
-accurate if <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" /> is big and <img class="inlinemath" src="math/ab7fe63f4d78e3307fde64c66db7d61d.png" />.</p>
+<h2 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h2><p>The $P_n(x)$ polynomials return approximate values of $f(x)$, and they are most
+accurate if $n$ is big and $x \approx a$.</p>
 
-<p><img src="math/66155ed59cef424f3f1d9d5b6ca8d69d.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/6028d2c529bae2fa635e83a6411fe196.png" /> and <img class="inlinemath" src="math/bd9841a11a78574aad8602b07c855e4b.png" /> is the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th
-derivative, e.g. <img class="inlinemath" src="math/b7ee63d3db2dc3a5534e4a1a225e145a.png" />. Many programming languages have a
-<code>factorial(n)</code> function that returns <img class="inlinemath" src="math/388f554901ba5d77339eec8b26beebea.png" />.</p>
+$$\begin{align}
+P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
+        + \frac{f^{(n)}(a)}{n!}(x-a)^n
+\end{align}$$<p>Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
+derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
+<code>factorial(n)</code> function that returns $n!$.</p>
 
-<p>Choosing <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" /> usually results in simple <img class="inlinemath" src="math/27e29960e16256defede6f6e0697ccf7.png" /> polynomials.</p>
+<p>Choosing $a=0$ usually results in simple $P_n$ polynomials.</p>
 
 <h2 id="series-representations">Series Representations<a class="headerlink" href="#series-representations" title="Link to this title">¶</a></h2><p>Here sin and cos work with <a href="#geometry-and-trig">radians</a>.</p>
 
-<p><img src="math/5cffdedf2020fe7a36fee8ac742dc65e.png" class="blockmath" /></p><h2 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h2><p><img src="math/4da9e05612d155df0a807cc75f1650f2.png" class="blockmath" /></p><p>This crazy thing is not a joke. <a href="eulerformula.html">Read more here.</a></p>
+$$\begin{align}
+\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
+            - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
+\cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
+            - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+\end{align}$$<h2 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h2>$$\begin{align}e^{it}=\cos(t)+i\sin(t),\ i=\sqrt{-1}
+\end{align}$$<p>This crazy thing is not a joke. <a href="eulerformula.html">Read more here.</a></p>
 
 <h2 id="other-bases">Other Bases<a class="headerlink" href="#other-bases" title="Link to this title">¶</a></h2><p><table>
 <tr><th>Name</th><th>Base number</th><th>Prefix in programming</th></tr>
@@ -171,7 +264,15 @@ A=10, B=11, C=12, ..., F=15.</p>
 
 <p>Examples:</p>
 
-<p><img src="math/3a4952fc3c6751000935c8456dfb1849.png" class="blockmath" /></p><p><img src="math/35b6eadfb5fd6d8d3747a98b79ecbfed.png" class="blockmath" /></p><p>Python examples:</p>
+$$\begin{align}
+2017    &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+        &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0 \\
+\end{align}$$$$\begin{align}
+\text{0xCAFE}
+&= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0\\
+&= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \cdot 1 \\
+&= 51966
+\end{align}$$<p>Python examples:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">0b1111011</span>
 <span style="color: #888888">123</span>

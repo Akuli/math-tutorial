@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>More Integrals</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
@@ -19,13 +33,13 @@ showed in those chapters.
 
 </div><h2 id="arc-length">Arc Length<a class="headerlink" href="#arc-length" title="Link to this title">¶</a></h2><p><img class="asymptote" src="asymptote/e6fae09a0916f5f85b46022f94b5d280.png" /></p><p>The length of the blue arc in the above image is quite easy to calculate.
 We can just complete it to a full circle, and we know <a href="summary.html#geometry-and-trig">its perimeter
-length is <img class="inlinemath" src="math/3342ab0df235760665c5598015dbea13.png" /></a> so half of
-that is <img class="inlinemath" src="math/6f2ce0f314269d4876ed5b9c17822cc3.png" />. But that's just a special case. What if
-we want to calculate the length of an arc taken from <i>any</i> <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> graph?</p>
+length is $3\tau$</a> so half of
+that is $3\tau/2 \approx 9.42$. But that's just a special case. What if
+we want to calculate the length of an arc taken from <i>any</i> $y=f(x)$ graph?</p>
 
-<p>Let's assume that <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a function that <a href="more-derivatives.html#which-functions-have-derivatives">has a
+<p>Let's assume that $f$ is a function that <a href="more-derivatives.html#which-functions-have-derivatives">has a
 derivative</a>, and say
-that the length of an arc to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> is <img class="inlinemath" src="math/c8680fa208df369c16fc14c68f7d5242.png" />, just like <a href="integrals.html#area-to-x">we did with
+that the length of an arc to $x$ is $s(x)$, just like <a href="integrals.html#area-to-x">we did with
 areas</a>. We get this:</p>
 
 <p><img class="asymptote" src="asymptote/dccacf3170a6f46771728cd11a782b28.png" /></p><p>Now you can see a little triangle in the picture so we can apply <a href="geometry-and-trig.html#pythagorean-theorem">the
@@ -33,27 +47,55 @@ Pythagorean theorem</a>, but as
 usual, the result is not perfectly accurate because the graph is not
 guaranteed to be straight. We get this mess:</p>
 
-<p><img src="math/26db6d6875fb7f21ff9cc5b36f4f6fd9.png" class="blockmath" /></p><p>In the last step I assumed that we moved <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> right so <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> was
-positive, and obviously the change of the arc length <img class="inlinemath" src="math/4d9106417f1df009e3ea664e83d30702.png" />
+$$\begin{align}
+(s(x+\Delta x)-s(x))^2 &\approx (\Delta x)^2 + \bigl(f(x+\Delta x)-f(x)\bigr)^2 \\
+|s(x+\Delta x)-s(x)| &\approx \sqrt{(\Delta x)^2 + \bigl(f(x+\Delta x)-f(x)\bigr)^2} \\
+&\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{\bigl(f(x+\Delta x)-f(x)\bigr)^2}{(\Delta x)^2}} \\
+&\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+&\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2\right)} \\
+&\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+&\approx |\Delta x|\ \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+\frac{|s(x+\Delta x)-s(x)|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+\frac{s(x+\Delta x)-s(x)}{\Delta x} &\approx \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2}
+\end{align}$$<p>In the last step I assumed that we moved $x$ right so $\Delta x$ was
+positive, and obviously the change of the arc length $s(x+\Delta x)-s(x)$
 was also positive.</p>
 
 <p>The smaller the bit of the curve we're looking at, the less curvy it is
 and the more accurate this is:</p>
 
-<p><img src="math/72e00857bf0df66326d8fc6fe234ef25.png" class="blockmath" /></p><img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p><br></p>
+$$\begin{align}
+\lim_{\Delta x\to0} \frac{s(x+\Delta x)-s(x)}{\Delta x}
+&= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+&= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+s'(x) &= \sqrt{1+(f'(x))^2}
+\end{align}$$<img class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.png" style="float:right;" /><p><br></p>
 
-<p><img src="math/f723fbf85b584113d2df604d8099f38c.png" class="blockmath" /></p><p>That took a while, but we're done! This arc length thing is yet another
+$$\begin{align}
+s(b)-s(a) &= [s(x)]_a^b \\
+&= \int_a^b s'(x)\ dx \\
+&= \int_a^b \sqrt{1+(f'(x))^2}\ dx
+\end{align}$$<p>That took a while, but we're done! This arc length thing is yet another
 one of my favorite math stuff.</p>
 
-<h2 id="example-more-jumping">Example: More Jumping<a class="headerlink" href="#example-more-jumping" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>A player jumps along the parabola <img class="inlinemath" src="math/dce1baa300c2aaa73586198894272496.png" />. How long is the arc
+<h2 id="example-more-jumping">Example: More Jumping<a class="headerlink" href="#example-more-jumping" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>A player jumps along the parabola $y=2x-x^2$. How long is the arc
 that the player's path traces above the x axis?</p>
 
-<p><img class="asymptote" src="asymptote/bb9861a78a5f0e2c6bbe2d5d61ae4942.png" /></p></div><p>First things first – let's figure out when the graph hits the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> axis;
-that is, when <img class="inlinemath" src="math/fab37d6c4a697fe660387d3ff8e889a4.png" />:</p>
+<p><img class="asymptote" src="asymptote/bb9861a78a5f0e2c6bbe2d5d61ae4942.png" /></p></div><p>First things first – let's figure out when the graph hits the $x$ axis;
+that is, when $y=0$:</p>
 
-<p><img src="math/17cc9df2803ba6af78a28053db28b9fb.png" class="blockmath" /></p><p>Now we can just plug in <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" />, <img class="inlinemath" src="math/19bf9442bea375a24abb4c22e9951a92.png" /> and <img class="inlinemath" src="math/44a24e296e537705f8fdfbe5c0d502d2.png" /> to our formula.</p>
+$$\begin{align}
+2x-x^2&=0 \\
+(2-x)x&=0 \\
+2-x=0\ \text{or}&\ x=0 \\
+x=2\ \text{or}&\ x=0
+\end{align}$$<p>Now we can just plug in $a=0$, $b=2$ and $f(x)=2x-x^2$ to our formula.</p>
 
-<p><img src="math/241c71ef20d868ecdc7107c07c6a6ff2.png" class="blockmath" /></p><p><img src="math/7a10c93bbccf9c2338b20d929fd91a0b.png" class="blockmath" /></p><p>Use your favorite symbolic calculation library for calculating the
+$$\begin{align}f(x) &= 2x-x^2 \\ f'(x) &= 2-2x
+\end{align}$$$$\begin{align}
+& \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx
+\approx 2.96
+\end{align}$$<p>Use your favorite symbolic calculation library for calculating the
 integral. I couldn't do it by hand, but I got it done with
 <a href="http://www.sympy.org">sympy</a>:</p>
 
@@ -81,32 +123,42 @@ noticable.</p>
 <h2 id="boring-trapezoid-area">Boring Trapezoid Area<a class="headerlink" href="#boring-trapezoid-area" title="Link to this title">¶</a></h2><p>This section has nothing to do with integrals, but we need it in the
 next section. Let's find the area of shapes like this:</p>
 
-<p><img class="asymptote" src="asymptote/ed6c8d4ed5bc070d00ae6321a528ab3d.png" /></p><p>The line with length <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> is centered between the topmost and the
+<p><img class="asymptote" src="asymptote/ed6c8d4ed5bc070d00ae6321a528ab3d.png" /></p><p>The line with length $c$ is centered between the topmost and the
 bottommost line, and all horizontally drawn lines are parallel with each
 other.</p>
 
 <p>Let's cut off and rotate the ends:</p>
 
-<p><img class="asymptote" src="asymptote/b1759824820cf4858e1ba1cc49fd673a.png" /></p><p><img class="asymptote" src="asymptote/1968e90ab39e6069f59c292609296eea.png" /></p><p>The area is obviously just <img class="inlinemath" src="math/d88fc6edf21ea464d35ff76288b84103.png" />.</p>
+<p><img class="asymptote" src="asymptote/b1759824820cf4858e1ba1cc49fd673a.png" /></p><p><img class="asymptote" src="asymptote/1968e90ab39e6069f59c292609296eea.png" /></p><p>The area is obviously just $ch$.</p>
 
 <h2 id="my-thick-line-area-thing">My Thick Line Area Thing<a class="headerlink" href="#my-thick-line-area-thing" title="Link to this title">¶</a></h2><p>I'm sure someone has invented this before me, but I haven't found a name
 for this yet. That's why the title above is like it is.</p>
 
 <p>Let's try to figure out how to calculate an area like this if we know
-nothing but <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> and <img class="inlinemath" src="math/2db95e8e1a9267b7a1188556b2013b33.png" />:</p>
+nothing but $t$ and $l$:</p>
 
-<p><img class="asymptote" src="asymptote/85730b70ad329fd774c0ebc8da66add5.png" /></p><p>The area of a <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> by <img class="inlinemath" src="math/2db95e8e1a9267b7a1188556b2013b33.png" /> rectangle is just <img class="inlinemath" src="math/313a21d5badc6f5632238ebf8c7690f6.png" />. Let's see if it works
+<p><img class="asymptote" src="asymptote/85730b70ad329fd774c0ebc8da66add5.png" /></p><p>The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
 when things are curved like this. Note that the distance between the red
 line and the black lines is always the same; calculating this would be
-more difficult if the thickness wasn't the same <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> everywhere.</p>
+more difficult if the thickness wasn't the same $t$ everywhere.</p>
 
 <img class="asymptote" src="asymptote/db595b4ca14624d53f30c0b7096a0a5f.png" style="float:right;" /><p>Let's start by thinking about a small, trapezoid-shaped piece of the
 area like in the image at right. Now everything is quite straight-forward
 and a lot like in <a href="integrals.html#example-circle-area">the circle example</a>.</p>
 
-<p><img src="math/364faf56f64f6cd9c99d36bfa896cbcd.png" class="blockmath" /></p><p><br></p>
+$$\begin{align}
+A(b+\Delta b)-A(b) &\approx t \cdot \Delta b \\
+\frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx t \\
+\lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= t \\
+A'(b) &= t \\
+A(b) &= tb+C
+\end{align}$$<p><br></p>
 
-<p><img src="math/c84681aeeb1d68d877f5b1a201431638.png" class="blockmath" /></p><h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> is. <a href="summary.html#geometry-and-trig">Click
+$$\begin{align}
+A(l)-A(0) &= (tl + C)-(t \cdot 0 + C) \\
+&= tl+C-0-C \\
+&= tl
+\end{align}$$<h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what $\tau$ is. <a href="summary.html#geometry-and-trig">Click
 here</a>
 if you don't.
 </p>
@@ -115,11 +167,11 @@ if you don't.
 integral</a>, but now we can do it
 without thinking about any integrals.</p>
 
-<p>This thing's area is obviously <img class="inlinemath" src="math/e4b95ea399c60b5761c728868f4370e4.png" />:</p>
+<p>This thing's area is obviously $tl = t \tau R$:</p>
 
-<p><img class="asymptote" src="asymptote/49d04478a7ef03c432fbea137bbc0da2.png" /></p><p>If we set <img class="inlinemath" src="math/747fc075c107be74df789384b5aeeb67.png" />, the inner circle's radius becomes 0:</p>
+<p><img class="asymptote" src="asymptote/49d04478a7ef03c432fbea137bbc0da2.png" /></p><p>If we set $R=\frac t 2$, the inner circle's radius becomes 0:</p>
 
-<p><img class="asymptote" src="asymptote/9b1ed15fde987e41f12cf08719fe8368.png" /></p><p>The area is <img class="inlinemath" src="math/bdddbb580b8d4507f4f09aa6636ad12a.png" />.
+<p><img class="asymptote" src="asymptote/9b1ed15fde987e41f12cf08719fe8368.png" /></p><p>The area is $t \tau R = t \tau \frac t 2 = \frac 1 2 \tau t^2$.
 </p>
 
 </div>

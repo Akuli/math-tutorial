@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>Euler's Formula</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
@@ -16,7 +30,7 @@
 <a href="taylor.html">Taylor polynomials</a> before reading this chapter. That's lots
 of stuff to learn, but this chapter is definitely worth the effort. For best
 results, you should ideally have a look at proofs or other justifications of
-everything except definitions (e.g. you know how <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> is defined in a unit
+everything except definitions (e.g. you know how $\sin$ is defined in a unit
 circle and you have read <a href="more-geometry-and-trig.html#derivative-of-sine">the sin derivative
 proof</a>).</p>
 
@@ -25,13 +39,15 @@ Proceed at your own risk.
 </p>
 
 </div><h2 id="imaginary-numbers">Imaginary Numbers<a class="headerlink" href="#imaginary-numbers" title="Link to this title">¶</a></h2><p>In <a href="basics.html">the basics section</a> I said that you cannot do things like
-<img class="inlinemath" src="math/d4c2efeae4a3424da6bb388e41e87557.png" />, but now we'll do that.</p>
+$\sqrt{-1}$, but now we'll do that.</p>
 
-<p><img src="math/f0d862ce25878f871930e8d6edfcdd41.png" class="blockmath" /></p><p>So if you do <img class="inlinemath" src="math/260022a00a39c9788963d41f295955a5.png" /> you get <img class="inlinemath" src="math/6cef55b03e14bfcabbb9bf6930757cf5.png" />. Obviously this weird
-"number" is not between <img class="inlinemath" src="math/aad18c0a88969b4c1bdc3711475796c2.png" /> and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> because no number in that range
-behaves like this. It's something else, and the <img class="inlinemath" src="math/865c0c0b4ab0e063e5caa3387c1a8741.png" /> is short for <i>imaginary</i>.
-The numbers between <img class="inlinemath" src="math/aad18c0a88969b4c1bdc3711475796c2.png" /> and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> are known as <i>real</i> numbers, but
-<img class="inlinemath" src="math/aad18c0a88969b4c1bdc3711475796c2.png" /> and <img class="inlinemath" src="math/7ed9abff4dafd78d08e616c899412e92.png" /> are not real because they behave very differently than
+$$\begin{align}
+i = \sqrt{-1}
+\end{align}$$<p>So if you do $i^2$ you get $\left(\sqrt{-1}\ \right)^2=-1$. Obviously this weird
+"number" is not between $-\infty$ and $\infty$ because no number in that range
+behaves like this. It's something else, and the $i$ is short for <i>imaginary</i>.
+The numbers between $-\infty$ and $\infty$ are known as <i>real</i> numbers, but
+$-\infty$ and $\infty$ are not real because they behave very differently than
 real numbers.</p>
 
 <p>A <i>complex number</i> is something real plus something imaginary, and they are
@@ -44,64 +60,117 @@ numbers. At first they were considered nonsense, but nowadays there are many
 uses for complex numbers. This tutorial focuses on a very important way to use
 them.</p>
 
-<h2 id="the-magic">The Magic<a class="headerlink" href="#the-magic" title="Link to this title">¶</a></h2><p>Let's calculate some powers of <img class="inlinemath" src="math/865c0c0b4ab0e063e5caa3387c1a8741.png" />. We'll need them later.</p>
+<h2 id="the-magic">The Magic<a class="headerlink" href="#the-magic" title="Link to this title">¶</a></h2><p>Let's calculate some powers of $i$. We'll need them later.</p>
 
-<p><img src="math/ce02d5d8369f6bc8b3300592f82cafe3.png" class="blockmath" /></p><p>We can see a pattern.</p>
+$$\begin{align}
+i^1 &= i \\
+i^2 &= -1 \\
+i^3 &= (-1)i = -i \\
+i^4 &= (-1)(-1) = 1 \\
+i^5 &= i^4i^1=1i = i \\
+i^6 &= i^4i^2=1(-1)=-1 \\
+i^7 &= i^4i^3=1(-i)=-i \\
+i^8 &= i^4i^4=1 \cdot 1 = 1 \\
+...
+\end{align}$$<p>We can see a pattern.</p>
 
 <p>In <a href="taylor.html">the Taylor chapter</a> we created these kinda-mind-blowing series
 representations:</p>
 
-<p><img src="math/5cffdedf2020fe7a36fee8ac742dc65e.png" class="blockmath" /></p><p>Let's try to calculate <img class="inlinemath" src="math/3ab3871f6c567484e5be7ebf300d39f1.png" /> where <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> is a real number and let the magic
+$$\begin{align}
+\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
+            - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
+\cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
+            - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+\end{align}$$<p>Let's try to calculate $e^{it}$ where $t$ is a real number and let the magic
 happen.</p>
 
-<p><img src="math/9319402fbced59646896f5e5644a5ba9.png" class="blockmath" /></p><p><b>Boom.</b> Can you believe that. We started with <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> which we got out of
-<a href="explog.html#the-e-constant">exponentials and derivatives</a> and the <img class="inlinemath" src="math/865c0c0b4ab0e063e5caa3387c1a8741.png" />, but we
+$$\begin{align}
+e^{it} &= 1 + it + \frac{(it)^2}{2!} + \frac{(it)^3}{3!} + \frac{(it)^4}{4!} + \frac{(it)^5}{5!} + \frac{(it)^6}{6!} + ... \\
+&= 1 + it + \frac{i^2t^2}{2!} + \frac{i^3t^3}{3!} + \frac{i^4t^4}{4!} + \frac{i^5t^5}{5!} + \frac{i^6t^6}{6!} + ... \\
+&= 1 + it + \frac{(-1)t^2}{2!} + \frac{(-1)it^3}{3!} + \frac{1t^4}{4!} + \frac{it^5}{5!} + \frac{(-1)t^6}{6!} + ... \\
+&= 1 + it - \frac{t^2}{2!} - i\frac{t^3}{3!} + \frac{t^4}{4!} + i\frac{t^5}{5!} - \frac{t^6}{6!} + ... \\
+&= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right)
++ \left(it - i\frac{t^3}{3!} + i\frac{t^5}{5!} - i\frac{t^7}{7!} + ...\right) \\
+&= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right)
++ i \left(t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + ...\right) \\
+&= \cos(t) + i \sin(t)
+\end{align}$$<p><b>Boom.</b> Can you believe that. We started with $e$ which we got out of
+<a href="explog.html#the-e-constant">exponentials and derivatives</a> and the $i$, but we
 ended up with trig functions that are defined in a unit circle!</p>
 
 <p>This is crazness is known as Euler's formula. Speaking of Euler, he's known for
 <a href="https://en.wikipedia.org/wiki/Leonhard_Euler#Contributions_to_mathematics_and_physics">many many other math
 things</a>
 as well, and I find it really amazing how much awesome math stuff he did. Even
-things like the <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> notation with parentheses and the concept of a function
+things like the $f(x)$ notation with parentheses and the concept of a function
 are from him.</p>
 
-<p>After all the amazement, let's have a look at what we got. We know that <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />
-is the <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> coordinate and <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> is the <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> coordinate in a unit circle (see
+<p>After all the amazement, let's have a look at what we got. We know that $\cos$
+is the $x$ coordinate and $\sin$ is the $y$ coordinate in a unit circle (see
 <a href="summary.html#geometry-and-trig">this thing</a>), and a moment ago we drew a
-<img class="inlinemath" src="math/eaaed9d0be37d864661f7cf0a90c65e2.png" />-plane. Actually the formula represents a unit circle in
-<img class="inlinemath" src="math/eaaed9d0be37d864661f7cf0a90c65e2.png" /> plane!</p>
+$(\text{Re}, \text{Im})$-plane. Actually the formula represents a unit circle in
+$(\text{Re}, \text{Im})$ plane!</p>
 
 <p><img class="asymptote" src="asymptote/5e4be315ad27dbd92b3f9e943a902073.png" /></p><p>Just looking at the above drawing, everything else makes sense perfectly except
-the <img class="inlinemath" src="math/3ab3871f6c567484e5be7ebf300d39f1.png" /> label. It's just crazy.</p>
+the $e^{it}$ label. It's just crazy.</p>
 
-<h2 id="example-trig-identities">Example: Trig Identities<a class="headerlink" href="#example-trig-identities" title="Link to this title">¶</a></h2><p>Let's draw another unit circle with angles <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> and <img class="inlinemath" src="math/b7cc4b6b2b8c0f37377b5cc259385de0.png" />. The things in
-parentheses are <img class="inlinemath" src="math/90cbc22edf225adf8a68974f51227f05.png" /> coordinates.</p>
+<h2 id="example-trig-identities">Example: Trig Identities<a class="headerlink" href="#example-trig-identities" title="Link to this title">¶</a></h2><p>Let's draw another unit circle with angles $t$ and $-t$. The things in
+parentheses are $(x,y)$ coordinates.</p>
 
-<p><img class="asymptote" src="asymptote/5b2e8ee6cf79c13e94dccd88eaee0f59.png" /></p><p>The black dots are aligned horizontally so <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> coordinates are the same and
-<img class="inlinemath" src="math/ce14d6116d162b9428929a8b44c4dc2f.png" />. But the <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> coordinates are opposite, so
-<img class="inlinemath" src="math/71716506997e0b8a7faa5c911df7d117.png" />. These work with any <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
+<p><img class="asymptote" src="asymptote/5b2e8ee6cf79c13e94dccd88eaee0f59.png" /></p><p>The black dots are aligned horizontally so $x$ coordinates are the same and
+$\cos(t)=\cos(-t)$. But the $y$ coordinates are opposite, so
+$\sin(-t)=-\sin(t)$. These work with any $t$.</p>
 
 <p>Let's plug some stuff to Euler's formula and use these trig things:</p>
 
-<p><img src="math/92132ecbd3cdad9799bce1867a35672c.png" class="blockmath" /></p><p><img src="math/0f53e5ddd46f2bf1ec5206b71aa4962a.png" class="blockmath" /></p><p>Now your mind should be <b>really</b> blown up.</p>
+$$\begin{align}
+e^{it} &= \cos(t) + i\sin(t) \\
+e^{-it} &= \cos(-t) + i\sin(-t) \\
+&= \cos(t)-i\sin(t)
+\end{align}$$$$\begin{align}
+e^{it}+e^{-it} &= (\cos(t)+i\sin(t)) + (\cos(t)-i\sin(t)) \\
+&= \cos(t)+i\sin(t)+\cos(t)-i\sin(t) \\
+&= 2\cos(t) \\
+\frac{e^{it}+e^{-it}}{2}&=\cos(t)
+\end{align}$$<p>Now your mind should be <b>really</b> blown up.</p>
 
-<p><img src="math/8301d59e9b6dfc3cd9465068a53e8955.png" class="blockmath" /></p><div class="floatingbox"><h2> Handy thing: <img class="inlinemath" src="math/85479e5367635eab8037243a9a4bb87e.png" /></h2><p>Proof:</p>
+$$\begin{align}
+e^{it}-e^{-it} &= (\cos(t)+i\sin(t)) - (\cos(t)-i\sin(t)) \\
+&= \cos(t)+i\sin(t)-\cos(t)+i\sin(t) \\
+&= 2i\sin(t) \\
+\frac{e^{it}-e^{-it}}{2i} &= \sin(t)
+\end{align}$$<div class="floatingbox"><h2> Handy thing: $a^2-b^2=(a-b)(a+b)$</h2><p>Proof:</p>
 
-<p><img src="math/068687bce19ace30b28a0d16db096962.png" class="blockmath" /></p><p>In this case we need to plug in <img class="inlinemath" src="math/24b5ef5c5162fa703e4e85ee3d553b57.png" /> and <img class="inlinemath" src="math/33c82c23fb536aade5caebb774c761db.png" />.
+$$\begin{align}
+& \ (a-b)(a+b) \\
+=&\ (a-b)a+(a-b)b \\
+=&\ aa-ba+ab-bb \\
+=&\ a^2 - b^2
+\end{align}$$<p>In this case we need to plug in $a=e^{it}$ and $b=e^{-it}$.
 </p>
 
 </div><p>Equally head-exploding.</p>
 
-<p>For example, let's try to find another way to represent <img class="inlinemath" src="math/0c3f29cd2df8b8739040dd6f59ff137f.png" />:</p>
+<p>For example, let's try to find another way to represent $\sin(2t)$:</p>
 
-<p><img src="math/76ab59ffee3e3c23e41aa58db47d2829.png" class="blockmath" /></p><p>This is just the tip of the iceberg. It's possible to find dozens of handy-dandy
+$$\begin{align}
+\sin(2t) &= \frac{e^{2it}-e^{-2it}}{2i} \\
+&= \frac{(e^{it})^2-(e^{-it})^2}{2i} \\
+&= \frac{(e^{it}-e^{-it})(e^{it}+e^{-it})}{2i} \\
+&= 2 \cdot \frac{e^{it}-e^{-it}}{2i} \cdot \frac{e^{it}+e^{-it}}{2} \\
+&= 2 \sin(t) \cos(t)
+\end{align}$$<p>This is just the tip of the iceberg. It's possible to find dozens of handy-dandy
 trig equations like this. Most trig things can be proved without Euler's
 formula, but this magic way can be much easier and faster.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>This is a true story. A friend of mine had watched a youtube video that used
 this formula, and he wanted to see a proof of it:</p>
 
-<p><img src="math/7f3359992eab96313c553b45078ea450.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/c86d78c8797be2e0e4ce432eb97145f1.png" /> means <img class="inlinemath" src="math/d5c85874f749da308da411457fcda433.png" />, and people use the <img class="inlinemath" src="math/6da7bf2a127aabb69fa9a1eab94b2796.png" /> notation
+$$\begin{align}
+\tan(2t)=\frac{2\tan(t)}{1-\tan^2(t)}
+\end{align}$$<p>Here $\tan^2(t)$ means $(\tan(t))^2$, and people use the $\tan^2$ notation
 because it's easier and faster to write although it doesn't make much sense.
 Prove the above formula.</p>
 
@@ -110,26 +179,32 @@ compared to e.g. <a href="https://en.wikipedia.org/wiki/Proofs_of_trigonometric_
 proof</a>.
 If you want to try to do it like I did, prove these things in this order:</p>
 
-<ul><li><img class="inlinemath" src="math/8185cdc8c833b47cb6c927fb4c818ee0.png" /></li><li><img class="inlinemath" src="math/12613cf0fe51de94c7f8525afd7c8db7.png" /></li><li><img class="inlinemath" src="math/b93ae5f1613dc67c1176278911ea6b2c.png" /></li><li><img class="inlinemath" src="math/b73b8e70bf51ee30beb040349f82a03b.png" /></li><li><img class="inlinemath" src="math/e61bc88983b97e9a7a015d87756dbe10.png" />
-</li></ul><p>Then I used the <img class="inlinemath" src="math/3c6044bd76ed4d63cbc33eacae714cca.png" /> thing we
+<ul><li>$(a+b)^2=a^2+2ab+b^2$</li><li>$\displaystyle\cos^2(t)=\frac{1+\cos(2t)}{2}$</li><li>$(a-b)^2=a^2-2ab+b^2$</li><li>$\displaystyle\sin^2(t)=\frac{1-\cos(2t)}{2}$</li><li>$\displaystyle\cos(2t)=\cos^2(t)-\sin^2(t)$
+</li></ul><p>Then I used the $\displaystyle\tan(2t)=\frac{\sin(2t)}{\cos(2t)}$ thing we
 learned <a href="more-geometry-and-trig.html#unit-circle-or-triangle">here</a> and the
-<img class="inlinemath" src="math/618a99a40efe168bae768f7656d51b43.png" /> thing that we proved above.
+$\sin(2t)=2\sin(t)\cos(t)$ thing that we proved above.
 </p>
 
-</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img class="asymptote" src="asymptote/6bb55ed40f014a743927e9e2d2a911cc.png" /></p><p>If we plug in <img class="inlinemath" src="math/1d87301bcaa79e70771485df675eb5a8.png" /> we get this:</p>
+</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img class="asymptote" src="asymptote/6bb55ed40f014a743927e9e2d2a911cc.png" /></p><p>If we plug in $t=\tau=2\pi$ we get this:</p>
 
-<p><img src="math/f050f52a10c6f2a8a2ceeb572e5f9683.png" class="blockmath" /></p><p>This makes sense because if we start at 1 and rotate a full turn (<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />
+$$\begin{align}
+e^{i\tau} = \cos(\tau) + i \sin(\tau) = 1 + i \cdot 0 = 1
+\end{align}$$<p>This makes sense because if we start at 1 and rotate a full turn ($\tau$
 radians), we get back to where we started.</p>
 
 <p>But if we don't rotate at all we also end up at 1:</p>
 
-<p><img src="math/66fa14c13e6bc84912b63a7c1c7c9837.png" class="blockmath" /></p><p>Equations like <img class="inlinemath" src="math/a24505eb07ad9bdb8f217ff8a4564456.png" /> have an infinite number of solutions because any
+$$\begin{align}
+e^{i \cdot 0} = e^0 = 1
+\end{align}$$<p>Equations like $e^{it}=1$ have an infinite number of solutions because any
 number of full turns produces the 1, just like any number of full turns is a
-solution of <img class="inlinemath" src="math/83a718ae3fb1e239cfb71435b46efdc9.png" />.</p>
+solution of $\cos(t)=1$.</p>
 
-<p>We could also plug in <img class="inlinemath" src="math/0fe5ce4302516a373f0ecdfa089fbe1d.png" /> to go a half turn and end up at <img class="inlinemath" src="math/6bb61e3b7bce0931da574d19d1d82c88.png" />,
+<p>We could also plug in $t=\frac \tau 2=\pi$ to go a half turn and end up at $-1$,
 and we get a very famous equation:</p>
 
-<p><img src="math/85b859feb50f4972f09453343e506727.png" class="blockmath" /></p></div>
+$$\begin{align}
+e^{i \pi} = -1
+\end{align}$$</div>
 </body>
 </html>

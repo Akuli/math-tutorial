@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>Geometry and Trig</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
@@ -27,28 +41,31 @@ equal, and it doesn't matter what that length is.</p>
 
 <img class="asymptote" src="asymptote/8b6ace74c6f849404001519f231b56a0.png" style="float:left; padding-right:20px;" /><p>If we try to fill a circle with these 1 radian slices, 6 of them fit and
 there's some room left over. To be more precise, we can add 6.2831853...
-slices. This number is called tau and written with the Greek tau letter <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />.
-So, a full turn is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians. Be careful not to confuse <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> with other
-letters like <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />.</p>
+slices. This number is called tau and written with the Greek tau letter $\tau$.
+So, a full turn is $\tau$ radians. Be careful not to confuse $\tau$ with other
+letters like $t$.</p>
 
 <img class="asymptote" src="asymptote/b7f5f05a915a2557b2e86ee4bc94e875.png" style="float:right;" /><p>The yellow slice at right shows another way to define an angle in radians, and
-it's compatible with the green slices because if we set <img class="inlinemath" src="math/225f9ff198eeedcb0c110f45fc7ef39f.png" /> the angle is
-<img class="inlinemath" src="math/933a3fd95e03791593f4b932ae9e6e04.png" /> radian.</p>
+it's compatible with the green slices because if we set $b=r$ the angle is
+$r/r=1$ radian.</p>
 
 <p>Sometimes the yellow slice definition is handier; for example, if we draw a
-full circle we know the angle in the center is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians (full turn), so
+full circle we know the angle in the center is $\tau$ radians (full turn), so
 we get this:</p>
 
-<img class="asymptote" src="asymptote/252e9ab0d34a1791201c03cbbbc8537e.png" style="float:right; margin: 0,0,0,20px;" /><p><img src="math/a650bf80b25a2fb8af7f8509c35136ca.png" class="blockmath" /></p><p>So we can multiply with tau to get from a radius to a perimeter. This is how
-<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> is usually defined.</p>
+<img class="asymptote" src="asymptote/252e9ab0d34a1791201c03cbbbc8537e.png" style="float:right; margin: 0,0,0,20px;" />$$\begin{align}
+\frac b r &= \tau \\
+b &= \tau r
+\end{align}$$<p>So we can multiply with tau to get from a radius to a perimeter. This is how
+$\tau$ is usually defined.</p>
 
 <p>Some programming languages like new Pythons have a <code>tau</code> constant, but if
 your favorite language doesn't, use <code>2*pi</code> instead. Here pi is the more
-well-known circle constant <img class="inlinemath" src="math/475b5741d41195a162d7e7801bc4377f.png" />, and almost all
+well-known circle constant $\pi = \tau/2 = 3.14159265...$, and almost all
 programming languages have something like <code>math.pi</code> or <code>Math.PI</code>. I find
-<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> easier to work with than <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> because if I see <img class="inlinemath" src="math/3647dc184901b3ad134ff555024108f3.png" /> somewhere I
-know immediately that it's a quarter turn, but <img class="inlinemath" src="math/d97ed75815d5454312793e69228fd04f.png" /> isn't as obvious. Of
-course, you can use <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> if you prefer it over <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />.
+$\tau$ easier to work with than $\pi$ because if I see $\tau/4$ somewhere I
+know immediately that it's a quarter turn, but $\pi/2$ isn't as obvious. Of
+course, you can use $\pi$ if you prefer it over $\tau$.
 </p>
 
 <h2 id="degrees">Degrees<a class="headerlink" href="#degrees" title="Link to this title">¶</a></h2><p>Degrees are an alternative to radians, and they work so that 360° is a full
@@ -56,7 +73,7 @@ turn. Here ° is the degree symbol, and 360 is a number that people ended up
 using for historical reasons.</p>
 
 <p>If you need to convert between radians and degrees, use the fact that 360
-degrees is <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> radians. Here's a Python example:</p>
+degrees is $\tau$ radians. Here's a Python example:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">degrees2radians</span>(degrees):
     <span style="color: #007020; font-weight: bold">return</span> degrees <span style="color: #666666">/</span> <span style="color: #40a070">360</span> <span style="color: #666666">*</span> math<span style="color: #666666">.</span>tau
@@ -81,24 +98,31 @@ up from a horizontal line and counter-clockwise.</p>
 <p>We can solve our problem by taking the 0.5 radian angle sign and moving it like
 this:</p>
 
-<p><img class="asymptote" src="asymptote/66ead1ba69afa6f7fd4384a24fb6b764.png" /></p><p>Now you can see that the angles add up to half turn, and that's <img class="inlinemath" src="math/2b52e395446666dd5ebf332001259749.png" />
+<p><img class="asymptote" src="asymptote/66ead1ba69afa6f7fd4384a24fb6b764.png" /></p><p>Now you can see that the angles add up to half turn, and that's $\tau/2 = \pi$
 radians, so we get this <a href="basics.html#equations">equation</a>:</p>
 
-<p><img src="math/fad328e4f0bb66a5418acd0a5e122989.png" class="blockmath" /></p><p>I did the last step with Python.</p>
+$$\begin{align}
+0.5 + \text{???} &= \frac \tau 2 \\
+\text{???} &= \frac \tau 2 - 0.5 \\
+\text{???} &\approx 2.64
+\end{align}$$<p>I did the last step with Python.</p>
 
 <p>In math it's common to use a letter instead of "???" to represent an
 unknown value. For example:</p>
 
-<p><img src="math/1075a9737ff7be0db6fb36c86b6f4252.png" class="blockmath" /></p><p>It's easy to calculate similar things for other directions. Here are the
-results, where <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> is the original angle and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the changed angle:</p>
+$$\begin{align}
+0.5 + b &= \frac \tau 2 \\
+b &= \frac \tau 2 - 0.5 \approx 2.64
+\end{align}$$<p>It's easy to calculate similar things for other directions. Here are the
+results, where $a$ is the original angle and $b$ is the changed angle:</p>
 
-<ul><li>If the ball hits left or right wall, <img class="inlinemath" src="math/57d4a791d72f1502550d0c837c92c177.png" />.</li><li>If the ball hits top or bottom, <img class="inlinemath" src="math/658652aa8bc08f987c23df9001a586d5.png" />.
-</li></ul><p>Note that an angle like <img class="inlinemath" src="math/5d7b9adcbe1c629ec722529dd12e5129.png" /> radians is perfectly valid and equivalent to
-<img class="inlinemath" src="math/37357323d0af5db8e5eb69171458fa43.png" /> radians. If you want to make sure that an angle is between <img class="inlinemath" src="math/cfcd208495d565ef66e7dff9f98764da.png" /> and
-<img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" />, use something like <code>angle % tau</code> where <code>%</code> is division remainder.
+<ul><li>If the ball hits left or right wall, $b = \frac \tau 2 - a$.</li><li>If the ball hits top or bottom, $b = \tau - a$.
+</li></ul><p>Note that an angle like $-2$ radians is perfectly valid and equivalent to
+$\tau-2$ radians. If you want to make sure that an angle is between $0$ and
+$\tau$, use something like <code>angle % tau</code> where <code>%</code> is division remainder.
 </p>
 
-<h2 id="trig-with-the-unit-circle">Trig with the Unit Circle<a class="headerlink" href="#trig-with-the-unit-circle" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>This time the ball moves at the angle of <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />, and it should move 5
+<h2 id="trig-with-the-unit-circle">Trig with the Unit Circle<a class="headerlink" href="#trig-with-the-unit-circle" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>This time the ball moves at the angle of $\tau/6$, and it should move 5
 pixels every time the screen is updated. How many pixels should its x and y
 change every time?</p>
 
@@ -106,8 +130,8 @@ change every time?</p>
 circle with radius 1 placed in the middle of the xy plane. Here's a picture that
 shows what sine and cosine are:</p>
 
-<p><img class="asymptote" src="asymptote/ea6dbd965c9d46737f487e1b5aab8157.png" /></p><p>This is really simple: the x coordinate is <img class="inlinemath" src="math/76269c809ed95f49bdba4964a309a176.png" /> and the y coordinate is
-<img class="inlinemath" src="math/b8ec708cc383b1dcbec78f84f362faf5.png" />. But the radius of the unit circle is 1 instead of our 5, so we need
+<p><img class="asymptote" src="asymptote/ea6dbd965c9d46737f487e1b5aab8157.png" /></p><p>This is really simple: the x coordinate is $\cos(t)$ and the y coordinate is
+$\sin(t)$. But the radius of the unit circle is 1 instead of our 5, so we need
 to multiply everything by 5 to scale it up. We get this:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>ball<span style="color: #666666">.</span>x <span style="color: #666666">+=</span> <span style="color: #40a070">5</span><span style="color: #666666">*</span>cos(tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
@@ -123,15 +147,15 @@ that everything works:</p>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>cos(math<span style="color: #666666">.</span>tau<span style="color: #666666">/</span><span style="color: #40a070">6</span>)
 <span style="color: #888888">0.5000000000000001</span>
 </pre></div>
-<p>These results make sense because the angle <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" /> in the above image looks like
-it's about a sixth of a turn (or <img class="inlinemath" src="math/b84e0e7637d5e7f281ef242393364464.png" />), so <img class="inlinemath" src="math/18181cefaa890d68e04d3e0bf9ade269.png" /> should be close
-to 1 because the circle's bottom is at <img class="inlinemath" src="math/6a267007228f9f654a0d28dec6932c31.png" />. Similarly, the <img class="inlinemath" src="math/76269c809ed95f49bdba4964a309a176.png" /> marked on
+<p>These results make sense because the angle $t$ in the above image looks like
+it's about a sixth of a turn (or $\tau/6$), so $\sin(\tau/6)$ should be close
+to 1 because the circle's bottom is at $y=1$. Similarly, the $\cos(t)$ marked on
 the picture seems to be about half of the radius, and the radius is 1.</p>
 
 <p id="accurate-sincos"><code>0.5000000000000001</code> is obviously not an accurate result, but it's good
 enough for a programmer while a mathematician would say that
-<img class="inlinemath" src="math/ee94960087f8199f13e90b172b33c526.png" /> and
-<img class="inlinemath" src="math/9bfdfa519977e76026be64b071197648.png" />. See <a href="more-geometry-and-trig.html#accurate-sine-and-cosine-values">this
+$\sin\left(\frac \tau 6\right) = \frac{\sqrt 3}{2}$ and
+$\cos\left(\frac \tau 6\right) = \frac 1 2$. See <a href="more-geometry-and-trig.html#accurate-sine-and-cosine-values">this
 thing</a> if
 you're wondering how I came up with these values.
 </p>
@@ -326,27 +350,34 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
 <h2 id="trig-with-a-triangle">Trig with a Triangle<a class="headerlink" href="#trig-with-a-triangle" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>The ball moves 10 pixels down and 20 pixels right. What angle is that?
 </p>
 
-</div><p>Here's another way to define <img class="inlinemath" src="math/5912fc1251cd0c1e212f6dd8d19f17ef.png" /> and <img class="inlinemath" src="math/8effff999de692c242b9f7a539c63e58.png" />, and another function called
-<img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" /> that we haven't used before.</p>
+</div><p>Here's another way to define $\sin$ and $\cos$, and another function called
+$\tan$ that we haven't used before.</p>
 
-<img class="asymptote" src="asymptote/74cbd34ca0945193971abf3e99d5ee37.png" style="float:right;" /><p><img src="math/e85c476776cc951a53a30ef2f9bf007e.png" class="blockmath" /></p><p>We'll talk about compatibility with the unit circle definitions
+<img class="asymptote" src="asymptote/74cbd34ca0945193971abf3e99d5ee37.png" style="float:right;" />$$\begin{align}
+\sin(t) &= \frac b c \\
+\cos(t) &= \frac a c \\
+\tan(t) &= \frac b a
+\end{align}$$<p>We'll talk about compatibility with the unit circle definitions
 <a href="more-geometry-and-trig.html#unit-circle-or-triangle">later</a>. These things work
 only if the triangle has an angle that is exactly a quarter turn, and the little
 box at bottom right means just that.</p>
 
 <img class="asymptote" src="asymptote/d5c920cd486e0028f282af6184cb91d1.png" style="float:right;" /><p>The green triangle is just like the blue one, but I flipped it so that we can
-calculate the stuff by plugging in <img class="inlinemath" src="math/fef27623febd2ae03afe7a22d034ac5b.png" /> and <img class="inlinemath" src="math/0daca570410e633ef534e720f5d54852.png" /> without worrying about
-which way things go. Let's figure out how to calculate the <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />:</p>
+calculate the stuff by plugging in $a=20$ and $b=10$ without worrying about
+which way things go. Let's figure out how to calculate the $t$:</p>
 
-<p><img src="math/6a514fc2f9b17551bf4176d245ef467d.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/88ff4a6f25e9a1675fc702f8ee41a28a.png" /> is the inverse of <img class="inlinemath" src="math/b00c5bd0cdc3e9432babf4fb3512b848.png" />, so <img class="inlinemath" src="math/d80139f91c876748f39d2e2792ebf940.png" />. Most
-programming languages have an <code>atan(x)</code> function that returns <img class="inlinemath" src="math/be0e21a53d044912466e8b6663cdb405.png" />,
+$$\begin{align}
+\tan(t) &= \frac b a \\
+t &= \arctan\left(\frac b a\right) = \text{atan2}(b, a)
+\end{align}$$<p>Here $\arctan$ is the inverse of $\tan$, so $\arctan(\tan(t)) = t$. Most
+programming languages have an <code>atan(x)</code> function that returns $\arctan x$,
 but I don't recommend using it in this case; the <code>atan2(b,a)</code> function
-returns <img class="inlinemath" src="math/c7a813c357962e69e76ff33cd4a9a6a7.png" /> and I recommend it instead. <code>atan2</code>
-looks at the signs of <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> and does the right thing if they're negative
+returns $\arctan\left(\frac b a\right)$ and I recommend it instead. <code>atan2</code>
+looks at the signs of $a$ and $b$ and does the right thing if they're negative
 (the ball is moving to e.g. top left). It also works if <code>a</code> is 0 and <code>b/a</code>
 would fail as division by zero is undefined.</p>
 
-<div class="box graybox"><p>Usually people like to put <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> before <img class="inlinemath" src="math/415290769594460e2e485922904f345d.png" /> in different kinds of places,
+<div class="box graybox"><p>Usually people like to put $x$ before $y$ in different kinds of places,
 but <code>atan2</code> is used like <code>atan2(y_change, x_change)</code>, <b>not</b> like
 <code>atan2(x_change, y_change)</code>.
 </p>
@@ -364,19 +395,21 @@ diagonally?
 
 </div><img class="asymptote" src="asymptote/b0297f3f2be1fdfad10c3e289a768634.png" style="float:right;" /><p>Here's a handy equation, also known as the Pythagorean theorem:</p>
 
-<p><img src="math/f98fde5a8a2f14e625eb5fceed7050ee.png" class="blockmath" /></p><p>Again, the angle of the corner between a and b must be a quarter turn, like it
+$$\begin{align}a^2 + b^2 = c^2
+\end{align}$$<p>Again, the angle of the corner between a and b must be a quarter turn, like it
 is in the image. We'll prove that this theorem actually works
 <a href="more-geometry-and-trig.html#pythagorean-theorem-proof">later</a>.</p>
 
-<p>Let's solve <img class="inlinemath" src="math/4a8a08f09d37b73795649038408b5f33.png" /> from the equation by applying <img class="inlinemath" src="math/da175f00ddc2ba16792669e37fdd4b4b.png" /> on both sides:</p>
+<p>Let's solve $c$ from the equation by applying $\sqrt{\ \ }$ on both sides:</p>
 
-<p><img src="math/18e0903219269d504f9da35b9a87b654.png" class="blockmath" /></p><p>Here <img class="inlinemath" src="math/8479cef10a03961354aa94cb0b522dc9.png" /> is <a href="basics.html#absolute-value">the absolute value</a>. The last
-step assumes <img class="inlinemath" src="math/3f42f9a2cf87ec23780682aa5d81f95d.png" />, but that's not a problem because a triangle with
+$$\begin{align}\sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c
+\end{align}$$<p>Here $|c|$ is <a href="basics.html#absolute-value">the absolute value</a>. The last
+step assumes $c \ge 0$, but that's not a problem because a triangle with
 a negative side length doesn't make much sense.</p>
 
 <p>"Hypotenuse" is a fancy word that means the longest side of a triangle with a
 quarter-turn angle, and that's why some programming languages have a
-<code>hypot(a, b)</code> function that returns <img class="inlinemath" src="math/49a12ba4c3e7dcb2a56081b67324dc91.png" />.</p>
+<code>hypot(a, b)</code> function that returns $\sqrt{a^2 + b^2}$.</p>
 
 <p>Let's calculate the distance:</p>
 
@@ -387,12 +420,12 @@ quarter-turn angle, and that's why some programming languages have a
 <span style="color: #888888">22.360679774997898</span>
 </pre></div>
 <h2 id="vectors">Vectors<a class="headerlink" href="#vectors" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/3ab1343d79c1ee771d20dcd1eeef5566.png" style="float:right;" /><p>A point is simply a pair of x and y coordinates, and a vector represents the
-difference between two points. For example, if we have the points <img class="inlinemath" src="math/ea55273b1ce070424fbe13c45d6270c9.png" /> and
-<img class="inlinemath" src="math/ef624b5778b8523126644acae2e90d0c.png" />, the vector from <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> to <img class="inlinemath" src="math/9d5ed678fe57bcca610140957afab571.png" /> is
-<img class="inlinemath" src="math/161e1a0aca6f0798cf541fd74161b09c.png" />. Here
-<img class="inlinemath" src="math/c507cd1c30750bac21069bcca5228874.png" /> and <img class="inlinemath" src="math/566c5d57c8c3f63e6ad9e818677f2ef3.png" /> are vectors that go right and up by 1 unit, respectively.</p>
+difference between two points. For example, if we have the points $A=(1,2)$ and
+$B=(3,5)$, the vector from $A$ to $B$ is
+$\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j$. Here
+$\bar i$ and $\bar j$ are vectors that go right and up by 1 unit, respectively.</p>
 
-<p>A vector like <img class="inlinemath" src="math/1b04e810f0960954248ec7142498f38e.png" /> can be also written as <img class="inlinemath" src="math/b7c2a05d0e6220189f3a032840d30b44.png" />. Use
+<p>A vector like $x \bar i + y \bar j$ can be also written as $<x,y>$. Use
 whatever style you want.</p>
 
 <p>We could also use vectors to do similar things as in
@@ -409,16 +442,21 @@ done in a moment.</p>
 <img class="asymptote" src="asymptote/1d56d60ce083eb0e030b6b9149d03559.png" style="float:right;" /><p>Another nice thing about vectors is that they can be +'ed together easily. For
 example, if we first move 3 units to right, then 4 units up and finally 5 more
 units to right, we move a total of 8 units to right and 4 units up. That's how
-<img class="inlinemath" src="math/cfaeccd8b035e766aa99ee8a95b2719b.png" />.</p>
+$3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j$.</p>
 
 <img class="asymptote" src="asymptote/f1eecbe789755b721714036a2053f479.png" style="float:right;" /><p>These vector calculations are just like the
 <a href="#pythagorean-theorem">Pythagorean theorem</a> and
 <a href="#trig-with-the-unit-circle">unit circle trig</a> stuff above:</p>
 
-<p><img src="math/44fcc17fc27cd874831514dcd801712a.png" class="blockmath" /></p><p>Example: if we move 1 unit to the right and 2 units up, our vector is <img class="inlinemath" src="math/10adba9a4d1293648444f90c1f98f4af.png" />,
-its length is <img class="inlinemath" src="math/bd11a1b602bc901206b5050eb613ad94.png" /> and the angle is
-<img class="inlinemath" src="math/065b95059e37aefbd526a727abb61ae0.png" /> radians. On the other hand,
-<img class="inlinemath" src="math/1fc87d9c0ef7953a3f19cb0efdb1604f.png" /> and <img class="inlinemath" src="math/33b5ae983f8a58a1f9b9807338d5285f.png" />.</p>
+$$\begin{align}
+l &= \sqrt{a^2+b^2} = \text{hypot}(a, b) \\
+t &= \text{atan2}(b,a) \\
+a &= l \cdot \cos(t) \\
+b &= l \cdot \sin(t)
+\end{align}$$<p>Example: if we move 1 unit to the right and 2 units up, our vector is $<1,2>$,
+its length is $\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24$ and the angle is
+$\text{atan2}(2,1) \approx 1.107$ radians. On the other hand,
+$2.24 \cdot \cos(1.107) \approx 1$ and $2.24 \cdot \sin(1.107) \approx 2$.</p>
 
 <p>One way to change the angle of a vector is to first convert it to a length and
 an angle, change that angle and create a new vector. It looks like this in
@@ -430,7 +468,7 @@ speed_vector<span style="color: #666666">.</span>y <span style="color: #666666">
 </pre></div>
 <h3 id="example-vector-class-in-python">Example: Vector class in Python<a class="headerlink" href="#example-vector-class-in-python" title="Link to this title">¶</a></h3><p>Here's a <code>Vector</code> class I implemented in Python running with
 <a href="https://repl.it/">repl.it</a>. A <code>Vector(x, y)</code> represents
-<img class="inlinemath" src="math/1b04e810f0960954248ec7142498f38e.png" />. I didn't add operator overloading because I wanted to
+$x \bar i + y \bar j$. I didn't add operator overloading because I wanted to
 keep everything nice and simple. Click the "play"-shaped button at top to run
 the code and then use the Python shell at right.</p>
 

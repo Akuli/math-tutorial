@@ -4,31 +4,229 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>Number Theory</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>Number Theory</b></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="number-theory">Number Theory<a class="headerlink" href="#number-theory" title="Link to this title">¶</a></h1><p>This section is currently kind of incomplete. It needs to be expanded to
-contain more stuff that people are often interested in, e.g. prime numbers.
+<h1 id="number-theory">Number Theory<a class="headerlink" href="#number-theory" title="Link to this title">¶</a></h1><p>This section contains math that programmers end up dealing with often and
+explains how it works.</p>
+
+<h2 id="division-remainder">Division Remainder<a class="headerlink" href="#division-remainder" title="Link to this title">¶</a></h2><p>I didn't introduce this on <a href="basics.html">the basics page</a> because most of the
+time people don't need it, but we'll find it useful in this chapter.</p>
+
+<p>If you have something like $17/3$ it really means how many times number 3 fits
+into 17. It fits 5 times, but we have 2 left over because $5 \cdot 3 + 2 = 17$.
+This left-over part is the remainder, and it can be calculated with the <code>%</code>
+operator in most programming languages:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">17</span> <span style="color: #666666">%</span> <span style="color: #40a070">3</span>
+<span style="color: #888888">2</span>
+</pre></div>
+<p>A common way to use this is to check whether an integer $a$ is <i>divisible</i> by
+another integer $b$. If it is, $a/b$ is an integer and <code>a % b == 0</code>:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">15</span><span style="color: #666666">/</span><span style="color: #40a070">3</span>       <span style="color: #60a0b0; font-style: italic"># 15 is divisible by 3</span>
+<span style="color: #888888">5.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">15</span> <span style="color: #666666">%</span> <span style="color: #40a070">3</span>
+<span style="color: #888888">0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">14</span> <span style="color: #666666">/</span> <span style="color: #40a070">3</span>     <span style="color: #60a0b0; font-style: italic"># 14 is not divisible by 3</span>
+<span style="color: #888888">4.666666666666667</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">14</span> <span style="color: #666666">%</span> <span style="color: #40a070">3</span>
+<span style="color: #888888">2</span>
+</pre></div>
+<h2 id="prime-numbers">Prime Numbers<a class="headerlink" href="#prime-numbers" title="Link to this title">¶</a></h2><div class="box redbox"><p>This section assumes that you know what <a href="basics.html#powers-and-square-root">square
+root</a> is.
 </p>
 
-<h2 id="hexadecimal-colors">Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Link to this title">¶</a></h2><p>You might have seen weird colors before, like <code>#ff0000</code> is somehow magically
+</div><p>A prime number is a number that is divisible by only 1 and itself. For example,
+6 is not a prime because it's divisible by 2 and 3, but 7 is a prime.</p>
+
+<p>Many people new to programming write functions like this:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">function</span> isPrime(n) {
+  <span style="color: #007020; font-weight: bold">if</span> (n <span style="color: #666666">&lt;</span> <span style="color: #40a070">2</span>) {
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span>;
+  }
+  <span style="color: #007020; font-weight: bold">for</span> (<span style="color: #007020; font-weight: bold">var</span> divisor <span style="color: #666666">=</span> <span style="color: #40a070">2</span>; divisor <span style="color: #666666">&lt;</span> n; divisor<span style="color: #666666">++</span>) {
+    <span style="color: #007020; font-weight: bold">if</span> (n <span style="color: #666666">%</span> divisor <span style="color: #666666">==</span> <span style="color: #40a070">0</span>) {
+      <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span>;
+    }
+  }
+  <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span>;
+}
+
+console.log(isPrime(<span style="color: #40a070">17</span>));     <span style="color: #60a0b0; font-style: italic">// true</span>
+console.log(isPrime(<span style="color: #40a070">18</span>));     <span style="color: #60a0b0; font-style: italic">// false</span>
+</pre></div>
+<p>The code works, although it's kind of slow. But before we optimize it, I want to
+say a couple things:</p>
+
+<ul><li>Don't yell at beginners if they don't use the optimizations I'm about to show.
+  Optimizations tend to make code more complicated and less readable.</li><li>My prime checking functions are better than the above function, but they are
+  not the fastest prime checking functions possible.
+</li></ul><p>Let's start by using the one and true way to debug.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> (<span style="color: #007020; font-weight: bold">var</span> divisor <span style="color: #666666">=</span> <span style="color: #40a070">2</span>; divisor <span style="color: #666666">&lt;</span> n; divisor<span style="color: #666666">++</span>) {
+  console.log(<span style="color: #4070a0">&quot;divisor = %s, n / divisor = %s&quot;</span>, divisor, n<span style="color: #666666">/</span>divisor);
+  ...
+}
+</pre></div>
+<p>Here's the output:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>divisor = 2, n / divisor = 8.5
+divisor = 3, n / divisor = 5.666666666666667
+divisor = 4, n / divisor = 4.25
+divisor = 5, n / divisor = 3.4
+divisor = 6, n / divisor = 2.8333333333333335
+divisor = 7, n / divisor = 2.4285714285714284
+divisor = 8, n / divisor = 2.125
+divisor = 9, n / divisor = 1.8888888888888888
+divisor = 10, n / divisor = 1.7
+divisor = 11, n / divisor = 1.5454545454545454
+divisor = 12, n / divisor = 1.4166666666666667
+divisor = 13, n / divisor = 1.3076923076923077
+divisor = 14, n / divisor = 1.2142857142857142
+divisor = 15, n / divisor = 1.1333333333333333
+divisor = 16, n / divisor = 1.0625
+true
+</pre></div>
+<p>If $n$ is not a prime and it's divisible by some integer $a$, then the number
+$b=n/a$ is also an integer and $n=ab$. If we assume that $a>\sqrt n$ and
+$b>\sqrt n$, we get this:</p>
+
+$$\begin{align}
+ab &> \sqrt n \sqrt n \\
+ab &> n
+\end{align}$$<p>But we just said that $n=ab$ and this doesn't work. Our assumption was false and
+we <b>know</b> that $a \le \sqrt n$ or $b \le \sqrt n$. So we don't actually need
+to check for divisibility with numbers that are bigger than $\sqrt n$:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> (<span style="color: #007020; font-weight: bold">var</span> divisor <span style="color: #666666">=</span> <span style="color: #40a070">2</span>; divisor <span style="color: #666666">&lt;=</span> <span style="color: #007020">Math</span>.sqrt(n); divisor<span style="color: #666666">++</span>) {
+  ...
+}
+</pre></div>
+<p>Now we get much less output than before, but the code still works.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>divisor = 2, n / divisor = 8.5
+divisor = 3, n / divisor = 5.666666666666667
+divisor = 4, n / divisor = 4.25
+true
+</pre></div>
+<p>The code is a bit messier if your favorite programming language doesn't support
+C-style for loops. For example, Python's <code>math.sqrt(int(n))</code> returns the
+smallest integer that is $\le \sqrt n$, and <code>range(a, b)</code> doesn't go all the
+way to <code>b</code> by default so we also need a <code>+1</code>:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> divisor <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">2</span>, <span style="color: #007020">int</span>(math<span style="color: #666666">.</span>sqrt(n))<span style="color: #666666">+</span><span style="color: #40a070">1</span>):
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>We can take a step further and optimize more because all non-primes consist of
+primes multiplied with each other. For example:</p>
+
+$$\begin{align}
+1050 = 2 \cdot 3 \cdot 5 \cdot 5 \cdot 7
+\end{align}$$<p>So it would be enough to check for divisibility with just primes. For example,
+$\sqrt{123} \approx 11.0905$ and primes $\le 11$ are 2, 3, 5, 7 and 11, so if
+123 is not a prime then it's divisible by one of these numbers.</p>
+
+<p>From a programming point of view, this would mean generating a list of primes
+and looping over that. That's probably not worth the effort, but we can do a
+little better than checking for divisibility with everything. All even numbers
+are divisible by 2 and thus not prime, so we can do this:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> (<span style="color: #007020; font-weight: bold">var</span> divisor <span style="color: #666666">=</span> <span style="color: #40a070">2</span>; divisor <span style="color: #666666">&lt;=</span> <span style="color: #007020">Math</span>.sqrt(n); divisor <span style="color: #666666">+=</span> (divisor<span style="color: #666666">==</span><span style="color: #40a070">2</span> <span style="color: #666666">?</span> <span style="color: #40a070">1</span> <span style="color: #666666">:</span> <span style="color: #40a070">2</span>)) {
+  ...
+}
+</pre></div>
+<p>The code is kind of messy, but <code>divisor</code> gets the values <code>2, 3, 5, 7, ...</code>
+like we wanted it to get.</p>
+
+<p>Here's the even messier Python equivalent:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">if</span> n <span style="color: #666666">==</span> <span style="color: #40a070">2</span>:
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">True</span>
+<span style="color: #007020; font-weight: bold">for</span> divisor <span style="color: #007020; font-weight: bold">in</span> itertools<span style="color: #666666">.</span>chain([<span style="color: #40a070">2</span>], <span style="color: #007020">range</span>(<span style="color: #40a070">3</span>, <span style="color: #007020">int</span>(math<span style="color: #666666">.</span>sqrt(n))<span style="color: #666666">+</span><span style="color: #40a070">1</span>, <span style="color: #40a070">2</span>)):
+    <span style="color: #666666">...</span>
+</pre></div>
+<p>If <code>n == 2</code>, we must not check for divisibility with 2 because <code>2 % 2 == 0</code>
+even though 2 is prime.</p>
+
+<p>So, here are our final prime checking examples for JavaScript and Python:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">function</span> isPrime(n) {
+  <span style="color: #007020; font-weight: bold">if</span> (n <span style="color: #666666">&lt;</span> <span style="color: #40a070">2</span>) {
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span>;
+  }
+  <span style="color: #007020; font-weight: bold">for</span> (<span style="color: #007020; font-weight: bold">var</span> divisor <span style="color: #666666">=</span> <span style="color: #40a070">2</span>; divisor <span style="color: #666666">&lt;=</span> <span style="color: #007020">Math</span>.sqrt(n); divisor <span style="color: #666666">+=</span> (divisor<span style="color: #666666">==</span><span style="color: #40a070">2</span> <span style="color: #666666">?</span> <span style="color: #40a070">1</span> <span style="color: #666666">:</span> <span style="color: #40a070">2</span>)) {
+    <span style="color: #007020; font-weight: bold">if</span> (n <span style="color: #666666">%</span> divisor <span style="color: #666666">==</span> <span style="color: #40a070">0</span>) {
+      <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">false</span>;
+    }
+  }
+  <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">true</span>;
+}
+</pre></div>
+<p><p></p>             <!-- empty space hack --></p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">itertools</span>
+<span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">isprime</span>(n):
+    <span style="color: #007020; font-weight: bold">if</span> n <span style="color: #666666">&lt;</span> <span style="color: #40a070">2</span>:
+        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">False</span>
+    <span style="color: #007020; font-weight: bold">if</span> n <span style="color: #666666">==</span> <span style="color: #40a070">2</span>:
+        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">True</span>
+
+    <span style="color: #007020; font-weight: bold">for</span> divisor <span style="color: #007020; font-weight: bold">in</span> itertools<span style="color: #666666">.</span>chain([<span style="color: #40a070">2</span>], <span style="color: #007020">range</span>(<span style="color: #40a070">3</span>, <span style="color: #007020">int</span>(math<span style="color: #666666">.</span>sqrt(n))<span style="color: #666666">+</span><span style="color: #40a070">1</span>, <span style="color: #40a070">2</span>)):
+        <span style="color: #007020; font-weight: bold">if</span> n <span style="color: #666666">%</span> divisor <span style="color: #666666">==</span> <span style="color: #40a070">0</span>:
+            <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">False</span>
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020; font-weight: bold">True</span>
+</pre></div>
+<p><p></p>             <!-- empty space hack --></p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Translate these <code>isprime()</code> functions to your favorite programming
+language and benchmark them. Try to optimize them if the results are not as
+good as you expected them to be.
+</p>
+
+</div><h2 id="hexadecimal-colors">Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Link to this title">¶</a></h2><p>You might have seen weird colors before, like <code>#ff0000</code> is somehow magically
 red or <code>#0000ff</code> is blue. This section is all about what the heck happens in
 this color notation.</p>
 
 <p>Let's start with an example. If we have a number like 2017, it really means this:</p>
 
-<p><img src="math/30c7eda8285d3eae740cc0009d1b9cb5.png" class="blockmath" /></p><p>The idea with <b>hexadecimal</b> is that instead of using 10 as a magic number we
+$$\begin{align}
+2017 &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+     &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
+\end{align}$$<p>The idea with <b>hexadecimal</b> is that instead of using 10 as a magic number we
 use 16. That's why hexadecimal is also called <b>base 16</b>. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
 B=11, C=12, D=13, E=14 and F=15. For example:</p>
 
-<p><img src="math/7fa4abda5bc22503ba5d099524c3b2d6.png" class="blockmath" /></p><p>The sane way to calculate the last step is to use a programming interpreter or
-calculator of your choice. Don't try to do it by hand.</p>
-
-<p>Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
+$$\begin{align}
+\text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +
+                  \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
+               &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
+               &= 51966
+\end{align}$$<p>Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
 because it's very common in programming. Note that the first character is a
 zero, not the letter O.</p>
+
+<p>The sane way to calculate the last step is to use a programming interpreter or
+calculator of your choice. Don't try to do it by hand.</p>
 
 <p>Most programming languages have very good support for hexadecimal and a few
 other bases. For example, here's Python:</p>
@@ -48,6 +246,8 @@ other bases. For example, here's Python:</p>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #4070a0">&#39;i went to a </span><span style="color: #70a0d0; font-style: italic">{:x}</span><span style="color: #4070a0">&#39;</span><span style="color: #666666">.</span>format(<span style="color: #40a070">51966</span>)
 <span style="color: #888888">&#39;i went to a cafe&#39;</span>
 </pre></div>
+<p><p></p>             <!-- empty space hack --></p>
+
 <div class="box graybox"><h2> See Also</h2><p>As you can see, it's possible to represent some words with
 hexadecimal numbers. There's <a href="https://en.wikipedia.org/wiki/Hexspeak#Notable_magic_numbers">a nice list of funny hexadecimal
 numbers that are actually being
@@ -61,8 +261,8 @@ on Wikipedia.
 maximum and other values are 0. <code>rgb(0,0,0)</code> is black and
 <code>rgb(255,255,255)</code> is white.</p>
 
-<p>You might have noticed that <img class="inlinemath" src="math/a655a766e0d17a602684fe06772ba5e2.png" /> and
-<img class="inlinemath" src="math/f5719c7d664537f90344e675cb644e50.png" />, and that's not just a random
+<p>You might have noticed that $0=\text{0x0}$ and
+$255 = 15 \cdot 16 + 15 = \text{0xFF}$, and that's not just a random
 coincidence. A color like <code>#RRGGBB</code> is actually <code>rgb(RR,GG,BB)</code> where
 <code>RR</code>, <code>GG</code> and <code>BB</code> are hexadecimal. For example,
 <code>#ff0000 = rgb(0xff,0x00,0x00) = rgb(255,0,0)</code>.</p>

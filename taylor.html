@@ -4,6 +4,20 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>Taylor Polynomials</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
@@ -30,66 +44,114 @@ approximate.</p>
 
 <p>Let's make some notes based on the graphs:</p>
 
-<ul><li>All graphs have the same height at 0, so <img class="inlinemath" src="math/5a2af51947ccb827f4a6bf9946efe37b.png" />.</li><li><img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766b41.png" /> and <img class="inlinemath" src="math/2d70da379b3ffb56bd104b348ba21c55.png" /> go to the same direction as <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> at 0, so
-  <img class="inlinemath" src="math/29620630d6905aa545928137bfd00626.png" />.</li><li>This one isn't as obvious as other stuff above, but anyway,
-  <img class="inlinemath" src="math/3ba40ba310c9965abf31dd6443525f63.png" />.
-</li></ul><p>Here <img class="inlinemath" src="math/78b6da7ea43e85631a1b96523b7066ea.png" /> means the derivative of the derivative.</p>
+<ul><li>All graphs have the same height at 0, so $P_0(0)=P_1(0)=P_2(0)=f(0)$.</li><li>$P_1$ and $P_2$ go to the same direction as $f$ at 0, so
+  $P_1'(0)=P_2'(0)=f'(0)$.</li><li>This one isn't as obvious as other stuff above, but anyway,
+  $P_2''(0)=f''(0)$.
+</li></ul><p>Here $f''$ means the derivative of the derivative.</p>
 
-<p>Let's find the equations of <img class="inlinemath" src="math/44a61841b7c1b2cecc926e984df951ab.png" />, <img class="inlinemath" src="math/36278b4bb8f70408894b5e9dfcb60886.png" /> and <img class="inlinemath" src="math/89ef646e1721fff27c097cff44503319.png" />. The <img class="inlinemath" src="math/5b7c5aa2a2a15bd892afe579eef0906e.png" /> is easy:</p>
+<p>Let's find the equations of $P_0(x)$, $P_1(x)$ and $P_2(x)$. The $P_0$ is easy:</p>
 
-<p><img src="math/bad128ec80642073161d3cffddc5d6b3.png" class="blockmath" /></p><p>It's also easy to get started with <img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766b41.png" />.</p>
+$$\begin{align}
+P_0(x) = f(0)
+\end{align}$$<p>It's also easy to get started with $P_1$.</p>
 
-<p><img src="math/5406d9462731ba4b24e090ad1e9fb488.png" class="blockmath" /></p><p>If you know <a href="integrals.html">integrals</a> you can calculate this yourself. Just
-note that <img class="inlinemath" src="math/2bc3b4ce5db539e47bd469d31245629a.png" /> is a constant because it doesn't depend on the value of <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.
-Anyway, the only <img class="inlinemath" src="math/20868fa29dfc38ac154b8ef762766b41.png" /> that satisfies these things is here:</p>
+$$\begin{align}
+P_1'(x) = f'(0) \text{ and } P_1(0) = f(0)
+\end{align}$$<p>If you know <a href="integrals.html">integrals</a> you can calculate this yourself. Just
+note that $f'(0)$ is a constant because it doesn't depend on the value of $x$.
+Anyway, the only $P_1$ that satisfies these things is here:</p>
 
-<p><img src="math/293f8c297fa951dd7c71380451c50dba.png" class="blockmath" /></p><p>Here I used the fact that <img class="inlinemath" src="math/bb85921abd146854190e2720f7e25ae7.png" />. You'll see why later.</p>
+$$\begin{align}
+P_1(x) = f'(0)x + f(0) = f'(0)x + P_0(x)
+\end{align}$$<p>Here I used the fact that $P_0(x) = f(0)$. You'll see why later.</p>
 
-<p>Let's find <img class="inlinemath" src="math/2d70da379b3ffb56bd104b348ba21c55.png" /> and yet another polynomial <img class="inlinemath" src="math/c0ac8b12bab590e951e0afb93938cdcb.png" /> similarly:</p>
+<p>Let's find $P_2$ and yet another polynomial $P_3$ similarly:</p>
 
-<p><img src="math/81532670eddccc9724f9af9fb6232d14.png" class="blockmath" /></p><p>So, here are all the results we have gotten so far, written in a way that makes
+$$\begin{align}
+&P_2''(x) = f''(0) \text{ and } P_2'(0) = f'(0) \text{ and } P_2(0) = f(0) \\
+&P_2'(x) = f''(0)x + f'(0) \\
+&P_2(x) = \frac{f''(0)}{2}x^2 + f'(0)x + f(0) = \frac{f''(0)}{2}x^2 + P_1(x)\\
+\\
+&P_3'''(x)=f'''(0)\text{ and }P_3''(0)=f''(0)\text{ and }P_3'(0)=f'(0)\text{ and }P_3(0)=f(0) \\
+&P_3''(x)=f'''(0)x+f''(0) \\
+&P_3'(x)=\frac{f'''(0)}{2}x^2+f''(0)x+f'(0) \\
+&P_3(x)=\frac{f'''(0)}{2\cdot3}x^3+\frac{f''(0)}{2}x^2+f'(0)x+f(0)
+= \frac{f'''(0)}{2\cdot3}x^3 + P_2(x)
+\end{align}$$<p>So, here are all the results we have gotten so far, written in a way that makes
 the pattern quite obvious.</p>
 
-<p><img src="math/8caa0c26013aae0d384555849616d6ef.png" class="blockmath" /></p><p>Next we'll write the rule for calculating <img class="inlinemath" src="math/378d6cdd7c4799427471290542a78833.png" /> for any <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />, but we need more
+$$\begin{align}
+&P_0(x) = f(0) \\
+&P_1(x) = P_0(x) + \frac{f'(0)}{1}x \\
+&P_2(x) = P_1(x) + \frac{f''(0)}{1 \cdot 2}x^2 \\
+&P_3(x) = P_2(x) + \frac{f'''(0)}{1 \cdot 2 \cdot 3}x^3
+\end{align}$$<p>Next we'll write the rule for calculating $P_n(x)$ for any $n$, but we need more
 notation:</p>
 
-<ul><li><img class="inlinemath" src="math/bd9841a11a78574aad8602b07c855e4b.png" /> is the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th derivative of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />, e.g. <img class="inlinemath" src="math/e0a83df9ffb901ca6f3908ebc9185c71.png" />.</li><li><img class="inlinemath" src="math/54ddde9f6131b5c5db2160d297b00598.png" />. Most programming languages have a
-  <code>factorial(n)</code> function that returns <img class="inlinemath" src="math/388f554901ba5d77339eec8b26beebea.png" />.
+<ul><li>$f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(5)}(x)=f'''''(x)$.</li><li>$n! = 1 \cdot 2 \cdot 3 \cdot ... \cdot n$. Most programming languages have a
+  <code>factorial(n)</code> function that returns $n!$.
 </li></ul><p>Let's do this.</p>
 
-<p><img src="math/bf253d3861cc966bfe3801ba440dd3d4.png" class="blockmath" /></p><p>This is known as the <img class="inlinemath" src="math/7b8b965ad4bca0e41ab51de7b31363a1.png" />'th Taylor polynomial.</p>
+$$\begin{align}
+P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n
+\end{align}$$<p>This is known as the $n$'th Taylor polynomial.</p>
 
-<p>We used <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" /> here as a "magic number" that we always put to <img class="inlinemath" src="math/23bafa2d03bfea63981f09d7a8ecc455.png" />, but
+<p>We used $x=0$ here as a "magic number" that we always put to $f(\ \ )$, but
 that doesn't need to be 0. Here's a more generalized Taylor polynomial:</p>
 
-<p><img src="math/929a878774ac609f42b14ca3a8a3f94d.png" class="blockmath" /></p><p>The Taylor polynomial with <img class="inlinemath" src="math/ded681eaa02d11064c9a469dd1b3e04c.png" /> is also known as a Maclaurin polynomial. You
+$$\begin{align}
+P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
+\end{align}$$<p>The Taylor polynomial with $a=0$ is also known as a Maclaurin polynomial. You
 don't need to remember that in this tutorial, but if someone talks about a
 Maclaurin polynomial they mean this.</p>
 
-<p>Taylor polynomials are usually accurate near <img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and less accurate far from
-<img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" />. These graphs demonstrate that:</p>
+<p>Taylor polynomials are usually accurate near $a$ and less accurate far from
+$a$. These graphs demonstrate that:</p>
 
 <p><img class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.png" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
 
-<p>We need to know that <img class="inlinemath" src="math/120727074f706985eb77ec84be750d1f.png" /> and
-<img class="inlinemath" src="math/e5ecaafd81133f3b42596fd6cc5d8722.png" />. These rules are proved
+<p>We need to know that $\frac{d}{dx} \sin(x) = \cos(x)$ and
+$\frac{d}{dx} \cos(x) = -\sin(x)$. These rules are proved
 <a href="more-geometry-and-trig.html#derivative-of-sine">here</a>.</p>
 
 <p>So, we get this:</p>
 
-<p><img src="math/66bfd61a884789fd7a3d327b60936207.png" class="blockmath" /></p><p>The pattern is obvious.</p>
+$$\begin{align}
+f(x) &= \sin(x) \\
+f'(x) &= \cos(x) \\
+f''(x) &= -\sin(x) \\
+f'''(x) &= -\cos(x) \\
+f''''(x) &= \sin(x) \\
+f'''''(x) &= \cos(x) \\
+f''''''(x) &= -\sin(x) \\
+&...
+\end{align}$$<p>The pattern is obvious.</p>
 
 <p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit
-circle</a> we know that <img class="inlinemath" src="math/affa2f467c73dde3c741adb28fba0d84.png" /> and
-<img class="inlinemath" src="math/a3f9046e95416bca98432879d8cd880f.png" /> because the <img class="inlinemath" src="math/90cbc22edf225adf8a68974f51227f05.png" /> point <img class="inlinemath" src="math/ec6014ffc3d92709aa6a4fea11bb3788.png" /> corresponds to the angle 0.</p>
+circle</a> we know that $\cos 0 = 1$ and
+$\sin 0 = 0$ because the $(x,y)$ point $(1,0)$ corresponds to the angle 0.</p>
 
-<p><img src="math/8c1e776279f4ea9faee12457e63afedc.png" class="blockmath" /></p><p>So we have this:</p>
+$$\begin{align}
+f(0) &= 0 \\
+f'(0) &= 1 \\
+f''(0) &= 0 \\
+f'''(0) &= -1 \\
+f''''(0) &= 0 \\
+f'''''(0) &= 1 \\
+&...
+\end{align}$$<p>So we have this:</p>
 
-<p><img src="math/a76ff0b4220f2ab39f117655391f6dfe.png" class="blockmath" /></p><p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
+$$\begin{align}
+\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2
+            + \frac{f'''(0)}{3!}x^3 + \frac{f''''(0)}{4!}x^4 + ... \\
+&=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4
+    + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
+&= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...
+\end{align}$$<p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
 
 <p><img class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.png" /></p><p>I think this is just awesome.</p>
 
-<p>Here's our <img class="inlinemath" src="math/3e21673ce6c9b09f9ec50b7237248576.png" /> implementation:</p>
+<p>Here's our $\sin(x)$ implementation:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># python has math.factorial, but this is here just to show that there&#39;s</span>
 <span style="color: #60a0b0; font-style: italic"># no magic involved</span>
@@ -119,16 +181,16 @@ everything out of basically nothing with just derivatives and antiderivatives.</
 <p>If you look at how Python's <code>math.sin()</code> is implemented it just calls C
 <code>sin()</code>, and that uses taylor polynomials just like our code. The C code is
 more complicated than our <code>taylorsin()</code> because it uses taylor polynomials at
-other places than <img class="inlinemath" src="math/e11729b0b65ecade3fc272548a3883fc.png" />, but the basic idea is the same.</p>
+other places than $x=0$, but the basic idea is the same.</p>
 
 <p>If we could somehow continue this forever instead of stopping at e.g. <code>i=99</code>
 we would get perfectly precise sin values. I'm not going to talk about the
 details of why that happens, but this works for sin, cos and many other things.
 An infinitely continuing Taylor polynomial is also known as a Taylor <i>series</i>.</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of <img class="inlinemath" src="math/7b8d097ebe7de2080ff1dc9a2b6f0807.png" /> and <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" />. See <a href="explog.html#the-e-constant">this
-thing</a> if you don't know what <img class="inlinemath" src="math/e1671797c52e15f763380b45e841ec32.png" /> is or what the
-derivative of <img class="inlinemath" src="math/ff2d26be6b0b506663911208302f91b3.png" /> is. Check your answers with your favorite programming
+<div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of $\cos(x)$ and $e^x$. See <a href="explog.html#the-e-constant">this
+thing</a> if you don't know what $e$ is or what the
+derivative of $e^x$ is. Check your answers with your favorite programming
 language and <a href="summary.html#series-representations">the Taylor series section</a>
 on the summary page.
 </p>

@@ -4,13 +4,27 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
 <title>Integrals</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
 </head>
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><b>Integrals</b></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h1><div class="box redbox"><p>This chapter assumes that you have a good grasp of derivatives, including
 the ability to recognize that
-<img class="inlinemath" src="math/b86429c3211857e64f48fbbfffa91bbc.png" />
+$\displaystyle\lim_{\Delta x \to0}\textstyle\frac{f(x+\Delta x)-f(x)}{\Delta x}$
 is a derivative whenever you see it. I highly recommend reading <a href="derivatives.html">the derivative
 tutorial</a> first.
 </p>
@@ -49,96 +63,138 @@ x <span style="color: #666666">=</span> <span style="color: #40a070">1</span>
 <b>10 seconds</b> and I got a precise answer instead of a decimal approximation.
 This chapter is all about how I did that and why it works.</p>
 
-<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/3789da55e37445ff5d17806fd865fee9.png" style="float:right;" /><p>Let's say that our curve is of the form <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> where <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is a
+<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img class="asymptote" src="asymptote/3789da55e37445ff5d17806fd865fee9.png" style="float:right;" /><p>Let's say that our curve is of the form $y=f(x)$ where $f$ is a
 <a href="more-derivatives.html#which-functions-have-derivatives">continuous</a>
-function. Then we'll choose some <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" /> location and <i>move</i> it right by
-<img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" />. Then we could calculate the change of area <img class="inlinemath" src="math/30eaa39b08a11bf0f9745efda6f9e55c.png" /> in a
+function. Then we'll choose some $x$ location and <i>move</i> it right by
+$\Delta x$. Then we could calculate the change of area $\Delta A$ in a
 couple different ways:</p>
 
-<ul><li><img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" /> is the area to the beginning of the slice and <img class="inlinemath" src="math/713a822f4c8384976a57219e37425533.png" />
-  is the area to the end of the slice, so <img class="inlinemath" src="math/14dbfcbfdfffdf0ddf57d2289e3cf81e.png" />.</li><li>The <img class="inlinemath" src="math/30eaa39b08a11bf0f9745efda6f9e55c.png" /> area looks kind of like an <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> by <img class="inlinemath" src="math/b56546a86ab832a9b2a5b15f96519319.png" /> rectangle,
-  so <img class="inlinemath" src="math/80fdc22417e6a977dec202291e2c4b50.png" />. This ignores the area of the red
+<ul><li>$A(x)$ is the area to the beginning of the slice and $A(x + \Delta x)$
+  is the area to the end of the slice, so $\Delta A = A(x+\Delta x)-A(x)$.</li><li>The $\Delta A$ area looks kind of like an $f(x)$ by $\Delta x$ rectangle,
+  so $\Delta A \approx f(x) \Delta x$. This ignores the area of the red
   triangle in the image, so it is not precise.
 </li></ul><p>We get this:</p>
 
-<p><img src="math/d9e517890c93177b8a8a38ceeb8bdb97.png" class="blockmath" /></p><p>The thinner the slice is, the smaller the red triangle-ish area is
+$$\begin{align}
+A(x+\Delta x)-A(x) &\approx f(x)\Delta x \\
+\frac{A(x+\Delta x)-A(x)}{\Delta x} &\approx f(x)
+\end{align}$$<p>The thinner the slice is, the smaller the red triangle-ish area is
 compared to the entire slice area. So, if we make the slice <i>infinitely</i>
 thin, we don't need to care about the red area:</p>
 
-<p><img src="math/fe25ff8d6cb4fb542cf7a91bfdf3c94a.png" class="blockmath" /></p><p>Yes, this is correct! The derivative of the area function is <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" />. This
-is precise, so we can get rid of <img class="inlinemath" src="math/fb4f353ef9a72c24566678c957a5ae9f.png" /> and replace it with <img class="inlinemath" src="math/43ec3e5dee6e706af7766fffea512721.png" />. So,
+$$\begin{align}
+\lim_{\Delta x \to 0} \frac{A(x+\Delta x)-A(x)}{\Delta x} &= f(x) \\
+A'(x) &= f(x)
+\end{align}$$<p>Yes, this is correct! The derivative of the area function is $f$. This
+is precise, so we can get rid of $\approx$ and replace it with $=$. So,
 if we want to calculate areas all we really need is an antiderivative.</p>
 
-<div class="box graybox"><p>I used <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> here to denote the antiderivative because <img class="inlinemath" src="math/7fc56270e7a70fa81a5935b72eacbe29.png" /> is a letter
+<div class="box graybox"><p>I used $A$ here to denote the antiderivative because $A$ is a letter
 that often describes an area, but a more common style is to say that
-the antiderivative of <img class="inlinemath" src="math/8fa14cdd754f91cc6554c9e71929cce7.png" /> is <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" />. We'll use this big <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> style in
+the antiderivative of $f$ is $F$. We'll use this big $F$ style in
 the rest of the tutorial.
 </p>
 
 </div><img class="asymptote" src="asymptote/a43eb04844e5faeccc3b18a7c755cb48.png" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
 <a href="summary.html#derivative-rules">the derivative rules on the summary page</a> was this:</p>
 
-<p><img src="math/04e4cfa87eb7aebecb4320b7b3061687.png" class="blockmath" /></p><p>So it looks like the antiderivative function <img class="inlinemath" src="math/800618943025315f869e4e1f09471012.png" /> is <img class="inlinemath" src="math/5dd2d3c3aa63e042fc1057e0f334b7fc.png" />.
-But how about <img class="inlinemath" src="math/6013c25a47bbb70b387f68a00916c329.png" />? Its derivative is also
-<img class="inlinemath" src="math/f792df21d1d673ef7a496bbdf2991514.png" /> because <img class="inlinemath" src="math/a798b6b97c3b6fd9647fc86eaaa073dc.png" />. Or how about
-<img class="inlinemath" src="math/da79613e3d8d6c2a503191ba96571756.png" /> or <img class="inlinemath" src="math/23c9b34945dc7c155dcb016fd421bd18.png" />? We don't know what <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" /> is, but we
-know that <img class="inlinemath" src="math/4e93e70d60f9ea683a235bfcac485e75.png" /> where <img class="inlinemath" src="math/0d61f8370cad1d412f80b84d143e1257.png" /> is a constant.</p>
+$$\begin{align}\frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}
+\end{align}$$<p>So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
+But how about $F(x) = \sqrt x + 1$? Its derivative is also
+$\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
+$\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
+know that $F(x) = \sqrt x + C$ where $C$ is a constant.</p>
 
 <img class="asymptote" src="asymptote/4e566f9d76f624b312de8b34b0acd30a.png" style="float:right;" /><p>Let's try to calculate our area:</p>
 
-<p><img src="math/cb2cbcb88d677e7d0486eaeb47343e90.png" class="blockmath" /></p><p>That's all there is to it! <img class="inlinemath" src="math/47033336fbe2edbc97aec5cabebf3a31.png" /> is the precise area. I think this is
+$$\begin{align}
+F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
+            &= \sqrt b + C - \sqrt a - C \\
+            &= \sqrt b - \sqrt a \\
+            &= \sqrt 2 - \sqrt 1 \\
+            &= \sqrt 2 - 1 \\
+            &= 0.414213562373...
+\end{align}$$<p>That's all there is to it! $\sqrt 2 - 1$ is the precise area. I think this is
 awesome.</p>
 
 <p>This took quite a while because we went through all the steps needed to
 understand everything, but now that you have seen this once you can do it much
-faster. So, here are the steps for calculating the area under <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> between
-<img class="inlinemath" src="math/50a20ce04c291ac897290a4f2e3bc9e2.png" /> and <img class="inlinemath" src="math/e89da0c0c73b56b18d920816a6df9829.png" />:</p>
+faster. So, here are the steps for calculating the area under $y=f(x)$ between
+$x=a$ and $x=b$:</p>
 
-<ol><li>Find an antiderivative <img class="inlinemath" src="math/d76f2c4d6bdf142af5106c3f36e9e970.png" />. There are infinitely many antiderivatives,
-but <i>any</i> antiderivative will do because the <img class="inlinemath" src="math/0d61f8370cad1d412f80b84d143e1257.png" />'s are substracted away.</li><li>Calculate <img class="inlinemath" src="math/05dce1fc5a99f01613a3515624d217df.png" /> and you're done.
+<ol><li>Find an antiderivative $F(x)$. There are infinitely many antiderivatives,
+but <i>any</i> antiderivative will do because the $C$'s are substracted away.</li><li>Calculate $F(b)-F(a)$ and you're done.
 </li></ol><p>This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.</p>
 
 <img class="asymptote" src="asymptote/f45c866a1626efec572343d3e249db44.png" style="float:right;" /><h2 id="notation">Notation<a class="headerlink" href="#notation" title="Link to this title">¶</a></h2><p>Usually this stuff is written like this:</p>
 
-<ul><li>The blue area in the image at right is <img class="inlinemath" src="math/3c0e4608b57fd3fa5a57cdc23312f7bd.png" />. Be careful
-here – the <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> is just a part of the notation and you must not forget
-it.</li><li>The antiderivative of <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> including the <img class="inlinemath" src="math/13fc32afdcb87685cf0ab8d7c230bbe3.png" /> is the same thing without
-<img class="inlinemath" src="math/0cc175b9c0f1b6a831c399e269772661.png" /> and <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" />. So <img class="inlinemath" src="math/c59db99225bf9400e94cedc7de6fcb74.png" /> where <img class="inlinemath" src="math/a5d6f1a7618d3e88ed9c22a9ccaf6ba2.png" />.</li><li><img class="inlinemath" src="math/a40060f1c404b30bac2c7652e5d20a8e.png" />.
-</li></ul><p>The integral sign <img class="inlinemath" src="math/05ac7a592ac15a18edc4cd1610e87ea8.png" /> is a strecthed S like Sum, and <img class="inlinemath" src="math/24719e95ebfc37780cd10efa87e81e05.png" />
-means conceptually a sum of the areas of little <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> by <img class="inlinemath" src="math/acd2b09d39705a84bff035c18c9faea9.png" /> rectangles.</p>
+<ul><li>The blue area in the image at right is $\int_a^b f(x)\ dx$. Be careful
+here – the $dx$ is just a part of the notation and you must not forget
+it.</li><li>The antiderivative of $f(x)$ including the $+C$ is the same thing without
+$a$ and $b$. So $\int f(x)\ dx = F(x) + C$ where $F'(x) = f(x)$.</li><li>$[F(x)]_a^b = F(b)-F(a)$.
+</li></ul><p>The integral sign $\int$ is a strecthed S like Sum, and $\int_a^b f(x) dx$
+means conceptually a sum of the areas of little $f(x)$ by $dx$ rectangles.</p>
 
-<p>For example, with this notation, our <img class="inlinemath" src="math/f792df21d1d673ef7a496bbdf2991514.png" /> thing can be
+<p>For example, with this notation, our $\frac{1}{2 \sqrt x}$ thing can be
 calculated with very little paper like this:</p>
 
-<p><img src="math/95cf1646b2cbf15f9a01d188d914e814.png" class="blockmath" /></p><p>This is how I did it in just a few seconds. Note that you can leave out the
-<img class="inlinemath" src="math/13fc32afdcb87685cf0ab8d7c230bbe3.png" /> when calculating areas, but you should include it when calculating
+$$\begin{align}
+\int_1^2 \frac{1}{2 \sqrt x}\ dx = \left[\sqrt x\ \right]_1^2
+= \sqrt 2 - \sqrt 1 = \sqrt 2 - 1
+\end{align}$$<p>This is how I did it in just a few seconds. Note that you can leave out the
+$+C$ when calculating areas, but you should include it when calculating
 antiderivatives.
 </p>
 
 <h2 id="integral-rules">Integral Rules<a class="headerlink" href="#integral-rules" title="Link to this title">¶</a></h2><p>You can turn <a href="summary.html#derivative-rules">derivative rules</a> into
-integral rules by applying <img class="inlinemath" src="math/a4ca7ded5a8974b7806595e91b24e46b.png" /> on both sides. Keep in mind
-that <img class="inlinemath" src="math/3e289760701f9d652ec8122cdf4e3f4f.png" /> and
-<img class="inlinemath" src="math/05371d29d2a1a5b0ac8da383ea268551.png" /> because <img class="inlinemath" src="math/a4ca7ded5a8974b7806595e91b24e46b.png" />
+integral rules by applying $\int(...)dx$ on both sides. Keep in mind
+that $\int f'(x)\ dx = f(x) + C$ and
+$\frac{d}{dx} \left( \int f(x)\ dx \right) = f(x)$ because $\int(...)dx$
 means antiderivative. For example:</p>
 
-<p><img src="math/390981fa902dc9f910c0f4d162a0150b.png" class="blockmath" /></p><p>As with derivatives, there's <a href="summary.html#integral-rules">a handy list of integral
+$$\begin{align}
+f'(g(x))g'(x) &= \frac{d}{dx}(f(g(x))) \\
+\int f'(g(x))g'(x)\ dx &= f(g(x)) + C
+\end{align}$$<p>As with derivatives, there's <a href="summary.html#integral-rules">a handy list of integral
 rules</a> on the summary page.</p>
 
-<p>In our first example I chose <img class="inlinemath" src="math/f792df21d1d673ef7a496bbdf2991514.png" /> just because we know it's
-the derivative of <img class="inlinemath" src="math/f108a3d88b22ff91ddbd459b0f359bc9.png" />, but with the summary page we can also integrate
-stuff like <img class="inlinemath" src="math/4a1e95c481e2526a7e010cfa2e008e25.png" />:</p>
+<p>In our first example I chose $\frac{1}{2 \sqrt x}$ just because we know it's
+the derivative of $\sqrt x$, but with the summary page we can also integrate
+stuff like $\frac{1}{\sqrt x}$:</p>
 
-<p><img src="math/2b2b837cdc4a1c985973e9becf12cc66.png" class="blockmath" /></p><p><img src="math/4446eeefca0973485f8faf9a3346c58d.png" class="blockmath" /></p><p>We can also do <img class="inlinemath" src="math/f108a3d88b22ff91ddbd459b0f359bc9.png" /> but we need to know that
-<img class="inlinemath" src="math/56a0a320b5e232021c4debb573ffff82.png" />. I didn't cover this on
+$$\begin{align}
+\int \frac{1}{\sqrt x}\ dx
+&= \int 2 \frac{1}{2 \sqrt x}\ dx \\
+&= 2 \int \frac{1}{2 \sqrt x}\ dx \\
+&= 2 \sqrt x + C
+\end{align}$$$$\begin{align}\frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}
+\end{align}$$<p>We can also do $\sqrt x$ but we need to know that
+$\frac{1}{\ \frac 3 2 \ } = \frac{2}{3}$. I didn't cover this on
 <a href="basics.html">the basics page</a> but it's quite straight-forward to understand;
-the <img class="inlinemath" src="math/c81e728d9d4c2f636f067f89cc14862c.png" /> is below <i>two</i> division lines so it must be different from being below
+the $2$ is below <i>two</i> division lines so it must be different from being below
 just one division line. It's a mess and checking the answer with a derivative
 is also a mess, but it works.</p>
 
-<p><img src="math/a379c4ee71aed308799321e0744ade28.png" class="blockmath" /></p><p><img src="math/cde748684610f3a665ec806269121069.png" class="blockmath" /></p><h2 id="integrating-with-python">Integrating with Python<a class="headerlink" href="#integrating-with-python" title="Link to this title">¶</a></h2><p>Of course, <a href="http://www.sympy.org">sympy</a> does integrals really nicely.
-It doesn't add <img class="inlinemath" src="math/13fc32afdcb87685cf0ab8d7c230bbe3.png" /> for some reason, so you need to remember it
-yourself. The <img class="inlinemath" src="math/13fc32afdcb87685cf0ab8d7c230bbe3.png" /> is not just some useless gibberish that you need to
+$$\begin{align}
+\int \sqrt x\ dx &= \int x^\frac 1 2\ dx \\
+&= \frac{x^{\frac{1}{2}+1}}{\frac 1 2 + 1} + C \\
+&= \frac{1}{\frac 1 2 + 1} x^{\frac 1 2 + 1} + C \\
+&= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac 1 2} + C \\
+&= \frac{1}{\ \frac 3 2 \ } x^1 x^{\frac 1 2} + C \\
+&= \frac 2 3 x \sqrt x + C
+\end{align}$$$$\begin{align}
+\frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right)
+&= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0 \\
+&= \frac 2 3 \cdot \frac{d}{dx}(x^1 x^{\frac 1 2}) \\
+&= \frac 2 3 \cdot \frac{d}{dx}(x^{1 + \frac 1 2}) \\
+&= \frac 2 3 \cdot \frac{d}{dx}(x^{\frac 3 2}) \\
+&= \frac 2 3 \cdot \frac 3 2 \cdot x^{\frac 3 2 - 1} \\
+&= x^{\frac 1 2} \\
+&= \sqrt x
+\end{align}$$<h2 id="integrating-with-python">Integrating with Python<a class="headerlink" href="#integrating-with-python" title="Link to this title">¶</a></h2><p>Of course, <a href="http://www.sympy.org">sympy</a> does integrals really nicely.
+It doesn't add $+C$ for some reason, so you need to remember it
+yourself. The $+C$ is not just some useless gibberish that you need to
 remember just because it's annoying, and sometimes forgetting it would
 screw things up (see the jump example below).</p>
 
@@ -158,21 +214,29 @@ screw things up (see the jump example below).</p>
 <p>Sometimes the answers look different than the answers we ended up with,
 but they are still correct. For example:</p>
 
-<p><img src="math/9930c30ba411b99f3203efd270d09942.png" class="blockmath" /></p><h2 id="example-smooth-jumps-revisited">Example: Smooth Jumps Revisited<a class="headerlink" href="#example-smooth-jumps-revisited" title="Link to this title">¶</a></h2><p>We learned to make a game where a ball jumps in the shape of parabola in
+$$\begin{align}
+\frac{2x^{3/2}}{3}
+= \frac{2x^{1+\frac 1 2}}{3}
+= \frac{2x^1x^{1/2}}{3}
+= \frac 2 3 x \sqrt x
+\end{align}$$<h2 id="example-smooth-jumps-revisited">Example: Smooth Jumps Revisited<a class="headerlink" href="#example-smooth-jumps-revisited" title="Link to this title">¶</a></h2><p>We learned to make a game where a ball jumps in the shape of parabola in
 <a href="derivatives.html#example-smooth-jumps">this derivative example</a>. We somehow
 guessed that the natural jumping curve might be a parabola. But now we know how
-to get from <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> being a constant to a parabola. I won't explain things much;
+to get from $g$ being a constant to a parabola. I won't explain things much;
 I'll just assume that you have read the derivative thing linked above.</p>
 
-<div class="box graybox"><p>Here <img class="inlinemath" src="math/273a383345e167ee1791232c40eaf917.png" /> and <img class="inlinemath" src="math/6ece45e3f78470bcf0e7db1d3c539a09.png" /> mean velocity and height at time <img class="inlinemath" src="math/e358efa489f58062f10dd7316b65649e.png" />. I'm doing that
-instead of plain <img class="inlinemath" src="math/9e3669d19b675bd57058fd4664205d2a.png" /> and <img class="inlinemath" src="math/2510c39011c5be704182423e3a695e91.png" /> to remind us about the fact that they aren't
-just constants; they depend on the time. However, <img class="inlinemath" src="math/b2f5ff47436671b6e533d8dc3614845d.png" /> is just a constant.
+<div class="box graybox"><p>Here $v(t)$ and $h(t)$ mean velocity and height at time $t$. I'm doing that
+instead of plain $v$ and $h$ to remind us about the fact that they aren't
+just constants; they depend on the time. However, $g$ is just a constant.
 </p>
 
-</div><p><img src="math/e8f1d382a6bd3f5c4a422d398aa2aa06.png" class="blockmath" /></p><p>Now if we rename the constants so that <img class="inlinemath" src="math/419ff2381b0db649c07c9fe6a1ebeb3f.png" />, <img class="inlinemath" src="math/bb7a028e5dd0d3ba2339be49161b11aa.png" /> and
-<img class="inlinemath" src="math/3dbd327d9dc5f3bb699caf635becce36.png" /> we get <img class="inlinemath" src="math/7c87db479d0d651f6808201439553b96.png" />, and that's the equation of a parabola.</p>
+</div>$$\begin{align}
+v(t) &= \int g\ dt = gt + C_1 \\
+h(t) &= \int v(t)\ dt = \int(gt+C_1)\ dt = \frac 1 2 gt^2 + C_1 t + C_2
+\end{align}$$<p>Now if we rename the constants so that $a = \frac 1 2 g$, $b = C_1$ and
+$c = C_2$ we get $h(t) = at^2+bt+c$, and that's the equation of a parabola.</p>
 
-<h2 id="example-circle-area">Example: Circle Area<a class="headerlink" href="#example-circle-area" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> and <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> are. <a href="summary.html#geometry-and-trig">Click
+<h2 id="example-circle-area">Example: Circle Area<a class="headerlink" href="#example-circle-area" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what $\pi$ and $\tau$ are. <a href="summary.html#geometry-and-trig">Click
 here</a> if you don't.
 </p>
 
@@ -186,21 +250,34 @@ integrate, but the second and third one are something we can do. Let's do the
 third one.</p>
 
 <img class="asymptote" src="asymptote/9182d7d00470be4f039f4ba058182934.png" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
-base <img class="inlinemath" src="math/596c0cc2af83f55173d257517e8f1c47.png" /> and height <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" />. The slice area is <img class="inlinemath" src="math/b9c24eca2457da0483523b47844ffc57.png" />.</p>
+base $\Delta b$ and height $r$. The slice area is $A(b+\Delta b)-A(b)$.</p>
 
-<p><img src="math/a49d9fb9b8f2bd730249d74aa1f40265.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/f6d5eef5ee5e51fc839bb54201c62e3b.png" />, then <img class="inlinemath" src="math/cd264c9a404a0909b55924e5f7ffdf05.png" />.</p>
+$$\begin{align}
+A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2} \\
+\frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx \frac r 2 \\
+\lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= \frac r 2 \\
+A'(b) &= \frac r 2 \\
+A(b) &= \int \frac r 2\ db = \frac{rb}{2} + C
+\end{align}$$<p>If $b=0$, then $A(b)=0$.</p>
 
-<p><img src="math/2c7e1aca3a756e6a3b1183d8ab59c10d.png" class="blockmath" /></p><p>If <img class="inlinemath" src="math/92eb5ffee6ae2fec3ad71c777531578f.png" /> is the whole perimeter <img class="inlinemath" src="math/24ed1d8bda9032a2bc7f9cdc1dc6306b.png" />, then <img class="inlinemath" src="math/539437a02c5885c575788009383e96c8.png" /> is the circle area.</p>
+$$\begin{align}A(0) = \frac{r \cdot 0}{2} + C &= 0 \\ C &= 0
+\end{align}$$<p>If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area.</p>
 
-<p><img src="math/c0879dec696f2fe3ea9412c8f1c9fe66.png" class="blockmath" /></p><p>Alternatively, after figuring out <img class="inlinemath" src="math/b44b1277f6a3f46e485e72d752427065.png" /> we could also
+$$\begin{align}A(\tau r) = \frac{r \tau r}{2}+0 = \frac 1 2 \tau r^2 = \pi r^2
+\end{align}$$<p>Alternatively, after figuring out $A(b) = \frac{rb}{2}+C$ we could also
 do this:</p>
 
-<p><img src="math/888f7e80378213a22289f109e2f7a023.png" class="blockmath" /></p><p>In general, if you see something like <img class="inlinemath" src="math/8f8065fbcbb5fb697d80d3f18c4c73e1.png" /> it's possibly the result
-of some integration because <img class="inlinemath" src="math/b09ff48623072588b9f4a0fa6368257b.png" />.
-The <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> form kind of hides the integration because <img class="inlinemath" src="math/d5bd00eca82ed85e3d222a898fa864d6.png" />,
-but rewriting it with <img class="inlinemath" src="math/a6f317b268ae825d94f832f970af607c.png" /> makes everything clear. On the other hand,
-<img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> is slightly easier to use <i>because</i> the <img class="inlinemath" src="math/d54f6ce67b75f58dac81e59a9f85fc22.png" /> is hidden. That's
-why this tutorial uses <img class="inlinemath" src="math/4f08e3dba63dc6d40b22952c7a9dac6d.png" /> when it comes to circle areas.</p>
+$$\begin{align}
+A(\tau r)-A(0)
+&= \left(\frac{r\cdot\tau r}{2}+C\right)-\left(\frac{r\cdot0}{2}+C\right) \\
+&= \frac 1 2 \tau r^2 +C-0-C \\
+&= \frac 1 2 \tau r^2 = \pi r^2
+\end{align}$$<p>In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
+of some integration because $\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r$.
+The $\pi r^2$ form kind of hides the integration because $\pi = \frac 1 2 \tau$,
+but rewriting it with $\tau$ makes everything clear. On the other hand,
+$\pi r^2$ is slightly easier to use <i>because</i> the $\frac 1 2$ is hidden. That's
+why this tutorial uses $\pi$ when it comes to circle areas.</p>
 
 <h2 id="going-3d">Going 3D<a class="headerlink" href="#going-3d" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>If the VLC Media Player cone is 200 pixels high, its radius is 50
 pixels and it's 3-dimensional, how many pixels fit inside the cone?</p>
@@ -210,34 +287,51 @@ page</a>.</small>
 </p>
 
 </div><p>Integrals are actually not limited to areas, and they also work nicely
-with 3D stuff. Here <img class="inlinemath" src="math/7da3f9417e349bc472da3b128413cd70.png" /> represents the volume to <img class="inlinemath" src="math/9dd4e461268c8034f5c8564e155c67a6.png" />.</p>
+with 3D stuff. Here $V(x)$ represents the volume to $x$.</p>
 
 <img class="asymptote" src="asymptote/eb3599c1c6e3b80ebe8accc8a9a945ac.png" style="float:left;" /><img class="asymptote" src="asymptote/70f67f794e4d15a5d8e6147f02fb7dc7.png" style="float:left;" /><p><div style="clear:both;"></div></p>
 
 <p>We get this stuff that looks a lot like our area stuff above:</p>
 
-<p><img src="math/c5cad7fc03773ec7ef3af591898fd77f.png" class="blockmath" /></p><p><img src="math/0ae58256bb003e3a241d905b0159f79b.png" class="blockmath" /></p><img class="asymptote" src="asymptote/8b4875fb4008dcdb212b18e594d11dd5.png" style="float:right;" /><p>Let's solve our VLC problem. If you look at the image at right, all we
-really need is <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />, but for that we need to know what <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> is.
-Let's start by drawing <img class="inlinemath" src="math/7c1c9491ba7c6e8d6d2cfa82e39b22ca.png" /> in a 2D plane without the 3D stuff:</p>
+$$\begin{align}
+V(x+\Delta x)-V(x) &\approx A(x) \cdot \Delta x \\
+\frac{V(x+\Delta x)-V(x)}{\Delta x} &\approx A(x) \\
+\lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x) \\
+V'(x) &= A(x)
+\end{align}$$$$\begin{align}V(b)-V(a) = \bigl[V(x)\bigr]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx
+\end{align}$$<img class="asymptote" src="asymptote/8b4875fb4008dcdb212b18e594d11dd5.png" style="float:right;" /><p>Let's solve our VLC problem. If you look at the image at right, all we
+really need is $A(x)$, but for that we need to know what $f(x)$ is.
+Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:</p>
 
 <p><img class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.png" /></p><p>Now we can use <a href="graphs.html#lines">the graphs page</a> and <a href="derivatives.html#slope">the slope thing
 on the derivative page</a>:</p>
 
-<p><img src="math/56cd907b263cae53c77fe1352f060f4e.png" class="blockmath" /></p><p>Next we need <img class="inlinemath" src="math/7852db5d43d5ab2b22775d9f2131b869.png" />. <a href="#example-circle-area">Above</a> we figured that the
-area of a circle is <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" /> where <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> is the radius, but the green
-circle's radius is <img class="inlinemath" src="math/50bbd36e1fd2333108437a2ca378be62.png" /> instead of <img class="inlinemath" src="math/4b43b0aee35624cd95b910189b3dc231.png" /> so <img class="inlinemath" src="math/c93d0e79220938675ad742072bdd4299.png" />.
+$$\begin{align}f(x) = sx = \frac{\Delta y}{\Delta x} x = \frac r h x
+\end{align}$$<p>Next we need $A(x)$. <a href="#example-circle-area">Above</a> we figured that the
+area of a circle is $\pi r^2$ where $r$ is the radius, but the green
+circle's radius is $f(x)$ instead of $r$ so $A(x) = \pi (f(x))^2$.
 Let's do this:</p>
 
-<p><img src="math/d603547c832e44de2602634e0e58c6c6.png" class="blockmath" /></p><img class="asymptote" src="asymptote/d2ec8c7a1acd9e034294badf961e3e6a.png" style="float:right;" /><p>That was a mess, but we're almost done!</p>
+$$\begin{align}
+\int_0^h A(x)\ dx
+&= \int_0^h \pi (f(x))^2\ dx \\
+&= \int_0^h \pi \left( \frac r h x \right)^2\ dx \\
+&= \int_0^h \pi \frac{r^2}{h^2} x^2\ dx \\
+&= \pi \frac{r^2}{h^2} \int_0^h x^2\ dx \\
+&= \pi \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
+&= \pi \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
+&= \frac{\pi r^2 h}{3}
+\end{align}$$<img class="asymptote" src="asymptote/d2ec8c7a1acd9e034294badf961e3e6a.png" style="float:right;" /><p>That was a mess, but we're almost done!</p>
 
-<p>Note that the area of the base circle is <img class="inlinemath" src="math/6666716ddb469e1a10b4dedf9a566dcb.png" />, and <img class="inlinemath" src="math/ac5df3e4484a2c999639c8e242f063bb.png" /> would
+<p>Note that the area of the base circle is $\pi r^2$, and $\pi r^2 h$ would
 be the volume of a <i>cylinder</i> that barely fits around the VLC cone. So,
 in the image at right, the cylinder's volume is exactly three times the
 cone's volume regardless of their sizes. I think this is quite nice.</p>
 
-<p>So, now we can just plug in <img class="inlinemath" src="math/34fb735b1183c40204e0245bee08c5f2.png" /> and <img class="inlinemath" src="math/df7602ff66028bbe7c731f6e1fd54af8.png" /> to get our cone volume.</p>
+<p>So, now we can just plug in $r=50$ and $h=200$ to get our cone volume.</p>
 
-<p><img src="math/815094db9a8fa425797ad07b58a0068f.png" class="blockmath" /></p><p>That's quite a few pixels.
+$$\begin{align}\frac{\pi r^2 h}{3} = \frac{\pi \cdot 50^2 \cdot 200}{3} \approx 523600
+\end{align}$$<p>That's quite a few pixels.
 </p>
 
 </div>
