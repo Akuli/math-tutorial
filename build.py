@@ -68,80 +68,29 @@ def get_sidebar_content(txtfile):
 builder.get_sidebar_content = get_sidebar_content
 
 
-# these are based on sphinx stuff (i.e. copied from sphinx)
-BLOCK_MATH_TEMPLATE = r'''
-\documentclass[12pt]{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{anyfontsize}
-\usepackage{bm}
-\pagestyle{empty}
-
-\begin{document}
-\fontsize{12}{14}\selectfont \begin{equation*}
-\begin{split}%s\end{split}
-\end{equation*}
-\end{document}
-'''.lstrip()
-
-INLINE_MATH_TEMPLATE = r'''
-\documentclass[12pt]{article}
-\usepackage[utf8x]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsthm}
-\usepackage{amssymb}
-\usepackage{amsfonts}
-\usepackage{anyfontsize}
-\usepackage{bm}
-\pagestyle{empty}
-
-\begin{document}
-\fontsize{12}{14}\selectfont $%s$
-\end{document}
-'''.lstrip()
-
-
-def run_latex(math, textfile, is_inline):
-    os.makedirs(os.path.join(builder.outputdir, 'math'), exist_ok=True)
-    pngfilename = hashlib.md5(math.encode('utf-8')).hexdigest() + '.png'
-    outfile = os.path.join(builder.outputdir, 'math', pngfilename)
-
-    if cache_get(pngfilename) is None:
-        with tempfile.TemporaryDirectory() as tmpdir:
-            with open(os.path.join(tmpdir, 'math.tex'), 'w') as file:
-                template = (INLINE_MATH_TEMPLATE if is_inline
-                            else BLOCK_MATH_TEMPLATE)
-                file.write(template % math)
-
-            subprocess.check_call(
-                ['latex', '--interaction=nonstopmode', 'math.tex'],
-                cwd=tmpdir, stdout=subprocess.DEVNULL)
-            subprocess.check_call(
-                ['dvipng', '-o', 'math.png', '-T', 'tight', '-z9',
-                 '-gamma', '1.5',  '-D', '110', '-bg', 'Transparent',
-                 'math.dvi'], cwd=tmpdir, stdout=subprocess.DEVNULL)
-            cache_put(os.path.join(tmpdir, 'math.png'), pngfilename)
-
-    shutil.copy(cache_get(pngfilename), outfile)
-    htmlfile = builder.infile2outfile(textfile)
-    relative = os.path.relpath(outfile, os.path.dirname(htmlfile))
-    return relative.replace(os.sep, '/')
-
-
-@builder.converter.add_inliner(r'\B\$(.+?)\$\B')
-def inline_math(match, filename):
-    path = run_latex(match.group(1), filename, True)
-    return '<img class="inlinemath" src="%s" />' % path
+builder.get_head_extras = lambda filename: '''
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mat\
+hjax/2.7.2/MathJax.js"></script>
+'''
 
 
 @builder.converter.add_multiliner(r'^math:')
 def multiline_math(match, filename):
+    # this is really just a convenience thing
     math = textwrap.dedent(match.string[match.end():])
-    path = run_latex(math, filename, False)
-    yield '<p><img src="%s" class="blockmath" /></p>' % path
+    yield r'$$\begin{align}%s\end{align}$$' % math
 
 
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')
