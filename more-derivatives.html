@@ -41,14 +41,14 @@ f(x) = \left\{\begin{matrix}
     1 \text{ if } x \ge 0\\ 
     0 \text{ if } x < 0
 \end{matrix}\right.
-\end{align}$$<p><img class="asymptote" src="asymptote/d7ef1a5b2b4155f3aa442109bcea2fbe.png" /></p><p></li><li></p>
+\end{align}$$<p><img width="227" height="146" class="asymptote" src="asymptote/d7ef1a5b2b4155f3aa442109bcea2fbe.svg" /></p><p></li><li></p>
 
 <p>The graph of the function has a spike in it. Derivatives describe
 "growing speed" and it isn't clear how fast the values grow on top of a
 spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
 $|x|$ has a derivative everywhere except at $x=0$.</p>
 
-<p><img class="asymptote" src="asymptote/c30ea4d9566657343733b8c3f6d38d71.png" /></p><p></li></ul></p>
+<p><img width="170" height="141" class="asymptote" src="asymptote/c30ea4d9566657343733b8c3f6d38d71.svg" /></p><p></li></ul></p>
 
 <p>Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.</p>
@@ -153,7 +153,7 @@ $\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}$. Now we know that the rule works
 when $c=1$, and then if we plug in $k=1$ we know it works when $c=2$, and so
 on.</p>
 
-<p><img class="asymptote" src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.png" /></p><p>Note that we only proved that the rule works when $c$ is a positive integer,
+<p><img width="425" height="89" class="asymptote" src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive integer,
 but it also works when $c$ is e.g. $\frac{1}{2}$. It's possible to prove
 that the rule isn't limited to positive integers, but that's beyond the
 scope of this tutorial.
@@ -206,7 +206,7 @@ while keeping it easy to read. Here's the best proof I managed to make.</p>
 
 $$\begin{align}g'(x) = \lim_{h\to0} \frac{g(x+h)-g(x)}{h}
 \end{align}$$$$\begin{align}f'(g(x)) = \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k}
-\end{align}$$<img class="asymptote" src="asymptote/c332da017f76bc60b6127cdf557b08c2.png" style="float:right;" /><p>Note that I used $h$ with one limit and $k$ with the other; the limits are
+\end{align}$$<img width="255" height="255" class="asymptote" src="asymptote/c332da017f76bc60b6127cdf557b08c2.svg" style="float:right;" /><p>Note that I used $h$ with one limit and $k$ with the other; the limits are
 completely independent of each other and I wanted to make it stand out. In
 other words, it doesn't matter how $h$ and $k$ relate to each other as long
 as both of them approach 0.</p>
@@ -235,7 +235,7 @@ $$\begin{align}
 \right) \\
 =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
 =& \frac{d}{dx} f(g(x))
-\end{align}$$<img class="asymptote" src="asymptote/4e51968114d716fd3f385598fd228c9b.png" style="float:right;" /><p>This looks nice, but we are not done yet! We divided by $k$. What if
+\end{align}$$<img width="255" height="255" class="asymptote" src="asymptote/4e51968114d716fd3f385598fd228c9b.svg" style="float:right;" /><p>This looks nice, but we are not done yet! We divided by $k$. What if
 $k=g(x+h)-g(x)=0$ when $h \to 0$ but $h \ne 0$? Practically it means that
 the graph $y=g(x)$ is a horizontal and straight line around $x$ because
 $g(x+h)=g(x)$ with a small $h$. So, we can say that $g(x)=c$ on this
