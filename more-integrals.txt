@@ -55,33 +55,44 @@ asymptote:
     draw(dslabel--(xavg-0.07,f(xavg)+0.12), arrow=Arrow(size=5mm));
     label((the_x,0), L="$x$", align=SW);
 
-Now you can see a little triangle in the picture so we can apply [the
+For convenience, I'll define $\Delta s = s(x+\Delta x)-s(x)$ and
+$\Delta y = f(x+\Delta x)-f(x)$. This will be a mess anyway, but these handy
+variables make things a bit less messy.
+
+Anyway, now you can see a little triangle in the picture so we can apply [the
 Pythagorean theorem](geometry-and-trig.html#pythagorean-theorem), but as
 usual, the result is not perfectly accurate because the graph is not
 guaranteed to be straight. We get this mess:
 
 math:
-    (s(x+\Delta x)-s(x))^2 &\approx (\Delta x)^2 + \bigl(f(x+\Delta x)-f(x)\bigr)^2 \\
-    |s(x+\Delta x)-s(x)| &\approx \sqrt{(\Delta x)^2 + \bigl(f(x+\Delta x)-f(x)\bigr)^2} \\
-    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{\bigl(f(x+\Delta x)-f(x)\bigr)^2}{(\Delta x)^2}} \\
-    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
-    &\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2\right)} \\
-    &\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
-    &\approx |\Delta x|\ \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
-    \frac{|s(x+\Delta x)-s(x)|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
-    \frac{s(x+\Delta x)-s(x)}{\Delta x} &\approx \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2}
+    (\Delta s)^2 &\approx (\Delta x)^2 + (\Delta y)^2 \\
+    |\Delta s| &\approx \sqrt{(\Delta x)^2 + (\Delta y)^2} \\
+    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{(\Delta y)^2}{(\Delta x)^2}} \\
+    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    &\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{\Delta y}{\Delta x}\right)^2\right)} \\
+    &\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    &\approx |\Delta x|\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    \frac{|\Delta s|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    \frac{\Delta s}{\Delta x} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
 
 In the last step I assumed that we moved $x$ right so $\Delta x$ was
-positive, and obviously the change of the arc length $s(x+\Delta x)-s(x)$
-was also positive.
+positive, and obviously $\Delta s$ was also positive.
 
 The smaller the bit of the curve we're looking at, the less curvy it is
 and the more accurate this is:
 
 math:
+    \lim_{\Delta x\to0} \frac{\Delta s}{\Delta x}
+    &= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}\right)^2}
+
+The $\lim$ things already look a lot like derivatives, but let's plug in our
+definitions of $\Delta y$ and $\Delta s$ just to make sure that they really are
+derivatives.
+
+math:
     \lim_{\Delta x\to0} \frac{s(x+\Delta x)-s(x)}{\Delta x}
-    &= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
-    &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+        &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
     s'(x) &= \sqrt{1+(f'(x))^2}
 
 asymptote: float:right;
@@ -141,9 +152,8 @@ math:
     & \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx
     \approx 2.96
 
-Use your favorite symbolic calculation library for calculating the
-integral. I couldn't do it by hand, but I got it done with
-[sympy](http://www.sympy.org):
+Use your favorite symbolic calculation library for calculating the integral. I
+did it with [sympy](http://www.sympy.org):
 
 code: python3
     >>> from sympy import *
@@ -167,6 +177,17 @@ noticable.
 code: python3
     >>> Integral(sqrt(1 + (2-2*x)**2), (x,0,2)).evalf()
     2.95788571508920
+
+We didn't try to calculate the integral by hand because it turns out to be
+surprisingly difficult. I tried it, and after using several "advanced" tricks I
+managed to turn it into this:
+
+math:
+    \int_0^{\arctan(2)} \frac{1}{(\cos(t))^3}\ dt
+
+Then I found a youtube video about integrating $1/(\cos(t))^3$. It was 6
+minutes long, but it didn't include the trial and error needed for figuring out
+what to do.
 
 ## Boring Trapezoid Area
 
