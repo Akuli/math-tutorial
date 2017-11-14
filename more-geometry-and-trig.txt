@@ -384,10 +384,21 @@ I think this is quite nice.
 
 ## Derivative of Cosine
 
-Based on [the graphs](graphs.html#sine-and-cosine), sin and cos are the same
-thing but with a small offset. We know that $\frac{d}{dt}\sin(t)=\cos(t)$, so
-finding the derivative of $\sin$ just shifted the graph a bit. The graph of
-$-\sin(t)$ looks a lot like what might be the derivative of $\cos(t)$:
+Now we know that $\frac{d}{dt} \sin(t) = \cos(t)$ and
+[$\cos(t) = \sin(\tau/4 - t)$](#why-is-cosine-called-cosine), so this will be
+really easy. We just need to remember [the chain
+rule](more-derivatives.html#chain-rule).
+
+math:
+    \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac \tau 4 - t \right) \\
+    &= \cos\left( \frac \tau 4 - t \right) \cdot \frac{d}{dt} \left( \frac \tau 4 - t \right) \\
+    &= \cos\left( \frac \tau 4 - t \right) \cdot (0-1) \\
+    &= -\cos\left( \frac \tau 4 - t \right) \\
+    &= -\sin\biggl( \frac \tau 4 - \left(\frac \tau 4 - t \right)\biggr) \\
+    &= -\sin\left( \frac \tau 4 - \frac \tau 4 + t \right) \\
+    &= -\sin(t)
+
+Let's check the result with graphs:
 
 asymptote:
     size(18cm);
@@ -404,24 +415,6 @@ asymptote:
     label((tau/2,-1), deepgreen, L="$y=\cos(t)$", align=S);
     label((3tau/4,1), blue, L="$y=-\sin(t)$", align=N);
 
-Let's prove that $\frac{d}{dt} \cos(t) = -\sin(t)$. This will be much easier than
-the $\sin$ derivative because now we know that $\frac{d}{dt} \sin(t) = \cos(t)$
-and $\cos(t) = \sin \left( \frac \tau 4 - t \right)$, see
-[above](#why-is-cosine-called-cosine). We just need to remember [the chain
-rule](more-derivatives.html#chain-rule).
-
-math:
-    \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac\tau4 - t \right) \\
-    &= \cos\left( \frac\tau4 - t \right) \cdot \frac{d}{dt}\left( \frac\tau4 - t \right) \\
-    &= \cos\left( \frac\tau4 - t \right) \cdot (0-1) \\
-    &= -\cos\left( \frac\tau4 - t \right) \\
-
-Now we just need to prove that $-\sin(t) = -\cos\left( \frac\tau4 - t \right)$
-using our $\cos(t) = \sin \left( \frac \tau 4 - t \right)$ thing.
-
-math:
-    -\sin(t) &= -\cos\left( \frac\tau4 - t \right) \\
-    \sin(t) &= \cos\left( \frac\tau4 - t \right) \\
-    &= \sin\biggl(\frac\tau4 - \left( \frac\tau4 - t \right)\biggr) \\
-    &= \sin\left(\frac\tau4 - \frac\tau4 + t \right) \\
-    &= \sin(t)
+We know that $\frac{d}{dx} \sin(x) = \cos(x)$, so finding the derivative seems
+to move the graph left. Similarly, the $-\sin(t)$ is the $\cos(t)$ graph shifted
+left.
