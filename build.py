@@ -96,8 +96,9 @@ def multiline_math(match, filename):
 
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')
 def asymptote(match, filename):
+    format = 'png' if match.group(1) else 'svg'     # 3d svg's dont work :(
     code = textwrap.dedent(match.string[match.end():])
-    svgfilename = hashlib.md5(code.encode('utf-8')).hexdigest() + '.svg'
+    svgfilename = hashlib.md5(code.encode('utf-8')).hexdigest() + '.' + format
     os.makedirs(os.path.join(builder.outputdir, 'asymptote'), exist_ok=True)
     outfile = os.path.join(builder.outputdir, 'asymptote', svgfilename)
 
@@ -110,24 +111,28 @@ def asymptote(match, filename):
                 file.write('import boilerplate%s;\n' % (match.group(1) or ''))
                 file.write(textwrap.dedent(match.string[match.end():]))
 
-            subprocess.check_call(['asy', '-fsvg', '--libgs=', 'image.asy'],
-                                  cwd=tmpdir)
-            cache_put(os.path.join(tmpdir, 'image.svg'), svgfilename)
+            subprocess.check_call(
+                ['asy', '-f', format, '--libgs=', 'image.asy'], cwd=tmpdir)
+            cache_put(os.path.join(tmpdir, 'image.' + format), svgfilename)
 
     shutil.copy(cache_get(svgfilename), outfile)
 
-    # figure out the correct size (lol)
-    attribs = xml.etree.ElementTree.parse(outfile).getroot().attrib
-    assert attribs['width'].endswith('pt') and attribs['height'].endswith('pt')
-    size = (round(float(attribs['width'][:-2])),
-            round(float(attribs['height'][:-2])))
+    if format == 'svg':
+        # figure out the correct size (lol)
+        attribs = xml.etree.ElementTree.parse(outfile).getroot().attrib
+        assert attribs['width'].endswith('pt')
+        assert attribs['height'].endswith('pt')
+        size = (float(attribs['width'][:-2]),
+                float(attribs['height'][:-2]))
+        extrainfo = 'width="%.0f" height="%.0f"' % size
+    else:
+        extrainfo = ''
 
     htmlfile = builder.infile2outfile(filename)
     relative = os.path.relpath(outfile, os.path.dirname(htmlfile))
 
     html = tags.image(relative.replace(os.sep, '/'), match.group(2))
-    return html.replace(
-        '<img', '<img width="%s" height="%s" class="asymptote"' % size, 1)
+    return html.replace('<img', '<img %s class="asymptote"' % extrainfo, 1)
 
 
 # TODO: don't hard-code width and height?
