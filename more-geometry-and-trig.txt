@@ -127,7 +127,8 @@ doesn't seem very amazingly impressive but we'll find this useful later.
 Sine and cosine can be defined with a unit circle or with a triangle. The
 triangle definition is handy for simple things, but it's usually easiest to use
 the unit circle if you need to work with angles that are not between $0$ and
-$\tau/4$ radians.
+$\tau/4$ radians. This way you don't need to think about triangles with negative
+side lengths.
 
 Let's make sure that the definitions are compatible with each other:
 
@@ -398,7 +399,7 @@ math:
     &= -\sin\left( \frac \tau 4 - \frac \tau 4 + t \right) \\
     &= -\sin(t)
 
-Let's check the result with graphs:
+Let's check the result with [graphs](graphs.html#sine-and-cosine):
 
 asymptote:
     size(18cm);
@@ -416,5 +417,5 @@ asymptote:
     label((3tau/4,1), blue, L="$y=-\sin(t)$", align=N);
 
 We know that $\frac{d}{dx} \sin(x) = \cos(x)$, so finding the derivative seems
-to move the graph left. Similarly, the $-\sin(t)$ is the $\cos(t)$ graph shifted
-left.
+to move the graph left. Similarly, the $-\sin(t)$ graph looks like it's the
+$\cos(t)$ graph shifted left.
