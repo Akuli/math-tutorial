@@ -46,8 +46,8 @@ that also shows why.
 We can also do things like this:
 
 math:
-    \lim_{x\to0} \left(1+\frac{2x}{x} + \frac{3x}{x}\right)
-    = 1 + \left(\lim_{x\to0}\frac{2x}{x}\right) + \left(\lim_{x\to0}\frac{3x}{x}\right)
+    \lim_{x\to0} \left(1+\frac{2x}{x} + \frac{3x}{x}\right) \
+    = 1 + \left(\lim_{x\to0}\frac{2x}{x}\right) + \left(\lim_{x\to0}\frac{3x}{x}\right) \
     = 1 + 2 + 3
 
 I won't list all the things we can do to limits and why because the
@@ -159,8 +159,8 @@ line and take off the length of the $f(x)$ line, we're left with just
 $\Delta y$. So $\Delta y = f(x+\Delta x)-f(x)$:
 
 math:
-    \lim_{\Delta x \to 0}\frac{\Delta y}{\Delta x}
-    = \lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
+    \lim_{\Delta x \to 0}\frac{\Delta y}{\Delta x} \
+    = \lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \
     = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
 I finished by replacing $\Delta x$ with $h$ because $h$ is easier and
@@ -185,19 +185,19 @@ floatingbox: Handy thing: $(x+h)^2=x^2+2xh+h^2$
    Proof:
 
    math:
-      & \ (x+h)^2 \\
-      =&\ (x+h)(x+h) \\
-      =&\ (x+h)x+(x+h)h \\
-      =&\ xx+hx+xh+hh \\
+      & \ (x+h)^2
+      =&\ (x+h)(x+h)
+      =&\ (x+h)x+(x+h)h
+      =&\ xx+hx+xh+hh
       =&\ x^2+2xh+h^2
 
 math:
-    &   \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
-    =&  \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
-    =&  \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
-    =&  \lim_{h\to0} \frac{2xh + h^2}{h} \\
-    =&  \lim_{h\to0} \frac{(2x+h)h}{h} \\
-    =&  \lim_{h\to0} (2x+h) \\
+    &   \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+    =&  \lim_{h\to0} \frac{(x+h)^2-x^2}{h}
+    =&  \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h}
+    =&  \lim_{h\to0} \frac{2xh + h^2}{h}
+    =&  \lim_{h\to0} \frac{(2x+h)h}{h}
+    =&  \lim_{h\to0} (2x+h)
     =&\ 2x
 
 asymptote: float:right;
@@ -260,13 +260,13 @@ derivative exists). They could be for example $f(x)=6x^2$ and
 $g(x)=7x-123$, but let's see what we get if we don't plug in any values:
 
 math:
-    \frac{d}{dx}(f(x)+g(x))
-    &= \lim_{h\to0} \frac{\bigl(f(x+h)+g(x+h)\bigr)-\bigl(f(x)+g(x)\bigr)}{h} \\
-    &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
-    &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
-    &= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right)\\
-    &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
-     + \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
+    \frac{d}{dx}(f(x)+g(x)) \
+    &= \lim_{h\to0} \frac{\bigl(f(x+h)+g(x+h)\bigr)-\bigl(f(x)+g(x)\bigr)}{h}
+    &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h}
+    &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h}
+    &= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right)
+    &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right) \
+     + \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
     &= \frac{d}{dx} f(x) + \frac{d}{dx} g(x)
 
 That's quite nice! So if we want to find the derivative of a bunch of
@@ -277,11 +277,11 @@ We can actually take a step further and find the derivative of $c\ f(x)$
 where $c$ is any constant, e.g. $6$:
 
 math:
-    \frac{d}{dx}(c\ f(x))
-    &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
-    &= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
-    &= \lim_{h\to0} \left( c\ \frac{f(x+h)-f(x)}{h} \right) \\
-    &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+    \frac{d}{dx}(c\ f(x)) \
+    &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h}
+    &= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h}
+    &= \lim_{h\to0} \left( c\ \frac{f(x+h)-f(x)}{h} \right)
+    &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
     &= c \cdot \frac{d}{dx} f(x)
 
 We need a couple more things: $\frac{d}{dx}x=1$ because
@@ -293,10 +293,10 @@ these work.
 So, with all that we can calculate the derivative easily:
 
 math:
-    &  \frac{d}{dx} (6x^2+7x-123) \\
-    =& \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123) \\
-    =& 6 \cdot \frac{d}{dx}(x^2) + 7 \cdot \frac{d}{dx} x - 0 \\
-    =& 6 \cdot 2x + 7 \cdot 1 \\
+    &  \frac{d}{dx} (6x^2+7x-123)
+    =& \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123)
+    =& 6 \cdot \frac{d}{dx}(x^2) + 7 \cdot \frac{d}{dx} x - 0
+    =& 6 \cdot 2x + 7 \cdot 1
     =& 12x + 7
 
 graybox: See Also

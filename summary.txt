@@ -16,8 +16,8 @@ These things are straight-forward to prove, and you can see proofs of these
 here and there in this tutorial.
 
 math:
-    (a+b)^2 &= a^2+2ab+b^2 \\
-    (a-b)^2 &= a^2-2ab+b^2 \\
+    (a+b)^2 &= a^2+2ab+b^2
+    (a-b)^2 &= a^2-2ab+b^2
     a^2-b^2 &= (a-b)(a+b)
 
 ## Common Areas and Volumes
@@ -164,8 +164,8 @@ $\frac{2 \cdot 0}{0} = \frac{0}{0}$ is not defined.
 Definition of derivative:
 
 math:
-    \frac{dy}{dx} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
-    &= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)-f(x)}{\Delta x} \\
+    \frac{dy}{dx} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}
+    &= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)-f(x)}{\Delta x}
     &= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
 
 Notation:
@@ -176,26 +176,26 @@ math: \frac{d\left(f(x)\right)}{dx} = \frac{d}{dx} f(x) = f'(x)
 Handy rules:
 
 math:
-   \begin{matrix}
-      \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
-      &&\\
-      \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
-      &&\\
-      \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
-      &&\\
-      \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
-      &&\\
-      \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &
-      \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
-      &&\\
-      \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
-      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)\\
-      &&\\
-      \frac{d}{dx} \sin(x) = \cos(x) & \frac{d}{dx} e^x = e^x \\
-      &&\\
-      \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a) \\
-      &&\\
-      \frac{d}{dx}\ln(x) = \displaystyle\frac 1 x &
+   \begin{matrix} \
+      \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) &
+      &&
+      \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) &
+      &&
+      \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) &
+      &&
+      \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) &
+      &&
+      \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} & \
+      \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2}
+      &&
+      \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} & \
+      \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)
+      &&
+      \frac{d}{dx} \sin(x) = \cos(x) & \frac{d}{dx} e^x = e^x
+      &&
+      \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a)
+      &&
+      \frac{d}{dx}\ln(x) = \displaystyle\frac 1 x & \
       \frac{d}{dx} \log_b(x) = \displaystyle\frac{1}{x\ln(b)}
    \end{matrix}
 
@@ -253,13 +253,12 @@ Here are some handy antiderivative rules. The $a$ can be any
 side of an area, and $f$ and $g$ can be any continuous functions.
 
 math:
-    \begin{matrix}
-        \int 1\ dx = x + C &
-        \int a\ dx = ax + C & \\
-        &&\\
-        \int x\ dx = \displaystyle\frac{x^2}{2} + C &
-        \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C & \\
-        &&\\
+    \begin{matrix} \
+        \int 1\ dx = x + C & \int a\ dx = ax + C &
+        &&
+        \int x\ dx = \displaystyle\frac{x^2}{2} + C & \
+        \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C &
+        &&
     \end{matrix}
 
 math: \textstyle\int a\ f(x)\ dx &= a \textstyle\int f(x)\ dx
@@ -390,10 +389,10 @@ asymptote: float:right;
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 math:
-    &\sin(t) = \frac b c \\
-    &\cos(t) = \frac a c \\
-    &\tan(t) = \frac b a \\
-    &t = \text{atan2}(b,a) \\
+    &\sin(t) = \frac b c
+    &\cos(t) = \frac a c
+    &\tan(t) = \frac b a
+    &t = \text{atan2}(b,a)
     &a^2 + b^2 = c^2
 
 Some programming languages have a ``hypot(a, b)`` function that returns
@@ -404,14 +403,14 @@ The sum of all angles of a triangle is always $\frac \tau 2$.
 Handy trig formulas, $n$ can be any integer:
 
 math:
-    &\sin^2(t) + \cos^2(t) = 1 \\
-    &\sin(t) = -\sin(-t) = \sin(t+n\tau) \\
-    &\cos(t) = \cos(-t) = \cos(t+n\tau) \\
-    &\tan(t) = \frac{\sin(t)}{\cos(t)} = \tan\left(t+n\frac\tau2\right) \\
-    &\sin(2t) = 2\sin(t)\cos(t) \\
-    &\cos(2t) = \cos^2(t)-\sin^2(t) \\
-    &\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)} \\
-    &\sin^2(t) = \frac{1-\cos(2t)}{2} \\
+    &\sin^2(t) + \cos^2(t) = 1
+    &\sin(t) = -\sin(-t) = \sin(t+n\tau)
+    &\cos(t) = \cos(-t) = \cos(t+n\tau)
+    &\tan(t) = \frac{\sin(t)}{\cos(t)} = \tan\left(t+n\frac\tau2\right)
+    &\sin(2t) = 2\sin(t)\cos(t)
+    &\cos(2t) = \cos^2(t)-\sin^2(t)
+    &\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)}
+    &\sin^2(t) = \frac{1-\cos(2t)}{2}
     &\cos^2(t) = \frac{1+\cos(2t)}{2}
 
 Most of these are proved in [the more trig chapter](more-geometry-and-trig.html)
@@ -430,7 +429,7 @@ Logarithms are the inverse of exponents. If $y = b^x$, then $\log_b(y) = x$
 where the base $b>0$ and $b \ne 1$.
 
 math:
-    \log_b(b^x) &= x \\
+    \log_b(b^x) &= x
     x^{\log_b(x)} &= x
 
 (logs-are-useful)
@@ -438,9 +437,9 @@ These things make logarithms useful. Here $a$ and $b$ are positive and not 1,
 $x>0$ and $y>0$.
 
 math:
-    \log_b(x^y) &= y\ \log_b(x) \\
-    \log_b(xy) &= \log_b(x) + \log_b(y) \\
-    \log_b\left(\frac x y\right) &= \log_b(x) - \log_b(y) \\
+    \log_b(x^y) &= y\ \log_b(x)
+    \log_b(xy) &= \log_b(x) + \log_b(y)
+    \log_b\left(\frac x y\right) &= \log_b(x) - \log_b(y)
     \log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
 
 Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$
@@ -453,8 +452,7 @@ The $P_n(x)$ polynomials return approximate values of $f(x)$, and they are most
 accurate if $n$ is big and $x \approx a$.
 
 math:
-    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
-            + \frac{f^{(n)}(a)}{n!}(x-a)^n
+    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
 
 Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
 derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
@@ -467,10 +465,10 @@ Choosing $a=0$ usually results in simple $P_n$ polynomials.
 Here sin and cos work with [radians](#geometry-and-trig).
 
 math:
-    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
-                - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
-    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
-                - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} \
+                - \frac{x^7}{7!} + \frac{x^9}{9!} - ...
+    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} \
+                - \frac{x^6}{6!} + \frac{x^8}{8!} - ...
     e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
 
 ## Euler's Formula
@@ -496,13 +494,13 @@ A=10, B=11, C=12, ..., F=15.
 Examples:
 
 math:
-    2017    &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
-            &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0 \\
+    2017    &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7
+            &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
 
 math:
-    \text{0xCAFE}
-    &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0\\
-    &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \cdot 1 \\
+    \text{0xCAFE} \
+    &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0
+    &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \cdot 1
     &= 51966
 
 Python examples:

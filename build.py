@@ -5,6 +5,7 @@ import glob
 import hashlib
 import itertools
 import os
+import re
 import shutil
 import subprocess
 import tempfile
@@ -62,8 +63,7 @@ def get_sidebar_content(txtfile):
         thingy("Kinda fun", 'integrals more-integrals'),
         thingy("Mathy", 'more-derivatives more-geometry-and-trig explog'),
         thingy("Mind-blowing", 'taylor eulerformula'),
-        thingy("Other stuff", 'basics graphs summary',
-               indexlink),
+        thingy("Other stuff", 'basics graphs summary', indexlink),
     ])
 
 builder.get_sidebar_content = get_sidebar_content
@@ -87,11 +87,15 @@ hjax/2.7.2/MathJax.js"></script>
 '''
 
 
+# this is really just a convenience thing
 @builder.converter.add_multiliner(r'^math:')
 def multiline_math(match, filename):
-    # this is really just a convenience thing
-    math = textwrap.dedent(match.string[match.end():])
-    yield r'$$\begin{align}%s\end{align}$$' % math
+    math = textwrap.dedent(match.string[match.end():]).strip()
+
+    # allow line continuations with \ but insert \\ elsewhere
+    lines = (line.replace('\\\n', ' ')
+             for line in re.split(r'(?<!\\)\n', math))
+    yield r'$$\begin{align}%s\end{align}$$' % (r' \\' + '\n').join(lines)
 
 
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')

@@ -68,14 +68,14 @@ them.
 Let's calculate some powers of $i$. We'll need them later.
 
 math:
-    i^1 &= i \\
-    i^2 &= -1 \\
-    i^3 &= (-1)i = -i \\
-    i^4 &= (-1)(-1) = 1 \\
-    i^5 &= i^4i^1=1i = i \\
-    i^6 &= i^4i^2=1(-1)=-1 \\
-    i^7 &= i^4i^3=1(-i)=-i \\
-    i^8 &= i^4i^4=1 \cdot 1 = 1 \\
+    i^1 &= i
+    i^2 &= -1
+    i^3 &= (-1)i = -i
+    i^4 &= (-1)(-1) = 1
+    i^5 &= i^4i^1=1i = i
+    i^6 &= i^4i^2=1(-1)=-1
+    i^7 &= i^4i^3=1(-i)=-i
+    i^8 &= i^4i^4=1 \cdot 1 = 1
     ...
 
 We can see a pattern.
@@ -84,24 +84,24 @@ In [the Taylor chapter](taylor.html) we created these kinda-mind-blowing series
 representations:
 
 math:
-    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
-                - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
-    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
-                - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+    \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} \
+                - \frac{x^7}{7!} + \frac{x^9}{9!} - ...
+    \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!} \
+                - \frac{x^6}{6!} + \frac{x^8}{8!} - ...
     e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
 
 Let's try to calculate $e^{it}$ where $t$ is a real number and let the magic
 happen.
 
 math:
-    e^{it} &= 1 + it + \frac{(it)^2}{2!} + \frac{(it)^3}{3!} + \frac{(it)^4}{4!} + \frac{(it)^5}{5!} + \frac{(it)^6}{6!} + ... \\
-    &= 1 + it + \frac{i^2t^2}{2!} + \frac{i^3t^3}{3!} + \frac{i^4t^4}{4!} + \frac{i^5t^5}{5!} + \frac{i^6t^6}{6!} + ... \\
-    &= 1 + it + \frac{(-1)t^2}{2!} + \frac{(-1)it^3}{3!} + \frac{1t^4}{4!} + \frac{it^5}{5!} + \frac{(-1)t^6}{6!} + ... \\
-    &= 1 + it - \frac{t^2}{2!} - i\frac{t^3}{3!} + \frac{t^4}{4!} + i\frac{t^5}{5!} - \frac{t^6}{6!} + ... \\
-    &= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right)
-    + \left(it - i\frac{t^3}{3!} + i\frac{t^5}{5!} - i\frac{t^7}{7!} + ...\right) \\
-    &= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right)
-    + i \left(t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + ...\right) \\
+    e^{it} &= 1 + it + \frac{(it)^2}{2!} + \frac{(it)^3}{3!} + \frac{(it)^4}{4!} + \frac{(it)^5}{5!} + \frac{(it)^6}{6!} + ...
+    &= 1 + it + \frac{i^2t^2}{2!} + \frac{i^3t^3}{3!} + \frac{i^4t^4}{4!} + \frac{i^5t^5}{5!} + \frac{i^6t^6}{6!} + ...
+    &= 1 + it + \frac{(-1)t^2}{2!} + \frac{(-1)it^3}{3!} + \frac{1t^4}{4!} + \frac{it^5}{5!} + \frac{(-1)t^6}{6!} + ...
+    &= 1 + it - \frac{t^2}{2!} - i\frac{t^3}{3!} + \frac{t^4}{4!} + i\frac{t^5}{5!} - \frac{t^6}{6!} + ...
+    &= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right) \
+    + \left(it - i\frac{t^3}{3!} + i\frac{t^5}{5!} - i\frac{t^7}{7!} + ...\right)
+    &= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right) \
+    + i \left(t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + ...\right)
     &= \cos(t) + i \sin(t)
 
 **Boom.** Can you believe that. We started with $e$ which we got out of
@@ -170,31 +170,33 @@ $\sin(-t)=-\sin(t)$. These work with any $t$.
 Let's plug some stuff to Euler's formula and use these trig things:
 
 math:
-    e^{it} &= \cos(t) + i\sin(t) \\
-    e^{-it} &= \cos(-t) + i\sin(-t) \\
+    e^{it} &= \cos(t) + i\sin(t)
+
+math:
+    e^{-it} &= \cos(-t) + i\sin(-t)
     &= \cos(t)-i\sin(t)
 
 math:
-    e^{it}+e^{-it} &= (\cos(t)+i\sin(t)) + (\cos(t)-i\sin(t)) \\
-    &= \cos(t)+i\sin(t)+\cos(t)-i\sin(t) \\
-    &= 2\cos(t) \\
+    e^{it}+e^{-it} &= (\cos(t)+i\sin(t)) + (\cos(t)-i\sin(t))
+    &= \cos(t)+i\sin(t)+\cos(t)-i\sin(t)
+    &= 2\cos(t)
     \frac{e^{it}+e^{-it}}{2}&=\cos(t)
 
 Now your mind should be **really** blown up.
 
 math:
-    e^{it}-e^{-it} &= (\cos(t)+i\sin(t)) - (\cos(t)-i\sin(t)) \\
-    &= \cos(t)+i\sin(t)-\cos(t)+i\sin(t) \\
-    &= 2i\sin(t) \\
+    e^{it}-e^{-it} &= (\cos(t)+i\sin(t)) - (\cos(t)-i\sin(t))
+    &= \cos(t)+i\sin(t)-\cos(t)+i\sin(t)
+    &= 2i\sin(t)
     \frac{e^{it}-e^{-it}}{2i} &= \sin(t)
 
 floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
     Proof:
 
     math:
-      & \ (a-b)(a+b) \\
-      =&\ (a-b)a+(a-b)b \\
-      =&\ aa-ba+ab-bb \\
+      & \ (a-b)(a+b)
+      =&\ (a-b)a+(a-b)b
+      =&\ aa-ba+ab-bb
       =&\ a^2 - b^2
 
     In this case we need to plug in $a=e^{it}$ and $b=e^{-it}$.
@@ -204,10 +206,10 @@ Equally head-exploding.
 For example, let's try to find another way to represent $\sin(2t)$:
 
 math:
-    \sin(2t) &= \frac{e^{2it}-e^{-2it}}{2i} \\
-    &= \frac{(e^{it})^2-(e^{-it})^2}{2i} \\
-    &= \frac{(e^{it}-e^{-it})(e^{it}+e^{-it})}{2i} \\
-    &= 2 \cdot \frac{e^{it}-e^{-it}}{2i} \cdot \frac{e^{it}+e^{-it}}{2} \\
+    \sin(2t) &= \frac{e^{2it}-e^{-2it}}{2i}
+    &= \frac{(e^{it})^2-(e^{-it})^2}{2i}
+    &= \frac{(e^{it}-e^{-it})(e^{it}+e^{-it})}{2i}
+    &= 2 \cdot \frac{e^{it}-e^{-it}}{2i} \cdot \frac{e^{it}+e^{-it}}{2}
     &= 2 \sin(t) \cos(t)
 
 This is just the tip of the iceberg. It's possible to find dozens of handy-dandy

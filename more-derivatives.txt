@@ -17,8 +17,8 @@ lines. For example, this function is not continuous at $x=0$ and thus
 $f'(0)$ is not defined:
 
 math:
-    f(x) = \left\{\begin{matrix}
-        1 \text{ if } x \ge 0\\ 
+    f(x) = \left\{\begin{matrix} \
+        1 \text{ if } x \ge 0
         0 \text{ if } x < 0
     \end{matrix}\right.
 
@@ -56,12 +56,14 @@ For example (here $h\to0^+$ means that $h$ approaches 0 from the positive
 direction, or from right in a graph):
 
 math:
-    &f(x) = \left\{\begin{matrix}
-        1 \text{ if } x \ge 0 \\
+    &f(x) = \left\{\begin{matrix} \
+        1 \text{ if } x \ge 0
         0 \text{ if } x < 0
-    \end{matrix}\right. \\
-    &\lim_{h\to0^+} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^+} \frac{1-1}{h} = 0 \\
-    &\lim_{h\to0^-} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^-} \frac{0-1}{h}
+    \end{matrix}\right.
+
+    &\lim_{h\to0^+} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^+} \frac{1-1}{h} = 0
+
+    &\lim_{h\to0^-} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^-} \frac{0-1}{h} \
     = \lim_{h\to0^+} \frac{-1}{-h} = \lim_{h\to0^+} \frac{1}{h} = \infty
 
 0 and $\infty$ are very different, so the limit just doesn't exist. Similarly
@@ -106,24 +108,23 @@ indent:
     This is messy, but it works.
 
     math:
-        &  \frac{d}{dx} (f(x)g(x)) \\
-        =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
-        =& \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}
-                            +f(x+h)g(x+h)-f(x)g(x)}{h} \\
-        =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
-        =& \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \\
-        =& \lim_{h\to0} \left(
-            \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h}
-            + \frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h}
-         \right) \\
-        =& \lim_{h\to0} \left(
-         \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}
-        \right) \\
-        =& \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)
-            + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
-        =& \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)
-        \left(\lim_{h\to0}g(x+h)\right)
-        + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
+        &  \frac{d}{dx} (f(x)g(x))
+        =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}
+        =& \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0} \
+                            +f(x+h)g(x+h)-f(x)g(x)}{h}
+        =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h}
+        =& \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h}
+        =& \lim_{h\to0} \left( \
+            \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h} \
+            + \frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \right)
+        =& \lim_{h\to0} \left( \
+         \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h} \
+        \right)
+        =& \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right) \
+            + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right)
+        =& \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right) \
+        \left(\lim_{h\to0}g(x+h)\right) \
+        + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
         =& f'(x)g(x) + f(x)g'(x)
 
 ### $\frac{d}{dx} x^c = c\ x^{c-1}$
@@ -150,14 +151,13 @@ indent:
     proved above and the assumption.
 
     math:
-        \frac{d}{dx} x^{k+1}
-        &= \frac{d}{dx} (x^k x^1) \\
-        &= \frac{d}{dx} (x \cdot x^k) \\
-        &= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right) \\
-        &= 1x^k + x \cdot k x^{k-1} \\
-        &= 1x^k + kx^1x^{k-1} \\
-        &= 1x^k + kx^k \\
-        &= (1+k)x^k \\
+        \frac{d}{dx} x^{k+1} &= \frac{d}{dx} (x^k x^1)
+        &= \frac{d}{dx} (x \cdot x^k)
+        &= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right)
+        &= 1x^k + x \cdot k x^{k-1}
+        &= 1x^k + kx^1x^{k-1}
+        &= 1x^k + kx^k
+        &= (1+k)x^k
         &= (k+1)x^{(k+1)-1}
 
     We proved that if $\frac{d}{dx} x^k = k x^{k-1}$ then
@@ -187,9 +187,9 @@ floatingbox: Handy thing: $(a-b)(a+b)=a^2-b^2$
     Proof:
 
     math:
-      & \ (a-b)(a+b) \\
-      =&\ (a-b)a+(a-b)b \\
-      =&\ aa-ba+ab-bb \\
+      & \ (a-b)(a+b)
+      =&\ (a-b)a+(a-b)b
+      =&\ aa-ba+ab-bb
       =&\ a^2 - b^2
 
     In this case we need to plug in $a=\sqrt{x+h}$ and $b=\sqrt x$.
@@ -202,17 +202,16 @@ indent:
     integers. Let's survive without it.
 
     math:
-        \frac{d}{dx} \sqrt x
-        &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
-        &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}-\sqrt x\ \bigr)
-                              \bigl(\sqrt{x+h}+\sqrt x\ \bigr)}{
-                                h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
-        &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}\ \bigr)^2-\bigl(\sqrt x\ \bigr)^2}{
-                            h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
-        &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
-        &= \lim_{h\to0} \frac{h}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
-        &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
-        &= \frac{1}{\sqrt x + \sqrt x} \\
+        \frac{d}{dx} \sqrt x &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h}
+        &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}-\sqrt x\ \bigr) \
+                              \bigl(\sqrt{x+h}+\sqrt x\ \bigr)}{ \
+                                h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
+        &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}\ \bigr)^2-\bigl(\sqrt x\ \bigr)^2}{ \
+                            h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
+        &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
+        &= \lim_{h\to0} \frac{h}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
+        &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x}
+        &= \frac{1}{\sqrt x + \sqrt x}
         &= \frac{1}{2\ \sqrt x}
 
 ### $\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}$
@@ -223,21 +222,18 @@ indent:
     do this without it.
 
     math:
-        \frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 x}{h} \\
-        &= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h} \\
-        &= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h} \\
-        &= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh} \\
-        &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
-        &= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
-        &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
+        \frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 x}{h}
+        &= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h}
+        &= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h}
+        &= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh}
+        &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh}
+        &= \lim_{h\to0} \frac{-h}{(x+h)xh}
+        &= \lim_{h\to0} \frac{-1}{(x+h)x}
         &= \frac{-1}{x^2}
 
 ### $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
 
 indent:
-    This rule looks simple, but it's surprisingly difficult to prove correctly
-    while keeping it easy to read. Here's the best proof I managed to make.
-
     Let's start by plugging stuff into the definition of derivative:
 
     math: g'(x) = \lim_{h\to0} \frac{g(x+h)-g(x)}{h}
@@ -277,20 +273,17 @@ indent:
     calculate $f'(g(x))g'(x)$.
 
     math:
-        &  f'(g(x))g'(x) \\
-        =& \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
-        =& \lim_{k\to0} \lim_{h\to0} \left(
-            \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h}
-        \right) \\
-        =& \lim_{h\to0} \left(
-            \frac{f\bigl(g(x)+g(x+h)-g(x)\bigr)-f(g(x))}{g(x+h)-g(x)}
-            \cdot \frac{g(x+h)-g(x)}{h}
-        \right) \\
-        =& \lim_{h\to0} \left(
-            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}
-            \cdot \frac{g(x+h)-g(x)}{h}
-        \right) \\
-        =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+        &  f'(g(x))g'(x)
+        =& \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h}
+        =& \lim_{k\to0} \lim_{h\to0} \left( \
+            \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h} \right)
+        =& \lim_{h\to0} \left( \
+            \frac{f\bigl(g(x)+g(x+h)-g(x)\bigr)-f(g(x))}{g(x+h)-g(x)} \
+            \cdot \frac{g(x+h)-g(x)}{h} \right)
+        =& \lim_{h\to0} \left( \
+            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \
+            \cdot \frac{g(x+h)-g(x)}{h} \right)
+        =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
         =& \frac{d}{dx} f(g(x))
 
     asymptote: float:right;
@@ -350,9 +343,9 @@ indent:
     Now this is quite straight-forward.
 
     math:
-        \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)
-        =& \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
-        =& f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\Bigl(\frac{1}{g(x)}\Bigr)\right) \\
-        =& \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
-        =& \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
-        =& \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}
+        \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) \
+        &= \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right)
+        &= f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\Bigl(\frac{1}{g(x)}\Bigr)\right)
+        &= \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right)
+        &= \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2}
+        &= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}

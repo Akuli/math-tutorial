@@ -121,29 +121,28 @@ programming languages.
 math: x^5=x\cdot x\cdot x\cdot x\cdot x
 
 math:
-    x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot
-              \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}
-            = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}
+    x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot \
+              \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}} \
+            = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}} \
             = (xy)^a
 
 math:
-    \frac{x^a}{y^a}
-  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }
-         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }
-  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{
-        a\text{ pcs}}
+    \frac{x^a}{y^a} \
+  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ } \
+         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ } \
+  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}} \
   = \left( \frac x y \right)^a
 
 math:
-   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}
-            = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot
-              \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}
+   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}} \
+            = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot \
+              \underbrace{x \cdot...\cdot x}_{b\text{ pcs}} \
             = x^a x^b
 
 math:
-   (x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}
-              \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}
-           = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
+   (x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}} \
+              \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}} \
+           = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}} \
            = x^{ab}
 
 math: x^0 = 1
@@ -216,8 +215,8 @@ with that.
 For example, if you know that $2x+1 = 9$ you can find $x$ like this:
 
 math:
-    2x+1 &= 9 \\
-    2x &= 8 \\
+    2x+1 &= 9
+    2x &= 8
     x &= 4
 
 The idea here is that if $2x+1=9$ then $(2x+1)-1=9-1$; that is, $2x=8$. So you
@@ -234,10 +233,10 @@ You can also apply most functions to both sides. For example, you can do this
 with $\sqrt{\ \ }$:
 
 math:
-    x^2 =& 4 \\
-    \sqrt{x^2} =& \sqrt 4 \\
-    |x| =& 2 \\
-    x=2 \text{ or}&\text{ } x=-2
+    x^2 &= 4
+    \sqrt{x^2} &= \sqrt 4
+    |x| &= 2
+    x=2\ & \text{or}\ x=-2
 
 ## Areas
 

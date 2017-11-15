@@ -49,15 +49,13 @@ floatingbox: Handy thing: $(a+b)^2=a^2+2ab+b^2$
    Proof:
 
    math:
-      & \ (a+b)^2 \\
-      =&\ (a+b)(a+b) \\
-      =&\ (a+b)a+(a+b)b \\
-      =&\ aa+ba+ab+bb \\
+      & \ (a+b)^2
+      =&\ (a+b)(a+b)
+      =&\ (a+b)a+(a+b)b
+      =&\ aa+ba+ab+bb
       =&\ a^2+2ab+b^2
 
 We can calculate the total area of the above square in a couple different ways:
-
-comment: fix the list thing
 
 * The square's sides are each $a+b$, so the area must be $(a+b)(a+b)$.
 * The square consists of the green square whose area is $c^2$ and 4 yellow
@@ -67,9 +65,9 @@ comment: fix the list thing
 We must get the same area with both ways, so we get this equation:
 
 math:
-    (a+b)(a+b) &= c^2 + 4\frac{ab}{2} \\
-    (a+b)^2 &= c^2 + \frac{4}{2} ab \\
-    a^2 + 2ab + b^2 &= c^2 + 2ab \\
+    (a+b)(a+b) &= c^2 + 4\frac{ab}{2}
+    (a+b)^2 &= c^2 + \frac{4}{2} ab
+    a^2 + 2ab + b^2 &= c^2 + 2ab
     a^2 + b^2 &= c^2
 
 ## Triangle Angle Sum
@@ -110,13 +108,13 @@ turns are $\frac\tau2-a$, $\frac\tau2-b$ and $\frac\tau2-c$.
 But in total we turned a full turn or $\tau$ radians:
 
 math:
-    \tau &= \left(\frac\tau2-a\right) + \left(\frac\tau2-b\right) + \left(\frac\tau2-c\right) \\
-    &= \frac\tau2 - a + \frac\tau2 - b + \frac\tau2 - c \\
-    &= \frac\tau2+\frac\tau2+\frac\tau2 -a-b-c \\
-    &= 3\frac\tau2 -a-b-c \\
-    a+b+c &= 3\frac\tau2-\tau \\
-    &= 3\frac\tau2 - 2\frac\tau2 \\
-    &= (3-2)\frac\tau2 \\
+    \tau &= \left(\frac\tau2-a\right) + \left(\frac\tau2-b\right) + \left(\frac\tau2-c\right)
+    &= \frac\tau2 - a + \frac\tau2 - b + \frac\tau2 - c
+    &= \frac\tau2+\frac\tau2+\frac\tau2 -a-b-c
+    &= 3\frac\tau2 -a-b-c
+    a+b+c &= 3\frac\tau2-\tau
+    &= 3\frac\tau2 - 2\frac\tau2
+    &= (3-2)\frac\tau2
     &= \frac\tau2
 
 So if we add together all the angles of a triangle we get a half turn. This
@@ -151,8 +149,8 @@ asymptote:
 We get this by applying triangle trig to the yellow triangle:
 
 math:
-    \sin(t) &= \frac{\sin(t)}{1} \\
-    \cos(t) &= \frac{\cos(t)}{1} \\
+    \sin(t) &= \frac{\sin(t)}{1}
+    \cos(t) &= \frac{\cos(t)}{1}
     \tan(t) &= \frac{\sin(t)}{\cos(t)}
 
 The first two formulas are obviously true with any $t$, but the last one is a
@@ -165,7 +163,7 @@ asymptote: float:right;
     draw(rarc((0,0), 1, 0, atan2(2,3)), L="$t$");
 
 math:
-    \frac{\sin(t)}{\cos(t)} = \frac{b/c}{a/c}
+    \frac{\sin(t)}{\cos(t)} = \frac{b/c}{a/c} \
     = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan(t)
 
 ## Accurate Sine and Cosine Values
@@ -216,19 +214,19 @@ $\frac \tau 6$.
 The radius of the unit circle is 1, so we get this on the $x$ axis:
 
 math:
-    \cos\left(\frac \tau 6\right) + \cos\left(\frac \tau 6\right) &= 1 \\
+    \cos\left(\frac \tau 6\right) + \cos\left(\frac \tau 6\right) &= 1
     \cos\left(\frac \tau 6\right) &= \frac 1 2
 
 Now we can apply the Pythagorean theorem (proved [above](#pythagorean-theorem-proof))
 to the yellow triangle and figure out $\sin \frac \tau 6$:
 
 math:
-   \cos^2\left( \frac \tau 6 \right) + \sin^2\left( \frac \tau 6 \right) &= 1^2 = 1 \\
-   \sin^2\left( \frac \tau 6 \right) &= 1 - \cos^2\left( \frac \tau 6 \right) \\
-   \sqrt{\sin^2\left( \frac \tau 6 \right)} &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
-   \left| \sin\left( \frac \tau 6 \right)\right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
-      &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
-      &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}
+   \cos^2\left( \frac \tau 6 \right) + \sin^2\left( \frac \tau 6 \right) &= 1^2 = 1
+   \sin^2\left( \frac \tau 6 \right) &= 1 - \cos^2\left( \frac \tau 6 \right)
+   \sqrt{\sin^2\left( \frac \tau 6 \right)} &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)}
+   \left| \sin\left( \frac \tau 6 \right)\right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)}
+      &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}}
+      &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4} \
          = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}
 
 We know that $\sin \frac \tau 6$ is positive, so
@@ -253,15 +251,15 @@ Let's have a look at the blue triangle. We know that it's a triangle, so [the
 sum of the angles must be $\frac \tau 2$](#triangle-angle-sum).
 
 math:
-    t + u + \frac \tau 4 &= \frac\tau2 \\
-    t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} = \frac\tau4 + \frac\tau4 \\
-    t + u &= \frac\tau4 \\
+    t + u + \frac \tau 4 &= \frac\tau2
+    t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} = \frac\tau4 + \frac\tau4
+    t + u &= \frac\tau4
     u &= \frac \tau 4 - t
 
 We also know these things:
 
 math:
-    &\cos(t) = \frac a c \\
+    &\cos(t) = \frac a c
     &\sin(u) = \frac a c
 
 So, $\displaystyle\cos(t) = \sin(u) = \sin \left( \frac \tau 4 - t \right)$.
@@ -362,23 +360,23 @@ quarter-turn corner, and $s+u+\frac\tau4 = \frac \tau 2$ because we can use
 [the triangle angle sum](#triangle-angle-sum).
 
 math:
-    s+t &= \frac \tau 4 \\
+    s+t &= \frac \tau 4
     s &= \frac \tau 4 - t
 
 math:
-    \frac\tau4+s+u &= \frac\tau2 \\
-    \frac\tau4+\left(\frac\tau4-t\right)+u &= 2\frac{\tau}{2\cdot2} \\
-    \frac\tau4+\frac\tau4-t+u &= 2\frac\tau4 \\
-    2\frac\tau4-t+u &= 2\frac\tau4 \\
+    \frac\tau4+s+u &= \frac\tau2
+    \frac\tau4+\left(\frac\tau4-t\right)+u &= 2\frac{\tau}{2\cdot2}
+    \frac\tau4+\frac\tau4-t+u &= 2\frac\tau4
+    2\frac\tau4-t+u &= 2\frac\tau4
     u&=t
 
 Now we can apply triangle trig to the $u$. I'm using $\approx$ here because the
 $\Delta t$ line is actually a bit curvy in the circle image.
 
 math:
-    \cos(u) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
-    \cos(t) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
-    \cos(t) &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
+    \cos(u) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t}
+    \cos(t) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t}
+    \cos(t) &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t}
     \cos(t) &= \frac{d}{dt} \sin(t)
 
 I think this is quite nice.
@@ -391,12 +389,12 @@ really easy. We just need to remember [the chain
 rule](more-derivatives.html#chain-rule).
 
 math:
-    \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac \tau 4 - t \right) \\
-    &= \cos\left( \frac \tau 4 - t \right) \cdot \frac{d}{dt} \left( \frac \tau 4 - t \right) \\
-    &= \cos\left( \frac \tau 4 - t \right) \cdot (0-1) \\
-    &= -\cos\left( \frac \tau 4 - t \right) \\
-    &= -\sin\biggl( \frac \tau 4 - \left(\frac \tau 4 - t \right)\biggr) \\
-    &= -\sin\left( \frac \tau 4 - \frac \tau 4 + t \right) \\
+    \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac \tau 4 - t \right)
+    &= \cos\left( \frac \tau 4 - t \right) \cdot \frac{d}{dt} \left( \frac \tau 4 - t \right)
+    &= \cos\left( \frac \tau 4 - t \right) \cdot (0-1)
+    &= -\cos\left( \frac \tau 4 - t \right)
+    &= -\sin\biggl( \frac \tau 4 - \left(\frac \tau 4 - t \right)\biggr)
+    &= -\sin\left( \frac \tau 4 - \frac \tau 4 + t \right)
     &= -\sin(t)
 
 Let's check the result with [graphs](graphs.html#sine-and-cosine):

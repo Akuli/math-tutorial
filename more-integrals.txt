@@ -65,14 +65,14 @@ usual, the result is not perfectly accurate because the graph is not
 guaranteed to be straight. We get this mess:
 
 math:
-    (\Delta s)^2 &\approx (\Delta x)^2 + (\Delta y)^2 \\
-    |\Delta s| &\approx \sqrt{(\Delta x)^2 + (\Delta y)^2} \\
-    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{(\Delta y)^2}{(\Delta x)^2}} \\
-    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{\Delta y}{\Delta x}\right)^2} \\
-    &\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{\Delta y}{\Delta x}\right)^2\right)} \\
-    &\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
-    &\approx |\Delta x|\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
-    \frac{|\Delta s|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    (\Delta s)^2 &\approx (\Delta x)^2 + (\Delta y)^2
+    |\Delta s| &\approx \sqrt{(\Delta x)^2 + (\Delta y)^2}
+    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{(\Delta y)^2}{(\Delta x)^2}}
+    &\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{\Delta y}{\Delta x}\right)^2}
+    &\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{\Delta y}{\Delta x}\right)^2\right)}
+    &\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
+    &\approx |\Delta x|\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
+    \frac{|\Delta s|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
     \frac{\Delta s}{\Delta x} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
 
 In the last step I assumed that we moved $x$ right so $\Delta x$ was
@@ -82,8 +82,8 @@ The smaller the bit of the curve we're looking at, the less curvy it is
 and the more accurate this is:
 
 math:
-    \lim_{\Delta x\to0} \frac{\Delta s}{\Delta x}
-    &= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+    \lim_{\Delta x\to0} \frac{\Delta s}{\Delta x} \
+    &= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
     &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}\right)^2}
 
 The $\lim$ things already look a lot like derivatives, but let's plug in our
@@ -91,8 +91,8 @@ definitions of $\Delta y$ and $\Delta s$ just to make sure that they really are
 derivatives.
 
 math:
-    \lim_{\Delta x\to0} \frac{s(x+\Delta x)-s(x)}{\Delta x}
-        &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+    \lim_{\Delta x\to0} \frac{s(x+\Delta x)-s(x)}{\Delta x} \
+        &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2}
     s'(x) &= \sqrt{1+(f'(x))^2}
 
 asymptote: float:right;
@@ -114,8 +114,8 @@ asymptote: float:right;
 <br>
 
 math:
-    s(b)-s(a) &= [s(x)]_a^b \\
-    &= \int_a^b s'(x)\ dx \\
+    s(b)-s(a) &= [s(x)]_a^b
+    &= \int_a^b s'(x)\ dx
     &= \int_a^b \sqrt{1+(f'(x))^2}\ dx
 
 That took a while, but we're done! This arc length thing is yet another
@@ -139,17 +139,19 @@ First things first -- let's figure out when the graph hits the $x$ axis;
 that is, when $y=0$:
 
 math:
-    2x-x^2&=0 \\
-    (2-x)x&=0 \\
-    2-x=0\ \text{or}&\ x=0 \\
+    2x-x^2&=0
+    (2-x)x&=0
+    2-x=0\ \text{or}&\ x=0
     x=2\ \text{or}&\ x=0
 
 Now we can just plug in $a=0$, $b=2$ and $f(x)=2x-x^2$ to our formula.
 
-math: f(x) &= 2x-x^2 \\ f'(x) &= 2-2x
+math:
+    f(x) &= 2x-x^2
+    f'(x) &= 2-2x
 
 math:
-    & \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx
+    & \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx \
     \approx 2.96
 
 Use your favorite symbolic calculation library for calculating the integral. I
@@ -289,17 +291,17 @@ area like in the image at right. Now everything is quite straight-forward
 and a lot like in [the circle example](integrals.html#example-circle-area).
 
 math:
-    A(b+\Delta b)-A(b) &\approx t \cdot \Delta b \\
-    \frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx t \\
-    \lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= t \\
-    A'(b) &= t \\
+    A(b+\Delta b)-A(b) &\approx t \cdot \Delta b
+    \frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx t
+    \lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= t
+    A'(b) &= t
     A(b) &= tb+C
 
 <br>
 
 math:
-    A(l)-A(0) &= (tl + C)-(t \cdot 0 + C) \\
-    &= tl+C-0-C \\
+    A(l)-A(0) &= (tl + C)-(t \cdot 0 + C)
+    &= tl+C-0-C
     &= tl
 
 ## Example: Circle Area #2

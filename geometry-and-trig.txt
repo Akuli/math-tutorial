@@ -80,7 +80,7 @@ asymptote: float:right; margin: 0,0,0,20px;
     draw(arc((spiralization,0), 0.2 + 2*spiralization, 180, 360), blue, L="$b/r$");
 
 math:
-    \frac b r &= \tau \\
+    \frac b r &= \tau
     b &= \tau r
 
 So we can multiply with tau to get from a radius to a perimeter. This is how
@@ -175,8 +175,8 @@ Now you can see that the angles add up to half turn, and that's $\tau/2 = \pi$
 radians, so we get this [equation](basics.html#equations):
 
 math:
-    0.5 + \text{???} &= \frac \tau 2 \\
-    \text{???} &= \frac \tau 2 - 0.5 \\
+    0.5 + \text{???} &= \frac \tau 2
+    \text{???} &= \frac \tau 2 - 0.5
     \text{???} &\approx 2.64
 
 I did the last step with Python.
@@ -185,7 +185,7 @@ In math it's common to use a letter instead of "???" to represent an
 unknown value. For example:
 
 math:
-    0.5 + b &= \frac \tau 2 \\
+    0.5 + b &= \frac \tau 2
     b &= \frac \tau 2 - 0.5 \approx 2.64
 
 It's easy to calculate similar things for other directions. Here are the
@@ -395,8 +395,8 @@ asymptote: float:right;
     draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
 
 math:
-    \sin(t) &= \frac b c \\
-    \cos(t) &= \frac a c \\
+    \sin(t) &= \frac b c
+    \cos(t) &= \frac a c
     \tan(t) &= \frac b a
 
 We'll talk about compatibility with the unit circle definitions
@@ -415,7 +415,7 @@ calculate the stuff by plugging in $a=20$ and $b=10$ without worrying about
 which way things go. Let's figure out how to calculate the $t$:
 
 math:
-    \tan(t) &= \frac b a \\
+    \tan(t) &= \frac b a
     t &= \arctan\left(\frac b a\right) = \text{atan2}(b, a)
 
 Here $\arctan$ is the inverse of $\tan$, so $\arctan(\tan(t)) = t$. Most
@@ -562,9 +562,9 @@ These vector calculations are just like the
 [unit circle trig](#trig-with-the-unit-circle) stuff above:
 
 math:
-    l &= \sqrt{a^2+b^2} = \text{hypot}(a, b) \\
-    t &= \text{atan2}(b,a) \\
-    a &= l \cdot \cos(t) \\
+    l &= \sqrt{a^2+b^2} = \text{hypot}(a, b)
+    t &= \text{atan2}(b,a)
+    a &= l \cdot \cos(t)
     b &= l \cdot \sin(t)
 
 Example: if we move 1 unit to the right and 2 units up, our vector is $<1,2>$,

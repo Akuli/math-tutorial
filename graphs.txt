@@ -132,20 +132,20 @@ floatingbox: Handy thing: $(x-t)^2=x^2-2tx+t^2$
     Proof:
 
     math:
-        & \ (x-t)^2 \\
-        =&\ (x-t)(x-t) \\
-        =&\ (x-t)x-(x-t)t \\
-        =&\ (xx-tx)-(xt-tt) \\
-        =&\ xx-tx-xt+tt \\
-        =&\ xx-(tx+tx)+tt \\
+        & \ (x-t)^2
+        =&\ (x-t)(x-t)
+        =&\ (x-t)x-(x-t)t
+        =&\ (xx-tx)-(xt-tt)
+        =&\ xx-tx-xt+tt
+        =&\ xx-(tx+tx)+tt
         =&\ x^2-2tx+t^2
 
 The equations of all these parabolas seem to be of the form
 $y=a\cdot(x-t)^2+u$. Let's expand that a bit:
 
 math:
-    y &= a\cdot(x-t)^2+u \\
-    &= a\cdot(x^2-2tx+t^2)+u \\
+    y &= a\cdot(x-t)^2+u
+    &= a\cdot(x^2-2tx+t^2)+u
     &= ax^2-2atx+at^2+u
 
 Now if we set $b=-2at$ and $c=at^2+u$, then $b$ and $c$ are also
@@ -162,7 +162,11 @@ Note that $a \ne 0$ because $y=bx+c$ is a straight line.
 All of these graphs have an area where they get closer and closer to an axis but
 they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
 $\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$ and
-$\displaystyle\lim_{x\to\infty}a^x=0$ if $0<a<1$.
+$\displaystyle\lim_{x\to\infty}a^x=0$ if $0< a<1$.
+
+comment:
+    must not write 0<a<1 because some html parser somewhere thinks
+    that <a is the beginning of a link
 
 There's a detailed introduction to exponents and logarithms [here](explog.html).
 

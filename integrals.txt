@@ -130,7 +130,7 @@ couple different ways:
 We get this:
 
 math:
-    A(x+\Delta x)-A(x) &\approx f(x)\Delta x \\
+    A(x+\Delta x)-A(x) &\approx f(x)\Delta x
     \frac{A(x+\Delta x)-A(x)}{\Delta x} &\approx f(x)
 
 The thinner the slice is, the smaller the red triangle-ish area is
@@ -138,7 +138,7 @@ compared to the entire slice area. So, if we make the slice *infinitely*
 thin, we don't need to care about the red area:
 
 math:
-    \lim_{\Delta x \to 0} \frac{A(x+\Delta x)-A(x)}{\Delta x} &= f(x) \\
+    \lim_{\Delta x \to 0} \frac{A(x+\Delta x)-A(x)}{\Delta x} &= f(x)
     A'(x) &= f(x)
 
 Yes, this is correct! The derivative of the area function is $f$. This
@@ -203,11 +203,11 @@ asymptote: float:right;
 Let's try to calculate our area:
 
 math:
-   F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
-               &= \sqrt b + C - \sqrt a - C \\
-               &= \sqrt b - \sqrt a \\
-               &= \sqrt 2 - \sqrt 1 \\
-               &= \sqrt 2 - 1 \\
+   F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C)
+               &= \sqrt b + C - \sqrt a - C
+               &= \sqrt b - \sqrt a
+               &= \sqrt 2 - \sqrt 1
+               &= \sqrt 2 - 1
                &= 0.414213562373...
 
 That's all there is to it! $\sqrt 2 - 1$ is the precise area. I think this is
@@ -264,8 +264,8 @@ For example, with this notation, our $\frac{1}{2 \sqrt x}$ thing can be
 calculated with very little paper like this:
 
 math:
-   \int_1^2 \frac{1}{2 \sqrt x}\ dx = \left[\sqrt x\ \right]_1^2
-   = \sqrt 2 - \sqrt 1 = \sqrt 2 - 1
+    \int_1^2 \frac{1}{2 \sqrt x}\ dx = \left[\sqrt x\ \right]_1^2 \
+    = \sqrt 2 - \sqrt 1 = \sqrt 2 - 1
 
 This is how I did it in just a few seconds. Note that you can leave out the
 $+C$ when calculating areas, but you should include it when calculating
@@ -281,7 +281,7 @@ $\frac{d}{dx} \left( \int f(x)\ dx \right) = f(x)$ because $\int(...)dx$
 means antiderivative. For example:
 
 math:
-   f'(g(x))g'(x) &= \frac{d}{dx}(f(g(x))) \\
+   f'(g(x))g'(x) &= \frac{d}{dx}(f(g(x)))
    \int f'(g(x))g'(x)\ dx &= f(g(x)) + C
 
 As with derivatives, there's [a handy list of integral
@@ -292,10 +292,10 @@ the derivative of $\sqrt x$, but with the summary page we can also integrate
 stuff like $\frac{1}{\sqrt x}$:
 
 math:
-   \int \frac{1}{\sqrt x}\ dx
-   &= \int 2 \frac{1}{2 \sqrt x}\ dx \\
-   &= 2 \int \frac{1}{2 \sqrt x}\ dx \\
-   &= 2 \sqrt x + C
+   \int \frac{1}{\sqrt x}\ dx \
+   = \int 2 \frac{1}{2 \sqrt x}\ dx \
+   = 2 \int \frac{1}{2 \sqrt x}\ dx \
+   = 2 \sqrt x + C
 
 math: \frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}
 
@@ -307,22 +307,21 @@ just one division line. It's a mess and checking the answer with a derivative
 is also a mess, but it works.
 
 math:
-   \int \sqrt x\ dx &= \int x^\frac 1 2\ dx \\
-   &= \frac{x^{\frac{1}{2}+1}}{\frac 1 2 + 1} + C \\
-   &= \frac{1}{\frac 1 2 + 1} x^{\frac 1 2 + 1} + C \\
-   &= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac 1 2} + C \\
-   &= \frac{1}{\ \frac 3 2 \ } x^1 x^{\frac 1 2} + C \\
+   \int \sqrt x\ dx &= \int x^\frac 1 2\ dx
+   &= \frac{x^{\frac{1}{2}+1}}{\frac 1 2 + 1} + C
+   &= \frac{1}{\frac 1 2 + 1} x^{\frac 1 2 + 1} + C
+   &= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac 1 2} + C
+   &= \frac{1}{\ \frac 3 2 \ } x^1 x^{\frac 1 2} + C
    &= \frac 2 3 x \sqrt x + C
 
 math:
-   \frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right)
-   &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0 \\
-   &= \frac 2 3 \cdot \frac{d}{dx}(x^1 x^{\frac 1 2}) \\
-   &= \frac 2 3 \cdot \frac{d}{dx}(x^{1 + \frac 1 2}) \\
-   &= \frac 2 3 \cdot \frac{d}{dx}(x^{\frac 3 2}) \\
-   &= \frac 2 3 \cdot \frac 3 2 \cdot x^{\frac 3 2 - 1} \\
-   &= x^{\frac 1 2} \\
-   &= \sqrt x
+   \frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right) \
+   &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0
+   &= \frac 2 3 \cdot \frac{d}{dx}(x^1 x^{\frac 1 2})
+   &= \frac 2 3 \cdot \frac{d}{dx}(x^{1 + \frac 1 2})
+   &= \frac 2 3 \cdot \frac{d}{dx}(x^{\frac 3 2})
+   &= \frac 2 3 \cdot \frac 3 2 \cdot x^{\frac 3 2 - 1}
+   &= x^{\frac 1 2} = \sqrt x
 
 ## Integrating with Python
 
@@ -350,10 +349,7 @@ Sometimes the answers look different than the answers we ended up with,
 but they are still correct. For example:
 
 math:
-    \frac{2x^{3/2}}{3}
-    = \frac{2x^{1+\frac 1 2}}{3}
-    = \frac{2x^1x^{1/2}}{3}
-    = \frac 2 3 x \sqrt x
+    \frac{2x^{3/2}}{3} = \frac{2x^{1+\frac 1 2}}{3} = \frac{2x^1x^{1/2}}{3} = \frac 2 3 x \sqrt x
 
 ## Example: Smooth Jumps Revisited
 
@@ -369,7 +365,7 @@ graybox:
     just constants; they depend on the time. However, $g$ is just a constant.
 
 math:
-    v(t) &= \int g\ dt = gt + C_1 \\
+    v(t) &= \int g\ dt = gt + C_1
     h(t) &= \int v(t)\ dt = \int(gt+C_1)\ dt = \frac 1 2 gt^2 + C_1 t + C_2
 
 Now if we rename the constants so that $a = \frac 1 2 g$, $b = C_1$ and
@@ -443,15 +439,17 @@ The green area in the image at right looks kind of like a triangle with
 base $\Delta b$ and height $r$. The slice area is $A(b+\Delta b)-A(b)$.
 
 math:
-    A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2} \\
-    \frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx \frac r 2 \\
-    \lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= \frac r 2 \\
-    A'(b) &= \frac r 2 \\
+    A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2}
+    \frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx \frac r 2
+    \lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= \frac r 2
+    A'(b) &= \frac r 2
     A(b) &= \int \frac r 2\ db = \frac{rb}{2} + C
 
 If $b=0$, then $A(b)=0$.
 
-math: A(0) = \frac{r \cdot 0}{2} + C &= 0 \\ C &= 0
+math:
+    A(0) = \frac{r \cdot 0}{2} + C &= 0
+    C &= 0
 
 If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area.
 
@@ -461,10 +459,9 @@ Alternatively, after figuring out $A(b) = \frac{rb}{2}+C$ we could also
 do this:
 
 math:
-    A(\tau r)-A(0)
-    &= \left(\frac{r\cdot\tau r}{2}+C\right)-\left(\frac{r\cdot0}{2}+C\right) \\
-    &= \frac 1 2 \tau r^2 +C-0-C \\
-    &= \frac 1 2 \tau r^2 = \pi r^2
+    A(\tau r)-A(0) &= \left(\frac{r\cdot\tau r}{2}+C\right)-\left(\frac{r\cdot0}{2}+C\right)
+        &= \frac 1 2 \tau r^2 +C-0-C
+        &= \frac 1 2 \tau r^2 = \pi r^2
 
 In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
 of some integration because $\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r$.
@@ -539,9 +536,9 @@ asymptote3d: float:left;
 We get this stuff that looks a lot like our area stuff above:
 
 math:
-    V(x+\Delta x)-V(x) &\approx A(x) \cdot \Delta x \\
-    \frac{V(x+\Delta x)-V(x)}{\Delta x} &\approx A(x) \\
-    \lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x) \\
+    V(x+\Delta x)-V(x) &\approx A(x) \cdot \Delta x
+    \frac{V(x+\Delta x)-V(x)}{\Delta x} &\approx A(x)
+    \lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x)
     V'(x) &= A(x)
 
 math: V(b)-V(a) = \bigl[V(x)\bigr]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx
@@ -601,14 +598,13 @@ circle's radius is $f(x)$ instead of $r$ so $A(x) = \pi (f(x))^2$.
 Let's do this:
 
 math:
-    \int_0^h A(x)\ dx
-    &= \int_0^h \pi (f(x))^2\ dx \\
-    &= \int_0^h \pi \left( \frac r h x \right)^2\ dx \\
-    &= \int_0^h \pi \frac{r^2}{h^2} x^2\ dx \\
-    &= \pi \frac{r^2}{h^2} \int_0^h x^2\ dx \\
-    &= \pi \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
-    &= \pi \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
-    &= \frac{\pi r^2 h}{3}
+    \int_0^h A(x)\ dx &= \int_0^h \pi (f(x))^2\ dx
+        &= \int_0^h \pi \left( \frac r h x \right)^2\ dx
+        &= \int_0^h \pi \frac{r^2}{h^2} x^2\ dx
+        &= \pi \frac{r^2}{h^2} \int_0^h x^2\ dx
+        &= \pi \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h
+        &= \pi \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right)
+        &= \frac{\pi r^2 h}{3}
 
 asymptote3d: float:right;
     size(10cm);

@@ -98,7 +98,7 @@ $b=n/a$ is also an integer and $n=ab$. If we assume that $a>\sqrt n$ and
 $b>\sqrt n$, we get this:
 
 math:
-    ab &> \sqrt n \sqrt n \\
+    ab &> \sqrt n \sqrt n
     ab &> n
 
 But we just said that $n=ab$ and this doesn't work. Our assumption was false and
@@ -209,7 +209,7 @@ this color notation.
 Let's start with an example. If we have a number like 2017, it really means this:
 
 math:
-   2017 &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+   2017 &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7
         &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
 
 The idea with **hexadecimal** is that instead of using 10 as a magic number we
@@ -218,9 +218,9 @@ that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
 B=11, C=12, D=13, E=14 and F=15. For example:
 
 math:
-   \text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +
-                     \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
-                  &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
+   \text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \
+                     \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0
+                  &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14
                   &= 51966
 
 Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
