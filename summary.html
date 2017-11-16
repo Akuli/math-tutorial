@@ -35,11 +35,9 @@ read the human-friendly introductions in other chapters when needed.
 </div><h2 id="handy-things">Handy Things<a class="headerlink" href="#handy-things" title="Link to this title">¶</a></h2><p>These things are straight-forward to prove, and you can see proofs of these
 here and there in this tutorial.</p>
 
-$$\begin{align}
-(a+b)^2 &= a^2+2ab+b^2 \\
+$$\begin{align}(a+b)^2 &= a^2+2ab+b^2 \\
 (a-b)^2 &= a^2-2ab+b^2 \\
-a^2-b^2 &= (a-b)(a+b)
-\end{align}$$<h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
+a^2-b^2 &= (a-b)(a+b)\end{align}$$<h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
 area that is not listed here.</p>
 
 <img width="142" height="102" class="asymptote" src="asymptote/6a154f536537db2fc78182f5e33f472c.svg" style="float:left;" /><img width="228" height="172" class="asymptote" src="asymptote/e95699102aeb509875e4810f9e606b35.svg" style="float:left;" /><img width="199" height="199" class="asymptote" src="asymptote/6bb00a798325e82c9a0d3f619db881d5.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
@@ -70,40 +68,31 @@ $\frac{2 \cdot 0}{0} = \frac{0}{0}$ is not defined.</p>
 
 <p>Definition of derivative:</p>
 
-$$\begin{align}
-\frac{dy}{dx} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
+$$\begin{align}\frac{dy}{dx} &= \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} \\
 &= \lim_{\Delta x \to 0} \frac{f(x+\Delta x)-f(x)}{\Delta x} \\
-&= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}
-\end{align}$$<p>Notation:</p>
+&= \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}\end{align}$$<p>Notation:</p>
 
-$$\begin{align}\frac{d\left(f(x)\right)}{dx} = \frac{d}{dx} f(x) = f'(x)
-\end{align}$$<p id="derivative-rules">Handy rules:
+$$\begin{align}\frac{d\left(f(x)\right)}{dx} = \frac{d}{dx} f(x) = f'(x)\end{align}$$<p id="derivative-rules">Handy rules:
 </p>
 
-$$\begin{align}
-\begin{matrix}
-   \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
-   &&\\
-   \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\ 
-   &&\\
+$$\begin{align}\begin{matrix}     \frac{d}{dx}\ c = 0              & \frac{d}{dx}(c\ f(x)) = c\ f'(x) & \\
+   && \\
+   \frac{d}{dx}\ x = 1              & \frac{d}{dx} (f(x)+g(x)) = f'(x)+g'(x) & \\
+   && \\
    \frac{d}{dx}\ cx = c             & \frac{d}{dx} (f(x)-g(x)) = f'(x)-g'(x) & \\
-   &&\\
+   && \\
    \frac{d}{dx}\ x^c = c\ x^{c-1}   & \frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x) & \\
-   &&\\
-   \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &
-   \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
-   &&\\
-   \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &
-   \frac{d}{dx} f(g(x)) = f'(g(x))g'(x)\\
-   &&\\
+   && \\
+   \frac{d}{dx} \displaystyle \left( \frac 1 x \right) = \frac{-1}{x^2} &     \frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2} \\
+   && \\
+   \frac{d}{dx} \sqrt x = \frac{1}{2\ \sqrt x} &     \frac{d}{dx} f(g(x)) = f'(g(x))g'(x) \\
+   && \\
    \frac{d}{dx} \sin(x) = \cos(x) & \frac{d}{dx} e^x = e^x \\
-   &&\\
+   && \\
    \frac{d}{dx} \cos(x) = -\sin(x) & \frac{d}{dx} a^x = a^x \ln(a) \\
-   &&\\
-   \frac{d}{dx}\ln(x) = \displaystyle\frac 1 x &
-   \frac{d}{dx} \log_b(x) = \displaystyle\frac{1}{x\ln(b)}
-\end{matrix}
-\end{align}$$<div class="box graybox"><h2> See Also</h2><p>Some of the simplest rules are explained in <a href="derivatives.html">the first derivative
+   && \\
+   \frac{d}{dx}\ln(x) = \displaystyle\frac 1 x &     \frac{d}{dx} \log_b(x) = \displaystyle\frac{1}{x\ln(b)} \\
+\end{matrix}\end{align}$$<div class="box graybox"><h2> See Also</h2><p>Some of the simplest rules are explained in <a href="derivatives.html">the first derivative
 chapter</a> and most of the other rules are proved in
 <a href="more-derivatives.html#derivative-rules">the second derivative chapter</a>.
 Sin and cos derivatives are proved
@@ -115,8 +104,7 @@ stuff is proved <a href="explog.html#derivative-of-any-exponent-function">here</
 need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,
 remember to multiply by $g'(x)$. For example:</p>
 
-$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x
-\end{align}$$<img width="228" height="162" class="asymptote" src="asymptote/42b158db2f56846ea45f8e3e8bb4783e.svg" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
+$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x\end{align}$$<img width="228" height="162" class="asymptote" src="asymptote/42b158db2f56846ea45f8e3e8bb4783e.svg" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
 anti<a href="#derivatives">derivative</a> of $f$, i.e. $F'(x)=f(x)$.</p>
 
 <p>Notation:</p>
@@ -124,24 +112,16 @@ anti<a href="#derivatives">derivative</a> of $f$, i.e. $F'(x)=f(x)$.</p>
 <ul><li>$\int_a^b f(x)\ dx$ is the area in the picture.</li><li>$\int f(x)\ dx = F(x) + C$ where $F'(x)=f(x)$.</li><li>$\left[F(x)\right]_a^b = F(b)-F(a)$.
 </li></ul><p>Example (remember that $\frac{d}{dx} x^2 = 2x$):</p>
 
-$$\begin{align}\int_1^3 2x\ dx = \left[x^2\right]_1^3 = 3^2-1^2 = 9-1 = 8
-\end{align}$$<p id="integral-rules">Here are some handy antiderivative rules. The $a$ can be any
+$$\begin{align}\int_1^3 2x\ dx = \left[x^2\right]_1^3 = 3^2-1^2 = 9-1 = 8\end{align}$$<p id="integral-rules">Here are some handy antiderivative rules. The $a$ can be any
 <a href="basics.html#constants">constant</a> and it has nothing to do with the left
 side of an area, and $f$ and $g$ can be any continuous functions.
 </p>
 
-$$\begin{align}
-\begin{matrix}
-    \int 1\ dx = x + C &
-    \int a\ dx = ax + C & \\
-    &&\\
-    \int x\ dx = \displaystyle\frac{x^2}{2} + C &
-    \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C & \\
-    &&\\
-\end{matrix}
-\end{align}$$$$\begin{align}\textstyle\int a\ f(x)\ dx &= a \textstyle\int f(x)\ dx
-\end{align}$$$$\begin{align}\textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x)\ dx + \int g(x)\ dx
-\end{align}$$<p>In some cases it makes sense to use <a href="#derivative-rules">derivative rules</a>
+$$\begin{align}\begin{matrix}      \int 1\ dx = x + C & \int a\ dx = ax + C & \\
+    && \\
+    \int x\ dx = \displaystyle\frac{x^2}{2} + C &      \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C & \\
+    && \\
+\end{matrix}\end{align}$$$$\begin{align}\textstyle\int a\ f(x)\ dx &= a \textstyle\int f(x)\ dx\end{align}$$$$\begin{align}\textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x)\ dx + \int g(x)\ dx\end{align}$$<p>In some cases it makes sense to use <a href="#derivative-rules">derivative rules</a>
 right-to-left.</p>
 
 <p>You can prove these easily by finding the derivative of the right side;
@@ -175,21 +155,18 @@ is $\tau r = 2\pi r$ where $r$ is the radius.</p>
 <p id="trianglestuff">A triangle with a quarter-turn corner and a bunch of math:
 </p>
 
-<img width="171" height="121" class="asymptote" src="asymptote/360ef43321e8d2901abae1513fc78bfb.svg" style="float:right;" />$$\begin{align}
-&\sin(t) = \frac b c \\
+<img width="171" height="121" class="asymptote" src="asymptote/360ef43321e8d2901abae1513fc78bfb.svg" style="float:right;" />$$\begin{align}&\sin(t) = \frac b c \\
 &\cos(t) = \frac a c \\
 &\tan(t) = \frac b a \\
 &t = \text{atan2}(b,a) \\
-&a^2 + b^2 = c^2
-\end{align}$$<p>Some programming languages have a <code>hypot(a, b)</code> function that returns
+&a^2 + b^2 = c^2\end{align}$$<p>Some programming languages have a <code>hypot(a, b)</code> function that returns
 $\sqrt{a^2+b^2}$. You can use it for calculating $c$.</p>
 
 <p>The sum of all angles of a triangle is always $\frac \tau 2$.</p>
 
 <p>Handy trig formulas, $n$ can be any integer:</p>
 
-$$\begin{align}
-&\sin^2(t) + \cos^2(t) = 1 \\
+$$\begin{align}&\sin^2(t) + \cos^2(t) = 1 \\
 &\sin(t) = -\sin(-t) = \sin(t+n\tau) \\
 &\cos(t) = \cos(-t) = \cos(t+n\tau) \\
 &\tan(t) = \frac{\sin(t)}{\cos(t)} = \tan\left(t+n\frac\tau2\right) \\
@@ -197,8 +174,7 @@ $$\begin{align}
 &\cos(2t) = \cos^2(t)-\sin^2(t) \\
 &\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)} \\
 &\sin^2(t) = \frac{1-\cos(2t)}{2} \\
-&\cos^2(t) = \frac{1+\cos(2t)}{2}
-\end{align}$$<p>Most of these are proved in <a href="more-geometry-and-trig.html">the more trig chapter</a>
+&\cos^2(t) = \frac{1+\cos(2t)}{2}\end{align}$$<p>Most of these are proved in <a href="more-geometry-and-trig.html">the more trig chapter</a>
 or <a href="eulerformula.html">the Euler formula chapter</a>.</p>
 
 <p>This list is not meant to be complete and I'll probably add a wikipedia link
@@ -211,29 +187,22 @@ $f(x)=1$.</p>
 <p>Logarithms are the inverse of exponents. If $y = b^x$, then $\log_b(y) = x$
 where the base $b>0$ and $b \ne 1$.</p>
 
-$$\begin{align}
-\log_b(b^x) &= x \\
-x^{\log_b(x)} &= x
-\end{align}$$<p id="logs-are-useful">These things make logarithms useful. Here $a$ and $b$ are positive and not 1,
+$$\begin{align}\log_b(b^x) &= x \\
+x^{\log_b(x)} &= x\end{align}$$<p id="logs-are-useful">These things make logarithms useful. Here $a$ and $b$ are positive and not 1,
 $x>0$ and $y>0$.
 </p>
 
-$$\begin{align}
-\log_b(x^y) &= y\ \log_b(x) \\
+$$\begin{align}\log_b(x^y) &= y\ \log_b(x) \\
 \log_b(xy) &= \log_b(x) + \log_b(y) \\
 \log_b\left(\frac x y\right) &= \log_b(x) - \log_b(y) \\
-\log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
-\end{align}$$<p>Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$</p>
+\log_b(x) &= \frac{\log_a(x)}{\log_a(b)}\end{align}$$<p>Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim_{t\to0}\ (1+t)^{\frac 1 t}$</p>
 
 <p>$\ln(x)$ means $\log_e(x)$.</p>
 
 <h2 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h2><p>The $P_n(x)$ polynomials return approximate values of $f(x)$, and they are most
 accurate if $n$ is big and $x \approx a$.</p>
 
-$$\begin{align}
-P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ...
-        + \frac{f^{(n)}(a)}{n!}(x-a)^n
-\end{align}$$<p>Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
+$$\begin{align}P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n\end{align}$$<p>Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
 derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
 <code>factorial(n)</code> function that returns $n!$.</p>
 
@@ -241,14 +210,9 @@ derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
 
 <h2 id="series-representations">Series Representations<a class="headerlink" href="#series-representations" title="Link to this title">¶</a></h2><p>Here sin and cos work with <a href="#geometry-and-trig">radians</a>.</p>
 
-$$\begin{align}
-\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}
-            - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
-\cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}
-            - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
-e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
-\end{align}$$<h2 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h2>$$\begin{align}e^{it}=\cos(t)+i\sin(t),\ i=\sqrt{-1}
-\end{align}$$<p>This crazy thing is not a joke. <a href="eulerformula.html">Read more here.</a></p>
+$$\begin{align}\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}              - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
+\cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}              - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
+e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<h2 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h2>$$\begin{align}e^{it}=\cos(t)+i\sin(t),\ i=\sqrt{-1}\end{align}$$<p>This crazy thing is not a joke. <a href="eulerformula.html">Read more here.</a></p>
 
 <h2 id="other-bases">Other Bases<a class="headerlink" href="#other-bases" title="Link to this title">¶</a></h2><p><table>
 <tr><th>Name</th><th>Base number</th><th>Prefix in programming</th></tr>
@@ -264,15 +228,10 @@ A=10, B=11, C=12, ..., F=15.</p>
 
 <p>Examples:</p>
 
-$$\begin{align}
-2017    &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
-        &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0 \\
-\end{align}$$$$\begin{align}
-\text{0xCAFE}
-&= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0\\
+$$\begin{align}2017    &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
+        &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0\end{align}$$$$\begin{align}\text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 + \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
 &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \cdot 1 \\
-&= 51966
-\end{align}$$<p>Python examples:</p>
+&= 51966\end{align}$$<p>Python examples:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">0b1111011</span>
 <span style="color: #888888">123</span>

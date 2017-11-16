@@ -54,8 +54,7 @@ with this $x+y-x$ pattern surprisingly often and things become nice and simple.<
 
 <p>In general, you can move things around like this:</p>
 
-$$\begin{align}a+b-c = a-c+b = -c+a+b = ...
-\end{align}$$<p>You get the idea: we can put $+a$, $+b$ and $-c$ to any order we want, and for
+$$\begin{align}a+b-c = a-c+b = -c+a+b = ...\end{align}$$<p>You get the idea: we can put $+a$, $+b$ and $-c$ to any order we want, and for
 convenience, we usually write e.g. $a+b$ instead of $+a+b$.
 </p>
 
@@ -64,16 +63,7 @@ written as $a \cdot b$ or simply $ab$.</p>
 
 <p>Some handy stuff:</p>
 
-$$\begin{align}0a = 0
-\end{align}$$$$\begin{align}1a = a
-\end{align}$$$$\begin{align}\frac{a}{1} = a
-\end{align}$$$$\begin{align}ab = ba
-\end{align}$$$$\begin{align}(a+b)c = ac+bc
-\end{align}$$$$\begin{align}(a-b)c = ac-bc
-\end{align}$$$$\begin{align}\frac{a+b}{c} = \frac a c + \frac b c
-\end{align}$$$$\begin{align}\frac{a-b}{c} = \frac a c - \frac b c
-\end{align}$$$$\begin{align}\frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}
-\end{align}$$<p>You can use these rules left-to-right or right-to-left. For example, if you
+$$\begin{align}0a = 0\end{align}$$$$\begin{align}1a = a\end{align}$$$$\begin{align}\frac{a}{1} = a\end{align}$$$$\begin{align}ab = ba\end{align}$$$$\begin{align}(a+b)c = ac+bc\end{align}$$$$\begin{align}(a-b)c = ac-bc\end{align}$$$$\begin{align}\frac{a+b}{c} = \frac a c + \frac b c\end{align}$$$$\begin{align}\frac{a-b}{c} = \frac a c - \frac b c\end{align}$$$$\begin{align}\frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}\end{align}$$<p>You can use these rules left-to-right or right-to-left. For example, if you
 want to calculate $(1 + 2) \cdot 3$ you know you could also do
 $1 \cdot 3 + 2 \cdot 3$, but you can also calculate $1 \cdot 3 + 2 \cdot 3$
 like $(1 + 2) \cdot 3$.</p>
@@ -89,8 +79,7 @@ lines but other numbers weren't.</p>
 <p>If both the top and bottom are being multiplied by something you can get rid of
 that multiplier. For example:</p>
 
-$$\begin{align}\frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0
-\end{align}$$<p id="zerodivision">Remember that you cannot divide anything by zero. See
+$$\begin{align}\frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0\end{align}$$<p id="zerodivision">Remember that you cannot divide anything by zero. See
 <a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome zero video</a> if you're
 wondering why.
 </p>
@@ -99,10 +88,7 @@ wondering why.
 -'s cancel out.
 </p>
 
-$$\begin{align}2 \cdot (-2) = -(2 \cdot 2) = -4
-\end{align}$$$$\begin{align}(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
-\end{align}$$$$\begin{align}\frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
-\end{align}$$<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
+$$\begin{align}2 \cdot (-2) = -(2 \cdot 2) = -4\end{align}$$$$\begin{align}(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4\end{align}$$$$\begin{align}\frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4\end{align}$$<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
 <code>Math.abs(x)</code> in most programming languages. It's easiest to think of the
 absolute value as stripping off the minus sign. For example, $|2| = 2$ and
 $|-3| = 3$.
@@ -111,35 +97,7 @@ $|-3| = 3$.
 <h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p>$x^y$ is <code>x**y</code> or <code>pow(x, y)</code> and $\sqrt x$ is <code>sqrt(x)</code> in most
 programming languages.</p>
 
-$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x
-\end{align}$$$$\begin{align}
-x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot
-          \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}
-        = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}
-        = (xy)^a
-\end{align}$$$$\begin{align}
-  \frac{x^a}{y^a}
-= \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }
-       {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }
-= \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{
-      a\text{ pcs}}
-= \left( \frac x y \right)^a
-\end{align}$$$$\begin{align}
-x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}
-         = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot
-           \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}
-         = x^a x^b
-\end{align}$$$$\begin{align}
-(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}
-           \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}
-        = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}
-        = x^{ab}
-\end{align}$$$$\begin{align}x^0 = 1
-\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2
-\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}
-\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x
-\end{align}$$$$\begin{align}\sqrt{x^2} = |x|
-\end{align}$$<p>If you're wondering why anything to the power of 0 is 1, you can do e.g.
+$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}           = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}           = x^a x^b\end{align}$$$$\begin{align}(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}             \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}          = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}          = x^{ab}\end{align}$$$$\begin{align}x^0 = 1\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p>If you're wondering why anything to the power of 0 is 1, you can do e.g.
 $x^2 = x^{0+2} = x^0 x^2$. The equation should be true with any $x$, so
 $x^0$ must be 1 because $x^2 = 1 x^2$.</p>
 
@@ -147,98 +105,4 @@ $x^0$ must be 1 because $x^2 = 1 x^2$.</p>
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
 $\sqrt 0 = 0$. No number produces a negative number when multiplied with
-itself, so you cannot do e.g. $\sqrt{-2}$.</p>
-
-<p>You're probably wondering how the heck our $\sqrt{x^2}=|x|$ rule works. This
-example should explain everything:</p>
-
-$$\begin{align}\sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqrt{3^2}
-\end{align}$$<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this title">¶</a></h2><p>Here's a typical math function:</p>
-
-$$\begin{align}
-f(x) &= 2x \\
-f(6) &= 2 \cdot 6 = 12
-\end{align}$$<p>There is no special syntax for defining a function. All we have is the
-equal sign, and when defining a function we just say that its value at x is
-equal to something.</p>
-
-<p>If you're familiar with a functional programming language like Haskell, then
-you'll probably realize that the above math looks a lot like this Haskell
-session:</p>
-
-<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span> <span style="color: #007020; font-weight: bold">let</span> f x <span style="color: #007020; font-weight: bold">=</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span>x
-<span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span> f <span style="color: #40a070">6</span>
-<span style="color: #40a070">12</span>
-<span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span>
-</pre></div>
-<p>If you're feeling like WTF is this, here's a Python session that should make
-everything clear.</p>
-
-<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">f</span>(x):
-<span style="color: #c65d09; font-weight: bold">... </span>    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span>x
-<span style="color: #c65d09; font-weight: bold">...</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">6</span>)
-<span style="color: #888888">12</span>
-</pre></div>
-<p>Quick note about <code>f(x)</code> versus <code>f x</code>: if you define your own function
-called $f$ or $g$ you should use $f(x)$, but you can do e.g. $\sin x$ or
-$\cos x$ with some "special" functions for historical reasons. This tutorial
-uses $\sin(x)$ and $\cos(x)$ everywhere because most programmers are familiar
-with that.
-</p>
-
-<h2 id="equations">Equations<a class="headerlink" href="#equations" title="Link to this title">¶</a></h2><p>For example, if you know that $2x+1 = 9$ you can find $x$ like this:</p>
-
-$$\begin{align}
-2x+1 &= 9 \\
-2x &= 8 \\
-x &= 4
-\end{align}$$<p>The idea here is that if $2x+1=9$ then $(2x+1)-1=9-1$; that is, $2x=8$. So you
-can do pretty much anything to both sides of the $=$ and the equality will
-still work. I started by substracting 1 from both sides and then I divided
-everything by 2.</p>
-
-<p>Normal limitations apply here; for example, if you have $2x=3x$ and you divide
-by $x$ you get $2=3$ and it seems like no $x$ can satisfy the equation.
-However, you cannot divide by $0$ and turns out that $x=0$ is a valid solution
-because $2 \cdot 0 = 0$ and $3 \cdot 0 = 0$.</p>
-
-<p>You can also apply most functions to both sides. For example, you can do this
-with $\sqrt{\ \ }$:</p>
-
-$$\begin{align}
-x^2 =& 4 \\
-\sqrt{x^2} =& \sqrt 4 \\
-|x| =& 2 \\
-x=2 \text{ or}&\text{ } x=-2
-\end{align}$$<h2 id="areas">Areas<a class="headerlink" href="#areas" title="Link to this title">¶</a></h2><p>If you are a programmer you'll probably understand areas best as the
-number of pixels in a shape. For example, if you create a GUI program
-that creates a 300 by 200 window, it contains $300 \cdot 200 = 60000$
-pixels.</p>
-
-<img width="142" height="102" class="asymptote" src="asymptote/ddc918b5986e0cfd9c33e51b88f88bce.svg" style="float:left;" /><img width="256" height="191" class="asymptote" src="asymptote/86d791c3f07e0c18028e9a7170c7beef.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
-
-<p>The yellow area is simple, but the triangle area is also easy to
-understand. Let's draw a rectangle around the triangle like this:</p>
-
-<p><img width="142" height="100" class="asymptote" src="asymptote/9ec2e5f48a2ac18ca3bb870719ed541c.svg" /></p><p>Now you can see that the triangle splits both pieces of the rectangle in
-half, so the triangle area must be half of the rectangle area $ah$.</p>
-
-<h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Link to this title">¶</a></h2><p>A volume is really the same thing as an area, but for 3D things. If our
-300 by 200 window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$
-pixels would fit inside it.</p>
-
-<img  class="asymptote" src="asymptote/04bcb2e2468a1ec3b8406d6dd76e3125.png" style="float:left;" /><img  class="asymptote" src="asymptote/67905ed05cbdf2e96fc9cd3b4ba46107.png" style="float:left;" /><p><div style="clear:both;"></div></p>
-
-<p>The $V=abc$ thing is actually just a special case of the $V=Ah$
-cylinder. The shape of the cylinder's base can be anything, and in the
-$abc$ thing the base area is $ab$ and the height is $c$.</p>
-
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Link to this title">¶</a></h2><p>This chapter shows only the things you need in the rest of this tutorial, but
-<a href="http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf">this cheat sheet</a>
-is more complete.
-</p>
-
-</div>
-</body>
-</html>
+itself, so you cannot do e.g. $\sqrt{-2}$.

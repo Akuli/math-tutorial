@@ -51,57 +51,42 @@ approximate.</p>
 
 <p>Let's find the equations of $P_0(x)$, $P_1(x)$ and $P_2(x)$. The $P_0$ is easy:</p>
 
-$$\begin{align}
-P_0(x) = f(0)
-\end{align}$$<p>It's also easy to get started with $P_1$.</p>
+$$\begin{align}P_0(x) = f(0)\end{align}$$<p>It's also easy to get started with $P_1$.</p>
 
-$$\begin{align}
-P_1'(x) = f'(0) \text{ and } P_1(0) = f(0)
-\end{align}$$<p>If you know <a href="integrals.html">integrals</a> you can calculate this yourself. Just
+$$\begin{align}P_1'(x) = f'(0) \text{ and } P_1(0) = f(0)\end{align}$$<p>If you know <a href="integrals.html">integrals</a> you can calculate this yourself. Just
 note that $f'(0)$ is a constant because it doesn't depend on the value of $x$.
 Anyway, the only $P_1$ that satisfies these things is here:</p>
 
-$$\begin{align}
-P_1(x) = f'(0)x + f(0) = f'(0)x + P_0(x)
-\end{align}$$<p>Here I used the fact that $P_0(x) = f(0)$. You'll see why later.</p>
+$$\begin{align}P_1(x) = f'(0)x + f(0) = f'(0)x + P_0(x)\end{align}$$<p>Here I used the fact that $P_0(x) = f(0)$. You'll see why later.</p>
 
 <p>Let's find $P_2$ and yet another polynomial $P_3$ similarly:</p>
 
-$$\begin{align}
-&P_2''(x) = f''(0) \text{ and } P_2'(0) = f'(0) \text{ and } P_2(0) = f(0) \\
+$$\begin{align}&P_2''(x) = f''(0) \text{ and } P_2'(0) = f'(0) \text{ and } P_2(0) = f(0) \\
 &P_2'(x) = f''(0)x + f'(0) \\
-&P_2(x) = \frac{f''(0)}{2}x^2 + f'(0)x + f(0) = \frac{f''(0)}{2}x^2 + P_1(x)\\
-\\
+&P_2(x) = \frac{f''(0)}{2}x^2 + f'(0)x + f(0) = \frac{f''(0)}{2}x^2 + P_1(x) \\
+ \\
 &P_3'''(x)=f'''(0)\text{ and }P_3''(0)=f''(0)\text{ and }P_3'(0)=f'(0)\text{ and }P_3(0)=f(0) \\
 &P_3''(x)=f'''(0)x+f''(0) \\
 &P_3'(x)=\frac{f'''(0)}{2}x^2+f''(0)x+f'(0) \\
-&P_3(x)=\frac{f'''(0)}{2\cdot3}x^3+\frac{f''(0)}{2}x^2+f'(0)x+f(0)
-= \frac{f'''(0)}{2\cdot3}x^3 + P_2(x)
-\end{align}$$<p>So, here are all the results we have gotten so far, written in a way that makes
+&P_3(x)=\frac{f'''(0)}{2\cdot3}x^3+\frac{f''(0)}{2}x^2+f'(0)x+f(0)  = \frac{f'''(0)}{2\cdot3}x^3 + P_2(x)\end{align}$$<p>So, here are all the results we have gotten so far, written in a way that makes
 the pattern quite obvious.</p>
 
-$$\begin{align}
-&P_0(x) = f(0) \\
+$$\begin{align}&P_0(x) = f(0) \\
 &P_1(x) = P_0(x) + \frac{f'(0)}{1}x \\
 &P_2(x) = P_1(x) + \frac{f''(0)}{1 \cdot 2}x^2 \\
-&P_3(x) = P_2(x) + \frac{f'''(0)}{1 \cdot 2 \cdot 3}x^3
-\end{align}$$<p>Next we'll write the rule for calculating $P_n(x)$ for any $n$, but we need more
+&P_3(x) = P_2(x) + \frac{f'''(0)}{1 \cdot 2 \cdot 3}x^3\end{align}$$<p>Next we'll write the rule for calculating $P_n(x)$ for any $n$, but we need more
 notation:</p>
 
 <ul><li>$f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(5)}(x)=f'''''(x)$.</li><li>$n! = 1 \cdot 2 \cdot 3 \cdot ... \cdot n$. Most programming languages have a
   <code>factorial(n)</code> function that returns $n!$.
 </li></ul><p>Let's do this.</p>
 
-$$\begin{align}
-P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n
-\end{align}$$<p>This is known as the $n$'th Taylor polynomial.</p>
+$$\begin{align}P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n\end{align}$$<p>This is known as the $n$'th Taylor polynomial.</p>
 
 <p>We used $x=0$ here as a "magic number" that we always put to $f(\ \ )$, but
 that doesn't need to be 0. Here's a more generalized Taylor polynomial:</p>
 
-$$\begin{align}
-P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
-\end{align}$$<p>The Taylor polynomial with $a=0$ is also known as a Maclaurin polynomial. You
+$$\begin{align}P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n\end{align}$$<p>The Taylor polynomial with $a=0$ is also known as a Maclaurin polynomial. You
 don't need to remember that in this tutorial, but if someone talks about a
 Maclaurin polynomial they mean this.</p>
 
@@ -116,38 +101,30 @@ $\frac{d}{dx} \cos(x) = -\sin(x)$. These rules are proved
 
 <p>So, we get this:</p>
 
-$$\begin{align}
-f(x) &= \sin(x) \\
+$$\begin{align}f(x) &= \sin(x) \\
 f'(x) &= \cos(x) \\
 f''(x) &= -\sin(x) \\
 f'''(x) &= -\cos(x) \\
 f''''(x) &= \sin(x) \\
 f'''''(x) &= \cos(x) \\
 f''''''(x) &= -\sin(x) \\
-&...
-\end{align}$$<p>The pattern is obvious.</p>
+&...\end{align}$$<p>The pattern is obvious.</p>
 
 <p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit
 circle</a> we know that $\cos 0 = 1$ and
 $\sin 0 = 0$ because the $(x,y)$ point $(1,0)$ corresponds to the angle 0.</p>
 
-$$\begin{align}
-f(0) &= 0 \\
+$$\begin{align}f(0) &= 0 \\
 f'(0) &= 1 \\
 f''(0) &= 0 \\
 f'''(0) &= -1 \\
 f''''(0) &= 0 \\
 f'''''(0) &= 1 \\
-&...
-\end{align}$$<p>So we have this:</p>
+&...\end{align}$$<p>So we have this:</p>
 
-$$\begin{align}
-\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2
-            + \frac{f'''(0)}{3!}x^3 + \frac{f''''(0)}{4!}x^4 + ... \\
-&=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4
-    + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
-&= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...
-\end{align}$$<p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
+$$\begin{align}\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2              + \frac{f'''(0)}{3!}x^3 + \frac{f''''(0)}{4!}x^4 + ... \\
+&=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4      + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
+&= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\end{align}$$<p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
 
 <p><img width="512" height="228" class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.svg" /></p><p>I think this is just awesome.</p>
 
@@ -183,7 +160,7 @@ everything out of basically nothing with just derivatives and antiderivatives.</
 more complicated than our <code>taylorsin()</code> because it uses taylor polynomials at
 other places than $x=0$, but the basic idea is the same.</p>
 
-<p>If we could somehow continue this forever instead of stopping at e.g. <code>i=99</code>
+<p>If we could somehow continue this forever instead of stopping at e.g. <code>i=19</code>
 we would get perfectly precise sin values. I'm not going to talk about the
 details of why that happens, but this works for sin, cos and many other things.
 An infinitely continuing Taylor polynomial is also known as a Taylor <i>series</i>.</p>
