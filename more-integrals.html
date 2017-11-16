@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>More Integrals</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><b>More Integrals</b></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="more-integrals">More Integrals<a class="headerlink" href="#more-integrals" title="Link to this title">¶</a></h1><p>There are many fun and awesome things that can be done with integrals.
+<a href="integrals.html">Last time</a> we looked into calculating areas and 3D
+volumes, but you'll be also amazed by everything else we can do.</p>
+
+<div class="box redbox"><p>Be sure to read <a href="derivatives.html">the derivative chapter</a> and <a href="integrals.html">the
+integral chapter</a> first. This chapter uses things I
+showed in those chapters.
+</p>
+
+</div><h2 id="arc-length">Arc Length<a class="headerlink" href="#arc-length" title="Link to this title">¶</a></h2><p><img width="171" height="171" class="asymptote" src="asymptote/e6fae09a0916f5f85b46022f94b5d280.svg" /></p><p>The length of the blue arc in the above image is quite easy to calculate.
+We can just complete it to a full circle, and we know <a href="summary.html#geometry-and-trig">its perimeter
+length is $3\tau$</a> so half of
+that is $3\tau/2 \approx 9.42$. But that's just a special case. What if
+we want to calculate the length of an arc taken from <i>any</i> $y=f(x)$ graph?</p>
+
+<p>Let's assume that $f$ is a function that <a href="more-derivatives.html#which-functions-have-derivatives">has a
+derivative</a>, and say
+that the length of an arc to $x$ is $s(x)$, just like <a href="integrals.html#area-to-x">we did with
+areas</a>. We get this:</p>
+
+<p><img width="427" height="400" class="asymptote" src="asymptote/dccacf3170a6f46771728cd11a782b28.svg" /></p><p>For convenience, I'll define $\Delta s = s(x+\Delta x)-s(x)$ and
+$\Delta y = f(x+\Delta x)-f(x)$. This will be a mess anyway, but these handy
+variables make things a bit less messy.</p>
+
+<p>Anyway, now you can see a little triangle in the picture so we can apply <a href="geometry-and-trig.html#pythagorean-theorem">the
+Pythagorean theorem</a>, but as
+usual, the result is not perfectly accurate because the graph is not
+guaranteed to be straight. We get this mess:</p>
+
+$$\begin{align}(\Delta s)^2 &\approx (\Delta x)^2 + (\Delta y)^2 \\
+|\Delta s| &\approx \sqrt{(\Delta x)^2 + (\Delta y)^2} \\
+&\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \frac{(\Delta y)^2}{(\Delta x)^2}} \\
+&\approx \sqrt{(\Delta x)^2 + (\Delta x)^2 \left(\frac{\Delta y}{\Delta x}\right)^2} \\
+&\approx \sqrt{(\Delta x)^2 \left(1+\left(\frac{\Delta y}{\Delta x}\right)^2\right)} \\
+&\approx \sqrt{(\Delta x)^2}\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+&\approx |\Delta x|\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+\frac{|\Delta s|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+\frac{\Delta s}{\Delta x} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}\end{align}$$<p>In the last step I assumed that we moved $x$ right so $\Delta x$ was
+positive, and obviously $\Delta s$ was also positive.</p>
+
+<p>The smaller the bit of the curve we're looking at, the less curvy it is
+and the more accurate this is:</p>
+
+$$\begin{align}\lim_{\Delta x\to0} \frac{\Delta s}{\Delta x}  &= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
+&= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}\right)^2}\end{align}$$<p>The $\lim$ things already look a lot like derivatives, but let's plug in our
+definitions of $\Delta y$ and $\Delta s$ just to make sure that they really are
+derivatives.</p>
+
+$$\begin{align}\lim_{\Delta x\to0} \frac{s(x+\Delta x)-s(x)}{\Delta x}      &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
+s'(x) &= \sqrt{1+(f'(x))^2}\end{align}$$<img width="171" height="123" class="asymptote" src="asymptote/78f377724310f86bd8037eafd5b02eb0.svg" style="float:right;" /><p><br></p>
+
+$$\begin{align}s(b)-s(a) &= [s(x)]_a^b \\
+&= \int_a^b s'(x)\ dx \\
+&= \int_a^b \sqrt{1+(f'(x))^2}\ dx\end{align}$$<p>That took a while, but we're done! This arc length thing is yet another
+one of my favorite math stuff.</p>
+
+<h2 id="example-more-jumping">Example: More Jumping<a class="headerlink" href="#example-more-jumping" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>A player jumps along the parabola $y=2x-x^2$. How long is the arc
+that the player's path traces above the x axis?</p>
+
+<p><img width="285" height="183" class="asymptote" src="asymptote/bb9861a78a5f0e2c6bbe2d5d61ae4942.svg" /></p></div><p>First things first – let's figure out when the graph hits the $x$ axis;
+that is, when $y=0$:</p>
+
+$$\begin{align}2x-x^2&=0 \\
+(2-x)x&=0 \\
+2-x=0\ \text{or}&\ x=0 \\
+x=2\ \text{or}&\ x=0\end{align}$$<p>Now we can just plug in $a=0$, $b=2$ and $f(x)=2x-x^2$ to our formula.</p>
+
+$$\begin{align}f(x) &= 2x-x^2 \\
+f'(x) &= 2-2x\end{align}$$$$\begin{align}& \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx  \approx 2.96\end{align}$$<p>Use your favorite symbolic calculation library for calculating the integral. I
+did it with <a href="http://www.sympy.org">sympy</a>:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>init_printing()
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>x <span style="color: #666666">=</span> Symbol(<span style="color: #4070a0">&#39;x&#39;</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>integrate(sqrt(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">2</span><span style="color: #666666">-</span><span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>), (x,<span style="color: #40a070">0</span>,<span style="color: #40a070">2</span>))
+<span style="color: #888888">asinh(2)</span>
+<span style="color: #888888">──────── + √5</span>
+<span style="color: #888888">   2</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">float</span>(integrate(sqrt(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">2</span><span style="color: #666666">-</span><span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>), (x,<span style="color: #40a070">0</span>,<span style="color: #40a070">2</span>)))
+<span style="color: #888888">2.957885715089195</span>
+</pre></div>
+<p>In cases like this I don't recommend worrying about what <code>asinh</code> is.
+The important thing is that we can convert the answer to a float.</p>
+
+<p>Calculating the precise value of the integral with sympy takes a while,
+but it does it faster if we tell it to just evaluate the whole thing
+with floats. The answer is not as precise, but the error is hardly
+noticable.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>Integral(sqrt(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">2</span><span style="color: #666666">-</span><span style="color: #40a070">2</span><span style="color: #666666">*</span>x)<span style="color: #666666">**</span><span style="color: #40a070">2</span>), (x,<span style="color: #40a070">0</span>,<span style="color: #40a070">2</span>))<span style="color: #666666">.</span>evalf()
+<span style="color: #888888">2.95788571508920</span>
+</pre></div>
+<p>We didn't try to calculate the integral by hand because it turns out to be
+surprisingly difficult. I tried it, and after using several "advanced" tricks I
+managed to turn it into this:</p>
+
+$$\begin{align}\int_0^{\arctan(2)} \frac{1}{(\cos(t))^3}\ dt\end{align}$$<p>Then I found a youtube video about integrating $1/(\cos(t))^3$. It was 6
+minutes long, but it didn't include the trial and error needed for figuring out
+what to do.</p>
+
+<h2 id="boring-trapezoid-area">Boring Trapezoid Area<a class="headerlink" href="#boring-trapezoid-area" title="Link to this title">¶</a></h2><p>This section has nothing to do with integrals, but we need it in the
+next section. Let's find the area of shapes like this:</p>
+
+<p><img width="228" height="77" class="asymptote" src="asymptote/ed6c8d4ed5bc070d00ae6321a528ab3d.svg" /></p><p>The line with length $c$ is centered between the topmost and the
+bottommost line, and all horizontally drawn lines are parallel with each
+other.</p>
+
+<p>Let's cut off and rotate the ends:</p>
+
+<p><img width="228" height="86" class="asymptote" src="asymptote/b1759824820cf4858e1ba1cc49fd673a.svg" /></p><p><img width="228" height="95" class="asymptote" src="asymptote/1968e90ab39e6069f59c292609296eea.svg" /></p><p>The area is obviously just $ch$.</p>
+
+<h2 id="my-thick-line-area-thing">My Thick Line Area Thing<a class="headerlink" href="#my-thick-line-area-thing" title="Link to this title">¶</a></h2><p>I'm sure someone has invented this before me, but I haven't found a name
+for this yet. That's why the title above is like it is.</p>
+
+<p>Let's try to figure out how to calculate an area like this if we know
+nothing but $t$ and $l$:</p>
+
+<p><img width="285" height="207" class="asymptote" src="asymptote/85730b70ad329fd774c0ebc8da66add5.svg" /></p><p>The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
+when things are curved like this. Note that the distance between the red
+line and the black lines is always the same; calculating this would be
+more difficult if the thickness wasn't the same $t$ everywhere.</p>
+
+<img width="203" height="285" class="asymptote" src="asymptote/db595b4ca14624d53f30c0b7096a0a5f.svg" style="float:right;" /><p>Let's start by thinking about a small, trapezoid-shaped piece of the
+area like in the image at right. Now everything is quite straight-forward
+and a lot like in <a href="integrals.html#example-circle-area">the circle example</a>.</p>
+
+$$\begin{align}A(b+\Delta b)-A(b) &\approx t \cdot \Delta b \\
+\frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx t \\
+\lim_{\Delta b\to0} \frac{A(b+\Delta b)-A(b)}{\Delta b} &= t \\
+A'(b) &= t \\
+A(b) &= tb+C\end{align}$$<p><br></p>
+
+$$\begin{align}A(l)-A(0) &= (tl + C)-(t \cdot 0 + C) \\
+&= tl+C-0-C \\
+&= tl\end{align}$$<h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what $\tau$ is. <a href="summary.html#geometry-and-trig">Click
+here</a>
+if you don't.
+</p>
+
+</div><p>So far we have <a href="integrals.html#example-circle-area">calculated a circle area with an
+integral</a>, but now we can do it
+without thinking about any integrals.</p>
+
+<p>This thing's area is obviously $tl = t \tau R$:</p>
+
+<p><img width="151" height="199" class="asymptote" src="asymptote/49d04478a7ef03c432fbea137bbc0da2.svg" /></p><p>If we set $R=\frac t 2$, the inner circle's radius becomes 0:</p>
+
+<p><img width="156" height="199" class="asymptote" src="asymptote/9b1ed15fde987e41f12cf08719fe8368.svg" /></p><p>The area is $t \tau R = t \tau \frac t 2 = \frac 1 2 \tau t^2$.
+</p>
+
+</div>
+</body>
+</html>

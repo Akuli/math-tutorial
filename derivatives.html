@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Derivatives</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><b>Derivatives</b></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>Derivatives are one of my favorite things in math. At first they seem
+like calculating their values will be quite complicated, but it turns
+out to be surprisingly easy.</p>
+
+<p>Derivatives are also not useless gibberish isolated from real life. There's a
+practical demonstration game at the end of the chapter, and we can use them in
+surprisingly many places like <a href="taylor.html">implementing our own sin function</a>.
+If you have no idea what sin is that's not a problem, and you don't need it for
+learning derivatives.</p>
+
+<div class="box graybox"><p>This chapter starts with some boring stuff, but we need it for fun
+stuff. Try to read patiently.
+</p>
+
+</div><h2 id="limits">Limits<a class="headerlink" href="#limits" title="Link to this title">¶</a></h2><p>Things like $\frac{2x}{x}$ seem to be $2$ with any $x$. But there's one
+exception: if $x=0$, then $\frac{2x}{x}$ is $\frac 0 0$ and thus not
+defined.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">123</span><span style="color: #666666">/</span><span style="color: #40a070">123</span>
+<span style="color: #888888">2.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">0</span><span style="color: #666666">/</span><span style="color: #40a070">0</span>
+<span style="color: #0044DD">Traceback (most recent call last):</span>
+  File <span style="color: #007020">&quot;&lt;stdin&gt;&quot;</span>, line <span style="color: #40a070">1</span>, in &lt;module&gt;
+<span style="color: #FF0000">ZeroDivisionError</span>: division by zero
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">0.00000001</span><span style="color: #666666">/</span><span style="color: #40a070">0.00000001</span>
+<span style="color: #888888">2.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span>(<span style="color: #666666">-</span><span style="color: #40a070">0.00000001</span>)<span style="color: #666666">/</span>(<span style="color: #666666">-</span><span style="color: #40a070">0.00000001</span>)
+<span style="color: #888888">2.0</span>
+</pre></div>
+<p>No matter how near zero $x$ is we get 2, even if $x$ is negative. In
+these cases, mathematicians say that
+$\displaystyle\lim_{x \to 0} \textstyle\frac{2x}{x}=2$. Here lim means
+that we take the <i>limit</i> as $x$ goes to 0. We get $\frac 0 0$ if we try
+to do $\frac{2 \cdot 0}{0}$, but the limit still exists.</p>
+
+<p>The limit does not exist if we get something like $\frac 1 0$ or
+$\frac 2 0$ as opposed to $\frac 0 0$. See <a href="https://youtu.be/BRRolKTlF6Q?t=2m57s">this
+video</a> for a really nice example
+that also shows why.</p>
+
+<p>We can also do things like this:</p>
+
+$$\begin{align}\lim_{x\to0} \left(1+\frac{2x}{x} + \frac{3x}{x}\right)  = 1 + \left(\lim_{x\to0}\frac{2x}{x}\right) + \left(\lim_{x\to0}\frac{3x}{x}\right)  = 1 + 2 + 3\end{align}$$<p>I won't list all the things we can do to limits and why because the
+rules are quite straight-forward and the why part is boring.</p>
+
+<h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>A <i>difference</i> means how much a value changes. For example, if the value of $x$
+is first 5 and then we change it to 6, $x$ changes by $\Delta x = 1$. Here
+$\Delta$ is the Greek delta letter, so if someone's code has a variable named
+<code>deltax</code> it means this.</p>
+
+<p id="slope">Let's draw a graph of something like $y = 2x+1$:
+</p>
+
+<p><img width="240" height="398" class="asymptote" src="asymptote/658b8e18cb886d602ec57f584063b949.svg" /></p><p>For example, at $x=3$ we know that $y = 2x+1 = 2 \cdot 3 + 1 = 7$.</p>
+
+<p>Let's calculate the <b>slope</b> of this line:</p>
+
+$$\begin{align}\frac{\Delta y}{\Delta x} = \frac{6}{3} = 2\end{align}$$<p>The bigger the slope, the faster the line goes up, so the slope describes the
+"<b>growing speed</b>" or "<b>changing speed</b>". I used the $(x,y)$ points $(1,0)$
+and $(3,7)$ when calculating the slope, but you should get the same slope with
+any pair of points chosen from the line because the height grows at the same
+speed everywhere.</p>
+
+<h2 id="what-is-a-derivative">What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Link to this title">¶</a></h2><img width="285" height="185" class="asymptote" src="asymptote/43594100434e615b4b3437202c444388.svg" style="float:right;" /><p>What if we could extend this slope thing to curvy graphs? At first sight it
+might seem like we won't get a useful growing speed out of this because we get
+different slopes depending on which points we choose as shown in the image at
+right.</p>
+
+<p>But what if we try to get the growing speed at some specific point, like
+$\displaystyle\lim_{\Delta x \to 0} \textstyle\frac{\Delta y}{\Delta x}$
+instead of a plain $\frac{\Delta y}{\Delta x}$? Let's see what we get
+from a $y=f(x)$ graph where $f$ is a function:</p>
+
+<p><img width="341" height="246" class="asymptote" src="asymptote/850c13f0c13e3b03f1e0b31c7c4a47d0.svg" /></p><p>Based on the image, if we take the length of the vertical $f(x+\Delta x)$
+line and take off the length of the $f(x)$ line, we're left with just
+$\Delta y$. So $\Delta y = f(x+\Delta x)-f(x)$:</p>
+
+$$\begin{align}\lim_{\Delta x \to 0}\frac{\Delta y}{\Delta x}  = \lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}  = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}\end{align}$$<p>I finished by replacing $\Delta x$ with $h$ because $h$ is easier and
+faster to write than $\Delta x$.</p>
+
+<p>This "growing speed at x" value is known as <b>the derivative</b> of $f$.
+Sometimes the derivative doesn't exist, but most functions you'll come
+across have the derivative. <a href="more-derivatives.html#which-functions-have-derivatives">Click
+here</a> if you want to
+know more.</p>
+
+<div class="box graybox"><p>At this point you're probably feeling like this is just some
+theorethical gibberish that has nothing to do with real life, but
+that's not the case. Keep reading.
+</p>
+
+</div><p><a href="graphs.html#parabolas">The graph $y=x^2$ is a parabola.</a>
+Let's find the derivative of $x^2$ by plugging in $f(x)=x^2$ to the lim
+thing we ended up with:</p>
+
+<div class="floatingbox"><h2> Handy thing: $(x+h)^2=x^2+2xh+h^2$</h2><p>Proof:</p>
+
+$$\begin{align}& \ (x+h)^2 \\
+=&\ (x+h)(x+h) \\
+=&\ (x+h)x+(x+h)h \\
+=&\ xx+hx+xh+hh \\
+=&\ x^2+2xh+h^2\end{align}$$</div>$$\begin{align}&   \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+=&  \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
+=&  \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
+=&  \lim_{h\to0} \frac{2xh + h^2}{h} \\
+=&  \lim_{h\to0} \frac{(2x+h)h}{h} \\
+=&  \lim_{h\to0} (2x+h) \\
+=&\ 2x\end{align}$$<img width="144" height="285" class="asymptote" src="asymptote/70d42219b1c46cc9f2f1a3ae567da8ef.svg" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
+we arrived at just $2x$. What's more, the $2x$ is not just a random value we
+got out of a spooky calculation; for example, at $x=2$ the derivative is
+$2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
+$x=2$ its slope will also be 4 like in the image at right.</p>
+
+<p>You can also find the derivative of the $y=2x+1$ example we looked at earlier,
+and turns out that it's 2, just like the slope was. This makes sense because
+derivatives are like slopes but they also work with curvy things, and there's no
+difference between a slope and a derivative of a straight line.</p>
+
+<div class="box graybox"><p>The derivative $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$
+is often written as $\frac{dy}{dx}$. Historically $dy$ and $dx$ were
+infinitely tiny changes of $y$ and $x$, but nowadays limits are
+preferred over "infinitely small numbers".</p>
+
+<p>It's also common to write $\frac{d}{dx} y$ instead of $\frac{dy}{dx}$,
+although it doesn't make much sense because $dy$ doesn't mean $d$ times $y$.
+Another common style is to put a single quote after a function name, like
+$f'(x) = \frac{d}{dx} f(x)$.</p>
+
+<p>Sometimes programmers write <code>dy</code> when they really mean <code>deltay</code>.
+It doesn't really make sense either, but <code>dy</code> is much less typing
+than <code>deltay</code>.
+</p>
+
+</div><h2 id="faster">Faster!<a class="headerlink" href="#faster" title="Link to this title">¶</a></h2><p>Let's say that you want to calculate something like this:</p>
+
+$$\begin{align}\frac{d}{dx} (6x^2+7x-123)\end{align}$$<p>That would be a horribly complicated calculation with the $\lim$ thing.
+Let's be a bit more clever.</p>
+
+<p>We have a bunch of things with $+$ and $-$ in between, so maybe we could
+deal with them somehow? Let's say that we want to find the derivative of
+$f(x)+g(x)$ where $f$ and $g$ can be any functions (as long as the
+derivative exists). They could be for example $f(x)=6x^2$ and
+$g(x)=7x-123$, but let's see what we get if we don't plug in any values:</p>
+
+$$\begin{align}\frac{d}{dx}(f(x)+g(x))  &= \lim_{h\to0} \frac{\bigl(f(x+h)+g(x+h)\bigr)-\bigl(f(x)+g(x)\bigr)}{h} \\
+&= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
+&= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
+&= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right) \\
+&= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)   + \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
+&= \frac{d}{dx} f(x) + \frac{d}{dx} g(x)\end{align}$$<p>That's quite nice! So if we want to find the derivative of a bunch of
+things added together we can just find derivatives of each thing one by
+one. The same thing also works with $-$ instead of $+$·</p>
+
+<p>We can actually take a step further and find the derivative of $c\ f(x)$
+where $c$ is any constant, e.g. $6$:</p>
+
+$$\begin{align}\frac{d}{dx}(c\ f(x))  &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h} \\
+&= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h} \\
+&= \lim_{h\to0} \left( c\ \frac{f(x+h)-f(x)}{h} \right) \\
+&= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+&= c \cdot \frac{d}{dx} f(x)\end{align}$$<p>We need a couple more things: $\frac{d}{dx}x=1$ because
+$\displaystyle\lim_{\Delta x \to 0} \textstyle\frac{\Delta x}{\Delta x}=1$, and
+$\frac{d}{dx} c = 0$ because $c$ never changes regardless of the value of $x$
+and $\Delta c = 0$. You can also use the definition of derivative to show that
+these work.</p>
+
+<p>So, with all that we can calculate the derivative easily:</p>
+
+$$\begin{align}&  \frac{d}{dx} (6x^2+7x-123) \\
+=& \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123) \\
+=& 6 \cdot \frac{d}{dx}(x^2) + 7 \cdot \frac{d}{dx} x - 0 \\
+=& 6 \cdot 2x + 7 \cdot 1 \\
+=& 12x + 7\end{align}$$<div class="box graybox"><h2> See Also</h2><p>The summary page has a derivative section with <a href="summary.html#derivative-rules">many more
+rules</a>. You may need them if you want
+to find derivatives of different functions than the functions in
+this chapter.
+</p>
+
+</div><p>You can also use a nice symbolic calculation library, like Python's
+<a href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>init_printing()
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>x <span style="color: #666666">=</span> Symbol(<span style="color: #4070a0">&#39;x&#39;</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff(x<span style="color: #666666">**</span><span style="color: #40a070">2</span>, x)
+<span style="color: #888888">2⋅x</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>diff(<span style="color: #40a070">6</span> <span style="color: #666666">*</span> x<span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> <span style="color: #40a070">7</span><span style="color: #666666">*</span>x <span style="color: #666666">-</span> <span style="color: #40a070">123</span>, x)
+<span style="color: #888888">12⋅x + 7</span>
+</pre></div>
+<p>Here "diff" is short for "differenciate", and it means finding a derivative.</p>
+
+<p>Libraries like sympy are also useful for doing long and messy calculations like
+the one we did above:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">f</span>(x):
+<span style="color: #c65d09; font-weight: bold">... </span>    <span style="color: #007020; font-weight: bold">return</span> x<span style="color: #666666">**</span><span style="color: #40a070">2</span>
+<span style="color: #c65d09; font-weight: bold">...</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>h <span style="color: #666666">=</span> Symbol(<span style="color: #4070a0">&#39;h&#39;</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(f(x<span style="color: #666666">+</span>h)<span style="color: #666666">-</span>f(x))<span style="color: #666666">/</span>h
+<span style="color: #888888">   2          2</span>
+<span style="color: #888888">- x  + (h + x)</span>
+<span style="color: #888888">───────────────</span>
+<span style="color: #888888">       h</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>simplify((f(x<span style="color: #666666">+</span>h)<span style="color: #666666">-</span>f(x))<span style="color: #666666">/</span>h)
+<span style="color: #888888">h + 2⋅x</span>
+</pre></div>
+<h2 id="example-smooth-jumps">Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Link to this title">¶</a></h2><p>Let's say you're making a game where a player can jump over something. If the
+player moves right at a steady speed, which of these jumps looks best?</p>
+
+<p><img width="569" height="163" class="asymptote" src="asymptote/7e9197d1a759d35761b51c123fd5416b.svg" /></p><p>The answer is obvious – the rightmost jump looks best. It's time to figure out
+how to make games with jumps like that.</p>
+
+<p>Let's say that $t$ is time and $h$ is the height of our player, so we get this
+graph:</p>
+
+<p><img width="256" height="168" class="asymptote" src="asymptote/fc88711b46cb5bd2b1dca7e1eba9278a.svg" /></p><p><a href="graphs.html#parabolas">This graph looks like a parabola, so its equation is $h=at^2+bt+c$
+where $a$, $b$ and $c$ are constants.</a> The
+changing speed of height is the falling speed. Let's call that $v$ like
+velocity.</p>
+
+$$\begin{align}v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b\end{align}$$<p>On the other hand, the changing speed of velocity is the acceleration caused by
+gravity. Let's call that $g$.</p>
+
+$$\begin{align}g = \frac{dv}{dt} = \frac{d}{dt} (2at+b) = 2a\end{align}$$<p>Note how the $t$ disappeared and we're left with just the constant $2a$. This
+makes sense because the gravity is always the same, no matter what time it is.</p>
+
+<p>This Python program...</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>height <span style="color: #666666">=</span> <span style="color: #40a070">0</span>
+velocity <span style="color: #666666">=</span> <span style="color: #40a070">10</span>
+gravity <span style="color: #666666">=</span> <span style="color: #40a070">2</span>
+
+<span style="color: #007020; font-weight: bold">while</span> height <span style="color: #666666">&gt;=</span> <span style="color: #40a070">0</span>:
+    <span style="color: #007020">print</span>(<span style="color: #4070a0">&#39; &#39;</span><span style="color: #666666">*</span>height <span style="color: #666666">+</span> <span style="color: #4070a0">&#39;O&#39;</span>)
+    height <span style="color: #666666">+=</span> velocity
+    velocity <span style="color: #666666">-=</span> gravity
+</pre></div>
+<p>...prints this awesome parabola:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>O
+          O
+                  O
+                        O
+                            O
+                              O
+                              O
+                            O
+                        O
+                  O
+          O
+O
+</pre></div>
+<p>You can use similar code for doing jumps in games. Here's a demo created with
+my <a href="https://github.com/Akuli/math-tutorial/blob/master/canvaswrapper.js">canvaswrapper.js</a> script. Click it and use arrow keys to move the ball.</p>
+
+<script type="text/javascript" src="canvaswrapper.js"></script><canvas id="canvas1" width="600" height="400" tabindex="1"></canvas><script>var screen = new CanvasWrapper('canvas1');
+
+const GRAVITY = 1.5;
+var ball = {
+  x: screen.width/2,    // centered
+  height: 0,            // distance from bottom of screen to ball's bottom
+  velocity: 0,          // positive means up
+  velocityMax: 30,      // velocity immediately after a jump
+  sidewayMovement: 0,   // -1 is left, +1 right
+  sidewaySpeed: 10,
+  radius: 30,
+};
+
+
+runRepeatedly(function() {
+  screen.fill('black');
+  screen.drawCircle(ball.x, screen.height-ball.height-ball.radius,
+                    ball.radius, 'white');
+
+  ball.x += ball.sidewayMovement * ball.sidewaySpeed;
+  ball.height += ball.velocity;
+  ball.velocity -= GRAVITY;
+
+  if (ball.height < 0) {
+    // ball hits the ground
+    ball.height = 0;
+    ball.velocity = 0;
+  }
+
+  screen.getEvents().forEach(evt => {
+    if (evt.type == 'keydown') {
+      if (evt.key == 'ArrowLeft') {
+        ball.sidewayMovement = -1;
+      } else if (evt.key == 'ArrowRight') {
+        ball.sidewayMovement = 1;
+      } else if (evt.key == 'ArrowUp') {
+        ball.velocity = ball.velocityMax;
+      }
+    } else if (evt.type == 'keyup' && (
+          (evt.key == 'ArrowLeft' && ball.sidewayMovement == -1) ||
+          (evt.key == 'ArrowRight' && ball.sidewayMovement == 1))) {
+      // cancel the previous ArrowLeft or ArrowRight press
+      ball.sidewayMovement = 0;
+    }
+  });
+});
+</script><p>Here's the code:</p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">var</span> screen <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> CanvasWrapper(<span style="color: #4070a0">&#39;canvas1&#39;</span>);
+
+<span style="color: #007020; font-weight: bold">const</span> GRAVITY <span style="color: #666666">=</span> <span style="color: #40a070">1.5</span>;
+<span style="color: #007020; font-weight: bold">var</span> ball <span style="color: #666666">=</span> {
+  x<span style="color: #666666">:</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>,    <span style="color: #60a0b0; font-style: italic">// centered</span>
+  height<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,            <span style="color: #60a0b0; font-style: italic">// distance from bottom of screen to ball&#39;s bottom</span>
+  velocity<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,          <span style="color: #60a0b0; font-style: italic">// positive means up</span>
+  velocityMax<span style="color: #666666">:</span> <span style="color: #40a070">30</span>,      <span style="color: #60a0b0; font-style: italic">// velocity immediately after a jump</span>
+  sidewayMovement<span style="color: #666666">:</span> <span style="color: #40a070">0</span>,   <span style="color: #60a0b0; font-style: italic">// -1 is left, +1 right</span>
+  sidewaySpeed<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
+  radius<span style="color: #666666">:</span> <span style="color: #40a070">30</span>,
+};
+
+
+runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() {
+  screen.fill(<span style="color: #4070a0">&#39;black&#39;</span>);
+  screen.drawCircle(ball.x, screen.height<span style="color: #666666">-</span>ball.height<span style="color: #666666">-</span>ball.radius,
+                    ball.radius, <span style="color: #4070a0">&#39;white&#39;</span>);
+
+  ball.x <span style="color: #666666">+=</span> ball.sidewayMovement <span style="color: #666666">*</span> ball.sidewaySpeed;
+  ball.height <span style="color: #666666">+=</span> ball.velocity;
+  ball.velocity <span style="color: #666666">-=</span> GRAVITY;
+
+  <span style="color: #007020; font-weight: bold">if</span> (ball.height <span style="color: #666666">&lt;</span> <span style="color: #40a070">0</span>) {
+    <span style="color: #60a0b0; font-style: italic">// ball hits the ground</span>
+    ball.height <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+    ball.velocity <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+  }
+
+  screen.getEvents().forEach(evt =&gt; {
+    <span style="color: #007020; font-weight: bold">if</span> (evt.type <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;keydown&#39;</span>) {
+      <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowLeft&#39;</span>) {
+        ball.sidewayMovement <span style="color: #666666">=</span> <span style="color: #666666">-</span><span style="color: #40a070">1</span>;
+      } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowRight&#39;</span>) {
+        ball.sidewayMovement <span style="color: #666666">=</span> <span style="color: #40a070">1</span>;
+      } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowUp&#39;</span>) {
+        ball.velocity <span style="color: #666666">=</span> ball.velocityMax;
+      }
+    } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (evt.type <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;keyup&#39;</span> <span style="color: #666666">&amp;&amp;</span> (
+          (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowLeft&#39;</span> <span style="color: #666666">&amp;&amp;</span> ball.sidewayMovement <span style="color: #666666">==</span> <span style="color: #666666">-</span><span style="color: #40a070">1</span>) <span style="color: #666666">||</span>
+          (evt.key <span style="color: #666666">==</span> <span style="color: #4070a0">&#39;ArrowRight&#39;</span> <span style="color: #666666">&amp;&amp;</span> ball.sidewayMovement <span style="color: #666666">==</span> <span style="color: #40a070">1</span>))) {
+      <span style="color: #60a0b0; font-style: italic">// cancel the previous ArrowLeft or ArrowRight press</span>
+      ball.sidewayMovement <span style="color: #666666">=</span> <span style="color: #40a070">0</span>;
+    }
+  });
+});
+</pre></div>
+</div>
+</body>
+</html>

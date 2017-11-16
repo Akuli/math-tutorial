@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Exponent Functions and Logarithms</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><b>Exponent Functions and Logarithms</b></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="exponent-functions-and-logarithms">Exponent Functions and Logarithms<a class="headerlink" href="#exponent-functions-and-logarithms" title="Link to this title">¶</a></h1><p>The above title sounds really boring, so I wonder how you ended up reading this
+thing. The mathematician inside may might find some of this interesting though.</p>
+
+<div class="box redbox"><p>This chapter assumes that you know <a href="derivatives.html">derivatives</a>.
+</p>
+
+</div><h2 id="exponent-functions">Exponent Functions<a class="headerlink" href="#exponent-functions" title="Link to this title">¶</a></h2><p>The graph page contains some <a href="graphs.html#exponents-and-logarithms">exponent and logarithm
+graphs</a>, but calculating values for
+drawing them requires things like $a^{-1}$ if $x=-1$. Turns out that
+$a^{-b}=\frac{1}{a^b}$. For example:</p>
+
+$$\begin{align}2^{-1} &= \frac{1}{2^1} = \frac 1 2 \\
+2^{-2} &= \frac{1}{2^2} = \frac 1 4 \\
+2^{-3} &= \frac{1}{2^3} = \frac 1 8\end{align}$$<p>These results agree with the graphs because if $x$ gets smaller, then $a^x$ also
+gets smaller if $a>1$.</p>
+
+<h2 id="the-e-constant">The e constant<a class="headerlink" href="#the-e-constant" title="Link to this title">¶</a></h2><div class="box graybox"><h2> See Also</h2><p><a href="https://youtu.be/AuA2EAgAegE">This video</a> contains a different kind of
+introduction to $e$ with more facts but less details.
+</p>
+
+</div><p>Let's try to find the derivative of $a^x$ where $a$ is a constant and $a>0$:</p>
+
+$$\begin{align}\frac{d}{dx} a^x &= \lim_{h \to 0} \frac{a^{x+h}-a^x}{h}  &= \lim_{h \to 0} \frac{a^x a^h - a^x \cdot 1}{h} \\
+&= \lim_{h \to 0} \frac{a^x(a^h-1)}{h} \\
+&= \lim_{h \to 0} \left(a^x \frac{a^h-1}{h}\right) \\
+&= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h}\end{align}$$<p>Note that the only $x$ in what we ended up with is outside the lim, so the
+entire lim thing is actually yet another constant. So, wouldn't it be handy if
+the whole lim thing was just 1? Then $\frac{d}{dx} a^x$ would be just $a^x$.</p>
+
+<p>Turns out that there's only one $a$ value that satisfies this, and
+mathematicians call that number $e$.</p>
+
+$$\begin{align}\frac{d}{dx} e^x = e^x\end{align}$$$$\begin{align}e = \lim_{t\to0}\ (1+t)^{\frac 1 t} = \lim_{n\to\infty} \left(1 + \frac 1 n \right)^n\end{align}$$<p>The $n$ thing is really same as the $t$ thing with $n=1/t$. So if $n$ approaches
+infinity, $t=1/n$ approaches 0 because dividing by a big number results in a
+small number.</p>
+
+<p>Let's make sure that the $t$ thing works with the derivative thing. It doesn't
+matter how $t$ and our $h$ relate to each other as long as they both go to 0, so
+let's set $t=h$ and calculate the derivative:</p>
+
+$$\begin{align}\frac{d}{dx} e^x &= e^x \cdot \lim_{h \to 0}\frac{e^h-1}{h} \\
+&= e^x \cdot \lim_{h \to 0}\frac{\left((1 + h)^{\frac 1 h}\right)^h-1}{h} \\
+&= e^x \cdot \lim_{h \to 0}\frac{(1 + h)^{\frac 1 h h}-1}{h} \\
+&= e^x \cdot \lim_{h \to 0}\frac{(1 + h)^1-1}{h} \\
+&= e^x \cdot \lim_{h \to 0}\frac{1+h-1}{h} \\
+&= e^x \cdot \lim_{h \to 0}\frac h h \\
+&= e^x \cdot 1\end{align}$$<p>Let's also calculate an approximate value of $e$ and check the answer:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>n <span style="color: #666666">=</span> <span style="color: #40a070">10000000000</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">1</span><span style="color: #666666">/</span>n))<span style="color: #666666">**</span>n
+<span style="color: #888888">2.7182820532347876</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>e
+<span style="color: #888888">2.718281828459045</span>
+</pre></div>
+<p>I think this is quite nice. We got this magic $2.718...$ number out of pretty
+much nowhere. You'll be amazed by all the places where it occurs.</p>
+
+<p>Many programming languages have an <code>exp(x)</code> function that returns $e^x$, and
+it's usually more precise than e.g. <code>pow(e, x)</code> or <code>e**x</code>, although the
+difference is hardly noticable:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>exp(<span style="color: #40a070">3</span>)
+<span style="color: #888888">20.085536923187668</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>e<span style="color: #666666">**</span><span style="color: #40a070">3</span>
+<span style="color: #888888">20.085536923187664</span>
+</pre></div>
+<h2 id="logarithms">Logarithms<a class="headerlink" href="#logarithms" title="Link to this title">¶</a></h2><p>A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
+can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b(x)} = x$. The
+$b$ is known as the base of the logarithm.</p>
+
+<p>The inversiness looks like this in graphs:</p>
+
+<p><img width="341" height="332" class="asymptote" src="asymptote/ffa99f0902a6ee80107afbddeb1e2fa0.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
+with any $x$. You cannot take any logarithm of a zero or a negative value.</p>
+
+<p>The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
+for "natural", and $\log_e$ is called natural because it appears surprisingly
+often in all kinds of places because of the $e$.</p>
+
+<p>Many programming languages and calculators have a <code>log(x)</code> function, and
+usually it returns $\ln(x)$, $\log_2(x)$ or $\log_{10}(x)$. If you aren't sure
+which logarithm it is, you can try it like this:</p>
+
+$$\begin{align}\log_b(b) = \log_b(b^1) = 1\end{align}$$<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(<span style="color: #40a070">2</span>)
+<span style="color: #888888">0.6931471805599453</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(<span style="color: #40a070">10</span>)
+<span style="color: #888888">2.302585092994046</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(math<span style="color: #666666">.</span>e)
+<span style="color: #888888">1.0</span>
+</pre></div>
+<p>Python's <code>math.log(x)</code> seems to return $\ln(x)$.</p>
+
+<p>The summary page contains <a href="summary.html#logs-are-useful">a bunch of formulas</a>
+that make logarithms very useful. The proofs are below.</p>
+
+<p>Use the $\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ formula if your
+programming language doesn't have a logarithm that returns what you want:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">function</span> log4(x) {
+    <span style="color: #60a0b0; font-style: italic">// this works with any logarithm, so i don&#39;t even need to care about</span>
+    <span style="color: #60a0b0; font-style: italic">// which logarithm Math.log is in javascript</span>
+    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020">Math</span>.log(x) <span style="color: #666666">/</span> <span style="color: #007020">Math</span>.log(<span style="color: #40a070">4</span>);
+}
+</pre></div>
+<p>Most programming languages have a few different logarithm functions like e.g.
+<code>log2</code> and <code>log10</code>, and some allow specifying a base like <code>math.log(x, 4)</code>
+in Python.</p>
+
+<h2 id="logarithm-rule-proofs">Logarithm Rule Proofs<a class="headerlink" href="#logarithm-rule-proofs" title="Link to this title">¶</a></h2><p>If you don't like proofs then don't read these. The proofs are here just because
+I didn't feel like making a "More Logarithms" chapter just for them.</p>
+
+<p>Here $x>0$, $y>0$, $a>0$, $a\ne1$, $b>0$ and $b\ne1$. The proofs are ordered so
+that they don't use anything that hasn't been proved before them, but they use
+things that directly follow from the inversiness like $b^{\log_b(x)}=x$.</p>
+
+$$\begin{align}x^y &= x^y \\
+b^{\log_b(x^y)} &= \left(b^{\log_b(x)}\right)^y \\
+b^{\log_b(x^y)} &= b^{\log_b(x) \cdot y} \\
+\log_b(x^y) &= \log_b(x) \cdot y \\
+            &= y \log_b(x)\end{align}$$$$\begin{align}xy &= xy \\
+b^{\log_b(xy)} &= b^{\log_b(x)}\ b^{\log_b(y)} \\
+b^{\log_b(xy)} &= b^{\log_b(x) + \log_b(y)} \\
+\log_b(xy) &= \log_b(x) + \log_b(y)\end{align}$$$$\begin{align}\log_b\left( \frac x y \right) &= \log_b\left( x \frac 1 y \right) \\
+&= \log_b x + \log_b \left(\frac 1 y\right) \\
+&= \log_b x + \log_b \left(y^{-1}\right) \\
+&= \log_b x + (-1)\log_b(y) \\
+&= \log_b x - \log_b(y)\end{align}$$$$\begin{align}\log_a(x) &= \log_a(x) \\
+\log_a\left( b^{\log_b(x)} \right) &= \log_a(x) \\
+\log_b(x)\ \log_a(b) &= \log_a(x) \\
+\log_b(x) &= \frac{\log_a(x)}{\log_a(b)}\end{align}$$<h2 id="derivative-of-any-exponent-function">Derivative of any exponent function<a class="headerlink" href="#derivative-of-any-exponent-function" title="Link to this title">¶</a></h2><p><a href="#the-e-constant">Earlier</a> we tried to find the derivative of $a^x$ where $a>0$
+and we ended up with this:</p>
+
+$$\begin{align}\frac{d}{dx} a^x = a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h}\end{align}$$<p>But now we know that $\frac{d}{dx} e^x = e^x$ and we also know logarithms. Let's
+keep working on the derivative.</p>
+
+$$\begin{align}a^x = e^{\ln(a^x)} = e^{x \ln(a)}\end{align}$$<p>Here I used the $\log_b(x^y)=y \log_b(x)$ formula that we proved above. So it
+looks like we could do this (remember to use <a href="more-derivatives.html#chain-rule">the chain
+rule</a>):</p>
+
+$$\begin{align}\frac{d}{dx} a^x      = \frac{d}{dx} e^{x \ln(a)}      = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x}      \cdot \frac{d}{dx}(x \underbrace{\ln(a)}_\text{constant})      = a^x \ln(a)\end{align}$$<p>That's quite nice, but now we also have this:</p>
+
+$$\begin{align}\frac{d}{dx} a^x &= \frac{d}{dx} a^x \\
+a^x \ln(a) &= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h} \\
+\ln(a) &= \lim_{h\to0} \frac{a^h-1}{h}\end{align}$$<p>This is why the base $e$ logarithm is known as the <i>natural</i> logarithm, or $\ln$
+for short. It appears "naturally" in surprising places.</p>
+
+<h2 id="derivative-of-a-logarithm">Derivative of a logarithm<a class="headerlink" href="#derivative-of-a-logarithm" title="Link to this title">¶</a></h2><p>Let's try to find $\frac{d}{dx} \ln(x)$ where $x>0$. We'll use the
+$\ln(x/y)=\ln(x)-\ln(y)$ and $\ln(x^y)=y\ln(x)$ rules right to left.</p>
+
+$$\begin{align}\frac{d}{dx} \ln(x) &= \lim_{h\to0} \frac{\ln(x+h)-\ln(x)}{h} \\
+&= \lim_{h\to0} \frac{\ln\left(\frac{x+h}{x}\right)}{h} \\
+&= \lim_{h\to0} \left(\frac 1 h \ln\left(\frac{x+h}{x}\right)\right) \\
+&= \lim_{h\to0} \ln\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)\end{align}$$<p>Now we'll apply the $\ln(a)=\displaystyle\lim_{h\to0}\textstyle\frac{a^h-1}{h}$
+thing we ended up with last time. It doesn't matter how the $h$ in this thing
+and the $h$ in our $\ln$ derivative thing relate to each other as long as they
+both go to 0, so we need just one $\lim$.</p>
+
+$$\begin{align}\lim_{h\to0} \ln\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)  &= \lim_{h\to0} \frac{\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)^h - 1}{h} \\
+&= \lim_{h\to0} \frac{\left(\frac{x+h}{x}\right)^{\frac 1 h h} - 1}{h} \\
+&= \lim_{h\to0} \frac{\left(\frac{x+h}{x}\right)^1 - 1}{h} \\
+&= \lim_{h\to0} \frac{\frac{x+h}{x} - 1}{h} \\
+&= \lim_{h\to0} \frac{\frac x x + \frac h x - 1}{h} \\
+&= \lim_{h\to0} \frac{1 + \frac h x - 1}{h} \\
+&= \lim_{h\to0} \frac{\left(\frac h x\right)}{h} \\
+&= \lim_{h\to0} \frac{h}{xh} \\
+&= \frac{1}{x}\end{align}$$<p>So we had these horrible messes but we ended up with just $\frac 1 x$. I think
+this is nice.</p>
+
+<p>Let's generalize this a bit with the
+$\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ rule:</p>
+
+$$\begin{align}\frac{d}{dx} \log_b(x) &= \frac{d}{dx} \left(\frac{\ln(x)}{\ln(b)}\right) \\
+&= \frac{d}{dx} \Biggl(\underbrace{\frac{1}{\ln(b)}}_\text{constant}\ln(x)\Biggr) \\
+&= \frac{1}{\ln(b)} \cdot \frac{d}{dx} \ln(x) \\
+&= \frac{1}{\ln(b)} \cdot \frac 1 x \\
+&= \frac{1}{x \ln(b)}\end{align}$$<p>Again, the natural logarithm appears in a calculation that seems to have nothing
+to do with $e$.
+</p>
+
+</div>
+</body>
+</html>

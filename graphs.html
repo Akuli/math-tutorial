@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Common Graphs</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><b>Common Graphs</b></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="common-graphs">Common Graphs<a class="headerlink" href="#common-graphs" title="Link to this title">¶</a></h1><p>This page contains a bunch of graphs that we use in other chapters.</p>
+
+<h2 id="lines">Lines<a class="headerlink" href="#lines" title="Link to this title">¶</a></h2><p>In this section, $a$ and $s$ can be any constants, and $s$ is
+<a href="derivatives.html#slopes">the slope</a>. In general, the equation of any
+non-vertical line is $y=sx+a$ where $s$ and $a$ can be 0, positive or
+negative. The slope of the $y=a$ line is 0 because $a=0x+a$.</p>
+
+<img width="228" height="185" class="asymptote" src="asymptote/00147c714df1adbc1474da952a770c58.svg" style="float:left;" /><img width="270" height="203" class="asymptote" src="asymptote/61a2ce116aa5ceef2107b1ef93fe7206.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<img width="199" height="186" class="asymptote" src="asymptote/af91b4c8bc8e5bb50aaf6a379db2a4d2.svg" style="float:left;" /><img width="199" height="186" class="asymptote" src="asymptote/76d26ac6039b3c68ca0fa50d5273f76c.svg" style="float:left;" /><img width="228" height="211" class="asymptote" src="asymptote/d7458a960e812a79ee9a96c1847f9b9b.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<h2 id="parabolas">Parabolas<a class="headerlink" href="#parabolas" title="Link to this title">¶</a></h2><p>Here $a$, $t$ and $u$ are constants. The graphs are drawn with $t>0$ and $u>0$
+for simplicity, but $t$ and $u$ can be 0 or negative as well. For example, more
+$u$ seems to mean that the graph moves up, so e.g. $u=-2$ would bring the graph
+down.</p>
+
+<img width="289" height="341" class="asymptote" src="asymptote/7752303b00c3c272c630d49f19e98e58.svg" style="float:left;" /><img width="220" height="285" class="asymptote" src="asymptote/f1240058bb1401fc2a7f2e030cb9fd8b.svg" style="float:left;" /><img width="216" height="256" class="asymptote" src="asymptote/8f60be3247bb81492865785300e2dbc8.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<img width="162" height="285" class="asymptote" src="asymptote/7b68c0d3277b8ba816f8c76c2e245b1e.svg" style="float:left;" /><img width="184" height="285" class="asymptote" src="asymptote/651cd04fb80ac2267a2fd0c593d81b68.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<div class="floatingbox"><h2> Handy thing: $(x-t)^2=x^2-2tx+t^2$</h2><p>Proof:</p>
+
+$$\begin{align}& \ (x-t)^2 \\
+=&\ (x-t)(x-t) \\
+=&\ (x-t)x-(x-t)t \\
+=&\ (xx-tx)-(xt-tt) \\
+=&\ xx-tx-xt+tt \\
+=&\ xx-(tx+tx)+tt \\
+=&\ x^2-2tx+t^2\end{align}$$</div><p>The equations of all these parabolas seem to be of the form
+$y=a\cdot(x-t)^2+u$. Let's expand that a bit:</p>
+
+$$\begin{align}y &= a\cdot(x-t)^2+u \\
+&= a\cdot(x^2-2tx+t^2)+u \\
+&= ax^2-2atx+at^2+u\end{align}$$<p>Now if we set $b=-2at$ and $c=at^2+u$, then $b$ and $c$ are also
+constants because they don't depend on the value of $x$. So we get this:</p>
+
+$$\begin{align}y = ax^2+bx+c\end{align}$$<p>Equations of all parabolas that open up or down are like this.
+Note that $a \ne 0$ because $y=bx+c$ is a straight line.</p>
+
+<h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>All of these graphs have an area where they get closer and closer to an axis but
+they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
+$\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$ and
+$\displaystyle\lim_{x\to\infty}a^x=0$ if $0< a<1$.</p>
+
+<p>There's a detailed introduction to exponents and logarithms <a href="explog.html">here</a>.</p>
+
+<img width="196" height="341" class="asymptote" src="asymptote/aa48fd4e27f233497742c8302fd668c2.svg" style="float:left;" /><img width="214" height="341" class="asymptote" src="asymptote/a7419b2a904eeec670cee97f149613b7.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<img width="341" height="205" class="asymptote" src="asymptote/906c7f223245b247570023f1cd4c5070.svg" style="float:left;" /><img width="341" height="191" class="asymptote" src="asymptote/31a303de498df101571d7f35679f5787.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<h2 id="sine-and-cosine">Sine and Cosine<a class="headerlink" href="#sine-and-cosine" title="Link to this title">¶</a></h2><p>See <a href="geometry-and-trig.html#radians-and-tau">this thing</a> if you don't
+know what $\tau$ and radians are, and <a href="geometry-and-trig.html#trig-with-the-unit-circle">this
+thing</a> for a more
+detailed introduction to $\sin$, $\cos$ and the unit circle. Note that
+the graphs have a $t$ axis instead of an $x$ axis, and that $t$ is the
+same as the $t$ in the unit circle as radians.</p>
+
+<img width="253" height="256" class="asymptote" src="asymptote/508f3c99d0ced21a931310a9d92adff6.svg" style="float:left;" /><p><img width="569" height="217" class="asymptote" src="asymptote/0f7d1364214e3cef5e86f1df85ae2c50.svg" /></p><p><img width="569" height="217" class="asymptote" src="asymptote/779e564bbe1aba184996e0632e879ca3.svg" /></p><p><div style="clear:both;"></div>
+</p>
+
+</div>
+</body>
+</html>
