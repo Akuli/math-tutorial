@@ -1,7 +1,7 @@
 digraph chapters {
     derivatives [label="Derivatives"];
     geometry_and_trig [label="Geometry\nand Trig"];
-    //numbertheory [label="Number Theory"];
+    numbertheory [label="Number\nTheory"];
     integrals [label="Integrals"];
     more_integrals [label="More\nIntegrals"];
     more_derivatives [label="More\nDerivatives"];
@@ -12,13 +12,14 @@ digraph chapters {
 
     geometry_and_trig -> more_geometry_and_trig;
     derivatives -> more_geometry_and_trig;
+    more_geometry_and_trig -> taylor;
+    derivatives -> taylor -> eulerformula;
     derivatives -> more_derivatives;
     derivatives -> explog;
-    //more_derivatives -> explog [style=dashed];
-    //more_derivatives -> more_geometry_and_trig [style=dashed];
     derivatives -> integrals -> more_integrals;
-    derivatives -> taylor -> eulerformula;
     geometry_and_trig -> eulerformula;
     explog -> eulerformula;
-    integrals -> taylor [color=transparent];        // alignment hack
+    more_derivatives -> explog [style=dashed];
+    more_derivatives -> more_geometry_and_trig [style=dashed];
+    integrals -> more_derivatives [color=transparent];    // alignment hack
 }
