@@ -1,0 +1,24 @@
+digraph chapters {
+    derivatives [label="Derivatives"];
+    geometry_and_trig [label="Geometry\nand Trig"];
+    //numbertheory [label="Number Theory"];
+    integrals [label="Integrals"];
+    more_integrals [label="More\nIntegrals"];
+    more_derivatives [label="More\nDerivatives"];
+    more_geometry_and_trig [label="More\nGeometry\nand Trig"];
+    explog [label="Exponent Functions\nand Logarithms"];
+    taylor [label="Taylor\nPolynomials"];
+    eulerformula [label="Head Explosion Zone:\nEuler's Formula" style=filled fillcolor=red];
+
+    geometry_and_trig -> more_geometry_and_trig;
+    derivatives -> more_geometry_and_trig;
+    derivatives -> more_derivatives;
+    derivatives -> explog;
+    //more_derivatives -> explog [style=dashed];
+    //more_derivatives -> more_geometry_and_trig [style=dashed];
+    derivatives -> integrals -> more_integrals;
+    derivatives -> taylor -> eulerformula;
+    geometry_and_trig -> eulerformula;
+    explog -> eulerformula;
+    integrals -> taylor [color=transparent];        // alignment hack
+}

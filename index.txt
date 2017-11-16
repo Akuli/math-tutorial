@@ -15,20 +15,24 @@ you'll probably understand most of this tutorial without programming skills.
 Start by opening [the basics page](basics.html) and keep it open while you read
 the tutorial. There's nothing wrong with looking up things from it as you go.
 
+If you don't know what to start with I recommend [the derivative
+tutorial](derivatives.html). You need them for surprisingly many other things
+(see the drawing below), but they are also a nice way to get started with math;
+calculations that seem like they will be complicated turn out to be doable in
+the end, and we can develop a bunch of handy rules to make things even easier.
+
 If you came here because you want to calculate some specific thing, go to [the
 summary page](summary.html) to get a nice and concise list of things that are
 shown in this tutorial.
 
-If you don't know what to start with I recommend [the derivative
-tutorial](derivatives.html). Derivatives are a nice example of why I like math;
-calculations that seem like they will be complicated turn out to be doable in
-the end, and we can develop a bunch of handy rules to make things even easier.
-After that, if you got interested in the math itself, you have a few options:
+Here's a drawing that lists all the chapters and shows which things you need to
+know in order to learn about them. For example, you need to know derivatives if
+you want to learn integrals.
 
-* You can [read more about derivatives](more-derivatives.html).
-* You can continue to [the integral tutorial](integrals.html) to learn about a
-  surprising way to use derivatives.
-* You can read stuff of the mind-blowing section in the sidebar. Be sure to
-  learn all the required skills listed in the beginning of each chapter;
-  otherwise you'll miss the mind-blowiness by not understanding everything. Note
-  that I'm not responsible for exploding brains.
+comment: FIXHTMLTHINGY: the link checker doesn't check for broken images
+
+<img src="chaptergraph.svg" style="width: 550px; max-width: 100%;" />
+
+Be sure to learn things as shown in the above drawing. If you jump directly to
+the head explosion zone without reading anything before it you won't understand
+anything and you won't experience the head explosion feeling.

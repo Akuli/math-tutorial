@@ -12,9 +12,12 @@ instructions for every possible platform.
 
 1. Install dependencies.
 
-        $ sudo apt install git texlive texlive-latex-extra dvipng python3-pip asymptote
+        $ sudo apt install git dvipng python3-pip asymptote graphviz texlive-binaries
         $ python3 -m pip install --user --upgrade pip
         $ python3 -m pip install --user git+https://github.com/akuli/htmlthingy
+
+    `texlive-binaries` is just for `dvisvgm`. If you know some other package
+    that contains a `dvisvgm` program you might be able to use it instead.
 
 2. Check your asymptote version.
 
@@ -37,6 +40,10 @@ instructions for every possible platform.
     Try `asy --version`. If it doesn't work, add this to `~/.bashrc`:
 
         PATH="$HOME/.local/bin:$PATH"
+
+    You can also uninstall the old asymptote that came from apt:
+
+        $ sudo apt remove asymptote
 
 2. *OPTIONAL:* Run the build script and view the output in a web browser
    to make sure that everything's OK.

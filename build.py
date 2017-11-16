@@ -170,6 +170,8 @@ def canvaswrapper_link(match, filename):
 
 
 builder.run()
+subprocess.call(['dot', 'chaptergraph.dot', '-T', 'svg',
+                 '-o', os.path.join('html', 'chaptergraph.svg')])
 linkcheck.run(builder.outputdir)
 
 # tell github pages to do the right thing
