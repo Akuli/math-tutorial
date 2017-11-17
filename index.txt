@@ -35,7 +35,7 @@ comment: FIXHTMLTHINGY: the link checker doesn't check for broken images
 
 Be sure to learn things as shown in the above drawing. If you jump directly to
 the head explosion zone without reading anything before it you won't understand
-anything and you won't experience the head explosion feeling.
+anything and you won't experience the explosion correctly.
 
 [The number theory chapter](numbertheory.html) contains chapters that are
 useful for programming, but not really connected to most other math things.
