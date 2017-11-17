@@ -44,7 +44,8 @@ introduction to $e$ with more facts but less details.
 
 </div><p>Let's try to find the derivative of $a^x$ where $a$ is a constant and $a>0$:</p>
 
-$$\begin{align}\frac{d}{dx} a^x &= \lim_{h \to 0} \frac{a^{x+h}-a^x}{h}  &= \lim_{h \to 0} \frac{a^x a^h - a^x \cdot 1}{h} \\
+$$\begin{align}\frac{d}{dx} a^x &= \lim_{h \to 0} \frac{a^{x+h}-a^x}{h} \\
+&= \lim_{h \to 0} \frac{a^x a^h - a^x \cdot 1}{h} \\
 &= \lim_{h \to 0} \frac{a^x(a^h-1)}{h} \\
 &= \lim_{h \to 0} \left(a^x \frac{a^h-1}{h}\right) \\
 &= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h}\end{align}$$<p>Note that the only $x$ in what we ended up with is outside the lim, so the
