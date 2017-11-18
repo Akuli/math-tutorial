@@ -96,7 +96,7 @@ $b$ is known as the base of the logarithm.</p>
 
 <p>The inversiness looks like this in graphs:</p>
 
-<p><img width="341" height="332" class="asymptote" src="asymptote/ffa99f0902a6ee80107afbddeb1e2fa0.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
+<p><img width="340" height="330" class="asymptote" src="asymptote/ffa99f0902a6ee80107afbddeb1e2fa0.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
 with any $x$. You cannot take any logarithm of a zero or a negative value.</p>
 
 <p>The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
@@ -201,9 +201,60 @@ $$\begin{align}\frac{d}{dx} \log_b(x) &= \frac{d}{dx} \left(\frac{\ln(x)}{\ln(b)
 &= \frac{1}{\ln(b)} \cdot \frac{d}{dx} \ln(x) \\
 &= \frac{1}{\ln(b)} \cdot \frac 1 x \\
 &= \frac{1}{x \ln(b)}\end{align}$$<p>Again, the natural logarithm appears in a calculation that seems to have nothing
-to do with $e$.
+to do with $e$.</p>
+
+<div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>. Skip
+this stuff if you don't.
 </p>
 
-</div>
+</div><h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><p>The derivative of $a^x$ is $\frac{d}{dx} a^x = a^x \ln(a)$. Turning this into an
+antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
+$\frac{d}{dx}(c\ f(x)) = c\ f'(x)$ rule right-to-left.</p>
+
+$$\begin{align}\frac{d}{dx} a^x = a^x \ln(a) \\
+\frac{\frac{d}{dx} a^x}{\ln(a)} = \frac{a^x \ln(a)}{\ln(a)} \\
+\frac{1}{\ln(a)} \cdot \frac{d}{dx} a^x = a^x \\
+\frac{d}{dx} \left( \frac{1}{\ln(a)} a^x \right) = a^x \\
+\frac{d}{dx} \left( \frac{a^x}{\ln(a)} \right) = a^x\end{align}$$<p>Now we know that $\frac{a^x}{\ln(a)}$ is an antiderivative of $a^x$, so here's
+the solution:</p>
+
+$$\begin{align}\int a^x\ dx = \frac{a^x}{\ln(a)} + C\end{align}$$<p>Of course, $\int e^x\ dx = e^x + C$ because $\ln(e)=\ln(e^1)=1$, but also
+because $\frac{d}{dx} e^x = e^x$.</p>
+
+<h2 id="integrals-of-logarithms">Integrals of Logarithms<a class="headerlink" href="#integrals-of-logarithms" title="Link to this title">¶</a></h2><p>Let's start by integrating $\ln(x)$. There are several ways to do this, but
+here's my favorite way:</p>
+
+<p><img width="283" height="261" class="asymptote" src="asymptote/0150d609baca66b140f1454550d431e5.svg" /></p><p>We know that $y = e^x$, so $x = \ln(y)$. That's how $\ln(a)$ appears on the x
+axis. The orange area is obviously $\int_0^{\ln(a)} e^x\ dx$ and similarly the
+yellow area is $\int_1^a \ln(y)\ dy$.</p>
+
+<p>But if we add together the yellow and orange areas, we get an $a$ by $\ln(a)$
+rectangle:</p>
+
+$$\begin{align}\int_0^{\ln(a)} e^x\ dx + \int_1^a \ln(y)\ dy &= a \ln(a) \\
+\int_1^a \ln(y)\ dy &= a \ln(a) - \int_0^{\ln(a)} e^x\ dx \\
+&= a \ln(a) - \Bigl[ e^x \Bigr]_0^{\ln(a)} \\
+&= a \ln(a) - \left( e^{\ln(a)} - e^0 \right) \\
+&= a \ln(a) - (a - 1) \\
+&= a \ln(a) - a + 1\end{align}$$<p>If you have read <a href="integrals.html#area-to-x">my introduction to integrals</a> you
+probably realized that $a \ln(a) - a + 1$ is an antiderivative of $\ln(a)$.
+Let's check it just to be sure using <a href="more-derivatives.html#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">the $\frac{d}{dx}(f(x)g(x))=f'(x)g(x)+f(x)g'(x)$
+rule</a>:</p>
+
+$$\begin{align}\frac{d}{da} (a \ln(a) - a + 1) &= 1 \cdot \ln(a) + a \cdot \frac{1}{a} - 1 + 0 \\
+&= \ln(a) + 1 - 1 \\
+&= \ln(a)\end{align}$$<p>Note that the $+1$ at the end turned into $+0$ in the derivative, so everything
+would work just fine without it. We're almost done:</p>
+
+$$\begin{align}\int \ln(x)\ dx = x \ln(x) - x + C\end{align}$$<p>I replaced $a$ with $x$ just to make the formula look a bit more familiar.</p>
+
+<p>Now we just need to generalize this to other logarithms:</p>
+
+$$\begin{align}\int \log_b(x)\ dx &= \int \frac{\ln(x)}{\ln(b)}\ dx \\
+&= \int \underbrace{\frac{1}{\ln(b)}}_\text{constant} \ln(x)\ dx \\
+&= \frac{1}{\ln(b)} \int \ln(x)\ dx \\
+&= \frac{x \ln(x) - x}{\ln(b)} + C\end{align}$$$$\begin{align}\frac{d}{dx} \left(\frac{x \ln(x) - x}{\ln(b)} + C \right)  &= \frac{d}{dx} \left(\frac{1}{\ln(b)}\bigl(x \ln(x) - x\bigr) \right) + \frac{d}{dx} C \\
+&= \frac{1}{\ln(b)} \cdot \frac{d}{dx}(x \ln(x) - x) + 0 \\
+&= \frac{1}{\ln(b)} \ln(x) = \frac{\ln(x)}{\ln(b)} = \log_b(x)\end{align}$$</div>
 </body>
 </html>

@@ -40,7 +40,7 @@ $$\begin{align}(a+b)^2 &= a^2+2ab+b^2 \\
 a^2-b^2 &= (a-b)(a+b)\end{align}$$<h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
 area that is not listed here.</p>
 
-<img width="142" height="102" class="asymptote" src="asymptote/6a154f536537db2fc78182f5e33f472c.svg" style="float:left;" /><img width="228" height="172" class="asymptote" src="asymptote/e95699102aeb509875e4810f9e606b35.svg" style="float:left;" /><img width="199" height="199" class="asymptote" src="asymptote/6bb00a798325e82c9a0d3f619db881d5.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<img width="142" height="102" class="asymptote" src="asymptote/6a154f536537db2fc78182f5e33f472c.svg" style="float:left;" /><img width="227" height="172" class="asymptote" src="asymptote/e95699102aeb509875e4810f9e606b35.svg" style="float:left;" /><img width="198" height="198" class="asymptote" src="asymptote/6bb00a798325e82c9a0d3f619db881d5.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
 
 <img  class="asymptote" src="asymptote/04bcb2e2468a1ec3b8406d6dd76e3125.png" style="float:left;" /><img  class="asymptote" src="asymptote/3f98cbf2e3dc863bfacf4b943cf539a6.png" style="float:left;" /><img  class="asymptote" src="asymptote/076aab10ff8305d8e24b3b389edc5f4c.png" style="float:left;" /><p><div style="clear:both;"></div></p>
 
@@ -51,7 +51,7 @@ else is explained <a href="basics.html#areas">here</a>.</p>
 <h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>Notation: if $x$ is first 3 and we change it to 4, the <i>difference</i> of
 these values is $\Delta x = 4-3 = 1$.</p>
 
-<p><img width="173" height="285" class="asymptote" src="asymptote/8b4b7c6cc6318a12730386a10e2fb28c.svg" /></p><p>Only straight lines have slopes. The slope of the line in the picture
+<p><img width="172" height="283" class="asymptote" src="asymptote/8b4b7c6cc6318a12730386a10e2fb28c.svg" /></p><p>Only straight lines have slopes. The slope of the line in the picture
 above is $s = \frac{\Delta y}{\Delta x}$, so it determines how much $y$
 changes compared to $x$ because $\Delta y = s \cdot \Delta x$.</p>
 
@@ -59,7 +59,7 @@ changes compared to $x$ because $\Delta y = s \cdot \Delta x$.</p>
 always the same, so $\Delta x = 0$ regardless of the two points chosen
 for calculating $\frac{\Delta y}{\Delta x}$ and we get division by zero.</p>
 
-<img width="302" height="341" class="asymptote" src="asymptote/055ce943efb49d99b175a706c0c4688f.svg" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
+<img width="301" height="340" class="asymptote" src="asymptote/055ce943efb49d99b175a706c0c4688f.svg" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
 $\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
 calculations so the "smallness" is explicit and well-defined. The $\lim$
 thing means the limit as $\Delta x$ goes to 0, e.g.
@@ -104,7 +104,7 @@ stuff is proved <a href="explog.html#derivative-of-any-exponent-function">here</
 need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,
 remember to multiply by $g'(x)$. For example:</p>
 
-$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x\end{align}$$<img width="228" height="162" class="asymptote" src="asymptote/42b158db2f56846ea45f8e3e8bb4783e.svg" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
+$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x\end{align}$$<img width="227" height="161" class="asymptote" src="asymptote/42b158db2f56846ea45f8e3e8bb4783e.svg" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
 anti<a href="#derivatives">derivative</a> of $f$, i.e. $F'(x)=f(x)$.</p>
 
 <p>Notation:</p>
@@ -130,9 +130,9 @@ side.</p>
 
 <p>Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$</p>
 
-<div class="indent"><p><img width="341" height="129" class="asymptote" src="asymptote/8659b4af7ccbe48019dfeb2dc7b847a9.svg" /></p></div><p>3D volume: $V = \displaystyle\int_a^b A(x)\ dx$</p>
+<div class="indent"><p><img width="340" height="128" class="asymptote" src="asymptote/8659b4af7ccbe48019dfeb2dc7b847a9.svg" /></p></div><p>3D volume: $V = \displaystyle\int_a^b A(x)\ dx$</p>
 
-<p><img  class="asymptote" src="asymptote/f19f9d9f0ad54deca55310acd671a9fb.png" /></p><img width="120" height="228" class="asymptote" src="asymptote/2032bd46dd50ad4ad3875f20074dc82e.svg" style="float:right;" /><img width="100" height="84" class="asymptote" src="asymptote/b903e1c25aee12f3760495035ad9a331.svg" style="float:right;" /><h2 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h2><p>The angle of the green-ish slice at right is 1 radian. The angle of the
+<p><img  class="asymptote" src="asymptote/f19f9d9f0ad54deca55310acd671a9fb.png" /></p><img width="120" height="227" class="asymptote" src="asymptote/2032bd46dd50ad4ad3875f20074dc82e.svg" style="float:right;" /><img width="99" height="83" class="asymptote" src="asymptote/b903e1c25aee12f3760495035ad9a331.svg" style="float:right;" /><h2 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h2><p>The angle of the green-ish slice at right is 1 radian. The angle of the
 yellow slice is $b/r$ radians.</p>
 
 <p>A full turn is $\text{tau} = \tau \approx 6.28$ radians, and a half turn
@@ -150,12 +150,12 @@ is $\tau r = 2\pi r$ where $r$ is the radius.</p>
 <p id="unitcircle">Unit circle:
 </p>
 
-<p><img width="253" height="256" class="asymptote" src="asymptote/508f3c99d0ced21a931310a9d92adff6.svg" /></p><p>Notation: $\sin^2(t)$ means $(\sin(t))^2$.</p>
+<p><img width="252" height="255" class="asymptote" src="asymptote/508f3c99d0ced21a931310a9d92adff6.svg" /></p><p>Notation: $\sin^2(t)$ means $(\sin(t))^2$.</p>
 
 <p id="trianglestuff">A triangle with a quarter-turn corner and a bunch of math:
 </p>
 
-<img width="171" height="121" class="asymptote" src="asymptote/360ef43321e8d2901abae1513fc78bfb.svg" style="float:right;" />$$\begin{align}&\sin(t) = \frac b c \\
+<img width="170" height="121" class="asymptote" src="asymptote/360ef43321e8d2901abae1513fc78bfb.svg" style="float:right;" />$$\begin{align}&\sin(t) = \frac b c \\
 &\cos(t) = \frac a c \\
 &\tan(t) = \frac b a \\
 &t = \text{atan2}(b,a) \\
