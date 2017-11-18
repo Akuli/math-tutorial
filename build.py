@@ -170,7 +170,7 @@ def canvaswrapper_link(match, filename):
 
 
 builder.run()
-subprocess.call(['dot', 'chaptergraph.dot', '-T', 'svg',
+subprocess.call(['dot', 'chaptergraph.gv', '-T', 'svg',
                  '-o', os.path.join('html', 'chaptergraph.svg')])
 linkcheck.run(builder.outputdir)
 
