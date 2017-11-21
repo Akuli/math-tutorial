@@ -176,7 +176,7 @@ math: \sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqr
 Here's a typical math function:
 
 math:
-   f(x) &= 2x \\
+   f(x) &= 2x
    f(6) &= 2 \cdot 6 = 12
 
 There is no special syntax for defining a function. All we have is the
