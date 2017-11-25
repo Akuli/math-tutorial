@@ -178,10 +178,10 @@ indent:
                  L="$k="+(string)c+"$", align=N);
         }
 
-    Note that we only proved that the rule works when $c$ is a positive integer,
-    but it also works when $c$ is e.g. $\frac{1}{2}$. It's possible to prove
-    that the rule isn't limited to positive integers, but that's beyond the
-    scope of this tutorial.
+    Note that we only proved that the rule works when $c$ is a positive
+    integer, but it also works when $c$ is e.g. $\frac{1}{2}$. This tutorial
+    also contains [another proof](explog.html#example-derivative-of-x-c) that
+    doesn't have this restriction.
 
 floatingbox: Handy thing: $(a-b)(a+b)=a^2-b^2$
     Proof:

@@ -30,7 +30,7 @@ those.
 ## +, -
 
 Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
-and $-(1-2)=-1+2$.
+and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.
 
 If we have something like $a+b+c-b$ we know that's just $a+c$ because we're
 adding $b$ and then we're taking it away. Later you'll notice that we end up
@@ -51,25 +51,18 @@ written as $a \cdot b$ or simply $ab$.
 
 Some handy stuff:
 
-comment: these take up a lot of space... is it possible to fix this?
-
-math: 0a = 0
-
-math: 1a = a
-
-math: \frac{a}{1} = a
-
-math: ab = ba
-
-math: (a+b)c = ac+bc
-
-math: (a-b)c = ac-bc
-
-math: \frac{a+b}{c} = \frac a c + \frac b c
-
-math: \frac{a-b}{c} = \frac a c - \frac b c
-
-math: \frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}
+math:
+    0a &= 0
+    1a &= a
+    (-1)a &= -a
+    \frac a 1 &= a
+    ab &= ba
+    -(a-b) &= b-a
+    (a+b)c &= ac+bc
+    (a-b)c &= ac-bc
+    \frac{a+b}{c} &= \frac a c + \frac b c
+    \frac{a-b}{c} &= \frac a c - \frac b c
+    \frac{\left( \frac a b \right)}{c} &= \frac{a}{bc}
 
 You can use these rules left-to-right or right-to-left. For example, if you
 want to calculate $(1 + 2) \cdot 3$ you know you could also do
@@ -145,6 +138,8 @@ math:
            = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}} \
            = x^{ab}
 
+math: (-x)^2 = x^2
+
 math: x^0 = 1
 
 math: \sqrt x = x^\frac 1 2
@@ -155,10 +150,21 @@ math: (\sqrt x\ )^2 = x
 
 math: \sqrt{x^2} = |x|
 
+(square-negative-cancel)
+The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
+clear:
+
+math:
+    (-2)^2 = (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2
+
+This also means that $x^2$ is never negative. See [the $y=x^2$
+graph](graphs.html#parabolas).
+
 If you're wondering why anything to the power of 0 is 1, you can do e.g.
 $x^2 = x^{0+2} = x^0 x^2$. The equation should be true with any $x$, so
 $x^0$ must be 1 because $x^2 = 1 x^2$.
 
+(negative-sqrt)
 It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
@@ -230,7 +236,7 @@ However, you cannot divide by $0$ and turns out that $x=0$ is a valid solution
 because $2 \cdot 0 = 0$ and $3 \cdot 0 = 0$.
 
 You can also apply most functions to both sides. For example, you can do this
-with $\sqrt{\ \ }$:
+with $\sqrt{\quad}$:
 
 math:
     x^2 &= 4

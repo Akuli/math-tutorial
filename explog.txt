@@ -95,6 +95,7 @@ A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
 can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b(x)} = x$. The
 $b$ is known as the base of the logarithm.
 
+(negative-log)
 The inversiness looks like this in graphs:
 
 asymptote:
@@ -270,11 +271,55 @@ math:
 Again, the natural logarithm appears in a calculation that seems to have nothing
 to do with $e$.
 
+## Example: Derivative of $x^c$
+
+In the more derivatives chapter [we
+proved](more-derivatives.html#frac-d-dx-x-c-c-x-c-1) that
+$\frac{d}{dx} x^c = c\ x^{c-1}$ if $c$ is a positive integer. If we are really
+clever, we can use $\frac{d}{dx} e^x = e^x$ for generalizing this. However,
+unlike our previous proof, this works only if $x>0$ because we need $\ln(x)$,
+and we can't take logarithms of negative numbers (see [above](#negative-log)).
+
+math:
+    x^c = e^{\ln(x^c)} = e^{c \ln(x)}
+
+Now we can just apply [the chain rule](more-derivatives.html#chain-rule) and
+other derivative rules that we have learned:
+
+math:
+    \frac{d}{dx} x^c \
+    &= \frac{d}{dx} e^{c \ln(x)} = e^{c \ln(x)} \cdot \frac{d}{dx}(c \ln(x))
+    &= x^c \cdot c \frac 1 x = x^c \cdot c\ x^{-1} = c\ x^c x^{-1} = c\ x^{c-1}
+
+It's handy that this isn't limited to integers. For example:
+
+math:
+    \frac{d}{dx} \sqrt x = \frac{d}{dx} x^{1/2} = \frac 1 2 x^{1/2 - 1} \
+    = \frac 1 2 x^{-1/2} = \frac 1 2 \cdot \frac{1}{x^{1/2}} = \frac{1}{2\ \sqrt x}
+
+Here we don't need to worry about negative $x$ values because [we can't take
+square roots of negative values](basics.html#negative-sqrt) anyway.
+[Last time](more-derivatives.html#frac-d-dx-sqrt-x-displaystyle-frac-1-2-sqrt-x)
+we ended up with the same result, but we needed to do a lot more work.
+
+graybox: Exercise
+    Prove the $\frac{d}{dx} \left(\frac 1 x\right) = \frac{-1}{x^2}$ rule with
+    the $\frac{d}{dx} x^c = c\ x^{c-1}$ rule. Start by assuming that $x$ is
+    positive, and then show that it also works with a negative $x$. You don't
+    need to worry about the $x=0$ case because $\frac 1 0$ is not defined.
+
+    Hints:
+
+    * $\frac 1 x = x^{-1} = -\frac{1}{-x}$
+    * If $x<0$, then $-x>0$
+    * $(-x)^2 = x^2$ ([explained](basics.html#square-negative-cancel) on the
+      basics page)
+
+## Integrals of Exponent Functions
+
 redbox:
     Rest of this chapter assumes that you know [integrals](integrals.html). Skip
     this stuff if you don't.
-
-## Integrals of Exponent Functions
 
 The derivative of $a^x$ is $\frac{d}{dx} a^x = a^x \ln(a)$. Turning this into an
 antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
