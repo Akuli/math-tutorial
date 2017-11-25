@@ -94,9 +94,10 @@ difference is hardly noticable:</p>
 can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b(x)} = x$. The
 $b$ is known as the base of the logarithm.</p>
 
-<p>The inversiness looks like this in graphs:</p>
+<p id="negative-log">The inversiness looks like this in graphs:
+</p>
 
-<p><img width="340" height="330" class="asymptote" src="asymptote/ffa99f0902a6ee80107afbddeb1e2fa0.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
+<p><img width="341" height="332" class="asymptote" src="asymptote/ffa99f0902a6ee80107afbddeb1e2fa0.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
 with any $x$. You cannot take any logarithm of a zero or a negative value.</p>
 
 <p>The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
@@ -203,11 +204,38 @@ $$\begin{align}\frac{d}{dx} \log_b(x) &= \frac{d}{dx} \left(\frac{\ln(x)}{\ln(b)
 &= \frac{1}{x \ln(b)}\end{align}$$<p>Again, the natural logarithm appears in a calculation that seems to have nothing
 to do with $e$.</p>
 
-<div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>. Skip
+<h2 id="example-derivative-of-x-c">Example: Derivative of $x^c$<a class="headerlink" href="#example-derivative-of-x-c" title="Link to this title">¶</a></h2><p>In the more derivatives chapter <a href="more-derivatives.html#frac-d-dx-x-c-c-x-c-1">we
+proved</a> that
+$\frac{d}{dx} x^c = c\ x^{c-1}$ if $c$ is a positive integer. If we are really
+clever, we can use $\frac{d}{dx} e^x = e^x$ for generalizing this. However,
+unlike our previous proof, this works only if $x>0$ because we need $\ln(x)$,
+and we can't take logarithms of negative numbers (see <a href="#negative-log">above</a>).</p>
+
+$$\begin{align}x^c = e^{\ln(x^c)} = e^{c \ln(x)}\end{align}$$<p>Now we can just apply <a href="more-derivatives.html#chain-rule">the chain rule</a> and
+other derivative rules that we have learned:</p>
+
+$$\begin{align}\frac{d}{dx} x^c  &= \frac{d}{dx} e^{c \ln(x)} = e^{c \ln(x)} \cdot \frac{d}{dx}(c \ln(x)) \\
+&= x^c \cdot c \frac 1 x = x^c \cdot c\ x^{-1} = c\ x^c x^{-1} = c\ x^{c-1}\end{align}$$<p>It's handy that this isn't limited to integers. For example:</p>
+
+$$\begin{align}\frac{d}{dx} \sqrt x = \frac{d}{dx} x^{1/2} = \frac 1 2 x^{1/2 - 1}  = \frac 1 2 x^{-1/2} = \frac 1 2 \cdot \frac{1}{x^{1/2}} = \frac{1}{2\ \sqrt x}\end{align}$$<p>Here we don't need to worry about negative $x$ values because <a href="basics.html#negative-sqrt">we can't take
+square roots of negative values</a> anyway.
+<a href="more-derivatives.html#frac-d-dx-sqrt-x-displaystyle-frac-1-2-sqrt-x">Last time</a>
+we ended up with the same result, but we needed to do a lot more work.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Prove the $\frac{d}{dx} \left(\frac 1 x\right) = \frac{-1}{x^2}$ rule with
+the $\frac{d}{dx} x^c = c\ x^{c-1}$ rule. Start by assuming that $x$ is
+positive, and then show that it also works with a negative $x$. You don't
+need to worry about the $x=0$ case because $\frac 1 0$ is not defined.</p>
+
+<p>Hints:</p>
+
+<ul><li>$\frac 1 x = x^{-1} = -\frac{1}{-x}$</li><li>If $x<0$, then $-x>0$</li><li>$(-x)^2 = x^2$ (<a href="basics.html#square-negative-cancel">explained</a> on the
+  basics page)
+</li></ul></div><h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>. Skip
 this stuff if you don't.
 </p>
 
-</div><h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><p>The derivative of $a^x$ is $\frac{d}{dx} a^x = a^x \ln(a)$. Turning this into an
+</div><p>The derivative of $a^x$ is $\frac{d}{dx} a^x = a^x \ln(a)$. Turning this into an
 antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
 $\frac{d}{dx}(c\ f(x)) = c\ f'(x)$ rule right-to-left.</p>
 
@@ -224,7 +252,7 @@ because $\frac{d}{dx} e^x = e^x$.</p>
 <h2 id="integrals-of-logarithms">Integrals of Logarithms<a class="headerlink" href="#integrals-of-logarithms" title="Link to this title">¶</a></h2><p>Let's start by integrating $\ln(x)$. There are several ways to do this, but
 here's my favorite way:</p>
 
-<p><img width="283" height="261" class="asymptote" src="asymptote/0150d609baca66b140f1454550d431e5.svg" /></p><p>We know that $y = e^x$, so $x = \ln(y)$. That's how $\ln(a)$ appears on the x
+<p><img width="285" height="262" class="asymptote" src="asymptote/0150d609baca66b140f1454550d431e5.svg" /></p><p>We know that $y = e^x$, so $x = \ln(y)$. That's how $\ln(a)$ appears on the x
 axis. The orange area is obviously $\int_0^{\ln(a)} e^x\ dx$ and similarly the
 yellow area is $\int_1^a \ln(y)\ dy$.</p>
 

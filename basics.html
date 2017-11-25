@@ -46,7 +46,7 @@ those.
 </p>
 
 <h2 id="2b2c202d">+, -<a class="headerlink" href="#2b2c202d" title="Link to this title">¶</a></h2><p>Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
-and $-(1-2)=-1+2$.</p>
+and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.</p>
 
 <p>If we have something like $a+b+c-b$ we know that's just $a+c$ because we're
 adding $b$ and then we're taking it away. Later you'll notice that we end up
@@ -63,7 +63,17 @@ written as $a \cdot b$ or simply $ab$.</p>
 
 <p>Some handy stuff:</p>
 
-$$\begin{align}0a = 0\end{align}$$$$\begin{align}1a = a\end{align}$$$$\begin{align}\frac{a}{1} = a\end{align}$$$$\begin{align}ab = ba\end{align}$$$$\begin{align}(a+b)c = ac+bc\end{align}$$$$\begin{align}(a-b)c = ac-bc\end{align}$$$$\begin{align}\frac{a+b}{c} = \frac a c + \frac b c\end{align}$$$$\begin{align}\frac{a-b}{c} = \frac a c - \frac b c\end{align}$$$$\begin{align}\frac{\left( \frac a b \right)}{c} = \frac{a/b}{c} = \frac{a}{bc}\end{align}$$<p>You can use these rules left-to-right or right-to-left. For example, if you
+$$\begin{align}0a &= 0 \\
+1a &= a \\
+(-1)a &= -a \\
+\frac a 1 &= a \\
+ab &= ba \\
+-(a-b) &= b-a \\
+(a+b)c &= ac+bc \\
+(a-b)c &= ac-bc \\
+\frac{a+b}{c} &= \frac a c + \frac b c \\
+\frac{a-b}{c} &= \frac a c - \frac b c \\
+\frac{\left( \frac a b \right)}{c} &= \frac{a}{bc}\end{align}$$<p>You can use these rules left-to-right or right-to-left. For example, if you
 want to calculate $(1 + 2) \cdot 3$ you know you could also do
 $1 \cdot 3 + 2 \cdot 3$, but you can also calculate $1 \cdot 3 + 2 \cdot 3$
 like $(1 + 2) \cdot 3$.</p>
@@ -97,15 +107,23 @@ $|-3| = 3$.
 <h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p>$x^y$ is <code>x**y</code> or <code>pow(x, y)</code> and $\sqrt x$ is <code>sqrt(x)</code> in most
 programming languages.</p>
 
-$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}           = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}           = x^a x^b\end{align}$$$$\begin{align}(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}             \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}          = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}          = x^{ab}\end{align}$$$$\begin{align}x^0 = 1\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p>If you're wondering why anything to the power of 0 is 1, you can do e.g.
+$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}           = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}           = x^a x^b\end{align}$$$$\begin{align}(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}             \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}          = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}          = x^{ab}\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}x^0 = 1\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="square-negative-cancel">The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
+clear:
+</p>
+
+$$\begin{align}(-2)^2 = (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2\end{align}$$<p>This also means that $x^2$ is never negative. See <a href="graphs.html#parabolas">the $y=x^2$
+graph</a>.</p>
+
+<p>If you're wondering why anything to the power of 0 is 1, you can do e.g.
 $x^2 = x^{0+2} = x^0 x^2$. The equation should be true with any $x$, so
 $x^0$ must be 1 because $x^2 = 1 x^2$.</p>
 
-<p>It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
+<p id="negative-sqrt">It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
 $\sqrt 0 = 0$. No number produces a negative number when multiplied with
-itself, so you cannot do e.g. $\sqrt{-2}$.</p>
+itself, so you cannot do e.g. $\sqrt{-2}$.
+</p>
 
 <p>You're probably wondering how the heck our $\sqrt{x^2}=|x|$ rule works. This
 example should explain everything:</p>
@@ -157,7 +175,7 @@ However, you cannot divide by $0$ and turns out that $x=0$ is a valid solution
 because $2 \cdot 0 = 0$ and $3 \cdot 0 = 0$.</p>
 
 <p>You can also apply most functions to both sides. For example, you can do this
-with $\sqrt{\ \ }$:</p>
+with $\sqrt{\quad}$:</p>
 
 $$\begin{align}x^2 &= 4 \\
 \sqrt{x^2} &= \sqrt 4 \\
@@ -167,7 +185,7 @@ number of pixels in a shape. For example, if you create a GUI program
 that creates a 300 by 200 window, it contains $300 \cdot 200 = 60000$
 pixels.</p>
 
-<img width="142" height="102" class="asymptote" src="asymptote/ddc918b5986e0cfd9c33e51b88f88bce.svg" style="float:left;" /><img width="255" height="191" class="asymptote" src="asymptote/86d791c3f07e0c18028e9a7170c7beef.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<img width="142" height="102" class="asymptote" src="asymptote/ddc918b5986e0cfd9c33e51b88f88bce.svg" style="float:left;" /><img width="256" height="191" class="asymptote" src="asymptote/86d791c3f07e0c18028e9a7170c7beef.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
 
 <p>The yellow area is simple, but the triangle area is also easy to
 understand. Let's draw a rectangle around the triangle like this:</p>
