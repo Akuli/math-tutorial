@@ -235,7 +235,9 @@ asymptote: float:right;
 ## Integrals
 
 Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
-anti[derivative](#derivatives) of $f$, i.e. $F'(x)=f(x)$.
+anti[derivative](#derivatives) of $f$, i.e. $F'(x)=f(x)$. If $F(x)$ is one
+antiderivative of $f$, then all antiderivatives are of the form $F(x)+C$ with
+different values of $C$.
 
 Notation:
 
@@ -254,23 +256,30 @@ side of an area, and $f$ and $g$ can be any continuous functions.
 
 math:
     \begin{matrix} \
-        \int 1\ dx = x + C & \int a\ dx = ax + C &
+        \int 0\ dx = C & \int a\ f(x)\ dx = a \int f(x)\ dx
         &&
-        \int x\ dx = \displaystyle\frac{x^2}{2} + C & \
-        \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C &
+        \int a\ dx = ax + C &\
+        \int(f(x)+g(x))\ dx = \int f(x)\ dx + \int g(x)\ dx
         &&
+        \int x\ dx = \displaystyle\frac{x^2}{2} &\
+        \int(f(x)-g(x))\ dx = \int f(x)\ dx - \int g(x)\ dx
+        &&
+        \int x^a\ dx = \displaystyle\frac{x^{a+1}}{a+1} + C &\
+        \int f'(g(x))g'(x)\ dx = f(g(x)) + C
+        &&
+        \int \sqrt x\ dx = \frac{2}{3} x \sqrt x + C &\
+        \int \displaystyle\frac 1 x\ dx = \ln(|x|) + C
+        &&
+        \int \sin(x)\ dx = -\cos(x) & \int e^x\ dx = e^x + C
+        &&
+        \int \cos(x)\ dx = \sin(x) & \int a^x\ dx = \displaystyle\frac{a^x}{\ln(a)} + C
+        &&
+        \int \ln(x)\ dx = x \ln(x) - x + C &\
+        \int \log_b(x)\ dx = \displaystyle\frac{x \ln(x) - x}{\ln(b)} + C
     \end{matrix}
-
-math: \textstyle\int a\ f(x)\ dx &= a \textstyle\int f(x)\ dx
-
-math: \textstyle\int\left( f(x)+g(x) \right)dx &= \textstyle\int f(x)\ dx + \int g(x)\ dx
 
 In some cases it makes sense to use [derivative rules](#derivative-rules)
 right-to-left.
-
-You can prove these easily by finding the derivative of the right side;
-it's always equal to whatever is between $\int$ and $dx$ on the left
-side.
 
 Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$
 
