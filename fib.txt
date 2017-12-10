@@ -232,33 +232,26 @@ code: python3
 
 It works! I think this is really amazing.
 
+Let's simplify the A and B values:
+
+code: python3
+    >>> values[A].subs(phi, values[phi]).simplify()
+    √5
+    ──
+    5 
+    >>> values[B].subs(phi, values[phi]).simplify()
+    -√5 
+    ────
+     5  
+
+These can be also written as $\frac{1}{\sqrt 5}$ and $-\frac{1}{\sqrt 5}$
+because $5 = (\sqrt 5)^2$, but sympy likes to put square roots to top for some
+reason. Anyway, with this we can write a much cleaner formula:
+
 math:
     F_n &= A \phi^n + B \left(-\frac 1 \phi \right)^n
-    &= \frac{\phi + 1}{\phi(\phi^2 + 1)} \phi^n + \frac{\phi^2(1-\phi)}{\phi^2 + 1} \left(-\frac 1 \phi\right)^n
-
-Simplifying this by hand would be a lot of work, and sympy can't do much to it
-for some reason. It's time to grab the power tools and use
-[WolframAlpha](http://www.wolframalpha.com/). Here's my huge query:
-
-indent:
-    simplify (phi + 1)/(phi\*(phi\*\*2 + 1)) \* phi\*\*n + (phi\*\*2 \* (1 -
-    phi))/(phi\*\*2 + 1) \* (-1/phi)\*\*n where phi = (1 + sqrt(5))/2
-
-image: images/fibsimplify.png
-    display: block;
-    margin: 0 auto;
-    border: 1px solid;
-    border-color: #ccc;
-
-Next I like to replace some messy constants with $\phi$ stuff and do some other
-cleanups. Of course, all this is optional.
-
-math:
-    F_n &= -\frac{\left(\frac{1 - \sqrt 5}{2}\right)^n - \left(\frac{1 + \sqrt 5}{2}\right)^n}{\sqrt 5}
-    &= -\frac{\left(-\frac 1 \phi\right)^n - \phi^n}{\sqrt 5}
-    &= \frac{-\left(\left(-\frac 1 \phi\right)^n - \phi^n\right)}{\sqrt 5}
-    &= \frac{-\left(-\frac 1 \phi\right)^n + \phi^n}{\sqrt 5}
-    &= \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5}
+    &= \frac{1}{\sqrt 5} \phi^n - \frac{1}{\sqrt 5} \left(-\frac 1 \phi \right)^n
+    &= \frac{\phi^n - \left(-\frac 1 \phi \right)^n}{\sqrt 5}
     &= \frac{\left(\frac{1 + \sqrt 5}{2}\right)^n - \left(\frac{1 - \sqrt 5}{2}\right)^n}{\sqrt 5}
 
 There it is! If you like code obfuscation, you can replace the constants with
