@@ -546,3 +546,13 @@ code: python3
         # string formatting magic: %02x means hexadecimal padded with
         # zeros until it's at least 2 characters wide
         return '#%02x%02x%02x' % (r, g, b)
+
+## Fibonacci Sequence $1,1,2,3,5,8,13,...$
+
+This sequence of numbers starts with $1,1$ and then the next number is always
+the previous two numbers added together. The $n$'th Fibonacci number $F_n$ can
+be calculated like this:
+
+math:
+    F_n = \frac{\left(\frac{1 + \sqrt 5}{2}\right)^n - \left(\frac{1 - \sqrt 5}{2}\right)^n}{\sqrt 5},\
+    \quad n = 1,2,3,...

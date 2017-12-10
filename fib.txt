@@ -1,0 +1,371 @@
+# Fibonacci Sequence
+
+Here's a very famous sequence of numbers, known as the Fibonacci sequence:
+
+math:
+    1, 1, 2, 3, 5, 8, 13, 21, ...
+
+We start with $1, 1$ and then we add together the last two numbers to get the
+next one: $1+1=2$, $1+2=3$, $2+3=5$, $3+5=8$ and so on.
+
+Here's a simple Python function that calculates the $n$'th Fibonacci number,
+e.g. ``fib(1) == 1``, ``fib(2) == 1``, ``fib(3) == 2`` and so on:
+
+code: python3
+    def fib(n):
+        if n <= 2:      # fib(1) == 1, fib(2) == 1
+            return 1
+        return fib(n-1) + fib(n-2)
+
+The last line calculates two previous Fibonacci numbers and adds them together.
+The code works just fine, but something like ``fib(40)`` really takes a while.
+That's one reason why the Fibonacci sequence is not only a well-known thing
+among mathematicians, but also programmers.
+
+Mathematically we could define the Fibonacci sequence $F_n$ like this:
+
+math:
+    \left\{\begin{array}{lcl} \
+        F_1 = 1
+        F_2 = 1
+        F_n = F_{n-1} + F_{n-2}, \quad n = 3,4,5,...
+    \end{array}\right.
+
+But we can actually create a formula like $F_n = \text{blablabla}$ for any
+$n=1,2,3,...$ without using e.g. $F_{n-1}$ or $F_{n-2}$ in the formula. A
+``fib`` function implemented with that formula will be way faster than most
+other Fibonacci algorithms.
+
+## Phi
+
+graybox:
+    $\phi$ is the Greek phi letter. I'm using it instead of e.g. $x$ or $y$
+    because it's traditionally used here. Try to not get confused.
+
+Let's start with a simpler problem. We'll try to find *any* sequence $a_n$ where
+$n = 1,2,3,...$ so that $a_n + a_{n+1} = a_{n+2}$. A simple sequence would be
+$a_n = 0$ because $0 + 0 = 0$, but that's not really interesting. Let's try
+something else, like $a_n = \phi^n$ for some number $\phi$. We already decided
+that $\phi=0$ wasn't interesting, so we can assume $\phi \ne 0$ and divide by
+$\phi^n$:
+
+math:
+    \phi^n + \phi^{n+1} &= \phi^{n+2}
+    \frac{\phi^n}{\phi^n} + \frac{\phi^{n+1}}{\phi^n} &= \frac{\phi^{n+2}}{\phi^n}
+    1 + \phi &= \phi^2
+    0 &= \phi^2 - \phi - 1
+
+floatingbox: Handy thing: $a^2-2ab+b^2=(a-b)^2$
+    Proof:
+
+    math:
+        & \ (a-b)^2
+        =&\ (a-b)(a-b)
+        =&\ (a-b)a-(a-b)b
+        =&\ (aa-ba)-(ab-bb)
+        =&\ aa-ba-ab+bb
+        =&\ aa-(ab+ab)+bb
+        =&\ a^2-2ab+b^2
+
+    In this case we need to plug in $a=\phi$ and $b=\frac 1 2$.
+
+There's [a nice formula](https://en.wikipedia.org/wiki/Quadratic_formula) just
+for solving equations like this, but we don't really need it. Instead we'll use
+the handy thing at right cleverly:
+
+math:
+    \phi^2 - \phi - 1 &= 0
+    \phi^2 - \phi &= 1
+    \phi^2 - \overbrace{2 \phi \frac 1 2}^{\text{this is }\phi} &= 1
+    \phi^2 - 2 \phi \frac 1 2 + \left(\frac 1 2\right)^2 &= 1 + \left(\frac 1 2\right)^2
+    \left(\phi - \frac 1 2\right)^2 &= 1 + \frac{1^2}{2^2} = 1 + \frac 1 4
+                                    &= \frac 4 4 + \frac 1 4 = \frac 5 4
+    \left|\phi - \frac 1 2\right| &= \sqrt{\frac 5 4} = \frac{\sqrt 5}{\sqrt 4} = \frac{\sqrt 5}{2}
+    \phi - \frac 1 2 &= \pm \frac{\sqrt 5}{2}
+    \phi &= \frac 1 2 \pm \frac{\sqrt 5}{2} = \frac{1 \pm \sqrt 5}{2}
+
+Here $\pm$ means $+$ or $-$, and I'm using it just to prevent annoying
+repetition. So we ended up with two values for $\phi$, $\frac{1 + \sqrt 5}{2}$
+and $\frac{1 - \sqrt 5}{2}$.
+
+Let's check that both of them work:
+
+code: python3
+    >>> from math import sqrt
+    >>> phi = (1 + sqrt(5))/2
+    >>> phi
+    1.618033988749895
+    >>> phi**2
+    2.618033988749895
+    >>> phi**3
+    4.23606797749979
+    >>> phi**4
+    6.854101966249686
+    >>> phi**5
+    11.090169943749476
+    >>> phi2 = (1 - sqrt(5))/2
+    >>> phi2
+    -0.6180339887498949
+    >>> phi2**2
+    0.3819660112501052
+    >>> phi2**3
+    -0.23606797749978975
+    >>> phi2**4
+    0.14589803375031551
+    >>> phi2**5
+    -0.09016994374947428
+
+The positive ``phi`` seems to be working nicely and the numbers look like they
+have just been added to each other. ``phi2`` is also doing the right thing, but
+it's not as obvious because it's negative:
+
+code: python3
+    >>> phi2 + phi2**2
+    -0.2360679774997897
+    >>> phi2**2 + phi2**3
+    0.14589803375031546
+    >>> phi2**3 + phi2**4
+    -0.09016994374947424
+
+floatingbox: Another handy thing: $(a-b)(a+b)=a^2-b^2$
+    Proof:
+
+    math:
+        & \ (a-b)(a+b)
+        =&\ (a-b)a+(a-b)b
+        =&\ aa-ba+ab-bb
+        =&\ a^2 - b^2
+
+    In this case we need to plug in $a=1$ and $b=\sqrt 5$.
+
+Usually $\phi$ means $\frac{1 + \sqrt 5}{2}$ and not the negative number. Let's
+try to figure out how to express the negative number with this positive $\phi$:
+
+math:
+    \frac{1 - \sqrt 5}{2} &= \frac{(1 - \sqrt 5)(1 + \sqrt 5)}{2(1 + \sqrt 5)}
+    &= \frac{1^2 - (\sqrt 5)^2}{2(1 + \sqrt 5)} = \frac{1 - 5}{2(1 + \sqrt 5)}
+    &= \frac{-4}{2(1 + \sqrt 5)} = - \frac{2}{1 + \sqrt 5}
+    &= -\frac{1}{\ \frac{1 + \sqrt 5}{2}\ } = -\frac 1 \phi
+
+By the way, $\phi = \frac{1 + \sqrt 5}{2}$ appears in many other places as well
+and it's known as [the golden ratio](https://en.wikipedia.org/wiki/Golden_ratio).
+If you want to know more just click that Wikipedia link.
+
+## The Formula
+
+If we have a sequence $a_n$ so that $a_n + a_{n+1} = a_{n+2}$, then we can
+multiply both sides of the equation by any constant $A$ and we get
+$A\ a_n + A\ a_{n+1} = A\ a_{n+2}$. So maybe the formula of the famous
+$1,1,2,3,5,8,...$ sequence is of the form $A \phi^n$? Let's try that.
+
+math:
+    \left\{\begin{array}{lcl} \
+        F_n = A \phi^n
+        F_1 = 1
+        F_2 = 1
+        F_n = F_{n-1} + F_{n-2}
+    \end{array}\right.
+
+I can already tell that this isn't going to work. $F_1 = 1$ means that
+$A \phi^1 = A \phi = 1$ and $A = \frac 1 \phi$, but $F_2 = 1$ means that we also
+have $A \phi^2 = 1$ and thus $A = \frac{1}{\phi^2}$:
+
+math:
+    A = \frac 1 \phi &= \frac{1}{\phi^2}
+    \phi &= \phi^2
+    \phi = 0\ &\text{or}\ \phi = 1
+
+That didn't work. But we also had our $\frac{1 - \sqrt 5}{2} = -\frac 1 \phi$
+number, so let's make an educated guess with two constants $A$ and $B$:
+
+math:
+    F_n &= A \phi^n + B \left(-\frac 1 \phi \right)^n
+
+As before, we also have the initial values $F_1 = 1$ and $F_2 = 1$.
+
+This isn't difficult to calculate by hand, but it's quite tedious, so we'll use
+[sympy](http://www.sympy.org):
+
+code: python3
+    >>> from sympy import *
+    >>> init_printing()
+    >>> A,B,phi = symbols('A B phi')
+    >>> A,B,phi
+    (A, B, φ)
+    >>> def fib(n): return A*phi**n + B*(-1/phi)**n
+    ... 
+    >>> solve([Eq(fib(1), 1), Eq(fib(2), 1)], A,B)
+    ⎧                   2         ⎫
+    ⎪     φ + 1        φ ⋅(-φ + 1)⎪
+    ⎨A: ──────────, B: ───────────⎬
+    ⎪     ⎛ 2    ⎞         2      ⎪
+    ⎩   φ⋅⎝φ  + 1⎠        φ  + 1  ⎭
+
+Note that I didn't plug in the actual value of $\phi$; instead I'm using a
+symbol called $\phi$ so I can get the result in terms of $\phi$.
+
+We can't wait to try this out! Let's do it.
+
+code: python3
+    >>> values = solve([Eq(fib(1), 1), Eq(fib(2), 1)], A,B)
+    >>> values[phi] = (1 + sqrt(5))/2
+    >>> values
+    ⎧                   2                    ⎫
+    ⎪     φ + 1        φ ⋅(-φ + 1)     1   √5⎪
+    ⎨A: ──────────, B: ───────────, φ: ─ + ──⎬
+    ⎪     ⎛ 2    ⎞         2           2   2 ⎪
+    ⎩   φ⋅⎝φ  + 1⎠        φ  + 1             ⎭
+    >>> fib(1).subs(values).simplify()
+    1
+    >>> fib(2).subs(values).simplify()
+    1
+    >>> fib(3).subs(values).simplify()
+    2
+    >>> fib(4).subs(values).simplify()
+    3
+    >>> fib(5).subs(values).simplify()
+    5
+    >>> fib(6).subs(values).simplify()
+    8
+    >>> fib(7).subs(values).simplify()
+    13
+
+It works! I think this is really amazing.
+
+math:
+    F_n &= A \phi^n + B \left(-\frac 1 \phi \right)^n
+    &= \frac{\phi + 1}{\phi(\phi^2 + 1)} \phi^n + \frac{\phi^2(1-\phi)}{\phi^2 + 1} \left(-\frac 1 \phi\right)^n
+
+Simplifying this by hand would be a lot of work, and sympy can't do much to it
+for some reason. It's time to grab the power tools and use
+[WolframAlpha](http://www.wolframalpha.com/). Here's my huge query:
+
+indent:
+    simplify (phi + 1)/(phi\*(phi\*\*2 + 1)) \* phi\*\*n + (phi\*\*2 \* (1 -
+    phi))/(phi\*\*2 + 1) \* (-1/phi)\*\*n where phi = (1 + sqrt(5))/2
+
+image: images/fibsimplify.png
+    display: block;
+    margin: 0 auto;
+    border: 1px solid;
+    border-color: #ccc;
+
+Next I like to replace some messy constants with $\phi$ stuff and do some other
+cleanups. Of course, all this is optional.
+
+math:
+    F_n &= -\frac{\left(\frac{1 - \sqrt 5}{2}\right)^n - \left(\frac{1 + \sqrt 5}{2}\right)^n}{\sqrt 5}
+    &= -\frac{\left(-\frac 1 \phi\right)^n - \phi^n}{\sqrt 5}
+    &= \frac{-\left(\left(-\frac 1 \phi\right)^n - \phi^n\right)}{\sqrt 5}
+    &= \frac{-\left(-\frac 1 \phi\right)^n + \phi^n}{\sqrt 5}
+    &= \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5}
+    &= \frac{\left(\frac{1 + \sqrt 5}{2}\right)^n - \left(\frac{1 - \sqrt 5}{2}\right)^n}{\sqrt 5}
+
+There it is! If you like code obfuscation, you can replace the constants with
+hard-coded floats:
+
+code: python3
+    >>> from math import sqrt
+    >>> (1 + sqrt(5))/2
+    1.618033988749895
+    >>> (1 - sqrt(5))/2
+    -0.6180339887498949
+    >>> sqrt(5)
+    2.23606797749979
+    >>> def lelfib(n): return (1.618033988749895**n - (-0.6180339887498949)**n)/2.23606797749979
+    ... 
+    >>> lelfib(1)
+    1.0
+    >>> lelfib(2)
+    1.0
+    >>> lelfib(3)
+    2.0
+    >>> lelfib(4)
+    3.0000000000000004
+    >>> lelfib(5)
+    5.000000000000001
+    >>> lelfib(6)
+    8.000000000000002
+    >>> lelfib(7)
+    13.000000000000002
+    >>> lelfib(8)
+    21.000000000000004
+
+The formula is correct as we'll see in a moment. Floats are not meant to be
+mathematically precise, so the little precision problems are not a surprise.
+
+## The Proof
+
+So far we have a nice formula, but we haven't actually proved that it works yet.
+We just plugged in some values and we got nice results. It's time to prove that
+this sequence...
+
+math:
+    F_n = \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5}, \quad n = 1,2,3,...
+
+...satisfies our original definition of the Fibonacci sequence:
+
+math:
+    \left\{\begin{array}{lcl} \
+        F_1 = 1
+        F_2 = 1
+        F_n = F_{n-1} + F_{n-2}, \quad n = 3,4,5,...
+    \end{array}\right.
+
+This will be a *proof*, so we won't use sympy or WolframAlpha.
+
+Before we get started we need more handy $\phi$ formulas. Let's start with stuff
+that we worked out earlier in this page and see what we get.
+
+math:
+    1 &+ \phi = \phi^2
+    \frac 1 \phi &+ 1 = \phi
+    \frac 1 \phi &= \phi - 1
+    -\frac 1 \phi &= -\phi + 1 = 1 - \phi
+
+math:
+    (a-b)^2 &= a^2 - 2ab + b^2
+    (1 - \phi)^2 &= 1^2 - 2 \cdot 1 \cdot \phi + \phi^2
+    &= 1 - 2\phi + 1 + \phi
+    &= 2 - \phi
+
+math:
+    \phi &= \frac{1 + \sqrt 5}{2}
+    2\phi &= 1 + \sqrt 5
+    2\phi - 1 &= \sqrt 5
+    \frac{2\phi - 1}{\sqrt 5} &= \frac{\sqrt 5}{\sqrt 5} = 1
+
+Let's do this.
+
+math:
+    F_1 &= \frac{\phi^1 - \left(-\frac 1 \phi\right)^1}{\sqrt 5} = \frac{\phi - \left(-\frac 1 \phi\right)}{\sqrt 5}
+    &= \frac{\phi + \frac 1 \phi}{\sqrt 5} = \frac{\phi + \phi - 1}{\sqrt 5} = \frac{2\phi - 1}{\sqrt 5} = 1
+
+math:
+    F_2 &= \frac{\phi^2 - \left(-\frac 1 \phi\right)^2}{\sqrt 5} = \frac{(1 + \phi) - (1 - \phi)^2}{\sqrt 5}
+    &= \frac{1 + \phi - (2 - \phi)}{\sqrt 5} = \frac{1 + \phi - 2 + \phi}{\sqrt 5}
+    &= \frac{2\phi - 1}{\sqrt 5} = 1
+
+If we can prove that $F_n + F_{n+1} = F_{n+2}$ for $n=1,2,3,...$, then we also
+have $F_n = F_{n-1} + F_{n-2}$ for $n=3,4,5,...$ which is what we need next.
+Now we need to go way back to the beginning of this page to look up this formula:
+
+math:
+    \phi^n + \phi^{n+1} = \phi^{n+2}
+
+We figured out that this also works with $-\frac 1 \phi$ instead of $\phi$, so
+we also have this:
+
+math:
+    \left(-\frac 1 \phi\right)^n + \left(-\frac 1 \phi\right)^{n+1} = \left(-\frac 1 \phi\right)^{n+2}
+
+Now we're ready to go.
+
+math:
+    F_n + F_{n+1} &= \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5} \
+                    + \frac{\phi^{n+1} - \left(-\frac 1 \phi\right)^{n+1}}{\sqrt 5}
+    &= \frac{\phi^n - \left(-\frac 1 \phi\right)^n + \phi^{n+1} - \left(-\frac 1 \phi\right)^{n+1}}{\sqrt 5}
+    &= \frac{\phi^n + \phi^{n+1} - \left(-\frac 1 \phi\right)^n - \left(-\frac 1 \phi\right)^{n+1}}{\sqrt 5}
+    &= \frac{\left(\phi^n + \phi^{n+1}\right) \
+       - \left(\left(-\frac 1 \phi\right)^n + \left(-\frac 1 \phi\right)^{n+1}\right)}{\sqrt 5}
+    &= \frac{\phi^{n+2} - \left(-\frac 1 \phi\right)^{n+2}}{\sqrt 5} = F_{n+2}
