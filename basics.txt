@@ -75,7 +75,8 @@ rule; that doesn't work. This also applies to $\displaystyle\frac{a}{b-c}$.
 It's often best to look at which numbers are below a division line and which
 aren't. For example, if we have $\frac 1 2 \cdot 3 \cdot \frac 4 5$ we know
 that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
-lines but other numbers weren't.
+lines but other numbers weren't. If something is below *two* division lines,
+then you can move it to top, like $\displaystyle\frac{a}{\ \frac b c\ } = \frac{ac}{b}$.
 
 If both the top and bottom are being multiplied by something you can get rid of
 that multiplier. For example:

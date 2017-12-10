@@ -81,6 +81,9 @@ inner stuff.
 math:
     \frac{d}{dx}(2x)^2 = 2(2x)\ \frac{d}{dx}(2x) = 2(2x)2=8x
 
+If the inner stuff is just $x$, then its derivative is $1$ and you don't need to
+care about it.
+
 This is known as the chain rule, and it looks like this in a general $f$ and $g$
 form:
 
@@ -234,102 +237,73 @@ indent:
 ### $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
 
 indent:
-    Let's start by plugging stuff into the definition of derivative:
-
-    math: g'(x) = \lim_{h\to0} \frac{g(x+h)-g(x)}{h}
-
-    math: f'(g(x)) = \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k}
-
-    asymptote: float:right;
-        size(9cm);
-        real xymin = -0.2;
-        real xymax = 1.5;
-        real the_x = 0.5;      // there's also a loop variable called x (lol)
-        real h = 0.1;
-
-        axises(xymin,xymax,xymin,xymax);
-
-        real g(real x) { return sin(x+0.5); }
-        draw(graph(g, xymin, xymax), blue, L=rotate(20)*"$y=g(x)$", align=N);
-
-        draw((the_x,0)--(the_x,g(the_x)), lightblue);
-        draw((the_x+h,0)--(the_x+h,g(the_x+h)), lightblue);
-        label((the_x,0), L="$x$", align=SW);
-        draw(brace((the_x+h,0),(the_x,0), amplitude=0.1), L="$h$", align=S);
-        draw(brace((the_x,0),(the_x,g(the_x))), L="$g(x)$", align=W);
-        draw(brace((the_x+h,g(the_x+h)),(the_x+h,0)), L="$g(x+h)$", align=E);
-
-    Note that I used $h$ with one limit and $k$ with the other; the limits are
-    completely independent of each other and I wanted to make it stand out. In
-    other words, it doesn't matter how $h$ and $k$ relate to each other as long
-    as both of them approach 0.
-
-    The rule can be used only if $g'(x)$ exists, and thus $g$ must be
-    continuous; see [the derivative existence stuff
-    above](#which-functions-have-derivatives). So, if $h \to 0$ (read: h
-    approaches 0) then $g(x+h) \to g(x)$ and $(g(x+h)-g(x)) \to 0$.
-
-    If we put all this together we can set $k=g(x+h)-g(x)$. Now it's time to
-    calculate $f'(g(x))g'(x)$.
+    Let's first assume that if $h \to 0$ (read: h approaches 0), then
+    $g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
+    $g(x+h)=g(x)$ case separately.
 
     math:
-        &  f'(g(x))g'(x)
-        =& \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h}
-        =& \lim_{k\to0} \lim_{h\to0} \left( \
-            \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h} \right)
-        =& \lim_{h\to0} \left( \
-            \frac{f\bigl(g(x)+g(x+h)-g(x)\bigr)-f(g(x))}{g(x+h)-g(x)} \
-            \cdot \frac{g(x+h)-g(x)}{h} \right)
-        =& \lim_{h\to0} \left( \
-            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \
-            \cdot \frac{g(x+h)-g(x)}{h} \right)
-        =& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
-        =& \frac{d}{dx} f(g(x))
+        \frac{d}{dx} f(g(x)) \
+        &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
+        &= \lim_{h\to0} \left( \
+            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
+            \frac{g(x+h)-g(x)}{h} \right)
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) \
+           \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right)
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
+
+    comment: TODO: fix this pic
 
     asymptote: float:right;
-        size(9cm);
+        size(10cm);
         real xymin = -0.2;
-        real xymax = 1.5;
-        real the_x = 0.6;      // there's also a loop variable called x (lol)
-        real h = 0.1;
+        real xmax = 2.5;
+        real ymax = 3;
+        real x = 1;
+        real glabelx = tau/4;
+        real h = 0.3;
 
-        axises(xymin,xymax,xymin,xymax);
-        real flatleft = the_x-2h, flatright=the_x+3h;
+        axises(xymin,xmax,xymin,ymax);
 
-        real g(real x) {
-            // flat spot around the_x
-            if (flatleft < x && x < flatright)
-                return 1;
+        real g(real x) { return 2*sin(x) + 0.7; }
+        draw(graph(g, xymin, xmax), blue);
+        label((glabelx,g(glabelx)), blue, L="$y=g(x)$", align=NE);
 
-            // elsewhere: cosine graph moved appropriately
-            if (x < the_x)
-                return cos(x-flatleft);
-            return cos(x-flatright);
-        }
-        draw(graph(g, xymin, xymax), blue, L="$y=g(x)$", align=N);
+        draw((x,g(x))--(x,0), L=rotate(90)*"$g(x)$");
+        draw((x+h,0)--(x+h,g(x+h)), L=rotate(90)*"$g(x+h)$");
+        label((x,0), L="$x$", align=SW);
+        draw(brace((x+h,-h/2),(x,-h/2), amplitude=h/2), L="$h$", align=S);
+        draw(brace((x,g(x)), (x,g(x+h)), amplitude=h/2), L="$\Delta g$", align=W);
 
-        draw((the_x,0)--(the_x,g(the_x)), lightblue);
-        draw((the_x+h,0)--(the_x+h,g(the_x+h)), lightblue);
-        label((the_x,0), L="$x$", align=SW);
-        draw(brace((the_x+h,0),(the_x,0), amplitude=0.1), L="$h$", align=S);
-        draw(brace((the_x,0),(the_x,g(the_x))), L="$g(x)$", align=W);
-        draw(brace((the_x+h,g(the_x+h)),(the_x+h,0)), L="$g(x+h)$", align=E);
+    Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
+    the derivative of $g$ exists, so [$g$ must be
+    continuous](#which-functions-have-derivatives). So if $h \to 0$, then
+    $g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.
 
-        draw((flatleft,g(the_x))--(flatright,g(the_x)), red);
+    math:
+        \Delta g &= g(x+h)-g(x)
+        g(x) + \Delta g &= g(x+h)
 
-    This looks nice, but we are not done yet! We divided by $k$. What if
-    $k=g(x+h)-g(x)=0$ when $h \to 0$ but $h \ne 0$? Practically it means that
-    the graph $y=g(x)$ is a horizontal and straight line around $x$ because
-    $g(x+h)=g(x)$ with a small $h$. So, we can say that $g(x)=c$ on this
-    interval ($c$ is a constant) and prove this case separately:
+    math:
+        \frac{d}{dx} f(g(x)) \
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
+        &= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x)
+        &= f'(g(x))g'(x)
 
-    math: f(g(x))g'(x) = f(c) \left(\frac{d}{dx} c\right) = f(c) \cdot 0 = 0
+    If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
+    $g(x)$ everywhere:
 
-    math: \frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0
+    math:
+        \frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
+        &= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h}
+        &= \lim_{h\to0} \frac 0 h
+        &= 0
 
-    Look carefully: $\frac{d}{dx} f(c) = 0$ because we differenciated $f(c)$
-    with respect to $x$, so $f(c)$ was actually yet another constant because it
-    doesn't depend on the value of $x$.
+    math:
+        f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right)
+        &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right)
+        &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right)
+        &= f(g(x)) \cdot 0
+        &= 0
 
 ### $\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$
 
