@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Fibonacci Sequence</title>
+
+<script type="text/x-mathjax-config">
+  // awesome, i have javascript inside html inside python
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><b>Fibonacci Sequence</b></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="fibonacci-sequence">Fibonacci Sequence<a class="headerlink" href="#fibonacci-sequence" title="Link to this title">¶</a></h1><p>Here's a very famous sequence of numbers, known as the Fibonacci sequence:</p>
+
+$$\begin{align}1, 1, 2, 3, 5, 8, 13, 21, ...\end{align}$$<p>We start with $1, 1$ and then we add together the last two numbers to get the
+next one: $1+1=2$, $1+2=3$, $2+3=5$, $3+5=8$ and so on.</p>
+
+<p>Here's a simple Python function that calculates the $n$'th Fibonacci number,
+e.g. <code>fib(1) == 1</code>, <code>fib(2) == 1</code>, <code>fib(3) == 2</code> and so on:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">fib</span>(n):
+    <span style="color: #007020; font-weight: bold">if</span> n <span style="color: #666666">&lt;=</span> <span style="color: #40a070">2</span>:      <span style="color: #60a0b0; font-style: italic"># fib(1) == 1, fib(2) == 1</span>
+        <span style="color: #007020; font-weight: bold">return</span> <span style="color: #40a070">1</span>
+    <span style="color: #007020; font-weight: bold">return</span> fib(n<span style="color: #666666">-</span><span style="color: #40a070">1</span>) <span style="color: #666666">+</span> fib(n<span style="color: #666666">-</span><span style="color: #40a070">2</span>)
+</pre></div>
+<p>The last line calculates two previous Fibonacci numbers and adds them together.
+The code works just fine, but something like <code>fib(40)</code> really takes a while.
+That's one reason why the Fibonacci sequence is not only a well-known thing
+among mathematicians, but also programmers.</p>
+
+<p>Mathematically we could define the Fibonacci sequence $F_n$ like this:</p>
+
+$$\begin{align}\left\{\begin{array}{lcl}      F_1 = 1 \\
+    F_2 = 1 \\
+    F_n = F_{n-1} + F_{n-2}, \quad n = 3,4,5,... \\
+\end{array}\right.\end{align}$$<p>But we can actually create a formula like $F_n = \text{blablabla}$ for any
+$n=1,2,3,...$ without using e.g. $F_{n-1}$ or $F_{n-2}$ in the formula. A
+<code>fib</code> function implemented with that formula will be way faster than most
+other Fibonacci algorithms.</p>
+
+<h2 id="phi">Phi<a class="headerlink" href="#phi" title="Link to this title">¶</a></h2><div class="box graybox"><p>$\phi$ is the Greek phi letter. I'm using it instead of e.g. $x$ or $y$
+because it's traditionally used here. Try to not get confused.
+</p>
+
+</div><p>Let's start with a simpler problem. We'll try to find <i>any</i> sequence $a_n$ where
+$n = 1,2,3,...$ so that $a_n + a_{n+1} = a_{n+2}$. A simple sequence would be
+$a_n = 0$ because $0 + 0 = 0$, but that's not really interesting. Let's try
+something else, like $a_n = \phi^n$ for some number $\phi$. We already decided
+that $\phi=0$ wasn't interesting, so we can assume $\phi \ne 0$ and divide by
+$\phi^n$:</p>
+
+$$\begin{align}\phi^n + \phi^{n+1} &= \phi^{n+2} \\
+\frac{\phi^n}{\phi^n} + \frac{\phi^{n+1}}{\phi^n} &= \frac{\phi^{n+2}}{\phi^n} \\
+1 + \phi &= \phi^2 \\
+0 &= \phi^2 - \phi - 1\end{align}$$<div class="floatingbox"><h2> Handy thing: $a^2-2ab+b^2=(a-b)^2$</h2><p>Proof:</p>
+
+$$\begin{align}& \ (a-b)^2 \\
+=&\ (a-b)(a-b) \\
+=&\ (a-b)a-(a-b)b \\
+=&\ (aa-ba)-(ab-bb) \\
+=&\ aa-ba-ab+bb \\
+=&\ aa-(ab+ab)+bb \\
+=&\ a^2-2ab+b^2\end{align}$$<p>In this case we need to plug in $a=\phi$ and $b=\frac 1 2$.
+</p>
+
+</div><p>There's <a href="https://en.wikipedia.org/wiki/Quadratic_formula">a nice formula</a> just
+for solving equations like this, but we don't really need it. Instead we'll use
+the handy thing at right cleverly:</p>
+
+$$\begin{align}\phi^2 - \phi - 1 &= 0 \\
+\phi^2 - \phi &= 1 \\
+\phi^2 - \overbrace{2 \phi \frac 1 2}^{\text{this is }\phi} &= 1 \\
+\phi^2 - 2 \phi \frac 1 2 + \left(\frac 1 2\right)^2 &= 1 + \left(\frac 1 2\right)^2 \\
+\left(\phi - \frac 1 2\right)^2 &= 1 + \frac{1^2}{2^2} = 1 + \frac 1 4 \\
+                                &= \frac 4 4 + \frac 1 4 = \frac 5 4 \\
+\left|\phi - \frac 1 2\right| &= \sqrt{\frac 5 4} = \frac{\sqrt 5}{\sqrt 4} = \frac{\sqrt 5}{2} \\
+\phi - \frac 1 2 &= \pm \frac{\sqrt 5}{2} \\
+\phi &= \frac 1 2 \pm \frac{\sqrt 5}{2} = \frac{1 \pm \sqrt 5}{2}\end{align}$$<p>Here $\pm$ means $+$ or $-$, and I'm using it just to prevent annoying
+repetition. So we ended up with two values for $\phi$, $\frac{1 + \sqrt 5}{2}$
+and $\frac{1 - \sqrt 5}{2}$.</p>
+
+<p>Let's check that both of them work:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #007020; font-weight: bold">import</span> sqrt
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi <span style="color: #666666">=</span> (<span style="color: #40a070">1</span> <span style="color: #666666">+</span> sqrt(<span style="color: #40a070">5</span>))<span style="color: #666666">/</span><span style="color: #40a070">2</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi
+<span style="color: #888888">1.618033988749895</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi<span style="color: #666666">**</span><span style="color: #40a070">2</span>
+<span style="color: #888888">2.618033988749895</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi<span style="color: #666666">**</span><span style="color: #40a070">3</span>
+<span style="color: #888888">4.23606797749979</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi<span style="color: #666666">**</span><span style="color: #40a070">4</span>
+<span style="color: #888888">6.854101966249686</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi<span style="color: #666666">**</span><span style="color: #40a070">5</span>
+<span style="color: #888888">11.090169943749476</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2 <span style="color: #666666">=</span> (<span style="color: #40a070">1</span> <span style="color: #666666">-</span> sqrt(<span style="color: #40a070">5</span>))<span style="color: #666666">/</span><span style="color: #40a070">2</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2
+<span style="color: #888888">-0.6180339887498949</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2<span style="color: #666666">**</span><span style="color: #40a070">2</span>
+<span style="color: #888888">0.3819660112501052</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2<span style="color: #666666">**</span><span style="color: #40a070">3</span>
+<span style="color: #888888">-0.23606797749978975</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2<span style="color: #666666">**</span><span style="color: #40a070">4</span>
+<span style="color: #888888">0.14589803375031551</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2<span style="color: #666666">**</span><span style="color: #40a070">5</span>
+<span style="color: #888888">-0.09016994374947428</span>
+</pre></div>
+<p>The positive <code>phi</code> seems to be working nicely and the numbers look like they
+have just been added to each other. <code>phi2</code> is also doing the right thing, but
+it's not as obvious because it's negative:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2 <span style="color: #666666">+</span> phi2<span style="color: #666666">**</span><span style="color: #40a070">2</span>
+<span style="color: #888888">-0.2360679774997897</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2<span style="color: #666666">**</span><span style="color: #40a070">2</span> <span style="color: #666666">+</span> phi2<span style="color: #666666">**</span><span style="color: #40a070">3</span>
+<span style="color: #888888">0.14589803375031546</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi2<span style="color: #666666">**</span><span style="color: #40a070">3</span> <span style="color: #666666">+</span> phi2<span style="color: #666666">**</span><span style="color: #40a070">4</span>
+<span style="color: #888888">-0.09016994374947424</span>
+</pre></div>
+<div class="floatingbox"><h2> Another handy thing: $(a-b)(a+b)=a^2-b^2$</h2><p>Proof:</p>
+
+$$\begin{align}& \ (a-b)(a+b) \\
+=&\ (a-b)a+(a-b)b \\
+=&\ aa-ba+ab-bb \\
+=&\ a^2 - b^2\end{align}$$<p>In this case we need to plug in $a=1$ and $b=\sqrt 5$.
+</p>
+
+</div><p>Usually $\phi$ means $\frac{1 + \sqrt 5}{2}$ and not the negative number. Let's
+try to figure out how to express the negative number with this positive $\phi$:</p>
+
+$$\begin{align}\frac{1 - \sqrt 5}{2} &= \frac{(1 - \sqrt 5)(1 + \sqrt 5)}{2(1 + \sqrt 5)} \\
+&= \frac{1^2 - (\sqrt 5)^2}{2(1 + \sqrt 5)} = \frac{1 - 5}{2(1 + \sqrt 5)} \\
+&= \frac{-4}{2(1 + \sqrt 5)} = - \frac{2}{1 + \sqrt 5} \\
+&= -\frac{1}{\ \frac{1 + \sqrt 5}{2}\ } = -\frac 1 \phi\end{align}$$<p>By the way, $\phi = \frac{1 + \sqrt 5}{2}$ appears in many other places as well
+and it's known as <a href="https://en.wikipedia.org/wiki/Golden_ratio">the golden ratio</a>.
+If you want to know more just click that Wikipedia link.</p>
+
+<h2 id="the-formula">The Formula<a class="headerlink" href="#the-formula" title="Link to this title">¶</a></h2><p>If we have a sequence $a_n$ so that $a_n + a_{n+1} = a_{n+2}$, then we can
+multiply both sides of the equation by any constant $A$ and we get
+$A\ a_n + A\ a_{n+1} = A\ a_{n+2}$. So maybe the formula of the famous
+$1,1,2,3,5,8,...$ sequence is of the form $A \phi^n$? Let's try that.</p>
+
+$$\begin{align}\left\{\begin{array}{lcl}      F_n = A \phi^n \\
+    F_1 = 1 \\
+    F_2 = 1 \\
+    F_n = F_{n-1} + F_{n-2} \\
+\end{array}\right.\end{align}$$<p>I can already tell that this isn't going to work. $F_1 = 1$ means that
+$A \phi^1 = A \phi = 1$ and $A = \frac 1 \phi$, but $F_2 = 1$ means that we also
+have $A \phi^2 = 1$ and thus $A = \frac{1}{\phi^2}$:</p>
+
+$$\begin{align}A = \frac 1 \phi &= \frac{1}{\phi^2} \\
+\phi &= \phi^2 \\
+\phi = 0\ &\text{or}\ \phi = 1\end{align}$$<p>That didn't work. But we also had our $\frac{1 - \sqrt 5}{2} = -\frac 1 \phi$
+number, so let's make an educated guess with two constants $A$ and $B$:</p>
+
+$$\begin{align}F_n &= A \phi^n + B \left(-\frac 1 \phi \right)^n\end{align}$$<p>As before, we also have the initial values $F_1 = 1$ and $F_2 = 1$.</p>
+
+<p>This isn't difficult to calculate by hand, but it's quite tedious, so we'll use
+<a href="http://www.sympy.org">sympy</a>:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>init_printing()
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>A,B,phi <span style="color: #666666">=</span> symbols(<span style="color: #4070a0">&#39;A B phi&#39;</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>A,B,phi
+<span style="color: #888888">(A, B, φ)</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">fib</span>(n): <span style="color: #007020; font-weight: bold">return</span> A<span style="color: #666666">*</span>phi<span style="color: #666666">**</span>n <span style="color: #666666">+</span> B<span style="color: #666666">*</span>(<span style="color: #666666">-</span><span style="color: #40a070">1</span><span style="color: #666666">/</span>phi)<span style="color: #666666">**</span>n
+<span style="color: #c65d09; font-weight: bold">... </span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>solve([Eq(fib(<span style="color: #40a070">1</span>), <span style="color: #40a070">1</span>), Eq(fib(<span style="color: #40a070">2</span>), <span style="color: #40a070">1</span>)], A,B)
+<span style="color: #888888">⎧                   2         ⎫</span>
+<span style="color: #888888">⎪     φ + 1        φ ⋅(-φ + 1)⎪</span>
+<span style="color: #888888">⎨A: ──────────, B: ───────────⎬</span>
+<span style="color: #888888">⎪     ⎛ 2    ⎞         2      ⎪</span>
+<span style="color: #888888">⎩   φ⋅⎝φ  + 1⎠        φ  + 1  ⎭</span>
+</pre></div>
+<p>Note that I didn't plug in the actual value of $\phi$; instead I'm using a
+symbol called $\phi$ so I can get the result in terms of $\phi$.</p>
+
+<p>We can't wait to try this out! Let's do it.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>values <span style="color: #666666">=</span> solve([Eq(fib(<span style="color: #40a070">1</span>), <span style="color: #40a070">1</span>), Eq(fib(<span style="color: #40a070">2</span>), <span style="color: #40a070">1</span>)], A,B)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>values[phi] <span style="color: #666666">=</span> (<span style="color: #40a070">1</span> <span style="color: #666666">+</span> sqrt(<span style="color: #40a070">5</span>))<span style="color: #666666">/</span><span style="color: #40a070">2</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>values
+<span style="color: #888888">⎧                   2                    ⎫</span>
+<span style="color: #888888">⎪     φ + 1        φ ⋅(-φ + 1)     1   √5⎪</span>
+<span style="color: #888888">⎨A: ──────────, B: ───────────, φ: ─ + ──⎬</span>
+<span style="color: #888888">⎪     ⎛ 2    ⎞         2           2   2 ⎪</span>
+<span style="color: #888888">⎩   φ⋅⎝φ  + 1⎠        φ  + 1             ⎭</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">1</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">1</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">2</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">1</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">3</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">2</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">4</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">3</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">5</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">5</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">6</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">8</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>fib(<span style="color: #40a070">7</span>)<span style="color: #666666">.</span>subs(values)<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">13</span>
+</pre></div>
+<p>It works! I think this is really amazing.</p>
+
+$$\begin{align}F_n &= A \phi^n + B \left(-\frac 1 \phi \right)^n \\
+&= \frac{\phi + 1}{\phi(\phi^2 + 1)} \phi^n + \frac{\phi^2(1-\phi)}{\phi^2 + 1} \left(-\frac 1 \phi\right)^n\end{align}$$<p>Simplifying this by hand would be a lot of work, and sympy can't do much to it
+for some reason. It's time to grab the power tools and use
+<a href="http://www.wolframalpha.com/">WolframAlpha</a>. Here's my huge query:</p>
+
+<div class="indent"><p>simplify (phi + 1)/(phi*(phi**2 + 1)) * phi**n + (phi**2 * (1 -
+phi))/(phi**2 + 1) * (-1/phi)**n where phi = (1 + sqrt(5))/2
+</p>
+
+</div><img src="images/fibsimplify.png" style="display: block;     margin: 0 auto;     border: 1px solid;     border-color: #ccc;" /><p>Next I like to replace some messy constants with $\phi$ stuff and do some other
+cleanups. Of course, all this is optional.</p>
+
+$$\begin{align}F_n &= -\frac{\left(\frac{1 - \sqrt 5}{2}\right)^n - \left(\frac{1 + \sqrt 5}{2}\right)^n}{\sqrt 5} \\
+&= -\frac{\left(-\frac 1 \phi\right)^n - \phi^n}{\sqrt 5} \\
+&= \frac{-\left(\left(-\frac 1 \phi\right)^n - \phi^n\right)}{\sqrt 5} \\
+&= \frac{-\left(-\frac 1 \phi\right)^n + \phi^n}{\sqrt 5} \\
+&= \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5} \\
+&= \frac{\left(\frac{1 + \sqrt 5}{2}\right)^n - \left(\frac{1 - \sqrt 5}{2}\right)^n}{\sqrt 5}\end{align}$$<p>There it is! If you like code obfuscation, you can replace the constants with
+hard-coded floats:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #007020; font-weight: bold">import</span> sqrt
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> sqrt(<span style="color: #40a070">5</span>))<span style="color: #666666">/</span><span style="color: #40a070">2</span>
+<span style="color: #888888">1.618033988749895</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">-</span> sqrt(<span style="color: #40a070">5</span>))<span style="color: #666666">/</span><span style="color: #40a070">2</span>
+<span style="color: #888888">-0.6180339887498949</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>sqrt(<span style="color: #40a070">5</span>)
+<span style="color: #888888">2.23606797749979</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">lelfib</span>(n): <span style="color: #007020; font-weight: bold">return</span> (<span style="color: #40a070">1.618033988749895</span><span style="color: #666666">**</span>n <span style="color: #666666">-</span> (<span style="color: #666666">-</span><span style="color: #40a070">0.6180339887498949</span>)<span style="color: #666666">**</span>n)<span style="color: #666666">/</span><span style="color: #40a070">2.23606797749979</span>
+<span style="color: #c65d09; font-weight: bold">... </span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">1</span>)
+<span style="color: #888888">1.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">2</span>)
+<span style="color: #888888">1.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">3</span>)
+<span style="color: #888888">2.0</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">4</span>)
+<span style="color: #888888">3.0000000000000004</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">5</span>)
+<span style="color: #888888">5.000000000000001</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">6</span>)
+<span style="color: #888888">8.000000000000002</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">7</span>)
+<span style="color: #888888">13.000000000000002</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>lelfib(<span style="color: #40a070">8</span>)
+<span style="color: #888888">21.000000000000004</span>
+</pre></div>
+<p>The formula is correct as we'll see in a moment. Floats are not meant to be
+mathematically precise, so the little precision problems are not a surprise.</p>
+
+<h2 id="the-proof">The Proof<a class="headerlink" href="#the-proof" title="Link to this title">¶</a></h2><p>So far we have a nice formula, but we haven't actually proved that it works yet.
+We just plugged in some values and we got nice results. It's time to prove that
+this sequence...</p>
+
+$$\begin{align}F_n = \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5}, \quad n = 1,2,3,...\end{align}$$<p>...satisfies our original definition of the Fibonacci sequence:</p>
+
+$$\begin{align}\left\{\begin{array}{lcl}      F_1 = 1 \\
+    F_2 = 1 \\
+    F_n = F_{n-1} + F_{n-2}, \quad n = 3,4,5,... \\
+\end{array}\right.\end{align}$$<p>This will be a <i>proof</i>, so we won't use sympy or WolframAlpha.</p>
+
+<p>Before we get started we need more handy $\phi$ formulas. Let's start with stuff
+that we worked out earlier in this page and see what we get.</p>
+
+$$\begin{align}1 &+ \phi = \phi^2 \\
+\frac 1 \phi &+ 1 = \phi \\
+\frac 1 \phi &= \phi - 1 \\
+-\frac 1 \phi &= -\phi + 1 = 1 - \phi\end{align}$$$$\begin{align}(a-b)^2 &= a^2 - 2ab + b^2 \\
+(1 - \phi)^2 &= 1^2 - 2 \cdot 1 \cdot \phi + \phi^2 \\
+&= 1 - 2\phi + 1 + \phi \\
+&= 2 - \phi\end{align}$$$$\begin{align}\phi &= \frac{1 + \sqrt 5}{2} \\
+2\phi &= 1 + \sqrt 5 \\
+2\phi - 1 &= \sqrt 5 \\
+\frac{2\phi - 1}{\sqrt 5} &= \frac{\sqrt 5}{\sqrt 5} = 1\end{align}$$<p>Let's do this.</p>
+
+$$\begin{align}F_1 &= \frac{\phi^1 - \left(-\frac 1 \phi\right)^1}{\sqrt 5} = \frac{\phi - \left(-\frac 1 \phi\right)}{\sqrt 5} \\
+&= \frac{\phi + \frac 1 \phi}{\sqrt 5} = \frac{\phi + \phi - 1}{\sqrt 5} = \frac{2\phi - 1}{\sqrt 5} = 1\end{align}$$$$\begin{align}F_2 &= \frac{\phi^2 - \left(-\frac 1 \phi\right)^2}{\sqrt 5} = \frac{(1 + \phi) - (1 - \phi)^2}{\sqrt 5} \\
+&= \frac{1 + \phi - (2 - \phi)}{\sqrt 5} = \frac{1 + \phi - 2 + \phi}{\sqrt 5} \\
+&= \frac{2\phi - 1}{\sqrt 5} = 1\end{align}$$<p>If we can prove that $F_n + F_{n+1} = F_{n+2}$ for $n=1,2,3,...$, then we also
+have $F_n = F_{n-1} + F_{n-2}$ for $n=3,4,5,...$ which is what we need next.
+Now we need to go way back to the beginning of this page to look up this formula:</p>
+
+$$\begin{align}\phi^n + \phi^{n+1} = \phi^{n+2}\end{align}$$<p>We figured out that this also works with $-\frac 1 \phi$ instead of $\phi$, so
+we also have this:</p>
+
+$$\begin{align}\left(-\frac 1 \phi\right)^n + \left(-\frac 1 \phi\right)^{n+1} = \left(-\frac 1 \phi\right)^{n+2}\end{align}$$<p>Now we're ready to go.</p>
+
+$$\begin{align}F_n + F_{n+1} &= \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5}                  + \frac{\phi^{n+1} - \left(-\frac 1 \phi\right)^{n+1}}{\sqrt 5} \\
+&= \frac{\phi^n - \left(-\frac 1 \phi\right)^n + \phi^{n+1} - \left(-\frac 1 \phi\right)^{n+1}}{\sqrt 5} \\
+&= \frac{\phi^n + \phi^{n+1} - \left(-\frac 1 \phi\right)^n - \left(-\frac 1 \phi\right)^{n+1}}{\sqrt 5} \\
+&= \frac{\left(\phi^n + \phi^{n+1}\right)     - \left(\left(-\frac 1 \phi\right)^n + \left(-\frac 1 \phi\right)^{n+1}\right)}{\sqrt 5} \\
+&= \frac{\phi^{n+2} - \left(-\frac 1 \phi\right)^{n+2}}{\sqrt 5} = F_{n+2}\end{align}$$</div>
+</body>
+</html>

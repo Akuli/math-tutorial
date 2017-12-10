@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Polynomials</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Polynomials</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
@@ -39,7 +39,7 @@ everything.</p>
 
 </div><h2 id="wtf-are-taylor-polynomials">WTF are Taylor polynomials?<a class="headerlink" href="#wtf-are-taylor-polynomials" title="Link to this title">¶</a></h2><p>Here are a few graphs:</p>
 
-<p><img width="335" height="341" class="asymptote" src="asymptote/f853e0dfe319a5e47addb750e5f78dec.svg" /></p><p>The red graph is a complicated curve that the other graphs are trying to
+<p><img width="334" height="340" class="asymptote" src="asymptote/f853e0dfe319a5e47addb750e5f78dec.svg" /></p><p>The red graph is a complicated curve that the other graphs are trying to
 approximate.</p>
 
 <p>Let's make some notes based on the graphs:</p>
@@ -93,7 +93,7 @@ Maclaurin polynomial they mean this.</p>
 <p>Taylor polynomials are usually accurate near $a$ and less accurate far from
 $a$. These graphs demonstrate that:</p>
 
-<p><img width="256" height="250" class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.svg" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
+<p><img width="255" height="249" class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.svg" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
 
 <p>We need to know that $\frac{d}{dx} \sin(x) = \cos(x)$ and
 $\frac{d}{dx} \cos(x) = -\sin(x)$. These rules are proved
@@ -126,7 +126,7 @@ $$\begin{align}\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2      
 &=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4      + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
 &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\end{align}$$<p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
 
-<p><img width="512" height="228" class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.svg" /></p><p>I think this is just awesome.</p>
+<p><img width="510" height="227" class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.svg" /></p><p>I think this is just awesome.</p>
 
 <p>Here's our $\sin(x)$ implementation:</p>
 

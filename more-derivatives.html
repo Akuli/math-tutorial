@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Useful</h3><ul><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="numbertheory.html">Number Theory</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><b>More Derivatives</b></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><b>More Derivatives</b></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="more-derivatives">More Derivatives<a class="headerlink" href="#more-derivatives" title="Link to this title">¶</a></h1><p>This chapter contains derivative stuff that most people probably find boring,
 but you might like some of it. It assumes that you have read <a href="derivatives.html">the first
 derivative chapter</a>.</p>
@@ -38,14 +38,14 @@ $f'(0)$ is not defined:</p>
 
 $$\begin{align}f(x) = \left\{\begin{matrix}      1 \text{ if } x \ge 0 \\
     0 \text{ if } x < 0 \\
-\end{matrix}\right.\end{align}$$<p><img width="228" height="147" class="asymptote" src="asymptote/d7ef1a5b2b4155f3aa442109bcea2fbe.svg" /></p><p></li><li></p>
+\end{matrix}\right.\end{align}$$<p><img width="227" height="146" class="asymptote" src="asymptote/d7ef1a5b2b4155f3aa442109bcea2fbe.svg" /></p><p></li><li></p>
 
 <p>The graph of the function has a spike in it. Derivatives describe
 "growing speed" and it isn't clear how fast the values grow on top of a
 spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
 $|x|$ has a derivative everywhere except at $x=0$.</p>
 
-<p><img width="171" height="142" class="asymptote" src="asymptote/c30ea4d9566657343733b8c3f6d38d71.svg" /></p><p></li></ul></p>
+<p><img width="170" height="141" class="asymptote" src="asymptote/c30ea4d9566657343733b8c3f6d38d71.svg" /></p><p></li></ul></p>
 
 <p>Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.</p>
@@ -71,7 +71,10 @@ is just $2x$, so isn't the derivative of $(2x)^2$ then $2(2x)=4x$?
 <p>When things are nested like this you need to multiply by the derivative of the
 inner stuff.</p>
 
-$$\begin{align}\frac{d}{dx}(2x)^2 = 2(2x)\ \frac{d}{dx}(2x) = 2(2x)2=8x\end{align}$$<p>This is known as the chain rule, and it looks like this in a general $f$ and $g$
+$$\begin{align}\frac{d}{dx}(2x)^2 = 2(2x)\ \frac{d}{dx}(2x) = 2(2x)2=8x\end{align}$$<p>If the inner stuff is just $x$, then its derivative is $1$ and you don't need to
+care about it.</p>
+
+<p>This is known as the chain rule, and it looks like this in a general $f$ and $g$
 form:</p>
 
 $$\begin{align}\frac{d}{dx}f(g(x)) = f'(g(x))g'(x)\end{align}$$<p>There's a proof below.</p>
@@ -128,7 +131,7 @@ $\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}$. Now we know that the rule works
 when $c=1$, and then if we plug in $k=1$ we know it works when $c=2$, and so
 on.</p>
 
-<p><img width="427" height="90" class="asymptote" src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive
+<p><img width="425" height="89" class="asymptote" src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive
 integer, but it also works when $c$ is e.g. $\frac{1}{2}$. This tutorial
 also contains <a href="explog.html#example-derivative-of-x-c">another proof</a> that
 doesn't have this restriction.
@@ -164,39 +167,32 @@ $$\begin{align}\frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 
 &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
 &= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
 &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
-&= \frac{-1}{x^2}\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's start by plugging stuff into the definition of derivative:</p>
+&= \frac{-1}{x^2}\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that if $h \to 0$ (read: h approaches 0), then
+$g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
+$g(x+h)=g(x)$ case separately.</p>
 
-$$\begin{align}g'(x) = \lim_{h\to0} \frac{g(x+h)-g(x)}{h}\end{align}$$$$\begin{align}f'(g(x)) = \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k}\end{align}$$<img width="256" height="256" class="asymptote" src="asymptote/c332da017f76bc60b6127cdf557b08c2.svg" style="float:right;" /><p>Note that I used $h$ with one limit and $k$ with the other; the limits are
-completely independent of each other and I wanted to make it stand out. In
-other words, it doesn't matter how $h$ and $k$ relate to each other as long
-as both of them approach 0.</p>
+$$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+&= \lim_{h\to0} \left(      \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot      \frac{g(x+h)-g(x)}{h} \right) \\
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right)     \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right) \\
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)\end{align}$$<img width="229" height="283" class="asymptote" src="asymptote/585c8328017deaacb5dfd811d8976d4a.svg" style="float:right;" /><p>Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
+the derivative of $g$ exists, so <a href="#which-functions-have-derivatives">$g$ must be
+continuous</a>. So if $h \to 0$, then
+$g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.</p>
 
-<p>The rule can be used only if $g'(x)$ exists, and thus $g$ must be
-continuous; see <a href="#which-functions-have-derivatives">the derivative existence stuff
-above</a>. So, if $h \to 0$ (read: h
-approaches 0) then $g(x+h) \to g(x)$ and $(g(x+h)-g(x)) \to 0$.</p>
+$$\begin{align}\Delta g &= g(x+h)-g(x) \\
+g(x) + \Delta g &= g(x+h)\end{align}$$$$\begin{align}\frac{d}{dx} f(g(x))  &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x) \\
+&= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x) \\
+&= f'(g(x))g'(x)\end{align}$$<p>If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
+$g(x)$ everywhere:</p>
 
-<p>If we put all this together we can set $k=g(x+h)-g(x)$. Now it's time to
-calculate $f'(g(x))g'(x)$.</p>
-
-$$\begin{align}&  f'(g(x))g'(x) \\
-=& \lim_{k\to0} \frac{f(g(x)+k)-f(g(x))}{k} \cdot \lim_{h\to0} \frac{g(x+h)-g(x)}{h} \\
-=& \lim_{k\to0} \lim_{h\to0} \left(      \frac{f(g(x)+k)-f(g(x))}{k} \cdot \frac{g(x+h)-g(x)}{h} \right) \\
-=& \lim_{h\to0} \left(      \frac{f\bigl(g(x)+g(x+h)-g(x)\bigr)-f(g(x))}{g(x+h)-g(x)}      \cdot \frac{g(x+h)-g(x)}{h} \right) \\
-=& \lim_{h\to0} \left(      \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)}      \cdot \frac{g(x+h)-g(x)}{h} \right) \\
-=& \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-=& \frac{d}{dx} f(g(x))\end{align}$$<img width="256" height="256" class="asymptote" src="asymptote/4e51968114d716fd3f385598fd228c9b.svg" style="float:right;" /><p>This looks nice, but we are not done yet! We divided by $k$. What if
-$k=g(x+h)-g(x)=0$ when $h \to 0$ but $h \ne 0$? Practically it means that
-the graph $y=g(x)$ is a horizontal and straight line around $x$ because
-$g(x+h)=g(x)$ with a small $h$. So, we can say that $g(x)=c$ on this
-interval ($c$ is a constant) and prove this case separately:</p>
-
-$$\begin{align}f(g(x))g'(x) = f(c) \left(\frac{d}{dx} c\right) = f(c) \cdot 0 = 0\end{align}$$$$\begin{align}\frac{d}{dx} f(g(x)) = \frac{d}{dx} f(c) = 0\end{align}$$<p>Look carefully: $\frac{d}{dx} f(c) = 0$ because we differenciated $f(c)$
-with respect to $x$, so $f(c)$ was actually yet another constant because it
-doesn't depend on the value of $x$.
-</p>
-
-</div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
+$$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+&= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h} \\
+&= \lim_{h\to0} \frac 0 h \\
+&= 0\end{align}$$$$\begin{align}f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right) \\
+&= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right) \\
+&= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
+&= f(g(x)) \cdot 0 \\
+&= 0\end{align}$$</div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
 
 <ul><li>$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$</li><li>$\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$</li><li>$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
 </li></ul><p>Now this is quite straight-forward.</p>
