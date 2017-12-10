@@ -213,23 +213,24 @@ symbol called $\phi$ so I can get the result in terms of $\phi$.</p>
 </pre></div>
 <p>It works! I think this is really amazing.</p>
 
+<p>Let's simplify the A and B values:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>values[A]<span style="color: #666666">.</span>subs(phi, values[phi])<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">√5</span>
+<span style="color: #888888">──</span>
+<span style="color: #888888">5 </span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>values[B]<span style="color: #666666">.</span>subs(phi, values[phi])<span style="color: #666666">.</span>simplify()
+<span style="color: #888888">-√5 </span>
+<span style="color: #888888">────</span>
+<span style="color: #888888"> 5  </span>
+</pre></div>
+<p>These can be also written as $\frac{1}{\sqrt 5}$ and $-\frac{1}{\sqrt 5}$
+because $5 = (\sqrt 5)^2$, but sympy likes to put square roots to top for some
+reason. Anyway, with this we can write a much cleaner formula:</p>
+
 $$\begin{align}F_n &= A \phi^n + B \left(-\frac 1 \phi \right)^n \\
-&= \frac{\phi + 1}{\phi(\phi^2 + 1)} \phi^n + \frac{\phi^2(1-\phi)}{\phi^2 + 1} \left(-\frac 1 \phi\right)^n\end{align}$$<p>Simplifying this by hand would be a lot of work, and sympy can't do much to it
-for some reason. It's time to grab the power tools and use
-<a href="http://www.wolframalpha.com/">WolframAlpha</a>. Here's my huge query:</p>
-
-<div class="indent"><p>simplify (phi + 1)/(phi*(phi**2 + 1)) * phi**n + (phi**2 * (1 -
-phi))/(phi**2 + 1) * (-1/phi)**n where phi = (1 + sqrt(5))/2
-</p>
-
-</div><img src="images/fibsimplify.png" style="display: block;     margin: 0 auto;     border: 1px solid;     border-color: #ccc;" /><p>Next I like to replace some messy constants with $\phi$ stuff and do some other
-cleanups. Of course, all this is optional.</p>
-
-$$\begin{align}F_n &= -\frac{\left(\frac{1 - \sqrt 5}{2}\right)^n - \left(\frac{1 + \sqrt 5}{2}\right)^n}{\sqrt 5} \\
-&= -\frac{\left(-\frac 1 \phi\right)^n - \phi^n}{\sqrt 5} \\
-&= \frac{-\left(\left(-\frac 1 \phi\right)^n - \phi^n\right)}{\sqrt 5} \\
-&= \frac{-\left(-\frac 1 \phi\right)^n + \phi^n}{\sqrt 5} \\
-&= \frac{\phi^n - \left(-\frac 1 \phi\right)^n}{\sqrt 5} \\
+&= \frac{1}{\sqrt 5} \phi^n - \frac{1}{\sqrt 5} \left(-\frac 1 \phi \right)^n \\
+&= \frac{\phi^n - \left(-\frac 1 \phi \right)^n}{\sqrt 5} \\
 &= \frac{\left(\frac{1 + \sqrt 5}{2}\right)^n - \left(\frac{1 - \sqrt 5}{2}\right)^n}{\sqrt 5}\end{align}$$<p>There it is! If you like code obfuscation, you can replace the constants with
 hard-coded floats:</p>
 
