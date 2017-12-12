@@ -317,7 +317,7 @@ code: python3
     >>> diff(6 * x**2 + 7*x - 123, x)
     12⋅x + 7
 
-Here "diff" is short for "differenciate", and it means finding a derivative.
+Here "diff" is short for "differentiate", and it means finding a derivative.
 
 Libraries like sympy are also useful for doing long and messy calculations like
 the one we did above:
