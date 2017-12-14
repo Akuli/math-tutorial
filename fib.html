@@ -88,10 +88,12 @@ $$\begin{align}\phi^2 - \phi - 1 &= 0 \\
 \left|\phi - \frac 1 2\right| &= \sqrt{\frac 5 4} = \frac{\sqrt 5}{\sqrt 4} = \frac{\sqrt 5}{2} \\
 \phi - \frac 1 2 &= \pm \frac{\sqrt 5}{2} \\
 \phi &= \frac 1 2 \pm \frac{\sqrt 5}{2} = \frac{1 \pm \sqrt 5}{2}\end{align}$$<p>Here $\pm$ means $+$ or $-$, and I'm using it just to prevent annoying
-repetition. So we ended up with two values for $\phi$, $\frac{1 + \sqrt 5}{2}$
-and $\frac{1 - \sqrt 5}{2}$.</p>
+repetition. We need the absolute value bars because we applied a square root on
+both sides and we ended up with a $\sqrt{x^2} = |x|$ situation on the left side
+(see <a href="basics.html#square-negative-cancel">the basics page</a>).</p>
 
-<p>Let's check that both of them work:</p>
+<p>Now we have two values for $\phi$, $\frac{1 + \sqrt 5}{2}$ and
+$\frac{1 - \sqrt 5}{2}$. Let's check that both of them work:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">math</span> <span style="color: #007020; font-weight: bold">import</span> sqrt
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>phi <span style="color: #666666">=</span> (<span style="color: #40a070">1</span> <span style="color: #666666">+</span> sqrt(<span style="color: #40a070">5</span>))<span style="color: #666666">/</span><span style="color: #40a070">2</span>
