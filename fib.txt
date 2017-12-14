@@ -85,10 +85,12 @@ math:
     \phi &= \frac 1 2 \pm \frac{\sqrt 5}{2} = \frac{1 \pm \sqrt 5}{2}
 
 Here $\pm$ means $+$ or $-$, and I'm using it just to prevent annoying
-repetition. So we ended up with two values for $\phi$, $\frac{1 + \sqrt 5}{2}$
-and $\frac{1 - \sqrt 5}{2}$.
+repetition. We need the absolute value bars because we applied a square root on
+both sides and we ended up with a $\sqrt{x^2} = |x|$ situation on the left side
+(see [the basics page](basics.html#square-negative-cancel)).
 
-Let's check that both of them work:
+Now we have two values for $\phi$, $\frac{1 + \sqrt 5}{2}$ and
+$\frac{1 - \sqrt 5}{2}$. Let's check that both of them work:
 
 code: python3
     >>> from math import sqrt

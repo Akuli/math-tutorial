@@ -159,7 +159,7 @@ math:
     (-2)^2 = (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2
 
 This also means that $x^2$ is never negative. See [the $y=x^2$
-graph](graphs.html#parabolas).
+graph](graphs.html#parabolas). This also explains the $\sqrt{x^2}=|x|$ rule.
 
 If you're wondering why anything to the power of 0 is 1, you can do e.g.
 $x^2 = x^{0+2} = x^0 x^2$. The equation should be true with any $x$, so
@@ -171,11 +171,6 @@ multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
 $\sqrt 0 = 0$. No number produces a negative number when multiplied with
 itself, so you cannot do e.g. $\sqrt{-2}$.
-
-You're probably wondering how the heck our $\sqrt{x^2}=|x|$ rule works. This
-example should explain everything:
-
-math: \sqrt{(-3)^2}=\sqrt{(-3)(-3)}=\sqrt{-(-(3 \cdot 3))}=\sqrt{3 \cdot 3}=\sqrt{3^2}
 
 
 ## Functions
