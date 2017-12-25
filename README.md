@@ -51,9 +51,14 @@ instructions for every possible platform.
         $ ./build.py
         $ ( yourfavoritebrowser html/index.html &>/dev/null )&
 
-    If you get weird libGL errors the problem is probably something with 3D
-    drawings. You can either google for a "correct" solution or use this
-    horribly dangerous brute-force thing I used:
+    If you get weird libGL errors like this one...
+
+        libGL error: failed to open drm device: Lupa evätty
+        libGL error: failed to load driver: i965
+
+    ...the problem is probably something with 3D drawings. You can either
+    google for a "correct" solution or use this horribly dangerous
+    brute-force hack thing I used:
 
         $ sudo chmod 777 /dev/dri/card0
 
