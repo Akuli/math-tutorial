@@ -409,6 +409,15 @@ $\sqrt{a^2+b^2}$. You can use it for calculating $c$.
 
 The sum of all angles of a triangle is always $\frac \tau 2$.
 
+Many people and websites use these additional functions. They are not used in
+this tutorial because I find them confusing and most programming languages
+don't have them, but you may come across them elsewhere.
+
+math:
+    &\sec(t) = \frac{1}{\cos(t)}
+    &\csc(t) = \frac{1}{\sin(t)}
+    &\cot(t) = \frac{1}{\tan(t)} = \frac{\cos(t)}{\sin(t)}
+
 Handy trig formulas, $n$ can be any integer:
 
 math:
@@ -423,10 +432,8 @@ math:
     &\cos^2(t) = \frac{1+\cos(2t)}{2}
 
 Most of these are proved in [the more trig chapter](more-geometry-and-trig.html)
-or [the Euler formula chapter](eulerformula.html).
-
-This list is not meant to be complete and I'll probably add a wikipedia link
-here soon.
+or [the Euler formula chapter](eulerformula.html). See e.g. Wikipedia for
+[a more complete list](https://en.wikipedia.org/wiki/List_of_trigonometric_identities).
 
 ## Exponents and Logarithms
 
