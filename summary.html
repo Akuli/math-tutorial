@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Polynomials</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><b>Summary</b></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><b>Summary</b></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this title">¶</a></h1><p>This page contains important and hard-to-remember things from other
 chapters all in one place to make them easier to find. You can look for
 stuff you need from this page or you can use it to find something
@@ -173,7 +173,13 @@ $\sqrt{a^2+b^2}$. You can use it for calculating $c$.</p>
 
 <p>The sum of all angles of a triangle is always $\frac \tau 2$.</p>
 
-<p>Handy trig formulas, $n$ can be any integer:</p>
+<p>Many people and websites use these additional functions. They are not used in
+this tutorial because I find them confusing and most programming languages
+don't have them, but you may come across them elsewhere.</p>
+
+$$\begin{align}&\sec(t) = \frac{1}{\cos(t)} \\
+&\csc(t) = \frac{1}{\sin(t)} \\
+&\cot(t) = \frac{1}{\tan(t)} = \frac{\cos(t)}{\sin(t)}\end{align}$$<p>Handy trig formulas, $n$ can be any integer:</p>
 
 $$\begin{align}&\sin^2(t) + \cos^2(t) = 1 \\
 &\sin(t) = -\sin(-t) = \sin(t+n\tau) \\
@@ -184,10 +190,8 @@ $$\begin{align}&\sin^2(t) + \cos^2(t) = 1 \\
 &\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)} \\
 &\sin^2(t) = \frac{1-\cos(2t)}{2} \\
 &\cos^2(t) = \frac{1+\cos(2t)}{2}\end{align}$$<p>Most of these are proved in <a href="more-geometry-and-trig.html">the more trig chapter</a>
-or <a href="eulerformula.html">the Euler formula chapter</a>.</p>
-
-<p>This list is not meant to be complete and I'll probably add a wikipedia link
-here soon.</p>
+or <a href="eulerformula.html">the Euler formula chapter</a>. See e.g. Wikipedia for
+<a href="https://en.wikipedia.org/wiki/List_of_trigonometric_identities">a more complete list</a>.</p>
 
 <h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>Exponent functions are like $f(x)=a^x$ where $a$ is positive and $a \ne 1$.
 A function like $f(x)=1^x$ isn't really an exponent function because it's just
@@ -208,20 +212,28 @@ $$\begin{align}\log_b(x^y) &= y\ \log_b(x) \\
 
 <p>$\ln(x)$ means $\log_e(x)$.</p>
 
-<h2 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h2><p>The $P_n(x)$ polynomials return approximate values of $f(x)$, and they are most
-accurate if $n$ is big and $x \approx a$.</p>
+<h2 id="series-representations">Series Representations<a class="headerlink" href="#series-representations" title="Link to this title">¶</a></h2><p>Taylor series:</p>
 
-$$\begin{align}P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n\end{align}$$<p>Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
+$$\begin{align}f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + ...\end{align}$$<p>Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
 derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
 <code>factorial(n)</code> function that returns $n!$.</p>
 
-<p>Choosing $a=0$ usually results in simple $P_n$ polynomials.</p>
+<p>Usually choosing $a=0$ makes a simple series. The Taylor series at $a=0$ is
+also known as the Maclaurin series.</p>
 
-<h2 id="series-representations">Series Representations<a class="headerlink" href="#series-representations" title="Link to this title">¶</a></h2><p>Here sin and cos work with <a href="#geometry-and-trig">radians</a>.</p>
+<p>The $n$'th Taylor polynomial or Maclaurin polynomial means the first $n$ terms
+of the series. They are useful for calculating approximate values, and they are
+most accurate when $n$ is big and $x \approx a$.</p>
+
+<p>Here are some common Maclaurin series representations. Sine and cosine work
+with <a href="#geometry-and-trig">radians</a>.</p>
 
 $$\begin{align}\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}              - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
 \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}              - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
-e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<h2 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h2>$$\begin{align}e^{it}=\cos(t)+i\sin(t),\ i=\sqrt{-1}\end{align}$$<p>This crazy thing is not a joke. <a href="eulerformula.html">Read more here.</a></p>
+e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<h2 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h2>$$\begin{align}i &= \sqrt{-1} \\
+e^{it} &= \cos(t)+i\sin(t) \\
+\cos(t) &= \frac{e^{it}+e^{-it}}{2} \\
+\sin(t) &= \frac{e^{it}-e^{-it}}{2i}\end{align}$$<p>These crazy things are not jokes. <a href="eulerformula.html">Read more here.</a></p>
 
 <h2 id="other-bases">Other Bases<a class="headerlink" href="#other-bases" title="Link to this title">¶</a></h2><p><table>
 <tr><th>Name</th><th>Base number</th><th>Prefix in programming</th></tr>

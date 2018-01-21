@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>Taylor Polynomials</title>
+<title>Taylor Series</title>
 
 <script type="text/x-mathjax-config">
   // awesome, i have javascript inside html inside python
@@ -21,8 +21,8 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Polynomials</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="taylor-polynomials">Taylor Polynomials<a class="headerlink" href="#taylor-polynomials" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Series</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="taylor-series">Taylor Series<a class="headerlink" href="#taylor-series" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>sin(<span style="color: #40a070">1</span>)
@@ -37,69 +37,100 @@ everything.</p>
 <a href="derivatives.html">derivatives</a>. Be sure to learn these things first.
 </p>
 
-</div><h2 id="wtf-are-taylor-polynomials">WTF are Taylor polynomials?<a class="headerlink" href="#wtf-are-taylor-polynomials" title="Link to this title">¶</a></h2><p>Here are a few graphs:</p>
+</div><h2 id="polynomials-and-stuff">Polynomials and stuff<a class="headerlink" href="#polynomials-and-stuff" title="Link to this title">¶</a></h2><p>This section introduces a few fancy words that I'll use in the rest of this
+chapter. Don't worry, rest of this will be less boring.</p>
 
-<p><img width="334" height="340" class="asymptote" src="asymptote/f853e0dfe319a5e47addb750e5f78dec.svg" /></p><p>The red graph is a complicated curve that the other graphs are trying to
-approximate.</p>
+<p>Things like $4x^3-5x^2+2x+5$ are known as <b>polynomials</b>. They contain nothing
+but constants and powers of $x$ (e.g. $x$, $x^2$, $x^3$) multiplied by
+more constants and added together. For example, $-5x^2$ is $x^2$ multiplied by
+the constant $-5$. Note that $x^0=1$ and $x^1=x$.</p>
 
-<p>Let's make some notes based on the graphs:</p>
+<p>Here are some words related to polynomials:</p>
 
-<ul><li>All graphs have the same height at 0, so $P_0(0)=P_1(0)=P_2(0)=f(0)$.</li><li>$P_1$ and $P_2$ go to the same direction as $f$ at 0, so
-  $P_1'(0)=P_2'(0)=f'(0)$.</li><li>This one isn't as obvious as other stuff above, but anyway,
-  $P_2''(0)=f''(0)$.
-</li></ul><p>Here $f''$ means the derivative of the derivative.</p>
+<ul><li>The <b>degree</b> of a polynomial means the highest power that $x$ is raised to.
+  For example, the degree of $4x^3-5x^2+2x+5$ is 3 because the polynomial
+  contains $x^3$.</li><li><b>Zeros</b> of a polynomial are $x$ values that make it equal to 0. For
+  example, $1^2-1=0$ and $(-1)^2-1=0$, so $x=1$ and $x=-1$ are zeros of
+  $x^2-1$.
+</li></ul><p>A polynomial of degree $n$ has <b>at most</b> $n$ zeros. For example, we know that
+$1$ and $-1$ are two zeros of $x^2-1$, but the degree of $x^2-1$ is 2 so it
+cannot have any other zeros. Polynomials can also have less than $n$ zeros; for
+example, $x^2$ has just 1 zero at $x=0$ and $x^2+1$ has no zeros at all because
+$x^2$ is never less than 0.</p>
 
-<p>Let's find the equations of $P_0(x)$, $P_1(x)$ and $P_2(x)$. The $P_0$ is easy:</p>
+<p>The zeros of $f(x)$ can be thought of as places where the graph $y=f(x)$
+touches the $x$ axis; that is, $y=0$:</p>
 
-$$\begin{align}P_0(x) = f(0)\end{align}$$<p>It's also easy to get started with $P_1$.</p>
+<p><img width="289" height="397" class="asymptote" src="asymptote/b9940a8c43fc76a469f4a5fed748cddb.svg" /></p><p>The word <b>series</b> is a fancy way to say infinitely many things added to each
+other. For example, $1+1+1+...$ means that we add infinitely many $1$'s, so it's
+a series.</p>
 
-$$\begin{align}P_1'(x) = f'(0) \text{ and } P_1(0) = f(0)\end{align}$$<p>If you know <a href="integrals.html">integrals</a> you can calculate this yourself. Just
-note that $f'(0)$ is a constant because it doesn't depend on the value of $x$.
-Anyway, the only $P_1$ that satisfies these things is here:</p>
+<h2 id="wtf-is-a-taylor-series">WTF is a Taylor series?<a class="headerlink" href="#wtf-is-a-taylor-series" title="Link to this title">¶</a></h2><p>Things like <a href="geometry-and-trig.html#trig-with-the-unit-circle">the sine function</a>
+cannot be polynomials because a polynomial of degree $n$ has at most $n$ zeros,
+but $\sin(x)$ has infinitely many zeros:</p>
 
-$$\begin{align}P_1(x) = f'(0)x + f(0) = f'(0)x + P_0(x)\end{align}$$<p>Here I used the fact that $P_0(x) = f(0)$. You'll see why later.</p>
+<p><img width="567" height="135" class="asymptote" src="asymptote/b24d98ae24a6db001110837fd8517966.svg" /></p><p>But what if we have an infinite series instead of a polynomial? Then we can
+have an infinite number of zeros. So, if $c_0,c_1,c_2,c_3,...$ are constants,
+we're talking about finding their values so that we have this:</p>
 
-<p>Let's find $P_2$ and yet another polynomial $P_3$ similarly:</p>
+$$\begin{align}\sin(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...\end{align}$$<p>Let's try to find those constants. We'll do this for a general $f(x)$ first,
+so we get something that works with many other functions instead of just
+$f(x)=\sin(x)$.</p>
 
-$$\begin{align}&P_2''(x) = f''(0) \text{ and } P_2'(0) = f'(0) \text{ and } P_2(0) = f(0) \\
-&P_2'(x) = f''(0)x + f'(0) \\
-&P_2(x) = \frac{f''(0)}{2}x^2 + f'(0)x + f(0) = \frac{f''(0)}{2}x^2 + P_1(x) \\
- \\
-&P_3'''(x)=f'''(0)\text{ and }P_3''(0)=f''(0)\text{ and }P_3'(0)=f'(0)\text{ and }P_3(0)=f(0) \\
-&P_3''(x)=f'''(0)x+f''(0) \\
-&P_3'(x)=\frac{f'''(0)}{2}x^2+f''(0)x+f'(0) \\
-&P_3(x)=\frac{f'''(0)}{2\cdot3}x^3+\frac{f''(0)}{2}x^2+f'(0)x+f(0)  = \frac{f'''(0)}{2\cdot3}x^3 + P_2(x)\end{align}$$<p>So, here are all the results we have gotten so far, written in a way that makes
-the pattern quite obvious.</p>
+$$\begin{align}f(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...\end{align}$$<p>We can start by plugging in $x=0$:</p>
 
-$$\begin{align}&P_0(x) = f(0) \\
-&P_1(x) = P_0(x) + \frac{f'(0)}{1}x \\
-&P_2(x) = P_1(x) + \frac{f''(0)}{1 \cdot 2}x^2 \\
-&P_3(x) = P_2(x) + \frac{f'''(0)}{1 \cdot 2 \cdot 3}x^3\end{align}$$<p>Next we'll write the rule for calculating $P_n(x)$ for any $n$, but we need more
-notation:</p>
+$$\begin{align}f(0) &= c_0+c_1\cdot0+c_2\cdot0^2+c_3\cdot0^3+... \\
+    &= c_0+0+0+... \\
+    &= c_0\end{align}$$<p>Great, we found one constant, but we still have infinitely many constants to
+find. So, what do we do next? Let's try taking <a href="derivatives.html">the
+derivative</a> of both sides with the $\frac{d}{dx}x^c=cx^{c-1}$
+and $\frac{d}{dx}(c\ f(x))=c\cdot\frac{d}{dx}f(x)$ rules.</p>
 
-<ul><li>$f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(5)}(x)=f'''''(x)$.</li><li>$n! = 1 \cdot 2 \cdot 3 \cdot ... \cdot n$. Most programming languages have a
-  <code>factorial(n)</code> function that returns $n!$.
-</li></ul><p>Let's do this.</p>
+$$\begin{align}f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+... \\
+f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+... \\
+f'(0) &= c_1\end{align}$$<p>Let's take the derivative again a few times until we can notice a pattern. Here
+$f''$ means the derivative of the derivative. It'll look like a mess, but it's
+not very complicated.</p>
 
-$$\begin{align}P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n\end{align}$$<p>This is known as the $n$'th Taylor polynomial.</p>
+$$\begin{align}f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+5c_5x^4+... \\
+f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+... \\
+f''(0) &= 2c_2 \\
+c_2 &= \frac{f''(0)}{2}\end{align}$$$$\begin{align}f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+(6\cdot5)c_6x^4+... \\
+f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+... \\
+f'''(0) &= (3\cdot2)c_3 \\
+c_3 &= \frac{f'''(0)}{3\cdot2}\end{align}$$$$\begin{align}f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+... \\
+f''''(x) &= (4\cdot3\cdot2)c_4+(5\cdot4\cdot3\cdot2)c_5x+(6\cdot5\cdot4\cdot3)c_6x^2+... \\
+f''''(0) &= (4\cdot3\cdot2)c_4 \\
+c_4 &= \frac{f''''(0)}{4\cdot3\cdot2}\end{align}$$<p>At this point we need more notation:</p>
 
-<p>We used $x=0$ here as a "magic number" that we always put to $f(\ \ )$, but
-that doesn't need to be 0. Here's a more generalized Taylor polynomial:</p>
+<ul><li>$f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(4)}(x)=f''''(x)$.
+  You probably agree that $f^{(10)}(x)$ is more readable than $f''''''''''(x)$.</li><li>$n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. Most programming languages
+  have a <code>factorial(n)</code> function that returns $n!$.
+</li></ul><p>So far we have noticed that $c_3=\frac{f'''(0)}{3!}$ and
+$c_4=\frac{f'''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
+equal to respectively $\frac{f''(0)}{2!}$, $\frac{f'(0)}{1!}$ and
+$\frac{f(0)}{0!}$. Checking them is mostly boring and straight-forward, so I'll
+skip that.</p>
 
-$$\begin{align}P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n\end{align}$$<p>The Taylor polynomial with $a=0$ is also known as a Maclaurin polynomial. You
-don't need to remember that in this tutorial, but if someone talks about a
-Maclaurin polynomial they mean this.</p>
+<p>If we did more of these we would notice that $c_5=\frac{f^{(5)}(0)}{5!}$,
+$c_6=\frac{f^{(6)}(0)}{6!}$ and so on. Our series looks like this:</p>
 
-<p>Taylor polynomials are usually accurate near $a$ and less accurate far from
-$a$. These graphs demonstrate that:</p>
+$$\begin{align}f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+... \\
+f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ...\end{align}$$<p>This is known as the <b>Maclaurin series</b> of $f$. Note that factorials get
+really big really fast, e.g. $10!$ is bigger than 1 million, so dividing by the
+factorials gives us small numbers.</p>
 
-<p><img width="255" height="249" class="asymptote" src="asymptote/014cb963c1c1c004fa68b97725d1e6b1.svg" /></p><h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>This is the real thing. We'll write our own <code>sin(x)</code> function.</p>
+<p>The Maclaurin series uses 0 as some kind of "magic number" that is always put
+to $f(\quad)$, $f'(\quad)$ etc., but it doesn't need to be 0. By starting with
+a constant $a$ and $f(x+a)$ instead of $f(x)$, we can find the <b>Taylor series</b>
+of $f$:</p>
 
-<p>We need to know that $\frac{d}{dx} \sin(x) = \cos(x)$ and
-$\frac{d}{dx} \cos(x) = -\sin(x)$. These rules are proved
-<a href="more-geometry-and-trig.html#derivative-of-sine">here</a>.</p>
+$$\begin{align}f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f''(a)}{3!}(x-a)^3 + ...\end{align}$$<p>Note that the Maclaurin series is just a special case of the Taylor series with
+$a=0$.</p>
 
-<p>So, we get this:</p>
+<h2 id="the-magic-sine">The Magic Sine<a class="headerlink" href="#the-magic-sine" title="Link to this title">¶</a></h2><p>Now we have some scary-looking formulas, but we haven't actually done anything
+with them yet. Let's start by plugging in $f(x)=\sin(x)$ and calculating some
+derivatives (see <a href="more-geometry-and-trig.html#derivative-of-sine">this thing</a>):</p>
 
 $$\begin{align}f(x) &= \sin(x) \\
 f'(x) &= \cos(x) \\
@@ -108,27 +139,21 @@ f'''(x) &= -\cos(x) \\
 f''''(x) &= \sin(x) \\
 f'''''(x) &= \cos(x) \\
 f''''''(x) &= -\sin(x) \\
-&...\end{align}$$<p>The pattern is obvious.</p>
+&...\end{align}$$<p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit circle</a>
+we know that $\cos 0 = 1$ and $\sin 0 = 0$ because the $(x,y)$ point $(1,0)$
+corresponds to the angle 0.</p>
 
-<p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit
-circle</a> we know that $\cos 0 = 1$ and
-$\sin 0 = 0$ because the $(x,y)$ point $(1,0)$ corresponds to the angle 0.</p>
+$$\begin{align}f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \frac{f'''(0)}{4!}x^4 + ... \\
+\sin(x) &=  \sin(0) + \frac{\cos(0)}{1!}x + \frac{-\sin(0)}{2!}x^2              + \frac{-\cos(0)}{3!}x^3 + \frac{\sin(0)}{4!}x^4 + ... \\
+&=  0 + \frac{1}{1!}x + \frac{-0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4      + \frac{1}{5!}x^5 + \frac{-0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
+&= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\end{align}$$<p>Just to make sure it works, let's chop off the series at some point and draw a
+graph of a part of it.</p>
 
-$$\begin{align}f(0) &= 0 \\
-f'(0) &= 1 \\
-f''(0) &= 0 \\
-f'''(0) &= -1 \\
-f''''(0) &= 0 \\
-f'''''(0) &= 1 \\
-&...\end{align}$$<p>So we have this:</p>
+<p><img width="510" height="227" class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.svg" /></p><p>The chopped off part is known as the 9th <b>Taylor polynomial</b> of $\sin(x)$
+because it's a polynomial of degree 9 and it came from a Taylor series.</p>
 
-$$\begin{align}\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2              + \frac{f'''(0)}{3!}x^3 + \frac{f''''(0)}{4!}x^4 + ... \\
-&=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4      + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ... \\
-&= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\end{align}$$<p>That looks quite nice, so let's draw a graph and see if it actually works.</p>
-
-<p><img width="510" height="227" class="asymptote" src="asymptote/f26c6094626a73ed4681b71f46d5eb5b.svg" /></p><p>I think this is just awesome.</p>
-
-<p>Here's our $\sin(x)$ implementation:</p>
+<p>Anyway, I think the above graph is just amazing. Here's a working <code>sin(x)</code>
+implementation:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #60a0b0; font-style: italic"># python has math.factorial, but this is here just to show that there&#39;s</span>
 <span style="color: #60a0b0; font-style: italic"># no magic involved</span>
@@ -138,7 +163,7 @@ $$\begin{align}\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2      
         result <span style="color: #666666">=</span> result <span style="color: #666666">*</span> i
     <span style="color: #007020; font-weight: bold">return</span> result
 
-<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">taylorsin</span>(x):
+<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">maclaurin_sin</span>(x):
     result <span style="color: #666666">=</span> x
     <span style="color: #007020; font-weight: bold">for</span> i <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">3</span>, <span style="color: #40a070">20</span>, <span style="color: #40a070">2</span>):       <span style="color: #60a0b0; font-style: italic"># 3, 5, 7, ..., 19</span>
         thingy <span style="color: #666666">=</span> x<span style="color: #666666">**</span>i<span style="color: #666666">/</span>factorial(i)
@@ -148,30 +173,40 @@ $$\begin{align}\sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2      
             result <span style="color: #666666">+=</span> thingy
     <span style="color: #007020; font-weight: bold">return</span> result
 
-<span style="color: #007020">print</span>(taylorsin(<span style="color: #40a070">1</span>))     <span style="color: #60a0b0; font-style: italic"># 0.8414709848078965</span>
+<span style="color: #007020">print</span>(maclaurin_sin(<span style="color: #40a070">1</span>))     <span style="color: #60a0b0; font-style: italic"># 0.8414709848078965</span>
 <span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
-<span style="color: #007020">print</span>(math<span style="color: #666666">.</span>sin(<span style="color: #40a070">1</span>))      <span style="color: #60a0b0; font-style: italic"># also 0.8414709848078965</span>
+<span style="color: #007020">print</span>(math<span style="color: #666666">.</span>sin(<span style="color: #40a070">1</span>))          <span style="color: #60a0b0; font-style: italic"># also 0.8414709848078965</span>
 </pre></div>
-<p>I think this is amazing, and the most amazing thing about this is that we got
-everything out of basically nothing with just derivatives and antiderivatives.</p>
-
 <p>If you look at how Python's <code>math.sin()</code> is implemented it just calls C
-<code>sin()</code>, and that uses taylor polynomials just like our code. The C code is
-more complicated than our <code>taylorsin()</code> because it uses taylor polynomials at
-other places than $x=0$, but the basic idea is the same.</p>
+<code>sin()</code>, and that uses Taylor polynomials just like our code. The C code is
+more complicated than our <code>maclaurin_sin()</code> because it uses Taylor polynomials
+at other places than $a=0$, but the basic idea is the same.</p>
 
-<p>If we could somehow continue this forever instead of stopping at e.g. <code>i=19</code>
-we would get perfectly precise sin values. I'm not going to talk about the
-details of why that happens, but this works for sin, cos and many other things.
-An infinitely continuing Taylor polynomial is also known as a Taylor <i>series</i>.</p>
+<p>Let's do something even more amazing! If we notice that the $(x,y)$ point
+$(-1,0)$ represents $\pi=\frac{\tau}{2}$ on the unit circle, we can tell that
+$\sin(\pi)=0$. However, we can also write that as a series:</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Find the Taylor series of $\cos(x)$ and $e^x$. See <a href="explog.html#the-e-constant">this
-thing</a> if you don't know what $e$ is or what the
-derivative of $e^x$ is. Check your answers with your favorite programming
-language and <a href="summary.html#series-representations">the Taylor series section</a>
-on the summary page.
-</p>
+$$\begin{align}\pi - \frac{\pi^3}{3!} + \frac{\pi^5}{5!} - \frac{\pi^7}{7!} + ... = 0\end{align}$$<p>So, if someone asks you what $\pi$ is, just tell them that it's the smallest
+positive number satisfying that equation.</p>
 
-</div></div>
+<p>We can also do the same trick to
+$e=\displaystyle\lim_{n\to\infty}\textstyle\left(1+\frac1n\right)^n=2.71828...$
+because $\frac{d}{dx}e^x=e^x$. Check out <a href="explog.html#the-e-constant">this thing</a>
+if you haven't seen $e$ before.</p>
+
+$$\begin{align}f(x) = e^x,\ f'(x) = e^x,\ f''(x) = e^x,\ f'''(x) = e^x,\ ...\end{align}$$$$\begin{align}e^x &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ... \\
+    &= e^0 + \frac{e^0}{1!}x + \frac{e^0}{2!}x^2 + \frac{e^0}{3!}x^3 + ...\end{align}$$<p>This simplifies really nicely because $e^0=1$:</p>
+
+$$\begin{align}e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<p>Just compare this to the $\sin(x)$ series, it looks very similar even though
+$\sin(x)$ is defined with a circle and $e^x$ comes from a less concrete more abstract derivative thing!</p>
+
+<p>We know that $e^1=e$, so we can also get this by plugging in $x=1$:</p>
+
+$$\begin{align}e &= 1 + \frac{1}{1!} + \frac{1^2}{2!} + \frac{1^3}{3!} + \frac{1^4}{4!} + ... \\
+&= 1 + \frac{1}{1} + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + ... \\
+&= 2 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + ...\end{align}$$<div class="box graybox"><h2> Exercises</h2><ul><li>What is the derivative of $\sin(x)$? Differentiate the $\sin(x)$ series
+  term by term and use it to implement a <code>maclaurin_cos(x)</code> function in
+  your favorite programming language.</li><li>Differentiate the $e^x$ series term by term. What do you notice?
+</li></ul></div></div>
 </body>
 </html>
