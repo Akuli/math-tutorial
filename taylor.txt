@@ -1,4 +1,4 @@
-# Taylor Polynomials
+# Taylor Series
 
 So far we have calculated sine and cosine values with Python.
 
@@ -16,159 +16,172 @@ redbox:
     [unit circle trig](geometry-and-trig.html#trig-with-the-unit-circle) and
     [derivatives](derivatives.html). Be sure to learn these things first.
 
-## WTF are Taylor polynomials?
+## Polynomials and stuff
 
-Here are a few graphs:
+This section introduces a few fancy words that I'll use in the rest of this
+chapter. Don't worry, rest of this will be less boring.
 
-asymptote:
-    size(12cm);
-    real f(real x) { return 0.5*(x-0.3)**3-(x-0.3)**2+1.5; }
-    real xmin=-0.8, xmax=2.5, ymax=3;
-    axises(xmin,xmax,f(xmin),ymax);
+Things like $4x^3-5x^2+2x+5$ are known as **polynomials**. They contain nothing
+but constants and powers of $x$ (e.g. $x$, $x^2$, $x^3$) multiplied by
+more constants and added together. For example, $-5x^2$ is $x^2$ multiplied by
+the constant $-5$. Note that $x^0=1$ and $x^1=x$.
 
-    real fderivative(real x) {
-        real h = 0.00001;
-        return (f(x+h)-f(x))/h;
-    }
-    real fdoublederivative(real x) {
-        real h = 0.00001;
-        return (fderivative(x+h)-fderivative(x))/h;
-    }
-    real P0(real x) { return f(0); }
-    real P1(real x) { return fderivative(0)*x + P0(x); }
-    real P2(real x) { return fdoublederivative(0)/2*x**2 + P1(x); }
+Here are some words related to polynomials:
 
-    draw(graph(P0, xmin, xmax), deepgreen,
-         L=Label("$y=P_0(x)$", position=Relative(0.7)), align=N);
-    draw(graph(P1, xmin, xmax), blue,
-         L=rrotate(atan(fderivative(0)))*"$y=P_1(x)$", align=N);
-    draw(graph(P2, xmin, 0.5-xmin), darkorange);
-    label((0.9,P2(0.9)), darkorange, L=rotate(-65)*"$y=P_2(x)$", align=SW);
+* The **degree** of a polynomial means the highest power that $x$ is raised to.
+  For example, the degree of $4x^3-5x^2+2x+5$ is 3 because the polynomial
+  contains $x^3$.
+* **Zeros** of a polynomial are $x$ values that make it equal to 0. For
+  example, $1^2-1=0$ and $(-1)^2-1=0$, so $x=1$ and $x=-1$ are zeros of
+  $x^2-1$.
 
-    // this must be on top of everything else
-    draw(graph(f,xmin,xmax), heavyred);
-    label((0.75*xmax,f(0.75*xmax)), heavyred,
-          L=rotate(10)*"$y=f(x)$", align=S);
+A polynomial of degree $n$ has **at most** $n$ zeros. For example, we know that
+$1$ and $-1$ are two zeros of $x^2-1$, but the degree of $x^2-1$ is 2 so it
+cannot have any other zeros. Polynomials can also have less than $n$ zeros; for
+example, $x^2$ has just 1 zero at $x=0$ and $x^2+1$ has no zeros at all because
+$x^2$ is never less than 0.
 
-The red graph is a complicated curve that the other graphs are trying to
-approximate.
-
-Let's make some notes based on the graphs:
-
-* All graphs have the same height at 0, so $P_0(0)=P_1(0)=P_2(0)=f(0)$.
-* $P_1$ and $P_2$ go to the same direction as $f$ at 0, so
-  $P_1'(0)=P_2'(0)=f'(0)$.
-* This one isn't as obvious as other stuff above, but anyway,
-  $P_2''(0)=f''(0)$.
-
-Here $f''$ means the derivative of the derivative.
-
-Let's find the equations of $P_0(x)$, $P_1(x)$ and $P_2(x)$. The $P_0$ is easy:
-
-math:
-    P_0(x) = f(0)
-
-It's also easy to get started with $P_1$.
-
-math:
-    P_1'(x) = f'(0) \text{ and } P_1(0) = f(0)
-
-If you know [integrals](integrals.html) you can calculate this yourself. Just
-note that $f'(0)$ is a constant because it doesn't depend on the value of $x$.
-Anyway, the only $P_1$ that satisfies these things is here:
-
-math:
-    P_1(x) = f'(0)x + f(0) = f'(0)x + P_0(x)
-
-Here I used the fact that $P_0(x) = f(0)$. You'll see why later.
-
-Let's find $P_2$ and yet another polynomial $P_3$ similarly:
-
-math:
-    &P_2''(x) = f''(0) \text{ and } P_2'(0) = f'(0) \text{ and } P_2(0) = f(0)
-    &P_2'(x) = f''(0)x + f'(0)
-    &P_2(x) = \frac{f''(0)}{2}x^2 + f'(0)x + f(0) = \frac{f''(0)}{2}x^2 + P_1(x)
-
-    &P_3'''(x)=f'''(0)\text{ and }P_3''(0)=f''(0)\text{ and }P_3'(0)=f'(0)\text{ and }P_3(0)=f(0)
-    &P_3''(x)=f'''(0)x+f''(0)
-    &P_3'(x)=\frac{f'''(0)}{2}x^2+f''(0)x+f'(0)
-    &P_3(x)=\frac{f'''(0)}{2\cdot3}x^3+\frac{f''(0)}{2}x^2+f'(0)x+f(0) \
-    = \frac{f'''(0)}{2\cdot3}x^3 + P_2(x)
-
-So, here are all the results we have gotten so far, written in a way that makes
-the pattern quite obvious.
-
-math:
-    &P_0(x) = f(0)
-    &P_1(x) = P_0(x) + \frac{f'(0)}{1}x
-    &P_2(x) = P_1(x) + \frac{f''(0)}{1 \cdot 2}x^2
-    &P_3(x) = P_2(x) + \frac{f'''(0)}{1 \cdot 2 \cdot 3}x^3
-
-Next we'll write the rule for calculating $P_n(x)$ for any $n$, but we need more
-notation:
-
-* $f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(5)}(x)=f'''''(x)$.
-* $n! = 1 \cdot 2 \cdot 3 \cdot ... \cdot n$. Most programming languages have a
-  ``factorial(n)`` function that returns $n!$.
-
-Let's do this.
-
-math:
-    P_n(x) = f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + ... + \frac{f^{(n)}(0)}{n!}x^n
-
-This is known as the $n$'th Taylor polynomial.
-
-We used $x=0$ here as a "magic number" that we always put to $f(\ \ )$, but
-that doesn't need to be 0. Here's a more generalized Taylor polynomial:
-
-math:
-    P_n(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
-
-The Taylor polynomial with $a=0$ is also known as a Maclaurin polynomial. You
-don't need to remember that in this tutorial, but if someone talks about a
-Maclaurin polynomial they mean this.
-
-Taylor polynomials are usually accurate near $a$ and less accurate far from
-$a$. These graphs demonstrate that:
+The zeros of $f(x)$ can be thought of as places where the graph $y=f(x)$
+touches the $x$ axis; that is, $y=0$:
 
 asymptote:
-    size(9cm);
-    real f(real x) { return 0.5*(x-0.3)**3-(x-0.3)**2+1.5; }
-    real xmin=-0.8, xmax=2.5, ymax=3, a=1;
-    axises(xmin,xmax,f(xmin),ymax);
+    size(14cm);
+    real f1(real x) { return x**2-1; }
+    real f2(real x) { return x**2; }
+    real f3(real x) { return x**2+1; }
 
-    real fderivative(real x) {
-        real h = 0.00001;
-        return (f(x+h)-f(x))/h;
+    real xminmax=1.5, ymin=-1.2, ymax=3;
+    axises(-xminmax,xminmax,ymin,ymax);
+
+    void draw_and_label(real f(real), string text, pen color) {
+        draw(graph(f, -xminmax, xminmax), color);
+        real x=1.25;
+        real derivative=2x;
+        label(rrotate(atan(derivative))*text, (x,f(x)), p=color, align=unit((-derivative, 1)));
     }
-    real fdoublederivative(real x) {
-        real h = 0.00001;
-        return (fderivative(x+h)-fderivative(x))/h;
-    }
-    real P0(real x) { return f(a); }
-    real P1(real x) { return fderivative(a)*(x-a) + P0(x); }
-    real P2(real x) { return fdoublederivative(0)/2*(x-a)**2 + P1(x); }
+    draw_and_label(f1, "$y=x^2-1$", deepgreen);
+    draw_and_label(f2, "$y=x^2$", blue);
+    draw_and_label(f3, "$y=x^2+1$", darkorange);
 
-    draw(graph(P0, xmin, xmax), deepgreen);
-    draw(graph(P1, xmin, xmax), blue);
-    draw(graph(P2, -0.3, 1.8), darkorange);
+    dot((-1,0), dotpen, L="$-1$", align=SW);
+    dot((0,0), dotpen, L="$0$", align=SE);
+    dot((1,0), dotpen, L="$1$", align=SE);
 
-    // this must be on top of everything else
-    draw(graph(f,xmin,xmax), heavyred);
-    label((2.3,f(2.3)), heavyred, L=rotate(65)*"$y=f(x)$", align=NW);
+The word **series** is a fancy way to say infinitely many things added to each
+other. For example, $1+1+1+...$ means that we add infinitely many $1$'s, so it's
+a series.
 
-    draw((a,0)--(a,f(a)), smalldashes);
-    label((a,0), L="$a$", align=S);
+## WTF is a Taylor series?
+
+Things like [the sine function](geometry-and-trig.html#trig-with-the-unit-circle)
+cannot be polynomials because a polynomial of degree $n$ has at most $n$ zeros,
+but $\sin(x)$ has infinitely many zeros:
+
+asymptote:
+    size(20cm);
+    real a=-5, b=12;
+    axises(a,b+1,-1.8,2.3);
+    real f(real x) {return sin(x);}
+    draw(graph(f, a, b), blue);
+    label("$y=\sin(x)$", (tau/2,1), blue, align=N);
+
+    dot((-tau/2,0), dotpen, L="$-\frac{\tau}{2}$", align=SW);
+    dot((0,0), dotpen, L="$0$", align=SE);
+    dot((tau/2,0), dotpen, L="$\frac{\tau}{2}$", align=SW);
+    dot((tau,0), dotpen, L="$\tau$", align=SE);
+    dot((3tau/2,0), dotpen, L="$\frac{3\tau}{2}$", align=SW);
+
+But what if we have an infinite series instead of a polynomial? Then we can
+have an infinite number of zeros. So, if $c_0,c_1,c_2,c_3,...$ are constants,
+we're talking about finding their values so that we have this:
+
+math: \sin(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
+
+Let's try to find those constants. We'll do this for a general $f(x)$ first,
+so we get something that works with many other functions instead of just
+$f(x)=\sin(x)$.
+
+math: f(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
+
+We can start by plugging in $x=0$:
+
+math:
+    f(0) &= c_0+c_1\cdot0+c_2\cdot0^2+c_3\cdot0^3+...
+        &= c_0+0+0+...
+        &= c_0
+
+Great, we found one constant, but we still have infinitely many constants to
+find. So, what do we do next? Let's try taking [the
+derivative](derivatives.html) of both sides with the $\frac{d}{dx}x^c=cx^{c-1}$
+and $\frac{d}{dx}(c\ f(x))=c\cdot\frac{d}{dx}f(x)$ rules.
+
+math:
+    f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
+    f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+...
+    f'(0) &= c_1
+
+Let's take the derivative again a few times until we can notice a pattern. Here
+$f''$ means the derivative of the derivative. It'll look like a mess, but it's
+not very complicated.
+
+math:
+    f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+5c_5x^4+...
+    f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+...
+    f''(0) &= 2c_2
+    c_2 &= \frac{f''(0)}{2}
+
+math:
+    f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+(6\cdot5)c_6x^4+...
+    f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+...
+    f'''(0) &= (3\cdot2)c_3
+    c_3 &= \frac{f'''(0)}{3\cdot2}
+
+math:
+    f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+...
+    f''''(x) &= (4\cdot3\cdot2)c_4+(5\cdot4\cdot3\cdot2)c_5x+(6\cdot5\cdot4\cdot3)c_6x^2+...
+    f''''(0) &= (4\cdot3\cdot2)c_4
+    c_4 &= \frac{f''''(0)}{4\cdot3\cdot2}
+
+At this point we need more notation:
+
+* $f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(4)}(x)=f''''(x)$.
+  You probably agree that $f^{(10)}(x)$ is more readable than $f''''''''''(x)$.
+* $n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. Most programming languages
+  have a ``factorial(n)`` function that returns $n!$.
+
+So far we have noticed that $c_3=\frac{f'''(0)}{3!}$ and
+$c_4=\frac{f'''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
+equal to respectively $\frac{f''(0)}{2!}$, $\frac{f'(0)}{1!}$ and
+$\frac{f(0)}{0!}$. Checking them is mostly boring and straight-forward, so I'll
+skip that.
+
+If we did more of these we would notice that $c_5=\frac{f^{(5)}(0)}{5!}$,
+$c_6=\frac{f^{(6)}(0)}{6!}$ and so on. Our series looks like this:
+
+math:
+    f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
+    f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ...
+
+This is known as the **Maclaurin series** of $f$. Note that factorials get
+really big really fast, e.g. $10!$ is bigger than 1 million, so dividing by the
+factorials gives us small numbers.
+
+The Maclaurin series uses 0 as some kind of "magic number" that is always put
+to $f(\quad)$, $f'(\quad)$ etc., but it doesn't need to be 0. By starting with
+a constant $a$ and $f(x+a)$ instead of $f(x)$, we can find the **Taylor series**
+of $f$:
+
+math:
+    f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f''(a)}{3!}(x-a)^3 + ...
+
+Note that the Maclaurin series is just a special case of the Taylor series with
+$a=0$.
 
 ## The Magic Sine
 
-This is the real thing. We'll write our own ``sin(x)`` function.
-
-We need to know that $\frac{d}{dx} \sin(x) = \cos(x)$ and
-$\frac{d}{dx} \cos(x) = -\sin(x)$. These rules are proved
-[here](more-geometry-and-trig.html#derivative-of-sine).
-
-So, we get this:
+Now we have some scary-looking formulas, but we haven't actually done anything
+with them yet. Let's start by plugging in $f(x)=\sin(x)$ and calculating some
+derivatives (see [this thing](more-geometry-and-trig.html#derivative-of-sine)):
 
 math:
     f(x) &= \sin(x)
@@ -180,31 +193,20 @@ math:
     f''''''(x) &= -\sin(x)
     &...
 
-The pattern is obvious.
-
-Now let's plug in some values. With [the unit
-circle](summary.html#unitcircle) we know that $\cos 0 = 1$ and
-$\sin 0 = 0$ because the $(x,y)$ point $(1,0)$ corresponds to the angle 0.
+Now let's plug in some values. With [the unit circle](summary.html#unitcircle)
+we know that $\cos 0 = 1$ and $\sin 0 = 0$ because the $(x,y)$ point $(1,0)$
+corresponds to the angle 0.
 
 math:
-    f(0) &= 0
-    f'(0) &= 1
-    f''(0) &= 0
-    f'''(0) &= -1
-    f''''(0) &= 0
-    f'''''(0) &= 1
-    &...
-
-So we have this:
-
-math:
-    \sin(x) &=  f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 \
-                + \frac{f'''(0)}{3!}x^3 + \frac{f''''(0)}{4!}x^4 + ...
-    &=  0 + \frac{1}{1!}x + \frac{0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4 \
-        + \frac{1}{5!}x^5 + \frac{0}{6!}x^6 + \frac{-1}{7!}x^7 + ...
+    f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \frac{f'''(0)}{4!}x^4 + ...
+    \sin(x) &=  \sin(0) + \frac{\cos(0)}{1!}x + \frac{-\sin(0)}{2!}x^2 \
+                + \frac{-\cos(0)}{3!}x^3 + \frac{\sin(0)}{4!}x^4 + ...
+    &=  0 + \frac{1}{1!}x + \frac{-0}{2!}x^2 + \frac{-1}{3!}x^3 + \frac{0}{4!}x^4 \
+        + \frac{1}{5!}x^5 + \frac{-0}{6!}x^6 + \frac{-1}{7!}x^7 + ...
     &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...
 
-That looks quite nice, so let's draw a graph and see if it actually works.
+Just to make sure it works, let's chop off the series at some point and draw a
+graph of a part of it.
 
 asymptote:
     size(18cm);
@@ -219,9 +221,11 @@ asymptote:
     label((pminmax,P(pminmax)-1), blue,
           L="$y=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}$", align=E);
 
-I think this is just awesome.
+The chopped off part is known as the 9th **Taylor polynomial** of $\sin(x)$
+because it's a polynomial of degree 9 and it came from a Taylor series.
 
-Here's our $\sin(x)$ implementation:
+Anyway, I think the above graph is just amazing. Here's a working ``sin(x)``
+implementation:
 
 code: python3
     # python has math.factorial, but this is here just to show that there's
@@ -232,7 +236,7 @@ code: python3
             result = result * i
         return result
 
-    def taylorsin(x):
+    def maclaurin_sin(x):
         result = x
         for i in range(3, 20, 2):       # 3, 5, 7, ..., 19
             thingy = x**i/factorial(i)
@@ -242,26 +246,56 @@ code: python3
                 result += thingy
         return result
 
-    print(taylorsin(1))     # 0.8414709848078965
+    print(maclaurin_sin(1))     # 0.8414709848078965
     import math
-    print(math.sin(1))      # also 0.8414709848078965
-
-I think this is amazing, and the most amazing thing about this is that we got
-everything out of basically nothing with just derivatives and antiderivatives.
+    print(math.sin(1))          # also 0.8414709848078965
 
 If you look at how Python's ``math.sin()`` is implemented it just calls C
-``sin()``, and that uses taylor polynomials just like our code. The C code is
-more complicated than our ``taylorsin()`` because it uses taylor polynomials at
-other places than $x=0$, but the basic idea is the same.
+``sin()``, and that uses Taylor polynomials just like our code. The C code is
+more complicated than our ``maclaurin_sin()`` because it uses Taylor polynomials
+at other places than $a=0$, but the basic idea is the same.
 
-If we could somehow continue this forever instead of stopping at e.g. ``i=19``
-we would get perfectly precise sin values. I'm not going to talk about the
-details of why that happens, but this works for sin, cos and many other things.
-An infinitely continuing Taylor polynomial is also known as a Taylor *series*.
+comment:
+    TODO: draw a bunch of tiny unit circles
 
-graybox: Exercise
-    Find the Taylor series of $\cos(x)$ and $e^x$. See [this
-    thing](explog.html#the-e-constant) if you don't know what $e$ is or what the
-    derivative of $e^x$ is. Check your answers with your favorite programming
-    language and [the Taylor series section](summary.html#series-representations)
-    on the summary page.
+Let's do something even more amazing! If we notice that the $(x,y)$ point
+$(-1,0)$ represents $\pi=\frac{\tau}{2}$ on the unit circle, we can tell that
+$\sin(\pi)=0$. However, we can also write that as a series:
+
+math:
+    \pi - \frac{\pi^3}{3!} + \frac{\pi^5}{5!} - \frac{\pi^7}{7!} + ... = 0
+
+So, if someone asks you what $\pi$ is, just tell them that it's the smallest
+positive number satisfying that equation.
+
+We can also do the same trick to
+$e=\displaystyle\lim_{n\to\infty}\textstyle\left(1+\frac1n\right)^n=2.71828...$
+because $\frac{d}{dx}e^x=e^x$. Check out [this thing](explog.html#the-e-constant)
+if you haven't seen $e$ before.
+
+math: f(x) = e^x,\ f'(x) = e^x,\ f''(x) = e^x,\ f'''(x) = e^x,\ ...
+
+math:
+    e^x &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ...
+        &= e^0 + \frac{e^0}{1!}x + \frac{e^0}{2!}x^2 + \frac{e^0}{3!}x^3 + ...
+
+This simplifies really nicely because $e^0=1$:
+
+math:
+    e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
+
+Just compare this to the $\sin(x)$ series, it looks very similar even though
+$\sin(x)$ is defined with a circle and $e^x$ comes from a less concrete more abstract derivative thing!
+
+We know that $e^1=e$, so we can also get this by plugging in $x=1$:
+
+math:
+    e &= 1 + \frac{1}{1!} + \frac{1^2}{2!} + \frac{1^3}{3!} + \frac{1^4}{4!} + ...
+    &= 1 + \frac{1}{1} + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + ...
+    &= 2 + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + ...
+
+graybox: Exercises
+    * What is the derivative of $\sin(x)$? Differentiate the $\sin(x)$ series
+      term by term and use it to implement a ``maclaurin_cos(x)`` function in
+      your favorite programming language.
+    * Differentiate the $e^x$ series term by term. What do you notice?

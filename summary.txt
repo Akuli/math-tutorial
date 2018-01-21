@@ -462,23 +462,26 @@ Euler's number: $e=\displaystyle\lim_{n\to\infty}\left(1+\frac 1 n\right)^n=\lim
 
 $\ln(x)$ means $\log_e(x)$.
 
-## Taylor Polynomials
+## Series Representations
 
-The $P_n(x)$ polynomials return approximate values of $f(x)$, and they are most
-accurate if $n$ is big and $x \approx a$.
+Taylor series:
 
 math:
-    P_n(x) = f'(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n
+    f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f'''(a)}{3!}(x-a)^3 + ...
 
 Here $n! = 1 \cdot 2 \cdot ... \cdot n$ and $f^{(n)}(x)$ is the $n$'th
 derivative, e.g. $f^{(3)}(x)=f'''(x)$. Many programming languages have a
 ``factorial(n)`` function that returns $n!$.
 
-Choosing $a=0$ usually results in simple $P_n$ polynomials.
+Usually choosing $a=0$ makes a simple series. The Taylor series at $a=0$ is
+also known as the Maclaurin series.
 
-## Series Representations
+The $n$'th Taylor polynomial or Maclaurin polynomial means the first $n$ terms
+of the series. They are useful for calculating approximate values, and they are
+most accurate when $n$ is big and $x \approx a$.
 
-Here sin and cos work with [radians](#geometry-and-trig).
+Here are some common Maclaurin series representations. Sine and cosine work
+with [radians](#geometry-and-trig).
 
 math:
     \sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!} \
@@ -489,9 +492,13 @@ math:
 
 ## Euler's Formula
 
-math: e^{it}=\cos(t)+i\sin(t),\ i=\sqrt{-1}
+math:
+    i &= \sqrt{-1}
+    e^{it} &= \cos(t)+i\sin(t)
+    \cos(t) &= \frac{e^{it}+e^{-it}}{2}
+    \sin(t) &= \frac{e^{it}-e^{-it}}{2i}
 
-This crazy thing is not a joke. [Read more here.](eulerformula.html)
+These crazy things are not jokes. [Read more here.](eulerformula.html)
 
 ## Other Bases
 
