@@ -146,8 +146,9 @@ At this point we need more notation:
 
 * $f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(4)}(x)=f''''(x)$.
   You probably agree that $f^{(10)}(x)$ is more readable than $f''''''''''(x)$.
-* $n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. Most programming languages
-  have a ``factorial(n)`` function that returns $n!$.
+* $n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. As a special case, $0!=1$;
+  see [this video](https://www.youtube.com/watch?v=Mfk_L4Nx2ZI). Most
+  programming languages have a ``factorial(n)`` function that returns $n!$.
 
 So far we have noticed that $c_3=\frac{f'''(0)}{3!}$ and
 $c_4=\frac{f'''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
@@ -193,8 +194,10 @@ math:
     f''''''(x) &= -\sin(x)
     &...
 
+.. TODO: add pic
+
 Now let's plug in some values. With [the unit circle](summary.html#unitcircle)
-we know that $\cos 0 = 1$ and $\sin 0 = 0$ because the $(x,y)$ point $(1,0)$
+we know that $\cos(0)=1$ and $\sin(0) = 0$ because the $(x,y)$ point $(1,0)$
 corresponds to the angle 0.
 
 math:
