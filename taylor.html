@@ -104,8 +104,9 @@ f''''(0) &= (4\cdot3\cdot2)c_4 \\
 c_4 &= \frac{f''''(0)}{4\cdot3\cdot2}\end{align}$$<p>At this point we need more notation:</p>
 
 <ul><li>$f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(4)}(x)=f''''(x)$.
-  You probably agree that $f^{(10)}(x)$ is more readable than $f''''''''''(x)$.</li><li>$n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. Most programming languages
-  have a <code>factorial(n)</code> function that returns $n!$.
+  You probably agree that $f^{(10)}(x)$ is more readable than $f''''''''''(x)$.</li><li>$n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. As a special case, $0!=1$;
+  see <a href="https://www.youtube.com/watch?v=Mfk_L4Nx2ZI">this video</a>. Most
+  programming languages have a <code>factorial(n)</code> function that returns $n!$.
 </li></ul><p>So far we have noticed that $c_3=\frac{f'''(0)}{3!}$ and
 $c_4=\frac{f'''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
 equal to respectively $\frac{f''(0)}{2!}$, $\frac{f'(0)}{1!}$ and
@@ -139,8 +140,10 @@ f'''(x) &= -\cos(x) \\
 f''''(x) &= \sin(x) \\
 f'''''(x) &= \cos(x) \\
 f''''''(x) &= -\sin(x) \\
-&...\end{align}$$<p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit circle</a>
-we know that $\cos 0 = 1$ and $\sin 0 = 0$ because the $(x,y)$ point $(1,0)$
+&...\end{align}$$<p>.. TODO: add pic</p>
+
+<p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit circle</a>
+we know that $\cos(0)=1$ and $\sin(0) = 0$ because the $(x,y)$ point $(1,0)$
 corresponds to the angle 0.</p>
 
 $$\begin{align}f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \frac{f'''(0)}{4!}x^4 + ... \\
