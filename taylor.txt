@@ -151,7 +151,7 @@ At this point we need more notation:
   programming languages have a ``factorial(n)`` function that returns $n!$.
 
 So far we have noticed that $c_3=\frac{f'''(0)}{3!}$ and
-$c_4=\frac{f'''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
+$c_4=\frac{f''''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
 equal to respectively $\frac{f''(0)}{2!}$, $\frac{f'(0)}{1!}$ and
 $\frac{f(0)}{0!}$. Checking them is mostly boring and straight-forward, so I'll
 skip that.
