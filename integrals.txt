@@ -300,28 +300,27 @@ math:
 math: \frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}
 
 We can also do $\sqrt x$ but we need to know that
-$\frac{1}{\ \frac 3 2 \ } = \frac{2}{3}$. I didn't cover this on
-[the basics page](basics.html) but it's quite straight-forward to understand;
-the $2$ is below *two* division lines so it must be different from being below
-just one division line. It's a mess and checking the answer with a derivative
-is also a mess, but it works.
+$\frac{1}{3/2} = \frac{2}{3}$. This is easy to check like this:
 
 math:
-   \int \sqrt x\ dx &= \int x^\frac 1 2\ dx
-   &= \frac{x^{\frac{1}{2}+1}}{\frac 1 2 + 1} + C
-   &= \frac{1}{\frac 1 2 + 1} x^{\frac 1 2 + 1} + C
-   &= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac 1 2} + C
-   &= \frac{1}{\ \frac 3 2 \ } x^1 x^{\frac 1 2} + C
-   &= \frac 2 3 x \sqrt x + C
+    \frac{1}{\ \frac 3 2 \ } = \frac{1 \cdot 2}{\frac 3 2 \cdot 2} = \frac 2 3
+
+Let's do this.
 
 math:
-   \frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right) \
-   &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0
-   &= \frac 2 3 \cdot \frac{d}{dx}(x^1 x^{\frac 1 2})
-   &= \frac 2 3 \cdot \frac{d}{dx}(x^{1 + \frac 1 2})
-   &= \frac 2 3 \cdot \frac{d}{dx}(x^{\frac 3 2})
-   &= \frac 2 3 \cdot \frac 3 2 \cdot x^{\frac 3 2 - 1}
-   &= x^{\frac 1 2} = \sqrt x
+    \int \sqrt x\ dx &= \int x^{1/2}\ dx
+    &= \frac{x^{1/2+1}}{\frac 1 2 + 1} + C
+    &= \frac 1 {\frac 1 2 + \frac 2 2} {x^{1/2} \cdot x} + C
+    &= \frac 1 {\ \frac 3 2\ } x\sqrt x + C
+    &= \frac 2 3 x\sqrt x + C
+
+math:
+    \frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right) \
+    &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0
+    &= \frac 2 3 \cdot \frac{d}{dx}(x^{1/2+1})
+    &= \frac 2 3 \cdot \left(\frac 1 2 + 1\right) x^{1/2}
+    &= \frac 2 3 \cdot \frac 3 2 \cdot \sqrt x
+    &= \sqrt x
 
 ## Integrating with Python
 
@@ -346,10 +345,10 @@ code: python3
       3   
 
 Sometimes the answers look different than the answers we ended up with,
-but they are still correct. For example:
+but they are still correct:
 
 math:
-    \frac{2x^{3/2}}{3} = \frac{2x^{1+\frac 1 2}}{3} = \frac{2x^1x^{1/2}}{3} = \frac 2 3 x \sqrt x
+    \frac{2x^{3/2}}{3} = \frac{2 \cdot x \cdot x^{1/2}}{3} = \frac 2 3 x \sqrt x
 
 ## Example: Smooth Jumps Revisited
 
@@ -436,7 +435,7 @@ asymptote: float:right;
     draw(rarc((0,0),1,t+dt,tau));
 
 The green area in the image at right looks kind of like a triangle with
-base $\Delta b$ and height $r$. The slice area is $A(b+\Delta b)-A(b)$.
+base $\Delta b$ and height $r$, but we know its area is $A(b+\Delta b)-A(b)$:
 
 math:
     A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2}
