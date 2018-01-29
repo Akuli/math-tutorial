@@ -113,13 +113,13 @@ approaching from one side only because it's not possible to approach from both
 sides.)
 
 Anyway, let's plug our new $e$ definition into our lim thing. It doesn't matter
-how $t$ and our $h$ relate to each other as long as they both go to 0, so we can
+how $t$ and $h$ relate to each other as long as they both go to 0, so we can
 set $t=h$.
 
 math:
     \lim_{h\to0} \frac{e^h-1}{h} \
     &= \lim_{h\to0} \frac{\left((1+h)^{1/h}\right)^h-1}{h}
-    &= \lim_{h\to0} \frac{(1+h)^{1/h \cdot h}-1}{h}
+    &= \lim_{h\to0} \frac{(1+h)^{1/h\ \cdot\ h}-1}{h}
     &= \lim_{h\to0} \frac{(1+h)-1}{h}
     &= \lim_{h\to0} \frac{h}{h}
     &= 1
@@ -282,7 +282,7 @@ math:
     = \underbrace{e^{\ln(x)}}_{\text{this is }x} \cdot \frac{d}{dx}\ln(x) \
     = x \cdot \frac{d}{dx}\ln(x)
 
-We can also start by using the $e^{\ln(x)}$ rule.
+We can also start by using the $e^{\ln(x)}=x$ rule.
 
 math:
     \frac{d}{dx}(e^{\ln(x)})=\frac{d}{dx}x=1
@@ -314,7 +314,7 @@ Again, the natural logarithm appears in a calculation that seems to have nothing
 to do with $e$.
 
 Quick check: if we plug in $b=e$ we get $\frac{d}{dx}\ln(x)=\frac{1}{x\ln e}$,
-which is equal to $\frac 1 x$ because $\ln(e)=\log_e(e^1)=1$.
+which is equal to $\frac 1 x$ because $\ln(e)=\ln(e^1)=1$.
 
 ## Example: Derivative of $x^c$
 
