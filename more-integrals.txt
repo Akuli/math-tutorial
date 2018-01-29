@@ -75,11 +75,15 @@ math:
     \frac{|\Delta s|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
     \frac{\Delta s}{\Delta x} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}
 
-In the last step I assumed that we moved $x$ right so $\Delta x$ was
-positive, and obviously $\Delta s$ was also positive.
+comment: TODO: explain more about moving left
 
-The smaller the bit of the curve we're looking at, the less curvy it is
-and the more accurate this is:
+In the last step I assumed that we moved $x$ right so $\Delta x$ was
+positive, and obviously $\Delta s$ was also positive. We could also move left
+and have a negative $\Delta x$, but then $\Delta s$ would also be negative and
+$\frac{\Delta s}{\Delta x}$ would be positive anyway. That's why we can just
+drop the absolute value bars.
+
+This is very accurate if we consider a tiny bit of the curve:
 
 math:
     \lim_{\Delta x\to0} \frac{\Delta s}{\Delta x} \
@@ -154,8 +158,7 @@ math:
     & \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx \
     \approx 2.96
 
-Use your favorite symbolic calculation library for calculating the integral. I
-did it with [sympy](http://www.sympy.org):
+Next we can integrate with [sympy](http://www.sympy.org).
 
 code: python3
     >>> from sympy import *
@@ -181,20 +184,21 @@ code: python3
     2.95788571508920
 
 We didn't try to calculate the integral by hand because it turns out to be
-surprisingly difficult. I tried it, and after using several "advanced" tricks I
-managed to turn it into this:
+surprisingly difficult. I tried it, and after using some tricks that are not
+taught in this tutorial I managed to turn it into this ($\cos^3(t)$ means
+$(\cos(t))^3$):
 
 math:
-    \int_0^{\arctan(2)} \frac{1}{(\cos(t))^3}\ dt
+    \int_0^{\arctan(2)} \frac{1}{\cos^3(t)}\ dt
 
-Then I found a youtube video about integrating $1/(\cos(t))^3$. It was 6
+Then I found a youtube video about integrating $1/\cos^3(t)$. It was 6
 minutes long, but it didn't include the trial and error needed for figuring out
 what to do.
 
 ## Boring Trapezoid Area
 
-This section has nothing to do with integrals, but we need it in the
-next section. Let's find the area of shapes like this:
+This has nothing to do with integrals, but we need it soon. Let's find an area
+formula for shapes like this:
 
 asymptote:
     size(8cm);
@@ -266,7 +270,7 @@ asymptote:
 The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
 when things are curved like this. Note that the distance between the red
 line and the black lines is always the same; calculating this would be
-more difficult if the thickness wasn't the same $t$ everywhere.
+different if the thickness wasn't the same $t$ everywhere.
 
 asymptote:float:right;
     size(10cm);
@@ -307,15 +311,12 @@ math:
 ## Example: Circle Area #2
 
 graybox:
-    This section assumes that you know what $\tau$ is. [Click
-    here](summary.html#geometry-and-trig)
-    if you don't.
+    This section assumes that you know what $\tau$ and $\pi$ are. [Click
+    here](summary.html#geometry-and-trig) if you don't.
 
 So far we have [calculated a circle area with an
 integral](integrals.html#example-circle-area), but now we can do it
 without thinking about any integrals.
-
-This thing's area is obviously $tl = t \tau R$:
 
 asymptote:
     size(7cm);
@@ -328,9 +329,11 @@ asymptote:
 
     draw((small,0)--(small,big), smalldashes);
     draw((big,0)--(big,big), smalldashes);
-    draw(brace((small,big+0.1),(big,big+0.1), amplitude=0.4), L="$t$", align=N);
+    draw(brace((small,big+0.1),(big,big+0.1), amplitude=0.4), L="$r$", align=N);
 
-If we set $R=\frac t 2$, the inner circle's radius becomes 0:
+The length of the red line is $l=\tau R$, so with my thick line area thing, the
+area must be $rl=r\tau R$. If we set $R=\frac r 2$, the hole in the center
+disappears:
 
 asymptote:
     size(7cm);
@@ -343,6 +346,6 @@ asymptote:
 
     draw((small,0)--(small,big), smalldashes);
     draw((big,0)--(big,big), smalldashes);
-    draw(brace((small,big+0.1),(big,big+0.1), amplitude=0.4), L="$t$", align=N);
+    draw(brace((small,big+0.1),(big,big+0.1), amplitude=0.4), L="$r$", align=N);
 
-The area is $t \tau R = t \tau \frac t 2 = \frac 1 2 \tau t^2$.
+Now the area is $r\tau\frac r 2 = \frac \tau 2 r^2 = \pi r^2$.

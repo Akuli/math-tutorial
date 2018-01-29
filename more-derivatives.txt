@@ -48,27 +48,6 @@ asymptote:
 Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.
 
-The existence of this limit implies all these things:
-
-math: f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
-
-For example (here $h\to0^+$ means that $h$ approaches 0 from the positive
-direction, or from right in a graph):
-
-math:
-    &f(x) = \left\{\begin{matrix} \
-        1 \text{ if } x \ge 0
-        0 \text{ if } x < 0
-    \end{matrix}\right.
-
-    &\lim_{h\to0^+} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^+} \frac{1-1}{h} = 0
-
-    &\lim_{h\to0^-} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^-} \frac{0-1}{h} \
-    = \lim_{h\to0^+} \frac{-1}{-h} = \lim_{h\to0^+} \frac{1}{h} = \infty
-
-0 and $\infty$ are very different, so the limit just doesn't exist. Similarly
-we'd get $1$ and $-1$ if we tried to evaluate $\frac{d}{dx}|x|$ at $x=0$.
-
 ## Chain Rule
 
 Let's say you want to find the derivative of $(2x)^2$. The derivative of $x^2$
@@ -79,13 +58,15 @@ When things are nested like this you need to multiply by the derivative of the
 inner stuff.
 
 math:
-    \frac{d}{dx}(2x)^2 = 2(2x)\ \frac{d}{dx}(2x) = 2(2x)2=8x
+    \frac{d}{dx}(\underbrace{2x}_{\substack{\text{inner} \\ \text{stuff}}})^2 \
+    = 2(2x)\cdot\underbrace{\frac{d}{dx}(2x)}_{\substack{\text{derivative of} \\ \text{inner stuff}}} \
+    = 4x\cdot2=8x
 
-If the inner stuff is just $x$, then its derivative is $1$ and you don't need to
-care about it.
+If the inner stuff is just $x$, then its derivative is $1$ and multiplying by
+it does nothing.
 
-This is known as the chain rule, and it looks like this in a general $f$ and $g$
-form:
+This inner stuff derivative thing thing is known as the chain rule, and it looks
+like this in a mathy $f$ and $g$ form:
 
 math:
     \frac{d}{dx}f(g(x)) = f'(g(x))g'(x)
@@ -104,6 +85,77 @@ We can do a lot more, and there's [a concise list of derivative
 rules](summary.html#derivative-rules) on the summary page. Most of the rules are
 proved here, and they are ordered so that they don't use anything that has not
 been proved before them.
+
+### $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
+
+indent:
+    Let's first assume that if $h \to 0$ (read: h approaches 0), then
+    $g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
+    $g(x+h)=g(x)$ case separately.
+
+    math:
+        \frac{d}{dx} f(g(x)) \
+        &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
+        &= \lim_{h\to0} \left( \
+            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
+            \frac{g(x+h)-g(x)}{h} \right)
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) \
+           \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right)
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
+
+    comment: TODO: fix this pic
+
+    asymptote: float:right;
+        size(10cm);
+        real xymin = -0.2;
+        real xmax = 2.5;
+        real ymax = 3;
+        real x = 1;
+        real glabelx = tau/4;
+        real h = 0.3;
+
+        axises(xymin,xmax,xymin,ymax);
+
+        real g(real x) { return 2*sin(x) + 0.7; }
+        draw(graph(g, xymin, xmax), blue);
+        label((glabelx,g(glabelx)), blue, L="$y=g(x)$", align=NE);
+
+        draw((x,g(x))--(x,0), L=rotate(90)*"$g(x)$");
+        draw((x+h,0)--(x+h,g(x+h)), L=rotate(90)*"$g(x+h)$");
+        label((x,0), L="$x$", align=SW);
+        draw(brace((x+h,-h/2),(x,-h/2), amplitude=h/2), L="$h$", align=S);
+        draw(brace((x,g(x)), (x,g(x+h)), amplitude=h/2), L="$\Delta g$", align=W);
+
+    Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
+    the derivative of $g$ exists, so [$g$ must be
+    continuous](#which-functions-have-derivatives). So if $h \to 0$, then
+    $g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.
+
+    math:
+        \Delta g &= g(x+h)-g(x)
+        g(x) + \Delta g &= g(x+h)
+
+    math:
+        \frac{d}{dx} f(g(x)) \
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
+        &= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x)
+        &= f'(g(x))g'(x)
+
+    If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
+    $g(x)$ everywhere:
+
+    math:
+        \frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
+        &= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h}
+        &= \lim_{h\to0} \frac 0 h
+        &= 0
+
+    math:
+        f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right)
+        &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right)
+        &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right)
+        &= f(g(x)) \cdot 0
+        &= 0
 
 ### $\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$
 
@@ -234,77 +286,6 @@ indent:
         &= \lim_{h\to0} \frac{-1}{(x+h)x}
         &= \frac{-1}{x^2}
 
-### $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
-
-indent:
-    Let's first assume that if $h \to 0$ (read: h approaches 0), then
-    $g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
-    $g(x+h)=g(x)$ case separately.
-
-    math:
-        \frac{d}{dx} f(g(x)) \
-        &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
-        &= \lim_{h\to0} \left( \
-            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
-            \frac{g(x+h)-g(x)}{h} \right)
-        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) \
-           \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right)
-        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
-
-    comment: TODO: fix this pic
-
-    asymptote: float:right;
-        size(10cm);
-        real xymin = -0.2;
-        real xmax = 2.5;
-        real ymax = 3;
-        real x = 1;
-        real glabelx = tau/4;
-        real h = 0.3;
-
-        axises(xymin,xmax,xymin,ymax);
-
-        real g(real x) { return 2*sin(x) + 0.7; }
-        draw(graph(g, xymin, xmax), blue);
-        label((glabelx,g(glabelx)), blue, L="$y=g(x)$", align=NE);
-
-        draw((x,g(x))--(x,0), L=rotate(90)*"$g(x)$");
-        draw((x+h,0)--(x+h,g(x+h)), L=rotate(90)*"$g(x+h)$");
-        label((x,0), L="$x$", align=SW);
-        draw(brace((x+h,-h/2),(x,-h/2), amplitude=h/2), L="$h$", align=S);
-        draw(brace((x,g(x)), (x,g(x+h)), amplitude=h/2), L="$\Delta g$", align=W);
-
-    Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
-    the derivative of $g$ exists, so [$g$ must be
-    continuous](#which-functions-have-derivatives). So if $h \to 0$, then
-    $g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.
-
-    math:
-        \Delta g &= g(x+h)-g(x)
-        g(x) + \Delta g &= g(x+h)
-
-    math:
-        \frac{d}{dx} f(g(x)) \
-        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
-        &= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x)
-        &= f'(g(x))g'(x)
-
-    If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
-    $g(x)$ everywhere:
-
-    math:
-        \frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
-        &= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h}
-        &= \lim_{h\to0} \frac 0 h
-        &= 0
-
-    math:
-        f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right)
-        &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right)
-        &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right)
-        &= f(g(x)) \cdot 0
-        &= 0
-
 ### $\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$
 
 indent:
@@ -312,14 +293,14 @@ indent:
 
     * $\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$
     * $\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$
-    * $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
+    * $\frac{d}{dx} f(\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}) = f'(g(x))g'(x)$
 
     Now this is quite straight-forward.
 
     math:
         \frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) \
         &= \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right)
-        &= f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\Bigl(\frac{1}{g(x)}\Bigr)\right)
+        &= f'(x)\frac{1}{g(x)} + f(x)\biggl(\frac{d}{dx}\Bigl(\frac{1}{\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}}\Bigr)\biggr)
         &= \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right)
         &= \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2}
         &= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}

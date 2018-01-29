@@ -287,8 +287,11 @@ This simplifies really nicely because $e^0=1$:
 math:
     e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
 
-Just compare this to the $\sin(x)$ series, it looks very similar even though
-$\sin(x)$ is defined with a circle and $e^x$ comes from a less concrete more abstract derivative thing!
+Just compare this to the series of $\sin(x)$ or $\cos(x)$, it looks very similar
+even though $\sin(x)$ is defined with a circle and $e$ has nothing to do with
+circles. In fact, it's possible to find an equation with $e$ on one side and
+circle stuff on the other side, and there's a detailed introduction to that on
+[the head explosion zone](eulerformula.html).
 
 We know that $e^1=e$, so we can also get this by plugging in $x=1$:
 
