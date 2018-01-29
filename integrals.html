@@ -152,23 +152,19 @@ the derivative of $\sqrt x$, but with the summary page we can also integrate
 stuff like $\frac{1}{\sqrt x}$:</p>
 
 $$\begin{align}\int \frac{1}{\sqrt x}\ dx  = \int 2 \frac{1}{2 \sqrt x}\ dx  = 2 \int \frac{1}{2 \sqrt x}\ dx  = 2 \sqrt x + C\end{align}$$$$\begin{align}\frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}\end{align}$$<p>We can also do $\sqrt x$ but we need to know that
-$\frac{1}{\ \frac 3 2 \ } = \frac{2}{3}$. I didn't cover this on
-<a href="basics.html">the basics page</a> but it's quite straight-forward to understand;
-the $2$ is below <i>two</i> division lines so it must be different from being below
-just one division line. It's a mess and checking the answer with a derivative
-is also a mess, but it works.</p>
+$\frac{1}{3/2} = \frac{2}{3}$. This is easy to check like this:</p>
 
-$$\begin{align}\int \sqrt x\ dx &= \int x^\frac 1 2\ dx \\
-&= \frac{x^{\frac{1}{2}+1}}{\frac 1 2 + 1} + C \\
-&= \frac{1}{\frac 1 2 + 1} x^{\frac 1 2 + 1} + C \\
-&= \frac{1}{\frac 1 2 + \frac 2 2} x^{1+\frac 1 2} + C \\
-&= \frac{1}{\ \frac 3 2 \ } x^1 x^{\frac 1 2} + C \\
-&= \frac 2 3 x \sqrt x + C\end{align}$$$$\begin{align}\frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right)  &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0 \\
-&= \frac 2 3 \cdot \frac{d}{dx}(x^1 x^{\frac 1 2}) \\
-&= \frac 2 3 \cdot \frac{d}{dx}(x^{1 + \frac 1 2}) \\
-&= \frac 2 3 \cdot \frac{d}{dx}(x^{\frac 3 2}) \\
-&= \frac 2 3 \cdot \frac 3 2 \cdot x^{\frac 3 2 - 1} \\
-&= x^{\frac 1 2} = \sqrt x\end{align}$$<h2 id="integrating-with-python">Integrating with Python<a class="headerlink" href="#integrating-with-python" title="Link to this title">¶</a></h2><p>Of course, <a href="http://www.sympy.org">sympy</a> does integrals really nicely.
+$$\begin{align}\frac{1}{\ \frac 3 2 \ } = \frac{1 \cdot 2}{\frac 3 2 \cdot 2} = \frac 2 3\end{align}$$<p>Let's do this.</p>
+
+$$\begin{align}\int \sqrt x\ dx &= \int x^{1/2}\ dx \\
+&= \frac{x^{1/2+1}}{\frac 1 2 + 1} + C \\
+&= \frac 1 {\frac 1 2 + \frac 2 2} {x^{1/2} \cdot x} + C \\
+&= \frac 1 {\ \frac 3 2\ } x\sqrt x + C \\
+&= \frac 2 3 x\sqrt x + C\end{align}$$$$\begin{align}\frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right)  &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0 \\
+&= \frac 2 3 \cdot \frac{d}{dx}(x^{1/2+1}) \\
+&= \frac 2 3 \cdot \left(\frac 1 2 + 1\right) x^{1/2} \\
+&= \frac 2 3 \cdot \frac 3 2 \cdot \sqrt x \\
+&= \sqrt x\end{align}$$<h2 id="integrating-with-python">Integrating with Python<a class="headerlink" href="#integrating-with-python" title="Link to this title">¶</a></h2><p>Of course, <a href="http://www.sympy.org">sympy</a> does integrals really nicely.
 It doesn't add $+C$ for some reason, so you need to remember it
 yourself. The $+C$ is not just some useless gibberish that you need to
 remember just because it's annoying, and sometimes forgetting it would
@@ -188,9 +184,9 @@ screw things up (see the jump example below).</p>
 <span style="color: #888888">  3   </span>
 </pre></div>
 <p>Sometimes the answers look different than the answers we ended up with,
-but they are still correct. For example:</p>
+but they are still correct:</p>
 
-$$\begin{align}\frac{2x^{3/2}}{3} = \frac{2x^{1+\frac 1 2}}{3} = \frac{2x^1x^{1/2}}{3} = \frac 2 3 x \sqrt x\end{align}$$<h2 id="example-smooth-jumps-revisited">Example: Smooth Jumps Revisited<a class="headerlink" href="#example-smooth-jumps-revisited" title="Link to this title">¶</a></h2><p>We learned to make a game where a ball jumps in the shape of parabola in
+$$\begin{align}\frac{2x^{3/2}}{3} = \frac{2 \cdot x \cdot x^{1/2}}{3} = \frac 2 3 x \sqrt x\end{align}$$<h2 id="example-smooth-jumps-revisited">Example: Smooth Jumps Revisited<a class="headerlink" href="#example-smooth-jumps-revisited" title="Link to this title">¶</a></h2><p>We learned to make a game where a ball jumps in the shape of parabola in
 <a href="derivatives.html#example-smooth-jumps">this derivative example</a>. We somehow
 guessed that the natural jumping curve might be a parabola. But now we know how
 to get from $g$ being a constant to a parabola. I won't explain things much;
@@ -219,7 +215,7 @@ integrate, but the second and third one are something we can do. Let's do the
 third one.</p>
 
 <img width="187" height="198" class="asymptote" src="asymptote/9182d7d00470be4f039f4ba058182934.svg" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
-base $\Delta b$ and height $r$. The slice area is $A(b+\Delta b)-A(b)$.</p>
+base $\Delta b$ and height $r$, but we know its area is $A(b+\Delta b)-A(b)$:</p>
 
 $$\begin{align}A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2} \\
 \frac{A(b+\Delta b)-A(b)}{\Delta b} &\approx \frac r 2 \\

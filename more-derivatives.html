@@ -50,20 +50,6 @@ $|x|$ has a derivative everywhere except at $x=0$.</p>
 <p>Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.</p>
 
-<p>The existence of this limit implies all these things:</p>
-
-$$\begin{align}f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}\end{align}$$<p>For example (here $h\to0^+$ means that $h$ approaches 0 from the positive
-direction, or from right in a graph):</p>
-
-$$\begin{align}&f(x) = \left\{\begin{matrix}      1 \text{ if } x \ge 0 \\
-    0 \text{ if } x < 0 \\
-\end{matrix}\right. \\
- \\
-&\lim_{h\to0^+} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^+} \frac{1-1}{h} = 0 \\
- \\
-&\lim_{h\to0^-} \frac{f(0+h)-f(0)}{h} = \lim_{h\to0^-} \frac{0-1}{h}  = \lim_{h\to0^+} \frac{-1}{-h} = \lim_{h\to0^+} \frac{1}{h} = \infty\end{align}$$<p>0 and $\infty$ are very different, so the limit just doesn't exist. Similarly
-we'd get $1$ and $-1$ if we tried to evaluate $\frac{d}{dx}|x|$ at $x=0$.</p>
-
 <h2 id="chain-rule">Chain Rule<a class="headerlink" href="#chain-rule" title="Link to this title">¶</a></h2><p>Let's say you want to find the derivative of $(2x)^2$. The derivative of $x^2$
 is just $2x$, so isn't the derivative of $(2x)^2$ then $2(2x)=4x$?
 <b>No, it's not!</b></p>
@@ -71,11 +57,11 @@ is just $2x$, so isn't the derivative of $(2x)^2$ then $2(2x)=4x$?
 <p>When things are nested like this you need to multiply by the derivative of the
 inner stuff.</p>
 
-$$\begin{align}\frac{d}{dx}(2x)^2 = 2(2x)\ \frac{d}{dx}(2x) = 2(2x)2=8x\end{align}$$<p>If the inner stuff is just $x$, then its derivative is $1$ and you don't need to
-care about it.</p>
+$$\begin{align}\frac{d}{dx}(\underbrace{2x}_{\substack{\text{inner} \\ \text{stuff}}})^2  = 2(2x)\cdot\underbrace{\frac{d}{dx}(2x)}_{\substack{\text{derivative of} \\ \text{inner stuff}}}  = 4x\cdot2=8x\end{align}$$<p>If the inner stuff is just $x$, then its derivative is $1$ and multiplying by
+it does nothing.</p>
 
-<p>This is known as the chain rule, and it looks like this in a general $f$ and $g$
-form:</p>
+<p>This inner stuff derivative thing thing is known as the chain rule, and it looks
+like this in a mathy $f$ and $g$ form:</p>
 
 $$\begin{align}\frac{d}{dx}f(g(x)) = f'(g(x))g'(x)\end{align}$$<p>There's a proof below.</p>
 
@@ -90,7 +76,32 @@ rules</a> on the summary page. Most of the rules are
 proved here, and they are ordered so that they don't use anything that has not
 been proved before them.</p>
 
-<h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>This is messy, but it works.</p>
+<h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that if $h \to 0$ (read: h approaches 0), then
+$g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
+$g(x+h)=g(x)$ case separately.</p>
+
+$$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+&= \lim_{h\to0} \left(      \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot      \frac{g(x+h)-g(x)}{h} \right) \\
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right)     \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right) \\
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)\end{align}$$<img width="229" height="283" class="asymptote" src="asymptote/585c8328017deaacb5dfd811d8976d4a.svg" style="float:right;" /><p>Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
+the derivative of $g$ exists, so <a href="#which-functions-have-derivatives">$g$ must be
+continuous</a>. So if $h \to 0$, then
+$g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.</p>
+
+$$\begin{align}\Delta g &= g(x+h)-g(x) \\
+g(x) + \Delta g &= g(x+h)\end{align}$$$$\begin{align}\frac{d}{dx} f(g(x))  &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x) \\
+&= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x) \\
+&= f'(g(x))g'(x)\end{align}$$<p>If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
+$g(x)$ everywhere:</p>
+
+$$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+&= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h} \\
+&= \lim_{h\to0} \frac 0 h \\
+&= 0\end{align}$$$$\begin{align}f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right) \\
+&= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right) \\
+&= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
+&= f(g(x)) \cdot 0 \\
+&= 0\end{align}$$</div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>This is messy, but it works.</p>
 
 $$\begin{align}&  \frac{d}{dx} (f(x)g(x)) \\
 =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
@@ -167,38 +178,13 @@ $$\begin{align}\frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 
 &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
 &= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
 &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
-&= \frac{-1}{x^2}\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that if $h \to 0$ (read: h approaches 0), then
-$g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
-$g(x+h)=g(x)$ case separately.</p>
+&= \frac{-1}{x^2}\end{align}$$</div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
 
-$$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-&= \lim_{h\to0} \left(      \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot      \frac{g(x+h)-g(x)}{h} \right) \\
-&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right)     \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right) \\
-&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)\end{align}$$<img width="229" height="283" class="asymptote" src="asymptote/585c8328017deaacb5dfd811d8976d4a.svg" style="float:right;" /><p>Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
-the derivative of $g$ exists, so <a href="#which-functions-have-derivatives">$g$ must be
-continuous</a>. So if $h \to 0$, then
-$g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.</p>
-
-$$\begin{align}\Delta g &= g(x+h)-g(x) \\
-g(x) + \Delta g &= g(x+h)\end{align}$$$$\begin{align}\frac{d}{dx} f(g(x))  &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x) \\
-&= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x) \\
-&= f'(g(x))g'(x)\end{align}$$<p>If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
-$g(x)$ everywhere:</p>
-
-$$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-&= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h} \\
-&= \lim_{h\to0} \frac 0 h \\
-&= 0\end{align}$$$$\begin{align}f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right) \\
-&= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right) \\
-&= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
-&= f(g(x)) \cdot 0 \\
-&= 0\end{align}$$</div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
-
-<ul><li>$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$</li><li>$\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$</li><li>$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
+<ul><li>$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$</li><li>$\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$</li><li>$\frac{d}{dx} f(\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}) = f'(g(x))g'(x)$
 </li></ul><p>Now this is quite straight-forward.</p>
 
 $$\begin{align}\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)  &= \frac{d}{dx} \left( f(x) \frac{1}{g(x)} \right) \\
-&= f'(x)\frac{1}{g(x)} + f(x)\left(\frac{d}{dx}\Bigl(\frac{1}{g(x)}\Bigr)\right) \\
+&= f'(x)\frac{1}{g(x)} + f(x)\biggl(\frac{d}{dx}\Bigl(\frac{1}{\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}}\Bigr)\biggr) \\
 &= \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
 &= \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
 &= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}\end{align}$$</div></div>

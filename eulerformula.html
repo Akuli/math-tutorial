@@ -22,17 +22,13 @@
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><b>Euler's Formula</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h1><p>In this chapter you'll learn the most amazing math thing I have seen.</p>
+<h1 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h1><p>In this chapter you'll learn one of the most amazing math things I have seen.</p>
 
 <div class="box redbox"><p>Be sure to learn <a href="geometry-and-trig.html#radians-and-tau">radians</a>,
 <a href="geometry-and-trig.html#trig-with-the-unit-circle">sin, cos</a>,
 <a href="derivatives.html">derivatives</a>, <a href="explog.html#the-e-constant">e</a> and
-<a href="taylor.html">Taylor polynomials</a> before reading this chapter. That's lots
-of stuff to learn, but this chapter is definitely worth the effort. For best
-results, you should ideally have a look at proofs or other justifications of
-everything except definitions (e.g. you know how $\sin$ is defined in a unit
-circle and you have read <a href="more-geometry-and-trig.html#derivative-of-sine">the sin derivative
-proof</a>).</p>
+<a href="taylor.html">Taylor series</a> before reading this chapter. That's lots of
+stuff to learn, but this chapter is definitely worth the effort.</p>
 
 <p>With all that out of the way, <b>this chapter will blow up your mind</b>.
 Proceed at your own risk.
@@ -41,12 +37,11 @@ Proceed at your own risk.
 </div><h2 id="imaginary-numbers">Imaginary Numbers<a class="headerlink" href="#imaginary-numbers" title="Link to this title">¶</a></h2><p>In <a href="basics.html">the basics section</a> I said that you cannot do things like
 $\sqrt{-1}$, but now we'll do that.</p>
 
-$$\begin{align}i = \sqrt{-1}\end{align}$$<p>So if you do $i^2$ you get $\left(\sqrt{-1}\ \right)^2=-1$. Obviously this weird
-"number" is not between $-\infty$ and $\infty$ because no number in that range
-behaves like this. It's something else, and the $i$ is short for <i>imaginary</i>.
-The numbers between $-\infty$ and $\infty$ are known as <i>real</i> numbers, but
-$-\infty$ and $\infty$ are not real because they behave very differently than
-real numbers.</p>
+$$\begin{align}i = \sqrt{-1}\end{align}$$<p>So we have $i^2=-1$. Obviously this weird "number" is not between $-\infty$ and
+$\infty$ because no number in that range behaves like this. It's something else,
+and the $i$ is short for <i>imaginary</i>. The numbers between $-\infty$ and $\infty$
+are known as <i>real</i> numbers, but $-\infty$ and $\infty$ are not real because
+they behave very differently than real numbers.</p>
 
 <p>A <i>complex number</i> is something real plus something imaginary, and they are
 often represented in a 2D plane. Like this:</p>
@@ -70,7 +65,7 @@ i^7 &= i^4i^3=1(-i)=-i \\
 i^8 &= i^4i^4=1 \cdot 1 = 1 \\
 ...\end{align}$$<p>We can see a pattern.</p>
 
-<p>In <a href="taylor.html">the Taylor chapter</a> we created these kinda-mind-blowing series
+<p>In <a href="taylor.html">the Taylor chapter</a> we created these awesome series
 representations:</p>
 
 $$\begin{align}\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}              - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\

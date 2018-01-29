@@ -60,10 +60,12 @@ $$\begin{align}(\Delta s)^2 &\approx (\Delta x)^2 + (\Delta y)^2 \\
 &\approx |\Delta x|\ \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
 \frac{|\Delta s|}{|\Delta x|} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
 \frac{\Delta s}{\Delta x} &\approx \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2}\end{align}$$<p>In the last step I assumed that we moved $x$ right so $\Delta x$ was
-positive, and obviously $\Delta s$ was also positive.</p>
+positive, and obviously $\Delta s$ was also positive. We could also move left
+and have a negative $\Delta x$, but then $\Delta s$ would also be negative and
+$\frac{\Delta s}{\Delta x}$ would be positive anyway. That's why we can just
+drop the absolute value bars.</p>
 
-<p>The smaller the bit of the curve we're looking at, the less curvy it is
-and the more accurate this is:</p>
+<p>This is very accurate if we consider a tiny bit of the curve:</p>
 
 $$\begin{align}\lim_{\Delta x\to0} \frac{\Delta s}{\Delta x}  &= \lim_{\Delta x\to0} \sqrt{1+\left(\frac{\Delta y}{\Delta x}\right)^2} \\
 &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{\Delta y}{\Delta x}\right)^2}\end{align}$$<p>The $\lim$ things already look a lot like derivatives, but let's plug in our
@@ -90,8 +92,7 @@ $$\begin{align}2x-x^2&=0 \\
 x=2\ \text{or}&\ x=0\end{align}$$<p>Now we can just plug in $a=0$, $b=2$ and $f(x)=2x-x^2$ to our formula.</p>
 
 $$\begin{align}f(x) &= 2x-x^2 \\
-f'(x) &= 2-2x\end{align}$$$$\begin{align}& \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx  \approx 2.96\end{align}$$<p>Use your favorite symbolic calculation library for calculating the integral. I
-did it with <a href="http://www.sympy.org">sympy</a>:</p>
+f'(x) &= 2-2x\end{align}$$$$\begin{align}& \int_a^b \sqrt{1 + (f'(x))^2}\ dx = \int_0^2 \sqrt{1+(2-2x)^2}\ dx  \approx 2.96\end{align}$$<p>Next we can integrate with <a href="http://www.sympy.org">sympy</a>.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">from</span> <span style="color: #0e84b5; font-weight: bold">sympy</span> <span style="color: #007020; font-weight: bold">import</span> <span style="color: #666666">*</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>init_printing()
@@ -115,15 +116,16 @@ noticable.</p>
 <span style="color: #888888">2.95788571508920</span>
 </pre></div>
 <p>We didn't try to calculate the integral by hand because it turns out to be
-surprisingly difficult. I tried it, and after using several "advanced" tricks I
-managed to turn it into this:</p>
+surprisingly difficult. I tried it, and after using some tricks that are not
+taught in this tutorial I managed to turn it into this ($\cos^3(t)$ means
+$(\cos(t))^3$):</p>
 
-$$\begin{align}\int_0^{\arctan(2)} \frac{1}{(\cos(t))^3}\ dt\end{align}$$<p>Then I found a youtube video about integrating $1/(\cos(t))^3$. It was 6
+$$\begin{align}\int_0^{\arctan(2)} \frac{1}{\cos^3(t)}\ dt\end{align}$$<p>Then I found a youtube video about integrating $1/\cos^3(t)$. It was 6
 minutes long, but it didn't include the trial and error needed for figuring out
 what to do.</p>
 
-<h2 id="boring-trapezoid-area">Boring Trapezoid Area<a class="headerlink" href="#boring-trapezoid-area" title="Link to this title">¶</a></h2><p>This section has nothing to do with integrals, but we need it in the
-next section. Let's find the area of shapes like this:</p>
+<h2 id="boring-trapezoid-area">Boring Trapezoid Area<a class="headerlink" href="#boring-trapezoid-area" title="Link to this title">¶</a></h2><p>This has nothing to do with integrals, but we need it soon. Let's find an area
+formula for shapes like this:</p>
 
 <p><img width="227" height="77" class="asymptote" src="asymptote/ed6c8d4ed5bc070d00ae6321a528ab3d.svg" /></p><p>The line with length $c$ is centered between the topmost and the
 bottommost line, and all horizontally drawn lines are parallel with each
@@ -142,7 +144,7 @@ nothing but $t$ and $l$:</p>
 <p><img width="283" height="206" class="asymptote" src="asymptote/85730b70ad329fd774c0ebc8da66add5.svg" /></p><p>The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
 when things are curved like this. Note that the distance between the red
 line and the black lines is always the same; calculating this would be
-more difficult if the thickness wasn't the same $t$ everywhere.</p>
+different if the thickness wasn't the same $t$ everywhere.</p>
 
 <img width="202" height="283" class="asymptote" src="asymptote/db595b4ca14624d53f30c0b7096a0a5f.svg" style="float:right;" /><p>Let's start by thinking about a small, trapezoid-shaped piece of the
 area like in the image at right. Now everything is quite straight-forward
@@ -156,20 +158,19 @@ A(b) &= tb+C\end{align}$$<p><br></p>
 
 $$\begin{align}A(l)-A(0) &= (tl + C)-(t \cdot 0 + C) \\
 &= tl+C-0-C \\
-&= tl\end{align}$$<h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what $\tau$ is. <a href="summary.html#geometry-and-trig">Click
-here</a>
-if you don't.
+&= tl\end{align}$$<h2 id="example-circle-area-2">Example: Circle Area #2<a class="headerlink" href="#example-circle-area-2" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section assumes that you know what $\tau$ and $\pi$ are. <a href="summary.html#geometry-and-trig">Click
+here</a> if you don't.
 </p>
 
 </div><p>So far we have <a href="integrals.html#example-circle-area">calculated a circle area with an
 integral</a>, but now we can do it
 without thinking about any integrals.</p>
 
-<p>This thing's area is obviously $tl = t \tau R$:</p>
+<p><img width="155" height="198" class="asymptote" src="asymptote/be9fc84c0da520530d3ed0c463ff5e68.svg" /></p><p>The length of the red line is $l=\tau R$, so with my thick line area thing, the
+area must be $rl=r\tau R$. If we set $R=\frac r 2$, the hole in the center
+disappears:</p>
 
-<p><img width="151" height="198" class="asymptote" src="asymptote/49d04478a7ef03c432fbea137bbc0da2.svg" /></p><p>If we set $R=\frac t 2$, the inner circle's radius becomes 0:</p>
-
-<p><img width="155" height="198" class="asymptote" src="asymptote/9b1ed15fde987e41f12cf08719fe8368.svg" /></p><p>The area is $t \tau R = t \tau \frac t 2 = \frac 1 2 \tau t^2$.
+<p><img width="159" height="198" class="asymptote" src="asymptote/38f6c701f664eabca3599b635c895c29.svg" /></p><p>Now the area is $r\tau\frac r 2 = \frac \tau 2 r^2 = \pi r^2$.
 </p>
 
 </div>

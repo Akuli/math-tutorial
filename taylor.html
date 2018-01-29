@@ -108,7 +108,7 @@ c_4 &= \frac{f''''(0)}{4\cdot3\cdot2}\end{align}$$<p>At this point we need more 
   see <a href="https://www.youtube.com/watch?v=Mfk_L4Nx2ZI">this video</a>. Most
   programming languages have a <code>factorial(n)</code> function that returns $n!$.
 </li></ul><p>So far we have noticed that $c_3=\frac{f'''(0)}{3!}$ and
-$c_4=\frac{f'''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
+$c_4=\frac{f''''(0)}{4!}$. The values we got for $c_2$, $c_1$ and $c_0$ are also
 equal to respectively $\frac{f''(0)}{2!}$, $\frac{f'(0)}{1!}$ and
 $\frac{f(0)}{0!}$. Checking them is mostly boring and straight-forward, so I'll
 skip that.</p>
@@ -200,8 +200,11 @@ if you haven't seen $e$ before.</p>
 $$\begin{align}f(x) = e^x,\ f'(x) = e^x,\ f''(x) = e^x,\ f'''(x) = e^x,\ ...\end{align}$$$$\begin{align}e^x &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ... \\
     &= e^0 + \frac{e^0}{1!}x + \frac{e^0}{2!}x^2 + \frac{e^0}{3!}x^3 + ...\end{align}$$<p>This simplifies really nicely because $e^0=1$:</p>
 
-$$\begin{align}e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<p>Just compare this to the $\sin(x)$ series, it looks very similar even though
-$\sin(x)$ is defined with a circle and $e^x$ comes from a less concrete more abstract derivative thing!</p>
+$$\begin{align}e^x &= 1 + \frac{x}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<p>Just compare this to the series of $\sin(x)$ or $\cos(x)$, it looks very similar
+even though $\sin(x)$ is defined with a circle and $e$ has nothing to do with
+circles. In fact, it's possible to find an equation with $e$ on one side and
+circle stuff on the other side, and there's a detailed introduction to that on
+<a href="eulerformula.html">the head explosion zone</a>.</p>
 
 <p>We know that $e^1=e$, so we can also get this by plugging in $x=1$:</p>
 

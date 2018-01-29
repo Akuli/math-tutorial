@@ -28,21 +28,29 @@ thing. The mathematician inside may might find some of this interesting though.<
 <div class="box redbox"><p>This chapter assumes that you know <a href="derivatives.html">derivatives</a>.
 </p>
 
-</div><h2 id="exponent-functions">Exponent Functions<a class="headerlink" href="#exponent-functions" title="Link to this title">¶</a></h2><p>The graph page contains some <a href="graphs.html#exponents-and-logarithms">exponent and logarithm
-graphs</a>, but calculating values for
-drawing them requires things like $a^{-1}$ if $x=-1$. Turns out that
-$a^{-b}=\frac{1}{a^b}$. For example:</p>
+</div><h2 id="exponent-functions">Exponent Functions<a class="headerlink" href="#exponent-functions" title="Link to this title">¶</a></h2><p>So far we haven't talked about things like $x^{-1}$, but we can easily define
+them by just being consistent with other rules we already have:</p>
 
-$$\begin{align}2^{-1} &= \frac{1}{2^1} = \frac 1 2 \\
-2^{-2} &= \frac{1}{2^2} = \frac 1 4 \\
-2^{-3} &= \frac{1}{2^3} = \frac 1 8\end{align}$$<p>These results agree with the graphs because if $x$ gets smaller, then $a^x$ also
-gets smaller if $a>1$.</p>
+$$\begin{align}x^2 &= \frac{x^3}x \\
+x^1 &= \frac{x^2}x \\
+x^0 &= \frac{x^1}x = \frac x x = 1 \\
+x^{-1} &= \frac{x^0}x = \frac 1 x \\
+x^{-2} &= \frac{x^{-1}}x = \frac{1/x}{x} = \frac{1}{x^2} \\
+x^{-3} &= \frac{x^{-2}}x = \frac{1/x^2}{x} = \frac{1}{x^3}\end{align}$$<p>So in general, we have $x^{-y} = \frac{1}{x^y}$. Let's draw a few points of the
+graph $y=2^x$ and connect them with a smooth curve:</p>
+
+<p><img width="259" height="312" class="asymptote" src="asymptote/1089c88f8f50ed7d5397dc816c7a89bb.svg" /></p><p>The graph suggests that we should be able to do things like $2^{1/2}$ or
+$2^\pi$ because it's smooth and continuous. In fact, we're already familiar
+with the special case $2^{1/2}$, that's $\sqrt{2}$.</p>
+
+<p>Also note that the graph is growing really fast as $x$ gets bigger. This is
+known as exponential growth.</p>
 
 <h2 id="the-e-constant">The e constant<a class="headerlink" href="#the-e-constant" title="Link to this title">¶</a></h2><div class="box graybox"><h2> See Also</h2><p><a href="https://youtu.be/AuA2EAgAegE">This video</a> contains a different kind of
 introduction to $e$ with more facts but less details.
 </p>
 
-</div><p>Let's try to find the derivative of $a^x$ where $a$ is a constant and $a>0$:</p>
+</div><p>Let's try to find the derivative of $a^x$ where $a$ is a positive constant.</p>
 
 $$\begin{align}\frac{d}{dx} a^x &= \lim_{h \to 0} \frac{a^{x+h}-a^x}{h} \\
 &= \lim_{h \to 0} \frac{a^x a^h - a^x \cdot 1}{h} \\
@@ -55,25 +63,19 @@ the whole lim thing was just 1? Then $\frac{d}{dx} a^x$ would be just $a^x$.</p>
 <p>Turns out that there's only one $a$ value that satisfies this, and
 mathematicians call that number $e$.</p>
 
-$$\begin{align}\frac{d}{dx} e^x = e^x\end{align}$$$$\begin{align}e = \lim_{t\to0}\ (1+t)^{\frac 1 t} = \lim_{n\to\infty} \left(1 + \frac 1 n \right)^n\end{align}$$<p>The $n$ thing is really same as the $t$ thing with $n=1/t$. So if $n$ approaches
-infinity, $t=1/n$ approaches 0 because dividing by a big number results in a
-small number.</p>
+$$\begin{align}\lim_{h\to0} \frac{e^h-1}{h} = 1\end{align}$$$$\begin{align}\frac{d}{dx} e^x = e^x\end{align}$$<p>Here are a couple different ways to define $e$. We'll make sure that these
+satisfy the lim thing above in a moment.</p>
 
-<p>Let's make sure that the $t$ thing works with the derivative thing. It doesn't
-matter how $t$ and our $h$ relate to each other as long as they both go to 0, so
-let's set $t=h$ and calculate the derivative:</p>
-
-$$\begin{align}\frac{d}{dx} e^x &= e^x \cdot \lim_{h \to 0}\frac{e^h-1}{h} \\
-&= e^x \cdot \lim_{h \to 0}\frac{\left((1 + h)^{\frac 1 h}\right)^h-1}{h} \\
-&= e^x \cdot \lim_{h \to 0}\frac{(1 + h)^{\frac 1 h h}-1}{h} \\
-&= e^x \cdot \lim_{h \to 0}\frac{(1 + h)^1-1}{h} \\
-&= e^x \cdot \lim_{h \to 0}\frac{1+h-1}{h} \\
-&= e^x \cdot \lim_{h \to 0}\frac h h \\
-&= e^x \cdot 1\end{align}$$<p>Let's also calculate an approximate value of $e$ and check the answer:</p>
+$$\begin{align}e = \lim_{n\to\infty} \left(1 + \frac 1 n \right)^n    = \lim_{n\to-\infty} \left(1 + \frac 1 n \right)^n\end{align}$$<p>I'm not going to prove that the limits with $n$ going to $\infty$ and $-\infty$
+give the same value because it's quite boring and messy. Let's calculate an
+approximate value of $e$ and check the answer:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>n <span style="color: #666666">=</span> <span style="color: #40a070">10000000000</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">1</span><span style="color: #666666">/</span>n))<span style="color: #666666">**</span>n
 <span style="color: #888888">2.7182820532347876</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>n <span style="color: #666666">=</span> <span style="color: #666666">-</span><span style="color: #40a070">10000000000</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> (<span style="color: #40a070">1</span><span style="color: #666666">/</span>n))<span style="color: #666666">**</span>n
+<span style="color: #888888">2.7182820535066154</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>e
 <span style="color: #888888">2.718281828459045</span>
@@ -81,7 +83,27 @@ $$\begin{align}\frac{d}{dx} e^x &= e^x \cdot \lim_{h \to 0}\frac{e^h-1}{h} \\
 <p>I think this is quite nice. We got this magic $2.718...$ number out of pretty
 much nowhere. You'll be amazed by all the places where it occurs.</p>
 
-<p>Many programming languages have an <code>exp(x)</code> function that returns $e^x$, and
+<p>Let's make sure that the $e$ definitions satisfy our
+$\displaystyle\lim_{h\to0} \textstyle\frac{e^h-1}{h} = 1$ thing. Let's set
+$t=1/n$, so $t$ goes to $0$ from the positive side if $n\to\infty$ and from the
+negative side if $n\to-\infty$.</p>
+
+$$\begin{align}t &= \frac 1 n \\
+n &= \frac 1 t \\
+e &= \lim_{t\to0} (1+t)^{1/t}\end{align}$$<p>Note that $t\to0$ means that we must get the same value if $t$ goes to 0 from
+either direction. (As a special case, $n \to \infty$ and $n \to -\infty$ mean
+approaching from one side only because it's not possible to approach from both
+sides.)</p>
+
+<p>Anyway, let's plug our new $e$ definition into our lim thing. It doesn't matter
+how $t$ and $h$ relate to each other as long as they both go to 0, so we can
+set $t=h$.</p>
+
+$$\begin{align}\lim_{h\to0} \frac{e^h-1}{h}  &= \lim_{h\to0} \frac{\left((1+h)^{1/h}\right)^h-1}{h} \\
+&= \lim_{h\to0} \frac{(1+h)^{1/h\ \cdot\ h}-1}{h} \\
+&= \lim_{h\to0} \frac{(1+h)-1}{h} \\
+&= \lim_{h\to0} \frac{h}{h} \\
+&= 1\end{align}$$<p>Many programming languages have an <code>exp(x)</code> function that returns $e^x$, and
 it's usually more precise than e.g. <code>pow(e, x)</code> or <code>e**x</code>, although the
 difference is hardly noticable:</p>
 
@@ -98,7 +120,7 @@ $b$ is known as the base of the logarithm.</p>
 </p>
 
 <p><img width="340" height="330" class="asymptote" src="asymptote/ffa99f0902a6ee80107afbddeb1e2fa0.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
-with any $x$. You cannot take any logarithm of a zero or a negative value.</p>
+with any $x$. You cannot take any logarithm of zero or a negative value.</p>
 
 <p>The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
 for "natural", and $\log_e$ is called natural because it appears surprisingly
@@ -116,7 +138,7 @@ $$\begin{align}\log_b(b) = \log_b(b^1) = 1\end{align}$$<div class="highlight" st
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>log(math<span style="color: #666666">.</span>e)
 <span style="color: #888888">1.0</span>
 </pre></div>
-<p>Python's <code>math.log(x)</code> seems to return $\ln(x)$.</p>
+<p>Python's <code>math.log(x)</code> returns $\ln(x)$.</p>
 
 <p>The summary page contains <a href="summary.html#logs-are-useful">a bunch of formulas</a>
 that make logarithms very useful. The proofs are below.</p>
@@ -130,14 +152,11 @@ programming language doesn't have a logarithm that returns what you want:</p>
     <span style="color: #007020; font-weight: bold">return</span> <span style="color: #007020">Math</span>.log(x) <span style="color: #666666">/</span> <span style="color: #007020">Math</span>.log(<span style="color: #40a070">4</span>);
 }
 </pre></div>
-<p>Most programming languages have a few different logarithm functions like e.g.
-<code>log2</code> and <code>log10</code>, and some allow specifying a base like <code>math.log(x, 4)</code>
+<p>Most programming languages have a few different logarithm functions like
+<code>log2</code> or <code>log10</code>, and some allow specifying a base like <code>math.log(x, 4)</code>
 in Python.</p>
 
-<h2 id="logarithm-rule-proofs">Logarithm Rule Proofs<a class="headerlink" href="#logarithm-rule-proofs" title="Link to this title">¶</a></h2><p>If you don't like proofs then don't read these. The proofs are here just because
-I didn't feel like making a "More Logarithms" chapter just for them.</p>
-
-<p>Here $x>0$, $y>0$, $a>0$, $a\ne1$, $b>0$ and $b\ne1$. The proofs are ordered so
+<h2 id="logarithm-rule-proofs">Logarithm Rule Proofs<a class="headerlink" href="#logarithm-rule-proofs" title="Link to this title">¶</a></h2><p>Here $x>0$, $y>0$, $a>0$, $a\ne1$, $b>0$ and $b\ne1$. The proofs are ordered so
 that they don't use anything that hasn't been proved before them, but they use
 things that directly follow from the inversiness like $b^{\log_b(x)}=x$.</p>
 
@@ -165,36 +184,31 @@ $$\begin{align}a^x = e^{\ln(a^x)} = e^{x \ln(a)}\end{align}$$<p>Here I used the 
 looks like we could do this (remember to use <a href="more-derivatives.html#chain-rule">the chain
 rule</a>):</p>
 
-$$\begin{align}\frac{d}{dx} a^x      = \frac{d}{dx} e^{x \ln(a)}      = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x}      \cdot \frac{d}{dx}(x \underbrace{\ln(a)}_\text{constant})      = a^x \ln(a)\end{align}$$<p>That's quite nice, but now we also have this:</p>
+$$\begin{align}\frac{d}{dx} a^x  = \frac{d}{dx} e^{\overbrace{x \ln(a)}^{\substack{\text{inner} \\ \text{stuff}}}}  = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x}  \cdot \overbrace{\frac{d}{dx}(x \underbrace{\ln(a)}_\text{constant}) }^{\substack{\text{derivative of} \\ \text{inner stuff}}}  = a^x \ln(a)\end{align}$$<p>That's quite nice, but now we also have this:</p>
 
 $$\begin{align}\frac{d}{dx} a^x &= \frac{d}{dx} a^x \\
 a^x \ln(a) &= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h} \\
 \ln(a) &= \lim_{h\to0} \frac{a^h-1}{h}\end{align}$$<p>This is why the base $e$ logarithm is known as the <i>natural</i> logarithm, or $\ln$
 for short. It appears "naturally" in surprising places.</p>
 
-<h2 id="derivative-of-a-logarithm">Derivative of a logarithm<a class="headerlink" href="#derivative-of-a-logarithm" title="Link to this title">¶</a></h2><p>Let's try to find $\frac{d}{dx} \ln(x)$ where $x>0$. We'll use the
-$\ln(x/y)=\ln(x)-\ln(y)$ and $\ln(x^y)=y\ln(x)$ rules right to left.</p>
+<h2 id="derivative-of-a-logarithm">Derivative of a logarithm<a class="headerlink" href="#derivative-of-a-logarithm" title="Link to this title">¶</a></h2><p>Let's find the derivative of $e^{\ln(x)}$ with <a href="more-derivatives.html#chain-rule">the chain
+rule</a>. We don't know what the derivative of
+the inner stuff is yet, but it's not a problem; let's just say that's
+$\frac{d}{dx}\ln(x)$ and figure out the actual value later.</p>
 
-$$\begin{align}\frac{d}{dx} \ln(x) &= \lim_{h\to0} \frac{\ln(x+h)-\ln(x)}{h} \\
-&= \lim_{h\to0} \frac{\ln\left(\frac{x+h}{x}\right)}{h} \\
-&= \lim_{h\to0} \left(\frac 1 h \ln\left(\frac{x+h}{x}\right)\right) \\
-&= \lim_{h\to0} \ln\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)\end{align}$$<p>Now we'll apply the $\ln(a)=\displaystyle\lim_{h\to0}\textstyle\frac{a^h-1}{h}$
-thing we ended up with last time. It doesn't matter how the $h$ in this thing
-and the $h$ in our $\ln$ derivative thing relate to each other as long as they
-both go to 0, so we need just one $\lim$.</p>
+$$\begin{align}\frac{d}{dx}(e^{\overbrace{\ln(x)}^{\substack{\text{inner} \\ \text{stuff}}}})  = \underbrace{e^{\ln(x)}}_{\text{this is }x} \cdot \frac{d}{dx}\ln(x)  = x \cdot \frac{d}{dx}\ln(x)\end{align}$$<p>We can also start by using the $e^{\ln(x)}=x$ rule.</p>
 
-$$\begin{align}\lim_{h\to0} \ln\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)  &= \lim_{h\to0} \frac{\left(\left(\frac{x+h}{x}\right)^{\frac 1 h}\right)^h - 1}{h} \\
-&= \lim_{h\to0} \frac{\left(\frac{x+h}{x}\right)^{\frac 1 h h} - 1}{h} \\
-&= \lim_{h\to0} \frac{\left(\frac{x+h}{x}\right)^1 - 1}{h} \\
-&= \lim_{h\to0} \frac{\frac{x+h}{x} - 1}{h} \\
-&= \lim_{h\to0} \frac{\frac x x + \frac h x - 1}{h} \\
-&= \lim_{h\to0} \frac{1 + \frac h x - 1}{h} \\
-&= \lim_{h\to0} \frac{\left(\frac h x\right)}{h} \\
-&= \lim_{h\to0} \frac{h}{xh} \\
-&= \frac{1}{x}\end{align}$$<p>So we had these horrible messes but we ended up with just $\frac 1 x$. I think
-this is nice.</p>
+$$\begin{align}\frac{d}{dx}(e^{\ln(x)})=\frac{d}{dx}x=1\end{align}$$<p>The two answers must be equal:</p>
 
-<p>Let's generalize this a bit with the
+$$\begin{align}x \cdot \frac{d}{dx}\ln(x) &= 1 \\
+\frac{d}{dx}\ln(x) &= \frac 1 x\end{align}$$<p>That's quite nice.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>This technique is not limited to $e^x$ and $\ln x$ in any way. Prove that
+$\frac{d}{dx} \sqrt x=\frac{1}{2\sqrt x}$ with $\frac{d}{dx}x^2=2x$ and
+$\bigl(\sqrt x\bigr)^2=x$.
+</p>
+
+</div><p>Let's generalize $\frac{d}{dx}\ln(x)=\frac1x$ with the
 $\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ rule:</p>
 
 $$\begin{align}\frac{d}{dx} \log_b(x) &= \frac{d}{dx} \left(\frac{\ln(x)}{\ln(b)}\right) \\
@@ -204,46 +218,44 @@ $$\begin{align}\frac{d}{dx} \log_b(x) &= \frac{d}{dx} \left(\frac{\ln(x)}{\ln(b)
 &= \frac{1}{x \ln(b)}\end{align}$$<p>Again, the natural logarithm appears in a calculation that seems to have nothing
 to do with $e$.</p>
 
+<p>Quick check: if we plug in $b=e$ we get $\frac{d}{dx}\ln(x)=\frac{1}{x\ln e}$,
+which is equal to $\frac 1 x$ because $\ln(e)=\ln(e^1)=1$.</p>
+
 <h2 id="example-derivative-of-x-c">Example: Derivative of $x^c$<a class="headerlink" href="#example-derivative-of-x-c" title="Link to this title">¶</a></h2><p>In the more derivatives chapter <a href="more-derivatives.html#frac-d-dx-x-c-c-x-c-1">we
 proved</a> that
 $\frac{d}{dx} x^c = c\ x^{c-1}$ if $c$ is a positive integer. If we are really
-clever, we can use $\frac{d}{dx} e^x = e^x$ for generalizing this. However,
-unlike our previous proof, this works only if $x>0$ because we need $\ln(x)$,
-and we can't take logarithms of negative numbers (see <a href="#negative-log">above</a>).</p>
+clever, we can use $\frac{d}{dx} e^x = e^x$ for generalizing this to any $c$
+value. However, unlike our previous proof, this works only if $x>0$ because we
+need $\ln(x)$, and we can't take logarithms of negative numbers (see
+<a href="#negative-log">above</a>).</p>
 
-$$\begin{align}x^c = e^{\ln(x^c)} = e^{c \ln(x)}\end{align}$$<p>Now we can just apply <a href="more-derivatives.html#chain-rule">the chain rule</a> and
-other derivative rules that we have learned:</p>
+$$\begin{align}x^c = e^{\ln(x^c)} = e^{c \ln(x)}\end{align}$$<p>Now we can find the derivative easily:</p>
 
-$$\begin{align}\frac{d}{dx} x^c  &= \frac{d}{dx} e^{c \ln(x)} = e^{c \ln(x)} \cdot \frac{d}{dx}(c \ln(x)) \\
-&= x^c \cdot c \frac 1 x = x^c \cdot c\ x^{-1} = c\ x^c x^{-1} = c\ x^{c-1}\end{align}$$<p>It's handy that this isn't limited to integers. For example:</p>
+$$\begin{align}\frac{d}{dx} x^c  &= \frac{d}{dx} e^{\overbrace{c\ln(x)}^{\substack{\text{inner}\\\text{stuff}}}}  = e^{c \ln(x)} \cdot \frac{d}{dx}(c \ln(x)) \\
+&= x^c \cdot c \frac 1 x = c\frac{x^c}x = c\ x^{c-1}\end{align}$$<p>It's handy that this isn't limited to integers. For example:</p>
 
-$$\begin{align}\frac{d}{dx} \sqrt x = \frac{d}{dx} x^{1/2} = \frac 1 2 x^{1/2 - 1}  = \frac 1 2 x^{-1/2} = \frac 1 2 \cdot \frac{1}{x^{1/2}} = \frac{1}{2\ \sqrt x}\end{align}$$<p>Here we don't need to worry about negative $x$ values because <a href="basics.html#negative-sqrt">we can't take
-square roots of negative values</a> anyway.
-<a href="more-derivatives.html#frac-d-dx-sqrt-x-displaystyle-frac-1-2-sqrt-x">Last time</a>
-we ended up with the same result, but we needed to do a lot more work.</p>
+$$\begin{align}\frac{d}{dx} \sqrt x = \frac{d}{dx} x^{1/2} = \frac 1 2 x^{1/2 - 1}  = \frac 1 2 x^{-1/2} = \frac 1 2 \cdot \frac{1}{x^{1/2}} = \frac{1}{2\sqrt x}\end{align}$$<p>Here we don't need to worry about negative $x$ values because <a href="basics.html#negative-sqrt">we can't take
+square roots of negative values</a> anyway.</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Prove the $\frac{d}{dx} \left(\frac 1 x\right) = \frac{-1}{x^2}$ rule with
-the $\frac{d}{dx} x^c = c\ x^{c-1}$ rule. Start by assuming that $x$ is
-positive, and then show that it also works with a negative $x$. You don't
-need to worry about the $x=0$ case because $\frac 1 0$ is not defined.</p>
+<div class="box graybox"><h2> Exercise</h2><p>Logarithms are handy for proving other derivative rules too if we can
+assume that things are positive. Prove that
+$\frac{d}{dx}(f(x)g(x))=f'(x)g(x)+f(x)g'(x)$ when $f(x)>0$ and $g(x)>0$ by
+rewriting $f(x)g(x)$ as $e^{\ln(f(x)g(x))}=e^{\ln f(x)+\ln g(x)}$.
+</p>
 
-<p>Hints:</p>
-
-<ul><li>$\frac 1 x = x^{-1} = -\frac{1}{-x}$</li><li>If $x<0$, then $-x>0$</li><li>$(-x)^2 = x^2$ (<a href="basics.html#square-negative-cancel">explained</a> on the
-  basics page)
-</li></ul></div><h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>. Skip
+</div><h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>. Skip
 this stuff if you don't.
 </p>
 
-</div><p>The derivative of $a^x$ is $\frac{d}{dx} a^x = a^x \ln(a)$. Turning this into an
+</div><p>We know that $\frac{d}{dx} a^x = a^x \ln(a)$. Turning that into an
 antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
 $\frac{d}{dx}(c\ f(x)) = c\ f'(x)$ rule right-to-left.</p>
 
-$$\begin{align}\frac{d}{dx} a^x = a^x \ln(a) \\
-\frac{\frac{d}{dx} a^x}{\ln(a)} = \frac{a^x \ln(a)}{\ln(a)} \\
-\frac{1}{\ln(a)} \cdot \frac{d}{dx} a^x = a^x \\
-\frac{d}{dx} \left( \frac{1}{\ln(a)} a^x \right) = a^x \\
-\frac{d}{dx} \left( \frac{a^x}{\ln(a)} \right) = a^x\end{align}$$<p>Now we know that $\frac{a^x}{\ln(a)}$ is an antiderivative of $a^x$, so here's
+$$\begin{align}\frac{d}{dx} a^x &= a^x \ln(a) \\
+\frac{\frac{d}{dx} a^x}{\ln(a)} &= a^x \\
+\frac{1}{\ln(a)} \cdot \frac{d}{dx} a^x &= a^x \\
+\frac{d}{dx} \left( \frac{1}{\ln(a)} a^x \right) &= a^x \\
+\frac{d}{dx} \left( \frac{a^x}{\ln(a)} \right) &= a^x\end{align}$$<p>Now we know that $\frac{a^x}{\ln(a)}$ is an antiderivative of $a^x$, so here's
 the solution:</p>
 
 $$\begin{align}\int a^x\ dx = \frac{a^x}{\ln(a)} + C\end{align}$$<p>Of course, $\int e^x\ dx = e^x + C$ because $\ln(e)=\ln(e^1)=1$, but also
