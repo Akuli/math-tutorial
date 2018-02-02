@@ -84,24 +84,29 @@ but this limit gives something very different:</p>
 $$\begin{align}\lim_{x\to\infty}(x-x) = \lim_{x\to\infty}0 = 0\end{align}$$<p>Or this:</p>
 
 $$\begin{align}\lim_{x\to\infty}(x-x^2) = \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty)  = \infty\cdot(-\infty) = -\infty^2 = -\infty\end{align}$$<p>As you can see, $\infty-\infty$ limits can output many different values. This
-is why $\infty-\infty$ is <b>undefined</b>, just like division by 0. Most
-programming languages know this too:</p>
+is why $\infty-\infty$ is <b>indeterminate</b>, and that fancy word means that the
+value of an $\infty-\infty$ limit can be anything.</p>
+
+<p>Most programming languages know this too:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>) <span style="color: #666666">-</span> <span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>)
 <span style="color: #888888">nan</span>
 </pre></div>
 <p>NaN is short for "Not a Number".</p>
 
-<p>Here are some examples of other undefined things.</p>
+<p>Here are some examples of other indeterminate things.</p>
 
 <h3 id="displaystyle-frac-infty-infty">$\displaystyle\frac\infty\infty$<a class="headerlink" href="#displaystyle-frac-infty-infty" title="Link to this title">¶</a></h3><div class="indent"><p>I'll <a href="basics.html#divide-top-and-bottom">divide top and bottom</a> by $x$ in
 these examples. If you try to do e.g. $\frac{\infty}{2\infty}$ you get
 $\frac \infty \infty$.</p>
 
-$$\begin{align}\lim_{x\to\infty} \frac{x}{2x} = \lim_{x\to\infty} \frac 1 2 = \frac 1 2\end{align}$$$$\begin{align}\lim_{x\to\infty} \frac{5x}{x} = \lim_{x\to\infty} \frac 5 1 = 5\end{align}$$</div><h3 id="displaystyle-frac-0-0">$\displaystyle\frac 0 0$<a class="headerlink" href="#displaystyle-frac-0-0" title="Link to this title">¶</a></h3><div class="indent"><p>Dividing something by a huge number gives a tiny number, so these limits
-are $0/0$ situations:</p>
+$$\begin{align}\lim_{x\to\infty} \frac{x}{2x} = \lim_{x\to\infty} \frac 1 2 = \frac 1 2\end{align}$$$$\begin{align}\lim_{x\to\infty} \frac{2x}{x} = \lim_{x\to\infty} \frac 2 1 = \frac 2 1 = 2\end{align}$$<p>Here's a fun way to think about this, taken from a comment on <a href="https://math.stackexchange.com/q/181304">this
+question</a>:</p>
 
-$$\begin{align}\lim_{x\to\infty} \frac{\ \frac{1}{2x}\ }{\ \frac{1}{x}\ }  = \lim_{x\to\infty} \frac{\ \frac{1}{2x} \cdot 2x\ }{\ \frac{1}{x} \cdot 2x\ }  = \lim_{x\to\infty} \frac{1}{2} = \frac 1 2\end{align}$$</div><h3 id="0-cdot-infty">$0 \cdot \infty$<a class="headerlink" href="#0-cdot-infty" title="Link to this title">¶</a></h3><div class="indent"><p>This one is interesting because 0 multiplied by anything finite is 0, and
+$$\begin{align}\frac{1+1+1+...}{2+2+2+...}=\frac{(1+1)+(1+1)+...}{2+2+2+2+...}=\frac{2+2+2+...}{2+2+2+...}\end{align}$$</div><h3 id="displaystyle-frac-0-0">$\displaystyle\frac 0 0$<a class="headerlink" href="#displaystyle-frac-0-0" title="Link to this title">¶</a></h3><div class="indent"><p>See <a href="https://www.youtube.com/watch?v=BRRolKTlF6Q">this video</a>.
+</p>
+
+</div><h3 id="0-cdot-infty">$0 \cdot \infty$<a class="headerlink" href="#0-cdot-infty" title="Link to this title">¶</a></h3><div class="indent"><p>This one is interesting because 0 multiplied by anything finite is 0, and
 infinity multiplied by anything nonzero is either $\infty$ or $-\infty$
 (see above).</p>
 
