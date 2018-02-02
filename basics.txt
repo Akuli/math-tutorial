@@ -75,18 +75,27 @@ rule; that doesn't work. This also applies to $\displaystyle\frac{a}{b-c}$.
 It's often best to look at which numbers are below a division line and which
 aren't. For example, if we have $\frac 1 2 \cdot 3 \cdot \frac 4 5$ we know
 that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
-lines but other numbers weren't. If something is below *two* division lines,
-then you can move it to top, like $\displaystyle\frac{a}{\ \frac b c\ } = \frac{ac}{b}$.
+lines but other numbers weren't.
 
-If both the top and bottom are being multiplied by something you can get rid of
-that multiplier. For example:
+(divide-top-and-bottom)
+Dividing the top and bottom by something does not change the value. For example:
 
-math: \frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0
+math: \frac 6 4 = \frac{6/2}{4/2} = \frac 3 2
+
+math: \frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}
+
+Of course, you can also do this backwards and multiply the top and bottom by
+something.
 
 (zerodivision)
 Remember that you cannot divide anything by zero. See
 [Numberphile's awesome zero video](https://youtu.be/BRRolKTlF6Q) if you're
 wondering why.
+
+If something is below *two* division lines, then you can move it to top:
+
+math:
+    \frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{\ \frac{bc}{c}\ } = \frac{ac}{b}
 
 (negative-mul-div)
 Negative numbers behave like this when multiplied and divided. Note how the two
@@ -141,8 +150,6 @@ math:
 
 math: (-x)^2 = x^2
 
-math: x^0 = 1
-
 math: \sqrt x = x^\frac 1 2
 
 math: \sqrt a \sqrt b = \sqrt{ab}
@@ -160,10 +167,6 @@ math:
 
 This also means that $x^2$ is never negative. See [the $y=x^2$
 graph](graphs.html#parabolas). This also explains the $\sqrt{x^2}=|x|$ rule.
-
-If you're wondering why anything to the power of 0 is 1, you can do e.g.
-$x^2 = x^{0+2} = x^0 x^2$. The equation should be true with any $x$, so
-$x^0$ must be 1 because $x^2 = 1 x^2$.
 
 (negative-sqrt)
 It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when

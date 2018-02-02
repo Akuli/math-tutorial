@@ -60,7 +60,7 @@ def get_sidebar_content(txtfile):
     thingy = functools.partial(_create_sidebar_thingy, txtfile)
     return ''.join([
         thingy("Interesting for programmers",
-               'numbertheory fib derivatives geometry-and-trig'),
+               'infinity numbertheory fib derivatives geometry-and-trig'),
         thingy("Kinda fun", 'integrals more-integrals'),
         thingy("Mathy", 'more-derivatives more-geometry-and-trig explog'),
         thingy("Mind-blowing", 'taylor eulerformula'),
