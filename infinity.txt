@@ -103,8 +103,10 @@ math:
     = \infty\cdot(-\infty) = -\infty^2 = -\infty
 
 As you can see, $\infty-\infty$ limits can output many different values. This
-is why $\infty-\infty$ is **undefined**, just like division by 0. Most
-programming languages know this too:
+is why $\infty-\infty$ is **indeterminate**, and that fancy word means that the
+value of an $\infty-\infty$ limit can be anything.
+
+Most programming languages know this too:
 
 code: python3
     >>> float('infinity') - float('infinity')
@@ -112,7 +114,7 @@ code: python3
 
 NaN is short for "Not a Number".
 
-Here are some examples of other undefined things.
+Here are some examples of other indeterminate things.
 
 ### $\displaystyle\frac\infty\infty$
 
@@ -123,18 +125,18 @@ indent:
 
     math: \lim_{x\to\infty} \frac{x}{2x} = \lim_{x\to\infty} \frac 1 2 = \frac 1 2
 
-    math: \lim_{x\to\infty} \frac{5x}{x} = \lim_{x\to\infty} \frac 5 1 = 5
+    math: \lim_{x\to\infty} \frac{2x}{x} = \lim_{x\to\infty} \frac 2 1 = \frac 2 1 = 2
+
+    Here's a fun way to think about this, taken from a comment on [this
+    question](https://math.stackexchange.com/q/181304):
+
+    math:
+        \frac{1+1+1+...}{2+2+2+...}=\frac{(1+1)+(1+1)+...}{2+2+2+2+...}=\frac{2+2+2+...}{2+2+2+...}
 
 ### $\displaystyle\frac 0 0$
 
 indent:
-    Dividing something by a huge number gives a tiny number, so these limits
-    are $0/0$ situations:
-
-    math:
-        \lim_{x\to\infty} \frac{\ \frac{1}{2x}\ }{\ \frac{1}{x}\ } \
-        = \lim_{x\to\infty} \frac{\ \frac{1}{2x} \cdot 2x\ }{\ \frac{1}{x} \cdot 2x\ } \
-        = \lim_{x\to\infty} \frac{1}{2} = \frac 1 2
+    See [this video](https://www.youtube.com/watch?v=BRRolKTlF6Q).
 
 ### $0 \cdot \infty$
 
