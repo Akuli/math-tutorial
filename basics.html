@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This tutorial assumes that you know most of these things. If you don't, that's
 not a problem at all and you can just <b>keep this page open</b> while you read
 other chapters.</p>
@@ -84,18 +84,22 @@ rule; that doesn't work. This also applies to $\displaystyle\frac{a}{b-c}$.</p>
 <p>It's often best to look at which numbers are below a division line and which
 aren't. For example, if we have $\frac 1 2 \cdot 3 \cdot \frac 4 5$ we know
 that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
-lines but other numbers weren't. If something is below <i>two</i> division lines,
-then you can move it to top, like $\displaystyle\frac{a}{\ \frac b c\ } = \frac{ac}{b}$.</p>
+lines but other numbers weren't.</p>
 
-<p>If both the top and bottom are being multiplied by something you can get rid of
-that multiplier. For example:</p>
+<p id="divide-top-and-bottom">Dividing the top and bottom by something does not change the value. For example:
+</p>
 
-$$\begin{align}\frac{x}{ax+bx} = \frac{1x}{(a+b)x} = \frac{1}{a+b}, x \ne 0\end{align}$$<p id="zerodivision">Remember that you cannot divide anything by zero. See
+$$\begin{align}\frac 6 4 = \frac{6/2}{4/2} = \frac 3 2\end{align}$$$$\begin{align}\frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}\end{align}$$<p>Of course, you can also do this backwards and multiply the top and bottom by
+something.</p>
+
+<p id="zerodivision">Remember that you cannot divide anything by zero. See
 <a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome zero video</a> if you're
 wondering why.
 </p>
 
-<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
+<p>If something is below <i>two</i> division lines, then you can move it to top:</p>
+
+$$\begin{align}\frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{\ \frac{bc}{c}\ } = \frac{ac}{b}\end{align}$$<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
 -'s cancel out.
 </p>
 
@@ -108,16 +112,12 @@ $|-3| = 3$.
 <h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p>$x^y$ is <code>x**y</code> or <code>pow(x, y)</code> and $\sqrt x$ is <code>sqrt(x)</code> in most
 programming languages.</p>
 
-$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}           = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}           = x^a x^b\end{align}$$$$\begin{align}(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}             \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}          = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}          = x^{ab}\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}x^0 = 1\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="square-negative-cancel">The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
+$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}           = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}           = x^a x^b\end{align}$$$$\begin{align}(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}             \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}          = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}          = x^{ab}\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="square-negative-cancel">The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
 clear:
 </p>
 
 $$\begin{align}(-2)^2 = (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2\end{align}$$<p>This also means that $x^2$ is never negative. See <a href="graphs.html#parabolas">the $y=x^2$
 graph</a>. This also explains the $\sqrt{x^2}=|x|$ rule.</p>
-
-<p>If you're wondering why anything to the power of 0 is 1, you can do e.g.
-$x^2 = x^{0+2} = x^0 x^2$. The equation should be true with any $x$, so
-$x^0$ must be 1 because $x^2 = 1 x^2$.</p>
 
 <p id="negative-sqrt">It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
