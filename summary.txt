@@ -20,6 +20,31 @@ math:
     (a-b)^2 &= a^2-2ab+b^2
     a^2-b^2 &= (a-b)(a+b)
 
+## Infinity and Indeterminate Forms
+
+Here $x$ can be any finite number.
+
+math:
+    \frac x \infty &= \frac{x}{-\infty} = 0
+    \infty+x &= \infty
+    \infty\cdot x &= \left\{\begin{matrix} \
+        \infty &\text{ if } x > 0
+        -\infty &\text{ if }x < 0
+    \end{matrix}\right.
+    \infty^x &= \left\{\begin{matrix} \
+        \infty &\text{ if } x > 0
+        0 &\text{ if } x < 0
+    \end{matrix}\right.
+    x^\infty &= \left\{\begin{matrix} \
+        \infty &\text{ if } x > 1
+        0 &\text{ if } 0 \le x < 1
+    \end{matrix}\right.
+
+(indeterminate)
+Common indeterminate forms: $\displaystyle\frac 0 0$,
+$\displaystyle\frac \infty \infty$, $\infty-\infty$, $0\cdot\infty$,
+$1^\infty$, $0^0$, $\infty^0$
+
 ## Common Areas and Volumes
 
 You may need to use [integrals](#integrals) if you want to calculate an
@@ -159,7 +184,7 @@ $\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
 calculations so the "smallness" is explicit and well-defined. The $\lim$
 thing means the limit as $\Delta x$ goes to 0, e.g.
 $\displaystyle\lim_{a\to0} \textstyle\frac{2a}{a} = 2$ even though
-$\frac{2 \cdot 0}{0} = \frac{0}{0}$ is not defined.
+$\frac{2 \cdot 0}{0} = \frac{0}{0}$ is [indeterminate](#indeterminate).
 
 Definition of derivative:
 

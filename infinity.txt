@@ -2,17 +2,19 @@
 
 This tutorial uses the symbol $\infty$ in a few places, and it's not at all
 obvious how it behaves. It is after all bigger than any other number, and
-that's kind of weird. Some mathematicians say that infinity is not a number at
-all, and that's correct in a way because infinity behaves very differently than
-finite numbers. This chapter contains many examples of that.
+that's kind of weird. Mathematicians say that infinity is not a number at all,
+and that's correct in a way because it cannot always be treated like a finite
+number. This chapter contains many examples of that.
 
 ## Basic Calculations
 
-graybox:
-    Experienced mathematicians probably want me to mention that I'm talking
-    about [the extended real number
-    line](https://en.wikipedia.org/wiki/Extended_real_number_line). There, I
-    have mentioned it.
+Some math websites and tutorials discard things like $\infty+5$ as nonsense,
+but I'll instead show you that it is possible to define some $\infty$
+calculations if we carefully avoid defining something that breaks stuff.
+Experienced mathematicians probably want me to mention that I'm talking about
+[the extended real number
+line](https://en.wikipedia.org/wiki/Extended_real_number_line). There, I have
+mentioned it.
 
 math:
     \infty + 5 = \infty
@@ -24,97 +26,152 @@ and you write more code, you still have $\infty$ lines of code...
 math:
     \infty - 5 = \infty
 
-...or if you delete some code, you still have lots of code! In general,
+...or if you delete 5 lines of code, you still have lots of code! In general,
 $\infty + x = \infty$ for any finite $x$, even if $x$ is negative.
 
-Here are more calculations:
-
-math:
-    \infty \cdot 5 &= \infty
-    \frac \infty 5 &= \infty \cdot \frac 1 5 = \infty
-    \infty \cdot (-5) &= -(\infty \cdot 5) = -\infty
-    \frac{\infty}{-5} &= -\frac \infty 5 = -\infty
-
-In general, if $x$ is finite, $\infty \cdot x = \infty$ if $x > 0$ and
-$\infty \cdot x = -\infty$ if $x < 0$. We'll talk about $\infty \cdot 0$ in a
-moment.
-
-[Powers](basics.html#powers-and-square-root) of infinity behave like this:
-
-math:
-    \infty^4 = \infty \cdot \infty \cdot \infty \cdot \infty = \infty
-
-This works with any positive exponent, like $\infty^{1/2} = \infty$ or even
-$\infty^\infty = \infty$. [Later](explog.html#exponent-functions) we'll learn
-that things like $x^{-4}$ can be defined as $\frac{1}{x^4}$, and that's why
-$\infty^x = 0$ for a negative $x$.
-
-Calculations with infinity can also yield a finite value.
-
-math:
-    \frac 1 \infty = 0
-
-Or in general, for any finite $x$:
-
-math:
-    \frac x \infty = \frac 1 \infty \cdot x = 0 \cdot x = 0
-
-## Limits with infinity
-
-Let's say you want to know what happens to $x^2 - x$ if $x$ gets really big.
-Sometimes you can just plug in $x=\infty$ and you'll find out. Let's see if
-that works in our case.
-
-math:
-    \infty^2 - \infty = \infty - \infty
-
-So, what is $\infty - \infty$? Maybe it's 0? Maybe it's $\infty$ or $-\infty$?
-If we first rewrite things slightly and then plug in $x=\infty$ we get
-something that makes more sense:
-
-math:
-    & x^2-x = (x-1)x
-    & (\infty-1) \cdot \infty = \infty \cdot \infty = \infty
-
-So if $x$ gets very big, $x^2 - x$ will also get very big. A mathy way to say
-this is that the **limit** as $x$ goes to $\infty$ of $x^2 - x$ is $\infty$.
-
-math:
-    \lim_{x\to\infty} (x^2-x) = \lim_{x\to\infty} x(x-1) \
-    = (\infty-1) \cdot \infty = \infty
-
-Here $x\to\infty$ means "$x$ goes to infinity", or "$x$ approaches infinity" if
-you like fancy words. It does **not** mean $x=\infty$, it means that we want to
-know what happens if $x$ is very big. Practically this means that we can first
-treat $x$ as a finite number and then plug in $\infty$.
-
-## How about $\infty-\infty$ or $\infty/\infty$?
-
-Based on the above stuff, you might be thinking that $\infty-\infty=\infty$,
-but this limit gives something very different:
-
-math:
-    \lim_{x\to\infty}(x-x) = \lim_{x\to\infty}0 = 0
-
-Or this:
-
-math:
-    \lim_{x\to\infty}(x-x^2) = \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty) \
-    = \infty\cdot(-\infty) = -\infty^2 = -\infty
-
-As you can see, $\infty-\infty$ limits can output many different values. This
-is why $\infty-\infty$ is **indeterminate**, and that fancy word means that the
-value of an $\infty-\infty$ limit can be anything.
-
-Most programming languages know this too:
+Let's think about this a bit. If we have $\infty+3 = \infty$ and
+$\infty+5 = \infty$, we also have $\infty+3 = \infty+5$ and it seems like
+$3 = 5$. That's obviously not correct, and the problem is that if we want to
+get from $\infty+3 = \infty+5$ to $3=5$ we need to substract $\infty$ on both
+sides. That gives us $\infty-\infty$ on both sides, and $\infty-\infty$ is
+**undefined**, just like $0/0$.
 
 code: python3
-    >>> float('infinity') - float('infinity')
+    >>> float('infinity') - float('infinity')   # nan is short for "not a number"
     nan
 
-NaN is short for "Not a Number".
+So, if you used to have $\infty$ lines of code and you tell me that you deleted
+$\infty$ lines of it, I have no idea how much code you have now; it depends on
+*how* you deleted $\infty$ lines of code. If you deleted the whole repository
+you have no code, but if you spent infinitely much time deleting the lines one
+at a time, deleting them did nothing because $\infty-1=\infty$. In both cases,
+you deleted $\infty$ lines of code.
 
-Here are some examples of other indeterminate things.
+Here are more examples of things that we **can** do. Try them out with your
+favorite programming language.
+
+math:
+    \frac 3 \infty &= 0
+    \infty \cdot 3 &= \infty+\infty+\infty = \infty
+    \frac \infty 3 &= \infty \cdot \frac 1 3 = \infty
+    \infty \cdot (-3) &= -(\infty \cdot 3) = -\infty
+    \frac{\infty}{-3} &= -\frac \infty 3 = -\infty
+    \infty^3 &= \infty \cdot \infty \cdot \infty = \infty
+    2^\infty &= 2 \cdot 2 \cdot 2 \cdot ... = \infty
+    \left(\frac 1 2\right)^\infty &= \frac 1 2 \cdot \frac 1 2 \cdot \frac 1 2 \cdot...=0
+
+The summary page contains [a concise list of
+rules](summary.html#infinity-and-indeterminate-forms).
+
+## Limits
+
+What if we want to do something kind of like $\infty-\infty$, but in a
+controlled way instead of saying that it's undefined? For example, what happens
+to $x-x^2$ as $x$ gets really big? Maybe we can just plug in $\infty$, the weird
+thing that is... well, really big:
+
+math:
+    \infty-\infty^2=\infty-\infty
+
+That didn't work. But what if we just plug in some big numbers?
+
+code: python3
+    >>> def f(x):
+    ...     return x - x**2
+    ...
+    >>> f(10)
+    -90
+    >>> f(100)
+    -9900
+    >>> f(1000)
+    -999000
+    >>> f(1000000000)
+    -999999999000000000
+    >>> f(1000000000000000000)
+    -999999999999999999000000000000000000
+
+The values get closer and closer to $-\infty$. This is called taking the
+**limit**.
+
+math:
+    \lim_{x\to\infty}(x-x^2) = -\infty
+
+The $x\to\infty$ part means that $x$ **approaches** $\infty$. It means that $x$
+gets bigger and bigger, but it never goes all the way to $\infty$. We don't
+really care about what $\infty-\infty^2$ is, we just want to know what happens
+to $x-x^2$ with a huge $x$.
+
+However, sometimes we can calculate limits by plugging in the value:
+
+math:
+    \lim_{x\to\infty}x^2 = \infty^2 = \infty
+
+Even if we can't, it doesn't mean that we need to plug in big numbers and guess
+what the limit might be based on them. It's often possible to do something to
+get rid of $\infty-\infty$:
+
+math:
+    \lim_{x\to\infty}(x-x^2) &= \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty)
+    &= \infty\cdot(-\infty) = -(\infty\cdot\infty) = -\infty
+
+Note that $x-x^2=x(1-x)$ is valid for a finite $x$, but
+$\infty-\infty^2=\infty(1-\infty)$ is wrong because $\infty-\infty^2$ is not
+defined to begin with. The $x$ was finite because we're talking about a limit,
+and it doesn't mean just plugging in $x=\infty$.
+
+If you see something like $x\to2^+$, it means that $x$ goes to $2$ from the
+positive side, and we can plug in values like $2.001$ or $2.0000000001$ to
+guess what the limit might be. Similarly, $x\to2^-$ means approaching with
+numbers like $1.9999999$.
+
+A plain $x\to2$ means that we must approach 2 from **both sides** and get the
+same value, but as a special case, $x\to\infty$ and $x\to-\infty$ mean
+approaching from one side only because it's not possible to approach from both
+sides.
+
+floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
+    Proof:
+
+    math:
+        & \ (a-b)(a+b)
+        =&\ (a-b)a+(a-b)b
+        =&\ aa-ba+ab-bb
+        =&\ a^2 - b^2
+
+    Spoiler: plug in $a=x$ and $b=1$.
+
+&nbsp;
+
+graybox: Exercise
+    Can you calculate these limits by hand? Check the answer by plugging in
+    numbers with your favorite programming language or calculator.
+
+    math: \lim_{x\to\infty}(x^5-x^4) \qquad \lim_{x\to\infty}(x^4-x^5)
+
+    math:
+        \lim_{x\to1^+}\frac{x^2-1}{x-1} \qquad \
+        \lim_{x\to1^-}\frac{x^2-1}{x-1} \qquad \
+        \lim_{x\to1}\frac{x^2-1}{x-1}
+
+## Indeterminate Forms
+
+As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
+couldn't just plug in the value that is being approached. We need to do more
+work to get rid of the $\infty-\infty$ or $\frac 0 0$ situation. In mathy
+words, $\infty-\infty$ and $\frac 0 0$ are **indeterminate forms**.
+
+There are many other indeterminate forms too. Here's a concise list:
+
+math: \infty-\infty,\ \frac \infty \infty,\ \frac 0 0,\ 0\cdot\infty,\ 1^\infty,\ 0^0,\ \infty^0
+
+Let's look at a few examples of these situations in limits giving different
+values.
+
+### $\infty-\infty$
+
+indent:
+    You have already seen many $\infty-\infty$ limits with different values in
+    this chapter.
 
 ### $\displaystyle\frac\infty\infty$
 
@@ -136,7 +193,13 @@ indent:
 ### $\displaystyle\frac 0 0$
 
 indent:
-    See [this video](https://www.youtube.com/watch?v=BRRolKTlF6Q).
+    Plugging in $x=0$ gives $\frac 0 0$ in these examples.
+
+    math: \lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2
+
+    math: \lim_{x\to0}\frac{x}{2x} = \lim_{x\to0} \frac 1 2 = \frac 1 2
+
+    See also [this video](https://www.youtube.com/watch?v=BRRolKTlF6Q).
 
 ### $0 \cdot \infty$
 
@@ -149,12 +212,12 @@ indent:
         \lim_{x\to\infty}(0 \cdot x) = 0
 
     math:
-        \lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0}\
+        \lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0^+}\
         \cdot \overbrace{x}^{\to\infty}\ \biggr) \
         = \lim_{x\to\infty} \frac x x = \lim_{x\to\infty} 1 = 1
 
     math:
-        \lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0} \
+        \lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0^+} \
         \cdot \overbrace{x^2}^{\to\infty}\  \biggr)\
         = \lim_{x\to\infty} \frac{x^2}{x} = \lim_{x\to\infty} \frac x 1 = \frac \infty 1 = \infty
 
@@ -174,10 +237,9 @@ indent:
     math:
         e = \lim_{n\to\infty} \left(1+\frac 1 n\right)^n = 2.718281828459...
 
-    Mathematicians call this number $e$. The inside of the limit goes to 1
-    because $\displaystyle\lim_{n\to\infty}\textstyle(1+\frac 1 n)=1+0=1$, but
-    the whole thing does not go to 1. Just try this with your favorite
-    programming language or calculator:
+    This number is called $e$. The inside of the limit goes to 1 because
+    $\displaystyle\lim_{n\to\infty}\textstyle(1+\frac 1 n)=1+0=1$, but the
+    whole thing does not go to 1.
 
     code: python3
         >>> n = 10000000000
@@ -199,12 +261,25 @@ indent:
         = \lim_{n\to\infty} \Biggl(\left(1+\frac 1 n\right)^n\Biggr)^n \
         = e^\infty = \infty
 
+    Interestingly, Python doesn't know this...
+
+    code: python3
+        >>> 1**float('infinity')     # python does this WRONG
+        1.0
+
+    ...but JavaScript does the right thing:
+
+    code: javascript
+        > Math.pow(1, Infinity)         // NaN is the correct answer!
+        NaN
+
 ### $0^0$
 
 indent:
-    Let's start by thinking about what $x^0$ is with a finite $x$. We know that
-    $x^{a+b}=x^ax^b$ (see [the basics page](basics.html#powers-and-square-root)),
-    so we can plug in e.g. $a=1$ and $b=0$:
+    Let's start by thinking about what $x^0$ means for a finite $x$. We know
+    that $x^{a+b}=x^ax^b$ (see [the basics
+    page](basics.html#powers-and-square-root)), so we can plug in e.g. $a=1$
+    and $b=0$:
 
     math:
         x^{1+0} &= x^1x^0
@@ -214,33 +289,65 @@ indent:
     to get $1=x^0$. So here's our conclusion: $x^0=1$ for any finite $x$ except
     $x=0$ and we know nothing about $0^0$ yet.
 
-    On the other hand, $0^x=0$ with any finite $x$, so we get these limits:
+    On the other hand, multiplying 0 by itself many times is still 0, so $0^x$
+    is $0$ with any positive $x$. We get these limits:
 
-    math:
-        & \lim_{x\to0} 0^x = 0
-        & \lim_{x\to0} x^0 = 1
+    math: \lim_{x\to0^+} 0^x = 0
+
+    math: \lim_{x\to0} x^0 = 1
+
+    Most programming languages do $0^0 = 1$ because it's handy in some cases.
 
 ### $\infty^0$
 
 indent:
-    We just learned that $x^0=1$ with any finite $x$...
+    We just learned that $x^0=1$ with any finite $x$ except $x=0$.
 
-    math:
-        \lim_{x\to\infty}x^0=1
+    math: \lim_{x\to\infty}x^0=1
 
-    ...but we also have $\infty^x=\infty$ for any positive $x$...
+    But we also have $\infty^x=\infty$ for any positive $x$:
 
-    math:
-        \lim_{x\to0^+}\infty^x = \infty
+    math: \lim_{x\to0^+}\infty^x = \infty
 
-    ...and $\infty^x=0$ for a negative $x$:
+## Infinite Fractions and Stuff
 
-    math:
-        \lim_{x\to0^-}\infty^x = 0
+This stuff doesn't have anything to do with other things in this chapter, but I
+added it here because it's fun.
 
-    Here $x\to0^+$ means that $x$ goes to 0 from the positive side; that is, we
-    want to know what happens if $x$ is something like $0.00000001$. Similarly,
-    $x\to0^-$ means approaching from the negative side. A plain $x\to0$ means
-    that approaching from either side gives the same value. As a special case,
-    $x\to\infty$ means $x\to\infty^-$ because it's not possible to approach
-    $\infty$ from the positive side.
+math:
+    1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}
+
+It's an infinite fraction, it never ends! But we can still find its value, and
+in fact, it's quite simple: we'll say that the value is $x$ and figure things
+out from there.
+
+math:
+    x &= 1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}
+    &= 1+\frac{1}{1+\underbrace{1+\frac{1}{1+1+\frac{1}{1+1+...}}}_{\text{this part is }x}}
+
+floatingbox: Handy thing: $(a-b)(a+b)=a^2-b^2$
+    This was proved earlier in this chapter. Now we need to plug in $a=x$ and
+    $b=1$.
+
+This is correct, the infinite fraction contains itself! Now we get an equation
+that we can solve easily:
+
+math:
+    x &= 1 + \frac{1}{1+x}
+    x-1 &= \frac{1}{x+1}
+    (x+1)(x-1) &= 1
+    x^2-1^2 &= 1
+    x^2 &= 2
+    x=\sqrt2 \text{ or } & x=-\sqrt2
+
+The infinite fraction consists of adding and dividing positive numbers, so it
+must be positive.
+
+math:
+    1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}=\sqrt2=1.41421...
+
+graybox: Exercise
+    There are three $x$ values that satisfy $x + x^2 = x^3$. One of them is
+    zero, another is negative and the third one is [the golden
+    ratio](https://en.wikipedia.org/wiki/Golden_ratio). Use these facts to
+    prove that $\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+...}}}}$ is the golden ratio.
