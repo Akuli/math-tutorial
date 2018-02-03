@@ -37,7 +37,24 @@ here and there in this tutorial.</p>
 
 $$\begin{align}(a+b)^2 &= a^2+2ab+b^2 \\
 (a-b)^2 &= a^2-2ab+b^2 \\
-a^2-b^2 &= (a-b)(a+b)\end{align}$$<h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
+a^2-b^2 &= (a-b)(a+b)\end{align}$$<h2 id="infinity-and-indeterminate-forms">Infinity and Indeterminate Forms<a class="headerlink" href="#infinity-and-indeterminate-forms" title="Link to this title">¶</a></h2><p>Here $x$ can be any finite number.</p>
+
+$$\begin{align}\frac x \infty &= \frac{x}{-\infty} = 0 \\
+\infty+x &= \infty \\
+\infty\cdot x &= \left\{\begin{matrix}      \infty &\text{ if } x > 0 \\
+    -\infty &\text{ if }x < 0 \\
+\end{matrix}\right. \\
+\infty^x &= \left\{\begin{matrix}      \infty &\text{ if } x > 0 \\
+    0 &\text{ if } x < 0 \\
+\end{matrix}\right. \\
+x^\infty &= \left\{\begin{matrix}      \infty &\text{ if } x > 1 \\
+    0 &\text{ if } 0 \le x < 1 \\
+\end{matrix}\right.\end{align}$$<p id="indeterminate">Common indeterminate forms: $\displaystyle\frac 0 0$,
+$\displaystyle\frac \infty \infty$, $\infty-\infty$, $0\cdot\infty$,
+$1^\infty$, $0^0$, $\infty^0$
+</p>
+
+<h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
 area that is not listed here.</p>
 
 <img width="142" height="102" class="asymptote" src="asymptote/6a154f536537db2fc78182f5e33f472c.svg" style="float:left;" /><img width="227" height="172" class="asymptote" src="asymptote/e95699102aeb509875e4810f9e606b35.svg" style="float:left;" /><img width="198" height="198" class="asymptote" src="asymptote/6bb00a798325e82c9a0d3f619db881d5.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
@@ -64,7 +81,7 @@ $\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
 calculations so the "smallness" is explicit and well-defined. The $\lim$
 thing means the limit as $\Delta x$ goes to 0, e.g.
 $\displaystyle\lim_{a\to0} \textstyle\frac{2a}{a} = 2$ even though
-$\frac{2 \cdot 0}{0} = \frac{0}{0}$ is not defined.</p>
+$\frac{2 \cdot 0}{0} = \frac{0}{0}$ is <a href="#indeterminate">indeterminate</a>.</p>
 
 <p>Definition of derivative:</p>
 

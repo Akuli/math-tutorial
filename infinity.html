@@ -24,103 +24,159 @@
 <div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><b>Infinity</b></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="infinity">Infinity<a class="headerlink" href="#infinity" title="Link to this title">¶</a></h1><p>This tutorial uses the symbol $\infty$ in a few places, and it's not at all
 obvious how it behaves. It is after all bigger than any other number, and
-that's kind of weird. Some mathematicians say that infinity is not a number at
-all, and that's correct in a way because infinity behaves very differently than
-finite numbers. This chapter contains many examples of that.</p>
+that's kind of weird. Mathematicians say that infinity is not a number at all,
+and that's correct in a way because it cannot always be treated like a finite
+number. This chapter contains many examples of that.</p>
 
-<h2 id="basic-calculations">Basic Calculations<a class="headerlink" href="#basic-calculations" title="Link to this title">¶</a></h2><div class="box graybox"><p>Experienced mathematicians probably want me to mention that I'm talking
-about <a href="https://en.wikipedia.org/wiki/Extended_real_number_line">the extended real number
-line</a>. There, I
-have mentioned it.
-</p>
+<h2 id="basic-calculations">Basic Calculations<a class="headerlink" href="#basic-calculations" title="Link to this title">¶</a></h2><p>Some math websites and tutorials discard things like $\infty+5$ as nonsense,
+but I'll instead show you that it is possible to define some $\infty$
+calculations if we carefully avoid defining something that breaks stuff.
+Experienced mathematicians probably want me to mention that I'm talking about
+<a href="https://en.wikipedia.org/wiki/Extended_real_number_line">the extended real number
+line</a>. There, I have
+mentioned it.</p>
 
-</div>$$\begin{align}\infty + 5 = \infty\end{align}$$<p>Yes, that's correct. If you add any finite number to $\infty$, you'll just get
+$$\begin{align}\infty + 5 = \infty\end{align}$$<p>Yes, that's correct. If you add any finite number to $\infty$, you'll just get
 $\infty$. You can think about it like this: if you have $\infty$ lines of code
 and you write more code, you still have $\infty$ lines of code...</p>
 
-$$\begin{align}\infty - 5 = \infty\end{align}$$<p>...or if you delete some code, you still have lots of code! In general,
+$$\begin{align}\infty - 5 = \infty\end{align}$$<p>...or if you delete 5 lines of code, you still have lots of code! In general,
 $\infty + x = \infty$ for any finite $x$, even if $x$ is negative.</p>
 
-<p>Here are more calculations:</p>
+<p>Let's think about this a bit. If we have $\infty+3 = \infty$ and
+$\infty+5 = \infty$, we also have $\infty+3 = \infty+5$ and it seems like
+$3 = 5$. That's obviously not correct, and the problem is that if we want to
+get from $\infty+3 = \infty+5$ to $3=5$ we need to substract $\infty$ on both
+sides. That gives us $\infty-\infty$ on both sides, and $\infty-\infty$ is
+<b>undefined</b>, just like $0/0$.</p>
 
-$$\begin{align}\infty \cdot 5 &= \infty \\
-\frac \infty 5 &= \infty \cdot \frac 1 5 = \infty \\
-\infty \cdot (-5) &= -(\infty \cdot 5) = -\infty \\
-\frac{\infty}{-5} &= -\frac \infty 5 = -\infty\end{align}$$<p>In general, if $x$ is finite, $\infty \cdot x = \infty$ if $x > 0$ and
-$\infty \cdot x = -\infty$ if $x < 0$. We'll talk about $\infty \cdot 0$ in a
-moment.</p>
-
-<p><a href="basics.html#powers-and-square-root">Powers</a> of infinity behave like this:</p>
-
-$$\begin{align}\infty^4 = \infty \cdot \infty \cdot \infty \cdot \infty = \infty\end{align}$$<p>This works with any positive exponent, like $\infty^{1/2} = \infty$ or even
-$\infty^\infty = \infty$. <a href="explog.html#exponent-functions">Later</a> we'll learn
-that things like $x^{-4}$ can be defined as $\frac{1}{x^4}$, and that's why
-$\infty^x = 0$ for a negative $x$.</p>
-
-<p>Calculations with infinity can also yield a finite value.</p>
-
-$$\begin{align}\frac 1 \infty = 0\end{align}$$<p>Or in general, for any finite $x$:</p>
-
-$$\begin{align}\frac x \infty = \frac 1 \infty \cdot x = 0 \cdot x = 0\end{align}$$<h2 id="limits-with-infinity">Limits with infinity<a class="headerlink" href="#limits-with-infinity" title="Link to this title">¶</a></h2><p>Let's say you want to know what happens to $x^2 - x$ if $x$ gets really big.
-Sometimes you can just plug in $x=\infty$ and you'll find out. Let's see if
-that works in our case.</p>
-
-$$\begin{align}\infty^2 - \infty = \infty - \infty\end{align}$$<p>So, what is $\infty - \infty$? Maybe it's 0? Maybe it's $\infty$ or $-\infty$?
-If we first rewrite things slightly and then plug in $x=\infty$ we get
-something that makes more sense:</p>
-
-$$\begin{align}& x^2-x = (x-1)x \\
-& (\infty-1) \cdot \infty = \infty \cdot \infty = \infty\end{align}$$<p>So if $x$ gets very big, $x^2 - x$ will also get very big. A mathy way to say
-this is that the <b>limit</b> as $x$ goes to $\infty$ of $x^2 - x$ is $\infty$.</p>
-
-$$\begin{align}\lim_{x\to\infty} (x^2-x) = \lim_{x\to\infty} x(x-1)  = (\infty-1) \cdot \infty = \infty\end{align}$$<p>Here $x\to\infty$ means "$x$ goes to infinity", or "$x$ approaches infinity" if
-you like fancy words. It does <b>not</b> mean $x=\infty$, it means that we want to
-know what happens if $x$ is very big. Practically this means that we can first
-treat $x$ as a finite number and then plug in $\infty$.</p>
-
-<h2 id="how-about-infty-infty-or-infty-infty">How about $\infty-\infty$ or $\infty/\infty$?<a class="headerlink" href="#how-about-infty-infty-or-infty-infty" title="Link to this title">¶</a></h2><p>Based on the above stuff, you might be thinking that $\infty-\infty=\infty$,
-but this limit gives something very different:</p>
-
-$$\begin{align}\lim_{x\to\infty}(x-x) = \lim_{x\to\infty}0 = 0\end{align}$$<p>Or this:</p>
-
-$$\begin{align}\lim_{x\to\infty}(x-x^2) = \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty)  = \infty\cdot(-\infty) = -\infty^2 = -\infty\end{align}$$<p>As you can see, $\infty-\infty$ limits can output many different values. This
-is why $\infty-\infty$ is <b>indeterminate</b>, and that fancy word means that the
-value of an $\infty-\infty$ limit can be anything.</p>
-
-<p>Most programming languages know this too:</p>
-
-<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>) <span style="color: #666666">-</span> <span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>)
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>) <span style="color: #666666">-</span> <span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>)   <span style="color: #60a0b0; font-style: italic"># nan is short for &quot;not a number&quot;</span>
 <span style="color: #888888">nan</span>
 </pre></div>
-<p>NaN is short for "Not a Number".</p>
+<p>So, if you used to have $\infty$ lines of code and you tell me that you deleted
+$\infty$ lines of it, I have no idea how much code you have now; it depends on
+<i>how</i> you deleted $\infty$ lines of code. If you deleted the whole repository
+you have no code, but if you spent infinitely much time deleting the lines one
+at a time, deleting them did nothing because $\infty-1=\infty$. In both cases,
+you deleted $\infty$ lines of code.</p>
 
-<p>Here are some examples of other indeterminate things.</p>
+<p>Here are more examples of things that we <b>can</b> do. Try them out with your
+favorite programming language.</p>
 
-<h3 id="displaystyle-frac-infty-infty">$\displaystyle\frac\infty\infty$<a class="headerlink" href="#displaystyle-frac-infty-infty" title="Link to this title">¶</a></h3><div class="indent"><p>I'll <a href="basics.html#divide-top-and-bottom">divide top and bottom</a> by $x$ in
+$$\begin{align}\frac 3 \infty &= 0 \\
+\infty \cdot 3 &= \infty+\infty+\infty = \infty \\
+\frac \infty 3 &= \infty \cdot \frac 1 3 = \infty \\
+\infty \cdot (-3) &= -(\infty \cdot 3) = -\infty \\
+\frac{\infty}{-3} &= -\frac \infty 3 = -\infty \\
+\infty^3 &= \infty \cdot \infty \cdot \infty = \infty \\
+2^\infty &= 2 \cdot 2 \cdot 2 \cdot ... = \infty \\
+\left(\frac 1 2\right)^\infty &= \frac 1 2 \cdot \frac 1 2 \cdot \frac 1 2 \cdot...=0\end{align}$$<p>The summary page contains <a href="summary.html#infinity-and-indeterminate-forms">a concise list of
+rules</a>.</p>
+
+<h2 id="limits">Limits<a class="headerlink" href="#limits" title="Link to this title">¶</a></h2><p>What if we want to do something kind of like $\infty-\infty$, but in a
+controlled way instead of saying that it's undefined? For example, what happens
+to $x-x^2$ as $x$ gets really big? Maybe we can just plug in $\infty$, the weird
+thing that is... well, really big:</p>
+
+$$\begin{align}\infty-\infty^2=\infty-\infty\end{align}$$<p>That didn't work. But what if we just plug in some big numbers?</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">f</span>(x):
+<span style="color: #c65d09; font-weight: bold">... </span>    <span style="color: #007020; font-weight: bold">return</span> x <span style="color: #666666">-</span> x<span style="color: #666666">**</span><span style="color: #40a070">2</span>
+<span style="color: #c65d09; font-weight: bold">...</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">10</span>)
+<span style="color: #888888">-90</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">100</span>)
+<span style="color: #888888">-9900</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">1000</span>)
+<span style="color: #888888">-999000</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">1000000000</span>)
+<span style="color: #888888">-999999999000000000</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">1000000000000000000</span>)
+<span style="color: #888888">-999999999999999999000000000000000000</span>
+</pre></div>
+<p>The values get closer and closer to $-\infty$. This is called taking the
+<b>limit</b>.</p>
+
+$$\begin{align}\lim_{x\to\infty}(x-x^2) = -\infty\end{align}$$<p>The $x\to\infty$ part means that $x$ <b>approaches</b> $\infty$. It means that $x$
+gets bigger and bigger, but it never goes all the way to $\infty$. We don't
+really care about what $\infty-\infty^2$ is, we just want to know what happens
+to $x-x^2$ with a huge $x$.</p>
+
+<p>However, sometimes we can calculate limits by plugging in the value:</p>
+
+$$\begin{align}\lim_{x\to\infty}x^2 = \infty^2 = \infty\end{align}$$<p>Even if we can't, it doesn't mean that we need to plug in big numbers and guess
+what the limit might be based on them. It's often possible to do something to
+get rid of $\infty-\infty$:</p>
+
+$$\begin{align}\lim_{x\to\infty}(x-x^2) &= \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty) \\
+&= \infty\cdot(-\infty) = -(\infty\cdot\infty) = -\infty\end{align}$$<p>Note that $x-x^2=x(1-x)$ is valid for a finite $x$, but
+$\infty-\infty^2=\infty(1-\infty)$ is wrong because $\infty-\infty^2$ is not
+defined to begin with. The $x$ was finite because we're talking about a limit,
+and it doesn't mean just plugging in $x=\infty$.</p>
+
+<p>If you see something like $x\to2^+$, it means that $x$ goes to $2$ from the
+positive side, and we can plug in values like $2.001$ or $2.0000000001$ to
+guess what the limit might be. Similarly, $x\to2^-$ means approaching with
+numbers like $1.9999999$.</p>
+
+<p>A plain $x\to2$ means that we must approach 2 from <b>both sides</b> and get the
+same value, but as a special case, $x\to\infty$ and $x\to-\infty$ mean
+approaching from one side only because it's not possible to approach from both
+sides.</p>
+
+<div class="floatingbox"><h2> Handy thing: $a^2-b^2=(a-b)(a+b)$</h2><p>Proof:</p>
+
+$$\begin{align}& \ (a-b)(a+b) \\
+=&\ (a-b)a+(a-b)b \\
+=&\ aa-ba+ab-bb \\
+=&\ a^2 - b^2\end{align}$$<p>Spoiler: plug in $a=x$ and $b=1$.
+</p>
+
+</div><p>&nbsp;</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Can you calculate these limits by hand? Check the answer by plugging in
+numbers with your favorite programming language or calculator.</p>
+
+$$\begin{align}\lim_{x\to\infty}(x^5-x^4) \qquad \lim_{x\to\infty}(x^4-x^5)\end{align}$$$$\begin{align}\lim_{x\to1^+}\frac{x^2-1}{x-1} \qquad  \lim_{x\to1^-}\frac{x^2-1}{x-1} \qquad  \lim_{x\to1}\frac{x^2-1}{x-1}\end{align}$$</div><h2 id="indeterminate-forms">Indeterminate Forms<a class="headerlink" href="#indeterminate-forms" title="Link to this title">¶</a></h2><p>As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
+couldn't just plug in the value that is being approached. We need to do more
+work to get rid of the $\infty-\infty$ or $\frac 0 0$ situation. In mathy
+words, $\infty-\infty$ and $\frac 0 0$ are <b>indeterminate forms</b>.</p>
+
+<p>There are many other indeterminate forms too. Here's a concise list:</p>
+
+$$\begin{align}\infty-\infty,\ \frac \infty \infty,\ \frac 0 0,\ 0\cdot\infty,\ 1^\infty,\ 0^0,\ \infty^0\end{align}$$<p>Let's look at a few examples of these situations in limits giving different
+values.</p>
+
+<h3 id="infty-infty">$\infty-\infty$<a class="headerlink" href="#infty-infty" title="Link to this title">¶</a></h3><div class="indent"><p>You have already seen many $\infty-\infty$ limits with different values in
+this chapter.
+</p>
+
+</div><h3 id="displaystyle-frac-infty-infty">$\displaystyle\frac\infty\infty$<a class="headerlink" href="#displaystyle-frac-infty-infty" title="Link to this title">¶</a></h3><div class="indent"><p>I'll <a href="basics.html#divide-top-and-bottom">divide top and bottom</a> by $x$ in
 these examples. If you try to do e.g. $\frac{\infty}{2\infty}$ you get
 $\frac \infty \infty$.</p>
 
 $$\begin{align}\lim_{x\to\infty} \frac{x}{2x} = \lim_{x\to\infty} \frac 1 2 = \frac 1 2\end{align}$$$$\begin{align}\lim_{x\to\infty} \frac{2x}{x} = \lim_{x\to\infty} \frac 2 1 = \frac 2 1 = 2\end{align}$$<p>Here's a fun way to think about this, taken from a comment on <a href="https://math.stackexchange.com/q/181304">this
 question</a>:</p>
 
-$$\begin{align}\frac{1+1+1+...}{2+2+2+...}=\frac{(1+1)+(1+1)+...}{2+2+2+2+...}=\frac{2+2+2+...}{2+2+2+...}\end{align}$$</div><h3 id="displaystyle-frac-0-0">$\displaystyle\frac 0 0$<a class="headerlink" href="#displaystyle-frac-0-0" title="Link to this title">¶</a></h3><div class="indent"><p>See <a href="https://www.youtube.com/watch?v=BRRolKTlF6Q">this video</a>.
+$$\begin{align}\frac{1+1+1+...}{2+2+2+...}=\frac{(1+1)+(1+1)+...}{2+2+2+2+...}=\frac{2+2+2+...}{2+2+2+...}\end{align}$$</div><h3 id="displaystyle-frac-0-0">$\displaystyle\frac 0 0$<a class="headerlink" href="#displaystyle-frac-0-0" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging in $x=0$ gives $\frac 0 0$ in these examples.</p>
+
+$$\begin{align}\lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2\end{align}$$$$\begin{align}\lim_{x\to0}\frac{x}{2x} = \lim_{x\to0} \frac 1 2 = \frac 1 2\end{align}$$<p>See also <a href="https://www.youtube.com/watch?v=BRRolKTlF6Q">this video</a>.
 </p>
 
 </div><h3 id="0-cdot-infty">$0 \cdot \infty$<a class="headerlink" href="#0-cdot-infty" title="Link to this title">¶</a></h3><div class="indent"><p>This one is interesting because 0 multiplied by anything finite is 0, and
 infinity multiplied by anything nonzero is either $\infty$ or $-\infty$
 (see above).</p>
 
-$$\begin{align}\lim_{x\to\infty}(0 \cdot x) = 0\end{align}$$$$\begin{align}\lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0} \cdot \overbrace{x}^{\to\infty}\ \biggr)  = \lim_{x\to\infty} \frac x x = \lim_{x\to\infty} 1 = 1\end{align}$$$$\begin{align}\lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0}  \cdot \overbrace{x^2}^{\to\infty}\  \biggr) = \lim_{x\to\infty} \frac{x^2}{x} = \lim_{x\to\infty} \frac x 1 = \frac \infty 1 = \infty\end{align}$$</div><h3 id="1-infty">$1^\infty$<a class="headerlink" href="#1-infty" title="Link to this title">¶</a></h3><div class="indent"><p>You might be thinking that it makes sense to define $1^\infty = 1$ because
+$$\begin{align}\lim_{x\to\infty}(0 \cdot x) = 0\end{align}$$$$\begin{align}\lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0^+} \cdot \overbrace{x}^{\to\infty}\ \biggr)  = \lim_{x\to\infty} \frac x x = \lim_{x\to\infty} 1 = 1\end{align}$$$$\begin{align}\lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0^+}  \cdot \overbrace{x^2}^{\to\infty}\  \biggr) = \lim_{x\to\infty} \frac{x^2}{x} = \lim_{x\to\infty} \frac x 1 = \frac \infty 1 = \infty\end{align}$$</div><h3 id="1-infty">$1^\infty$<a class="headerlink" href="#1-infty" title="Link to this title">¶</a></h3><div class="indent"><p>You might be thinking that it makes sense to define $1^\infty = 1$ because
 $1^x=1$ for any finite $x$ (multiplying 1 by itself $x$ times is still 1).
 Even though this limit is 1...</p>
 
 $$\begin{align}\lim_{x\to\infty}1^x = \lim_{x\to\infty} 1 = 1\end{align}$$<p>...it doesn't mean that all $1^\infty$ limits are 1. Here's a famous
 example that we'll revisit <a href="explog.html#the-e-constant">later</a>:</p>
 
-$$\begin{align}e = \lim_{n\to\infty} \left(1+\frac 1 n\right)^n = 2.718281828459...\end{align}$$<p>Mathematicians call this number $e$. The inside of the limit goes to 1
-because $\displaystyle\lim_{n\to\infty}\textstyle(1+\frac 1 n)=1+0=1$, but
-the whole thing does not go to 1. Just try this with your favorite
-programming language or calculator:</p>
+$$\begin{align}e = \lim_{n\to\infty} \left(1+\frac 1 n\right)^n = 2.718281828459...\end{align}$$<p>This number is called $e$. The inside of the limit goes to 1 because
+$\displaystyle\lim_{n\to\infty}\textstyle(1+\frac 1 n)=1+0=1$, but the
+whole thing does not go to 1.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>n <span style="color: #666666">=</span> <span style="color: #40a070">10000000000</span>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span> <span style="color: #666666">+</span> <span style="color: #40a070">1</span><span style="color: #666666">/</span>n)<span style="color: #666666">**</span>n
@@ -131,30 +187,63 @@ programming language or calculator:</p>
 </pre></div>
 <p>Here are more $1^\infty$ limits:</p>
 
-$$\begin{align}\lim_{n\to\infty} \left(1+\frac 1 n\right)^{2n}  = \lim_{n\to\infty} \Biggl(\left(1+\frac 1 n\right)^n\Biggr)^2  = e^2 = 7.389055...\end{align}$$$$\begin{align}\lim_{n\to\infty} \left(1+\frac 1 n\right)^{n\ \cdot\ n}  = \lim_{n\to\infty} \Biggl(\left(1+\frac 1 n\right)^n\Biggr)^n  = e^\infty = \infty\end{align}$$</div><h3 id="0-0">$0^0$<a class="headerlink" href="#0-0" title="Link to this title">¶</a></h3><div class="indent"><p>Let's start by thinking about what $x^0$ is with a finite $x$. We know that
-$x^{a+b}=x^ax^b$ (see <a href="basics.html#powers-and-square-root">the basics page</a>),
-so we can plug in e.g. $a=1$ and $b=0$:</p>
+$$\begin{align}\lim_{n\to\infty} \left(1+\frac 1 n\right)^{2n}  = \lim_{n\to\infty} \Biggl(\left(1+\frac 1 n\right)^n\Biggr)^2  = e^2 = 7.389055...\end{align}$$$$\begin{align}\lim_{n\to\infty} \left(1+\frac 1 n\right)^{n\ \cdot\ n}  = \lim_{n\to\infty} \Biggl(\left(1+\frac 1 n\right)^n\Biggr)^n  = e^\infty = \infty\end{align}$$<p>Interestingly, Python doesn't know this...</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">1</span><span style="color: #666666">**</span><span style="color: #007020">float</span>(<span style="color: #4070a0">&#39;infinity&#39;</span>)     <span style="color: #60a0b0; font-style: italic"># python does this WRONG</span>
+<span style="color: #888888">1.0</span>
+</pre></div>
+<p>...but JavaScript does the right thing:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #666666">&gt;</span> <span style="color: #007020">Math</span>.pow(<span style="color: #40a070">1</span>, <span style="color: #007020; font-weight: bold">Infinity</span>)         <span style="color: #60a0b0; font-style: italic">// NaN is the correct answer!</span>
+<span style="color: #007020; font-weight: bold">NaN</span>
+</pre></div>
+</div><h3 id="0-0">$0^0$<a class="headerlink" href="#0-0" title="Link to this title">¶</a></h3><div class="indent"><p>Let's start by thinking about what $x^0$ means for a finite $x$. We know
+that $x^{a+b}=x^ax^b$ (see <a href="basics.html#powers-and-square-root">the basics
+page</a>), so we can plug in e.g. $a=1$
+and $b=0$:</p>
 
 $$\begin{align}x^{1+0} &= x^1x^0 \\
 x &= x \cdot x^0\end{align}$$<p>This is true if $x=0$, and if $x \ne 0$, we can divide by $x$ on both sides
 to get $1=x^0$. So here's our conclusion: $x^0=1$ for any finite $x$ except
 $x=0$ and we know nothing about $0^0$ yet.</p>
 
-<p>On the other hand, $0^x=0$ with any finite $x$, so we get these limits:</p>
+<p>On the other hand, multiplying 0 by itself many times is still 0, so $0^x$
+is $0$ with any positive $x$. We get these limits:</p>
 
-$$\begin{align}& \lim_{x\to0} 0^x = 0 \\
-& \lim_{x\to0} x^0 = 1\end{align}$$</div><h3 id="infty-0">$\infty^0$<a class="headerlink" href="#infty-0" title="Link to this title">¶</a></h3><div class="indent"><p>We just learned that $x^0=1$ with any finite $x$...</p>
+$$\begin{align}\lim_{x\to0^+} 0^x = 0\end{align}$$$$\begin{align}\lim_{x\to0} x^0 = 1\end{align}$$<p>Most programming languages do $0^0 = 1$ because it's handy in some cases.
+</p>
 
-$$\begin{align}\lim_{x\to\infty}x^0=1\end{align}$$<p>...but we also have $\infty^x=\infty$ for any positive $x$...</p>
+</div><h3 id="infty-0">$\infty^0$<a class="headerlink" href="#infty-0" title="Link to this title">¶</a></h3><div class="indent"><p>We just learned that $x^0=1$ with any finite $x$ except $x=0$.</p>
 
-$$\begin{align}\lim_{x\to0^+}\infty^x = \infty\end{align}$$<p>...and $\infty^x=0$ for a negative $x$:</p>
+$$\begin{align}\lim_{x\to\infty}x^0=1\end{align}$$<p>But we also have $\infty^x=\infty$ for any positive $x$:</p>
 
-$$\begin{align}\lim_{x\to0^-}\infty^x = 0\end{align}$$<p>Here $x\to0^+$ means that $x$ goes to 0 from the positive side; that is, we
-want to know what happens if $x$ is something like $0.00000001$. Similarly,
-$x\to0^-$ means approaching from the negative side. A plain $x\to0$ means
-that approaching from either side gives the same value. As a special case,
-$x\to\infty$ means $x\to\infty^-$ because it's not possible to approach
-$\infty$ from the positive side.
+$$\begin{align}\lim_{x\to0^+}\infty^x = \infty\end{align}$$</div><h2 id="infinite-fractions-and-stuff">Infinite Fractions and Stuff<a class="headerlink" href="#infinite-fractions-and-stuff" title="Link to this title">¶</a></h2><p>This stuff doesn't have anything to do with other things in this chapter, but I
+added it here because it's fun.</p>
+
+$$\begin{align}1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}\end{align}$$<p>It's an infinite fraction, it never ends! But we can still find its value, and
+in fact, it's quite simple: we'll say that the value is $x$ and figure things
+out from there.</p>
+
+$$\begin{align}x &= 1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}} \\
+&= 1+\frac{1}{1+\underbrace{1+\frac{1}{1+1+\frac{1}{1+1+...}}}_{\text{this part is }x}}\end{align}$$<div class="floatingbox"><h2> Handy thing: $(a-b)(a+b)=a^2-b^2$</h2><p>This was proved earlier in this chapter. Now we need to plug in $a=x$ and
+$b=1$.
+</p>
+
+</div><p>This is correct, the infinite fraction contains itself! Now we get an equation
+that we can solve easily:</p>
+
+$$\begin{align}x &= 1 + \frac{1}{1+x} \\
+x-1 &= \frac{1}{x+1} \\
+(x+1)(x-1) &= 1 \\
+x^2-1^2 &= 1 \\
+x^2 &= 2 \\
+x=\sqrt2 \text{ or } & x=-\sqrt2\end{align}$$<p>The infinite fraction consists of adding and dividing positive numbers, so it
+must be positive.</p>
+
+$$\begin{align}1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}=\sqrt2=1.41421...\end{align}$$<div class="box graybox"><h2> Exercise</h2><p>There are three $x$ values that satisfy $x + x^2 = x^3$. One of them is
+zero, another is negative and the third one is <a href="https://en.wikipedia.org/wiki/Golden_ratio">the golden
+ratio</a>. Use these facts to
+prove that $\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+...}}}}$ is the golden ratio.
 </p>
 
 </div></div>
