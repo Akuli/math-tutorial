@@ -22,7 +22,7 @@ to see how changing the constant and the slope affects the line. The equation
 of the line is shown in <span style="color: blue;">blue</span> in the top left
 corner.
 
-<iframe src="https://purplemyst.github.io/line-drawer/"
+<iframe src="https://purplemyst.github.io/line-drawer/" style="border-width: 0px;"
         width="350" height="400"></iframe>
 
 A *difference* means how much a value changes. For example, if the value of $x$
@@ -407,7 +407,7 @@ code:
    O
 
 You can use similar code for doing jumps in games. Here's a demo created with
-my canvaswrapper.js script. Click it and use arrow keys to move the ball.
+my [canvaswrapper.js] script. Click it and use arrow keys to move the ball.
 
 canvasdemo:
    const GRAVITY = 1.5;
