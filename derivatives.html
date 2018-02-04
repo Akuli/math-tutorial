@@ -27,47 +27,25 @@ like calculating their values will be quite complicated, but it turns
 out to be surprisingly easy.</p>
 
 <p>Derivatives are also not useless gibberish isolated from real life. There's a
-practical demonstration game at the end of the chapter, and we can use them in
-surprisingly many places like <a href="taylor.html">implementing our own sin function</a>.
-If you have no idea what sin is that's not a problem, and you don't need it for
-learning derivatives.</p>
+practical demonstration game at the end of the chapter, and we can do all kinds
+of amazing other stuff with derivatives.</p>
 
-<div class="box graybox"><p>This chapter starts with some boring stuff, but we need it for fun
-stuff. Try to read patiently.
+<div class="box redbox"><p>This chapter assumes that you know what limits are. If you have never heard
+of them before, I highly recommend reading <a href="infinity.html#limits">the limit section in the
+infinity chapter</a> first.
 </p>
 
-</div><h2 id="limits">Limits<a class="headerlink" href="#limits" title="Link to this title">¶</a></h2><p>Things like $\frac{2x}{x}$ seem to be $2$ with any $x$. But there's one
-exception: if $x=0$, then $\frac{2x}{x}$ is $\frac 0 0$ and thus not
-defined.</p>
+</div><h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>The equation of any (non-vertical) line is of the form $y=sx+c$ where $s$
+is the slope and $c$ is a constant. If you have no idea what that means, use
+this awesome demo thing that <a href="https://github.com/PurpleMyst/">a friend of mine</a>
+to see how changing the constant and the slope affects the line. The equation
+of the line is shown in <span style="color: blue;">blue</span> in the top left
+corner.</p>
 
-<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">123</span><span style="color: #666666">/</span><span style="color: #40a070">123</span>
-<span style="color: #888888">2.0</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">0</span><span style="color: #666666">/</span><span style="color: #40a070">0</span>
-<span style="color: #0044DD">Traceback (most recent call last):</span>
-  File <span style="color: #007020">&quot;&lt;stdin&gt;&quot;</span>, line <span style="color: #40a070">1</span>, in &lt;module&gt;
-<span style="color: #FF0000">ZeroDivisionError</span>: division by zero
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #40a070">0.00000001</span><span style="color: #666666">/</span><span style="color: #40a070">0.00000001</span>
-<span style="color: #888888">2.0</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">2</span><span style="color: #666666">*</span>(<span style="color: #666666">-</span><span style="color: #40a070">0.00000001</span>)<span style="color: #666666">/</span>(<span style="color: #666666">-</span><span style="color: #40a070">0.00000001</span>)
-<span style="color: #888888">2.0</span>
-</pre></div>
-<p>No matter how near zero $x$ is we get 2, even if $x$ is negative. In
-these cases, mathematicians say that
-$\displaystyle\lim_{x \to 0} \textstyle\frac{2x}{x}=2$. Here lim means
-that we take the <i>limit</i> as $x$ goes to 0. We get $\frac 0 0$ if we try
-to do $\frac{2 \cdot 0}{0}$, but the limit still exists.</p>
+<p><iframe src="https://purplemyst.github.io/line-drawer/"
+        width="350" height="400"></iframe></p>
 
-<p>The limit does not exist if we get something like $\frac 1 0$ or
-$\frac 2 0$ as opposed to $\frac 0 0$. See <a href="https://youtu.be/BRRolKTlF6Q?t=2m57s">this
-video</a> for a really nice example
-that also shows why.</p>
-
-<p>We can also do things like this:</p>
-
-$$\begin{align}\lim_{x\to0} \left(1+\frac{2x}{x} + \frac{3x}{x}\right)  = 1 + \left(\lim_{x\to0}\frac{2x}{x}\right) + \left(\lim_{x\to0}\frac{3x}{x}\right)  = 1 + 2 + 3\end{align}$$<p>I won't list all the things we can do to limits and why because the
-rules are quite straight-forward and the why part is boring.</p>
-
-<h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>A <i>difference</i> means how much a value changes. For example, if the value of $x$
+<p>A <i>difference</i> means how much a value changes. For example, if the value of $x$
 is first 5 and then we change it to 6, $x$ changes by $\Delta x = 1$. Here
 $\Delta$ is the Greek delta letter, so if someone's code has a variable named
 <code>deltax</code> it means this.</p>
@@ -75,11 +53,11 @@ $\Delta$ is the Greek delta letter, so if someone's code has a variable named
 <p id="slope">Let's draw a graph of something like $y = 2x+1$:
 </p>
 
-<p><img width="239" height="397" class="asymptote" src="asymptote/658b8e18cb886d602ec57f584063b949.svg" /></p><p>For example, at $x=3$ we know that $y = 2x+1 = 2 \cdot 3 + 1 = 7$.</p>
+<p><img width="242" height="397" class="asymptote" src="asymptote/a773f3e1fc9025645f6d131ee556d0f2.svg" /></p><p>For example, at $x=3$ we know that $y = 2x+1 = 2 \cdot 3 + 1 = 7$.</p>
 
 <p>Let's calculate the <b>slope</b> of this line:</p>
 
-$$\begin{align}\frac{\Delta y}{\Delta x} = \frac{6}{3} = 2\end{align}$$<p>The bigger the slope, the faster the line goes up, so the slope describes the
+<p><img width="239" height="397" class="asymptote" src="asymptote/658b8e18cb886d602ec57f584063b949.svg" /></p>$$\begin{align}\frac{\Delta y}{\Delta x} = \frac{6}{3} = 2\end{align}$$<p>The bigger the slope, the faster the line goes up, so the slope describes the
 "<b>growing speed</b>" or "<b>changing speed</b>". I used the $(x,y)$ points $(1,0)$
 and $(3,7)$ when calculating the slope, but you should get the same slope with
 any pair of points chosen from the line because the height grows at the same
