@@ -65,8 +65,8 @@ math:
 If the inner stuff is just $x$, then its derivative is $1$ and multiplying by
 it does nothing.
 
-This inner stuff derivative thing thing is known as the chain rule, and it looks
-like this in a mathy $f$ and $g$ form:
+This inner stuff derivative thing is known as the chain rule, and it looks like
+this in a mathy $f$ and $g$ form:
 
 math:
     \frac{d}{dx}f(g(x)) = f'(g(x))g'(x)
