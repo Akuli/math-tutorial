@@ -586,8 +586,8 @@ asymptote:
     draw((h,0)--(h,r), smalldashes, L="$r$");
     draw(brace((h,-0.2),(0,-0.2)), L="$h$", align=S);
 
-Now we can use [the graphs page](graphs.html#lines) and [the slope thing
-on the derivative page](derivatives.html#slope):
+If you have read [the slope thing on my derivative
+page](derivatives.html#slopes) you have no trouble at all finding $f(x)$.
 
 math: f(x) = sx = \frac{\Delta y}{\Delta x} x = \frac r h x
 

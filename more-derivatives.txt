@@ -71,34 +71,84 @@ like this in a mathy $f$ and $g$ form:
 math:
     \frac{d}{dx}f(g(x)) = f'(g(x))g'(x)
 
-There's a proof below.
+There's a proof [below](#frac-d-dx-f-g-x-f-g-x-g-x).
 
 ## Derivative Rules
 
 Libraries like sympy are sure handy for finding derivatives, but we can also
 find the derivative of pretty much anything by hand. In [the first derivative
-chapter](derivatives.html) we learned to find the derivatives of $c$, $x$ and
-$x^2$. And if $f$ and $g$ are functions that have a derivative, we know what the
-derivative of $f(x)+g(x)$ or $f(x)-g(x)$ is.
+chapter](derivatives.html) we learned to find the derivatives of any constant,
+$x$ and $x^2$.
 
-We can do a lot more, and there's [a concise list of derivative
-rules](summary.html#derivative-rules) on the summary page. Most of the rules are
-proved here, and they are ordered so that they don't use anything that has not
-been proved before them.
+We also used a bunch of rules that we didn't prove, and there was a link to
+even more magic rules on the summary page. This page contains some proofs that
+hopefully make the rules feel less magic. The proofs are ordered so that they
+don't use anything that has not been proved before them.
+
+Here $c$ can be any constant, and $f$ and $g$ can be any functions that have
+derivatives $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$.
+
+### $\frac{d}{dx}(c \cdot f(x)) = c \cdot \frac{d}{dx}(f(x))$
+
+indent:
+    Let's plug in $c \cdot f(x)$ to the definition of derivative.
+
+    math:
+        \frac{d}{dx}(c \cdot f(x)) \
+        &= \lim_{h\to0} \frac{c\cdot f(x+h)-c\cdot f(x)}{h}
+        &= \lim_{h\to0} \frac{c\cdot\bigl(f(x+h)-f(x)\bigr)}{h}
+        &= \lim_{h\to0} \left(c\cdot\frac{f(x+h)-f(x)}{h}\right)
+        &= c\cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+        &= c\cdot f'(x)
+
+### $\text{A bunch of stuff added and substracted}$
+
+indent:
+    We did this in the previous chapter:
+
+    math:
+        \frac{d}{dx} (6x^2+7x-123) = \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123)
+
+    If these things work, then the stuff above is correct:
+
+    * $\frac{d}{dx}(f(x)+g(x))=f'(x)+g'(x)$
+    * $\frac{d}{dx}(f(x)-g(x))=f'(x)-g'(x)$
+
+    Let's start by proving the $+$ thing with the definition of derivative.
+    It's kind of messy, but it works.
+
+    math:
+        \frac{d}{dx}(f(x)+g(x)) \
+        &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h}
+        &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h}
+        &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h}
+        &= \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)+\bigl(g(x+h)-g(x)\bigr)}{h}
+        &= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}+\frac{g(x+h)-g(x)}{h}\right)
+        &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)+\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
+        &= f'(x) + g'(x)
+
+    We can prove the $-$ thing using stuff that we have proved earlier:
+
+    math:
+        \frac{d}{dx}(f(x)-g(x)) \
+        &= \frac{d}{dx}\bigl(f(x)+(-1)g(x)\bigr)
+        &= \frac{d}{dx}f(x)+\frac{d}{dx}\bigl((-1)g(x)\bigr)
+        &= \frac{d}{dx}f(x)+(-1)\cdot\frac{d}{dx}(g(x))
+        &= f'(x) + (-1)g'(x)
+        &= f'(x) - g'(x)
 
 ### $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
 
 indent:
-    Let's first assume that if $h \to 0$ (read: h approaches 0), then
-    $g(x+h) \ne g(x)$; that is, $g(x+h)-g(x) \ne 0$. We'll do the
-    $g(x+h)=g(x)$ case separately.
+    Let's first assume that $g(x+h) \ne g(x)$ with a small $h$;
+    that is, $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. We'll do
+    the $g(x+h)=g(x)$ case separately.
 
     math:
         \frac{d}{dx} f(g(x)) \
         &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
-        &= \lim_{h\to0} \left( \
-            \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
-            \frac{g(x+h)-g(x)}{h} \right)
+        &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
+                              \frac{g(x+h)-g(x)}{h} \right)
         &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) \
            \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right)
         &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
@@ -186,9 +236,9 @@ indent:
 
 indent:
     It's easy to prove that this works for an individual $c$ value. For example,
-    our very first derivative example shows that $\frac{d}{dx} x^2 = 2x$. Here
-    I'll prove that this works with all positive integers using a powerful
-    technique known as **induction**.
+    our very first derivative example shows that $\frac{d}{dx} x^2 = 2x$, and
+    $2x^{2-1}$ is also $2x$. Here I'll prove that this works with all positive
+    integers using a powerful technique known as **induction**.
 
     Let's start by showing that this works with $c=1$:
 
@@ -268,6 +318,10 @@ indent:
         &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x}
         &= \frac{1}{\sqrt x + \sqrt x}
         &= \frac{1}{2\ \sqrt x}
+
+    You're probably wondering how the heck I knew that multiplying top and
+    bottom by $\sqrt{x+h}+\sqrt x$ would result in something useful, but this
+    is actually a commonly used trick with square roots and limits.
 
 ### $\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}$
 

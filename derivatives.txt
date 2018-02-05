@@ -18,173 +18,167 @@ redbox:
 The equation of any (non-vertical) line is of the form $y=sx+c$ where $s$
 is the slope and $c$ is a constant. If you have no idea what that means, use
 this awesome demo thing that [a friend of mine](https://github.com/PurpleMyst/)
-to see how changing the constant and the slope affects the line. The equation
-of the line is shown in <span style="color: blue;">blue</span> in the top left
-corner.
+made to see how changing the constant and the slope affects the line. The
+equation of the line is shown in <span style="color: blue;">blue</span> in the
+top left corner.
 
 <iframe src="https://purplemyst.github.io/line-drawer/" style="border-width: 0px;"
         width="350" height="400"></iframe>
+
+The $c$ constant specifies how high the line is. It's important to note what
+happens to the line as you change the slope; the bigger the slope, the steeper
+the line goes up, and a negative slope means that the line goes down instead.
+You can think of slope as some kind of **growth rate**.
 
 A *difference* means how much a value changes. For example, if the value of $x$
 is first 5 and then we change it to 6, $x$ changes by $\Delta x = 1$. Here
 $\Delta$ is the Greek delta letter, so if someone's code has a variable named
 ``deltax`` it means this.
 
-(slope)
-Let's draw a graph of something like $y = 2x+1$:
+Now choose two points from the line and imagine drawing a triangle between
+those points. Let's call the height of this triangle $\Delta y$ and the width
+$\Delta x$. Like this:
 
 asymptote:
-   size(14cm);
-   grid(-1,4,-2,7);
+    size(14cm);
+    grid(-1,5,-2,9);
 
-   axises(-1,4,-2,7);
-   // TODO: move this shit to axises()?
-   for (real x = 1; x <= 3; x += 1)
+    axises(-1,5,-2,9);
+    // TODO: move this shit to axises()?
+    for (real x = 1; x <= 4; x += 1)
        draw((x,0)--(x,0), L=(string) x, align=S);
-   for (real y = 1; y <= 5; y += 1)
+    for (real y = 1; y <= 7; y += 1)
        draw((0,y)--(0,y), L=(string) y, align=W);
 
-   real f(real x) { return 2*x + 1; }
+    real f(real x) { return 2*x + 1; }
+    draw(graph(f,-1,4), blue,
+         L=Label(rrotate(atan(2))*"$y=2x+1$", position=Relative(0.85)), align=W);
 
-   draw(graph(f,-1,3), blue,
-        L=Label(rrotate(atan(2))*"$y=2x+1$", position=Relative(0.85)), align=W);
+    real x1=0, x2=3;
+    dot((x1,f(x1)), dotpen);
+    dot((x2,f(x2)), dotpen);
+    draw((x1,f(x1))--(x2,f(x1)), L="$\Delta x$", align=N);
+    draw((x2,f(x1))--(x2,f(x2)), L="$\Delta y$", align=E);
 
-For example, at $x=3$ we know that $y = 2x+1 = 2 \cdot 3 + 1 = 7$.
+In this example I have set the constant term to 1 and slope to 2, and with
+these points, I get $\Delta y = 6$ and $\Delta x = 3$. Here's something
+interesting:
 
-Let's calculate the **slope** of this line:
+math:
+    \frac{\Delta y}{\Delta x} = \frac 6 3 = 2
 
-asymptote:
-   size(14cm);
-   grid(-1,5,-2,9);
-
-   axises(-1,5,-2,9);
-   // TODO: move this shit to axises()?
-   for (real x = 1; x <= 4; x += 1)
-       draw((x,0)--(x,0), L=(string) x, align=S);
-   for (real y = 1; y <= 7; y += 1)
-       draw((0,y)--(0,y), L=(string) y, align=W);
-
-   real f(real x) { return 2*x + 1; }
-
-   draw(graph(f,-1,4), blue,
-        L=Label(rrotate(atan(2))*"$y=2x+1$", position=Relative(0.85)), align=W);
-   draw((0,f(0))--(3,f(0)), smalldashes, L="$\Delta x = 3$", align=N);
-   draw((3,f(0))--(3,f(3)), smalldashes, L="$\Delta y = 6$", align=E);
-
-math: \frac{\Delta y}{\Delta x} = \frac{6}{3} = 2
-
-The bigger the slope, the faster the line goes up, so the slope describes the
-"**growing speed**" or "**changing speed**". I used the $(x,y)$ points $(1,0)$
-and $(3,7)$ when calculating the slope, but you should get the same slope with
-any pair of points chosen from the line because the height grows at the same
-speed everywhere.
+This is the slope. You can always find the slope by drawing a triangle like
+this and then calculating $\frac{\Delta y}{\Delta x}$. Just to convince
+yourself, choose another pair of points and try it again; you still get the
+same slope.
 
 ## What is a derivative?
 
-asymptote: float:right;
+Now we know what slopes of lines are and how to calculate them, but can we
+calculate slopes of curves that look e.g. like this?
+
+asymptote:
     size(10cm);
-    real a=-0.5, b=2.5;
-    real x1 = 0.6, x2=1.4, x3=2.0;
-    axises(a,b,-0.5,1.5);
-    real f(real x) { return sin(x); }
-    draw(graph(f,-0.5,2.5), heavyred);
-
-    path ftangent(real x1_, real x2_) {
-        /*
-             /\y     y - f(x1_)
-        s = ----- = ---------------
-             /\x      x - x1_
-
-        y = s*(x - x1_) + f(x1_)
-        */
-        real slope = (f(x1_)-f(x2_))/(x1_-x2_);
-        real y1 = slope*(a-x1_)+f(x1_);
-        real y2 = slope*(b-x1_)+f(x1_);
-        return (a,y1)--(b,y2);
+    real xminmax = 2;
+    real f(real x) { return x**2; }
+    axises(-xminmax-0.5, xminmax+0.5, -0.5, f(xminmax));
+    draw(graph(f, -xminmax, xminmax), blue);
+    label((1,f(1)), blue, L=rotate(65)*"$y=x^2$", align=E);
+    for (real x = -xminmax; x <= xminmax; ++x) {
+        if (x != 0) {
+            dot((x,0), p=dotpen, L=(string)x, align=S);
+        }
+    }
+    for (real y = 1; y < f(xminmax); ++y) {
+        dot((0,y), p=dotpen, L=(string)y, align=W);
     }
 
-    draw(ftangent(x1,x2), blue);
-    draw(ftangent(x2,x3), deepgreen);
-    dot((x1,f(x1)), p=dotpen);
-    dot((x2,f(x2)), p=dotpen);
-    dot((x3,f(x3)), p=dotpen);
+The problem with this is that we don't get the same $\frac{\Delta y}{\Delta x}$
+ratios everywhere. You can think about $\frac{\Delta y}{\Delta x}$ as the
+growth rate, and as you can see in the above graph, the values of $x^2$ grow at
+different rates in different places. For example, the slope seems to be $0$ at
+$x=0$ and something positive when $x$ is positive.
 
-What if we could extend this slope thing to curvy graphs? At first sight it
-might seem like we won't get a useful growing speed out of this because we get
-different slopes depending on which points we choose as shown in the image at
-right.
+Maybe we could calculate the slope with a very small triangle?
 
-But what if we try to get the growing speed at some specific point, like
-$\displaystyle\lim_{\Delta x \to 0} \textstyle\frac{\Delta y}{\Delta x}$
-instead of a plain $\frac{\Delta y}{\Delta x}$? Let's see what we get
-from a $y=f(x)$ graph where $f$ is a function:
+asymptote:
+    size(10cm);
+    real xminmax = 1;
+    real f(real x) { return x**2; }
+    axises(-0.5, xminmax+0.5, -0.5, f(xminmax));
+    draw(graph(f, -0.5, xminmax), blue);
+    label((1,f(1)), blue, L=rotate(65)*"$y=x^2$", align=E);
+    dot((1,0), p=dotpen, L="1", align=S);
+
+    real x1=0.6, x2=0.75;
+    draw((x1,f(x1))--(x2,f(x1)), L="$\Delta x$", align=S);
+    draw((x2,f(x1))--(x2,f(x2)), L="$\Delta y$", align=E);
+
+We can calculate the exact slope at this point with a limit like
+$\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$. This
+limit is known as the **derivative**.
+
+Let's find a formula for calculating derivatives. We'll do this for a general
+$y=f(x)$ graph instead of $y=x^2$, so we'll get something that is not limited
+to just $x^2$.
 
 asymptote:
     size(12cm);
+    real xmin = 0.1, xmax=1.7;
+    real f(real x) { return 1.5*sin(x); }
+    axises(xmin, xmax+0.5, 0, 0);
+    draw(graph(f, xmin, xmax), heavyred);
+    label((xmax-0.3,f(xmax-0.3)), heavyred, L=rotate(10)*"$y=f(x)$", align=N);
 
-    real f(real x) { return 0.1*x**3 - 0.1x + 1; }
-    axises(-0.1,2.2,-0.5,f(2));
+    real x1=0.8, x2=1.2;
+    draw((x1,0)--(x1,f(x1)), smalldashes+lightblue);
+    draw((x2,0)--(x2,f(x1)), smalldashes+lightblue);
+    draw((x1,f(x1))--(x2,f(x1)), L="$\Delta x$", align=S);
+    draw((x2,f(x1))--(x2,f(x2)), L="$\Delta y$", align=W);
+    dot((x2,0), p=dotpen, L="$x+\Delta x$", align=S);
+    dot((x1,0), p=dotpen, L="$x$", align=S);
+    draw(brace((x1-0.05,0), (x1-0.05,f(x1))), L="$f(x)$", align=W);
+    draw(brace((x2+0.05,f(x2)), (x2+0.05,0)), L="$f(x+\Delta x)$", align=E);
 
-    draw(graph(f, -0.1, 2), heavyred, L="$y=f(x)$", align=NW);
+There are quite a few things going on in the above drawing. Make sure that you
+fully understand it before moving on.
 
-    real x = 1.6;
-    real dx = 0.2;
-
-    draw((x,0)--(x,f(x)), lightblue);
-    draw((x+dx,0)--(x+dx,f(x+dx)), lightblue);
-    draw(brace((x,0), (0,0)), L="$x$", align=S);
-    draw(brace((x+dx,-0.05), (x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
-    draw(brace((x,0), (x,f(x))), L="$f(x)$", align=W);
-    draw(brace((x+dx,f(x+dx)), (x+dx,0)), L="$f(x+\Delta x)$", align=E);
-    draw(brace((x,f(x)),(x,f(x+dx)), amplitude=0.1), L="$\Delta y$", align=W);
-    draw(brace((x,f(x+dx)+0.05),(x+dx,f(x+dx)+0.05), amplitude=0.1),
-         L="$\Delta x$", align=N);
-
-Based on the image, if we take the length of the vertical $f(x+\Delta x)$
-line and take off the length of the $f(x)$ line, we're left with just
-$\Delta y$. So $\Delta y = f(x+\Delta x)-f(x)$:
+If we look at the length of the $f(x+\Delta x)$ line and take off the length of
+the $f(x)$ line, we're left with $\Delta y$. So $f(x+\Delta x)-f(x)=\Delta y$.
+Let's plug this into our definition of derivative:
 
 math:
-    \lim_{\Delta x \to 0}\frac{\Delta y}{\Delta x} \
-    = \lim_{\Delta x \to 0}\frac{f(x+\Delta x)-f(x)}{\Delta x} \
-    = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+    \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} \
+    = \lim_{\Delta x\to0} \frac{f(x+\Delta x)-f(x)}{\Delta x}
 
-I finished by replacing $\Delta x$ with $h$ because $h$ is easier and
-faster to write than $\Delta x$.
+Finally we'll replace $\Delta x$ with $h$ just to make this formula less
+annoying to use. This is especially true for writing by hand because we can't
+just copy/paste $\Delta x$ everywhere.
 
-This "growing speed at x" value is known as **the derivative** of $f$.
-Sometimes the derivative doesn't exist, but most functions you'll come
-across have the derivative. [Click
-here](more-derivatives.html#which-functions-have-derivatives) if you want to
-know more.
-
-graybox:
-    At this point you're probably feeling like this is just some
-    theorethical gibberish that has nothing to do with real life, but
-    that's not the case. Keep reading.
-
-[The graph $y=x^2$ is a parabola.](graphs.html#parabolas)
-Let's find the derivative of $x^2$ by plugging in $f(x)=x^2$ to the lim
-thing we ended up with:
+math:
+    \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
 floatingbox: Handy thing: $(x+h)^2=x^2+2xh+h^2$
-   Proof:
+    Proof:
 
-   math:
-      & \ (x+h)^2
-      =&\ (x+h)(x+h)
-      =&\ (x+h)x+(x+h)h
-      =&\ xx+hx+xh+hh
-      =&\ x^2+2xh+h^2
+    math:
+        & \ (x+h)^2
+        =&\ (x+h)(x+h)
+        =&\ (x+h)x+(x+h)h
+        =&\ xx+hx+xh+hh
+        =&\ x^2+2xh+h^2
+
+Now we can set $f(x)=x^2$ and see what we get.
 
 math:
-    &   \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
-    =&  \lim_{h\to0} \frac{(x+h)^2-x^2}{h}
-    =&  \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h}
-    =&  \lim_{h\to0} \frac{2xh + h^2}{h}
-    =&  \lim_{h\to0} \frac{(2x+h)h}{h}
-    =&  \lim_{h\to0} (2x+h)
-    =&\ 2x
+    \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} \
+    &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+    &= \lim_{h\to0} \frac{(x+h)^2-x^2}{h}
+    &= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h}
+    &= \lim_{h\to0} \frac{2xh + h^2}{h}
+    &= \lim_{h\to0} \frac{(2x+h)h}{h}
+    &= \lim_{h\to0} (2x+h)
+    &= 2x
 
 asymptote: float:right;
    size(10cm);
@@ -209,10 +203,29 @@ got out of a spooky calculation; for example, at $x=2$ the derivative is
 $2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
 $x=2$ its slope will also be 4 like in the image at right.
 
-You can also find the derivative of the $y=2x+1$ example we looked at earlier,
-and turns out that it's 2, just like the slope was. This makes sense because
-derivatives are like slopes but they also work with curvy things, and there's no
-difference between a slope and a derivative of a straight line.
+Earlier we looked at the line $y=2x+1$ and we got the slope 2 from any
+$\frac{\Delta y}{\Delta x}$ ratio, but derivatives are
+$\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$, so the
+derivative of $2x+1$ should be 2. Let's see if that works:
+
+math: y = f(x) = 2x+1
+
+math:
+    \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} \
+    &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+    &= \lim_{h\to0} \frac{(2(x+h)+1)-(2x+1)}{h}
+    &= \lim_{h\to0} \frac{2(x+h)+1-2x-1}{h}
+    &= \lim_{h\to0} \frac{2x+2h+1-2x-1}{h}
+    &= \lim_{h\to0} \frac{2h}{h}
+    &= 2
+
+Note how $x$ disappeared: the derivative of $x^2$ is $2x$, but the derivative
+of $2x+1$ is $2$ without any $x$. In other words, the derivative of $2x+1$ is
+the same with any $x$ value. This makes sense because straight lines have the
+same slope everywhere.
+
+In fact, if you are asked to find the derivative of something like $5x+8$ you
+know immediately that's 5 because $y=5x+8$ is a straight line with slope 5.
 
 graybox:
     The derivative $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$
@@ -226,8 +239,15 @@ graybox:
     $f'(x) = \frac{d}{dx} f(x)$.
 
     Sometimes programmers write ``dy`` when they really mean ``deltay``.
-    It doesn't really make sense either, but ``dy`` is much less typing
-    than ``deltay``.
+    It doesn't make sense either, but ``dy`` is much less typing than
+    ``deltay``.
+
+&nbsp;
+
+graybox: Exercise
+    Prove that the derivative of $sx+c$ is always $s$ by plugging in
+    $f(x)=sx+c$ to the definition of derivative. Here $s$ and $c$ are
+    constants.
 
 ## Faster!
 
@@ -236,47 +256,43 @@ Let's say that you want to calculate something like this:
 math:
     \frac{d}{dx} (6x^2+7x-123)
 
-That would be a horribly complicated calculation with the $\lim$ thing.
-Let's be a bit more clever.
+That would be a horribly complicated calculation with the definition of
+derivative. In these cases, we can use some handy-dandy rules:
 
-We have a bunch of things with $+$ and $-$ in between, so maybe we could
-deal with them somehow? Let's say that we want to find the derivative of
-$f(x)+g(x)$ where $f$ and $g$ can be any functions (as long as the
-derivative exists). They could be for example $f(x)=6x^2$ and
-$g(x)=7x-123$, but let's see what we get if we don't plug in any values:
+* If we have a bunch of things added or substracted from each other we can find
+  the derivatives of each thing one by one. We'll prove this in [the next
+  chapter](more-derivatives.html).
 
 math:
-    \frac{d}{dx}(f(x)+g(x)) \
-    &= \lim_{h\to0} \frac{\bigl(f(x+h)+g(x+h)\bigr)-\bigl(f(x)+g(x)\bigr)}{h}
-    &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h}
-    &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h}
-    &= \lim_{h\to0} \left( \frac{f(x+h)-f(x)}{h} + \frac{g(x+h)-g(x)}{h} \right)
-    &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right) \
-     + \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
-    &= \frac{d}{dx} f(x) + \frac{d}{dx} g(x)
+    \frac{d}{dx} (6x^2+7x-123) = \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123)
 
-That's quite nice! So if we want to find the derivative of a bunch of
-things added together we can just find derivatives of each thing one by
-one. The same thing also works with $-$ instead of $+$·
-
-We can actually take a step further and find the derivative of $c\ f(x)$
-where $c$ is any constant, e.g. $6$:
+* You can move constants to the front of the $\frac{d}{dx}$. This works only
+  with constants; you cannot move anything with $x$ in it to the front. Again,
+  there's a proof in the next chapter.
 
 math:
-    \frac{d}{dx}(c\ f(x)) \
-    &= \lim_{h\to0} \frac{c\ f(x+h) - c\ f(x)}{h}
-    &= \lim_{h\to0} \frac{c \cdot (f(x+h)-f(x))}{h}
-    &= \lim_{h\to0} \left( c\ \frac{f(x+h)-f(x)}{h} \right)
-    &= c \cdot \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
-    &= c \cdot \frac{d}{dx} f(x)
+    \frac{d}{dx}(6x^2) = 6 \cdot \frac{d}{dx}(x^2)
 
-We need a couple more things: $\frac{d}{dx}x=1$ because
-$\displaystyle\lim_{\Delta x \to 0} \textstyle\frac{\Delta x}{\Delta x}=1$, and
-$\frac{d}{dx} c = 0$ because $c$ never changes regardless of the value of $x$
-and $\Delta c = 0$. You can also use the definition of derivative to show that
-these work.
+* Derivative of $x^2$ is $2x$. We proved this in our very first derivative
+  example.
 
-So, with all that we can calculate the derivative easily:
+math:
+    \frac{d}{dx}(x^2) = 2x
+
+* The derivative of $x$ is 1 because the slope of the line $y=x$ is 1. You can
+  also check this by plugging in $f(x)=x$ to the definition of derivative.
+
+math:
+    \frac{d}{dx} x = 1
+
+* The derivative of any constant (e.g. 3) is 0 because a line like $y=3$ is
+  horizontal and it has slope 0. Again, you can check with the definition of
+  derivative.
+
+math:
+    \frac{d}{dx} 3 = 0
+
+That's quite a few rules, but they make this handy:
 
 math:
     &  \frac{d}{dx} (6x^2+7x-123)
@@ -305,21 +321,21 @@ code: python3
 
 Here "diff" is short for "differentiate", and it means finding a derivative.
 
-Libraries like sympy are also useful for doing long and messy calculations like
-the one we did above:
+## Some History
 
-code: python3
-    >>> def f(x):
-    ...     return x**2
-    ...
-    >>> h = Symbol('h')
-    >>> (f(x+h)-f(x))/h
-       2          2
-    - x  + (h + x)
-    ───────────────
-           h
-    >>> simplify((f(x+h)-f(x))/h)
-    h + 2⋅x
+[Newton](https://en.wikipedia.org/wiki/Isaac_Newton) and
+[Leibniz](https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz) discovered
+this derivative stuff independently in the mid-17th century, and they didn't
+exactly agree about which of them had invented it first.
+
+The word "derivative" probably refers to how it can be easily *derived* for
+most functions like in the example above, but other explanations exist too:
+
+image: https://imgs.xkcd.com/comics/newton_and_leibniz.png
+    max-width: 100%;
+    max-height: 100%;
+
+<small>The comic comes from [https://xkcd.com/626/](https://xkcd.com/626/).</small>
 
 ## Example: Smooth Jumps
 
@@ -365,12 +381,12 @@ asymptote:
 
 [This graph looks like a parabola, so its equation is $h=at^2+bt+c$
 where $a$, $b$ and $c$ are constants.](graphs.html#parabolas) The
-changing speed of height is the falling speed. Let's call that $v$ like
+changing rate of height is the falling speed. Let's call that $v$ like
 velocity.
 
 math: v = \frac{dh}{dt} = \frac{d}{dt} (at^2+bt+c) = 2at+b
 
-On the other hand, the changing speed of velocity is the acceleration caused by
+On the other hand, the changing rate of velocity is the acceleration caused by
 gravity. Let's call that $g$.
 
 math: g = \frac{dv}{dt} = \frac{d}{dt} (2at+b) = 2a
@@ -407,7 +423,7 @@ code:
    O
 
 You can use similar code for doing jumps in games. Here's a demo created with
-my [canvaswrapper.js] script. Click it and use arrow keys to move the ball.
+my canvaswrapper.js script. Click it and use arrow keys to move the ball.
 
 canvasdemo:
    const GRAVITY = 1.5;
