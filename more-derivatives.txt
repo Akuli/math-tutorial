@@ -127,7 +127,7 @@ indent:
         &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)+\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
         &= f'(x) + g'(x)
 
-    We can prove the $-$ thing using stuff that we have proved earlier:
+    We can prove the minus thing using stuff that we have proved earlier:
 
     math:
         \frac{d}{dx}(f(x)-g(x)) \
