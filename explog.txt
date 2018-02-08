@@ -354,11 +354,83 @@ graybox: Exercise
     $\frac{d}{dx}(f(x)g(x))=f'(x)g(x)+f(x)g'(x)$ when $f(x)>0$ and $g(x)>0$ by
     rewriting $f(x)g(x)$ as $e^{\ln(f(x)g(x))}=e^{\ln f(x)+\ln g(x)}$.
 
-## Integrals of Exponent Functions
+## Integral of $\frac 1 x$
 
 redbox:
-    Rest of this chapter assumes that you know [integrals](integrals.html). Skip
-    this stuff if you don't.
+    Rest of this chapter assumes that you know [integrals](integrals.html).
+
+Now we know that $\frac{d}{dx}\ln(x) = \frac 1 x$, so we must also have
+$\int\frac 1 x\ dx = \ln(x) + C$. However, that only works if $x > 0$ because
+we can't take a logarithm of a negative number, but $\frac 1 x$ is defined for
+any $x \ne 0$:
+
+asymptote:
+    size(10cm);
+    axises(-4, 4, -4, 4);
+
+    real f(real x) { return 1/x; }
+    draw(graph(f, -4, f(-4)), blue);
+    draw(graph(f, 4, f(3.5 /* don't draw on top of the y */)), blue, L="$y=\frac 1 x$");
+
+However, if $x$ is negative, then $-x$ is positive. Maybe something like
+$\ln(-x)$ happens to be our $\frac 1 x$ antiderivative? Let's see.
+
+math:
+    \frac{d}{dx} \ln(\underbrace{-x}_{\substack{\text{inner} \\ \text{stuff}}}) \
+    = \frac{1}{-x} \cdot (-1) = \frac 1 x
+
+It works, so we have this:
+
+math:
+    \int\frac 1 x\ dx = \left\{\begin{array}{ll} \
+        \ln(x) + C  & \text{ if } x > 0
+        \ln(-x) + C & \text{ if } x < 0
+    \end{array}\right.
+
+We can simplify this a bit with this definition of the absolute value:
+
+math:
+    |x| = \left\{\begin{array}{ll} \
+        x  & \text{ if } x > 0
+        -x & \text{ if } x < 0
+    \end{array}\right.
+
+For example, $|4| = 4$ and $|-4| = -(-4) = 4$. We can write our $\frac 1 x$
+integral concisely like this:
+
+math:
+    \int\frac 1 x\ dx = \ln(|x|) + C
+
+Here's a nice integral with $\frac 1 x$ and a constant $a>0$:
+
+math:
+    \int_1^a\frac 1 x\ dx &= \Bigl[\ln(|x|)\Bigr]_1^a = \Bigl[\ln(x)\Bigr]_1^a = \ln(a) - \ln(1)
+    &= \ln(a) - \ln(e^0) = \ln(a) - 0 = \ln(a)
+
+asymptote: float:right;
+    size(8cm);
+
+    real f(real x) { return 1/x; }
+
+    fill((1,0)--(1,f(1))--graph(f,1,e)--(e,f(e))--(e,0)--cycle, palegreen);
+    axises(-0.5, 4, -0.5, 2);
+    draw((1,0)--(1,f(1)));
+    draw((e,0)--(e,f(e)));
+
+    label((1, 0), L="$1$", align=S);
+    label((e, 0), L="$e$", align=S);
+    real mid = (1+e)/2;
+    label("1", (mid,f(mid)/2));
+
+    draw(graph(f, 0.5, 4), blue, L="$y=\frac 1 x$", align=NE);
+
+We also know that $\ln(e) = \ln(e^1) = 1$, so we can define $e$ as the only
+number that satisfies this:
+
+math:
+    \int_1^e\frac 1 x\ dx = 1
+
+## Integrals of Exponent Functions
 
 We know that $\frac{d}{dx} a^x = a^x \ln(a)$. Turning that into an
 antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
