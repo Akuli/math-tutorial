@@ -2,6 +2,10 @@ body {
     margin: 10px 10px 10px 10px;
 }
 
+iframe {
+    border-width: 0px;
+}
+
 .headerlink {
     color: #eee;
 }

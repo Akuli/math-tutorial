@@ -22,7 +22,7 @@ made to see how changing the constant and the slope affects the line. The
 equation of the line is shown in <span style="color: blue;">blue</span> in the
 top left corner.
 
-<iframe src="https://purplemyst.github.io/line-drawer/" style="border-width: 0px;"
+<iframe src="https://purplemyst.github.io/generic-graphing/line.html"
         width="350" height="400"></iframe>
 
 The $c$ constant specifies how high the line is. It's important to note what
@@ -114,7 +114,7 @@ asymptote:
     draw((x1,f(x1))--(x2,f(x1)), L="$\Delta x$", align=S);
     draw((x2,f(x1))--(x2,f(x2)), L="$\Delta y$", align=E);
 
-We can calculate the exact slope at this point with a limit like
+We can calculate the exact slope at a point with a limit like
 $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$. This
 limit is known as the **derivative**.
 

@@ -1,161 +1,78 @@
 # Common Graphs
 
-This page contains a bunch of graphs that we use in other chapters.
+This page contains a bunch of graphs and some awesome graph drawing demos made
+by [a friend of mine](https://github.com/PurpleMyst/).
 
 ## Lines
 
-comment: TODO: explain what is a constant on the basics page
+The equation of any (non-vertical) line is $y=sx+c$. Here $s$ and $c$ are
+constants, and $s$ is called the **slope**. Try at least these things with the
+below demo program:
 
-In this section, $a$ and $s$ can be any constants, and $s$ is
-[the slope](derivatives.html#slopes). In general, the equation of any
-non-vertical line is $y=sx+a$ where $s$ and $a$ can be 0, positive or
-negative. The slope of the $y=a$ line is 0 because $a=0x+a$.
+* What does changing the slope and the constant term do?
+* What if the slope or the constant term is zero?
+* What if the slope or the constant term is negative?
 
-asymptote: float:left;
-    size(8cm);
-    real xmin=-3, xmax=3, slope = 0.7;
-    real f(real x) { return slope*x; }
-    axises(xmin,xmax,slope*xmin,slope*xmax+1);
-    draw(graph(f,xmin,-1), blue);
-    draw(graph(f,-1,xmax), blue, L=rotate(degrees(atan(slope)))*"$y=sx,s>0$", align=N);
+<iframe src="https://purplemyst.github.io/generic-graphing/line.html"
+        width="350" height="400"></iframe>
 
-asymptote: float:left;
-    size(9.5cm);
-    real xmin=-3, xmax=3, slope = -0.7;
-    real f(real x) { return slope*x; }
-    axises(xmin,xmax,-slope*xmin,-slope*xmax+1);
-    draw(graph(f,xmin,1), blue, L=rotate(degrees(atan(slope)))*"$y=sx,s<0$", align=N);
-    draw(graph(f,1,xmax), blue);
+graybox: See Also
+    The derivative tutorial contains [more information about
+    slopes](derivatives.html#slopes).
 
-<div style="clear:both;"></div>
+asymptote: float:right;
+    size(6cm);
+    pair labelplace=(0,1), graphplace=(1, 0);
 
-asymptote: float:left;
-    size(7cm);
-    real xymin=-3, xymax=3;
-    grid(xymin,xymax,xymin,xymax);
-    axises(xymin,xymax+1,xymin,xymax+1);
-    real f(real x) { return x; }
-    draw(graph(f,xymin,0), blue);
-    draw(graph(f,0,xymax), blue, L=rotate(45)*"$y=x$", align=N);
-
-asymptote: float:left;
-    size(7cm);
-    real a = 3;
-    axises(-a,a,-1,a+2);
-    draw((-a,a)--(0,a), blue);
-    draw((0,a)--(a,a), blue, L="$y=a$", align=N);
-    draw(brace((-a/2,0),(-a/2,a)), L="$a$", align=W);
-
-asymptote: float:left;
-    size(8cm);
-    real xmin=-3, xmax=3, slope = 0.7, a=1;
-    real f(real x) { return slope*x+a; }
-    axises(xmin,xmax,slope*xmin,slope*xmax+1);
-    draw(graph(f,xmin,-1), blue);
-    draw(graph(f,-1,xmax), blue, L=rotate(degrees(atan(slope)))*"$y=sx+a$", align=N);
-    draw(brace((0.2,a),(0.2,0)), L="$a$", align=E);
-
-<div style="clear:both;"></div>
+    real f(real x) { return -x**2; }
+    draw(shift(graphplace)*shift(0, -0.1)*graph(f, -1.5, 1.5), blue);
+    label(labelplace, L="the vertex", align=N);
+    draw(labelplace{down}..{right}((labelplace+graphplace)/2){right}..{down}(1,0), arrow=Arrow(size=5mm));
 
 ## Parabolas
 
-Here $a$, $t$ and $u$ are constants. The graphs are drawn with $t>0$ and $u>0$
-for simplicity, but $t$ and $u$ can be 0 or negative as well. For example, more
-$u$ seems to mean that the graph moves up, so e.g. $u=-2$ would bring the graph
-down.
+The "tip" of a parabola is known as the **vertex**. See the image at right.
 
-asymptote: float:left;
-    size(12cm);
-    real xmin=-2.5, xmax=2.5;
-    real f(real x) { return x**2; }
-    grid(floor(xmin),ceil(xmax),-1,ceil(f(xmax)));
-    axises(floor(xmin),xmax+1,-1,f(xmax)+1);
-    draw(graph(f,xmin,0), blue);
-    draw(graph(f,0,xmax), blue, L=rotate(70)*"$y=x^2$");
+The equation of any parabola that opens up or down is $y=a\cdot(x-v)^2+w$ where
+$a$, $v$ and $w$ are constants. The $x$ coordinate of the vertex is $v$ and the
+$y$ coordinate is $w$. Note that $a \ne 0$ because $y=w$ is a horizontal line.
 
-    for (real x = ceil(xmin); x <= xmax; x += 1) {
-        if (x != 0)
-            label((x,0), L="$"+(string)x+"$", align=S);
-    }
-    for (real y = 1; y<=f(xmax); y+=1) {
-        label((0,y), L="$"+(string)y+"$", align=W);
-    }
+<iframe src="https://purplemyst.github.io/generic-graphing/parabola.html"
+        width="350" height="400"></iframe>
 
-asymptote: float:left;
-    size(10cm);
-    real xmin=-2, xmax=2, c=1;
-    real f(real x) { return x**2+c; }
-    axises(xmin,xmax+1,-1,f(xmax)+1);
-    draw(graph(f,xmin,0.8), blue);
-    draw(graph(f,0.8,xmax), blue, L=rotate(70)*"$y=x^2+u,\ u>0$");
-    draw(brace((0.3,c),(0.3,0)), L="$u$", align=E);
-
-asymptote: float:left;
-    size(9cm);
-    real xmin=-0.5, xmax=4.5;
-    real a=(xmin+xmax)/2;
-    real f(real x) { return (x-a)**2; }
-    axises(floor(xmin),xmax+1,-1,f(xmax)+1);
-    draw(graph(f,xmin,3.2), blue);
-    draw(graph(f,3.2,xmax), blue, L=rotate(70)*"$y=(x-t)^2,\ \ t>0$");
-    draw(brace((a,-0.2),(0,-0.2)), L="$t$", align=S);
-
-<div style="clear:both;"></div>
-
-asymptote: float:left;
-    size(10cm);
-    real xmin=-2, xmax=2, a=2;
-    real f(real x) { return a*x**2; }
-    axises(xmin,xmax+1,-1,f(xmax)+1);
-    draw(graph(f,xmin,1), blue);
-    draw(graph(f,1,xmax), blue, L=rotate(75)*"$y=ax^2, a>0$");
-
-    assert(f(1) == a);
-    draw((1,0)--(1,a), smalldashes, L="$a$", align=E);
-    label((1,0), L="$1$", align=S);
-
-asymptote: float:left;
-    size(10cm);
-    real xmin=-1.5, xmax=1.5, a=-2;
-    real f(real x) { return a*x**2; }
-    axises(xmin,xmax+0.5,f(xmax),1);
-    draw(graph(f,xmin,-1), blue, L=rotate(77)*"$y=ax^2,\ a<0$");
-    draw(graph(f,-1,xmax), blue);
-
-    assert(f(1) == a);
-    draw((1,0)--(1,a), smalldashes, L="$|a|$", align=E);
-    label((1,0), L="$1$", align=N);
-
-<div style="clear:both;"></div>
-
-floatingbox: Handy thing: $(x-t)^2=x^2-2tx+t^2$
+floatingbox: Handy thing: $(x-v)^2=x^2-2vx+v^2$
     Proof:
 
     math:
-        & \ (x-t)^2
-        =&\ (x-t)(x-t)
-        =&\ (x-t)x-(x-t)t
-        =&\ (xx-tx)-(xt-tt)
-        =&\ xx-tx-xt+tt
-        =&\ xx-(tx+tx)+tt
-        =&\ x^2-2tx+t^2
+        & \ (x-v)^2
+        =&\ (x-v)(x-v)
+        =&\ (x-v)x-(x-v)v
+        =&\ (xx-vx)-(xv-vv)
+        =&\ xx-vx-xv+vv
+        =&\ xx-(vx+vx)+vv
+        =&\ x^2-2vx+v^2
 
-The equations of all these parabolas seem to be of the form
-$y=a\cdot(x-t)^2+u$. Let's expand that a bit:
+The $y=a(x-v)^2+w$ form is nice because it's easy to see where the vertex is,
+but let's see what happens if we expand that a bit:
 
 math:
-    y &= a\cdot(x-t)^2+u
-    &= a\cdot(x^2-2tx+t^2)+u
-    &= ax^2-2atx+at^2+u
+    y &= a\cdot(x-v)^2+w
+    &= a\cdot(x^2-2vx+v^2)+w
+    &= ax^2-2avx+av^2+w
 
-Now if we set $b=-2at$ and $c=at^2+u$, then $b$ and $c$ are also
-constants because they don't depend on the value of $x$. So we get this:
+Now if we set $b=-2av$ and $c=av^2+w$, then $b$ and $c$ are also because they
+don't depend on the value of $x$. We get this:
 
 math:
     y = ax^2+bx+c
 
 Equations of all parabolas that open up or down are like this.
-Note that $a \ne 0$ because $y=bx+c$ is a straight line.
+Again, $a \ne 0$ because $y=bx+c$ is a straight line.
+
+graybox: Exercise
+    What is the $x$ coordinate of the vertex of a $y=ax^2+bx+c$ parabola? Note
+    that $b$ corresponds to $-2av$ where $v$ is the vertex $x$ coordinate.
+    Check your answer with a derivative like $\frac{d}{dx}(ax^2+bx+c)=0$.
 
 ## Exponents and Logarithms
 
