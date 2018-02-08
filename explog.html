@@ -243,11 +243,35 @@ $\frac{d}{dx}(f(x)g(x))=f'(x)g(x)+f(x)g'(x)$ when $f(x)>0$ and $g(x)>0$ by
 rewriting $f(x)g(x)$ as $e^{\ln(f(x)g(x))}=e^{\ln f(x)+\ln g(x)}$.
 </p>
 
-</div><h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>. Skip
-this stuff if you don't.
+</div><h2 id="integral-of-frac-1-x">Integral of $\frac 1 x$<a class="headerlink" href="#integral-of-frac-1-x" title="Link to this title">¶</a></h2><div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>.
 </p>
 
-</div><p>We know that $\frac{d}{dx} a^x = a^x \ln(a)$. Turning that into an
+</div><p>Now we know that $\frac{d}{dx}\ln(x) = \frac 1 x$, so we must also have
+$\int\frac 1 x\ dx = \ln(x) + C$. However, that only works if $x > 0$ because
+we can't take a logarithm of a negative number, but $\frac 1 x$ is defined for
+any $x \ne 0$:</p>
+
+<p><img width="283" height="270" class="asymptote" src="asymptote/7066a81397cfb7a4bf8e2563d2456173.svg" /></p><p>However, if $x$ is negative, then $-x$ is positive. Maybe something like
+$\ln(-x)$ happens to be our $\frac 1 x$ antiderivative? Let's see.</p>
+
+$$\begin{align}\frac{d}{dx} \ln(\underbrace{-x}_{\substack{\text{inner} \\ \text{stuff}}})  = \frac{1}{-x} \cdot (-1) = \frac 1 x\end{align}$$<p>It works, so we have this:</p>
+
+$$\begin{align}\int\frac 1 x\ dx = \left\{\begin{array}{ll}      \ln(x) + C  & \text{ if } x > 0 \\
+    \ln(-x) + C & \text{ if } x < 0 \\
+\end{array}\right.\end{align}$$<p>We can simplify this a bit with this definition of the absolute value:</p>
+
+$$\begin{align}|x| = \left\{\begin{array}{ll}      x  & \text{ if } x > 0 \\
+    -x & \text{ if } x < 0 \\
+\end{array}\right.\end{align}$$<p>For example, $|4| = 4$ and $|-4| = -(-4) = 4$. We can write our $\frac 1 x$
+integral concisely like this:</p>
+
+$$\begin{align}\int\frac 1 x\ dx = \ln(|x|) + C\end{align}$$<p>Here's a nice integral with $\frac 1 x$ and a constant $a>0$:</p>
+
+$$\begin{align}\int_1^a\frac 1 x\ dx &= \Bigl[\ln(|x|)\Bigr]_1^a = \Bigl[\ln(x)\Bigr]_1^a = \ln(a) - \ln(1) \\
+&= \ln(a) - \ln(e^0) = \ln(a) - 0 = \ln(a)\end{align}$$<img width="227" height="127" class="asymptote" src="asymptote/56cf4315ea4ef155cd62dae172d5e052.svg" style="float:right;" /><p>We also know that $\ln(e) = \ln(e^1) = 1$, so we can define $e$ as the only
+number that satisfies this:</p>
+
+$$\begin{align}\int_1^e\frac 1 x\ dx = 1\end{align}$$<h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><p>We know that $\frac{d}{dx} a^x = a^x \ln(a)$. Turning that into an
 antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
 $\frac{d}{dx}(c\ f(x)) = c\ f'(x)$ rule right-to-left.</p>
 

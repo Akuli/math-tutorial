@@ -22,46 +22,55 @@
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><b>Common Graphs</b></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="common-graphs">Common Graphs<a class="headerlink" href="#common-graphs" title="Link to this title">¶</a></h1><p>This page contains a bunch of graphs that we use in other chapters.</p>
+<h1 id="common-graphs">Common Graphs<a class="headerlink" href="#common-graphs" title="Link to this title">¶</a></h1><p>This page contains a bunch of graphs and some awesome graph drawing demos made
+by <a href="https://github.com/PurpleMyst/">a friend of mine</a>.</p>
 
-<h2 id="lines">Lines<a class="headerlink" href="#lines" title="Link to this title">¶</a></h2><p>In this section, $a$ and $s$ can be any constants, and $s$ is
-<a href="derivatives.html#slopes">the slope</a>. In general, the equation of any
-non-vertical line is $y=sx+a$ where $s$ and $a$ can be 0, positive or
-negative. The slope of the $y=a$ line is 0 because $a=0x+a$.</p>
+<h2 id="lines">Lines<a class="headerlink" href="#lines" title="Link to this title">¶</a></h2><p>The equation of any (non-vertical) line is $y=sx+c$. Here $s$ and $c$ are
+constants, and $s$ is called the <b>slope</b>. Try at least these things with the
+below demo program:</p>
 
-<img width="227" height="185" class="asymptote" src="asymptote/00147c714df1adbc1474da952a770c58.svg" style="float:left;" /><img width="269" height="203" class="asymptote" src="asymptote/61a2ce116aa5ceef2107b1ef93fe7206.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<ul><li>What does changing the slope and the constant term do?</li><li>What if the slope or the constant term is zero?</li><li>What if the slope or the constant term is negative?
+</li></ul><p><iframe src="https://purplemyst.github.io/generic-graphing/line.html"
+        width="350" height="400"></iframe></p>
 
-<img width="198" height="185" class="asymptote" src="asymptote/af91b4c8bc8e5bb50aaf6a379db2a4d2.svg" style="float:left;" /><img width="198" height="185" class="asymptote" src="asymptote/76d26ac6039b3c68ca0fa50d5273f76c.svg" style="float:left;" /><img width="227" height="210" class="asymptote" src="asymptote/d7458a960e812a79ee9a96c1847f9b9b.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<div class="box graybox"><h2> See Also</h2><p>The derivative tutorial contains <a href="derivatives.html#slopes">more information about
+slopes</a>.
+</p>
 
-<h2 id="parabolas">Parabolas<a class="headerlink" href="#parabolas" title="Link to this title">¶</a></h2><p>Here $a$, $t$ and $u$ are constants. The graphs are drawn with $t>0$ and $u>0$
-for simplicity, but $t$ and $u$ can be 0 or negative as well. For example, more
-$u$ seems to mean that the graph moves up, so e.g. $u=-2$ would bring the graph
-down.</p>
+</div><img width="160" height="170" class="asymptote" src="asymptote/70f32f02a15d3b6a9df0281b602e50fa.svg" style="float:right;" /><h2 id="parabolas">Parabolas<a class="headerlink" href="#parabolas" title="Link to this title">¶</a></h2><p>The "tip" of a parabola is known as the <b>vertex</b>. See the image at right.</p>
 
-<img width="288" height="340" class="asymptote" src="asymptote/7752303b00c3c272c630d49f19e98e58.svg" style="float:left;" /><img width="219" height="283" class="asymptote" src="asymptote/f1240058bb1401fc2a7f2e030cb9fd8b.svg" style="float:left;" /><img width="215" height="255" class="asymptote" src="asymptote/8f60be3247bb81492865785300e2dbc8.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<p>The equation of any parabola that opens up or down is $y=a\cdot(x-v)^2+w$ where
+$a$, $v$ and $w$ are constants. The $x$ coordinate of the vertex is $v$ and the
+$y$ coordinate is $w$. Note that $a \ne 0$ because $y=w$ is a horizontal line.</p>
 
-<img width="161" height="283" class="asymptote" src="asymptote/7b68c0d3277b8ba816f8c76c2e245b1e.svg" style="float:left;" /><img width="183" height="283" class="asymptote" src="asymptote/651cd04fb80ac2267a2fd0c593d81b68.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<p><iframe src="https://purplemyst.github.io/generic-graphing/parabola.html"
+        width="350" height="400"></iframe></p>
 
-<div class="floatingbox"><h2> Handy thing: $(x-t)^2=x^2-2tx+t^2$</h2><p>Proof:</p>
+<div class="floatingbox"><h2> Handy thing: $(x-v)^2=x^2-2vx+v^2$</h2><p>Proof:</p>
 
-$$\begin{align}& \ (x-t)^2 \\
-=&\ (x-t)(x-t) \\
-=&\ (x-t)x-(x-t)t \\
-=&\ (xx-tx)-(xt-tt) \\
-=&\ xx-tx-xt+tt \\
-=&\ xx-(tx+tx)+tt \\
-=&\ x^2-2tx+t^2\end{align}$$</div><p>The equations of all these parabolas seem to be of the form
-$y=a\cdot(x-t)^2+u$. Let's expand that a bit:</p>
+$$\begin{align}& \ (x-v)^2 \\
+=&\ (x-v)(x-v) \\
+=&\ (x-v)x-(x-v)v \\
+=&\ (xx-vx)-(xv-vv) \\
+=&\ xx-vx-xv+vv \\
+=&\ xx-(vx+vx)+vv \\
+=&\ x^2-2vx+v^2\end{align}$$</div><p>The $y=a(x-v)^2+w$ form is nice because it's easy to see where the vertex is,
+but let's see what happens if we expand that a bit:</p>
 
-$$\begin{align}y &= a\cdot(x-t)^2+u \\
-&= a\cdot(x^2-2tx+t^2)+u \\
-&= ax^2-2atx+at^2+u\end{align}$$<p>Now if we set $b=-2at$ and $c=at^2+u$, then $b$ and $c$ are also
-constants because they don't depend on the value of $x$. So we get this:</p>
+$$\begin{align}y &= a\cdot(x-v)^2+w \\
+&= a\cdot(x^2-2vx+v^2)+w \\
+&= ax^2-2avx+av^2+w\end{align}$$<p>Now if we set $b=-2av$ and $c=av^2+w$, then $b$ and $c$ are also because they
+don't depend on the value of $x$. We get this:</p>
 
 $$\begin{align}y = ax^2+bx+c\end{align}$$<p>Equations of all parabolas that open up or down are like this.
-Note that $a \ne 0$ because $y=bx+c$ is a straight line.</p>
+Again, $a \ne 0$ because $y=bx+c$ is a straight line.</p>
 
-<h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>All of these graphs have an area where they get closer and closer to an axis but
+<div class="box graybox"><h2> Exercise</h2><p>What is the $x$ coordinate of the vertex of a $y=ax^2+bx+c$ parabola? Note
+that $b$ corresponds to $-2av$ where $v$ is the vertex $x$ coordinate.
+Check your answer with a derivative like $\frac{d}{dx}(ax^2+bx+c)=0$.
+</p>
+
+</div><h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>All of these graphs have an area where they get closer and closer to an axis but
 they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
 $\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$ and
 $\displaystyle\lim_{x\to\infty}a^x=0$ if $0< a<1$.</p>
