@@ -84,7 +84,11 @@ $$\begin{align}\frac{d}{dx}(c \cdot f(x))  &= \lim_{h\to0} \frac{c\cdot f(x+h)-c
 &= \lim_{h\to0} \frac{c\cdot\bigl(f(x+h)-f(x)\bigr)}{h} \\
 &= \lim_{h\to0} \left(c\cdot\frac{f(x+h)-f(x)}{h}\right) \\
 &= c\cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
-&= c\cdot f'(x)\end{align}$$</div><h3 id="text-a-bunch-of-stuff-added-and-substracted">$\text{A bunch of stuff added and substracted}$<a class="headerlink" href="#text-a-bunch-of-stuff-added-and-substracted" title="Link to this title">¶</a></h3><div class="indent"><p>We did this in the previous chapter:</p>
+&= c\cdot f'(x)\end{align}$$<p>Here's a nice consequence of this rule:</p>
+
+$$\begin{align}\frac{d}{dx}(-f(x))  &= \frac{d}{dx}((-1)f(x)) \\
+&= (-1)f'(x) \\
+&= -f'(x)\end{align}$$</div><h3 id="text-a-bunch-of-stuff-added-and-substracted">$\text{A bunch of stuff added and substracted}$<a class="headerlink" href="#text-a-bunch-of-stuff-added-and-substracted" title="Link to this title">¶</a></h3><div class="indent"><p>We did this in the previous chapter:</p>
 
 $$\begin{align}\frac{d}{dx} (6x^2+7x-123) = \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123)\end{align}$$<p>If these things work, then the stuff above is correct:</p>
 
@@ -100,11 +104,10 @@ $$\begin{align}\frac{d}{dx}(f(x)+g(x))  &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f
 &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)+\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
 &= f'(x) + g'(x)\end{align}$$<p>We can prove the minus thing using stuff that we have proved earlier:</p>
 
-$$\begin{align}\frac{d}{dx}(f(x)-g(x))  &= \frac{d}{dx}\bigl(f(x)+(-1)g(x)\bigr) \\
-&= \frac{d}{dx}f(x)+\frac{d}{dx}\bigl((-1)g(x)\bigr) \\
-&= \frac{d}{dx}f(x)+(-1)\cdot\frac{d}{dx}(g(x)) \\
-&= f'(x) + (-1)g'(x) \\
-&= f'(x) - g'(x)\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that $g(x+h) \ne g(x)$ with a small $h$;
+$$\begin{align}\frac{d}{dx}(f(x)-g(x))  &= \frac{d}{dx}\bigl(f(x)+(-g(x))\bigr) \\
+&= \frac{d}{dx}f(x)+\frac{d}{dx}(-g(x)) \\
+&= f'(x)+(-g'(x)) \\
+&= f'(x)-g'(x)\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that $g(x+h) \ne g(x)$ with a small $h$;
 that is, $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. We'll do
 the $g(x+h)=g(x)$ case separately.</p>
 
