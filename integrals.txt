@@ -264,13 +264,22 @@ For example, with this notation, our $\frac{1}{2 \sqrt x}$ thing can be
 calculated with very little paper like this:
 
 math:
-    \int_1^2 \frac{1}{2 \sqrt x}\ dx = \left[\sqrt x\ \right]_1^2 \
+    \int_1^2 \frac{1}{2 \sqrt x}\ dx = \bigl[\sqrt x\ \bigr]_1^2 \
     = \sqrt 2 - \sqrt 1 = \sqrt 2 - 1
 
 This is how I did it in just a few seconds. Note that you can leave out the
 $+C$ when calculating areas, but you should include it when calculating
 antiderivatives.
 
+comment:
+    this doesn't link to tumblr directly so this won't break if the
+    tumblr link breaks
+
+image: images/aspirin.jpg
+
+<small>The image is from
+[here](https://78.media.tumblr.com/6e8c2bd281b4a20545b171af1ad1a151/tumblr_ohqkd92QdO1tu1t9yo1_1280.jpg).
+</small>
 
 ## Integral Rules
 

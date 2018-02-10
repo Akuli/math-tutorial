@@ -325,11 +325,11 @@ Here "diff" is short for "differentiate", and it means finding a derivative.
 
 [Newton](https://en.wikipedia.org/wiki/Isaac_Newton) and
 [Leibniz](https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz) discovered
-this derivative stuff independently in the mid-17th century, and they didn't
-exactly agree about which of them had invented it first.
-
-The word "derivative" probably refers to how it can be easily *derived* for
-most functions like in the example above, but other explanations exist too:
+this derivative stuff independently, and they didn't exactly agree about which
+of them had invented it first. The word "derivative" probably refers to how
+derivatives can be easily *derived* for most functions like in the example
+above, but this comic suggests that it refers to Leibniz *deriving* Newton's
+work:
 
 image: https://imgs.xkcd.com/comics/newton_and_leibniz.png
     max-width: 100%;

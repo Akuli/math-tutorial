@@ -70,9 +70,10 @@ Equations of all parabolas that open up or down are like this.
 Again, $a \ne 0$ because $y=bx+c$ is a straight line.
 
 graybox: Exercise
-    What is the $x$ coordinate of the vertex of a $y=ax^2+bx+c$ parabola? Note
-    that $b$ corresponds to $-2av$ where $v$ is the vertex $x$ coordinate.
+    What is the $x$ coordinate of the vertex of a $y=ax^2+bx+c$ parabola?
     Check your answer with a derivative like $\frac{d}{dx}(ax^2+bx+c)=0$.
+
+    Spoiler: above we set $b=-2av$.
 
 ## Exponents and Logarithms
 
