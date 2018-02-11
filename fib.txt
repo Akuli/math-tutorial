@@ -56,32 +56,21 @@ we also have $x^n \ne 0$.
 math:
     \frac{x^n}{x^n} + \frac{x^{n+1}}{x^n} &= \frac{x^{n+2}}{x^n}
     1 + x &= x^2
+    0 &= x^2 - x - 1
 
-floatingbox: Handy thing: $a^2-2ab+b^2=(a-b)^2$
-    Proof:
-
-    math:
-        & \ (a-b)^2
-        =&\ (a-b)(a-b)
-        =&\ (a-b)a-(a-b)b
-        =&\ (aa-ba)-(ab-bb)
-        =&\ aa-ba-ab+bb
-        =&\ aa-(ab+ab)+bb
-        =&\ a^2-2ab+b^2
-
-    In this case we need to plug in $a=\varphi$ and $b=\frac 1 2$.
-
-There's [a nice formula](https://en.wikipedia.org/wiki/Quadratic_formula) just
-for solving equations like this, but we don't really need it. Instead we'll use
-the handy thing at right cleverly:
+Next we need to use this formula taken from [the summary
+page](summary.html#completing-the-square):
 
 math:
-    1 + x &= x^2
-    x^2 - x &= 1
-    x^2 - \overbrace{2x\frac 1 2}^{\text{this is }x} &= 1
-    x^2 - 2x\frac 1 2 + \left(\frac 1 2\right)^2 &= 1 + \left(\frac 1 2\right)^2
-    \left(x - \frac 1 2\right)^2 &= 1 + \frac{1^2}{2^2} = 1 + \frac 1 4
-                                    &= \frac 4 4 + \frac 1 4 = \frac 5 4
+    ax^2+bx+c = a\left(x + \frac{b}{2a}\right)^2 + c - \frac{b^2}{4a}
+
+Let's plug in $a=1$, $b=-1$ and $c=-1$.
+
+math:
+    x^2-x-1 &= 0
+    1\left(x + \frac{-1}{2\cdot1}\right)^2 + (-1) - \frac{(-1)^2}{4\cdot1} &= 0
+    \left(x - \frac 1 2\right)^2 - 1 - \frac 1 4 &= 0
+    \left(x - \frac 1 2\right)^2 &= 1 + \frac 1 4 = \frac 4 4 + \frac 1 4 = \frac 5 4
     \sqrt{\left(x - \frac 1 2\right)^2} &= \sqrt{\frac 5 4}
     \left|x - \frac 1 2\right| &= \frac{\sqrt 5}{\sqrt 4} = \frac{\sqrt 5}{2}
     x - \frac 1 2 &= \pm \frac{\sqrt 5}{2}
@@ -263,30 +252,42 @@ math:
         F_n = F_{n-1} + F_{n-2}, \quad n = 3,4,5,...
     \end{array}\right.
 
-This will be a *proof*, so we won't use sympy. The $F_1=1$ thing is quite
-straight-forward to prove:
+floatingbox: Handy thing: $(a-b)^2=a^2-2ab+b^2$
+    Proof:
+
+    math:
+        & \ (a-b)^2
+        =&\ (a-b)(a-b)
+        =&\ (a-b)a-(a-b)b
+        =&\ (aa-ba)-(ab-bb)
+        =&\ aa-ba-ab+bb
+        =&\ aa-(ab+ab)+bb
+        =&\ a^2-2ab+b^2
+
+    In this case we need to plug in $a=1$ and $b=\varphi$.
+
+This will be a *proof*, so we won't use sympy.
+
+The $F_1=1$ thing is quite straight-forward to prove:
 
 math:
     F_1 &= \frac{\varphi^1 - (1-\varphi)^1}{\sqrt 5} = \frac{\varphi - (1-\varphi)}{\sqrt 5}
     &= \frac{\varphi-1+\varphi}{\sqrt 5} = \frac{2\varphi - 1}{\sqrt 5} = \frac{2\frac{1+\sqrt 5}{2} - 1}{\sqrt 5}
     &= \frac{1+\sqrt5-1}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1
 
-floatingbox: Handy thing: $(a-b)^2=a^2-2ab+b^2$
-    This was proved earlier in this chapter. Now we need to plug in $a=1$ and
-    $b=\varphi$.
-
 We need the handy thing at right for $F_2=1$.
 
 math:
-    F_2 &= \frac{\varphi^2 - (1-\varphi)^2}{\sqrt 5} = \frac{\varphi^2-(1^2-2\cdot1\cdot\varphi+\varphi^2)}{\sqrt 5}
+    F_2 &= \frac{\varphi^2 - (1-\varphi)^2}{\sqrt 5}
+    &= \frac{\varphi^2-(1^2-2\cdot1\cdot\varphi+\varphi^2)}{\sqrt 5}
     &= \frac{\varphi^2-1+2\varphi-\varphi^2}{\sqrt5} = \frac{2\varphi-1}{\sqrt5}
 
 We already figured out that this is 1 when proving that $F_1=1$.
 
 If we can prove that $F_n + F_{n+1} = F_{n+2}$ for $n=1,2,3,...$, then we also
 have $F_n = F_{n-1} + F_{n-2}$ for $n=3,4,5,...$ which is what we need next.
-In the beginning of this page we solved $x^n+x^{n+1}=x^{n+2}$ and the solutions
-$x=\varphi$, $x=1-\varphi$ and $x=0$, so we have these equations:
+In the beginning of this page we solved $x^n+x^{n+1}=x^{n+2}$ and we got the
+solutions $x=\varphi$, $x=1-\varphi$ and $x=0$, so we have these equations:
 
 math:
     & \varphi^n + \varphi^{n+1} = \varphi^{n+2}

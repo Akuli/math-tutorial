@@ -20,6 +20,14 @@ math:
     (a-b)^2 &= a^2-2ab+b^2
     a^2-b^2 &= (a-b)(a+b)
 
+## Completing the Square
+
+Deriving this formula is an exercise on [the parabola section of the graphs
+page](graphs.html#parabolas).
+
+math:
+    ax^2+bx+c = a\left(x + \frac{b}{2a}\right)^2 + c - \frac{b^2}{4a}, \quad a\ne0
+
 ## Infinity and Indeterminate Forms
 
 Here $x$ can be any finite number.

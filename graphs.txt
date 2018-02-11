@@ -1,13 +1,140 @@
-# Common Graphs
+# Graphs
 
 This page contains a bunch of graphs and some awesome graph drawing demos made
 by [a friend of mine](https://github.com/PurpleMyst/).
 
+## Basic Stuff
+
+Let's say that $f$ is a function and we have some graph $y=f(x)$. It means that
+we can get a $y$ value by plugging the corresponding $x$ value to $f$. For
+example, at $x=1.5$, the $y$ value is $f(1.5)$.
+
+asymptote:
+    size(12cm);
+    real xmin=-2, xmax=4, ymin=-0.3, ymax=2.5;
+    axises(xmin, xmax, ymin, ymax);
+
+    real f(real x) { return sin(x**2) + 1; } draw(graph(f, xmin, xmax), blue);
+    label((3,2), blue, L="$y=f(x)$", align=N);
+    draw((1.5,0)--(1.5,f(1.5)), lightblue);
+
+    pair flabelplace=(1, 3);
+    label(flabelplace, L="this distance is $f(1.5)$", align=N);
+    draw(flabelplace{down}..{right}(1.4, f(1.5)/2), arrow=Arrow(size=5mm));
+
+    draw(brace((1.5,-0.1), (0,-0.1), amplitude=0.5), L="this distance is 1.5", align=S);
+
+There are a few common ways to stretch and move graphs:
+
+* Adding a positive constant moves the graph up simply because $y$ values are
+  always bigger by that constant. Substracting a positive constant brings the
+  graph down. That's same as adding a negative constant, e.g.
+  $f(x)-3 = f(x)+(-3)$.
+
+indent:
+    asymptote:
+        size(12cm);
+        real xmin=-2, xmax=4, ymin=-3.5, ymax=5.5;
+        axises(xmin, xmax+2, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(f, xmin, xmax), blue);
+        label((xmax,1), blue, L="$y=f(x)$", align=E);
+        draw(graph(new real(real x) { return f(x)+3; }, xmin, xmax), deepred);
+        label((xmax,1+3), deepred, L="$y=f(x)+3$", align=E);
+        draw(graph(new real(real x) { return f(x)-3; }, xmin, xmax), deepgreen);
+        label((xmax,1-3), deepgreen, L="$y=f(x)-3$", align=E);
+
+* Substracting a positive constant **inside** $f(\quad)$ moves the graph
+  right. Adding a positive constant moves left.
+
+indent:
+    asymptote: float:left;
+        size(12cm);
+        real xmin=-4, xmax=4, ymin=-0.5, ymax=2.7;
+        axises(xmin, xmax, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(f, xmin, xmax), blue);
+        label((3,2), blue, L="$y=f(x)$", align=N);
+
+    asymptote: float:left;
+        size(12cm);
+        real xmin=-4, xmax=4, ymin=-0.5, ymax=2.7;
+        axises(xmin, xmax, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(new real(real x) { return f(x-2); }, xmin, xmax), deepred);
+        label((3,2), deepred, L="$y=f(x-2)$", align=N);
+
+    asymptote: float:left;
+        size(12cm);
+        real xmin=-4, xmax=4, ymin=-0.5, ymax=2.7;
+        axises(xmin, xmax, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(new real(real x) { return f(x+2); }, xmin, xmax), deepgreen);
+        label((3,2), deepgreen, L="$y=f(x+2)$", align=N);
+
+    <div style="clear:left;"></div>
+
+    Think about it like this: if we have $f(x-2)$ instead of $f(x)$, then $x$
+    needs to be bigger for getting the same $y$ value, and bigger $x$ means
+    right. For example, $f(3) = f(5-2)$, so whatever was at $x=3$ moves to
+    $x=5$.
+
+* Adding a minus sign to front flips the graph to the other side of the $x$
+  axis.
+
+indent:
+    asymptote:
+        size(12cm);
+        real xmin=-2, xmax=4, ymin=-2, ymax=2.5;
+        axises(xmin, xmax+2, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(f, xmin, xmax), blue);
+        label((xmax,1), blue, L="$y=f(x)$", align=E);
+        draw(graph(new real(real x) { return -f(x); }, xmin, xmax), deepred);
+        label((xmax,-1), deepred, L="$y=-f(x)$", align=E);
+
+* Multiplying by a positive constant stretches the graph away from the $x$
+  axis. The $y$ values represent distances from the $x$ axis, so e.g.
+  multiplying by 2 means that the distances are always twice as big. That looks
+  like stretching.
+
+indent:
+    asymptote:
+        size(12cm);
+        real xmin=-2, xmax=4, ymin=-0.5, ymax=4.5;
+        axises(xmin, xmax+2, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(f, xmin, xmax), blue);
+        label((xmax,1), blue, L="$y=f(x)$", align=E);
+        draw(graph(new real(real x) { return 2*f(x); }, xmin, xmax), deepred);
+        label((xmax,3), deepred, L="$y=2 \cdot f(x)$", align=E);
+
+* Multiplying by a negative constant is just a combination of the above two
+  things because $(-2)\cdot f(x)=-(2\cdot f(x))$.
+
+indent:
+    asymptote:
+        size(14cm);
+        real xmin=-2, xmax=4, ymin=-4, ymax=2;
+        axises(xmin, xmax+2, ymin, ymax);
+
+        real f(real x) { return sin(x**2) + 1; }
+        draw(graph(f, xmin, xmax), blue);
+        label((xmax,1), blue, L="$y=f(x)$", align=E);
+        draw(graph(new real(real x) { return -2*f(x); }, xmin, xmax), deepred);
+        label((xmax,-3), deepred, L="$y=(-2)f(x)$", align=E);
+
 ## Lines
 
-The equation of any (non-vertical) line is $y=sx+c$. Here $s$ and $c$ are
-constants, and $s$ is called the **slope**. Try at least these things with the
-below demo program:
+The equation of any (non-vertical) line is $y=sx+c$, where $s$ and $c$ are
+constants. The $s$ is known as the **slope** and $c$ is the **constant term**.
+Try at least these things with the below demo program:
 
 * What does changing the slope and the constant term do?
 * What if the slope or the constant term is zero?
@@ -33,47 +160,68 @@ asymptote: float:right;
 
 The "tip" of a parabola is known as the **vertex**. See the image at right.
 
-The equation of any parabola that opens up or down is $y=a\cdot(x-v)^2+w$ where
-$a$, $v$ and $w$ are constants. The $x$ coordinate of the vertex is $v$ and the
-$y$ coordinate is $w$. Note that $a \ne 0$ because $y=w$ is a horizontal line.
+The graph $y=x^2$ is a simple parabola, and the below demo displays that by
+default. As you can see, the vertex $x$ and $y$ coordinates are both 0.
+Parabolas of the form $y=(x-x_v)^2+y_v$ are the same thing shifted, and the
+$x_v$ and $y_v$ constants represent new $x$ and $y$ coordinates of the vertex.
+
+Putting a constant $a$ to front like $y=a\cdot(x-x_v)^2+y_v$ makes the parabola
+stretch, and a negative $a$ means that it opens down. Note that $a \ne 0$
+because $a=0$ would mean $y=y_v$, and that's a horizontal line at height $y_v$
+instead of a parabola.
 
 <iframe src="https://purplemyst.github.io/generic-graphing/parabola.html"
         width="350" height="400"></iframe>
 
-floatingbox: Handy thing: $(x-v)^2=x^2-2vx+v^2$
+floatingbox: Handy thing: $(a-b)^2=a^2-2ab+b^2$
     Proof:
 
     math:
-        & \ (x-v)^2
-        =&\ (x-v)(x-v)
-        =&\ (x-v)x-(x-v)v
-        =&\ (xx-vx)-(xv-vv)
-        =&\ xx-vx-xv+vv
-        =&\ xx-(vx+vx)+vv
-        =&\ x^2-2vx+v^2
+        & \ (a-b)^2
+        =&\ (a-b)(a-b)
+        =&\ (a-b)a-(a-b)b
+        =&\ (aa-ba)-(ab-bb)
+        =&\ aa-ba-ab+bb
+        =&\ aa-(ab+ab)+bb
+        =&\ a^2-2ab+b^2
 
-The $y=a(x-v)^2+w$ form is nice because it's easy to see where the vertex is,
-but let's see what happens if we expand that a bit:
+    In this case we need to plug in $a=x$ and $b=x_v$.
+
+The $y=a(x-x_v)^2+y_v$ form is nice because it's easy to see where the vertex
+is and it's easy to solve things like $y=0$, but let's see what happens if we
+expand that:
 
 math:
-    y &= a\cdot(x-v)^2+w
-    &= a\cdot(x^2-2vx+v^2)+w
-    &= ax^2-2avx+av^2+w
+    y &= a\cdot(x-x_v)^2+y_v
+    &= a\cdot(x^2-2x_vx+{x_v}^2)+y_v
+    &= ax^2-2ax_vx+a{x_v}^2+y_v
 
-Now if we set $b=-2av$ and $c=av^2+w$, then $b$ and $c$ are also because they
-don't depend on the value of $x$. We get this:
+Now if we set $b=-2ax_v$ and $c=a{x_v}^2+y_v$, then $b$ and $c$ are also
+constants because they don't depend on the value of $x$. We get this:
 
 math:
     y = ax^2+bx+c
 
-Equations of all parabolas that open up or down are like this.
-Again, $a \ne 0$ because $y=bx+c$ is a straight line.
+This form comes up often when calculating stuff, and converting from this form
+back to $y=a(x-x_v)^2+y_v$ can be useful. That is known as
+**completing the square**. This exercise gives you everything you need to know
+for doing that:
 
 graybox: Exercise
-    What is the $x$ coordinate of the vertex of a $y=ax^2+bx+c$ parabola?
-    Check your answer with a derivative like $\frac{d}{dx}(ax^2+bx+c)=0$.
+    Above we set $b=-2ax_v$ and $c=a{x_v}^2+y_v$. If we know $a$, $b$ and $c$,
+    how can we figure out $x_v$ and $y_v$?
 
-    Spoiler: above we set $b=-2av$.
+    Check your $x_v$ answer with [a derivative](derivatives.html) like
+    $\frac{d}{dx}(ax^2+bx+c)=0$, and check your $y_v$ answer by plugging in
+    $x=x_v$ to $y=ax^2+bx+c$.
+
+    Next, plug in your answers to this:
+
+    math:
+        ax^2+bx+c = a(x-x_v)^2+y_v
+
+    You should get the same square-completing formula as [the one on the
+    summary page](summary.html#completing-the-square).
 
 ## Exponents and Logarithms
 
