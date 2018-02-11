@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="style.css">
-<title>Common Graphs</title>
+<title>Graphs</title>
 
 <script type="text/x-mathjax-config">
   // awesome, i have javascript inside html inside python
@@ -21,13 +21,41 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><b>Common Graphs</b></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="common-graphs">Common Graphs<a class="headerlink" href="#common-graphs" title="Link to this title">¶</a></h1><p>This page contains a bunch of graphs and some awesome graph drawing demos made
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><b>Graphs</b></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="graphs">Graphs<a class="headerlink" href="#graphs" title="Link to this title">¶</a></h1><p>This page contains a bunch of graphs and some awesome graph drawing demos made
 by <a href="https://github.com/PurpleMyst/">a friend of mine</a>.</p>
 
-<h2 id="lines">Lines<a class="headerlink" href="#lines" title="Link to this title">¶</a></h2><p>The equation of any (non-vertical) line is $y=sx+c$. Here $s$ and $c$ are
-constants, and $s$ is called the <b>slope</b>. Try at least these things with the
-below demo program:</p>
+<h2 id="basic-stuff">Basic Stuff<a class="headerlink" href="#basic-stuff" title="Link to this title">¶</a></h2><p>Let's say that $f$ is a function and we have some graph $y=f(x)$. It means that
+we can get a $y$ value by plugging the corresponding $x$ value to $f$. For
+example, at $x=1.5$, the $y$ value is $f(1.5)$.</p>
+
+<p><img width="340" height="251" class="asymptote" src="asymptote/e30d4f14dbebf4f084433d53bf004c0b.svg" /></p><p>There are a few common ways to stretch and move graphs:</p>
+
+<ul><li>Adding a positive constant moves the graph up simply because $y$ values are
+  always bigger by that constant. Substracting a positive constant brings the
+  graph down. That's same as adding a negative constant, e.g.
+  $f(x)-3 = f(x)+(-3)$.
+</li></ul><div class="indent"><p><img width="340" height="307" class="asymptote" src="asymptote/0fe1c0b61a965665fca274ffffc67187.svg" /></p></div><ul><li>Substracting a positive constant <b>inside</b> $f(\quad)$ moves the graph
+  right. Adding a positive constant moves left.
+</li></ul><div class="indent"><img width="340" height="138" class="asymptote" src="asymptote/6741da879df3a75fd97e2718c3cf3b31.svg" style="float:left;" /><img width="340" height="135" class="asymptote" src="asymptote/27335b77ee5642aa7b49d6010b99a81d.svg" style="float:left;" /><img width="340" height="136" class="asymptote" src="asymptote/6c5cb537247d7ea1e58ac791e2210a03.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
+
+<p>Think about it like this: if we have $f(x-2)$ instead of $f(x)$, then $x$
+needs to be bigger for getting the same $y$ value, and bigger $x$ means
+right. For example, $f(3) = f(5-2)$, so whatever was at $x=3$ moves to
+$x=5$.
+</p>
+
+</div><ul><li>Adding a minus sign to front flips the graph to the other side of the $x$
+  axis.
+</li></ul><div class="indent"><p><img width="340" height="176" class="asymptote" src="asymptote/4049805c94b7c2217482643e8eb5392c.svg" /></p></div><ul><li>Multiplying by a positive constant stretches the graph away from the $x$
+  axis. The $y$ values represent distances from the $x$ axis, so e.g.
+  multiplying by 2 means that the distances are always twice as big. That looks
+  like stretching.
+</li></ul><div class="indent"><p><img width="340" height="186" class="asymptote" src="asymptote/24c7a512bd47c5bcda06aaa55f1c5c29.svg" /></p></div><ul><li>Multiplying by a negative constant is just a combination of the above two
+  things because $(-2)\cdot f(x)=-(2\cdot f(x))$.
+</li></ul><div class="indent"><p><img width="397" height="259" class="asymptote" src="asymptote/c880ba5ddd48ad1619096aef694cdb9a.svg" /></p></div><h2 id="lines">Lines<a class="headerlink" href="#lines" title="Link to this title">¶</a></h2><p>The equation of any (non-vertical) line is $y=sx+c$, where $s$ and $c$ are
+constants. The $s$ is known as the <b>slope</b> and $c$ is the <b>constant term</b>.
+Try at least these things with the below demo program:</p>
 
 <ul><li>What does changing the slope and the constant term do?</li><li>What if the slope or the constant term is zero?</li><li>What if the slope or the constant term is negative?
 </li></ul><p><iframe src="https://purplemyst.github.io/generic-graphing/line.html"
@@ -39,36 +67,55 @@ slopes</a>.
 
 </div><img width="160" height="170" class="asymptote" src="asymptote/70f32f02a15d3b6a9df0281b602e50fa.svg" style="float:right;" /><h2 id="parabolas">Parabolas<a class="headerlink" href="#parabolas" title="Link to this title">¶</a></h2><p>The "tip" of a parabola is known as the <b>vertex</b>. See the image at right.</p>
 
-<p>The equation of any parabola that opens up or down is $y=a\cdot(x-v)^2+w$ where
-$a$, $v$ and $w$ are constants. The $x$ coordinate of the vertex is $v$ and the
-$y$ coordinate is $w$. Note that $a \ne 0$ because $y=w$ is a horizontal line.</p>
+<p>The graph $y=x^2$ is a simple parabola, and the below demo displays that by
+default. As you can see, the vertex $x$ and $y$ coordinates are both 0.
+Parabolas of the form $y=(x-x_v)^2+y_v$ are the same thing shifted, and the
+$x_v$ and $y_v$ constants represent new $x$ and $y$ coordinates of the vertex.</p>
+
+<p>Putting a constant $a$ to front like $y=a\cdot(x-x_v)^2+y_v$ makes the parabola
+stretch, and a negative $a$ means that it opens down. Note that $a \ne 0$
+because $a=0$ would mean $y=y_v$, and that's a horizontal line at height $y_v$
+instead of a parabola.</p>
 
 <p><iframe src="https://purplemyst.github.io/generic-graphing/parabola.html"
         width="350" height="400"></iframe></p>
 
-<div class="floatingbox"><h2> Handy thing: $(x-v)^2=x^2-2vx+v^2$</h2><p>Proof:</p>
+<div class="floatingbox"><h2> Handy thing: $(a-b)^2=a^2-2ab+b^2$</h2><p>Proof:</p>
 
-$$\begin{align}& \ (x-v)^2 \\
-=&\ (x-v)(x-v) \\
-=&\ (x-v)x-(x-v)v \\
-=&\ (xx-vx)-(xv-vv) \\
-=&\ xx-vx-xv+vv \\
-=&\ xx-(vx+vx)+vv \\
-=&\ x^2-2vx+v^2\end{align}$$</div><p>The $y=a(x-v)^2+w$ form is nice because it's easy to see where the vertex is,
-but let's see what happens if we expand that a bit:</p>
+$$\begin{align}& \ (a-b)^2 \\
+=&\ (a-b)(a-b) \\
+=&\ (a-b)a-(a-b)b \\
+=&\ (aa-ba)-(ab-bb) \\
+=&\ aa-ba-ab+bb \\
+=&\ aa-(ab+ab)+bb \\
+=&\ a^2-2ab+b^2\end{align}$$<p>In this case we need to plug in $a=x$ and $b=x_v$.
+</p>
 
-$$\begin{align}y &= a\cdot(x-v)^2+w \\
-&= a\cdot(x^2-2vx+v^2)+w \\
-&= ax^2-2avx+av^2+w\end{align}$$<p>Now if we set $b=-2av$ and $c=av^2+w$, then $b$ and $c$ are also because they
-don't depend on the value of $x$. We get this:</p>
+</div><p>The $y=a(x-x_v)^2+y_v$ form is nice because it's easy to see where the vertex
+is and it's easy to solve things like $y=0$, but let's see what happens if we
+expand that:</p>
 
-$$\begin{align}y = ax^2+bx+c\end{align}$$<p>Equations of all parabolas that open up or down are like this.
-Again, $a \ne 0$ because $y=bx+c$ is a straight line.</p>
+$$\begin{align}y &= a\cdot(x-x_v)^2+y_v \\
+&= a\cdot(x^2-2x_vx+{x_v}^2)+y_v \\
+&= ax^2-2ax_vx+a{x_v}^2+y_v\end{align}$$<p>Now if we set $b=-2ax_v$ and $c=a{x_v}^2+y_v$, then $b$ and $c$ are also
+constants because they don't depend on the value of $x$. We get this:</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>What is the $x$ coordinate of the vertex of a $y=ax^2+bx+c$ parabola?
-Check your answer with a derivative like $\frac{d}{dx}(ax^2+bx+c)=0$.</p>
+$$\begin{align}y = ax^2+bx+c\end{align}$$<p>This form comes up often when calculating stuff, and converting from this form
+back to $y=a(x-x_v)^2+y_v$ can be useful. That is known as
+<b>completing the square</b>. This exercise gives you everything you need to know
+for doing that:</p>
 
-<p>Spoiler: above we set $b=-2av$.
+<div class="box graybox"><h2> Exercise</h2><p>Above we set $b=-2ax_v$ and $c=a{x_v}^2+y_v$. If we know $a$, $b$ and $c$,
+how can we figure out $x_v$ and $y_v$?</p>
+
+<p>Check your $x_v$ answer with <a href="derivatives.html">a derivative</a> like
+$\frac{d}{dx}(ax^2+bx+c)=0$, and check your $y_v$ answer by plugging in
+$x=x_v$ to $y=ax^2+bx+c$.</p>
+
+<p>Next, plug in your answers to this:</p>
+
+$$\begin{align}ax^2+bx+c = a(x-x_v)^2+y_v\end{align}$$<p>You should get the same square-completing formula as <a href="summary.html#completing-the-square">the one on the
+summary page</a>.
 </p>
 
 </div><h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>All of these graphs have an area where they get closer and closer to an axis but

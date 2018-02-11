@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><b>Fibonacci Sequence</b></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Common Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><b>Fibonacci Sequence</b></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="fibonacci-sequence">Fibonacci Sequence<a class="headerlink" href="#fibonacci-sequence" title="Link to this title">¶</a></h1><p>Here's a very famous sequence of numbers, known as the Fibonacci sequence:</p>
 
 $$\begin{align}1, 1, 2, 3, 5, 8, 13, 21, ...\end{align}$$<p>We start with $1, 1$ and then we add together the last two numbers to get the
@@ -63,27 +63,16 @@ solutions by dividing both sides by $x^n$. We can do that because $x \ne 0$, so
 we also have $x^n \ne 0$.</p>
 
 $$\begin{align}\frac{x^n}{x^n} + \frac{x^{n+1}}{x^n} &= \frac{x^{n+2}}{x^n} \\
-1 + x &= x^2\end{align}$$<div class="floatingbox"><h2> Handy thing: $a^2-2ab+b^2=(a-b)^2$</h2><p>Proof:</p>
+1 + x &= x^2 \\
+0 &= x^2 - x - 1\end{align}$$<p>Next we need to use this formula taken from <a href="summary.html#completing-the-square">the summary
+page</a>:</p>
 
-$$\begin{align}& \ (a-b)^2 \\
-=&\ (a-b)(a-b) \\
-=&\ (a-b)a-(a-b)b \\
-=&\ (aa-ba)-(ab-bb) \\
-=&\ aa-ba-ab+bb \\
-=&\ aa-(ab+ab)+bb \\
-=&\ a^2-2ab+b^2\end{align}$$<p>In this case we need to plug in $a=\varphi$ and $b=\frac 1 2$.
-</p>
+$$\begin{align}ax^2+bx+c = a\left(x + \frac{b}{2a}\right)^2 + c - \frac{b^2}{4a}\end{align}$$<p>Let's plug in $a=1$, $b=-1$ and $c=-1$.</p>
 
-</div><p>There's <a href="https://en.wikipedia.org/wiki/Quadratic_formula">a nice formula</a> just
-for solving equations like this, but we don't really need it. Instead we'll use
-the handy thing at right cleverly:</p>
-
-$$\begin{align}1 + x &= x^2 \\
-x^2 - x &= 1 \\
-x^2 - \overbrace{2x\frac 1 2}^{\text{this is }x} &= 1 \\
-x^2 - 2x\frac 1 2 + \left(\frac 1 2\right)^2 &= 1 + \left(\frac 1 2\right)^2 \\
-\left(x - \frac 1 2\right)^2 &= 1 + \frac{1^2}{2^2} = 1 + \frac 1 4 \\
-                                &= \frac 4 4 + \frac 1 4 = \frac 5 4 \\
+$$\begin{align}x^2-x-1 &= 0 \\
+1\left(x + \frac{-1}{2\cdot1}\right)^2 + (-1) - \frac{(-1)^2}{4\cdot1} &= 0 \\
+\left(x - \frac 1 2\right)^2 - 1 - \frac 1 4 &= 0 \\
+\left(x - \frac 1 2\right)^2 &= 1 + \frac 1 4 = \frac 4 4 + \frac 1 4 = \frac 5 4 \\
 \sqrt{\left(x - \frac 1 2\right)^2} &= \sqrt{\frac 5 4} \\
 \left|x - \frac 1 2\right| &= \frac{\sqrt 5}{\sqrt 4} = \frac{\sqrt 5}{2} \\
 x - \frac 1 2 &= \pm \frac{\sqrt 5}{2} \\
@@ -231,24 +220,33 @@ $$\begin{align}F_n = \frac{\varphi^n - (1-\varphi)^n}{\sqrt 5}, \quad n = 1,2,3,
 $$\begin{align}\left\{\begin{array}{lcl}      F_1 = 1 \\
     F_2 = 1 \\
     F_n = F_{n-1} + F_{n-2}, \quad n = 3,4,5,... \\
-\end{array}\right.\end{align}$$<p>This will be a <i>proof</i>, so we won't use sympy. The $F_1=1$ thing is quite
-straight-forward to prove:</p>
+\end{array}\right.\end{align}$$<div class="floatingbox"><h2> Handy thing: $(a-b)^2=a^2-2ab+b^2$</h2><p>Proof:</p>
+
+$$\begin{align}& \ (a-b)^2 \\
+=&\ (a-b)(a-b) \\
+=&\ (a-b)a-(a-b)b \\
+=&\ (aa-ba)-(ab-bb) \\
+=&\ aa-ba-ab+bb \\
+=&\ aa-(ab+ab)+bb \\
+=&\ a^2-2ab+b^2\end{align}$$<p>In this case we need to plug in $a=1$ and $b=\varphi$.
+</p>
+
+</div><p>This will be a <i>proof</i>, so we won't use sympy.</p>
+
+<p>The $F_1=1$ thing is quite straight-forward to prove:</p>
 
 $$\begin{align}F_1 &= \frac{\varphi^1 - (1-\varphi)^1}{\sqrt 5} = \frac{\varphi - (1-\varphi)}{\sqrt 5} \\
 &= \frac{\varphi-1+\varphi}{\sqrt 5} = \frac{2\varphi - 1}{\sqrt 5} = \frac{2\frac{1+\sqrt 5}{2} - 1}{\sqrt 5} \\
-&= \frac{1+\sqrt5-1}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1\end{align}$$<div class="floatingbox"><h2> Handy thing: $(a-b)^2=a^2-2ab+b^2$</h2><p>This was proved earlier in this chapter. Now we need to plug in $a=1$ and
-$b=\varphi$.
-</p>
+&= \frac{1+\sqrt5-1}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1\end{align}$$<p>We need the handy thing at right for $F_2=1$.</p>
 
-</div><p>We need the handy thing at right for $F_2=1$.</p>
-
-$$\begin{align}F_2 &= \frac{\varphi^2 - (1-\varphi)^2}{\sqrt 5} = \frac{\varphi^2-(1^2-2\cdot1\cdot\varphi+\varphi^2)}{\sqrt 5} \\
+$$\begin{align}F_2 &= \frac{\varphi^2 - (1-\varphi)^2}{\sqrt 5} \\
+&= \frac{\varphi^2-(1^2-2\cdot1\cdot\varphi+\varphi^2)}{\sqrt 5} \\
 &= \frac{\varphi^2-1+2\varphi-\varphi^2}{\sqrt5} = \frac{2\varphi-1}{\sqrt5}\end{align}$$<p>We already figured out that this is 1 when proving that $F_1=1$.</p>
 
 <p>If we can prove that $F_n + F_{n+1} = F_{n+2}$ for $n=1,2,3,...$, then we also
 have $F_n = F_{n-1} + F_{n-2}$ for $n=3,4,5,...$ which is what we need next.
-In the beginning of this page we solved $x^n+x^{n+1}=x^{n+2}$ and the solutions
-$x=\varphi$, $x=1-\varphi$ and $x=0$, so we have these equations:</p>
+In the beginning of this page we solved $x^n+x^{n+1}=x^{n+2}$ and we got the
+solutions $x=\varphi$, $x=1-\varphi$ and $x=0$, so we have these equations:</p>
 
 $$\begin{align}& \varphi^n + \varphi^{n+1} = \varphi^{n+2} \\
 & (1-\varphi)^n + (1-\varphi)^{n+1} = (1-\varphi)^{n+2}\end{align}$$<p>Now we're ready to go.</p>
