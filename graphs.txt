@@ -240,7 +240,7 @@ Try at least these things with the below demos:
 
 * What happens if you make the base bigger?
 * What if the base is 1, 0 or negative?
-* What if the base is e.g. 0.5? (The demo lets you type in 0.5 for the base
+* What if the base is e.g. 0.5? (The demos let you type in 0.5 for the base
   even though you can't select it with the arrow buttons.)
 
 <iframe src="https://purplemyst.github.io/generic-graphing/exponent.html"
