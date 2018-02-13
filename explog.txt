@@ -104,17 +104,16 @@ negative side if $n\to-\infty$.
 
 math:
     t &= \frac 1 n
+    nt &= 1
     n &= \frac 1 t
-    e &= \lim_{t\to0} (1+t)^{1/t}
 
-Note that $t\to0$ means that we must get the same value if $t$ goes to 0 from
-either direction. (As a special case, $n \to \infty$ and $n \to -\infty$ mean
-approaching from one side only because it's not possible to approach from both
-sides.)
+math:
+    e = \lim_{n\to\infty} \left(1 + \frac 1 n \right)^n \
+      = \lim_{n\to-\infty} \left(1 + \frac 1 n \right)^n \
+      = \lim_{t\to0} (1+t)^{1/t}
 
-Anyway, let's plug our new $e$ definition into our lim thing. It doesn't matter
-how $t$ and $h$ relate to each other as long as they both go to 0, so we can
-set $t=h$.
+Let's plug this into our $h$ limit. It doesn't matter how $t$ and $h$ relate to
+each other as long as they both go to 0, so we can set $t=h$.
 
 math:
     \lim_{h\to0} \frac{e^h-1}{h} \
@@ -364,7 +363,21 @@ graybox: Exercise
 redbox:
     Rest of this chapter assumes that you know [integrals](integrals.html).
 
-Now we know that $\frac{d}{dx}\ln(x) = \frac 1 x$, so we must also have
+We know that $\frac{d}{dx}(x^a)=ax^{a-1}$, and it's quite straight-forward to
+get this integral rule from that:
+
+math:
+    \int x^a\ dx = \frac{x^{a+1}}{a+1} + C
+
+You can check that by taking a derivative of both sides. Maybe we could use
+this for integrating $\frac 1 x$ because $\frac 1 x = x^{-1}$?
+
+math:
+    \int x^{-1}\ dx = \frac{x^{-1+1}}{-1+1} = \frac{x^0}{0}
+
+Oops, we got division by zero. That didn't work.
+
+But we also know that $\frac{d}{dx}\ln(x) = \frac 1 x$, so we must also have
 $\int\frac 1 x\ dx = \ln(x) + C$. However, that only works if $x > 0$ because
 we can't take a logarithm of a negative number, but $\frac 1 x$ is defined for
 any $x \ne 0$:
@@ -377,14 +390,14 @@ asymptote:
     draw(graph(f, -4, f(-4)), blue);
     draw(graph(f, 4, f(3.5 /* don't draw on top of the y */)), blue, L="$y=\frac 1 x$");
 
-However, if $x$ is negative, then $-x$ is positive. Maybe something like
-$\ln(-x)$ happens to be our $\frac 1 x$ antiderivative? Let's see.
+If $x$ is negative, then $-x$ is positive. Maybe something like $\ln(-x)$
+happens to be our $\frac 1 x$ antiderivative? Let's see.
 
 math:
     \frac{d}{dx} \ln(\underbrace{-x}_{\substack{\text{inner} \\ \text{stuff}}}) \
     = \frac{1}{-x} \cdot (-1) = \frac 1 x
 
-It works, so we have this:
+Now we have this:
 
 math:
     \int\frac 1 x\ dx = \left\{\begin{array}{ll} \
@@ -400,11 +413,14 @@ math:
         -x & \text{ if } x < 0
     \end{array}\right.
 
-For example, $|4| = 4$ and $|-4| = -(-4) = 4$. We can write our $\frac 1 x$
-integral concisely like this:
+For example, $|4| = 4$ and $|-4| = -(-4) = 4$. Here are our final results:
 
 math:
-    \int\frac 1 x\ dx = \ln(|x|) + C
+    \int\frac 1 x\ dx &= \ln(|x|) + C
+    \int x^a\ dx &= \left\{\begin{array}{ll} \
+        \ln(|x|) + C & \text{ if } a=-1
+        \displaystyle\frac{x^{a+1}}{a+1} + C & \text{ otherwise}
+    \end{array}\right.
 
 Here's a nice integral with $\frac 1 x$ and a constant $a>0$:
 
