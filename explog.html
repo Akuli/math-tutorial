@@ -89,15 +89,9 @@ $t=1/n$, so $t$ goes to $0$ from the positive side if $n\to\infty$ and from the
 negative side if $n\to-\infty$.</p>
 
 $$\begin{align}t &= \frac 1 n \\
-n &= \frac 1 t \\
-e &= \lim_{t\to0} (1+t)^{1/t}\end{align}$$<p>Note that $t\to0$ means that we must get the same value if $t$ goes to 0 from
-either direction. (As a special case, $n \to \infty$ and $n \to -\infty$ mean
-approaching from one side only because it's not possible to approach from both
-sides.)</p>
-
-<p>Anyway, let's plug our new $e$ definition into our lim thing. It doesn't matter
-how $t$ and $h$ relate to each other as long as they both go to 0, so we can
-set $t=h$.</p>
+nt &= 1 \\
+n &= \frac 1 t\end{align}$$$$\begin{align}e = \lim_{n\to\infty} \left(1 + \frac 1 n \right)^n    = \lim_{n\to-\infty} \left(1 + \frac 1 n \right)^n    = \lim_{t\to0} (1+t)^{1/t}\end{align}$$<p>Let's plug this into our $h$ limit. It doesn't matter how $t$ and $h$ relate to
+each other as long as they both go to 0, so we can set $t=h$.</p>
 
 $$\begin{align}\lim_{h\to0} \frac{e^h-1}{h}  &= \lim_{h\to0} \frac{\left((1+h)^{1/h}\right)^h-1}{h} \\
 &= \lim_{h\to0} \frac{(1+h)^{1/h\ \cdot\ h}-1}{h} \\
@@ -112,9 +106,14 @@ difference is hardly noticable:</p>
 <span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>e<span style="color: #666666">**</span><span style="color: #40a070">3</span>
 <span style="color: #888888">20.085536923187664</span>
 </pre></div>
-<h2 id="logarithms">Logarithms<a class="headerlink" href="#logarithms" title="Link to this title">¶</a></h2><p>A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
+<h2 id="logarithms">Logarithms<a class="headerlink" href="#logarithms" title="Link to this title">¶</a></h2><div class="box graybox"><h2> See Also</h2><p>The graphs page contains <a href="graphs.html#exponents-and-logarithms">graph drawing
+demos</a> of exponent functions and
+logarithms.
+</p>
+
+</div><p>A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
 can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b(x)} = x$. The
-$b$ is known as the base of the logarithm.</p>
+$b$ is known as the <b>base</b> of the logarithm.</p>
 
 <p id="negative-log">The inversiness looks like this in graphs:
 </p>
@@ -246,15 +245,23 @@ rewriting $f(x)g(x)$ as $e^{\ln(f(x)g(x))}=e^{\ln f(x)+\ln g(x)}$.
 </div><h2 id="integral-of-frac-1-x">Integral of $\frac 1 x$<a class="headerlink" href="#integral-of-frac-1-x" title="Link to this title">¶</a></h2><div class="box redbox"><p>Rest of this chapter assumes that you know <a href="integrals.html">integrals</a>.
 </p>
 
-</div><p>Now we know that $\frac{d}{dx}\ln(x) = \frac 1 x$, so we must also have
+</div><p>We know that $\frac{d}{dx}(x^a)=ax^{a-1}$, and it's quite straight-forward to
+get this integral rule from that:</p>
+
+$$\begin{align}\int x^a\ dx = \frac{x^{a+1}}{a+1} + C\end{align}$$<p>You can check that by taking a derivative of both sides. Maybe we could use
+this for integrating $\frac 1 x$ because $\frac 1 x = x^{-1}$?</p>
+
+$$\begin{align}\int x^{-1}\ dx = \frac{x^{-1+1}}{-1+1} = \frac{x^0}{0}\end{align}$$<p>Oops, we got division by zero. That didn't work.</p>
+
+<p>But we also know that $\frac{d}{dx}\ln(x) = \frac 1 x$, so we must also have
 $\int\frac 1 x\ dx = \ln(x) + C$. However, that only works if $x > 0$ because
 we can't take a logarithm of a negative number, but $\frac 1 x$ is defined for
 any $x \ne 0$:</p>
 
-<p><img width="283" height="270" class="asymptote" src="asymptote/7066a81397cfb7a4bf8e2563d2456173.svg" /></p><p>However, if $x$ is negative, then $-x$ is positive. Maybe something like
-$\ln(-x)$ happens to be our $\frac 1 x$ antiderivative? Let's see.</p>
+<p><img width="283" height="270" class="asymptote" src="asymptote/7066a81397cfb7a4bf8e2563d2456173.svg" /></p><p>If $x$ is negative, then $-x$ is positive. Maybe something like $\ln(-x)$
+happens to be our $\frac 1 x$ antiderivative? Let's see.</p>
 
-$$\begin{align}\frac{d}{dx} \ln(\underbrace{-x}_{\substack{\text{inner} \\ \text{stuff}}})  = \frac{1}{-x} \cdot (-1) = \frac 1 x\end{align}$$<p>It works, so we have this:</p>
+$$\begin{align}\frac{d}{dx} \ln(\underbrace{-x}_{\substack{\text{inner} \\ \text{stuff}}})  = \frac{1}{-x} \cdot (-1) = \frac 1 x\end{align}$$<p>Now we have this:</p>
 
 $$\begin{align}\int\frac 1 x\ dx = \left\{\begin{array}{ll}      \ln(x) + C  & \text{ if } x > 0 \\
     \ln(-x) + C & \text{ if } x < 0 \\
@@ -262,10 +269,12 @@ $$\begin{align}\int\frac 1 x\ dx = \left\{\begin{array}{ll}      \ln(x) + C  & \
 
 $$\begin{align}|x| = \left\{\begin{array}{ll}      x  & \text{ if } x > 0 \\
     -x & \text{ if } x < 0 \\
-\end{array}\right.\end{align}$$<p>For example, $|4| = 4$ and $|-4| = -(-4) = 4$. We can write our $\frac 1 x$
-integral concisely like this:</p>
+\end{array}\right.\end{align}$$<p>For example, $|4| = 4$ and $|-4| = -(-4) = 4$. Here are our final results:</p>
 
-$$\begin{align}\int\frac 1 x\ dx = \ln(|x|) + C\end{align}$$<p>Here's a nice integral with $\frac 1 x$ and a constant $a>0$:</p>
+$$\begin{align}\int\frac 1 x\ dx &= \ln(|x|) + C \\
+\int x^a\ dx &= \left\{\begin{array}{ll}      \ln(|x|) + C & \text{ if } a=-1 \\
+    \displaystyle\frac{x^{a+1}}{a+1} + C & \text{ otherwise} \\
+\end{array}\right.\end{align}$$<p>Here's a nice integral with $\frac 1 x$ and a constant $a>0$:</p>
 
 $$\begin{align}\int_1^a\frac 1 x\ dx &= \Bigl[\ln(|x|)\Bigr]_1^a = \Bigl[\ln(x)\Bigr]_1^a = \ln(a) - \ln(1) \\
 &= \ln(a) - \ln(e^0) = \ln(a) - 0 = \ln(a)\end{align}$$<img width="227" height="127" class="asymptote" src="asymptote/56cf4315ea4ef155cd62dae172d5e052.svg" style="float:right;" /><p>We also know that $\ln(e) = \ln(e^1) = 1$, so we can define $e$ as the only

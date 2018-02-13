@@ -118,16 +118,26 @@ $$\begin{align}ax^2+bx+c = a(x-x_v)^2+y_v\end{align}$$<p>You should get the same
 summary page</a>.
 </p>
 
-</div><h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>All of these graphs have an area where they get closer and closer to an axis but
-they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
-$\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$ and
-$\displaystyle\lim_{x\to\infty}a^x=0$ if $0< a<1$.</p>
+</div><h2 id="exponents-and-logarithms">Exponents and Logarithms<a class="headerlink" href="#exponents-and-logarithms" title="Link to this title">¶</a></h2><p>There's a detailed introduction to exponents and logarithms
+<a href="explog.html">here</a>. In short, $\log_a(x)$ is the inverse of $a^x$:</p>
 
-<p>There's a detailed introduction to exponents and logarithms <a href="explog.html">here</a>.</p>
+$$\begin{align}\log_b(b^x) &= x \\
+b^{\log_b(x)} &= x\end{align}$$<p>Try at least these things with the below demos:</p>
 
-<img width="195" height="340" class="asymptote" src="asymptote/aa48fd4e27f233497742c8302fd668c2.svg" style="float:left;" /><img width="213" height="340" class="asymptote" src="asymptote/a7419b2a904eeec670cee97f149613b7.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<ul><li>What happens if you make the base bigger?</li><li>What if the base is 1, 0 or negative?</li><li>What if the base is e.g. 0.5? (The demo lets you type in 0.5 for the base
+  even though you can't select it with the arrow buttons.)
+</li></ul><p><iframe src="https://purplemyst.github.io/generic-graphing/exponent.html"
+        width="350" height="350" style="float:left;"></iframe>
+<iframe src="https://purplemyst.github.io/generic-graphing/logarithm.html"
+        width="350" height="350" style="float:left;"></iframe>
+<div style="clear:both;"></div></p>
 
-<img width="340" height="204" class="asymptote" src="asymptote/906c7f223245b247570023f1cd4c5070.svg" style="float:left;" /><img width="340" height="190" class="asymptote" src="asymptote/31a303de498df101571d7f35679f5787.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<p>You're probably wondering why the base of a logarithm cannot be 1, 0 or
+negative. You'll see why if you draw the graph of $y=1^x$. If a logarithm with
+base 1 exists, then by definition, $y=1^x$ is same as $x=\log_1(y)$. But $x$
+gets every possible value when $y=1$ and no values at all otherwise because
+$y=1^x$ is a horizontal line at height 1. A function like that doesn't really
+make much sense.</p>
 
 <h2 id="sine-and-cosine">Sine and Cosine<a class="headerlink" href="#sine-and-cosine" title="Link to this title">¶</a></h2><p>See <a href="geometry-and-trig.html#radians-and-tau">this thing</a> if you don't
 know what $\tau$ and radians are, and <a href="geometry-and-trig.html#trig-with-the-unit-circle">this
