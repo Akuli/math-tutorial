@@ -230,7 +230,7 @@ comment:
     that <a is the beginning of a link
 
 There's a detailed introduction to exponents and logarithms
-[here](explog.html). In short, $\log_a(x)$ is the inverse of $a^x$:
+[here](explog.html). In short, $\log_b(x)$ is the inverse of $b^x$:
 
 math:
     \log_b(b^x) &= x
