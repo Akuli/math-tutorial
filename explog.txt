@@ -136,9 +136,14 @@ code: python3
 
 ## Logarithms
 
+graybox: See Also
+    The graphs page contains [graph drawing
+    demos](graphs.html#exponents-and-logarithms) of exponent functions and
+    logarithms.
+
 A logarithm is the inverse of an exponent. If $y=b^x$, then $x = \log_b(y)$. You
 can also think of logarithms like $\log_b(b^x) = x$ and $b^{\log_b(x)} = x$. The
-$b$ is known as the base of the logarithm.
+$b$ is known as the **base** of the logarithm.
 
 (negative-log)
 The inversiness looks like this in graphs:

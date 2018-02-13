@@ -225,68 +225,36 @@ graybox: Exercise
 
 ## Exponents and Logarithms
 
-All of these graphs have an area where they get closer and closer to an axis but
-they never touch it. For example, if $a>0$ then $a^x=0$ with no $x$, even though
-$\displaystyle\lim_{x\to-\infty}a^x=0$ if $a>1$ and
-$\displaystyle\lim_{x\to\infty}a^x=0$ if $0< a<1$.
-
 comment:
     must not write 0<a<1 because some html parser somewhere thinks
     that <a is the beginning of a link
 
-There's a detailed introduction to exponents and logarithms [here](explog.html).
+There's a detailed introduction to exponents and logarithms
+[here](explog.html). In short, $\log_a(x)$ is the inverse of $a^x$:
 
-asymptote: float:left;
-    size(12cm);
-    real xminmax=1.8;
-    real f(real x) { return e**x; }
-    real ymax = ceil(e**xminmax);
-    axises(-xminmax,xminmax,-0.5,ymax);
-    draw(graph(f,-xminmax,xminmax), blue,
-         L=Label(rotate(75)*"$y=a^x, a>1$", position=Relative(0.75)), align=E);
-    draw((1,0)--(1,f(1)), deepgreen+smalldashes, L="$a$");
-    label((1,0), L="1", align=S);
-    dot((0,1), p=dotpen, L="1", align=NW);
+math:
+    \log_b(b^x) &= x
+    b^{\log_b(x)} &= x
 
-asymptote: float:left;
-    size(12cm);
-    real xminmax=1.8;
-    real f(real x) { return (1/e)**x; }
-    real ymax = ceil(e**xminmax);
-    axises(-xminmax,xminmax,-0.5,ymax);
-    draw(graph(f,-xminmax,xminmax), blue,
-         L=Label(rotate(-70)*"$y=a^x, 0<a<1$", position=Relative(0.5)), align=W);
-    draw((1,0)--(1,f(1)), deepgreen, L="$a$", align=W);
-    label((1,0), L="1", align=S);
-    label((0,1), L="1", align=NE);
+Try at least these things with the below demos:
 
+* What happens if you make the base bigger?
+* What if the base is 1, 0 or negative?
+* What if the base is e.g. 0.5? (The demo lets you type in 0.5 for the base
+  even though you can't select it with the arrow buttons.)
+
+<iframe src="https://purplemyst.github.io/generic-graphing/exponent.html"
+        width="350" height="350" style="float:left;"></iframe>
+<iframe src="https://purplemyst.github.io/generic-graphing/logarithm.html"
+        width="350" height="350" style="float:left;"></iframe>
 <div style="clear:both;"></div>
 
-asymptote: float:left;
-    size(12cm);
-    real yminmax=1.8;
-    real f(real x) { return log(x); }   // ln
-    real xmax = ceil(e**yminmax);
-    axises(-0.5,xmax,-yminmax,yminmax);
-    draw(graph(f,e**(-yminmax),xmax), blue,
-         L=Label(rotate(90-75)*"$y=\log_a x, a>1$", position=Relative(0.75)), align=N);
-    draw((0,1)--(e,1), deepgreen+smalldashes, L="$a$", align=N);
-    label((0,1), L="1", align=W);
-    label((1,0), L="1", align=S);
-
-asymptote: float:left;
-    size(12cm);
-    real yminmax=1.8;
-    real f(real x) { return -log(x); }   // log_(1/e)
-    real xmax = ceil(e**yminmax);
-    axises(-0.5,xmax,-yminmax,yminmax+0.5);
-    draw(graph(f,e**(-yminmax),xmax), blue,
-         L=Label(rotate(-(90-75))*"$y=\log_a x, 0<a<1$", position=Relative(0.75)), align=N);
-    draw((0,1)--(1/e,1), deepgreen, L="$a$", align=S);
-    label((0,1), L="1", align=W);
-    label((1,0), L="1", align=S);
-
-<div style="clear:both;"></div>
+You're probably wondering why the base of a logarithm cannot be 1, 0 or
+negative. You'll see why if you draw the graph of $y=1^x$. If a logarithm with
+base 1 exists, then by definition, $y=1^x$ is same as $x=\log_1(y)$. But $x$
+gets every possible value when $y=1$ and no values at all otherwise because
+$y=1^x$ is a horizontal line at height 1. A function like that doesn't really
+make much sense.
 
 ## Sine and Cosine
 
