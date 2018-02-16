@@ -5,9 +5,9 @@ by [a friend of mine](https://github.com/PurpleMyst/).
 
 ## Basic Stuff
 
-Let's say that $f$ is a function and we have some graph $y=f(x)$. It means that
-we can get a $y$ value by plugging the corresponding $x$ value to $f$. For
-example, at $x=1.5$, the $y$ value is $f(1.5)$.
+Let's say that $f$ is [a function](basics.html#functions) and we have a graph
+$y=f(x)$. It means that we can get a $y$ value by plugging the corresponding
+$x$ value to $f$. For example, at $x=1.5$, the $y$ value is $f(1.5)$.
 
 asymptote:
     size(12cm);
