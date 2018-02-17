@@ -105,10 +105,13 @@ code {
     background-color: #bbb;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: Quicksand;
+}
+
 p, li {
-    /* font-family is copy/pasted from sphinx */
-    font-family: 'goudy old style', 'minion pro', 'bell mt', Georgia, 'Hiragino Mincho Pro', serif;
-    font-size: 17px;
+    font-family: Cabin;
+    font-size: 1.05em;
     line-height: 140%;
 }
 
