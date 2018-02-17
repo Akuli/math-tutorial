@@ -13,6 +13,7 @@ import textwrap
 import xml.etree.ElementTree
 
 from htmlthingy import Builder, tags, linkcheck
+from bs4 import BeautifulSoup
 
 
 # TODO: move these to htmlthingy
@@ -102,6 +103,18 @@ def multiline_math(match, filename):
     lines = (line.replace('\\\n', ' ')
              for line in re.split(r'(?<!\\)\n', math))
     yield r'$$\begin{align}%s\end{align}$$' % (r' \\' + '\n').join(lines)
+
+
+# for multiline code inside a graybox, pygments hard-codes too much
+@builder.converter.add_multiliner(r'^darkcode:(.*)\n')
+def dark_code(match, filename):
+    code = textwrap.dedent(match.string[match.end():])
+    html = tags.multiline_code(code, match.group(1).strip() or 'text',
+                               builder.converter.pygments_style)
+    soup = BeautifulSoup(html, 'html.parser')
+    first_div = soup.find('div')
+    first_div['style'] = first_div['style'].replace('#f0f0f0', '#a9a9a9')
+    return str(soup)
 
 
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')

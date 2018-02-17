@@ -4,96 +4,150 @@ This chapter contains useful stuff that aren't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.
 
-graybox: Note
-    Usually the y axis is so that more y means up, but in this chapter it's
-    "upside down" and more y means down. Almost all programming things use the
-    "more y means down" version and are compatible with this chapter.
+## Scaling
 
-    If you're a mathematician everything looks really weird to you, but if
-    you're a programmer who wants to get stuff done you'll enjoy not having to
-    add minus signs everywhere before using formulas from this tutorial.
+If we multiply all measurements of a shape or picture by a positive number, the
+size changes. For example, here the blue triangle is the yellow triangle
+**scaled up by 2**:
 
-asymptote: float:right; padding-left:5px;
-    size(8cm);
-    draw(unitcircle, smalldashes);
-    fill((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle, palegreen);
-    draw((1,0)--(0,0), blue, L="2", align=S);
-    draw((0,0)--(cos(1),sin(1)), blue, L="2", align=NW);
-    draw(arc((0,0), 1, 0, degrees(1.)), blue, L="2");
-    draw(arc((0,0), 0.3, 0, degrees(1.)), purple, L=rotate(degrees(0.5))*"$1$");
+asymptote:
+    unitsize(1cm);
+    fill(triangle234[0], lightyellow);
+    draw(triangle234[2], L="$2$");
+    draw(triangle234[3], L="$3$");
+    draw(triangle234[4], L="$4$");
 
-asymptote: float:right; padding-left:5px;
-    size(4cm);
-    draw(unitcircle, smalldashes);
-    fill((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle, palegreen);
-    draw((1,0)--(0,0), blue, L="1", align=S);
-    draw((0,0)--(cos(1),sin(1)), blue, L="1", align=NW);
-    draw(arc((0,0), 1, 0, degrees(1.)), blue, L="1");
-    draw(arc((0,0), 0.3, 0, degrees(1.)), purple, L=rotate(degrees(0.5))*"$1$");
+    transform T=shift(6,0)*scale(2);
+    fill(T*triangle234[0], lightblue);
+    draw(T*triangle234[2], L="$2\cdot2$");
+    draw(T*triangle234[3], L="$3\cdot2$");
+    draw(T*triangle234[4], L="$4\cdot2$");
+
+Note that angles do not change when scaling. These pictures represent the
+bottom-left corners of the above triangles, and as you can see, they are
+identical:
+
+asymptote:
+    unitsize(0.7cm);
+    path bottomline = triangle234[4];
+    path fake3line = scale(4 / max(triangle234[3]).x)*triangle234[3];
+
+    fill(fake3line--bottomline--cycle, lightyellow);
+    draw(fake3line, L=Label("3", position=Relative(0.5)));
+    draw(bottomline, L=Label("4", position=Relative(0.7)));
+
+    transform T=shift(8,0);
+    fill(T*(fake3line--bottomline--cycle), lightblue);
+    draw(T*fake3line, L=Label("$3\cdot2$", position=Relative(0.1)));
+    draw(T*bottomline, L=Label("$\qquad 4\cdot2$", position=Relative(0.95)));
+
+Scaling with a number less than 1 is known as **scaling down**, and it makes
+things smaller. For example, dividing by 2 is same as multiplying by
+$\frac 1 2 = 0.5$, so dividing everything by 2 does this:
+
+asymptote:
+    unitsize(1cm);
+    fill(triangle234[0], lightyellow);
+    draw(triangle234[2], L="$2$");
+    draw(triangle234[3], L="$3$");
+    draw(triangle234[4], L="$4$");
+
+    transform T=shift(6,0)*scale(0.5);
+    fill(T*triangle234[0], lightblue);
+    draw(T*triangle234[2], L="$2/2$");
+    draw(T*triangle234[3], L="$3/2$");
+    draw(T*triangle234[4], L="$4/2$");
+
+comment:
+asymptote:
+    unitsize(1.5cm);
+    triangle234(lightyellow);
+    triangle234(lightblue, shift(6,0)*scale(0.5), "/2");
 
 ## Radians and Tau
 
-Angles are often measured in radians. The angles in the pictures at right are
-both one radian. The angle is always 1 radian if the arc and radius lengths are
-equal, and it doesn't matter what that length is.
+Maybe we could measure angles somehow? A common way to do this is to draw
+angles on a circle arc with radius 1. Like this:
 
-asymptote: float:left; padding-right:20px;
-    size(4cm);
-    fill(((0,0)--arc((0,0), 1, 0, degrees(6.0))--cycle), palegreen);
-    draw(unitcircle);
-    for (real t = 0; t <= 6; t += 1) {
-        draw(((0,0)--(cos(t),sin(t))), align=NW);
+asymptote:
+    size(10cm);
+    draw((0,0)--(1.2,0));
+    draw((1.2*cos(1),1.2*sin(1))--(0,0));
+    draw(rarc((0,0), 1, 0, 1), blue);
+    draw(rarc((0,0), 1, 1, tau), smalldashes);
+    draw(rrotate(1)*brace((0,0.05),(1,0.05)), heavygreen,
+         L=rrotate(1)*"this is 1", align=unit((-sin(1),cos(1))));
+
+    pair arrowend=(0.3*cos(0.5),0.3*sin(0.5)), labelplace=(0.5,-0.3);
+    draw(labelplace..{-unit(arrowend)}(arrowend), arrow=Arrow(size=5mm));
+    label(labelplace, L="the angle", align=W);
+
+Now we can define the angle as the length of the blue arc. With this
+definition, the angle in the picture is about 1 because it looks like the
+length of the blue arc is about the same as the radius. This way to measure
+angles is known as **radians**, and the angle in the pic is 1 radian.
+
+Here are more pictures of angles that should help you understand this:
+
+asymptote:
+    size(18cm);
+
+    // returns max width
+    real drawanglesign(real angle, transform T) {
+        path anglesign=T*scale(1.5)*((1,0)--(0,0)--(cos(angle),sin(angle)));
+        path bluearc=T*rarc((0,0),1,0,angle);
+        draw(anglesign);
+        draw(bluearc, blue, L=(string)angle+"rad");
+
+        return max(anglesign^^bluearc).x - min(anglesign^^bluearc).x;
     }
 
-If we try to fill a circle with these 1 radian slices, 6 of them fit and
-there's some room left over. To be more precise, we can add 6.2831853...
-slices. This number is called tau and written with the Greek tau letter $\tau$.
-So, a full turn is $\tau$ radians. Be careful not to confuse $\tau$ with other
-letters like $t$.
+    real k=4, h=-2;
+    drawanglesign(1, shift(1k,0)); drawanglesign(4, shift(1k,h));
+    drawanglesign(2, shift(2k,0)); drawanglesign(5, shift(2k,h));
+    drawanglesign(3, shift(3k,0)); drawanglesign(6, shift(3k,h));
 
-asymptote: float:right;
-    size(4cm);
-
-    real angle = 0.7;
-    fill(((0,0)--arc((0,0), 1, 0, degrees(angle))--cycle), lightyellow);
-    draw(((0,0)--(1,0)));
-    draw(((0,0)--(cos(angle),sin(angle))), L="$r$", align=N);
-    draw((arc((0,0), 1, 0, degrees(angle))), L="$b$");
-    draw((arc((0,0), 0.3, 0, degrees(angle))), blue, L="$b/r$");
-
-The yellow slice at right shows another way to define an angle in radians, and
-it's compatible with the green slices because if we set $b=r$ the angle is
-$r/r=1$ radian.
-
-Sometimes the yellow slice definition is handier; for example, if we draw a
-full circle we know the angle in the center is $\tau$ radians (full turn), so
-we get this:
-
-asymptote: float:right; margin: 0,0,0,20px;
-    size(5cm);
-
-    real spiralization = 0.02;
-    fill(unitcircle, lightyellow);
-    draw(unitcircle, L="$b$");
-    draw(((0,0)--(1,0)), L="$r$", align=N);
-    draw(arc((-spiralization,0), 0.2, 0, 180), blue);
-    draw(arc((spiralization,0), 0.2 + 2*spiralization, 180, 360), blue, L="$b/r$");
+In this tutorial, the greek tau letter $\tau$ means a full turn in radians:
 
 math:
-    \frac b r &= \tau
-    b &= \tau r
+    \tau = 6.2831853...
 
-So we can multiply with tau to get from a radius to a perimeter. This is how
-$\tau$ is usually defined.
+So, if we draw a circle with radius 1, its circumference is $\tau$.
 
-Some programming languages like new Pythons have a ``tau`` constant, but if
+asymptote:
+    size(4cm);
+    draw(unitcircle, blue, L="$\tau$");
+    draw((0,0)--(cos(1),sin(1)), L="$1$");
+
+Some programming languages (e.g. new Pythons) have a ``tau`` constant, but if
 your favorite language doesn't, use ``2*pi`` instead. Here pi is the more
 well-known circle constant $\pi = \tau/2 = 3.14159265...$, and almost all
-programming languages have something like ``math.pi`` or ``Math.PI``. I find
-$\tau$ easier to work with than $\pi$ because if I see $\tau/4$ somewhere I
-know immediately that it's a quarter turn, but $\pi/2$ isn't as obvious. Of
+programming languages have something like ``math.pi`` or ``Math.PI``.
+
+I find $\tau$ easier to work with than $\pi$ because if I see $\tau/4$ somewhere
+I know immediately that it's a quarter turn, but $\pi/2$ isn't as obvious. Of
 course, you can use $\pi$ if you prefer it over $\tau$.
 
+If we [scale up](#scaling) the above $\tau$ pic by some number $r$, the radius
+becomes $1 \cdot r = r$ and the perimeter becomes $\tau r$:
+
+asymptote:
+    size(6cm);
+    draw(unitcircle, blue, L="$\tau r$");
+    draw((0,0)--(cos(1),sin(1)), L="$r$");
+
+Now we have something that works with any circle instead of just circles with
+radius 1.
+
+graybox: Exercise
+    Use the above $\tau r$ drawing and the below animation to conclude that
+    $\tau=2\pi$.
+
+    image: https://upload.wikimedia.org/wikipedia/commons/4/4a/Pi-unrolled_slow.gif
+        max-width: 300px;
+
+    <small>The animation comes from
+    [here](https://commons.wikimedia.org/wiki/File:Pi-unrolled_slow.gif).</small>
 
 ## Degrees
 
@@ -101,186 +155,291 @@ Degrees are an alternative to radians, and they work so that 360° is a full
 turn. Here ° is the degree symbol, and 360 is a number that people ended up
 using for historical reasons.
 
-If you need to convert between radians and degrees, use the fact that 360
-degrees is $\tau$ radians. Here's a Python example:
+We already know that 360 degrees is $\tau$ radians, but let's figure out how to
+convert $D$ degrees to $R$ radians. One degree is $\frac{1}{360}$ turns, so $D$
+degrees is $D \cdot \frac{1}{360}=\frac{D}{360}$ turns. Similarly, $R$ radians
+means $\frac R \tau$ turns.
+
+math:
+    \frac{D}{360} &= \frac{R}{\tau}
+
+Multiplying both sides by 360 or $\tau$ gives these:
+
+math:
+    D &= R \cdot 360 / \tau
+    R &= D \cdot \tau / 360
 
 code: python3
     def degrees2radians(degrees):
-        return degrees / 360 * math.tau
+        return degrees * math.tau / 360
 
     def radians2degrees(radians):
-        return radians / math.tau * 360
+        return radians * 360 / math.tau
 
-Use ``180`` and ``pi`` instead of ``360`` and ``tau`` if your programming
-language doesn't have a ``tau`` constant. You can also do something like
-``TAU = 2*Math.PI``. Or better yet, some programming languages feature
-conversion functions in standard libraries like Python's ``math.radians()`` and
-``math.degrees()``.
+For example, $\frac{90}{360} = \frac 1 4$, so 90° is
+$90 \cdot \tau / 360 = \tau\cdot\frac{90}{360} = \frac{\tau}{4}$ radians
+(quarter turn).
 
+Some programming languages also have conversion functions like Python's
+``math.degrees()`` and ``math.radians()``.
 
-## Basic Angle Stuff
+image: https://imgs.xkcd.com/comics/degrees.png
+    max-width: 100%;
+    max-height: 100%;
 
-graybox: Problem
-    The ball of a ball-and-paddle game is moving at the angle of 0.5 radians
-    and it hits a wall at right. How should the angle change?
+<small>The comic comes from [here](https://xkcd.com/1643/).</small>
 
-    asymptote:
-        import patterns; add("wall",hatch(2mm));
-        size(9cm);
-        real angle = 0.5;
+## Coordinates
 
-        // points of the dotted ball path line
-        pair A = (-cos(angle)*1.5, sin(angle)*1.5);
-        pair B = (0,0);
-        pair C = (-cos(angle)*2, -sin(angle)*2);
-
-        draw(A--B--C, p=smalldashes+deepblue);
-        dot(C, p=deepblue, L=" the ball", align=S);
-
-        draw((-1.3,C.y/2)--(-0.3,C.y/2), smalldashes);
-        draw(arc((C.x/2,C.y/2), 0.2, -degrees(pi-angle), 0), deepred, L="???");
-
-        draw((-1.1,A.y*2/3)--(-0.1,A.y*2/3), smalldashes);
-        draw(arc((A.x*2/3,A.y*2/3), 0.4, 0, -degrees(angle)), deepgreen,
-             L="0.5", align=E);
-
-        real wallthickness = 0.15;
-        filldraw((0,-1)--(0,1)--(wallthickness,1)--(wallthickness,-1)--cycle, pattern("wall"));
-
-Note that both angles are measured down from a horizontal line clockwise
-because that's a standard in programming. In math, angles are usually measured
-up from a horizontal line and counter-clockwise.
-
-We can solve our problem by taking the 0.5 radian angle sign and moving it like
-this:
+Here's a boring number line:
 
 asymptote:
-   import patterns; add("wall",hatch(2mm));
-   size(7cm);
-   real angle = 0.5;
+    size(12cm);
+    real xmin=-2.5, xmax=6;
+    axises(xmin, xmax, 0, 0, xlabel="");
+    for (real x=ceil(xmin); x < xmax; ++x) {
+        dot((x,0), L=(string)x, align=N, p=dotpen);
+    }
 
-   // points of the dotted ball path line
-   pair B = (0,0);
-   pair C = (-cos(angle)*2, -sin(angle)*2);
+If we have two number lines called $x$ and $y$, we can do this:
 
-   draw(B--C, p=smalldashes+deepblue);
-   dot(C, p=deepblue);
+asymptote:
+    size(12cm);
+    real xymin=-2.5, xymax=6;
+    axises(xymin, xymax, xymin, xymax);
+    for (real xy=ceil(xymin); xy < xymax; xy += (xy==-1 ? 2 /* skip 0 */ : 1)) {
+        dot((xy,0), L=(string)xy, align=N, p=dotpen);
+        dot((0,xy), L=(string)xy, align=W, p=dotpen);
+    }
 
-   draw((-1.6,C.y/2)--(-0.3,C.y/2), smalldashes);
-   draw(arc((C.x/2,C.y/2), 0.2, degrees(angle)-180, 0), deepred, L="???");
-   draw(arc((C.x/2,C.y/2), 0.4, degrees(angle)-180, -180), deepgreen,
-        L="0.5", align=W);
+Every point on this plane can be represented with two numbers. These are known
+as the $x$ and $y$ **coordinates**. For example, the $x$ coordinate of the red
+point in the below picture is $3$ and the $y$ coordinate is $-2$:
 
-Now you can see that the angles add up to half turn, and that's $\tau/2 = \pi$
-radians, so we get this [equation](basics.html#equations):
+asymptote:
+    size(12cm);
+    real xymin=-3.5, xymax=4;
 
-math:
-    0.5 + \text{???} &= \frac \tau 2
-    \text{???} &= \frac \tau 2 - 0.5
-    \text{???} &\approx 2.64
+    axises(xymin, xymax, xymin, xymax);
+    draw((3,0)--(3,-2)--(0,-2), gray+smalldashes);
+    dot((3,-2), p=red+dotpen);
+    label((3,-2), L="$(3,-2)$", align=SE);
 
-I did the last step with Python.
+    for (real xy=ceil(xymin); xy < xymax; xy += (xy==-1 ? 2 /* skip 0 */ : 1)) {
+        dot((xy,0), L=(string)xy, align=N, p=dotpen);
+        dot((0,xy), L=(string)xy, align=W, p=dotpen);
+    }
 
-In math it's common to use a letter instead of "???" to represent an
-unknown value. For example:
+Usually $x$ goes before $y$ for historical reasons, so $(3,-2)$ means
+$(x,y)=(3,-2)$.
 
-math:
-    0.5 + b &= \frac \tau 2
-    b &= \frac \tau 2 - 0.5 \approx 2.64
+(upside-down-y-axis)
+So far this probably feels like some useless gibberish that has nothing to do
+with real life, but most programming languages have something that works with
+coordinates. Usually these coordinates work so that 1 unit represents 1 pixel
+on the screen, and the $y$ axis is upside down compared to what mathematicians
+are used to. Like this:
 
-It's easy to calculate similar things for other directions. Here are the
-results, where $a$ is the original angle and $b$ is the changed angle:
+asymptote:
+    unitsize(1);
+    draw((200,0)--(200,-100)--(0,-100), gray+smalldashes);
+    label((200,0), L="200px", align=N);
+    label((0,-100), L="100px", align=W);
+    axises(0, 300, 0, -200);
+    draw((200, -100), p=dotpen, L="$(200,100)$", align=SE);
 
-* If the ball hits left or right wall, $b = \frac \tau 2 - a$.
-* If the ball hits top or bottom, $b = \tau - a$.
+graybox: Exercise
+    The location of something usually means the top left corner in programming.
+    Where does the **bottom right** corner of the window go in this code?
 
-Note that an angle like $-2$ radians is perfectly valid and equivalent to
-$\tau-2$ radians. If you want to make sure that an angle is between $0$ and
-$\tau$, use something like ``angle % tau`` where ``%`` is division remainder.
+    darkcode:
+        window.resize(300, 200);    // (width, height)
+        window.move_to(600, 500);   // (x, y)
 
+    If this exercise feels difficult, grab a piece of paper and draw a picture
+    of the whole screen with the window in it.
 
 ## Trig with the Unit Circle
 
-graybox: Problem
-    This time the ball moves at the angle of $\tau/6$, and it should move 5
-    pixels every time the screen is updated. How many pixels should its x and y
-    change every time?
+graybox:
+    This section uses the Greek theta letter $\theta$ because mathematicians
+    often use it to denote an angle, just like $r$ often denotes a radius. Try
+    not to get confused; it's just a letter.
 
-    asymptote:
-        size(10cm);
-
-        // start and end of dotted ball path line
-        pair pathstart = (0.7,0);
-        pair pathend = (1.5,-1.5);
-
-        axises(0, 3, 0, -2);
-
-        draw(pathstart--pathend, p=smalldashes+deepblue);
-        dot(pathend, deepblue, L=" the ball", align=NE);
-
-        // where does the ball's path hit the x axis?
-        real deltay = pathend.y-pathstart.y;
-        real deltax = pathend.x-pathstart.x;
-        real s = deltay/deltax;
-
-        // y-y_0 = s*(x-x_0)      || x axis is the line y=0
-        // 0-y_0 = s*(x-x_0)
-        // x-x_0 = (0-y_0)/s = -y_0/s
-        // x = x_0 - y_0/s
-        real x = pathstart.x - pathstart.y/s;
-        real t = atan2(deltay, deltax);
-
-        draw(arc((x,0), 0.4, 0, degrees(t)), L="$\frac \tau 6$", align=E);
-
-Our problem has something to do with sine and cosine. The unit circle is a
-circle with radius 1 placed in the middle of the xy plane. Here's a picture that
-shows what sine and cosine are:
+Here's a problem that combines [the coordinate stuff](#coordinates) with [the
+radian stuff](#radians-and-tau) above. The unit circle means a circle with
+radius 1. Let's draw a unit circle in the center of the xy plane (we'll talk
+about other radiuses soon) and draw an angle to it.
 
 asymptote:
-    size(9cm);
+    size(12cm);
+    real xyminmax=1.6, theta=1;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
 
-    axises(-1.2,1.6,1.2,-1.8);
-    real t = radians(55);
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau));
+    draw((0,0)--(cos(theta),sin(theta)), smalldashes);
 
+    dot((1,0), p=dotpen, L="$(1,0)$", align=SE);
+    dot((0,1), p=dotpen, L="$(0,1)$", align=NW);
+    dot((-1,0), p=dotpen, L="$(-1,0)$", align=SW);
+    dot((0,-1), p=dotpen, L="$(0,-1)$", align=SW);
+    dot((cos(theta),sin(theta)), p=red+dotpen);
+    label((cos(theta),sin(theta)), L="$(x,y)=???$", align=NE);
+
+There are quite a few things going on in the above drawing. Make sure you
+understand them before moving on.
+
+Now, what are the coordinates of the red dot? Mathematicians have defined a
+couple functions just for solving this problem:
+
+math:
+    x &= \cos(\theta)
+    y &= \sin(\theta)
+
+The function names are $\cos$ and $\sin$ for historical reasons. Almost all
+programming languages have ``cos`` and ``sin`` functions, and you don't need to
+know how they calculate those values with other functions yet. You just need to
+know what $\sin$ and $\cos$ are.
+
+As before, here's a pile of examples:
+
+asymptote: float:left;
+    unitsize(2.5cm);
+    real xyminmax=1.6;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
     draw(unitcircle);
-    draw((0,0)--(cos(t),-sin(t)), L="1", align=S);
-    dot((cos(t),-sin(t)), p=dotpen);
-    draw(arc((0,0), 0.3, -degrees(t), 0), L="$t$");
+    dot((1,0), p=red+dotpen);
+    label((1,0), L="$(1,0)$", align=NE);
+    label((0,-xyminmax), L="$(\cos(0),\sin(0))=(1,0)$", align=S);
 
-    draw(brace((cos(t),-1), (0,-1)), deepblue, L="$\cos(t)$", align=S);
-    draw(brace((cos(t)+0.15,0), (cos(t)+0.15,-sin(t))), darkorange, L="$\sin(t)$", align=E);
+asymptote: float:left;
+    unitsize(2.5cm);
+    real xyminmax=1.6;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+    draw(rarc((0,0),1,0,tau/4), blue, L="$\tau/4$");
+    draw(rarc((0,0),1,tau/4,tau));
+    dot((0,1), p=red+dotpen);
+    label((0,1), L="$(0,1)$", align=NE);
+    label((0,-xyminmax), L="$(\cos(\tau/4),\sin(\tau/4))=(0,1)$", align=S);
 
-This is really simple: the x coordinate is $\cos(t)$ and the y coordinate is
-$\sin(t)$. But the radius of the unit circle is 1 instead of our 5, so we need
-to multiply everything by 5 to scale it up. We get this:
+asymptote: float:left;
+    unitsize(2.5cm);
+    real xyminmax=1.6;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+    draw(rarc((0,0),1,0,0.4*tau), blue, L="$\tau/2$");
+    draw(rarc((0,0),1,0.4*tau,tau/2), blue);
+    draw(rarc((0,0),1,tau/2,tau));
+    dot((-1,0), p=red+dotpen);
+    label((-1,0), L="$(-1,0)$", align=NW);
+    label((0,-xyminmax), L="$(\cos(\tau/2),\sin(\tau/2))=(-1,0)$", align=S);
 
-code: python3
-    ball.x += 5*cos(tau/6)
-    ball.y += 5*sin(tau/6)
+asymptote: float:left;
+    unitsize(2.5cm);
+    real xyminmax=1.6;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+    draw(rarc((0,0),1,0,3*tau/4), blue, L="$3\tau/4$");
+    draw(rarc((0,0),1,3*tau/4,tau));
+    dot((0,-1), p=red+dotpen);
+    label((0,-1), L="$(0,-1)$", align=SE);
+    label((0,-xyminmax), L="$(\cos(3\tau/4),\sin(3\tau/4))=(0,-1)$", align=S);
 
-Note that ``cos()`` and ``sin()`` functions use radians by default in almost
-all programming languages. Let's try this out with Python just to make sure
-that everything works:
+asymptote: float:left;
+    unitsize(2.5cm);
+    real xyminmax=1.6;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+    draw(rarc((0,0),1,0,0.8*tau), blue, L="$\tau$");
+    draw(rarc((0,0),1,0.8*tau,tau), blue);
+    dot((1,0), p=red+dotpen);
+    label((1,0), L="$(1,0)$", align=NE);
+    label((0,-xyminmax), L="$(\cos(\tau),\sin(\tau))=(1,0)$", align=S);
+
+<div style="clear:left;"></div>
+
+Here $3\tau/4 = \frac 3 4 \tau$ means three quarters of a turn.
+
+You can check these with Python:
 
 code: python3
     >>> import math
-    >>> math.sin(math.tau/6)
-    0.8660254037844386
-    >>> math.cos(math.tau/6)
-    0.5000000000000001
+    >>> math.sin(math.tau/4)
+    1.0
+    >>> math.cos(math.tau/4)
+    6.123233995736766e-17
 
-These results make sense because the angle $t$ in the above image looks like
-it's about a sixth of a turn (or $\tau/6$), so $\sin(\tau/6)$ should be close
-to 1 because the circle's bottom is at $y=1$. Similarly, the $\cos(t)$ marked on
-the picture seems to be about half of the radius, and the radius is 1.
+Mathemathically $\cos(\tau/4) = 0$, but floats are not mathematically precise
+so small errors may occur. In this case, ``e-17`` at the end of the number
+means that the value we have is 6.12323399... with the dot moved left by 17
+places:
 
-(accurate-sincos)
-``0.5000000000000001`` is obviously not an accurate result, but it's good
-enough for a programmer while a mathematician would say that
-$\sin\left(\frac \tau 6\right) = \frac{\sqrt 3}{2}$ and
-$\cos\left(\frac \tau 6\right) = \frac 1 2$. See [this
-thing](more-geometry-and-trig.html#accurate-sine-and-cosine-values) if
-you're wondering how I came up with these values.
+math:
+    0.00000000000000006123233995736766
+
+As you can see, this is just a small error.
+
+(parametric-circle)
+Now it's time to generalize this to circles with a non-1 radius. Let's take
+this thing...
+
+asymptote:
+    size(14cm);
+    real xyminmax=1.4, theta=1;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau));
+    draw((cos(theta),sin(theta))--(0,0), heavygreen, L="1");
+
+    dot((cos(theta),sin(theta)), p=red+dotpen);
+    label((cos(theta),sin(theta)), L="$(x,y)=(\cos(\theta),\sin(\theta))$", align=NE);
+
+...and [scale it up](#scaling) by $r$:
+
+asymptote:
+    size(16cm);
+    real xyminmax=3.5, r=2.5, theta=1;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),r,0,theta), orange, L="$r\theta$");
+    draw(rarc((0,0),r,theta,tau));
+
+    draw((r*cos(theta),r*sin(theta))--(0,0), heavygreen, L="$r$");
+
+    dot((r*cos(theta),r*sin(theta)), p=red+dotpen);
+    label((r*cos(theta),r*sin(theta)), L="$(x,y)=(r\cos(\theta),r\sin(\theta))$", align=NE);
+
+Like I said earlier, angles don't change when scaling, but lengths do. Here
+$\theta$ represented an angle *and* an arc length, so we have the old $\theta$
+angle and a scaled $r\theta$ arc length.
+
+graybox: Exercise
+    Let's say that a player of a 2D game should move by 2 pixels every time a
+    ``player.move()`` method is called. It means that the player goes to some
+    place on the circle with radius 2 around it:
+
+    asymptote:
+        size(12cm);
+        axises(-0,4,0,-3);
+
+        transform T = shift(2.5,-1.5);
+        real theta=-1;
+        draw(T*unitcircle, smalldashes);
+        draw(T*((0,0)--(cos(theta),sin(theta))), heavygreen, L="2");
+        draw(T*((0,0)--(1,0)), smalldashes);
+        draw(T*rarc((0,0),0.3,theta,0), blue, L="$\theta$");
+        dot(T*(0,0), p=dotpen, L="player", align=N);
+
+    Note how $\theta$ is measured clockwise here but we have measured it
+    counter-clockwise until now; measuring clockwise is a programming standard
+    while mathematicians do things counter-clockwise. This means that
+    everything works nicely with [the "upside down" $y$
+    axis](#upside-down-y-axis).
+
+    Let's say that ``player.x`` and ``player.y`` are the current coordinates as
+    floats (they may need to be rounded to ints when actually drawing things),
+    ``player.speed == 2`` and ``player.angle == θ``. Write a ``player.move()``
+    method using your favorite programming language.
 
 ## Example: Ball and Paddle
 
@@ -289,358 +448,121 @@ demonstrates most things we have learned so far. Click it, press arrow up to
 start the game and then use arrow keys to move the paddle.
 
 canvasdemo:
-   const TAU = Math.PI*2;
-
-   var paddle = {
-     length: 200,
-     thickness: 15,
-     speed: 10,
-     movement: 0,             // -1 means left, 0 means right
-   };
-   paddle.top = screen.height - paddle.thickness;
-
-   var ball = {
-     radius: 10,
-     speed: 10,
-     moving: false,
-   };
-
-   function resetGame() {
-     paddle.centerx = screen.width/2;
-     ball.centerx = screen.width/2;
-     ball.centery = screen.height-paddle.thickness-ball.radius;
-     ball.angle = 0.75*TAU;
-     ball.moving = false;
-   }
-
-   resetGame();
-   runRepeatedly(function() {
-     screen.fill('black');
-     screen.drawRectangle(
-       paddle.centerx-paddle.length/2, screen.height-paddle.thickness,
-       paddle.length, paddle.thickness, '#00ff00');
-     screen.drawCircle(ball.centerx, ball.centery, ball.radius, 'white');
-
-     if (ball.moving) {
-       if (ball.centery > screen.height) {
-         resetGame();
-         return;
-       }
-
-       ball.centerx += ball.speed * Math.cos(ball.angle);
-       ball.centery += ball.speed * Math.sin(ball.angle);
-
-       if (ball.centerx < ball.radius) {     // bumps left wall
-         ball.angle = TAU/2 - ball.angle;
-         ball.centerx = ball.radius;
-       } else if (ball.centerx > screen.width-ball.radius) {   // right wall
-         ball.angle = TAU/2 - ball.angle;
-         ball.centerx = screen.width-ball.radius;
-       } else if (ball.centery < ball.radius) {          // top
-         ball.angle = TAU - ball.angle;
-         ball.centery = ball.radius;
-       } else if (ball.centery > screen.height-paddle.thickness-ball.radius) {
-         // paddle?
-         paddleLeft = paddle.centerx - paddle.length/2;
-         paddleRight = paddle.centerx + paddle.length/2;
-         if (paddleLeft < ball.centerx && ball.centerx < paddleRight) {
-           // yes, it hits the paddle
-           ball.angle = TAU - ball.angle;
-           ball.centery = screen.height-paddle.thickness-ball.radius;
-
-           // also adjust the angle depending on which side of the paddle the
-           // ball hits
-           ball.angle += (ball.centerx - paddle.centerx) / 100;
-         }
-       }
-       paddle.centerx += paddle.movement*paddle.speed;
-     }
-
-     screen.getEvents().forEach(evt => {
-       if (evt.type == 'keydown') {
-         if (ball.moving) {
-           if (evt.key == 'ArrowLeft') {
-             paddle.movement = -1;
-           } else if (evt.key == 'ArrowRight') {
-             paddle.movement = 1;
-           }
-         } else {
-           if (evt.key == 'ArrowUp') {
-             ball.moving = true;
-             return;
-           }
-         }
-       } else if (evt.type == 'keyup' && (
-             (evt.key == 'ArrowLeft' && paddle.movement == -1) ||
-             (evt.key == 'ArrowRight' && paddle.movement == 1))) {
-         // cancel the previous ArrowLeft or ArrowRight press
-         paddle.movement = 0;
-       }
-     });
-   });
-
-
-## Trig with a Triangle
-
-graybox: Problem
-    The ball moves 10 pixels down and 20 pixels right. What angle is that?
-
-Here's another way to define $\sin$ and $\cos$, and another function called
-$\tan$ that we haven't used before.
-
-asymptote: float:right;
-    size(6cm);
-    abctriangle(3,2);
-    real t = atan2(2,3);
-    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
-
-math:
-    \sin(t) &= \frac b c
-    \cos(t) &= \frac a c
-    \tan(t) &= \frac b a
-
-We'll talk about compatibility with the unit circle definitions
-[later](more-geometry-and-trig.html#unit-circle-or-triangle). These things work
-only if the triangle has an angle that is exactly a quarter turn, and the little
-box at bottom right means just that.
-
-asymptote: float:right;
-    size(6cm);
-    abctriangle(3,-2, lightgreen);
-    real t = atan2(-2,3);
-    draw(arc((0,0), 1, 0, degrees(t)), L="$t$", align=E);
-
-The green triangle is just like the blue one, but I flipped it so that we can
-calculate the stuff by plugging in $a=20$ and $b=10$ without worrying about
-which way things go. Let's figure out how to calculate the $t$:
-
-math:
-    \tan(t) &= \frac b a
-    t &= \arctan\left(\frac b a\right) = \text{atan2}(b, a)
-
-Here $\arctan$ is the inverse of $\tan$, so $\arctan(\tan(t)) = t$. Most
-programming languages have an ``atan(x)`` function that returns $\arctan x$,
-but I don't recommend using it in this case; the ``atan2(b,a)`` function
-returns $\arctan\left(\frac b a\right)$ and I recommend it instead. ``atan2``
-looks at the signs of $a$ and $b$ and does the right thing if they're negative
-(the ball is moving to e.g. top left). It also works if ``a`` is 0 and ``b/a``
-would fail as division by zero is undefined.
-
-graybox:
-    Usually people like to put $x$ before $y$ in different kinds of places,
-    but ``atan2`` is used like ``atan2(y_change, x_change)``, **not** like
-    ``atan2(x_change, y_change)``.
-
-Finally, it's time to calculate our stuff:
-
-code: python3
-    >>> from math import atan2
-    >>> atan2(10, 20)
-    0.4636476090008061
-
-## Pythagorean Theorem
-
-graybox: Problem
-    The ball moves 10 pixels down and 20 pixels right, just like in
-    the previous problem. How many pixels is that in total, measured
-    diagonally?
-
-asymptote: float:right;
-    size(6cm);
-    abctriangle(3,2);
-
-Here's a handy equation, also known as the Pythagorean theorem:
-
-math: a^2 + b^2 = c^2
-
-Again, the angle of the corner between a and b must be a quarter turn, like it
-is in the image. We'll prove that this theorem actually works
-[later](more-geometry-and-trig.html#pythagorean-theorem-proof).
-
-Let's solve $c$ from the equation by applying $\sqrt{\ \ }$ on both sides:
-
-math: \sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c
-
-Here $|c|$ is [the absolute value](basics.html#absolute-value). The last
-step assumes $c \ge 0$, but that's not a problem because a triangle with
-a negative side length doesn't make much sense.
-
-"Hypotenuse" is a fancy word that means the longest side of a triangle with a
-quarter-turn angle, and that's why some programming languages have a
-``hypot(a, b)`` function that returns $\sqrt{a^2 + b^2}$.
-
-Let's calculate the distance:
-
-code: python3
-    >>> from math import hypot, sqrt
-    >>> hypot(10, 20)
-    22.360679774997898
-    >>> sqrt(10**2 + 20**2)
-    22.360679774997898
-
-## Vectors
-
-asymptote: float:right;
-    size(8cm);
-    grid(0,8,0,7);
-    axises(-0.5,7.5,-0.5,6.5);
-
-    pair A = (1,2);
-    pair B = (3,5);
-
-    dot(A, L="$A$", p=dotpen);
-    dot(B, L="$B$", p=dotpen);
-    draw(A--B, arrow=Arrow(size=vectorarrowsize),
-         L=Label(rotate(degrees(atan2(3,2)))*"$\overrightarrow{AB}$"), align=NW);
-    draw((6,2)--(7,2), arrow=Arrow(size=vectorarrowsize), L="$\overline{i}$");
-    draw((5,3)--(5,4), arrow=Arrow(size=vectorarrowsize), L="$\overline{j}$");
-
-A point is simply a pair of x and y coordinates, and a vector represents the
-difference between two points. For example, if we have the points $A=(1,2)$ and
-$B=(3,5)$, the vector from $A$ to $B$ is
-$\overrightarrow{AB} = (3-1) \bar i + (5-2) \bar j = 2 \bar i + 3 \bar j$. Here
-$\bar i$ and $\bar j$ are vectors that go right and up by 1 unit, respectively.
-
-A vector like $x \bar i + y \bar j$ can be also written as $<x,y>$. Use
-whatever style you want.
-
-We could also use vectors to do similar things as in
-[the unit circle trigonometry section](#trig-with-the-unit-circle). The
-advantage with vectors is that moving the ball is really easy:
-
-code: python3
-   ball.x += speed_vector.x
-   ball.y += speed_vector.y
-
-A disadvantage is that if we want to change the angle that the ball moves at
-we can't just do ``moving_angle += something``. We'll look into how this is
-done in a moment.
-
-asymptote: float:right;
-    size(8cm);
-    grid(0,8,0,5);
-
-    pair A = (0,0);
-    pair B = (3,0);
-    pair C = (3,4);
-    pair D = (8,4);
-
-    draw(A--B, arrow=Arrow(size=vectorarrowsize), L="$3 \overline{i}$");
-    draw(B--C, arrow=Arrow(size=vectorarrowsize), L="$4 \overline{j}$", align=NW);
-    draw(C--D, arrow=Arrow(size=vectorarrowsize), L="$5 \overline{i}$", align=N);
-    draw(A--D, arrow=Arrow(size=vectorarrowsize), blue,
-         L=Label(rotate(degrees(atan(4/8)))*"$8 \overline{i} + 4 \overline{j}$"), align=SE);
-
-Another nice thing about vectors is that they can be +'ed together easily. For
-example, if we first move 3 units to right, then 4 units up and finally 5 more
-units to right, we move a total of 8 units to right and 4 units up. That's how
-$3 \bar i + 4 \bar j + 5 \bar i = 8 \bar i + 4 \bar j$.
-
-asymptote: float:right;
-    size(8cm);
-
-    real a = 4;
-    real b = 6;
-    grid(-1,6,-1,7);
-
-    // this is before <a,b> because that way <a,b> is drawn on top of this
-    draw(arc((0,0), 1, 0, degrees(atan2(b,a))), L="$t$", align=NE, brown);
-
-    draw((0,0)--(a,b), arrow=Arrow(size=vectorarrowsize), align=NW,
-         L=Label("$<a,b>$", Rotate((a,b))));
-    pair llabeloffset = (-1,a/b);
-    draw(brace((0,0)+llabeloffset, (a,b)+llabeloffset),
-         L="$l$", align=NW, deepblue);
-
-    draw((a,0)--(0,0), smalldashes);
-    draw((a,0)--(a,b), smalldashes);
-    draw(brace((a,-bracedistance), (0,-bracedistance)), L="$a$", align=S);
-    draw(brace((a+bracedistance,b), (a+bracedistance,0)), L="$b$", align=E);
-
-These vector calculations are just like the
-[Pythagorean theorem](#pythagorean-theorem) and
-[unit circle trig](#trig-with-the-unit-circle) stuff above:
-
-math:
-    l &= \sqrt{a^2+b^2} = \text{hypot}(a, b)
-    t &= \text{atan2}(b,a)
-    a &= l \cdot \cos(t)
-    b &= l \cdot \sin(t)
-
-Example: if we move 1 unit to the right and 2 units up, our vector is $<1,2>$,
-its length is $\sqrt{1^2+2^2} = \sqrt 5 \approx 2.24$ and the angle is
-$\text{atan2}(2,1) \approx 1.107$ radians. On the other hand,
-$2.24 \cdot \cos(1.107) \approx 1$ and $2.24 \cdot \sin(1.107) \approx 2$.
-
-One way to change the angle of a vector is to first convert it to a length and
-an angle, change that angle and create a new vector. It looks like this in
-pseudo-ish code:
-
-code: python3
-    length = hypot(speed_vector.x, speed_vector.y)
-    speed_vector.x = cos(new_angle) * length
-    speed_vector.y = sin(new_angle) * length
-
-### Example: Vector class in Python
-
-Here's a ``Vector`` class I implemented in Python running with
-[repl.it](https://repl.it/). A ``Vector(x, y)`` represents
-$x \bar i + y \bar j$. I didn't add operator overloading because I wanted to
-keep everything nice and simple. Click the "play"-shaped button at top to run
-the code and then use the Python shell at right.
-
-<iframe frameborder="0" width="100%" height="800px" src="https://repl.it/MeIW"></iframe>
-
-comment:
-   # this is here as a comment just in case the repl.it thing stops
-   # working some day
-
-   import math
-
-
-   class Vector:
-
-       def __init__(self, x, y):
-           self.x = x
-           self.y = y
-
-       def __repr__(self):
-           return 'Vector(%r, %r)' % (self.x, self.y)
-
-       @property
-       def length(self):
-           return math.hypot(self.x, self.y)
-
-       @length.setter
-       def length(self, new_length):
-           old_length = math.hypot(self.x, self.y)
-           scale = new_length / old_length
-           self.x = self.x * scale
-           self.y = self.y * scale
-
-       @property
-       def angle(self):
-           return math.atan2(self.y, self.x)
-
-       @angle.setter
-       def angle(self, new_angle):
-           length = math.hypot(self.x, self.y)
-           self.x = math.cos(new_angle) * length
-           self.y = math.sin(new_angle) * length
-
-
-   v = Vector(1, 2)
-   print(v)
-   print(v.x)
-   print(v.y)
-   print(v.length)
-   print(v.angle)
-   print('--------------')
-
-   v.angle = math.tau/8
-   print(v)
-   print(v.length)      # didn't change
-   print('--------------')
-
-   v.length = 0     # lol
-   print(v)
+    const TAU = 2*Math.PI;
+
+    /* handy things:
+        * paddle.centerx - paddle.length/2  x coordinate of left edge
+        * paddle.centerx + paddle.length/2  x coordinate of right edge
+        * screen.height - paddle.thickness  y coordinate of top edge
+        * screen.height                     y coordinate of bottom edge
+    */
+    var paddle = {
+      // centerx and top are added later
+      length: 200,
+      thickness: 15,
+      speed: 10,
+      movement: 0,    // -1 means left, 1 means right
+    };
+
+    /* handy things:
+        * ball.centerx - ball.radius    x coordinate of left edge
+        * ball.centerx + ball.radius    x coordinate of right edge
+        * ball.centery - ball.radius    y coordinate of top edge
+        * ball.centery + ball.radius    y coordinate of bottom edge
+    */
+    var ball = {
+      // centerx, centery and angle are added later
+      radius: 10,
+      speed: 10,
+      moving: false,
+    };
+
+    function resetGame() {
+      paddle.centerx = screen.width/2;
+      ball.centerx = screen.width/2;
+      ball.centery = screen.height - paddle.thickness - ball.radius;
+      ball.angle = 3*TAU/4;     // up
+      ball.moving = false;
+    }
+
+    resetGame();
+    runRepeatedly(function() {
+      screen.fill('black');
+      screen.drawRectangle(
+        // left x, top y, width, height, color
+        paddle.centerx - paddle.length/2, screen.height - paddle.thickness,
+        paddle.length, paddle.thickness, '#00ff00');
+      screen.drawCircle(ball.centerx, ball.centery, ball.radius, 'white');
+
+      if (ball.moving) {
+        if (ball.centery > screen.height) {
+          resetGame();
+          return;
+        }
+
+        ball.centerx += ball.speed * Math.cos(ball.angle);
+        ball.centery += ball.speed * Math.sin(ball.angle);
+
+        if (ball.centerx - ball.radius < 0) {     // bumps left wall
+          ball.angle = TAU/2 - ball.angle;
+          ball.centerx = ball.radius;
+        } else if (ball.centerx + ball.radius > screen.width) {   // right wall
+          ball.angle = TAU/2 - ball.angle;
+          ball.centerx = screen.width - ball.radius;
+        } else if (ball.centery - ball.radius < 0) {          // top
+          ball.angle = -ball.angle;
+          ball.centery = ball.radius;
+        } else if (ball.centery + ball.radius > screen.height - paddle.thickness) {
+          // paddle?
+          paddleLeft = paddle.centerx - paddle.length/2;
+          paddleRight = paddle.centerx + paddle.length/2;
+          if (paddleLeft < ball.centerx && ball.centerx < paddleRight) {
+            // yes, it hits the paddle
+            ball.angle = -ball.angle;
+            ball.centery = screen.height-paddle.thickness-ball.radius;
+
+            // also adjust the angle depending on which side of the paddle the
+            // ball hits
+            ball.angle += (ball.centerx - paddle.centerx) / 100;
+          }
+        }
+        paddle.centerx += paddle.movement*paddle.speed;
+      }
+
+      screen.getEvents().forEach(evt => {
+        if (evt.type == 'keydown') {
+          if (ball.moving) {
+            if (evt.key == 'ArrowLeft') {
+              paddle.movement = -1;
+            } else if (evt.key == 'ArrowRight') {
+              paddle.movement = 1;
+            }
+          } else {
+            if (evt.key == 'ArrowUp') {
+              ball.moving = true;
+              return;
+            }
+          }
+        } else if (evt.type == 'keyup' && (
+              (evt.key == 'ArrowLeft' && paddle.movement == -1) ||
+              (evt.key == 'ArrowRight' && paddle.movement == 1))) {
+          // cancel the previous ArrowLeft or ArrowRight press
+          paddle.movement = 0;
+        }
+      });
+    });
+
+&nbsp;
+
+graybox: Exercise
+    A part of my game works similarly to this pseudocode:
+
+    darkcode:
+        if (the ball hits the left wall or the right wall) {
+            ball.angle = TAU/2 - ball.angle;
+        }
+        if (the ball hits the top wall or the paddle) {
+            ball.angle = -ball.angle;
+        }
+
+    Derive these formulas.

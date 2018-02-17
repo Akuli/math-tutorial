@@ -40,6 +40,35 @@ void abctriangle(real x, real y, pen fillcolor=mediumblue) {
     draw((x,y)--(0,0), L="$c$", align=(y > 0 ? N : S));
 }
 
+/*
+               ,|\
+             ,' | \
+           ,'   |  \
+      3  ,'     |   \
+       ,'     b |    \  2
+     ,'         |     \
+   ,'           |      \
+ ,'     a       |  4-a  \
+'-------------------------
+            4
+
+Pythagorean Theorem:  a^2 + b^2 = 3^2  and  (4-a)^2 + b^2 = 2^2
+
+>>> from sympy import *
+>>> a,b = symbols('a b')
+>>> solve([Eq(a**2 + b**2, 3**2), Eq((4-a)**2 + b**2, 2**2)], a,b)
+[(21/8, -3*sqrt(15)/8), (21/8, 3*sqrt(15)/8)]
+
+this returns { cyclic, vertical_line, line2, line3, line4 }
+*/
+path[] triangle234 = {
+    (4,0)--(21/8,3*sqrt(15)/8)--(0,0)--cycle,
+    (21/8,0)--(21/8,3*sqrt(15)/8),
+    (4,0)--(21/8,3*sqrt(15)/8),
+    (21/8,3*sqrt(15)/8)--(0,0),
+    (0,0)--(4,0)
+};
+
 // arc with radians
 path rarc(pair c, real r, real angle1, real angle2) { return arc(c, r, degrees(angle1), degrees(angle2)); }
 
