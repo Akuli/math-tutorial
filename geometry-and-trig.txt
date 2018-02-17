@@ -1,6 +1,6 @@
 # Geometry and Trig
 
-This chapter contains useful stuff that aren't too difficult to get started
+This chapter contains useful stuff that isn't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.
 
