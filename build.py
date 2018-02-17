@@ -86,6 +86,8 @@ builder.get_head_extras = lambda filename: '''
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mat\
 hjax/2.7.2/MathJax.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand" rel="styl\
+esheet">
 '''
 
 
