@@ -37,7 +37,7 @@ itself just amazing.</p>
 
 <h2 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Link to this title">¶</a></h2><p>Here's a picture of a few areas:</p>
 
-<p><img width="709" height="227" class="asymptote" src="asymptote/88d3349b3334c96021479da1deec3e8e.svg" /></p><p>The first two areas are easy to calculate and everything is quite
+<p><img width="709" height="240" class="asymptote" src="asymptote/88d3349b3334c96021479da1deec3e8e.svg" /></p><p>The first two areas are easy to calculate and everything is quite
 self-explanatory, but how the heck are we going to do the third one?</p>
 
 <img width="283" height="123" class="asymptote" src="asymptote/2ea5288a9d6e3dc2827f56ee961fe4a4.svg" style="float:right;" /><p id="noob-rectangles">If this was a question on a codeacademy-like noob programming site you would
@@ -64,7 +64,7 @@ x <span style="color: #666666">=</span> <span style="color: #40a070">1</span>
 <b>10 seconds</b> and I got a precise answer instead of a decimal approximation.
 This chapter is all about how I did that and why it works.</p>
 
-<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img width="340" height="293" class="asymptote" src="asymptote/3789da55e37445ff5d17806fd865fee9.svg" style="float:right;" /><p>Let's say that our curve is of the form $y=f(x)$ where $f$ is a
+<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img width="340" height="305" class="asymptote" src="asymptote/3789da55e37445ff5d17806fd865fee9.svg" style="float:right;" /><p>Let's say that our curve is of the form $y=f(x)$ where $f$ is a
 <a href="more-derivatives.html#which-functions-have-derivatives">continuous</a>
 function. Then we'll choose some $x$ location and <i>move</i> it right by
 $\Delta x$. Then we could calculate the change of area $\Delta A$ in a
@@ -92,7 +92,7 @@ the antiderivative of $f$ is $F$. We'll use this big $F$ style in
 the rest of the tutorial.
 </p>
 
-</div><img width="227" height="164" class="asymptote" src="asymptote/a43eb04844e5faeccc3b18a7c755cb48.svg" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
+</div><img width="227" height="176" class="asymptote" src="asymptote/a43eb04844e5faeccc3b18a7c755cb48.svg" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
 <a href="summary.html#derivative-rules">the derivative rules on the summary page</a> was this:</p>
 
 $$\begin{align}\frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}\end{align}$$<p>So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
@@ -101,7 +101,7 @@ $\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
 $\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
 know that $F(x) = \sqrt x + C$ where $C$ is a constant.</p>
 
-<img width="227" height="255" class="asymptote" src="asymptote/4e566f9d76f624b312de8b34b0acd30a.svg" style="float:right;" /><p>Let's try to calculate our area:</p>
+<img width="216" height="255" class="asymptote" src="asymptote/4e566f9d76f624b312de8b34b0acd30a.svg" style="float:right;" /><p>Let's try to calculate our area:</p>
 
 $$\begin{align}F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
             &= \sqrt b + C - \sqrt a - C \\
@@ -121,7 +121,7 @@ but <i>any</i> antiderivative will do because the $C$'s are substracted away.</l
 </li></ol><p>This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.</p>
 
-<img width="198" height="172" class="asymptote" src="asymptote/f45c866a1626efec572343d3e249db44.svg" style="float:right;" /><h2 id="notation">Notation<a class="headerlink" href="#notation" title="Link to this title">¶</a></h2><p>Usually this stuff is written like this:</p>
+<img width="198" height="184" class="asymptote" src="asymptote/f45c866a1626efec572343d3e249db44.svg" style="float:right;" /><h2 id="notation">Notation<a class="headerlink" href="#notation" title="Link to this title">¶</a></h2><p>Usually this stuff is written like this:</p>
 
 <ul><li>The blue area in the image at right is $\int_a^b f(x)\ dx$. Be careful
 here – the $dx$ is just a part of the notation and you must not forget
@@ -263,7 +263,7 @@ V'(x) &= A(x)\end{align}$$$$\begin{align}V(b)-V(a) = \bigl[V(x)\bigr]_a^b = \int
 really need is $A(x)$, but for that we need to know what $f(x)$ is.
 Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:</p>
 
-<p><img width="227" height="136" class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.svg" /></p><p>If you have read <a href="derivatives.html#slopes">the slope thing on my derivative
+<p><img width="227" height="149" class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.svg" /></p><p>If you have read <a href="derivatives.html#slopes">the slope thing on my derivative
 page</a> you have no trouble at all finding $f(x)$.</p>
 
 $$\begin{align}f(x) = sx = \frac{\Delta y}{\Delta x} x = \frac r h x\end{align}$$<p>Next we need $A(x)$. <a href="#example-circle-area">Above</a> we figured that the

@@ -23,181 +23,242 @@
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><b>More Geometry and Trig</b></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="more-geometry-and-trig">More Geometry and Trig<a class="headerlink" href="#more-geometry-and-trig" title="Link to this title">¶</a></h1><p>Now you should have a good grasp of geometry and trig basics. In this chapter
-we'll learn more stuff and focus on some of the things that you might be
-wondering after reading the previous chapter. Here $y$ axises go up instead of
-down because most of the math in this isn't as useful for programming as the
-stuff in the first geometry and trig chapter.</p>
+<h1 id="more-geometry-and-trig">More Geometry and Trig<a class="headerlink" href="#more-geometry-and-trig" title="Link to this title">¶</a></h1><p><a href="geometry-and-trig.html">In the geometry and trig chapter</a> we learned stuff
+that are very useful for writing games, and I have used something from that
+chapter in almost all 2D games I have made. In this chapter you'll learn things
+that are sometimes useful.</p>
 
 <div class="box redbox"><p>This chapter assumes that you have read <a href="geometry-and-trig.html">the first geometry and trig
-chapter</a>, and you also need
-<a href="derivatives.html">derivatives</a> for some things that will be shown here.
+chapter</a>.
 </p>
 
-</div><h2 id="pythagorean-theorem-proof">Pythagorean Theorem Proof<a class="headerlink" href="#pythagorean-theorem-proof" title="Link to this title">¶</a></h2><p>This is a well-known proof and I like it because it's simple.</p>
+</div><img width="170" height="133" class="asymptote" src="asymptote/c9ede3b9c4d50f5e3ce8960c896644ca.svg" style="float:right;" /><h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><p>Let's say that we have a triangle with a quarter-turn corner, and its sides are
+$a$, $b$ and $c$ where $c$ is the longest side. In the picture at right, the
+small square at the bottom-right corner means that we're talking about a
+quarter-turn corner. This works with any triangle that has a quarter-turn
+corner:</p>
 
-<p><img width="218" height="227" class="asymptote" src="asymptote/f2f92fac6a695255d39b4c221cccc66a.svg" /></p><div class="floatingbox"><h2> Handy thing: $(a+b)^2=a^2+2ab+b^2$</h2><p>Proof:</p>
+$$\begin{align}a^2 + b^2 = c^2\end{align}$$<p>We'll prove this soon. Note that $c$ must be the longest side of the triangle.</p>
+
+<p>The Pythagorean theorem has many important applications:</p>
+
+<ul><li>The hypotenuse of a triangle can be calculated by <a href="basics.html#powers-and-square-root">square
+  rooting</a> both sides of the above
+  equation. Hypotenuse is a fancy word that means the longest side of a
+  quarter-turn triangle.
+</li></ul><div class="indent">$$\begin{align}\sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c\end{align}$$<p>The last step assumes $c \ge 0$, but that's not a problem because a
+triangle with a negative side length doesn't make much sense. Many
+programming languages have a <code>hypot()</code> function that works like this:</p>
+
+$$\begin{align}\text{hypot}(a,b) = \sqrt{a^2 + b^2}\end{align}$$<p>It's also possible to solve for other sides, e.g. $b = \sqrt{c^2 - a^2}$.
+</p>
+
+</div><ul><li>Using the hypot thing, we can calculate the distance of two points
+  $(x_1,y_1)$ and $(x_2,y_2)$ like this:
+</li></ul><div class="indent"><p><img width="425" height="262" class="asymptote" src="asymptote/5224491d399bbe5f78f2ec702f317b30.svg" /></p><p>It doesn't matter which point is which:</p>
+
+$$\begin{align}\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}  &= \sqrt{\bigl(-(x_1-x_2)\bigr)^2 + \bigl(-(y_1-y_2)\bigr)^2} \\
+&= \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}\end{align}$$<p>Here I used the $a-b=-(b-a)$ and $(-x)^2=x^2$ formulas from <a href="basics.html">the basics
+page</a>.
+</p>
+
+</div><ul><li>The formula simplifies nicely if one of the points is $(0,0)$:
+</li></ul><div class="indent"><p><img width="255" height="182" class="asymptote" src="asymptote/e98b635d19420f076a49b323c3e13fd5.svg" /></p><p>This also works if $x$ or $y$ is negative or if they are both negative; the
+negativeness doesn't matter because $(-x)^2 = x^2$ with any $x$.
+</p>
+
+</div><h2 id="pythagorean-theorem-proof">Pythagorean Theorem Proof<a class="headerlink" href="#pythagorean-theorem-proof" title="Link to this title">¶</a></h2><p>Now we have looked into a bunch of ways to <b>use</b> the Pythagorean theorem, but
+let's prove that it actually works. This is a well-known proof, and I like it
+because it's simple.</p>
+
+<p>Let's start by arranging 4 abc triangles like this:</p>
+
+<p><img width="216" height="225" class="asymptote" src="asymptote/2a6db9ca2b06b1d30ffc509a25f22bac.svg" /></p><div class="floatingbox"><h2> Handy thing: $(a+b)^2=a^2+2ab+b^2$</h2><p>Proof:</p>
 
 $$\begin{align}& \ (a+b)^2 \\
 =&\ (a+b)(a+b) \\
 =&\ (a+b)a+(a+b)b \\
 =&\ aa+ba+ab+bb \\
-=&\ a^2+2ab+b^2\end{align}$$</div><p>We can calculate the total area of the above square in a couple different ways:</p>
+=&\ a^2+2ab+b^2\end{align}$$</div><p>We can calculate the total area of the above square in a couple different ways
+using some <a href="basics.html#areas">basic area stuff</a>:</p>
 
 <ul><li>The square's sides are each $a+b$, so the area must be $(a+b)(a+b)$.</li><li>The square consists of the green square whose area is $c^2$ and 4 yellow
   triangles with area $\frac{ab}{2}$ each. Total area is
   $c^2 + 4 \frac{ab}{2}$.
-</li></ul><p>We must get the same area with both ways, so we get this equation:</p>
+</li></ul><p>We must get the same area with both ways, so we get this:</p>
 
 $$\begin{align}(a+b)(a+b) &= c^2 + 4\frac{ab}{2} \\
 (a+b)^2 &= c^2 + \frac{4}{2} ab \\
 a^2 + 2ab + b^2 &= c^2 + 2ab \\
-a^2 + b^2 &= c^2\end{align}$$<h2 id="triangle-angle-sum">Triangle Angle Sum<a class="headerlink" href="#triangle-angle-sum" title="Link to this title">¶</a></h2><p><img width="283" height="248" class="asymptote" src="asymptote/777da0f4ea7266c2299bc41e53a10439.svg" /></p><p>In the above picture, the red angle is a half turn minus the blue angle, and we
-know that half turn is $\tau/2$ radians. So, let's start at the little arrow at
+a^2 + b^2 &= c^2\end{align}$$<div class="box graybox"><h2> Exercise</h2><p>Draw an $a+b$ by $a+b$ square, and use areas to derive the handy thing we
+used above.
+</p>
+
+</div><img width="340" height="247" class="asymptote" src="asymptote/aef152163eb8a51e6e2b3a1d49515f1d.svg" style="float:right;" /><h2 id="cartesian-to-polar-coordinates">Cartesian to Polar Coordinates<a class="headerlink" href="#cartesian-to-polar-coordinates" title="Link to this title">¶</a></h2><p>We know that every point on the xy plane can be represented with $(x,y)$
+coordinates, but we can also represent every point with a distance from $(0,0)$
+and an angle:</p>
+
+$$\begin{align}\left\{\begin{array}{l}      x = r\cos(\theta) \\
+    y = r\sin(\theta) \\
+\end{array}\right.\end{align}$$<p>Fancy words that make you sound like a mathematician: the $(x,y)$ form is known
+as <b>Cartesian coordinates</b>, and the $(r,\theta)$ form is called
+<b>polar coordinates</b>.</p>
+
+<p>If we know $r$ and $\theta$, finding $x$ and $y$ is simple as plugging them in
+to the equations above. But how about figuring out $r$ and $\theta$ from $x$
+and $y$? We can use Pythagorean theorem to figure out $r$:</p>
+
+$$\begin{align}r = \text{hypot}(x, y) = \sqrt{x^2+y^2}\end{align}$$<p>Rewriting $\theta$ in terms of $x$ and $y$ so that all corner cases are covered
+is a bit more complicated, so programmers defined a function just for that:</p>
+
+$$\begin{align}\theta = \text{atan2}(y,x)\end{align}$$<p>Note that $y$ goes before $x$; getting this mixed up gives wrong angles.</p>
+
+<p>The atan2 function was originally a thing in programming languages only, but
+nowadays at least some non-programming-related math articles on Wikipedia use
+it as well. The 2 at the end of atan2 means that it takes two arguments unlike
+atan, and the next section explains what atan is:</p>
+
+<h2 id="triangle-trig">Triangle Trig<a class="headerlink" href="#triangle-trig" title="Link to this title">¶</a></h2><img width="283" height="245" class="asymptote" src="asymptote/262ef23ee9057738c9de09223153daa0.svg" style="float:right;" /><p>The word "trigonometry" means triangle something, and trig functions like
+$\sin$ and $\cos$ can be also defined in a triangle with a quarter-turn corner.
+We can get those definitions from our circle stuff by drawing a triangle under
+the red $(x,y)$ point like in the image at right.</p>
+
+<p>Something interesting happens:</p>
+
+$$\begin{align}\frac x r = \frac{r\cos(\theta)}{r} = \cos(\theta) \\
+\frac y r = \frac{r\sin(\theta)}{r} = \sin(\theta)\end{align}$$<p>More fancy words: if we have a triangle with a quarter-turn corner, the
+<i>opposite side</i> of a corner means the side opposite of that corner, and the
+<i>adjacent side</i> means the side that is not opposite or the hypotenuse.</p>
+
+<img width="170" height="145" class="asymptote" src="asymptote/774f3aa1795d2513b83ff1f528020f62.svg" style="float:right;" /><p>Now we are ready to define $\sin$ and $\cos$ with nothing but a
+quarter-turn-cornered triangle. We'll also define a third function called
+$\tan$ that we haven't used before.</p>
+
+$$\begin{align}\sin(\theta) &= \frac{\text{opposite}}{\text{hypotenuse}} \\
+\cos(\theta) &= \frac{\text{adjacent}}{\text{hypotenuse}} \\
+\tan(\theta) &= \frac{\text{opposite}}{\text{adjacent}}\end{align}$$<p>Note that this stuff only makes sense for $0 < \theta < \frac \tau 4$;
+otherwise we'd need to think about triangles with negative side lengths, and
+circles in xy plane are a much handier way to handle that.</p>
+
+<p>If we apply the $\tan$ definition to our circle pic above, we get this:</p>
+
+$$\begin{align}\tan(\theta) &= \frac y x \\
+\theta &= \arctan\left(\frac y x\right)\end{align}$$<img width="227" height="214" class="asymptote" src="asymptote/673855e2444298a5ad9194a6fd9ec538.svg" style="float:right;" /><p>Here $\arctan$ means the inverse of $\tan$, and most programming languages have
+an <code>atan</code> function that computes arctan. However, earlier we did
+$\theta = \text{atan2}(y,x)$. Here are some things that can go wrong with
+$\arctan(\frac y x)$:</p>
+
+<ul><li>If $x=0$, $\frac y x$ is not defined.</li><li>If $x<0$, the result is off by half turn. For example, setting $(x,y)=(-2,-2)$
+  gives $\arctan(\frac{-2}{-2}) = \arctan(1) = \arctan(\frac 2 2)$, which is
+  the same answer as the one for $(x,y)=(2,2)$, even though the angles were
+  supposed to differ by $\frac \tau 2$ (see picture at right).
+</li></ul><p>Here's our conclusion: atan2 is good because it handles corner cases. However,
+you <i>can</i> use plain atan if you know that the angle is between $-\frac \tau 4$
+and $\frac \tau 4$; this corresponds to $x > 0$ in Cartesian to polar
+conversion.</p>
+
+<div id="tanformula" class="box graybox"><h2> Exercise</h2><p>Use triangle trig to prove that
+$\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$.
+</p>
+
+</div><h2 id="triangle-angle-sum">Triangle Angle Sum<a class="headerlink" href="#triangle-angle-sum" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section uses the Greek alpha, beta and gamma letters $\alpha$, $\beta$
+and $\gamma$ to represent angles. Don't get confused – they are just
+letters, like a, b, c or $\theta$.
+</p>
+
+</div><p><img width="283" height="248" class="asymptote" src="asymptote/7e0b9a5c74914623ec683ea4afc6f83d.svg" /></p><p>In the above picture, every red angle is a half turn minus blue angle, and we
+know that half turn is $\tau/2$ radians. Let's start at the little arrow at
 bottom and move along the edges clockwise until we arrive at the arrow again.
 The red angles represent how much we need to turn at each corner, and those
 turns are $\frac\tau2-a$, $\frac\tau2-b$ and $\frac\tau2-c$.</p>
 
 <p>But in total we turned a full turn or $\tau$ radians:</p>
 
-$$\begin{align}\tau &= \left(\frac\tau2-a\right) + \left(\frac\tau2-b\right) + \left(\frac\tau2-c\right) \\
-&= \frac\tau2 - a + \frac\tau2 - b + \frac\tau2 - c \\
-&= \frac\tau2+\frac\tau2+\frac\tau2 -a-b-c \\
-&= 3\frac\tau2 -a-b-c \\
-a+b+c &= 3\frac\tau2-\tau \\
-&= 3\frac\tau2 - 2\frac\tau2 \\
-&= (3-2)\frac\tau2 \\
-&= \frac\tau2\end{align}$$<p>So if we add together all the angles of a triangle we get a half turn. This
-doesn't seem very amazingly impressive but we'll find this useful later.</p>
+$$\begin{align}\tau &= \left(\frac\tau2-\alpha\right) + \left(\frac\tau2-\beta\right) + \left(\frac\tau2-\gamma\right) \\
+&= \frac\tau2 - \alpha + \frac\tau2 - \beta + \frac\tau2 - \gamma \\
+&= 3\frac\tau2 -\alpha-\beta-\gamma \\
+\alpha+\beta+\gamma &= \frac 3 2 \tau - \tau = \frac \tau 2\end{align}$$<p>So if we add together all the angles of a triangle we get a half turn. This
+works with <b>any</b> triangle. We'll find this useful later.</p>
 
-<h2 id="unit-circle-or-triangle">Unit circle or triangle?<a class="headerlink" href="#unit-circle-or-triangle" title="Link to this title">¶</a></h2><p>Sine and cosine can be defined with a unit circle or with a triangle. The
-triangle definition is handy for simple things, but it's usually easiest to use
-the unit circle if you need to work with angles that are not between $0$ and
-$\tau/4$ radians. This way you don't need to think about triangles with negative
-side lengths.</p>
+<img src="images/triangleanglesum.gif" style="max-width: 300px;     max-height: 300px;" /><p><small>The animation comes from
+<a href="https://plus.google.com/photos/photo/116203071099093782712/6081217819806380914">here</a>.</small></p>
 
-<p>Let's make sure that the definitions are compatible with each other:</p>
+<h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img width="170" height="121" class="asymptote" src="asymptote/8b5f171409c08236479595c39828cbc0.svg" style="float:right;" /><p>Let's have a look at the triangle at right. We know that it's a triangle, so
+<a href="#triangle-angle-sum">the sum of the angles must be $\frac \tau 2$</a>.</p>
 
-<p><img width="340" height="327" class="asymptote" src="asymptote/f4847776ade7d455b8c7a8ce7dd1adac.svg" /></p><p>We get this by applying triangle trig to the yellow triangle:</p>
+$$\begin{align}\alpha + \beta + \frac \tau 4 &= \frac \tau 2 \\
+\beta &= \frac \tau 2 - \frac \tau 4 - \alpha = \frac \tau 4 - \alpha\end{align}$$<p>We also know these things:</p>
 
-$$\begin{align}\sin(t) &= \frac{\sin(t)}{1} \\
-\cos(t) &= \frac{\cos(t)}{1} \\
-\tan(t) &= \frac{\sin(t)}{\cos(t)}\end{align}$$<p>The first two formulas are obviously true with any $t$, but the last one is a
-bit more interesting. We found another way to define $\tan$, and it
-also works with a triangle:</p>
+$$\begin{align}\cos(\alpha) &= \frac a c \\
+\sin(\beta) &= \frac a c\end{align}$$<p>Setting these equal and plugging in $\beta=\frac\tau4-\alpha$ gives this:</p>
 
-<img width="113" height="83" class="asymptote" src="asymptote/fa11e54385c7608713bdf9aff31ed887.svg" style="float:right;" />$$\begin{align}\frac{\sin(t)}{\cos(t)} = \frac{b/c}{a/c}  = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan(t)\end{align}$$<h2 id="accurate-sine-and-cosine-values">Accurate Sine and Cosine Values<a class="headerlink" href="#accurate-sine-and-cosine-values" title="Link to this title">¶</a></h2><div class="box graybox"><p>Here $\cos^2(t)$ means $(\cos(t))^2$, and people use the $\cos^2$ notation
-because it's easier and faster to write although it doesn't make much sense.
-</p>
+$$\begin{align}\cos(\alpha) &= \sin\left(\frac \tau 4 - \alpha\right)\end{align}$$<p>Only angles between $0$ and $\frac \tau 4$ make sense as triangle corners, but
+this actually works with any $\alpha$.</p>
 
-</div><img width="283" height="264" class="asymptote" src="asymptote/ebd65539ff69057bf7984427dbb98984.svg" style="float:right;" /><p><a href="geometry-and-trig.html#accurate-sincos">Here</a> I said that
-$\sin\left(\frac \tau 6\right) = \frac{\sqrt 3}{2}$ and
-$\cos\left(\frac \tau 6\right) = \frac 1 2$. I'm sorry to disappoint you, but
-there's no general and easy way to find accurate $\sin$ and $\cos$ values by
-hand. However, in many cases there's something special about the angles that
-allows us to do some other tricks.</p>
+<p>The angle $\frac\tau4-\alpha$ is also known as the <i>complement</i> angle because
+when added together, the angles "complete" to $\frac\tau4$:</p>
 
-<p>The angle in question is $\frac \tau 6$, a sixth of a turn. If a triangle has
-three sides with equal lengths, the angles will be $\frac{\tau/2}{3}=\frac\tau6$
-each (see <a href="#triangle-angle-sum">triangle angle sum</a> above). That's why we can
-complete the triangle drawn in unit circle like in the image. The angles at top
-are $\frac{\tau}{12}$ because two $\frac{\tau}{12}$ angles added together is
-$\frac \tau 6$.</p>
-
-<p>The radius of the unit circle is 1, so we get this on the $x$ axis:</p>
-
-$$\begin{align}\cos\left(\frac \tau 6\right) + \cos\left(\frac \tau 6\right) &= 1 \\
-\cos\left(\frac \tau 6\right) &= \frac 1 2\end{align}$$<p>Now we can apply the Pythagorean theorem (proved <a href="#pythagorean-theorem-proof">above</a>)
-to the yellow triangle and figure out $\sin \frac \tau 6$:</p>
-
-$$\begin{align}\cos^2\left( \frac \tau 6 \right) + \sin^2\left( \frac \tau 6 \right) &= 1^2 = 1 \\
-\sin^2\left( \frac \tau 6 \right) &= 1 - \cos^2\left( \frac \tau 6 \right) \\
-\sqrt{\sin^2\left( \frac \tau 6 \right)} &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
-\left| \sin\left( \frac \tau 6 \right)\right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)} \\
-   &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}} \\
-   &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4}        = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}\end{align}$$<p>We know that $\sin \frac \tau 6$ is positive, so
-$\sin \frac \tau 6 = |\sin \frac \tau 6|$.</p>
-
-<p>Applying the Pythagorean theorem gave us
-$\cos^2\left(\frac\tau6\right)+\sin^2\left(\frac\tau6\right)=1$, and that isn't
-limited to $\frac\tau6$ in any way. We could draw a similar yellow triangle with
-any angle $t$ and we'd get the same result, so $\sin^2(t)+\cos^2(t)=1$ with any
-$t$.</p>
-
-<h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img width="170" height="121" class="asymptote" src="asymptote/33ea3a39ff8652f7119f63ee4ec5b61c.svg" style="float:right;" /><p>Let's have a look at the blue triangle. We know that it's a triangle, so <a href="#triangle-angle-sum">the
-sum of the angles must be $\frac \tau 2$</a>.</p>
-
-$$\begin{align}t + u + \frac \tau 4 &= \frac\tau2 \\
-t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} = \frac\tau4 + \frac\tau4 \\
-t + u &= \frac\tau4 \\
-u &= \frac \tau 4 - t\end{align}$$<p>We also know these things:</p>
-
-$$\begin{align}&\cos(t) = \frac a c \\
-&\sin(u) = \frac a c\end{align}$$<p>So, $\displaystyle\cos(t) = \sin(u) = \sin \left( \frac \tau 4 - t \right)$.</p>
-
-<p>Only angles between 0 and $\frac \tau 4$ make sense as triangle corners, but
-this works with any other angle as well. Just look at <a href="graphs.html#sine-and-cosine">the
-graphs</a>; the $\frac \tau 4$ offset is quite
-obvious.</p>
-
-<p>The angle $\frac\tau4 - t$ is also known as the <i>complement</i> angle because when
-added together, the angles "complete" to $\frac\tau4$:</p>
-
-$$\begin{align}\left( \frac \tau 4 - t \right) + t = \frac \tau 4\end{align}$$<p>Actually "cos" is short for "complement sine" as it's just the sine of the
+$$\begin{align}\left( \frac \tau 4 - \alpha \right) + \alpha = \frac \tau 4\end{align}$$<p>Actually "cos" is short for "complement sine" as it's just the sine of the
 complement.</p>
 
-<img width="163" height="170" class="asymptote" src="asymptote/56d73b11763facb0dbd7871900870302.svg" style="float:right;" /><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's start by finding the derivative of $\sin(t)$ in radians.</p>
+<div class="box redbox"><p>Rest of this chapter assumes that you know <a href="derivatives.html">derivatives</a>.
+</p>
 
-<p>By definition, the angle in the image at right is $t=b/r$ radians. But if we do
-the same thing in a unit circle we know the radius is 1, so $t=b/1=b$. This is
-one of the reasons why the unit circle and radians are so handy.</p>
+</div><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's draw an angle $\theta$ in the unit circle. We'll assume that $\theta$ is
+in radians, so <a href="geometry-and-trig.html#radians-and-tau">it's an arc length on the unit
+circle</a>.</p>
 
-<p>Here's another drawing with more stuff in it:</p>
+<p><img width="454" height="448" class="asymptote" src="asymptote/fd853bfb4a25c827104a2c5ebd504d7f.svg" /></p><p>Here the black &#8738; signs mean an angle. It looks a lot like a circle arc,
+but in this case we are only interested in the angles, not circle arcs with
+radius 1.</p>
 
-<p><img width="454" height="441" class="asymptote" src="asymptote/74e94285aaf56b11207d7910c38f989c.svg" /></p><p>Here we have $\Delta t$ in two different places and you should understand how.
-The bottom of the blue area is parallel to the x axis, and that's how $t$
-appears there as well.</p>
+<p>Anyway, the orange line is parallel with the $x$ axis, and that's why we have
+two equal angles like the arrows in the picture show. But we know that the
+lower angle is simply $\theta + \Delta\theta$, so the upper angle is also
+$\theta + \Delta\theta$.</p>
 
-<p>If we take $\sin(t+\Delta t)$ and we take away $\sin(t)$ we're left with the
-height of the blue area, so the blue area's height is $\sin(t+\Delta t)-\sin(t)$.</p>
+<p>Let's zoom on the blue area. A lot of things are going on there.</p>
 
-<p>The blue area is kind of like a triangle, and with a very small $\Delta t$ it's
-even more like a triangle. Let's draw a picture of just that:</p>
+<p><img width="510" height="241" class="asymptote" src="asymptote/cb6bcd5cf400cbc781a6a7f1ede7b45c.svg" /></p><p>This is a mess, but let's try to make sense of this.</p>
 
-<p><img width="250" height="255" class="asymptote" src="asymptote/43c2fefa730bdeaeb581cc3ef5adfdad.svg" /></p><p>You might be just looking at this and feeling like $u=t$, but let's prove that
-correctly. Based on the drawing, $s+t = \frac \tau 4$ because they add up to a
-quarter-turn corner, and $s+u+\frac\tau4 = \frac \tau 2$ because we can use
-<a href="#triangle-angle-sum">the triangle angle sum</a>.</p>
+<p>The $h$ is just the difference of the $y$ coordinates:</p>
 
-$$\begin{align}s+t &= \frac \tau 4 \\
-s &= \frac \tau 4 - t\end{align}$$$$\begin{align}\frac\tau4+s+u &= \frac\tau2 \\
-\frac\tau4+\left(\frac\tau4-t\right)+u &= 2\frac{\tau}{2\cdot2} \\
-\frac\tau4+\frac\tau4-t+u &= 2\frac\tau4 \\
-2\frac\tau4-t+u &= 2\frac\tau4 \\
-u&=t\end{align}$$<p>Now we can apply triangle trig to the $u$. I'm using $\approx$ here because the
-$\Delta t$ line is actually a bit curvy in the circle image.</p>
+$$\begin{align}h = \sin(\theta+\Delta\theta)-\sin(\theta)\end{align}$$<p>We can figure out the angle mess by rotating from the orange line all the way
+to the blue $\Delta\theta$ line. We can do that in a couple different ways: we
+can do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny
+corner square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the
+bigger square. Let's set those equal:</p>
 
-$$\begin{align}\cos(u) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
-\cos(t) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
-\cos(t) &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t} \\
-\cos(t) &= \frac{d}{dt} \sin(t)\end{align}$$<p>I think this is quite nice.</p>
+$$\begin{align}\theta + \Delta\theta + \frac \tau 4 &= \frac \tau 4 + \alpha \\
+\theta + \Delta\theta &= \alpha\end{align}$$<p>The blue area looks kind of like a triangle, so we can apply <a href="#triangle-trig">triangle
+trig</a> to it, but it's not a perfect triangle so we'll use
+$\approx$ instead of $=$.</p>
 
-<h2 id="derivative-of-cosine">Derivative of Cosine<a class="headerlink" href="#derivative-of-cosine" title="Link to this title">¶</a></h2><p>Now we know that $\frac{d}{dt} \sin(t) = \cos(t)$ and
-<a href="#why-is-cosine-called-cosine">$\cos(t) = \sin(\tau/4 - t)$</a>, so this will be
-really easy. We just need to remember <a href="more-derivatives.html#chain-rule">the chain
+$$\begin{align}\cos(\alpha) &\approx \frac{\text{adjacent}}{\text{hypotenuse}} \\
+\cos(\alpha) &\approx \frac{h}{\Delta\theta} \\
+\cos(\theta+\Delta\theta) &\approx \frac{\sin(\theta+\Delta\theta)-\sin(\theta)}{\Delta\theta}\end{align}$$<p>This looks kind of like a definition of derivative already! The above picture
+seems to be quite precise, and if we make $\Delta\theta$ even smaller, the
+errors go away:</p>
+
+$$\begin{align}\lim_{\Delta\theta\to0}\cos(\theta+\Delta\theta) &= \lim_{\Delta\theta\to0}\frac{\sin(\theta+\Delta\theta)-\sin(\theta)}{\Delta\theta} \\
+\cos(\theta) &= \frac{d}{d\theta}\sin(\theta)\end{align}$$<p>This proof is based on a picture that makes sense only for
+$0 < \theta < \frac \tau 4$, but the same derivative rule works with any
+$\theta$. Note that $\theta$ must be in radians.</p>
+
+<h2 id="derivative-of-cosine">Derivative of Cosine<a class="headerlink" href="#derivative-of-cosine" title="Link to this title">¶</a></h2><p>Now we know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$ and
+<a href="#why-is-cosine-called-cosine">$\cos(\theta) = \sin(\tau/4 - \theta)$</a>, so this
+will be really easy. We just need to remember <a href="more-derivatives.html#chain-rule">the chain
 rule</a>.</p>
 
-$$\begin{align}\frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac \tau 4 - t \right) \\
-&= \cos\left( \frac \tau 4 - t \right) \cdot \frac{d}{dt} \left( \frac \tau 4 - t \right) \\
-&= \cos\left( \frac \tau 4 - t \right) \cdot (0-1) \\
-&= -\cos\left( \frac \tau 4 - t \right) \\
-&= -\sin\biggl( \frac \tau 4 - \left(\frac \tau 4 - t \right)\biggr) \\
-&= -\sin\left( \frac \tau 4 - \frac \tau 4 + t \right) \\
-&= -\sin(t)\end{align}$$<p>Let's check the result with <a href="graphs.html#sine-and-cosine">graphs</a>:</p>
+$$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\underbrace{\frac\tau4 - \theta}_{\text{inner stuff}}\Bigr) \\
+&= \cos\Bigl(\frac\tau4 - \theta\Bigr) \cdot \frac{d}{d\theta}\Bigl(\frac\tau4 - \theta\Bigr) \\
+&= \sin\biggl(\frac\tau4 - \Bigl(\frac\tau4 - \theta\Bigr)\biggr) \cdot (0-1) \\
+&= \sin\Bigl(\frac\tau4 - \frac\tau4 + \theta\Bigr) \cdot (-1) \\
+&= -\sin(\theta)\end{align}$$<p>Let's check the result with <a href="graphs.html#sine-and-cosine">graphs</a>:</p>
 
-<p><img width="510" height="201" class="asymptote" src="asymptote/538409b9c2965200165524cb00489c2b.svg" /></p><p>We know that $\frac{d}{dx} \sin(x) = \cos(x)$, so finding the derivative seems
-to move the graph left. Similarly, the $-\sin(t)$ graph looks like it's the
-$\cos(t)$ graph shifted left.
+<p><img width="510" height="184" class="asymptote" src="asymptote/b341dc872e1634d4a2f88125f94388de.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
+derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
+$\cos(\theta)$ graph shifted left.
 </p>
 
 </div>

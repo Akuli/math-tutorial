@@ -47,7 +47,7 @@ they behave very differently than real numbers.</p>
 <p>A <i>complex number</i> is something real plus something imaginary, and they are
 often represented in a 2D plane. Like this:</p>
 
-<p><img width="312" height="286" class="asymptote" src="asymptote/2feb0e8cd4538c36b1d457e2334a7502.svg" /></p><p>Re is short for Real and Im for Imaginary.</p>
+<p><img width="312" height="300" class="asymptote" src="asymptote/2feb0e8cd4538c36b1d457e2334a7502.svg" /></p><p>Re is short for Real and Im for Imaginary.</p>
 
 <p>Note how the words "imaginary" and "complex" reflect people's attitudes to these
 numbers. At first they were considered nonsense, but nowadays there are many
@@ -71,16 +71,15 @@ representations:</p>
 
 $$\begin{align}\sin(x) &= x - \frac{x^3}{3!} + \frac{x^5}{5!}              - \frac{x^7}{7!} + \frac{x^9}{9!} - ... \\
 \cos(x) &= 1 - \frac{x^2}{2!} + \frac{x^4}{4!}              - \frac{x^6}{6!} + \frac{x^8}{8!} - ... \\
-e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<p>Let's try to calculate $e^{it}$ where $t$ is a real number and let the magic
-happen.</p>
+e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...\end{align}$$<p>Let's try to calculate $e^{ix}$ and let the magic happen.</p>
 
-$$\begin{align}e^{it} &= 1 + it + \frac{(it)^2}{2!} + \frac{(it)^3}{3!} + \frac{(it)^4}{4!} + \frac{(it)^5}{5!} + \frac{(it)^6}{6!} + ... \\
-&= 1 + it + \frac{i^2t^2}{2!} + \frac{i^3t^3}{3!} + \frac{i^4t^4}{4!} + \frac{i^5t^5}{5!} + \frac{i^6t^6}{6!} + ... \\
-&= 1 + it + \frac{(-1)t^2}{2!} + \frac{(-1)it^3}{3!} + \frac{1t^4}{4!} + \frac{it^5}{5!} + \frac{(-1)t^6}{6!} + ... \\
-&= 1 + it - \frac{t^2}{2!} - i\frac{t^3}{3!} + \frac{t^4}{4!} + i\frac{t^5}{5!} - \frac{t^6}{6!} + ... \\
-&= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right)  + \left(it - i\frac{t^3}{3!} + i\frac{t^5}{5!} - i\frac{t^7}{7!} + ...\right) \\
-&= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right)  + i \left(t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + ...\right) \\
-&= \cos(t) + i \sin(t)\end{align}$$<p><b>Boom.</b> Can you believe that. We started with $e$ which we got out of
+$$\begin{align}e^{ix} &= 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \frac{(ix)^4}{4!} + \frac{(ix)^5}{5!} + \frac{(ix)^6}{6!} + ... \\
+&= 1 + ix + \frac{i^2x^2}{2!} + \frac{i^3x^3}{3!} + \frac{i^4x^4}{4!} + \frac{i^5x^5}{5!} + \frac{i^6x^6}{6!} + ... \\
+&= 1 + ix + \frac{(-1)x^2}{2!} + \frac{(-1)ix^3}{3!} + \frac{1x^4}{4!} + \frac{ix^5}{5!} + \frac{(-1)x^6}{6!} + ... \\
+&= 1 + ix - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + i\frac{x^5}{5!} - \frac{x^6}{6!} + ... \\
+&= \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...\right)  + \left(ix - i\frac{x^3}{3!} + i\frac{x^5}{5!} - i\frac{x^7}{7!} + ...\right) \\
+&= \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...\right)  + i \left(x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\right) \\
+&= \cos(x) + i \sin(x)\end{align}$$<p><b>Boom.</b> Can you believe that. We started with $e$ which we got out of
 <a href="explog.html#the-e-constant">exponentials and derivatives</a> and the $i$, but we
 ended up with trig functions that are defined in a unit circle!</p>
 
@@ -92,84 +91,81 @@ things like the $f(x)$ notation with parentheses and the concept of a function
 are from him.</p>
 
 <p>After all the amazement, let's have a look at what we got. We know that $\cos$
-is the $x$ coordinate and $\sin$ is the $y$ coordinate in a unit circle (see
-<a href="summary.html#geometry-and-trig">this thing</a>), and a moment ago we drew a
-$(\text{Re}, \text{Im})$-plane. Actually the formula represents a unit circle in
-$(\text{Re}, \text{Im})$ plane!</p>
+is the $x$ coordinate and $\sin$ is the $y$ coordinate in a unit circle, and a
+moment ago we drew a $(\text{Re}, \text{Im})$-plane. Actually the formula
+represents a unit circle in $(\text{Re}, \text{Im})$ plane!</p>
 
-<p><img width="340" height="315" class="asymptote" src="asymptote/5e4be315ad27dbd92b3f9e943a902073.svg" /></p><p>Just looking at the above drawing, everything else makes sense perfectly except
-the $e^{it}$ label. It's just crazy.</p>
+<p><img width="425" height="336" class="asymptote" src="asymptote/56e17d53cc31465c6cb8ec8f61c1b51c.svg" /></p><p>Just looking at the above drawing, everything else makes sense perfectly except
+the $e^{i\theta}$ label. It's just crazy.</p>
 
-<h2 id="example-trig-identities">Example: Trig Identities<a class="headerlink" href="#example-trig-identities" title="Link to this title">¶</a></h2><p>Let's draw another unit circle with angles $t$ and $-t$. The things in
-parentheses are $(x,y)$ coordinates.</p>
+<h2 id="example-trig-identities">Example: Trig Identities<a class="headerlink" href="#example-trig-identities" title="Link to this title">¶</a></h2><p>Let's draw another unit circle with angles $\theta$ and $-\theta$.</p>
 
-<p><img width="397" height="312" class="asymptote" src="asymptote/5b2e8ee6cf79c13e94dccd88eaee0f59.svg" /></p><p>The black dots are aligned horizontally so $x$ coordinates are the same and
-$\cos(t)=\cos(-t)$. But the $y$ coordinates are opposite, so
-$\sin(-t)=-\sin(t)$. These work with any $t$.</p>
+<p><img width="397" height="315" class="asymptote" src="asymptote/5023873bde5828af09b0fdbc5026f8d1.svg" /></p><p>The black dots are aligned horizontally so $x$ coordinates are the same and
+$\cos(\theta)=\cos(-\theta)$. But the $y$ coordinates are opposite, so
+$\sin(-\theta)=-\sin(\theta)$. These work with any $\theta$.</p>
 
 <p>Let's plug some stuff to Euler's formula and use these trig things:</p>
 
-$$\begin{align}e^{it} &= \cos(t) + i\sin(t)\end{align}$$$$\begin{align}e^{-it} &= \cos(-t) + i\sin(-t) \\
-&= \cos(t)-i\sin(t)\end{align}$$$$\begin{align}e^{it}+e^{-it} &= (\cos(t)+i\sin(t)) + (\cos(t)-i\sin(t)) \\
-&= \cos(t)+i\sin(t)+\cos(t)-i\sin(t) \\
-&= 2\cos(t) \\
-\frac{e^{it}+e^{-it}}{2}&=\cos(t)\end{align}$$<p>Now your mind should be <b>really</b> blown up.</p>
+$$\begin{align}e^{i\theta} &= \cos(\theta) + i\sin(\theta) \\
+e^{-i\theta} &= \cos(-\theta) + i\sin(-\theta) \\
+&= \cos(\theta)-i\sin(\theta)\end{align}$$$$\begin{align}e^{i\theta}+e^{-i\theta} &= (\cos(\theta)+i\sin(\theta)) + (\cos(\theta)-i\sin(\theta)) \\
+&= \cos(\theta)+i\sin(\theta)+\cos(\theta)-i\sin(\theta) \\
+&= 2\cos(\theta) \\
+\frac{e^{i\theta}+e^{-i\theta}}{2}&=\cos(\theta)\end{align}$$<p>Now your mind should be <b>really</b> blown up.</p>
 
-$$\begin{align}e^{it}-e^{-it} &= (\cos(t)+i\sin(t)) - (\cos(t)-i\sin(t)) \\
-&= \cos(t)+i\sin(t)-\cos(t)+i\sin(t) \\
-&= 2i\sin(t) \\
-\frac{e^{it}-e^{-it}}{2i} &= \sin(t)\end{align}$$<div class="floatingbox"><h2> Handy thing: $a^2-b^2=(a-b)(a+b)$</h2><p>Proof:</p>
+$$\begin{align}e^{i\theta}-e^{-i\theta} &= (\cos(\theta)+i\sin(\theta)) - (\cos(\theta)-i\sin(\theta)) \\
+&= \cos(\theta)+i\sin(\theta)-\cos(\theta)+i\sin(\theta) \\
+&= 2i\sin(\theta) \\
+\frac{e^{i\theta}-e^{-i\theta}}{2i} &= \sin(\theta)\end{align}$$<div class="floatingbox"><h2> Handy thing: $a^2-b^2=(a-b)(a+b)$</h2><p>Proof:</p>
 
 $$\begin{align}& \ (a-b)(a+b) \\
 =&\ (a-b)a+(a-b)b \\
 =&\ aa-ba+ab-bb \\
-=&\ a^2 - b^2\end{align}$$<p>In this case we need to plug in $a=e^{it}$ and $b=e^{-it}$.
+=&\ a^2 - b^2\end{align}$$<p>In this case we need to plug in $a=e^{i\theta}$ and $b=e^{-i\theta}$.
 </p>
 
 </div><p>Equally head-exploding.</p>
 
-<p>For example, let's try to find another way to represent $\sin(2t)$:</p>
+<p>For example, let's try to find another way to represent $\sin(2\theta)$:</p>
 
-$$\begin{align}\sin(2t) &= \frac{e^{2it}-e^{-2it}}{2i} \\
-&= \frac{(e^{it})^2-(e^{-it})^2}{2i} \\
-&= \frac{(e^{it}-e^{-it})(e^{it}+e^{-it})}{2i} \\
-&= 2 \cdot \frac{e^{it}-e^{-it}}{2i} \cdot \frac{e^{it}+e^{-it}}{2} \\
-&= 2 \sin(t) \cos(t)\end{align}$$<p>This is just the tip of the iceberg. It's possible to find dozens of handy-dandy
+$$\begin{align}\sin(2\theta) &= \frac{e^{2i\theta}-e^{-2i\theta}}{2i} \\
+&= \frac{(e^{i\theta})^2-(e^{-i\theta})^2}{2i} \\
+&= \frac{(e^{i\theta}-e^{-i\theta})(e^{i\theta}+e^{-i\theta})}{2i} \\
+&= 2 \cdot \frac{e^{i\theta}-e^{-i\theta}}{2i} \cdot \frac{e^{i\theta}+e^{-i\theta}}{2} \\
+&= 2 \sin(\theta) \cos(\theta)\end{align}$$<p>This is just the tip of the iceberg. It's possible to find dozens of handy-dandy
 trig equations like this. Most trig things can be proved without Euler's
 formula, but this magic way can be much easier and faster.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>This is a true story. A friend of mine had watched a youtube video that used
 this formula, and he wanted to see a proof of it:</p>
 
-$$\begin{align}\tan(2t)=\frac{2\tan(t)}{1-\tan^2(t)}\end{align}$$<p>Here $\tan^2(t)$ means $(\tan(t))^2$, and people use the $\tan^2$ notation
-because it's easier and faster to write although it doesn't make much sense.
-Prove the above formula.</p>
+$$\begin{align}\tan(2\theta)=\frac{2\tan(\theta)}{1-\tan^2(\theta)}\end{align}$$<p>Here $\tan^2(\theta)$ means $(\tan(\theta))^2$, and people use the $\tan^2$
+notation because it's easier and faster to write although it doesn't make
+much sense. Prove the above formula.</p>
 
-<p>There are many ways to do this and the way I managed to do it is really long
-compared to e.g. <a href="https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities#Double-angle_identities">Wikipedia's
-proof</a>.
-If you want to try to do it like I did, prove these things in this order:</p>
+<p>One way to do this is to use these formulas:</p>
 
-<ul><li>$(a+b)^2=a^2+2ab+b^2$</li><li>$\displaystyle\cos^2(t)=\frac{1+\cos(2t)}{2}$</li><li>$(a-b)^2=a^2-2ab+b^2$</li><li>$\displaystyle\sin^2(t)=\frac{1-\cos(2t)}{2}$</li><li>$\displaystyle\cos(2t)=\cos^2(t)-\sin^2(t)$
-</li></ul><p>Then I used the $\displaystyle\tan(2t)=\frac{\sin(2t)}{\cos(2t)}$ thing we
-learned <a href="more-geometry-and-trig.html#unit-circle-or-triangle">here</a> and the
-$\sin(2t)=2\sin(t)\cos(t)$ thing that we proved above.
+<ul><li>$\sin(2\theta)=2\sin(\theta)\cos(\theta)$, proved above</li><li>$\cos(2\theta)=\cos^2(\theta)-\sin^2(\theta)$, you need to prove this one</li><li>$\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$, from <a href="more-geometry-and-trig.html#tanformula">this
+  exercise</a>
+</li></ul><p>Then rewrite the left side as
+$\displaystyle\frac{\sin(2\theta)}{\cos(2\theta)}$, use the formulas and
+try to rewrite the result in terms of $\tan(\theta)$.
 </p>
 
-</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img width="340" height="315" class="asymptote" src="asymptote/6bb55ed40f014a743927e9e2d2a911cc.svg" /></p><p>If we plug in $t=\tau=2\pi$ we get this:</p>
+</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img width="340" height="328" class="asymptote" src="asymptote/85dcc40ef323b0e8a29f84d5e66b7cfb.svg" /></p><p>If we plug in $\theta=\tau=2\pi$ we get this:</p>
 
 $$\begin{align}e^{i\tau} = \cos(\tau) + i \sin(\tau) = 1 + i \cdot 0 = 1\end{align}$$<p>This makes sense because if we start at 1 and rotate a full turn ($\tau$
 radians), we get back to where we started.</p>
 
 <p>But if we don't rotate at all we also end up at 1:</p>
 
-$$\begin{align}e^{i \cdot 0} = e^0 = 1\end{align}$$<p>Equations like $e^{it}=1$ have an infinite number of solutions because any
+$$\begin{align}e^{i \cdot 0} = e^0 = 1\end{align}$$<p>Equations like $e^{i\theta}=1$ have an infinite number of solutions because any
 number of full turns produces the 1, just like any number of full turns is a
-solution of $\cos(t)=1$.</p>
+solution of $\cos(\theta)=1$.</p>
 
-<p>We could also plug in $t=\frac \tau 2=\pi$ to go a half turn and end up at $-1$,
-and we get a very famous equation:</p>
+<p>We can also plug in $\theta=\frac \tau 2=\pi$ to go a half turn and end up at
+$-1$, and we get a very famous equation:</p>
 
-$$\begin{align}e^{i \pi} = -1\end{align}$$</div>
+$$\begin{align}e^{i\pi} = -1\end{align}$$</div>
 </body>
 </html>
