@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p, li {
     font-family: Cabin;
-    font-size: 1.05em;
+    font-size: em;
     line-height: 140%;
 }
 

@@ -364,62 +364,89 @@ asymptote3d:
     draw(arrowstart--(the_x+0.2,0,0.4), darkgreen, arrow=Arrow3(size=0.7cm));
     label(XY()*"$A(x)$", arrowstart, darkgreen, align=E);
 
-asymptote: float:right;
-    size(8cm);
-    real angle = 0.7;
-    fill(((0,0)--arc((0,0), 1, 0, degrees(angle))--cycle), lightyellow);
-    draw(((0,0)--(1,0)));
-    draw(((0,0)--(cos(angle),sin(angle))), L="$r$", align=N);
-    draw((arc((0,0), 1, 0, degrees(angle))), L="$b$");
-    draw((arc((0,0), 0.3, 0, degrees(angle))), blue, L="$b/r$");
-
-    transform trans = shift(0.5,-1)*scale(0.5);
-    filldraw(trans*unitcircle, lightyellow);
-    label(rotate(degrees(2.)-90)*"$\tau r$", trans*(cos(2),sin(2)), align=N);
-    draw(trans*((0,0)--(1,0)), L="$r$", align=N);
-
-asymptote: float:right;
-    size(3.5cm);
-    draw(unitcircle, smalldashes);
-    fill((0,0)--arc((0,0), 1, 0, degrees(1.))--cycle, palegreen);
-    draw((1,0)--(0,0), blue, L="$a$", align=S);
-    draw((0,0)--(cos(1),sin(1)), blue, L="$a$", align=NW);
-    draw(arc((0,0), 1, 0, degrees(1.)), blue, L="$a$");
-    draw(arc((0,0), 0.3, 0, degrees(1.)), purple, L=rotate(degrees(0.5))*"$1$");
-
 ## Geometry and Trig
 
-The angle of the green-ish slice at right is 1 radian. The angle of the
-yellow slice is $b/r$ radians.
+Scaling means multiplying all measurements by a positive number. The size
+changes, but angles remain the same.
 
-A full turn is $\text{tau} = \tau \approx 6.28$ radians, and a half turn
-is $\pi = \frac \tau 2 \approx 3.14$ radians. The perimeter of a circle
-is $\tau r = 2\pi r$ where $r$ is the radius.
+The angle of this slice is $\theta$ radians:
 
-360 degrees (or 360° for short) is a full turn.
+asymptote:
+    size(5cm);
+    real theta = 2, overhang=1.4;
+    draw((overhang,0)--(0,0));
+    draw((overhang*cos(theta),overhang*sin(theta))--(0,0), L="$1$");
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau), smalldashes);
 
-Conversion functions:
+A full turn is $\tau$ radians, and a half turn is $\pi=\frac\tau2\approx3.14$
+radians. The circumference of a circle with radius $r$ is $\tau r$:
+
+asymptote:
+    size(5cm);
+    fill(unitcircle, lightyellow);
+    draw(unitcircle, blue, L="$\tau r$");
+    draw((0,0)--(cos(1),sin(1)), L="$r$");
+
+360 degrees (or 360° for short) is a full turn. Conversion functions:
 
 code: javascript
     const TAU = 2*Math.PI;
-    function toRadians(degrees) { return degrees/360*TAU; }
-    function toDegrees(radians) { return radians/TAU*360; }
+    function toRadians(degrees) { return degrees*TAU/360; }
+    function toDegrees(radians) { return radians*360/TAU; }
+
+The $(x,y)$ coordinates on an xy plane mean horizontal and vertical locations.
+Usually more $y$ means up and more $x$ means right, but more $y$ means down in
+many programming things.
 
 (unitcircle)
-Unit circle:
+Unit circle and a circle with radius $r$:
 
-asymptote:
-    size(9cm);
-    axises(-1.2,1.6,-1.2,1.8);
-    real t = radians(55);
-    draw(unitcircle);
-    draw((0,0)--(cos(t),sin(t)), L="1", align=N);
-    draw(arc((0,0), 0.3, 0, degrees(t)), L="$t$");
-    draw(brace((0,1), (cos(t),1)), deepblue);
-    label((0,1), deepblue, L="$\cos(t)$", align=NE);
-    draw(brace((cos(t)+0.2,sin(t)), (cos(t)+0.2,0)), darkorange, L="$\sin(t)$", align=E);
+asymptote: float:left;
+    size(10cm);
+    real xyminmax=1.6, theta=1;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
 
-Notation: $\sin^2(t)$ means $(\sin(t))^2$.
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau));
+    draw((cos(theta),sin(theta))--(0,0), heavygreen,
+         L=rrotate(theta-tau/4)*Label("$1$", position=Relative(0.4)));
+
+    dot((cos(theta),sin(theta)), p=red+dotpen);
+    label((cos(theta),sin(theta)), L="$(\cos(\theta),\sin(\theta))$", align=NE);
+
+asymptote: float:left;
+    size(12cm);
+    real xyminmax=3.5, r=2.5, theta=1;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),r,0,theta), orange, L="$r\theta$");
+    draw(rarc((0,0),r,theta,tau));
+
+    draw((r*cos(theta),r*sin(theta))--(0,0), heavygreen,
+         L=Label("$r$", position=Relative(0.4)));
+
+    dot((r*cos(theta),r*sin(theta)), p=red+dotpen);
+    label((r*cos(theta),r*sin(theta)), L="$(r\cos(\theta),r\sin(\theta))$", align=NE);
+
+<div style="clear:left;"></div>
+
+Polar to Cartesian coordinates:
+
+math:
+    \left\{\begin{array}{l} \
+        x = r\cos(\theta)
+        y = r\sin(\theta)
+    \end{array}\right.
+
+Cartesian to polar coordinates:
+
+math:
+    \left\{\begin{array}{l} \
+        r = \text{hypot}(x,y) = \sqrt{x^2+y^2}
+        \theta = \text{atan2}(y,x)
+    \end{array}\right.
 
 (trianglestuff)
 A triangle with a quarter-turn corner and a bunch of math:
@@ -427,18 +454,13 @@ A triangle with a quarter-turn corner and a bunch of math:
 asymptote: float:right;
     size(6cm);
     abctriangle(3,2, lightgreen);
-    real t = atan2(2,3);
-    draw(arc((0,0), 1, 0, degrees(t)), L="$t$");
+    draw(rarc((0,0), 1, 0, atan2(2,3)), L="$\theta$");
 
 math:
-    &\sin(t) = \frac b c
-    &\cos(t) = \frac a c
-    &\tan(t) = \frac b a
-    &t = \text{atan2}(b,a)
+    &\sin(\theta) = \frac b c
+    &\cos(\theta) = \frac a c
+    &\tan(\theta) = \frac b a
     &a^2 + b^2 = c^2
-
-Some programming languages have a ``hypot(a, b)`` function that returns
-$\sqrt{a^2+b^2}$. You can use it for calculating $c$.
 
 The sum of all angles of a triangle is always $\frac \tau 2$.
 
@@ -447,26 +469,14 @@ this tutorial because I find them confusing and most programming languages
 don't have them, but you may come across them elsewhere.
 
 math:
-    &\sec(t) = \frac{1}{\cos(t)}
-    &\csc(t) = \frac{1}{\sin(t)}
-    &\cot(t) = \frac{1}{\tan(t)} = \frac{\cos(t)}{\sin(t)}
+    \sec(\theta) &= \frac{1}{\cos(\theta)}
+    \csc(\theta) &= \frac{1}{\sin(\theta)}
+    \cot(\theta) &= \frac{\cos(\theta)}{\sin(\theta)} = \frac{1}{\tan(\theta)}
 
-Handy trig formulas, $n$ can be any integer:
-
-math:
-    &\sin^2(t) + \cos^2(t) = 1
-    &\sin(t) = -\sin(-t) = \sin(t+n\tau)
-    &\cos(t) = \cos(-t) = \cos(t+n\tau)
-    &\tan(t) = \frac{\sin(t)}{\cos(t)} = \tan\left(t+n\frac\tau2\right)
-    &\sin(2t) = 2\sin(t)\cos(t)
-    &\cos(2t) = \cos^2(t)-\sin^2(t)
-    &\tan(2t) = \frac{2\tan(t)}{1 - \tan^2(t)}
-    &\sin^2(t) = \frac{1-\cos(2t)}{2}
-    &\cos^2(t) = \frac{1+\cos(2t)}{2}
-
-Most of these are proved in [the more trig chapter](more-geometry-and-trig.html)
-or [the Euler formula chapter](eulerformula.html). See e.g. Wikipedia for
-[a more complete list](https://en.wikipedia.org/wiki/List_of_trigonometric_identities).
+There are many handy identities that let you e.g. figure out $\sin(\theta)$ if
+you know $\cos(\theta)$ without actually figuring out $\theta$. There's
+[a big list of them](https://en.wikipedia.org/wiki/List_of_trigonometric_identities)
+on Wikipedia.
 
 ## Exponents and Logarithms
 

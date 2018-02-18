@@ -425,7 +425,8 @@ graybox: Exercise
         transform T = shift(2.5,-1.5);
         real theta=-1;
         draw(T*unitcircle, smalldashes);
-        draw(T*((0,0)--(cos(theta),sin(theta))), heavygreen, L="2");
+        draw(T*((0,0)--(cos(theta),sin(theta))), heavygreen,
+             L="2", arrow=Arrow(size=0.5cm));
         draw(T*((0,0)--(1,0)), smalldashes);
         draw(T*rarc((0,0),0.3,theta,0), blue, L="$\theta$");
         dot(T*(0,0), p=dotpen, L="player", align=N);
@@ -438,8 +439,8 @@ graybox: Exercise
 
     Let's say that ``player.x`` and ``player.y`` are the current coordinates as
     floats (they may need to be rounded to ints when actually drawing things),
-    ``player.speed == 2`` and ``player.angle == θ``. Write a ``player.move()``
-    method using your favorite programming language.
+    ``player.speed`` is 2 and ``player.angle`` is $\theta$. Write a
+    ``player.move()`` method using your favorite programming language.
 
 ## Example: Ball and Paddle
 

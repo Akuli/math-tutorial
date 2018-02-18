@@ -85,19 +85,18 @@ math:
                 - \frac{x^6}{6!} + \frac{x^8}{8!} - ...
     e^x &= 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + ...
 
-Let's try to calculate $e^{it}$ where $t$ is a real number and let the magic
-happen.
+Let's try to calculate $e^{ix}$ and let the magic happen.
 
 math:
-    e^{it} &= 1 + it + \frac{(it)^2}{2!} + \frac{(it)^3}{3!} + \frac{(it)^4}{4!} + \frac{(it)^5}{5!} + \frac{(it)^6}{6!} + ...
-    &= 1 + it + \frac{i^2t^2}{2!} + \frac{i^3t^3}{3!} + \frac{i^4t^4}{4!} + \frac{i^5t^5}{5!} + \frac{i^6t^6}{6!} + ...
-    &= 1 + it + \frac{(-1)t^2}{2!} + \frac{(-1)it^3}{3!} + \frac{1t^4}{4!} + \frac{it^5}{5!} + \frac{(-1)t^6}{6!} + ...
-    &= 1 + it - \frac{t^2}{2!} - i\frac{t^3}{3!} + \frac{t^4}{4!} + i\frac{t^5}{5!} - \frac{t^6}{6!} + ...
-    &= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right) \
-    + \left(it - i\frac{t^3}{3!} + i\frac{t^5}{5!} - i\frac{t^7}{7!} + ...\right)
-    &= \left(1 - \frac{t^2}{2!} + \frac{t^4}{4!} - \frac{t^6}{6!} + ...\right) \
-    + i \left(t - \frac{t^3}{3!} + \frac{t^5}{5!} - \frac{t^7}{7!} + ...\right)
-    &= \cos(t) + i \sin(t)
+    e^{ix} &= 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \frac{(ix)^4}{4!} + \frac{(ix)^5}{5!} + \frac{(ix)^6}{6!} + ...
+    &= 1 + ix + \frac{i^2x^2}{2!} + \frac{i^3x^3}{3!} + \frac{i^4x^4}{4!} + \frac{i^5x^5}{5!} + \frac{i^6x^6}{6!} + ...
+    &= 1 + ix + \frac{(-1)x^2}{2!} + \frac{(-1)ix^3}{3!} + \frac{1x^4}{4!} + \frac{ix^5}{5!} + \frac{(-1)x^6}{6!} + ...
+    &= 1 + ix - \frac{x^2}{2!} - i\frac{x^3}{3!} + \frac{x^4}{4!} + i\frac{x^5}{5!} - \frac{x^6}{6!} + ...
+    &= \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...\right) \
+    + \left(ix - i\frac{x^3}{3!} + i\frac{x^5}{5!} - i\frac{x^7}{7!} + ...\right)
+    &= \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...\right) \
+    + i \left(x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\right)
+    &= \cos(x) + i \sin(x)
 
 **Boom.** Can you believe that. We started with $e$ which we got out of
 [exponentials and derivatives](explog.html#the-e-constant) and the $i$, but we
@@ -111,79 +110,71 @@ things like the $f(x)$ notation with parentheses and the concept of a function
 are from him.
 
 After all the amazement, let's have a look at what we got. We know that $\cos$
-is the $x$ coordinate and $\sin$ is the $y$ coordinate in a unit circle (see
-[this thing](summary.html#geometry-and-trig)), and a moment ago we drew a
-$(\text{Re}, \text{Im})$-plane. Actually the formula represents a unit circle in
-$(\text{Re}, \text{Im})$ plane!
+is the $x$ coordinate and $\sin$ is the $y$ coordinate in a unit circle, and a
+moment ago we drew a $(\text{Re}, \text{Im})$-plane. Actually the formula
+represents a unit circle in $(\text{Re}, \text{Im})$ plane!
 
 asymptote:
-    size(12cm);
-    real t=0.9;
+    size(15cm);
+    real theta=1;
     real xymin=-1.4, xymax=1.6;
     axises(xymin,xymax,xymin,xymax, xlabel="Re", ylabel="Im");
 
-    draw(unitcircle);
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau));
     dot((0,1), p=dotpen, L="$i$", align=NE);
     dot((0,-1), p=dotpen, L="$-i$", align=SE);
     dot((1,0), p=dotpen, L="$1$", align=SE);
     dot((-1,0), p=dotpen, L="$-1$", align=SW);
 
-    draw((0,0)--(cos(t),sin(t)));
-    dot((cos(t),sin(t)), p=dotpen, L="$e^{it}$", align=NE);
-    draw(rarc((0,0),0.2,0,t), L="$t$");
-    draw((cos(t),0)--(cos(t),sin(t))--(0,sin(t)), smalldashes);
-    draw(brace((cos(t),-0.05),(0,-0.05)), deepblue, L="$\cos(t)$", align=S);
-    draw(brace((-0.05,0),(-0.05,sin(t))), darkorange, L="$\sin(t)$", align=W);
+    draw((0,0)--(cos(theta),sin(theta)), smalldashes);
+    dot((cos(theta),sin(theta)), p=dotpen, L="$\cos(\theta)+i\sin(\theta)=e^{i\theta}$", align=NE);
 
 Just looking at the above drawing, everything else makes sense perfectly except
-the $e^{it}$ label. It's just crazy.
+the $e^{i\theta}$ label. It's just crazy.
 
 ## Example: Trig Identities
 
-Let's draw another unit circle with angles $t$ and $-t$. The things in
-parentheses are $(x,y)$ coordinates.
+Let's draw another unit circle with angles $\theta$ and $-\theta$.
 
 asymptote:
     size(14cm);
     draw(unitcircle);
-    real t=0.9;
+    real theta=0.9;
     real xymin=-1.2, xymax=1.4;
     axises(xymin,xymax,xymin,xymax);
 
-    draw(unitcircle);
-    draw((cos(t),sin(t))--(0,0)--(cos(-t),sin(-t)));
-    dot((cos(t),sin(t)), p=dotpen, L="$(\cos(t),\sin(t))$", align=NE);
-    dot((cos(-t),sin(-t)), p=dotpen, L="$(\cos(-t),\sin(-t))$", align=SE);
-    draw(rarc((0,0),0.2,0,t), L="$t$");
-    draw(rarc((0,0),0.25,-t,0), L="$-t$");
-    draw((0,sin(t))--(cos(t),sin(t))--(cos(-t),sin(-t))--(0,sin(-t)), smalldashes);
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau));
+    draw((cos(theta),sin(theta))--(0,0)--(cos(-theta),sin(-theta)));
+    dot((cos(theta),sin(theta)), p=dotpen, L="$(\cos(\theta),\sin(\theta))$", align=NE);
+    dot((cos(-theta),sin(-theta)), p=dotpen, L="$(\cos(-\theta),\sin(-\theta))$", align=SE);
+    draw((0,sin(theta))--(cos(theta),sin(theta))--(cos(-theta),sin(-theta))--(0,sin(-theta)), smalldashes);
 
 The black dots are aligned horizontally so $x$ coordinates are the same and
-$\cos(t)=\cos(-t)$. But the $y$ coordinates are opposite, so
-$\sin(-t)=-\sin(t)$. These work with any $t$.
+$\cos(\theta)=\cos(-\theta)$. But the $y$ coordinates are opposite, so
+$\sin(-\theta)=-\sin(\theta)$. These work with any $\theta$.
 
 Let's plug some stuff to Euler's formula and use these trig things:
 
 math:
-    e^{it} &= \cos(t) + i\sin(t)
+    e^{i\theta} &= \cos(\theta) + i\sin(\theta)
+    e^{-i\theta} &= \cos(-\theta) + i\sin(-\theta)
+    &= \cos(\theta)-i\sin(\theta)
 
 math:
-    e^{-it} &= \cos(-t) + i\sin(-t)
-    &= \cos(t)-i\sin(t)
-
-math:
-    e^{it}+e^{-it} &= (\cos(t)+i\sin(t)) + (\cos(t)-i\sin(t))
-    &= \cos(t)+i\sin(t)+\cos(t)-i\sin(t)
-    &= 2\cos(t)
-    \frac{e^{it}+e^{-it}}{2}&=\cos(t)
+    e^{i\theta}+e^{-i\theta} &= (\cos(\theta)+i\sin(\theta)) + (\cos(\theta)-i\sin(\theta))
+    &= \cos(\theta)+i\sin(\theta)+\cos(\theta)-i\sin(\theta)
+    &= 2\cos(\theta)
+    \frac{e^{i\theta}+e^{-i\theta}}{2}&=\cos(\theta)
 
 Now your mind should be **really** blown up.
 
 math:
-    e^{it}-e^{-it} &= (\cos(t)+i\sin(t)) - (\cos(t)-i\sin(t))
-    &= \cos(t)+i\sin(t)-\cos(t)+i\sin(t)
-    &= 2i\sin(t)
-    \frac{e^{it}-e^{-it}}{2i} &= \sin(t)
+    e^{i\theta}-e^{-i\theta} &= (\cos(\theta)+i\sin(\theta)) - (\cos(\theta)-i\sin(\theta))
+    &= \cos(\theta)+i\sin(\theta)-\cos(\theta)+i\sin(\theta)
+    &= 2i\sin(\theta)
+    \frac{e^{i\theta}-e^{-i\theta}}{2i} &= \sin(\theta)
 
 floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
     Proof:
@@ -194,18 +185,18 @@ floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
       =&\ aa-ba+ab-bb
       =&\ a^2 - b^2
 
-    In this case we need to plug in $a=e^{it}$ and $b=e^{-it}$.
+    In this case we need to plug in $a=e^{i\theta}$ and $b=e^{-i\theta}$.
 
 Equally head-exploding.
 
-For example, let's try to find another way to represent $\sin(2t)$:
+For example, let's try to find another way to represent $\sin(2\theta)$:
 
 math:
-    \sin(2t) &= \frac{e^{2it}-e^{-2it}}{2i}
-    &= \frac{(e^{it})^2-(e^{-it})^2}{2i}
-    &= \frac{(e^{it}-e^{-it})(e^{it}+e^{-it})}{2i}
-    &= 2 \cdot \frac{e^{it}-e^{-it}}{2i} \cdot \frac{e^{it}+e^{-it}}{2}
-    &= 2 \sin(t) \cos(t)
+    \sin(2\theta) &= \frac{e^{2i\theta}-e^{-2i\theta}}{2i}
+    &= \frac{(e^{i\theta})^2-(e^{-i\theta})^2}{2i}
+    &= \frac{(e^{i\theta}-e^{-i\theta})(e^{i\theta}+e^{-i\theta})}{2i}
+    &= 2 \cdot \frac{e^{i\theta}-e^{-i\theta}}{2i} \cdot \frac{e^{i\theta}+e^{-i\theta}}{2}
+    &= 2 \sin(\theta) \cos(\theta)
 
 This is just the tip of the iceberg. It's possible to find dozens of handy-dandy
 trig equations like this. Most trig things can be proved without Euler's
@@ -216,49 +207,42 @@ graybox: Exercise
     this formula, and he wanted to see a proof of it:
 
     math:
-        \tan(2t)=\frac{2\tan(t)}{1-\tan^2(t)}
+        \tan(2\theta)=\frac{2\tan(\theta)}{1-\tan^2(\theta)}
 
-    Here $\tan^2(t)$ means $(\tan(t))^2$, and people use the $\tan^2$ notation
-    because it's easier and faster to write although it doesn't make much sense.
-    Prove the above formula.
+    Here $\tan^2(\theta)$ means $(\tan(\theta))^2$, and people use the $\tan^2$
+    notation because it's easier and faster to write although it doesn't make
+    much sense. Prove the above formula.
 
-    There are many ways to do this and the way I managed to do it is really long
-    compared to e.g. [Wikipedia's
-    proof](https://en.wikipedia.org/wiki/Proofs_of_trigonometric_identities#Double-angle_identities).
-    If you want to try to do it like I did, prove these things in this order:
+    One way to do this is to use these formulas:
 
-    * $(a+b)^2=a^2+2ab+b^2$
-    * $\displaystyle\cos^2(t)=\frac{1+\cos(2t)}{2}$
-    * $(a-b)^2=a^2-2ab+b^2$
-    * $\displaystyle\sin^2(t)=\frac{1-\cos(2t)}{2}$
-    * $\displaystyle\cos(2t)=\cos^2(t)-\sin^2(t)$
+    * $\sin(2\theta)=2\sin(\theta)\cos(\theta)$, proved above
+    * $\cos(2\theta)=\cos^2(\theta)-\sin^2(\theta)$, you need to prove this one
+    * $\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$, from [this
+      exercise](more-geometry-and-trig.html#tanformula)
 
-    Then I used the $\displaystyle\tan(2t)=\frac{\sin(2t)}{\cos(2t)}$ thing we
-    learned [here](more-geometry-and-trig.html#unit-circle-or-triangle) and the
-    $\sin(2t)=2\sin(t)\cos(t)$ thing that we proved above.
+    Then rewrite the left side as
+    $\displaystyle\frac{\sin(2\theta)}{\cos(2\theta)}$, use the formulas and
+    try to rewrite the result in terms of $\tan(\theta)$.
 
 ## Example: Famous Constants
 
 asymptote:
     size(12cm);
-    real t=1;
+    real theta=1;
     real xymin=-1.4, xymax=1.6;
     axises(xymin,xymax,xymin,xymax, xlabel="Re", ylabel="Im");
 
-    draw(unitcircle);
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,theta,tau));
     dot((0,1), p=dotpen, L="$i$", align=NE);
     dot((0,-1), p=dotpen, L="$-i$", align=SE);
     dot((1,0), p=dotpen, L="$1$", align=SE);
     dot((-1,0), p=dotpen, L="$-1$", align=SW);
 
-    draw((0,0)--(cos(t),sin(t)));
-    dot((cos(t),sin(t)), p=dotpen, L="$e^{it}$", align=NE);
-    draw(rarc((0,0),0.2,0,t), L="$t$");
-    draw((cos(t),0)--(cos(t),sin(t))--(0,sin(t)), smalldashes);
-    draw(brace((cos(t),-0.05),(0,-0.05)), deepblue, L="$\cos(t)$", align=(cos(5),sin(5)));
-    draw(brace((-0.05,0),(-0.05,sin(t))), darkorange, L="$\sin(t)$", align=W);
+    draw((0,0)--(cos(theta),sin(theta)), smalldashes);
+    dot((cos(theta),sin(theta)), p=dotpen, L="$e^{i\theta}$", align=NE);
 
-If we plug in $t=\tau=2\pi$ we get this:
+If we plug in $\theta=\tau=2\pi$ we get this:
 
 math:
     e^{i\tau} = \cos(\tau) + i \sin(\tau) = 1 + i \cdot 0 = 1
@@ -271,12 +255,12 @@ But if we don't rotate at all we also end up at 1:
 math:
     e^{i \cdot 0} = e^0 = 1
 
-Equations like $e^{it}=1$ have an infinite number of solutions because any
+Equations like $e^{i\theta}=1$ have an infinite number of solutions because any
 number of full turns produces the 1, just like any number of full turns is a
-solution of $\cos(t)=1$.
+solution of $\cos(\theta)=1$.
 
-We could also plug in $t=\frac \tau 2=\pi$ to go a half turn and end up at $-1$,
-and we get a very famous equation:
+We can also plug in $\theta=\frac \tau 2=\pi$ to go a half turn and end up at
+$-1$, and we get a very famous equation:
 
 math:
-    e^{i \pi} = -1
+    e^{i\pi} = -1

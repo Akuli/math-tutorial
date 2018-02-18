@@ -1,25 +1,106 @@
 # More Geometry and Trig
 
-Now you should have a good grasp of geometry and trig basics. In this chapter
-we'll learn more stuff and focus on some of the things that you might be
-wondering after reading the previous chapter. Here $y$ axises go up instead of
-down because most of the math in this isn't as useful for programming as the
-stuff in the first geometry and trig chapter.
+[In the geometry and trig chapter](geometry-and-trig.html) we learned stuff
+that are very useful for writing games, and I have used something from that
+chapter in almost all 2D games I have made. In this chapter you'll learn things
+that are sometimes useful.
 
 redbox:
     This chapter assumes that you have read [the first geometry and trig
-    chapter](geometry-and-trig.html), and you also need
-    [derivatives](derivatives.html) for some things that will be shown here.
+    chapter](geometry-and-trig.html).
+
+asymptote: float:right;
+    size(6cm);
+    abctriangle(4, 3);
+
+## Pythagorean Theorem
+
+Let's say that we have a triangle with a quarter-turn corner, and its sides are
+$a$, $b$ and $c$ where $c$ is the longest side. In the picture at right, the
+small square at the bottom-right corner means that we're talking about a
+quarter-turn corner. This works with any triangle that has a quarter-turn
+corner:
+
+math:
+    a^2 + b^2 = c^2
+
+We'll prove this soon. Note that $c$ must be the longest side of the triangle.
+
+The Pythagorean theorem has many important applications:
+
+* The hypotenuse of a triangle can be calculated by [square
+  rooting](basics.html#powers-and-square-root) both sides of the above
+  equation. Hypotenuse is a fancy word that means the longest side of a
+  quarter-turn triangle.
+
+indent:
+    math:
+        \sqrt{a^2 + b^2} = \sqrt{c^2} = |c| = c
+
+    The last step assumes $c \ge 0$, but that's not a problem because a
+    triangle with a negative side length doesn't make much sense. Many
+    programming languages have a ``hypot()`` function that works like this:
+
+    math:
+        \text{hypot}(a,b) = \sqrt{a^2 + b^2}
+
+    It's also possible to solve for other sides, e.g. $b = \sqrt{c^2 - a^2}$.
+
+* Using the hypot thing, we can calculate the distance of two points
+  $(x_1,y_1)$ and $(x_2,y_2)$ like this:
+
+indent:
+    asymptote:
+        size(15cm);
+        pair p1=(2.5,1.5), p2=(7,4.5);
+        pair diff=p2-p1;
+
+        axises(-0.5,6,-0.5,4);
+        draw(p1--(p2.x,p1.y), smalldashes, L="$x_2-x_1$", align=S);
+        draw((p2.x,p1.y)--p2, smalldashes, L=rotate(90)*"$y_2-y_1$", align=E);
+        draw(p2--p1, heavygreen, L=rrotate(atan2(diff.y,diff.x))*"$\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}$");
+        dot(p1, p=dotpen, L="$(x_1,y_1)$", align=SW);
+        dot(p2, p=dotpen, L="$(x_2,y_2)$", align=E);
+
+    It doesn't matter which point is which:
+
+    math:
+        \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2} \
+        &= \sqrt{\bigl(-(x_1-x_2)\bigr)^2 + \bigl(-(y_1-y_2)\bigr)^2}
+        &= \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}
+
+    Here I used the $a-b=-(b-a)$ and $(-x)^2=x^2$ formulas from [the basics
+    page](basics.html).
+
+* The formula simplifies nicely if one of the points is $(0,0)$:
+
+indent:
+    asymptote:
+        size(9cm);
+        real x=4, y=3;
+
+        axises(-0.5,4,-0.5,3);
+        draw((x,y)--(0,0), heavygreen, L=rrotate(atan2(y,x))*"$\sqrt{x^2+y^2}$");
+        dot((x,y), p=dotpen, L="$(x,y)$", align=NE);
+
+    This also works if $x$ or $y$ is negative or if they are both negative; the
+    negativeness doesn't matter because $(-x)^2 = x^2$ with any $x$.
 
 ## Pythagorean Theorem Proof
 
-This is a well-known proof and I like it because it's simple.
+Now we have looked into a bunch of ways to **use** the Pythagorean theorem, but
+let's prove that it actually works. This is a well-known proof, and I like it
+because it's simple.
+
+Let's start by arranging 4 abc triangles like this:
 
 asymptote:
-    size(8cm);
+    // a+b = 1  and  a=2b
+    real a = 2/3;
+    real b = 1/3;
 
-    real a = 0.7;
-    real b = 1-a;       // total width is 1
+    // b = 2cm
+    unitsize(2cm/b);
 
     // corners:
     // green square     everything
@@ -55,14 +136,15 @@ floatingbox: Handy thing: $(a+b)^2=a^2+2ab+b^2$
       =&\ aa+ba+ab+bb
       =&\ a^2+2ab+b^2
 
-We can calculate the total area of the above square in a couple different ways:
+We can calculate the total area of the above square in a couple different ways
+using some [basic area stuff](basics.html#areas):
 
 * The square's sides are each $a+b$, so the area must be $(a+b)(a+b)$.
 * The square consists of the green square whose area is $c^2$ and 4 yellow
   triangles with area $\frac{ab}{2}$ each. Total area is
   $c^2 + 4 \frac{ab}{2}$.
 
-We must get the same area with both ways, so we get this equation:
+We must get the same area with both ways, so we get this:
 
 math:
     (a+b)(a+b) &= c^2 + 4\frac{ab}{2}
@@ -70,7 +152,152 @@ math:
     a^2 + 2ab + b^2 &= c^2 + 2ab
     a^2 + b^2 &= c^2
 
+graybox: Exercise
+    Draw an $a+b$ by $a+b$ square, and use areas to derive the handy thing we
+    used above.
+
+asymptote: float:right;
+    size(12cm);
+    real xyminmax=3.5, r=2.5, theta=1;
+    axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
+
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(scale(r)*unitcircle, smalldashes);
+    draw((r*cos(theta),r*sin(theta))--(0,0), heavygreen, L="$r$");
+
+    dot((r*cos(theta),r*sin(theta)), p=red+dotpen);
+    label((r*cos(theta),r*sin(theta)), L="$(r\cos(\theta),r\sin(\theta))$", align=NE);
+
+## Cartesian to Polar Coordinates
+
+We know that every point on the xy plane can be represented with $(x,y)$
+coordinates, but we can also represent every point with a distance from $(0,0)$
+and an angle:
+
+math:
+    \left\{\begin{array}{l} \
+        x = r\cos(\theta)
+        y = r\sin(\theta)
+    \end{array}\right.
+
+Fancy words that make you sound like a mathematician: the $(x,y)$ form is known
+as **Cartesian coordinates**, and the $(r,\theta)$ form is called
+**polar coordinates**.
+
+If we know $r$ and $\theta$, finding $x$ and $y$ is simple as plugging them in
+to the equations above. But how about figuring out $r$ and $\theta$ from $x$
+and $y$? We can use Pythagorean theorem to figure out $r$:
+
+math:
+    r = \text{hypot}(x, y) = \sqrt{x^2+y^2}
+
+Rewriting $\theta$ in terms of $x$ and $y$ so that all corner cases are covered
+is a bit more complicated, so programmers defined a function just for that:
+
+math:
+    \theta = \text{atan2}(y,x)
+
+Note that $y$ goes before $x$; getting this mixed up gives wrong angles.
+
+The atan2 function was originally a thing in programming languages only, but
+nowadays at least some non-programming-related math articles on Wikipedia use
+it as well. The 2 at the end of atan2 means that it takes two arguments unlike
+atan, and the next section explains what atan is:
+
+## Triangle Trig
+
+asymptote: float:right;
+    size(10cm);
+    real xymin=0.5, xymax=5, r=4, theta=1;
+    axises(-xymin, xymax, -xymin, xymax);
+
+    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),r,-asin(xymin/r),tau/4+asin(xymin/r)));
+    draw((r*cos(theta),r*sin(theta))--(0,0), heavygreen, L="$r$");
+    draw((r*cos(theta),0)--(r*cos(theta),r*sin(theta)), orange, L="$y$");
+    draw(brace((r*cos(theta),-0.2),(0,-0.2)), L="$x$", align=S);
+
+    dot((r*cos(theta),r*sin(theta)), p=red+dotpen);
+    label((r*cos(theta),r*sin(theta)), L="$(r\cos(\theta),r\sin(\theta))$", align=NE);
+
+The word "trigonometry" means triangle something, and trig functions like
+$\sin$ and $\cos$ can be also defined in a triangle with a quarter-turn corner.
+We can get those definitions from our circle stuff by drawing a triangle under
+the red $(x,y)$ point like in the image at right.
+
+Something interesting happens:
+
+math:
+    \frac x r = \frac{r\cos(\theta)}{r} = \cos(\theta)
+    \frac y r = \frac{r\sin(\theta)}{r} = \sin(\theta)
+
+More fancy words: if we have a triangle with a quarter-turn corner, the
+*opposite side* of a corner means the side opposite of that corner, and the
+*adjacent side* means the side that is not opposite or the hypotenuse.
+
+asymptote: float:right;
+    size(6cm);
+    real adjacent=4, opposite=3;
+    draw((0,0)--(adjacent,0), L="adjacent");
+    draw((adjacent,0)--(adjacent,opposite), L=rotate(90)*"opposite");
+    draw((adjacent,opposite)--(0,0), L=rrotate(atan2(opposite,adjacent))*"hypotenuse");
+    draw(rarc((0,0),1,0,atan2(opposite,adjacent)), blue, L="$\theta$");
+
+Now we are ready to define $\sin$ and $\cos$ with nothing but a
+quarter-turn-cornered triangle. We'll also define a third function called
+$\tan$ that we haven't used before.
+
+math:
+    \sin(\theta) &= \frac{\text{opposite}}{\text{hypotenuse}}
+    \cos(\theta) &= \frac{\text{adjacent}}{\text{hypotenuse}}
+    \tan(\theta) &= \frac{\text{opposite}}{\text{adjacent}}
+
+Note that this stuff only makes sense for $0 < \theta < \frac \tau 4$;
+otherwise we'd need to think about triangles with negative side lengths, and
+circles in xy plane are a much handier way to handle that.
+
+If we apply the $\tan$ definition to our circle pic above, we get this:
+
+math:
+    \tan(\theta) &= \frac y x
+    \theta &= \arctan\left(\frac y x\right)
+
+asymptote: float:right;
+    size(8cm);
+    real xyminmax=3;
+    axises(-xyminmax,xyminmax,-xyminmax,xyminmax);
+    dot((-2,-2), p=dotpen, L="$(-2,-2)$", align=S);
+    dot((2,2), p=dotpen, L="$(2,2)$", align=N);
+    draw((-2,-2)--(2,2), smalldashes);
+    draw(rarc((0,0),1,-3*tau/8,tau/8), blue, L="$\tau/2$");
+
+Here $\arctan$ means the inverse of $\tan$, and most programming languages have
+an ``atan`` function that computes arctan. However, earlier we did
+$\theta = \text{atan2}(y,x)$. Here are some things that can go wrong with
+$\arctan(\frac y x)$:
+
+* If $x=0$, $\frac y x$ is not defined.
+* If $x<0$, the result is off by half turn. For example, setting $(x,y)=(-2,-2)$
+  gives $\arctan(\frac{-2}{-2}) = \arctan(1) = \arctan(\frac 2 2)$, which is
+  the same answer as the one for $(x,y)=(2,2)$, even though the angles were
+  supposed to differ by $\frac \tau 2$ (see picture at right).
+
+Here's our conclusion: atan2 is good because it handles corner cases. However,
+you *can* use plain atan if you know that the angle is between $-\frac \tau 4$
+and $\frac \tau 4$; this corresponds to $x > 0$ in Cartesian to polar
+conversion.
+
+(tanformula)
+graybox: Exercise
+    Use triangle trig to prove that
+    $\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$.
+
 ## Triangle Angle Sum
+
+graybox:
+    This section uses the Greek alpha, beta and gamma letters $\alpha$, $\beta$
+    and $\gamma$ to represent angles. Don't get confused -- they are just
+    letters, like a, b, c or $\theta$.
 
 asymptote:
     size(10cm);
@@ -81,9 +308,9 @@ asymptote:
     real atan2v(pair v) { return atan2(v.y,v.x); }
     filldraw(A--C--B--cycle, rgb(0.8,1,0.8));
 
-    draw(rarc(A, rinner, atan2v(C-A), atan2v(B-A)), blue, L="$a$");
-    draw(rarc(B, rinner, atan2v(A-B), atan2v(C-B)), blue, L="$b$");
-    draw(rarc(C, rinner, atan2v(B-C), atan2v(A-C)), blue, L="$c$");
+    draw(rarc(A, rinner, atan2v(C-A), atan2v(B-A)), blue, L="$\alpha$");
+    draw(rarc(B, rinner, atan2v(A-B), atan2v(C-B)), blue, L="$\beta$");
+    draw(rarc(C, rinner, atan2v(B-C), atan2v(A-C)), blue, L="$\gamma$");
 
     draw(rarc(A, router, atan2v(A-C), atan2v(B-A)), heavyred);
     draw(rarc(B, router, atan2v(B-A), atan2v(C-B)), heavyred);
@@ -99,8 +326,8 @@ asymptote:
     draw(arrowstart--(arrowend-0.3*unit(arrowend-arrowstart)), arrow=Arrow(size=5mm));
     label(arrowstart, L="start here", align=S);
 
-In the above picture, the red angle is a half turn minus the blue angle, and we
-know that half turn is $\tau/2$ radians. So, let's start at the little arrow at
+In the above picture, every red angle is a half turn minus blue angle, and we
+know that half turn is $\tau/2$ radians. Let's start at the little arrow at
 bottom and move along the edges clockwise until we arrive at the arrow again.
 The red angles represent how much we need to turn at each corner, and those
 turns are $\frac\tau2-a$, $\frac\tau2-b$ and $\frac\tau2-c$.
@@ -108,312 +335,208 @@ turns are $\frac\tau2-a$, $\frac\tau2-b$ and $\frac\tau2-c$.
 But in total we turned a full turn or $\tau$ radians:
 
 math:
-    \tau &= \left(\frac\tau2-a\right) + \left(\frac\tau2-b\right) + \left(\frac\tau2-c\right)
-    &= \frac\tau2 - a + \frac\tau2 - b + \frac\tau2 - c
-    &= \frac\tau2+\frac\tau2+\frac\tau2 -a-b-c
-    &= 3\frac\tau2 -a-b-c
-    a+b+c &= 3\frac\tau2-\tau
-    &= 3\frac\tau2 - 2\frac\tau2
-    &= (3-2)\frac\tau2
-    &= \frac\tau2
+    \tau &= \left(\frac\tau2-\alpha\right) + \left(\frac\tau2-\beta\right) + \left(\frac\tau2-\gamma\right)
+    &= \frac\tau2 - \alpha + \frac\tau2 - \beta + \frac\tau2 - \gamma
+    &= 3\frac\tau2 -\alpha-\beta-\gamma
+    \alpha+\beta+\gamma &= \frac 3 2 \tau - \tau = \frac \tau 2
 
 So if we add together all the angles of a triangle we get a half turn. This
-doesn't seem very amazingly impressive but we'll find this useful later.
+works with **any** triangle. We'll find this useful later.
 
-## Unit circle or triangle?
+image: images/triangleanglesum.gif
+    max-width: 300px;
+    max-height: 300px;
 
-Sine and cosine can be defined with a unit circle or with a triangle. The
-triangle definition is handy for simple things, but it's usually easiest to use
-the unit circle if you need to work with angles that are not between $0$ and
-$\tau/4$ radians. This way you don't need to think about triangles with negative
-side lengths.
-
-Let's make sure that the definitions are compatible with each other:
-
-asymptote:
-    size(12cm);
-
-    axises(-1.1,1.3,-1.1,1.3);
-    real t = 1.2;
-    real tradius = 0.2;     // radius of t's arc thingy
-
-    draw(unitcircle);
-    fill((0,0)--(cos(t),0)--(cos(t),sin(t))--cycle, yellow);
-    draw((0,0)--(cos(t),0));
-    label((0,0), L="$\cos(t)$", align=SE);
-    draw((cos(t),0)--(cos(t),sin(t)), L="$\sin(t)$");
-    draw((cos(t),sin(t))--(0,0), L="1");
-
-    draw(arc((0,0), 0.2, 0, degrees(t)), L="$t$");
-
-We get this by applying triangle trig to the yellow triangle:
-
-math:
-    \sin(t) &= \frac{\sin(t)}{1}
-    \cos(t) &= \frac{\cos(t)}{1}
-    \tan(t) &= \frac{\sin(t)}{\cos(t)}
-
-The first two formulas are obviously true with any $t$, but the last one is a
-bit more interesting. We found another way to define $\tan$, and it
-also works with a triangle:
-
-asymptote: float:right;
-    size(4cm);
-    abctriangle(3,2,lightblue);
-    draw(rarc((0,0), 1, 0, atan2(2,3)), L="$t$");
-
-math:
-    \frac{\sin(t)}{\cos(t)} = \frac{b/c}{a/c} \
-    = \frac{b \cdot \frac 1 c}{a \cdot \frac 1 c} = \frac b a = \tan(t)
-
-## Accurate Sine and Cosine Values
-
-graybox:
-    Here $\cos^2(t)$ means $(\cos(t))^2$, and people use the $\cos^2$ notation
-    because it's easier and faster to write although it doesn't make much sense.
-
-asymptote: float:right;
-   size(10cm);
-
-   axises(-0.2,1.3,-0.2,1.3);
-   real t = tau/6;
-   real sint = sqrt(3)/2;
-   real cost = 1/2;
-   real tradius = 0.2;     // radius of t's arc thingy
-
-   draw(arc((0,0), 1, -5, 95));
-   fill((0,0)--(cost,0)--(cost,sint)--cycle, yellow);
-   draw((cost,0)--(cost,sint));
-   draw((cost,sint)--(0,0), L="1");
-   draw((cost,sint)--(1,0), smalldashes);
-   draw((cost,sint)--(1,sint), smalldashes);
-
-   draw(arc((0,0), tradius, 0, degrees(t)), L="$\frac \tau 6$");
-   draw(arc((1,0), tradius, 180-degrees(t), 180), L="$\frac \tau 6$");
-   draw(arc((cost,sint), tradius, 180+degrees(t), 270), L="$\frac{\tau}{12}$");
-   draw(arc((cost,sint), tradius, -90, -degrees(t)), L="$\frac{\tau}{12}$");
-
-   draw(brace((1,0), (cost,0)), L="$\cos\left(\frac \tau 6\right)$", align=S);
-   draw(brace((cost,0), (0,0)), L="$\cos\left(\frac \tau 6\right)$", align=S);
-   draw(brace((1.05,sint), (1.05,0)), L="$\sin\left( \frac \tau 6\right)$", align=E);
-
-[Here](geometry-and-trig.html#accurate-sincos) I said that
-$\sin\left(\frac \tau 6\right) = \frac{\sqrt 3}{2}$ and
-$\cos\left(\frac \tau 6\right) = \frac 1 2$. I'm sorry to disappoint you, but
-there's no general and easy way to find accurate $\sin$ and $\cos$ values by
-hand. However, in many cases there's something special about the angles that
-allows us to do some other tricks.
-
-The angle in question is $\frac \tau 6$, a sixth of a turn. If a triangle has
-three sides with equal lengths, the angles will be $\frac{\tau/2}{3}=\frac\tau6$
-each (see [triangle angle sum](#triangle-angle-sum) above). That's why we can
-complete the triangle drawn in unit circle like in the image. The angles at top
-are $\frac{\tau}{12}$ because two $\frac{\tau}{12}$ angles added together is
-$\frac \tau 6$.
-
-The radius of the unit circle is 1, so we get this on the $x$ axis:
-
-math:
-    \cos\left(\frac \tau 6\right) + \cos\left(\frac \tau 6\right) &= 1
-    \cos\left(\frac \tau 6\right) &= \frac 1 2
-
-Now we can apply the Pythagorean theorem (proved [above](#pythagorean-theorem-proof))
-to the yellow triangle and figure out $\sin \frac \tau 6$:
-
-math:
-   \cos^2\left( \frac \tau 6 \right) + \sin^2\left( \frac \tau 6 \right) &= 1^2 = 1
-   \sin^2\left( \frac \tau 6 \right) &= 1 - \cos^2\left( \frac \tau 6 \right)
-   \sqrt{\sin^2\left( \frac \tau 6 \right)} &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)}
-   \left| \sin\left( \frac \tau 6 \right)\right| &= \sqrt{1 - \cos^2\left( \frac \tau 6 \right)}
-      &= \sqrt{1 - \left( \frac 1 2 \right)^2} = \sqrt{1 - \frac{1^2}{2^2}}
-      &= \sqrt{\frac 4 4 - \frac 1 4} = \sqrt{\frac 3 4} \
-         = \frac{\sqrt 3}{\sqrt 4} = \frac{\sqrt 3}{2}
-
-We know that $\sin \frac \tau 6$ is positive, so
-$\sin \frac \tau 6 = |\sin \frac \tau 6|$.
-
-Applying the Pythagorean theorem gave us
-$\cos^2\left(\frac\tau6\right)+\sin^2\left(\frac\tau6\right)=1$, and that isn't
-limited to $\frac\tau6$ in any way. We could draw a similar yellow triangle with
-any angle $t$ and we'd get the same result, so $\sin^2(t)+\cos^2(t)=1$ with any
-$t$.
+<small>The animation comes from
+[here](https://plus.google.com/photos/photo/116203071099093782712/6081217819806380914).</small>
 
 ## Why is cosine called cosine?
 
 asymptote: float:right;
     size(6cm);
     real w=3, h=2;
-    abctriangle(w,h);
-    draw(rarc((0,0),1,0,atan2(h,w)), L="$t$");
-    draw(rarc((w,h),0.7,-tau/4,atan2(-h,-w)), L="$u$", align=S);
+    abctriangle(w,h, lightyellow);
+    draw(rarc((0,0),1,0,atan2(h,w)), L="$\alpha$");
+    draw(rarc((w,h),0.7,-tau/4,atan2(-h,-w)), L="$\beta$", align=S);
 
-Let's have a look at the blue triangle. We know that it's a triangle, so [the
-sum of the angles must be $\frac \tau 2$](#triangle-angle-sum).
+Let's have a look at the triangle at right. We know that it's a triangle, so
+[the sum of the angles must be $\frac \tau 2$](#triangle-angle-sum).
 
 math:
-    t + u + \frac \tau 4 &= \frac\tau2
-    t + u + \frac \tau 4 &= 2 \frac\tau{2\cdot2} = \frac\tau4 + \frac\tau4
-    t + u &= \frac\tau4
-    u &= \frac \tau 4 - t
+    \alpha + \beta + \frac \tau 4 &= \frac \tau 2
+    \beta &= \frac \tau 2 - \frac \tau 4 - \alpha = \frac \tau 4 - \alpha
 
 We also know these things:
 
 math:
-    &\cos(t) = \frac a c
-    &\sin(u) = \frac a c
+    \cos(\alpha) &= \frac a c
+    \sin(\beta) &= \frac a c
 
-So, $\displaystyle\cos(t) = \sin(u) = \sin \left( \frac \tau 4 - t \right)$.
-
-Only angles between 0 and $\frac \tau 4$ make sense as triangle corners, but
-this works with any other angle as well. Just look at [the
-graphs](graphs.html#sine-and-cosine); the $\frac \tau 4$ offset is quite
-obvious.
-
-The angle $\frac\tau4 - t$ is also known as the *complement* angle because when
-added together, the angles "complete" to $\frac\tau4$:
+Setting these equal and plugging in $\beta=\frac\tau4-\alpha$ gives this:
 
 math:
-    \left( \frac \tau 4 - t \right) + t = \frac \tau 4
+    \cos(\alpha) &= \sin\left(\frac \tau 4 - \alpha\right)
+
+Only angles between $0$ and $\frac \tau 4$ make sense as triangle corners, but
+this actually works with any $\alpha$.
+
+The angle $\frac\tau4-\alpha$ is also known as the *complement* angle because
+when added together, the angles "complete" to $\frac\tau4$:
+
+math:
+    \left( \frac \tau 4 - \alpha \right) + \alpha = \frac \tau 4
 
 Actually "cos" is short for "complement sine" as it's just the sine of the
 complement.
 
-asymptote: float:right;
-    size(6cm);
-    real t1=0.4,t2=1.4;
-    real tavg=(t1+t2)/2;
-
-    fill((0,0)--rarc((0,0),1,t1,t2)--cycle, yellow);
-    draw(unitcircle);
-    draw((0,0)--(cos(t1),sin(t1)), L="$r$", align=S);
-    draw((0,0)--(cos(t2),sin(t2)));
-    draw(rarc((0,0),0.3,t1,t2), L="$t$");
-    label((cos(tavg),sin(tavg)), L="$b$", align=NE);
+redbox:
+    Rest of this chapter assumes that you know [derivatives](derivatives.html).
 
 ## Derivative of Sine
 
-Let's start by finding the derivative of $\sin(t)$ in radians.
-
-By definition, the angle in the image at right is $t=b/r$ radians. But if we do
-the same thing in a unit circle we know the radius is 1, so $t=b/1=b$. This is
-one of the reasons why the unit circle and radians are so handy.
-
-Here's another drawing with more stuff in it:
+Let's draw an angle $\theta$ in the unit circle. We'll assume that $\theta$ is
+in radians, so [it's an arc length on the unit
+circle](geometry-and-trig.html#radians-and-tau).
 
 asymptote:
     size(16cm);
+    real theta=0.8, dtheta=0.3;
+
+    fill((0,0)--rarc((0,0),1,theta,theta+dtheta)--cycle, yellow);
+    draw((cos(theta),sin(theta))--(0,0)--(cos(theta+dtheta),sin(theta+dtheta)), lightolive);
+    draw((0,sin(theta+dtheta))--(cos(theta+dtheta),sin(theta+dtheta)), orange);
     axises(-1.1,1.3,-1.1,1.3);
+    filldraw(rarc((0,0),1,theta,theta+dtheta)--(cos(theta+dtheta),sin(theta))--cycle, paleblue, blue);
+    draw(rarc((0,0),1,0,theta), deepgreen, L="$\theta$");
+    draw(rarc((0,0),1,theta+dtheta,tau));
 
-    real t=0.8, dt=0.3;
-    real bracedist=0.05;
+    real midangle=theta + dtheta/2;
+    label((cos(midangle),sin(midangle)), blue,
+          L=rrotate(midangle-tau/4)*"$\Delta\theta$", align=NE);
 
-    draw(unitcircle);
-    filldraw((0,0)--rarc((0,0),1,t,t+dt)--cycle, yellow);
-    filldraw((cos(t+dt),sin(t))--rarc((0,0),1,t,t+dt)--cycle, lightblue);
+    pair labelplace=(-0.7,1.5);
+    label(labelplace, L="these angles are equal", align=N);
 
-    draw(rarc((0,0),0.15,0,t), L="$t$");
-    draw(rarc((cos(t),sin(t)),0.15,tau/2,tau/2+t), L="$t$");
+    pair offsetvector=(0.05*cos((theta + dtheta)/2), 0.05*sin((theta + dtheta)/2));
 
-    draw(rarc((0,0),0.4,t,t+dt), L="\ $\ \Delta t$", align=N); // spaces are for alignment (lol)
-    label((cos(t+dt/2),sin(t+dt/2)), L=rrotate(t+dt/2-tau/4)*"$\Delta t$", align=NE);
+    path anglesign1=rarc((cos(theta+dtheta),sin(theta+dtheta)),0.1,tau/2,tau/2+theta+dtheta);
+    draw(anglesign1);
+    draw((labelplace+(0.3,0)){down}..{up+right}(midpoint(anglesign1)-offsetvector),
+         gray, arrow=Arrow(size=5mm));
 
-    draw((cos(t+dt),sin(t+dt))--(0,sin(t+dt)), smalldashes);
-    draw(brace((-bracedist,0),(-bracedist,sin(t+dt))), L="$\sin(t+\Delta t)$", align=W);
-    draw((cos(t),sin(t))--(cos(t),0), smalldashes, L=rotate(90)*"$\sin(t)\ $\ ");
+    path anglesign2=rarc((0,0),0.1,0,theta+dtheta);
+    draw(anglesign2);
+    draw((labelplace-(0.3,0)){down}..(-0.5,0.5)..{down+left}(midpoint(anglesign2)+offsetvector),
+         gray, arrow=Arrow(size=5mm));
 
-Here we have $\Delta t$ in two different places and you should understand how.
-The bottom of the blue area is parallel to the x axis, and that's how $t$
-appears there as well.
+Here the black &#8738; signs mean an angle. It looks a lot like a circle arc,
+but in this case we are only interested in the angles, not circle arcs with
+radius 1.
 
-If we take $\sin(t+\Delta t)$ and we take away $\sin(t)$ we're left with the
-height of the blue area, so the blue area's height is $\sin(t+\Delta t)-\sin(t)$.
+Anyway, the orange line is parallel with the $x$ axis, and that's why we have
+two equal angles like the arrows in the picture show. But we know that the
+lower angle is simply $\theta + \Delta\theta$, so the upper angle is also
+$\theta + \Delta\theta$.
 
-The blue area is kind of like a triangle, and with a very small $\Delta t$ it's
-even more like a triangle. Let's draw a picture of just that:
+Let's zoom on the blue area. A lot of things are going on there.
 
 asymptote:
-    size(9cm);
-    real w=2.7, h=2;
+    size(18cm);
+    real theta=0.8, dtheta=0.3, ymin=0.6;
 
-    real bottomx=2/3*w, bottomy=-1/3*(w/h)*w;
-    pair circlecenter=(0,-(w/h)*w);
+    // corners of the yellow area
+    pair bottomright=(ymin/sin(theta)*cos(theta), ymin);
+    pair bottomleft=(ymin/sin(theta+dtheta)*cos(theta+dtheta), ymin);
+    pair topleft=(cos(theta+dtheta),sin(theta+dtheta));
+    pair topright=(cos(theta),sin(theta));
 
-    fill((0,bottomy)--(0,0)--(w,0)--(bottomx,bottomy)--cycle, yellow);
-    draw((w,0)--(bottomx,bottomy));
-    filldraw((0,0)--(w,0)--(0,h)--cycle, lightblue);
+    filldraw(bottomright--bottomleft--topleft--topright--cycle, yellow, lightolive);
+    filldraw(rarc((0,0),1,theta,theta+dtheta)--(topleft.x,topright.y)--cycle, paleblue, blue);
+    label((topleft.x,(topleft.y+topright.y)/2), blue, L="$h$", align=E);
 
-    label((w/2,h/2), L=rrotate(atan2(-h,w))*"$\Delta t$", align=NE);
+    real midangle=theta + dtheta/2;
+    label((cos(midangle),sin(midangle)), blue,
+          L=rrotate(midangle-tau/4)*"$\Delta\theta$", align=NE);
 
-    path corner90=scale(0.25)*((1,0)--(1,1)--(0,1));
-    draw(corner90);
-    draw(shift(w,0)*rrotate(tau/2-atan2(h,w))*corner90);
+    draw((0.2,sin(theta+dtheta))--(cos(theta+dtheta),sin(theta+dtheta)), orange);
 
-    draw(rarc((w,0),0.6,tau/2,tau+atan2(-w,-h)), L="$t$");
-    draw(rarc((w,0),0.8,atan2(h,-w),tau/2), L="$s$");
-    draw(rarc((0,h),0.6,-tau/4,atan2(-h,w)), L="$u$");
+    path squarebox=((1,0)--(1,1)--(0,1));
+    draw(shift(topleft)*rrotate(tau/2)*scale(0.04)*squarebox);
+    draw(shift(topleft)*rrotate(tau/2+theta+dtheta)*scale(0.02)*squarebox);
+    draw(rarc(topleft,0.1,-tau/2,-tau/2+theta+dtheta), L="$\theta+\Delta\theta$");
+    draw(rarc(topleft,0.05,-tau/4,-tau/4+theta+dtheta), heavyred, L="$\alpha$");
 
-    draw(brace((-0.1,0),(-0.1,h)), L=rotate(90)*"$\sin(t+\Delta t)-\sin(t)$", align=W);
+    dot(topleft, p=dotpen, L="$(\cos(\theta+\Delta\theta),\sin(\theta+\Delta\theta))$", align=NE);
+    dot(topright, p=dotpen, L="$(\cos(\theta),\sin(\theta))$");
 
-You might be just looking at this and feeling like $u=t$, but let's prove that
-correctly. Based on the drawing, $s+t = \frac \tau 4$ because they add up to a
-quarter-turn corner, and $s+u+\frac\tau4 = \frac \tau 2$ because we can use
-[the triangle angle sum](#triangle-angle-sum).
+This is a mess, but let's try to make sense of this.
 
-math:
-    s+t &= \frac \tau 4
-    s &= \frac \tau 4 - t
-
-math:
-    \frac\tau4+s+u &= \frac\tau2
-    \frac\tau4+\left(\frac\tau4-t\right)+u &= 2\frac{\tau}{2\cdot2}
-    \frac\tau4+\frac\tau4-t+u &= 2\frac\tau4
-    2\frac\tau4-t+u &= 2\frac\tau4
-    u&=t
-
-Now we can apply triangle trig to the $u$. I'm using $\approx$ here because the
-$\Delta t$ line is actually a bit curvy in the circle image.
+The $h$ is just the difference of the $y$ coordinates:
 
 math:
-    \cos(u) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t}
-    \cos(t) &\approx \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t}
-    \cos(t) &= \lim_{\Delta t \to 0} \frac{\sin(t+\Delta t)-\sin(t)}{\Delta t}
-    \cos(t) &= \frac{d}{dt} \sin(t)
+    h = \sin(\theta+\Delta\theta)-\sin(\theta)
 
-I think this is quite nice.
+We can figure out the angle mess by rotating from the orange line all the way
+to the blue $\Delta\theta$ line. We can do that in a couple different ways: we
+can do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny
+corner square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the
+bigger square. Let's set those equal:
+
+math:
+    \theta + \Delta\theta + \frac \tau 4 &= \frac \tau 4 + \alpha
+    \theta + \Delta\theta &= \alpha
+
+The blue area looks kind of like a triangle, so we can apply [triangle
+trig](#triangle-trig) to it, but it's not a perfect triangle so we'll use
+$\approx$ instead of $=$.
+
+math:
+    \cos(\alpha) &\approx \frac{\text{adjacent}}{\text{hypotenuse}}
+    \cos(\alpha) &\approx \frac{h}{\Delta\theta}
+    \cos(\theta+\Delta\theta) &\approx \frac{\sin(\theta+\Delta\theta)-\sin(\theta)}{\Delta\theta}
+
+This looks kind of like a definition of derivative already! The above picture
+seems to be quite precise, and if we make $\Delta\theta$ even smaller, the
+errors go away:
+
+math:
+    \lim_{\Delta\theta\to0}\cos(\theta+\Delta\theta) &= \lim_{\Delta\theta\to0}\frac{\sin(\theta+\Delta\theta)-\sin(\theta)}{\Delta\theta}
+    \cos(\theta) &= \frac{d}{d\theta}\sin(\theta)
+
+This proof is based on a picture that makes sense only for
+$0 < \theta < \frac \tau 4$, but the same derivative rule works with any
+$\theta$. Note that $\theta$ must be in radians.
 
 ## Derivative of Cosine
 
-Now we know that $\frac{d}{dt} \sin(t) = \cos(t)$ and
-[$\cos(t) = \sin(\tau/4 - t)$](#why-is-cosine-called-cosine), so this will be
-really easy. We just need to remember [the chain
+Now we know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$ and
+[$\cos(\theta) = \sin(\tau/4 - \theta)$](#why-is-cosine-called-cosine), so this
+will be really easy. We just need to remember [the chain
 rule](more-derivatives.html#chain-rule).
 
 math:
-    \frac{d}{dt} \cos(t) &= \frac{d}{dt} \sin\left( \frac \tau 4 - t \right)
-    &= \cos\left( \frac \tau 4 - t \right) \cdot \frac{d}{dt} \left( \frac \tau 4 - t \right)
-    &= \cos\left( \frac \tau 4 - t \right) \cdot (0-1)
-    &= -\cos\left( \frac \tau 4 - t \right)
-    &= -\sin\biggl( \frac \tau 4 - \left(\frac \tau 4 - t \right)\biggr)
-    &= -\sin\left( \frac \tau 4 - \frac \tau 4 + t \right)
-    &= -\sin(t)
+    \frac{d}{d\theta} \cos(\theta) \
+    &= \frac{d}{d\theta}\sin\Bigl(\underbrace{\frac\tau4 - \theta}_{\text{inner stuff}}\Bigr)
+    &= \cos\Bigl(\frac\tau4 - \theta\Bigr) \cdot \frac{d}{d\theta}\Bigl(\frac\tau4 - \theta\Bigr)
+    &= \sin\biggl(\frac\tau4 - \Bigl(\frac\tau4 - \theta\Bigr)\biggr) \cdot (0-1)
+    &= \sin\Bigl(\frac\tau4 - \frac\tau4 + \theta\Bigr) \cdot (-1)
+    &= -\sin(\theta)
+
 
 Let's check the result with [graphs](graphs.html#sine-and-cosine):
 
 asymptote:
     size(18cm);
     real xmin=-0.5, xmax=8.5;
-    axises(xmin,xmax+0.5,-1.1,2, xlabel="$t$");
-    real sinn(real t) { return sin(t); }
-    real coss(real t) { return cos(t); }
-    real msin(real t) { return -sin(t); }
-    draw(graph(sinn,xmin,xmax), heavyred+smalldashes);
-    draw(graph(coss,xmin,xmax), deepgreen+smalldashes);
-    draw(graph(msin,xmin,xmax), blue);
+    axises(xmin,xmax+0.5,-1.1,2, xlabel="$\theta$");
+    draw(graph(new real(real theta) { return sin(theta); },xmin,xmax), heavyred);
+    draw(graph(new real(real theta) { return cos(theta); },xmin,xmax), deepgreen);
+    draw(graph(new real(real theta) { return -sin(theta); },xmin,xmax), blue);
 
-    label((tau/4,1), heavyred, L="$y=\sin(t)$", align=N);
-    label((tau/2,-1), deepgreen, L="$y=\cos(t)$", align=S);
-    label((3tau/4,1), blue, L="$y=-\sin(t)$", align=N);
+    label((5*tau/4,1.4), heavyred, L=rotate(20)*"$y=\sin(\theta)$");
+    label((4*tau/4,1.4), deepgreen, L=rotate(20)*"$y=\cos(\theta)$");
+    label((3*tau/4,1.4), blue, L=rotate(20)*"$y=-\sin(\theta)$");
 
-We know that $\frac{d}{dx} \sin(x) = \cos(x)$, so finding the derivative seems
-to move the graph left. Similarly, the $-\sin(t)$ graph looks like it's the
-$\cos(t)$ graph shifted left.
+We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
+derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
+$\cos(\theta)$ graph shifted left.

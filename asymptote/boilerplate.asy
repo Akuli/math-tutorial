@@ -22,13 +22,14 @@ void grid(real xmin, real xmax, real ymin, real ymax) {
 }
 
 void axises(real xmin, real xmax, real ymin, real ymax,
-            string xlabel="$x$", string ylabel="$y$") {
+            string xlabel="$x$", string ylabel="$y$",
+            pen xpen=defaultpen(), pen ypen=defaultpen()) {
     // TODO: come up with a nice way to add numbers along the axises
-    draw((xmin,0)--(xmax,0), arrow=Arrow(size=0.7cm));
-    draw((xmax,0)--(xmax,0.01), L=xlabel);     // TODO: use label(...)
+    draw((xmin,0)--(xmax,0), p=xpen, arrow=Arrow(size=0.7cm));
+    label((xmax,0), p=xpen, L=xlabel, align=E);
     if (ymin != 0 || ymax != 0) {
-        draw((0,ymin)--(0,ymax), arrow=Arrow(size=0.7cm));
-        draw((0,ymax)--(0,ymax+0.01), L=ylabel);
+        draw((0,ymin)--(0,ymax), p=ypen, arrow=Arrow(size=0.7cm));
+        label((0,ymax), p=ypen, L=ylabel, align=NE);
     }
 }
 
