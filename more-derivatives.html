@@ -191,11 +191,12 @@ also contains <a href="explog.html#example-derivative-of-x-c">another proof</a> 
 doesn't have this restriction.
 </p>
 
-</div><div class="floatingbox"><h2> Handy thing: $(a-b)(a+b)=a^2-b^2$</h2><p>Proof:</p>
+</div><div class="floatingbox"><h2> Handy thing: $a^2-b^2=(a-b)(a+b)$</h2><p>Proof using $(a+b)c=ac+bc$ and $(a-b)c=ac-bc$:</p>
 
 $$\begin{align}& \ (a-b)(a+b) \\
-=&\ (a-b)a+(a-b)b \\
-=&\ aa-ba+ab-bb \\
+=&\ a(a+b)-b(a+b) \\
+=&\ (aa+ab)-(ba+bb) \\
+=&\ aa\rcancel{+ab}\rcancel{-ab}-bb \\
 =&\ a^2 - b^2\end{align}$$<p>In this case we need to plug in $a=\sqrt{x+h}$ and $b=\sqrt x$.
 </p>
 
@@ -212,7 +213,7 @@ $$\begin{align}\frac{d}{dx} \sqrt x &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h}
 &= \frac{1}{\sqrt x + \sqrt x} \\
 &= \frac{1}{2\ \sqrt x}\end{align}$$<p>You're probably wondering how the heck I knew that multiplying top and
 bottom by $\sqrt{x+h}+\sqrt x$ would result in something useful, but this
-is actually a commonly used trick with square roots and limits.
+is actually a well-known trick with square roots and limits.
 </p>
 
 </div><h3 id="frac-d-dx-1-x-displaystyle-frac-1-x-2">$\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}$<a class="headerlink" href="#frac-d-dx-1-x-displaystyle-frac-1-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We could use the $\frac{d}{dx} x^c$ rule again because $1/x$ is actually
