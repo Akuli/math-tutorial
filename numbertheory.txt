@@ -93,17 +93,16 @@ code:
     divisor = 16, n / divisor = 1.0625
     true
 
-If $n$ is not a prime and it's divisible by some integer $a$, then the number
-$b=n/a$ is also an integer and $n=ab$. If we assume that $a>\sqrt n$ and
-$b>\sqrt n$, we get this:
+If $n$ is not a prime, we can write $n=ab$ where $a$ and $b$ are integers and
+$a,b\ge2$. If we assume that $a > \sqrt n$ and $b > \sqrt n$, we get this:
 
 math:
-    ab &> \sqrt n \sqrt n
-    ab &> n
+    ab & > \sqrt n \sqrt n
+    ab & > n
 
 But we just said that $n=ab$ and this doesn't work. Our assumption was false and
-we **know** that $a \le \sqrt n$ or $b \le \sqrt n$. So we don't actually need
-to check for divisibility with numbers that are bigger than $\sqrt n$:
+we **know** that $a \le \sqrt n$ or $b \le \sqrt n$. So if we check only numbers
+$\le \sqrt n$, we'll find $a$ or $b$:
 
 code: javascript
     for (var divisor = 2; divisor <= Math.sqrt(n); divisor++) {
@@ -121,7 +120,8 @@ code:
 The code is a bit messier if your favorite programming language doesn't support
 C-style for loops. For example, Python's ``math.sqrt(int(n))`` returns the
 smallest integer that is $\le \sqrt n$, and ``range(a, b)`` doesn't go all the
-way to ``b`` by default so we also need a ``+1``:
+way to ``b`` by default so we also need a ``+1``. We need an integer because
+``range`` doesn't like floats.
 
 code: python3
     for divisor in range(2, int(math.sqrt(n))+1):
@@ -197,8 +197,8 @@ code: python3
 
 graybox: Exercise
     Translate these ``isprime()`` functions to your favorite programming
-    language and benchmark them. Try to optimize them if the results are not as
-    good as you expected them to be.
+    language and measure how fast they run. Try to optimize them if the results
+    are not as good as you expected them to be.
 
 ## Hexadecimal Colors
 
@@ -212,6 +212,8 @@ math:
    2017 &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7
         &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0
 
+Here $10^0 = 1$; see [this thing](explog.html#exponent-functions) for details.
+
 The idea with **hexadecimal** is that instead of using 10 as a magic number we
 use 16. That's why hexadecimal is also called **base 16**. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
@@ -223,9 +225,9 @@ math:
                   &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14
                   &= 51966
 
-Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
-because it's very common in programming. Note that the first character is a
-zero, not the letter O.
+Here 0x means heXadecimal. Note that the first character is a zero, not the
+letter O. Mathematicians don't use it, but I used it here because it's very
+common in programming.
 
 The sane way to calculate the last step is to use a programming interpreter or
 calculator of your choice. Don't try to do it by hand.

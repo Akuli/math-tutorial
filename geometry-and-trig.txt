@@ -557,7 +557,7 @@ canvasdemo:
       });
     });
 
-&nbsp;
+<p></p>
 
 graybox: Exercise
     A part of my game works similarly to this pseudocode:

@@ -88,7 +88,11 @@ example:
 
 math: \frac 6 4 = \frac{6/2}{4/2} = \frac 3 2
 
-math: \frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}
+math:
+    \frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}
+
+This is often written with cancellation lines, like
+$\displaystyle\frac{\rcancel x}{(a+b)\rcancel x}$.
 
 You can also go backwards and multiply top and bottom by something.
 
@@ -124,8 +128,7 @@ math: 2 \cdot (-2) = -(2 \cdot 2) = -4
 
 math: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
 
-math: \frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4
-
+math: \frac{-3}{-4} = \frac{\rcancel{(-1)}\cdot 3}{\rcancel{(-1)}\cdot 4} = \frac 3 4
 
 ## Absolute Value
 

@@ -73,7 +73,6 @@ builder.get_sidebar_content = get_sidebar_content
 
 builder.get_head_extras = lambda filename: '''
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -81,7 +80,17 @@ builder.get_head_extras = lambda filename: '''
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\\\color{blue}{#1}", 1 ],
+        green: [ "\\\\color{green}{#1}", 1 ],
+        rcancel: [ "\\\\require{cancel}\\\\color{red}{\\\\cancel{\\\\color{bla\
+ck}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mat\

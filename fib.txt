@@ -272,15 +272,15 @@ The $F_1=1$ thing is quite straight-forward to prove:
 
 math:
     F_1 &= \frac{\varphi^1 - (1-\varphi)^1}{\sqrt 5} = \frac{\varphi - (1-\varphi)}{\sqrt 5}
-    &= \frac{\varphi-1+\varphi}{\sqrt 5} = \frac{2\varphi - 1}{\sqrt 5} = \frac{2\frac{1+\sqrt 5}{2} - 1}{\sqrt 5}
-    &= \frac{1+\sqrt5-1}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1
+    &= \frac{\varphi-1+\varphi}{\sqrt 5} = \frac{2\varphi - 1}{\sqrt 5} = \frac{\rcancel 2 \frac{1+\sqrt 5}{\rcancel 2} - 1}{\sqrt 5}
+    &= \frac{\rcancel{1}+\sqrt5\rcancel{-1}}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1
 
 We need the handy thing at right for $F_2=1$.
 
 math:
     F_2 &= \frac{\varphi^2 - (1-\varphi)^2}{\sqrt 5}
     &= \frac{\varphi^2-(1^2-2\cdot1\cdot\varphi+\varphi^2)}{\sqrt 5}
-    &= \frac{\varphi^2-1+2\varphi-\varphi^2}{\sqrt5} = \frac{2\varphi-1}{\sqrt5}
+    &= \frac{\rcancel{\varphi^2}-1+2\varphi\rcancel{-\varphi^2}}{\sqrt5} = \frac{2\varphi-1}{\sqrt5}
 
 We already figured out that this is 1 when proving that $F_1=1$.
 
@@ -293,13 +293,14 @@ math:
     & \varphi^n + \varphi^{n+1} = \varphi^{n+2}
     & (1-\varphi)^n + (1-\varphi)^{n+1} = (1-\varphi)^{n+2}
 
-Now we're ready to go.
+Now we're ready to go. I'll color everything $F_n$ related in blue and
+everything $F_{n+1}$ related in green so you can see what happens to them.
 
 math:
-    F_n + F_{n+1} &= \frac{\varphi^n - (1-\varphi)^n}{\sqrt 5} \
-                    + \frac{\varphi^{n+1} - (1-\varphi)^{n+1}}{\sqrt 5}
-    &= \frac{\varphi^n - (1-\varphi)^n + \varphi^{n+1} - (1-\varphi)^{n+1}}{\sqrt 5}
-    &= \frac{\varphi^n + \varphi^{n+1} - (1-\varphi)^n - (1-\varphi)^{n+1}}{\sqrt 5}
-    &= \frac{\left(\varphi^n + \varphi^{n+1}\right) \
-       - \left((1-\varphi)^n + (1-\varphi)^{n+1}\right)}{\sqrt 5}
+    \blue{F_n} + \green{F_{n+1}} \
+    &= \blue{\frac{\varphi^n - (1-\varphi)^n}{\sqrt 5}} \
+                    + \green{\frac{\varphi^{n+1} - (1-\varphi)^{n+1}}{\sqrt 5}}
+    &= \frac{\blue{\varphi^n-(1-\varphi)^n}+\green{\varphi^{n+1}-(1-\varphi)^{n+1}}}{\sqrt 5}
+    &= \frac{\blue{\varphi^n}+\green{\varphi^{n+1}}-\blue{(1-\varphi)^n}-\green{(1-\varphi)^{n+1}}}{\sqrt 5}
+    &= \frac{\left(\blue{\varphi^n}+\green{\varphi^{n+1}}\right)-\left(\blue{(1-\varphi)^n}+\green{(1-\varphi)^{n+1}}\right)}{\sqrt 5}
     &= \frac{\varphi^{n+2} - (1-\varphi)^{n+2}}{\sqrt 5} = F_{n+2}

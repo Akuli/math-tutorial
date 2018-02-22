@@ -195,9 +195,9 @@ indent:
 indent:
     Plugging in $x=0$ gives $\frac 0 0$ in these examples.
 
-    math: \lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2
-
     math: \lim_{x\to0}\frac{x}{2x} = \lim_{x\to0} \frac 1 2 = \frac 1 2
+
+    math: \lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2
 
     See also [this video](https://www.youtube.com/watch?v=BRRolKTlF6Q).
 
@@ -229,7 +229,7 @@ indent:
     Even though this limit is 1...
 
     math:
-        \lim_{x\to\infty}1^x = \lim_{x\to\infty} 1 = 1
+        \lim_{x\to\infty}1^x = 1
 
     ...it doesn't mean that all $1^\infty$ limits are 1. Here's a famous
     example that we'll revisit [later](explog.html#the-e-constant):
@@ -289,8 +289,8 @@ indent:
     to get $1=x^0$. So here's our conclusion: $x^0=1$ for any finite $x$ except
     $x=0$ and we know nothing about $0^0$ yet.
 
-    On the other hand, multiplying 0 by itself many times is still 0, so $0^x$
-    is $0$ with any positive $x$. We get these limits:
+    On the other hand, multiplying $0$ by itself many times is still $0$, so
+    $0^x=0$ with any positive $x$. We get these limits:
 
     math: \lim_{x\to0^+} 0^x = 0
 

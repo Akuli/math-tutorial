@@ -119,8 +119,8 @@ $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$. This
 limit is known as the **derivative**.
 
 Let's find a formula for calculating derivatives. We'll do this for a general
-$y=f(x)$ graph instead of $y=x^2$, so we'll get something that is not limited
-to just $x^2$.
+$y=f(x)$ graph where $f$ is a [function](basics.html#functions) instead of
+$y=x^2$, so we'll get something that is not limited to just $x^2$.
 
 asymptote:
     size(12cm);
@@ -174,14 +174,29 @@ math:
     \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} \
     &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
     &= \lim_{h\to0} \frac{(x+h)^2-x^2}{h}
-    &= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h}
+    &= \lim_{h\to0} \frac{\rcancel{x^2} + 2xh + h^2 \rcancel{- x^2}}{h}
     &= \lim_{h\to0} \frac{2xh + h^2}{h}
-    &= \lim_{h\to0} \frac{(2x+h)h}{h}
+    &= \lim_{h\to0} \frac{(2x+h)\rcancel h}{\rcancel h}
     &= \lim_{h\to0} (2x+h)
     &= 2x
 
-asymptote: float:right;
-   size(10cm);
+code:
+    <Akuli>        so it's 2x
+    <Akuli>        boom
+    <theelous3>    oh shit
+    <Akuli>        lol
+    <Akuli>        i think this is cool
+    <theelous3>    lmao, that's kinda awesome
+    <Akuli>        right :) yeah
+
+We started with a complicated-looking thing but finally we arrived at just
+$2x$. What's more, the $2x$ is not just a random value we got out of a spooky
+calculation; for example, at $x=2$ the derivative is $2 \cdot 2 = 4$, so if we
+draw a straight line that barely touches $y=x^2$ at $x=2$ its slope will also
+be 4. Like this:
+
+asymptote:
+   size(12cm);
    axises(-3,6,-1,20);
 
    // this is drawn first so it goes below the x^2 line
@@ -197,12 +212,6 @@ asymptote: float:right;
    draw((2,0)--(2,2**2), smalldashes);
    label("2", (2,0), align=S);
 
-I think this is cool. We started with a complicated-looking thing but finally
-we arrived at just $2x$. What's more, the $2x$ is not just a random value we
-got out of a spooky calculation; for example, at $x=2$ the derivative is
-$2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
-$x=2$ its slope will also be 4 like in the image at right.
-
 Earlier we looked at the line $y=2x+1$ and we got the slope 2 from any
 $\frac{\Delta y}{\Delta x}$ ratio, but derivatives are
 $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$, so the
@@ -214,9 +223,9 @@ math:
     \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} \
     &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
     &= \lim_{h\to0} \frac{(2(x+h)+1)-(2x+1)}{h}
-    &= \lim_{h\to0} \frac{2(x+h)+1-2x-1}{h}
-    &= \lim_{h\to0} \frac{2x+2h+1-2x-1}{h}
-    &= \lim_{h\to0} \frac{2h}{h}
+    &= \lim_{h\to0} \frac{2(x+h)\rcancel{+1}-2x\rcancel{-1}}{h}
+    &= \lim_{h\to0} \frac{\rcancel{2x}+2h\rcancel{-2x}}{h}
+    &= \lim_{h\to0} \frac{2\rcancel h}{\rcancel h}
     &= 2
 
 Note how $x$ disappeared: the derivative of $x^2$ is $2x$, but the derivative
@@ -242,7 +251,7 @@ graybox:
     It doesn't make sense either, but ``dy`` is much less typing than
     ``deltay``.
 
-&nbsp;
+<p></p>
 
 graybox: Exercise
     Prove that the derivative of $sx+c$ is always $s$ by plugging in
@@ -285,8 +294,8 @@ math:
 math:
     \frac{d}{dx} x = 1
 
-* The derivative of any constant (e.g. 3) is 0 because a line like $y=3$ is
-  horizontal and it has slope 0. Again, you can check with the definition of
+* The derivative of any constant (e.g. 3) is $0$ because a line like $y=3$ is
+  horizontal and it has slope $0$. Again, you can check with the definition of
   derivative.
 
 math:
@@ -320,6 +329,17 @@ code: python3
     12⋅x + 7
 
 Here "diff" is short for "differentiate", and it means finding a derivative.
+
+code:
+    <Akuli>        theelous3, >>> diff(x**2)
+    <theelous3>    that is nice
+    <theelous3>    oh :P
+    <theelous3>    nice
+    <Akuli>        yeah
+    <Akuli>        hmm
+    <Akuli>        i expected you to be like oh shit why did we do all this by hand
+    <theelous3>    nah
+    <theelous3>    would learn nothing just doing this
 
 ## Some History
 
@@ -470,3 +490,42 @@ canvasdemo:
        }
      });
    });
+
+## More about theelous3
+
+This chapter contains a few bits of an old conversation with me and
+[theelous3](https://theelous3.net/) I found from my IRC logs. I enjoyed reading
+it afterwards a lot; it's nice to teach people stuff that I find fun, and it's
+*awesome* when the learner also enjoys it.
+
+Even though math and programming are separate things and you need very little
+math for programming, some concepts he had learned from Python helped him
+understand math stuff.
+
+code:
+    <theelous3>    so the height of x, or x's "y", can be described as
+                   f(x), where f = lambda x: x**2
+
+theelous3 wasn't very confident at first...
+
+code:
+    <darkf>        Are we doing calculus
+    <Akuli>        darkf, theelous3 is learning what a derivative is
+    <theelous3>    darkf: we're improving my 8 year old's math skills
+
+...and he struggled with stuff that was very easy to me...
+
+code:
+    <theelous3>    (x**2 + 2hx + h**2) - x**2 / h
+    <theelous3>    ?
+    <Akuli>        theelous3, great you're making progress :D
+    <Akuli>        theelous3 learns fast
+    <Akuli>        theelous3, keep tidying it and try to get rid of the /h
+    <theelous3>    idk how to do that, but I'll wing it
+    <Akuli>        ok :)
+    <Akuli>        you can start by removing the parentheses
+
+...but he learned stuff surprisingly fast, and he enjoyed it.
+
+code:
+    <theelous3>    I had math fun for the first time ever

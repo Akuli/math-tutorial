@@ -123,17 +123,18 @@ indent:
     * $\frac{d}{dx}(f(x)-g(x))=f'(x)-g'(x)$
 
     Let's start by proving the $+$ thing with the definition of derivative.
-    It's kind of messy, but it works.
+    It's kind of messy, but it works. I'll color $f$'s with blue and $g$'s with
+    green so the mess should be a bit less unreadable.
 
     math:
-        \frac{d}{dx}(f(x)+g(x)) \
-        &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h}
-        &= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h}
-        &= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h}
-        &= \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)+\bigl(g(x+h)-g(x)\bigr)}{h}
-        &= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}+\frac{g(x+h)-g(x)}{h}\right)
-        &= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)+\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
-        &= f'(x) + g'(x)
+        \frac{d}{dx}(\blue{f(x)}+\green{g(x)}) \
+        &= \lim_{h\to0} \frac{(\blue{f(x+h)}+\green{g(x+h)})-(\blue{f(x)}+\green{g(x)})}{h}
+        &= \lim_{h\to0} \frac{\blue{f(x+h)}+\green{g(x+h)}-\blue{f(x)}-\green{g(x)}}{h}
+        &= \lim_{h\to0} \frac{\blue{f(x+h)}-\blue{f(x)}+\green{g(x+h)}-\green{g(x)}}{h}
+        &= \lim_{h\to0} \frac{\bigl(\blue{f(x+h)}-\blue{f(x)}\bigr)+\bigl(\green{g(x+h)}-\green{g(x)}\bigr)}{h}
+        &= \lim_{h\to0} \left(\frac{\blue{f(x+h)}-\blue{f(x)}}{h}+\frac{\green{g(x+h)}-\green{g(x)}}{h}\right)
+        &= \left(\lim_{h\to0}\frac{\blue{f(x+h)}-\blue{f(x)}}{h}\right)+\left(\lim_{h\to0}\frac{\green{g(x+h)}-\green{g(x)}}{h}\right)
+        &= \blue{f'(x)} + \green{g'(x)}
 
     We can prove the minus thing using stuff that we have proved earlier:
 
@@ -147,13 +148,14 @@ indent:
 ### $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$
 
 indent:
-    Let's first assume that $g(x+h) \ne g(x)$ with a small $h$;
-    that is, $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. We'll do
-    the $g(x+h)=g(x)$ case separately.
+    Let's first assume that $g(x+h) \ne g(x)$ with a small $h$; that is,
+    $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. This means that we can divide
+    stuff by $g(x+h)-g(x)$. We'll do the $g(x+h)=g(x)$ case separately.
 
     math:
         \frac{d}{dx} f(g(x)) \
         &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
+        &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{h} \cdot \frac{g(x+h)-g(x)}{g(x+h)-g(x)}\right)
         &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
                               \frac{g(x+h)-g(x)}{h} \right)
         &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) \
@@ -217,27 +219,26 @@ indent:
 ### $\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$
 
 indent:
-    This is messy, but it works.
+    Plugging into the definition of derivative gives this:
 
     math:
-        &  \frac{d}{dx} (f(x)g(x))
-        =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}
-        =& \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0} \
-                            +f(x+h)g(x+h)-f(x)g(x)}{h}
-        =& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h}
-        =& \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h}
-        =& \lim_{h\to0} \left( \
-            \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h} \
-            + \frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \right)
-        =& \lim_{h\to0} \left( \
-         \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h} \
-        \right)
-        =& \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right) \
-            + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right)
-        =& \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right) \
-        \left(\lim_{h\to0}g(x+h)\right) \
-        + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
-        =& f'(x)g(x) + f(x)g'(x)
+        \frac{d}{dx}(f(x)g(x)) = \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}
+
+    If the top was slightly different, we could just group it nicely.
+
+    math: f(x+h)g(x+h)-f(x)g(x+h)=\bigl(f(x+h)-f(x)\bigr)g(x+h)
+
+    We have $-f(x)g(x)$ instead of $-f(x)g(x+h)$, but we can just put a
+    $-f(x)g(x+h)$ there if we add $f(x)g(x+h)$ to cancel it out. The blue part
+    is zero:
+
+    math:
+        \frac{d}{dx} (f(x)g(x)) \
+        &= \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}
+        &= \lim_{h\to0} \frac{f(x+h)g(x+h)\blue{-f(x)g(x+h)+f(x)g(x+h)}-f(x)g(x)}{h}
+        &= \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h}
+        &= \lim_{h\to0} \left(\frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h}+\frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h}\right)
+        &= \left(\lim_{h\to0} \frac{f(x+h)-f(x)}{h}\right)\left(\lim_{h\to0}g(x+h)\right)+f(x)\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)
 
 ### $\frac{d}{dx} x^c = c\ x^{c-1}$
 
@@ -267,8 +268,8 @@ indent:
         &= \frac{d}{dx} (x \cdot x^k)
         &= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right)
         &= 1x^k + x \cdot k x^{k-1}
-        &= 1x^k + kx^1x^{k-1}
-        &= 1x^k + kx^k
+        &= 1x^k + k\cdot x^{k-1}x^1
+        &= 1x^k + kx^{k\rcancel{-1}\rcancel{+1}}
         &= (1+k)x^k
         &= (k+1)x^{(k+1)-1}
 
@@ -320,8 +321,8 @@ indent:
                                 h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
         &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}\ \bigr)^2-\bigl(\sqrt x\ \bigr)^2}{ \
                             h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
-        &= \lim_{h\to0} \frac{(x+h)-x}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
-        &= \lim_{h\to0} \frac{h}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
+        &= \lim_{h\to0} \frac{(\rcancel x+h)\rcancel{-x}}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
+        &= \lim_{h\to0} \frac{\rcancel h}{\rcancel h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)}
         &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x}
         &= \frac{1}{\sqrt x + \sqrt x}
         &= \frac{1}{2\ \sqrt x}
@@ -342,8 +343,8 @@ indent:
         &= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h}
         &= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h}
         &= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh}
-        &= \lim_{h\to0} \frac{x-x-h}{(x+h)xh}
-        &= \lim_{h\to0} \frac{-h}{(x+h)xh}
+        &= \lim_{h\to0} \frac{\rcancel{x-x}-h}{(x+h)xh}
+        &= \lim_{h\to0} \frac{-\rcancel h}{(x+h)x\rcancel h}
         &= \lim_{h\to0} \frac{-1}{(x+h)x}
         &= \frac{-1}{x^2}
 
