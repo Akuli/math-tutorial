@@ -6,7 +6,6 @@
 <title>Infinity</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -161,7 +169,7 @@ question</a>:</p>
 
 $$\begin{align}\frac{1+1+1+...}{2+2+2+...}=\frac{(1+1)+(1+1)+...}{2+2+2+2+...}=\frac{2+2+2+...}{2+2+2+...}\end{align}$$</div><h3 id="displaystyle-frac-0-0">$\displaystyle\frac 0 0$<a class="headerlink" href="#displaystyle-frac-0-0" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging in $x=0$ gives $\frac 0 0$ in these examples.</p>
 
-$$\begin{align}\lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2\end{align}$$$$\begin{align}\lim_{x\to0}\frac{x}{2x} = \lim_{x\to0} \frac 1 2 = \frac 1 2\end{align}$$<p>See also <a href="https://www.youtube.com/watch?v=BRRolKTlF6Q">this video</a>.
+$$\begin{align}\lim_{x\to0}\frac{x}{2x} = \lim_{x\to0} \frac 1 2 = \frac 1 2\end{align}$$$$\begin{align}\lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2\end{align}$$<p>See also <a href="https://www.youtube.com/watch?v=BRRolKTlF6Q">this video</a>.
 </p>
 
 </div><h3 id="0-cdot-infty">$0 \cdot \infty$<a class="headerlink" href="#0-cdot-infty" title="Link to this title">¶</a></h3><div class="indent"><p>This one is interesting because 0 multiplied by anything finite is 0, and
@@ -172,7 +180,7 @@ $$\begin{align}\lim_{x\to\infty}(0 \cdot x) = 0\end{align}$$$$\begin{align}\lim_
 $1^x=1$ for any finite $x$ (multiplying 1 by itself $x$ times is still 1).
 Even though this limit is 1...</p>
 
-$$\begin{align}\lim_{x\to\infty}1^x = \lim_{x\to\infty} 1 = 1\end{align}$$<p>...it doesn't mean that all $1^\infty$ limits are 1. Here's a famous
+$$\begin{align}\lim_{x\to\infty}1^x = 1\end{align}$$<p>...it doesn't mean that all $1^\infty$ limits are 1. Here's a famous
 example that we'll revisit <a href="explog.html#the-e-constant">later</a>:</p>
 
 $$\begin{align}e = \lim_{n\to\infty} \left(1+\frac 1 n\right)^n = 2.718281828459...\end{align}$$<p>This number is called $e$. The inside of the limit goes to 1 because
@@ -208,8 +216,8 @@ x &= x \cdot x^0\end{align}$$<p>This is true if $x=0$, and if $x \ne 0$, we can 
 to get $1=x^0$. So here's our conclusion: $x^0=1$ for any finite $x$ except
 $x=0$ and we know nothing about $0^0$ yet.</p>
 
-<p>On the other hand, multiplying 0 by itself many times is still 0, so $0^x$
-is $0$ with any positive $x$. We get these limits:</p>
+<p>On the other hand, multiplying $0$ by itself many times is still $0$, so
+$0^x=0$ with any positive $x$. We get these limits:</p>
 
 $$\begin{align}\lim_{x\to0^+} 0^x = 0\end{align}$$$$\begin{align}\lim_{x\to0} x^0 = 1\end{align}$$<p>Most programming languages do $0^0 = 1$ because it's handy in some cases.
 </p>

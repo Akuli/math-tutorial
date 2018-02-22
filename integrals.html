@@ -6,7 +6,6 @@
 <title>Integrals</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -37,7 +45,7 @@ itself just amazing.</p>
 
 <h2 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Link to this title">¶</a></h2><p>Here's a picture of a few areas:</p>
 
-<p><img width="709" height="240" class="asymptote" src="asymptote/88d3349b3334c96021479da1deec3e8e.svg" /></p><p>The first two areas are easy to calculate and everything is quite
+<p><img width="421" height="425" class="asymptote" src="asymptote/703dba94d30f32067b9800805c88c81c.svg" /></p><p>The first two areas are easy to calculate and everything is quite
 self-explanatory, but how the heck are we going to do the third one?</p>
 
 <img width="283" height="123" class="asymptote" src="asymptote/2ea5288a9d6e3dc2827f56ee961fe4a4.svg" style="float:right;" /><p id="noob-rectangles">If this was a question on a codeacademy-like noob programming site you would
@@ -78,8 +86,8 @@ couple different ways:</p>
 
 $$\begin{align}A(x+\Delta x)-A(x) &\approx f(x)\Delta x \\
 \frac{A(x+\Delta x)-A(x)}{\Delta x} &\approx f(x)\end{align}$$<p>The thinner the slice is, the smaller the red triangle-ish area is
-compared to the entire slice area. So, if we make the slice <i>infinitely</i>
-thin, we don't need to care about the red area:</p>
+compared to the entire slice area. So, if we make the slice <b>really</b> thin
+with a limit, we don't need to care about the red area:</p>
 
 $$\begin{align}\lim_{\Delta x \to 0} \frac{A(x+\Delta x)-A(x)}{\Delta x} &= f(x) \\
 A'(x) &= f(x)\end{align}$$<p>Yes, this is correct! The derivative of the area function is $f$. This
@@ -104,7 +112,7 @@ know that $F(x) = \sqrt x + C$ where $C$ is a constant.</p>
 <img width="216" height="255" class="asymptote" src="asymptote/4e566f9d76f624b312de8b34b0acd30a.svg" style="float:right;" /><p>Let's try to calculate our area:</p>
 
 $$\begin{align}F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
-            &= \sqrt b + C - \sqrt a - C \\
+            &= \sqrt b \rcancel{+C} - \sqrt a \rcancel{-C} \\
             &= \sqrt b - \sqrt a \\
             &= \sqrt 2 - \sqrt 1 \\
             &= \sqrt 2 - 1 \\
@@ -155,7 +163,10 @@ rules</a> on the summary page.</p>
 the derivative of $\sqrt x$, but with the summary page we can also integrate
 stuff like $\frac{1}{\sqrt x}$:</p>
 
-$$\begin{align}\int \frac{1}{\sqrt x}\ dx  = \int 2 \frac{1}{2 \sqrt x}\ dx  = 2 \int \frac{1}{2 \sqrt x}\ dx  = 2 \sqrt x + C\end{align}$$$$\begin{align}\frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}\end{align}$$<p>We can also do $\sqrt x$ but we need to know that
+$$\begin{align}\int \frac{1}{\sqrt x}\ dx  = \int 2 \frac{1}{2 \sqrt x}\ dx  = 2 \int \frac{1}{2 \sqrt x}\ dx  = 2 \sqrt x + C\end{align}$$$$\begin{align}\frac{d}{dx}(2 \sqrt x + C) = 2 \frac{1}{2 \sqrt x} + 0 = \frac{1}{\sqrt x}\end{align}$$<p>Note that we can add $+C$ instead of $+2C$; $C$ is a constant, so $2C$ is also
+a constant and we can just say that the total constant is $C$ instead of $2C$.</p>
+
+<p>We can also do $\sqrt x$ but we need to know that
 $\frac{1}{3/2} = \frac{2}{3}$. This is easy to check like this:</p>
 
 $$\begin{align}\frac{1}{\ \frac 3 2 \ } = \frac{1 \cdot 2}{\frac 3 2 \cdot 2} = \frac 2 3\end{align}$$<p>Let's do this.</p>
@@ -166,7 +177,7 @@ $$\begin{align}\int \sqrt x\ dx &= \int x^{1/2}\ dx \\
 &= \frac 1 {\ \frac 3 2\ } x\sqrt x + C \\
 &= \frac 2 3 x\sqrt x + C\end{align}$$$$\begin{align}\frac{d}{dx} \left( \frac 2 3 x \sqrt x + C \right)  &= \frac 2 3 \cdot \frac{d}{dx}(x \sqrt x) + 0 \\
 &= \frac 2 3 \cdot \frac{d}{dx}(x^{1/2+1}) \\
-&= \frac 2 3 \cdot \left(\frac 1 2 + 1\right) x^{1/2} \\
+&= \frac 2 3 \cdot \left(\frac 1 2 + 1\right) x^{1/2\rcancel{+1}\rcancel{-1}} \\
 &= \frac 2 3 \cdot \frac 3 2 \cdot \sqrt x \\
 &= \sqrt x\end{align}$$<h2 id="integrating-with-python">Integrating with Python<a class="headerlink" href="#integrating-with-python" title="Link to this title">¶</a></h2><p>Of course, <a href="http://www.sympy.org">sympy</a> does integrals really nicely.
 It doesn't add $+C$ for some reason, so you need to remember it
@@ -234,8 +245,7 @@ $$\begin{align}A(\tau r) = \frac{r \tau r}{2}+0 = \frac 1 2 \tau r^2 = \pi r^2\e
 do this:</p>
 
 $$\begin{align}A(\tau r)-A(0) &= \left(\frac{r\cdot\tau r}{2}+C\right)-\left(\frac{r\cdot0}{2}+C\right) \\
-    &= \frac 1 2 \tau r^2 +C-0-C \\
-    &= \frac 1 2 \tau r^2 = \pi r^2\end{align}$$<p>In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
+    &= \frac 1 2 \tau r^2 \rcancel{+C}\rcancel{-0}\rcancel{-C}=\pi r^2\end{align}$$<p>In general, if you see something like $\frac 1 2 r^2$ it's possibly the result
 of some integration because $\frac{d}{dr} \left( \frac 1 2 r^2 \right) = r$.
 The $\pi r^2$ form kind of hides the integration because $\pi = \frac 1 2 \tau$,
 but rewriting it with $\tau$ makes everything clear. On the other hand,

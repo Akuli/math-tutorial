@@ -6,7 +6,6 @@
 <title>Geometry and Trig</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -79,6 +87,10 @@ $\tau=2\pi$.</p>
 turn. Here ° is the degree symbol, and 360 is a number that people ended up
 using for historical reasons.</p>
 
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;Zaab1t&gt;     Akuli: is 360 really arbitrarily picked
+&lt;Akuli&gt;      i don&#39;t know or care really
+&lt;Akuli&gt;      is 12 hours arbitarily picked
+</pre></div>
 <p>We already know that 360 degrees is $\tau$ radians, but let's figure out how to
 convert $D$ degrees to $R$ radians. One degree is $\frac{1}{360}$ turns, so $D$
 degrees is $D \cdot \frac{1}{360}=\frac{D}{360}$ turns. Similarly, $R$ radians
@@ -208,13 +220,13 @@ start the game and then use arrow keys to move the paddle.</p>
 const TAU = 2*Math.PI;
 
 /* handy things:
-    * paddle.centerx - paddle.length/2  x coordinate of left edge
-    * paddle.centerx + paddle.length/2  x coordinate of right edge
-    * screen.height - paddle.thickness  y coordinate of top edge
-    * screen.height                     y coordinate of bottom edge
+    paddle.centerx - paddle.length/2    x coordinate of left edge
+    paddle.centerx + paddle.length/2    x coordinate of right edge
+    screen.height - paddle.thickness    y coordinate of top edge
+    screen.height                       y coordinate of bottom edge
 */
 var paddle = {
-  // centerx and top are added later
+  // centerx is added later
   length: 200,
   thickness: 15,
   speed: 10,
@@ -222,16 +234,15 @@ var paddle = {
 };
 
 /* handy things:
-    * ball.centerx - ball.radius    x coordinate of left edge
-    * ball.centerx + ball.radius    x coordinate of right edge
-    * ball.centery - ball.radius    y coordinate of top edge
-    * ball.centery + ball.radius    y coordinate of bottom edge
+    ball.centerx - ball.radius      x coordinate of left edge
+    ball.centerx + ball.radius      x coordinate of right edge
+    ball.centery - ball.radius      y coordinate of top edge
+    ball.centery + ball.radius      y coordinate of bottom edge
 */
 var ball = {
-  // centerx, centery and angle are added later
+  // centerx, centery, angle and moving are added later
   radius: 10,
   speed: 10,
-  moving: false,
 };
 
 function resetGame() {
@@ -313,13 +324,13 @@ runRepeatedly(function() {
 <span style="color: #007020; font-weight: bold">const</span> TAU <span style="color: #666666">=</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #007020">Math</span>.PI;
 
 <span style="color: #60a0b0; font-style: italic">/* handy things:</span>
-<span style="color: #60a0b0; font-style: italic">    * paddle.centerx - paddle.length/2  x coordinate of left edge</span>
-<span style="color: #60a0b0; font-style: italic">    * paddle.centerx + paddle.length/2  x coordinate of right edge</span>
-<span style="color: #60a0b0; font-style: italic">    * screen.height - paddle.thickness  y coordinate of top edge</span>
-<span style="color: #60a0b0; font-style: italic">    * screen.height                     y coordinate of bottom edge</span>
+<span style="color: #60a0b0; font-style: italic">    paddle.centerx - paddle.length/2    x coordinate of left edge</span>
+<span style="color: #60a0b0; font-style: italic">    paddle.centerx + paddle.length/2    x coordinate of right edge</span>
+<span style="color: #60a0b0; font-style: italic">    screen.height - paddle.thickness    y coordinate of top edge</span>
+<span style="color: #60a0b0; font-style: italic">    screen.height                       y coordinate of bottom edge</span>
 <span style="color: #60a0b0; font-style: italic">*/</span>
 <span style="color: #007020; font-weight: bold">var</span> paddle <span style="color: #666666">=</span> {
-  <span style="color: #60a0b0; font-style: italic">// centerx and top are added later</span>
+  <span style="color: #60a0b0; font-style: italic">// centerx is added later</span>
   length<span style="color: #666666">:</span> <span style="color: #40a070">200</span>,
   thickness<span style="color: #666666">:</span> <span style="color: #40a070">15</span>,
   speed<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
@@ -327,16 +338,15 @@ runRepeatedly(function() {
 };
 
 <span style="color: #60a0b0; font-style: italic">/* handy things:</span>
-<span style="color: #60a0b0; font-style: italic">    * ball.centerx - ball.radius    x coordinate of left edge</span>
-<span style="color: #60a0b0; font-style: italic">    * ball.centerx + ball.radius    x coordinate of right edge</span>
-<span style="color: #60a0b0; font-style: italic">    * ball.centery - ball.radius    y coordinate of top edge</span>
-<span style="color: #60a0b0; font-style: italic">    * ball.centery + ball.radius    y coordinate of bottom edge</span>
+<span style="color: #60a0b0; font-style: italic">    ball.centerx - ball.radius      x coordinate of left edge</span>
+<span style="color: #60a0b0; font-style: italic">    ball.centerx + ball.radius      x coordinate of right edge</span>
+<span style="color: #60a0b0; font-style: italic">    ball.centery - ball.radius      y coordinate of top edge</span>
+<span style="color: #60a0b0; font-style: italic">    ball.centery + ball.radius      y coordinate of bottom edge</span>
 <span style="color: #60a0b0; font-style: italic">*/</span>
 <span style="color: #007020; font-weight: bold">var</span> ball <span style="color: #666666">=</span> {
-  <span style="color: #60a0b0; font-style: italic">// centerx, centery and angle are added later</span>
+  <span style="color: #60a0b0; font-style: italic">// centerx, centery, angle and moving are added later</span>
   radius<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
   speed<span style="color: #666666">:</span> <span style="color: #40a070">10</span>,
-  moving<span style="color: #666666">:</span> <span style="color: #007020; font-weight: bold">false</span>,
 };
 
 <span style="color: #007020; font-weight: bold">function</span> resetGame() {
@@ -414,7 +424,7 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
   });
 });
 </pre></div>
-<p>&nbsp;</p>
+<p><p></p></p>
 
 <div class="box graybox"><h2> Exercise</h2><p>A part of my game works similarly to this pseudocode:</p>
 

@@ -6,7 +6,6 @@
 <title>The Basics</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -23,11 +31,17 @@
 <body>
 <div id="content">
 <div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
-<h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This tutorial assumes that you know most of these things. If you don't, that's
-not a problem at all and you can just <b>keep this page open</b> while you read
-other chapters.</p>
+<h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This chapter contains all kinds of boring basic stuff that you need in rest of
+this tutorial. If you don't remember everything in this chapter, that's not a
+problem at all and you can just <b>keep this page open</b> while you read other
+chapters.</p>
 
-<h2 id="variables">Variables<a class="headerlink" href="#variables" title="Link to this title">¶</a></h2><p>Mathematicians use single-letter variable names because math was
+<div class="box graybox"><h2> See Also</h2><p><a href="http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf">This cheat sheet</a>
+is nice and concise, and you might find it easier to find things from than
+this chapter.
+</p>
+
+</div><h2 id="variables">Variables<a class="headerlink" href="#variables" title="Link to this title">¶</a></h2><p>Mathematicians use single-letter variable names because math was
 originally written on paper by hand and writing long things by hand
 sucks. There are a few exceptions though; for example, $\sin$ and $\cos$
 are functions with 3-letter names. (I don't assume that you know
@@ -43,8 +57,7 @@ because $x+1$ gets different values depending on what $x$ is.
 
 <h2 id="equality-and-stuff">Equality and stuff<a class="headerlink" href="#equality-and-stuff" title="Link to this title">¶</a></h2><p>I'm quite sure you know or you can guess what $a=b$, $a \ne b$, $a>b$,
 $a \ge b$, $a < b$, $a \le b$ and $a \approx b$ mean so I won't explain
-those.
-</p>
+those.</p>
 
 <h2 id="2b2c202d">+, -<a class="headerlink" href="#2b2c202d" title="Link to this title">¶</a></h2><p>Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
 and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.</p>
@@ -87,33 +100,39 @@ aren't. For example, if we have $\frac 1 2 \cdot 3 \cdot \frac 4 5$ we know
 that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
 lines but other numbers weren't.</p>
 
-<p id="divide-top-and-bottom">Dividing the top and bottom by something does not change the value. For example:
+<p id="divide-top-and-bottom">Dividing the top and bottom by something does not change the value. For
+example:
 </p>
 
-$$\begin{align}\frac 6 4 = \frac{6/2}{4/2} = \frac 3 2\end{align}$$$$\begin{align}\frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}\end{align}$$<p>Of course, you can also do this backwards and multiply the top and bottom by
-something.</p>
+$$\begin{align}\frac 6 4 = \frac{6/2}{4/2} = \frac 3 2\end{align}$$$$\begin{align}\frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}\end{align}$$<p>This is often written with cancellation lines, like
+$\displaystyle\frac{\rcancel x}{(a+b)\rcancel x}$.</p>
 
-<p id="zerodivision">Remember that you cannot divide anything by zero. See
-<a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome zero video</a> if you're
-wondering why.
+<p>You can also go backwards and multiply top and bottom by something.</p>
+
+$$\begin{align}\frac{1}{a+b} = \frac{x}{ax+bx}\end{align}$$<p>Here's an easy way to check that these things work:</p>
+
+$$\begin{align}\frac{ac}{bc} = \frac a b \cdot \frac c c = \frac a b \cdot 1 = \frac a b\end{align}$$$$\begin{align}\frac{a/c}{b/c} = \frac{a\cdot\frac1c}{b\cdot\frac1c} = \frac a b\end{align}$$<p id="zerodivision">Remember that you cannot divide anything by zero. See <a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome
+zero video</a> if you're wondering why.
 </p>
 
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;laplous3&gt;   when you divide by 0 you get theelous3
+&lt;laplous3&gt;   it&#39;s a sort of math black hole
+</pre></div>
 <p>If something is below <i>two</i> division lines, then you can move it to top:</p>
 
-$$\begin{align}\frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{\ \frac{bc}{c}\ } = \frac{ac}{b}\end{align}$$<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
+$$\begin{align}\frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{b\frac c c\ } = \frac{ac}{b}\end{align}$$<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
 -'s cancel out.
 </p>
 
-$$\begin{align}2 \cdot (-2) = -(2 \cdot 2) = -4\end{align}$$$$\begin{align}(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4\end{align}$$$$\begin{align}\frac{-3}{-4} = \frac{(-1) \cdot 3}{(-1) \cdot 4} = \frac 3 4\end{align}$$<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
+$$\begin{align}2 \cdot (-2) = -(2 \cdot 2) = -4\end{align}$$$$\begin{align}(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4\end{align}$$$$\begin{align}\frac{-3}{-4} = \frac{\rcancel{(-1)}\cdot 3}{\rcancel{(-1)}\cdot 4} = \frac 3 4\end{align}$$<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
 <code>Math.abs(x)</code> in most programming languages. It's easiest to think of the
 absolute value as stripping off the minus sign. For example, $|2| = 2$ and
-$|-3| = 3$.
-</p>
+$|-3| = 3$.</p>
 
 <h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p>$x^y$ is <code>x**y</code> or <code>pow(x, y)</code> and $\sqrt x$ is <code>sqrt(x)</code> in most
 programming languages.</p>
 
-$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}}           = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ pcs}}           = x^a x^b\end{align}$$$$\begin{align}(x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}}             \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}}          = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}}          = x^{ab}\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}\sqrt x = x^\frac 1 2\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="square-negative-cancel">The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
+$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ times}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ times}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ times}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ times}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ times}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ times}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ times}}           = \underbrace{x \cdot...\cdot x}_{a\text{ times}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ times}}           = x^a x^b\end{align}$$$$\begin{align}x^{ab} = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{times}}         = \overbrace{\underbrace{x^a}_{\substack{x\cdot x\cdot...\cdot x \\ a\text{ times}}}            \cdot x^a \cdot x^a \cdot x^a \cdot\ ...\ \cdot x^a}^{b\text{ times}}         = (x^a)^b\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}\sqrt x = x^{1/2}\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="square-negative-cancel">The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
 clear:
 </p>
 
@@ -124,7 +143,7 @@ graph</a>. This also explains the $\sqrt{x^2}=|x|$ rule.</p>
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
 $\sqrt 0 = 0$. No number produces a negative number when multiplied with
-itself, so you cannot do e.g. $\sqrt{-2}$.
+itself, so you cannot do e.g. $\sqrt{-1}$.
 </p>
 
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this title">¶</a></h2><p>Here's a typical math function:</p>
@@ -156,8 +175,7 @@ everything clear.</p>
 called $f$ or $g$ you should use $f(x)$, but you can do e.g. $\sin x$ or
 $\cos x$ with some "special" functions for historical reasons. This tutorial
 uses $\sin(x)$ and $\cos(x)$ everywhere because most programmers are familiar
-with that.
-</p>
+with that.</p>
 
 <h2 id="equations">Equations<a class="headerlink" href="#equations" title="Link to this title">¶</a></h2><p>For example, if you know that $2x+1 = 9$ you can find $x$ like this:</p>
 
@@ -179,7 +197,46 @@ with $\sqrt{\quad}$:</p>
 $$\begin{align}x^2 &= 4 \\
 \sqrt{x^2} &= \sqrt 4 \\
 |x| &= 2 \\
-x=2\ & \text{or}\ x=-2\end{align}$$<h2 id="areas">Areas<a class="headerlink" href="#areas" title="Link to this title">¶</a></h2><p>If you are a programmer you'll probably understand areas best as the
+x=2\ & \text{or}\ x=-2\end{align}$$<h2 id="proofs-and-stuff">Proofs and stuff<a class="headerlink" href="#proofs-and-stuff" title="Link to this title">¶</a></h2><p>This tutorial contains quite a few exercises that ask you to prove
+something.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;Zaab1t&gt;     if n is even
+&lt;Zaab1t&gt;     is a**n then equal to a**(n/2) * a**(n/2)
+&lt;Akuli&gt;      yes
+&lt;laplous3&gt;   on the surface that seems reasonable, but how do you actually
+             prove something like that?
+&lt;laplous3&gt;   &lt;- doesn&#39;t have a breeze what&#39;s involved in proving something
+&lt;laplous3&gt;   I mean, I suppose picking arbitrary numbers and showing it
+             works doesn&#39;t cut it right
+</pre></div>
+<p>It's easy to write a program in one's favorite programming language that goes
+through a big pile of $a$ and $n$ values and makes sure they satisfy
+$a^n = a^{n/2} \cdot a^{n/2}$, but <b>that is not a proof</b>. What if there
+exists some funny $a$ and $n$ values that break everything? It's very unlikely,
+but a <i>proof</i> of something like this works for any $a$ value and any even $n$
+value.</p>
+
+<p>Here's an example proof:</p>
+
+<div class="indent"><div class="indent"><p>$n$ is even, so $n/2$ is an integer and $a^{n/2}$ means $a$ multiplied by
+itself $n/2$ times. We get this:</p>
+
+$$\begin{align}a^{n/2} \cdot a^{n/2}  &= \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \cdot     \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \\
+&= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n/2\ +\ n/2\text{ times}} \\
+&= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n\text{ times}} \\
+&= a^n\end{align}$$</div></div><p>There it is. Note that we didn't plug in any values; we just did something that
+worked for any $a$ and any even $n$. Note that this proof assumes $n > 0$;
+something like multiplying $a$ by itself -2 times doesn't make much sense.
+We'll revisit negative exponents <a href="explog.html#exponent-functions">later</a>.</p>
+
+<p>Note that it's ok to prove $a^n = a^{n/2} \cdot a^{n/2}$ by starting at
+$a^{n/2} \cdot a^{n/2}$ and eventually getting to $a^n$. It's just as valid to
+start with $a^n$ and try to turn that into $a^{n/2} \cdot a^{n/2}$.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Prove that $(a+b)c = ac+bc$ if $c$ is a positive integer.
+</p>
+
+</div><h2 id="areas">Areas<a class="headerlink" href="#areas" title="Link to this title">¶</a></h2><p>If you are a programmer you'll probably understand areas best as the
 number of pixels in a shape. For example, if you create a GUI program
 that creates a 300 by 200 window, it contains $300 \cdot 200 = 60000$
 pixels.</p>
@@ -200,11 +257,7 @@ pixels would fit inside it.</p>
 
 <p>The $V=abc$ thing is actually just a special case of the $V=Ah$
 cylinder. The shape of the cylinder's base can be anything, and in the
-$abc$ thing the base area is $ab$ and the height is $c$.</p>
-
-<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Link to this title">¶</a></h2><p>This chapter shows only the things you need in the rest of this tutorial, but
-<a href="http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf">this cheat sheet</a>
-is more complete.
+$abc$ thing the base area is $ab$ and the height is $c$.
 </p>
 
 </div>

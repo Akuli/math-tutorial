@@ -6,7 +6,6 @@
 <title>More Derivatives</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -95,24 +103,26 @@ $$\begin{align}\frac{d}{dx} (6x^2+7x-123) = \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x
 
 <ul><li>$\frac{d}{dx}(f(x)+g(x))=f'(x)+g'(x)$</li><li>$\frac{d}{dx}(f(x)-g(x))=f'(x)-g'(x)$
 </li></ul><p>Let's start by proving the $+$ thing with the definition of derivative.
-It's kind of messy, but it works.</p>
+It's kind of messy, but it works. I'll color $f$'s with blue and $g$'s with
+green so the mess should be a bit less unreadable.</p>
 
-$$\begin{align}\frac{d}{dx}(f(x)+g(x))  &= \lim_{h\to0} \frac{(f(x+h)+g(x+h))-(f(x)+g(x))}{h} \\
-&= \lim_{h\to0} \frac{f(x+h)+g(x+h)-f(x)-g(x)}{h} \\
-&= \lim_{h\to0} \frac{f(x+h)-f(x)+g(x+h)-g(x)}{h} \\
-&= \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)+\bigl(g(x+h)-g(x)\bigr)}{h} \\
-&= \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}+\frac{g(x+h)-g(x)}{h}\right) \\
-&= \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)+\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
-&= f'(x) + g'(x)\end{align}$$<p>We can prove the minus thing using stuff that we have proved earlier:</p>
+$$\begin{align}\frac{d}{dx}(\blue{f(x)}+\green{g(x)})  &= \lim_{h\to0} \frac{(\blue{f(x+h)}+\green{g(x+h)})-(\blue{f(x)}+\green{g(x)})}{h} \\
+&= \lim_{h\to0} \frac{\blue{f(x+h)}+\green{g(x+h)}-\blue{f(x)}-\green{g(x)}}{h} \\
+&= \lim_{h\to0} \frac{\blue{f(x+h)}-\blue{f(x)}+\green{g(x+h)}-\green{g(x)}}{h} \\
+&= \lim_{h\to0} \frac{\bigl(\blue{f(x+h)}-\blue{f(x)}\bigr)+\bigl(\green{g(x+h)}-\green{g(x)}\bigr)}{h} \\
+&= \lim_{h\to0} \left(\frac{\blue{f(x+h)}-\blue{f(x)}}{h}+\frac{\green{g(x+h)}-\green{g(x)}}{h}\right) \\
+&= \left(\lim_{h\to0}\frac{\blue{f(x+h)}-\blue{f(x)}}{h}\right)+\left(\lim_{h\to0}\frac{\green{g(x+h)}-\green{g(x)}}{h}\right) \\
+&= \blue{f'(x)} + \green{g'(x)}\end{align}$$<p>We can prove the minus thing using stuff that we have proved earlier:</p>
 
 $$\begin{align}\frac{d}{dx}(f(x)-g(x))  &= \frac{d}{dx}\bigl(f(x)+(-g(x))\bigr) \\
 &= \frac{d}{dx}f(x)+\frac{d}{dx}(-g(x)) \\
 &= f'(x)+(-g'(x)) \\
-&= f'(x)-g'(x)\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that $g(x+h) \ne g(x)$ with a small $h$;
-that is, $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. We'll do
-the $g(x+h)=g(x)$ case separately.</p>
+&= f'(x)-g'(x)\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that $g(x+h) \ne g(x)$ with a small $h$; that is,
+$g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. This means that we can divide
+stuff by $g(x+h)-g(x)$. We'll do the $g(x+h)=g(x)$ case separately.</p>
 
 $$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+&= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{h} \cdot \frac{g(x+h)-g(x)}{g(x+h)-g(x)}\right) \\
 &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot                        \frac{g(x+h)-g(x)}{h} \right) \\
 &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right)     \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right) \\
 &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)\end{align}$$<img width="222" height="283" class="asymptote" src="asymptote/585c8328017deaacb5dfd811d8976d4a.svg" style="float:right;" /><p>Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
@@ -133,18 +143,19 @@ $$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} 
 &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right) \\
 &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
 &= f(g(x)) \cdot 0 \\
-&= 0\end{align}$$</div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>This is messy, but it works.</p>
+&= 0\end{align}$$</div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging into the definition of derivative gives this:</p>
 
-$$\begin{align}&  \frac{d}{dx} (f(x)g(x)) \\
-=& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
-=& \lim_{h\to0} \frac{\overbrace{f(x)g(x+h)-f(x)g(x+h)}^\text{this is 0}                      +f(x+h)g(x+h)-f(x)g(x)}{h} \\
-=& \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x+h)+f(x)g(x+h)-f(x)g(x)}{h} \\
-=& \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \\
-=& \lim_{h\to0} \left(      \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h}      + \frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \right) \\
-=& \lim_{h\to0} \left(   \frac{f(x+h)-f(x)}{h}g(x+h) + f(x)\frac{g(x+h)-g(x)}{h}  \right) \\
-=& \lim_{h\to0} \left(\frac{f(x+h)-f(x)}{h}g(x+h)\right)      + \lim_{h\to0}\left(f(x)\frac{g(x+h)-g(x)}{h}\right) \\
-=& \left(\lim_{h\to0}\frac{f(x+h)-f(x)}{h}\right)  \left(\lim_{h\to0}g(x+h)\right)  + f(x) \left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right) \\
-=& f'(x)g(x) + f(x)g'(x)\end{align}$$</div><h3 id="frac-d-dx-x-c-c-x-c-1">$\frac{d}{dx} x^c = c\ x^{c-1}$<a class="headerlink" href="#frac-d-dx-x-c-c-x-c-1" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual $c$ value. For example,
+$$\begin{align}\frac{d}{dx}(f(x)g(x)) = \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}\end{align}$$<p>If the top was slightly different, we could just group it nicely.</p>
+
+$$\begin{align}f(x+h)g(x+h)-f(x)g(x+h)=\bigl(f(x+h)-f(x)\bigr)g(x+h)\end{align}$$<p>We have $-f(x)g(x)$ instead of $-f(x)g(x+h)$, but we can just put a
+$-f(x)g(x+h)$ there if we add $f(x)g(x+h)$ to cancel it out. The blue part
+is zero:</p>
+
+$$\begin{align}\frac{d}{dx} (f(x)g(x))  &= \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h} \\
+&= \lim_{h\to0} \frac{f(x+h)g(x+h)\blue{-f(x)g(x+h)+f(x)g(x+h)}-f(x)g(x)}{h} \\
+&= \lim_{h\to0} \frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)+f(x)\bigl(g(x+h)-g(x)\bigr)}{h} \\
+&= \lim_{h\to0} \left(\frac{\bigl(f(x+h)-f(x)\bigr)g(x+h)}{h}+\frac{f(x)\bigl(g(x+h)-g(x)\bigr)}{h}\right) \\
+&= \left(\lim_{h\to0} \frac{f(x+h)-f(x)}{h}\right)\left(\lim_{h\to0}g(x+h)\right)+f(x)\left(\lim_{h\to0}\frac{g(x+h)-g(x)}{h}\right)\end{align}$$</div><h3 id="frac-d-dx-x-c-c-x-c-1">$\frac{d}{dx} x^c = c\ x^{c-1}$<a class="headerlink" href="#frac-d-dx-x-c-c-x-c-1" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual $c$ value. For example,
 our very first derivative example shows that $\frac{d}{dx} x^2 = 2x$, and
 $2x^{2-1}$ is also $2x$. Here I'll prove that this works with all positive
 integers using a powerful technique known as <b>induction</b>.</p>
@@ -166,8 +177,8 @@ $$\begin{align}\frac{d}{dx} x^{k+1} &= \frac{d}{dx} (x^k x^1) \\
 &= \frac{d}{dx} (x \cdot x^k) \\
 &= \left(\frac{d}{dx} x\right) \cdot x^k + x \cdot \left(\frac{d}{dx} x^k\right) \\
 &= 1x^k + x \cdot k x^{k-1} \\
-&= 1x^k + kx^1x^{k-1} \\
-&= 1x^k + kx^k \\
+&= 1x^k + k\cdot x^{k-1}x^1 \\
+&= 1x^k + kx^{k\rcancel{-1}\rcancel{+1}} \\
 &= (1+k)x^k \\
 &= (k+1)x^{(k+1)-1}\end{align}$$<p>We proved that if $\frac{d}{dx} x^k = k x^{k-1}$ then
 $\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}$. Now we know that the rule works
@@ -195,8 +206,8 @@ integers. Let's survive without it.</p>
 $$\begin{align}\frac{d}{dx} \sqrt x &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
 &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}-\sqrt x\ \bigr)                        \bigl(\sqrt{x+h}+\sqrt x\ \bigr)}{                          h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
 &= \lim_{h\to0} \frac{\bigl(\sqrt{x+h}\ \bigr)^2-\bigl(\sqrt x\ \bigr)^2}{                      h \cdot \bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
-&= \lim_{h\to0} \frac{(x+h)-x}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
-&= \lim_{h\to0} \frac{h}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
+&= \lim_{h\to0} \frac{(\rcancel x+h)\rcancel{-x}}{h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
+&= \lim_{h\to0} \frac{\rcancel h}{\rcancel h\cdot\bigl(\sqrt{x+h} + \sqrt x\ \bigr)} \\
 &= \lim_{h\to0} \frac{1}{\sqrt{x+h} + \sqrt x} \\
 &= \frac{1}{\sqrt x + \sqrt x} \\
 &= \frac{1}{2\ \sqrt x}\end{align}$$<p>You're probably wondering how the heck I knew that multiplying top and
@@ -212,8 +223,8 @@ $$\begin{align}\frac{d}{dx} (1/x) &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1 
 &= \lim_{h\to0} \frac{\frac{x}{(x+h)x} - \frac{x+h}{(x+h)x}}{h} \\
 &= \lim_{h\to0} \frac{\left(\frac{x-(x+h)}{(x+h)x}\right)}{h} \\
 &= \lim_{h\to0} \frac{x-(x+h)}{(x+h)xh} \\
-&= \lim_{h\to0} \frac{x-x-h}{(x+h)xh} \\
-&= \lim_{h\to0} \frac{-h}{(x+h)xh} \\
+&= \lim_{h\to0} \frac{\rcancel{x-x}-h}{(x+h)xh} \\
+&= \lim_{h\to0} \frac{-\rcancel h}{(x+h)x\rcancel h} \\
 &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
 &= \frac{-1}{x^2}\end{align}$$</div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
 

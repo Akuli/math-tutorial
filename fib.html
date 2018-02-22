@@ -6,7 +6,6 @@
 <title>Fibonacci Sequence</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -237,12 +245,12 @@ $$\begin{align}& \ (a-b)^2 \\
 <p>The $F_1=1$ thing is quite straight-forward to prove:</p>
 
 $$\begin{align}F_1 &= \frac{\varphi^1 - (1-\varphi)^1}{\sqrt 5} = \frac{\varphi - (1-\varphi)}{\sqrt 5} \\
-&= \frac{\varphi-1+\varphi}{\sqrt 5} = \frac{2\varphi - 1}{\sqrt 5} = \frac{2\frac{1+\sqrt 5}{2} - 1}{\sqrt 5} \\
-&= \frac{1+\sqrt5-1}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1\end{align}$$<p>We need the handy thing at right for $F_2=1$.</p>
+&= \frac{\varphi-1+\varphi}{\sqrt 5} = \frac{2\varphi - 1}{\sqrt 5} = \frac{\rcancel 2 \frac{1+\sqrt 5}{\rcancel 2} - 1}{\sqrt 5} \\
+&= \frac{\rcancel{1}+\sqrt5\rcancel{-1}}{\sqrt5} = \frac{\sqrt5}{\sqrt5} = 1\end{align}$$<p>We need the handy thing at right for $F_2=1$.</p>
 
 $$\begin{align}F_2 &= \frac{\varphi^2 - (1-\varphi)^2}{\sqrt 5} \\
 &= \frac{\varphi^2-(1^2-2\cdot1\cdot\varphi+\varphi^2)}{\sqrt 5} \\
-&= \frac{\varphi^2-1+2\varphi-\varphi^2}{\sqrt5} = \frac{2\varphi-1}{\sqrt5}\end{align}$$<p>We already figured out that this is 1 when proving that $F_1=1$.</p>
+&= \frac{\rcancel{\varphi^2}-1+2\varphi\rcancel{-\varphi^2}}{\sqrt5} = \frac{2\varphi-1}{\sqrt5}\end{align}$$<p>We already figured out that this is 1 when proving that $F_1=1$.</p>
 
 <p>If we can prove that $F_n + F_{n+1} = F_{n+2}$ for $n=1,2,3,...$, then we also
 have $F_n = F_{n-1} + F_{n-2}$ for $n=3,4,5,...$ which is what we need next.
@@ -250,12 +258,13 @@ In the beginning of this page we solved $x^n+x^{n+1}=x^{n+2}$ and we got the
 solutions $x=\varphi$, $x=1-\varphi$ and $x=0$, so we have these equations:</p>
 
 $$\begin{align}& \varphi^n + \varphi^{n+1} = \varphi^{n+2} \\
-& (1-\varphi)^n + (1-\varphi)^{n+1} = (1-\varphi)^{n+2}\end{align}$$<p>Now we're ready to go.</p>
+& (1-\varphi)^n + (1-\varphi)^{n+1} = (1-\varphi)^{n+2}\end{align}$$<p>Now we're ready to go. I'll color everything $F_n$ related in blue and
+everything $F_{n+1}$ related in green so you can see what happens to them.</p>
 
-$$\begin{align}F_n + F_{n+1} &= \frac{\varphi^n - (1-\varphi)^n}{\sqrt 5}                  + \frac{\varphi^{n+1} - (1-\varphi)^{n+1}}{\sqrt 5} \\
-&= \frac{\varphi^n - (1-\varphi)^n + \varphi^{n+1} - (1-\varphi)^{n+1}}{\sqrt 5} \\
-&= \frac{\varphi^n + \varphi^{n+1} - (1-\varphi)^n - (1-\varphi)^{n+1}}{\sqrt 5} \\
-&= \frac{\left(\varphi^n + \varphi^{n+1}\right)     - \left((1-\varphi)^n + (1-\varphi)^{n+1}\right)}{\sqrt 5} \\
+$$\begin{align}\blue{F_n} + \green{F_{n+1}}  &= \blue{\frac{\varphi^n - (1-\varphi)^n}{\sqrt 5}}                  + \green{\frac{\varphi^{n+1} - (1-\varphi)^{n+1}}{\sqrt 5}} \\
+&= \frac{\blue{\varphi^n-(1-\varphi)^n}+\green{\varphi^{n+1}-(1-\varphi)^{n+1}}}{\sqrt 5} \\
+&= \frac{\blue{\varphi^n}+\green{\varphi^{n+1}}-\blue{(1-\varphi)^n}-\green{(1-\varphi)^{n+1}}}{\sqrt 5} \\
+&= \frac{\left(\blue{\varphi^n}+\green{\varphi^{n+1}}\right)-\left(\blue{(1-\varphi)^n}+\green{(1-\varphi)^{n+1}}\right)}{\sqrt 5} \\
 &= \frac{\varphi^{n+2} - (1-\varphi)^{n+2}}{\sqrt 5} = F_{n+2}\end{align}$$</div>
 </body>
 </html>

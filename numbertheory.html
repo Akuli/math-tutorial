@@ -6,7 +6,6 @@
 <title>Number Theory</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -105,14 +113,13 @@ divisor = 15, n / divisor = 1.1333333333333333
 divisor = 16, n / divisor = 1.0625
 true
 </pre></div>
-<p>If $n$ is not a prime and it's divisible by some integer $a$, then the number
-$b=n/a$ is also an integer and $n=ab$. If we assume that $a>\sqrt n$ and
-$b>\sqrt n$, we get this:</p>
+<p>If $n$ is not a prime, we can write $n=ab$ where $a$ and $b$ are integers and
+$a,b\ge2$. If we assume that $a > \sqrt n$ and $b > \sqrt n$, we get this:</p>
 
-$$\begin{align}ab &> \sqrt n \sqrt n \\
-ab &> n\end{align}$$<p>But we just said that $n=ab$ and this doesn't work. Our assumption was false and
-we <b>know</b> that $a \le \sqrt n$ or $b \le \sqrt n$. So we don't actually need
-to check for divisibility with numbers that are bigger than $\sqrt n$:</p>
+$$\begin{align}ab & > \sqrt n \sqrt n \\
+ab & > n\end{align}$$<p>But we just said that $n=ab$ and this doesn't work. Our assumption was false and
+we <b>know</b> that $a \le \sqrt n$ or $b \le \sqrt n$. So if we check only numbers
+$\le \sqrt n$, we'll find $a$ or $b$:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> (<span style="color: #007020; font-weight: bold">var</span> divisor <span style="color: #666666">=</span> <span style="color: #40a070">2</span>; divisor <span style="color: #666666">&lt;=</span> <span style="color: #007020">Math</span>.sqrt(n); divisor<span style="color: #666666">++</span>) {
   ...
@@ -128,7 +135,8 @@ true
 <p>The code is a bit messier if your favorite programming language doesn't support
 C-style for loops. For example, Python's <code>math.sqrt(int(n))</code> returns the
 smallest integer that is $\le \sqrt n$, and <code>range(a, b)</code> doesn't go all the
-way to <code>b</code> by default so we also need a <code>+1</code>:</p>
+way to <code>b</code> by default so we also need a <code>+1</code>. We need an integer because
+<code>range</code> doesn't like floats.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> divisor <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">2</span>, <span style="color: #007020">int</span>(math<span style="color: #666666">.</span>sqrt(n))<span style="color: #666666">+</span><span style="color: #40a070">1</span>):
     <span style="color: #666666">...</span>
@@ -195,8 +203,8 @@ even though 2 is prime.</p>
 <p><p></p>             <!-- empty space hack --></p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Translate these <code>isprime()</code> functions to your favorite programming
-language and benchmark them. Try to optimize them if the results are not as
-good as you expected them to be.
+language and measure how fast they run. Try to optimize them if the results
+are not as good as you expected them to be.
 </p>
 
 </div><h2 id="hexadecimal-colors">Hexadecimal Colors<a class="headerlink" href="#hexadecimal-colors" title="Link to this title">¶</a></h2><p>You might have seen weird colors before, like <code>#ff0000</code> is somehow magically
@@ -206,16 +214,18 @@ this color notation.</p>
 <p>Let's start with an example. If we have a number like 2017, it really means this:</p>
 
 $$\begin{align}2017 &= 2 \cdot 1000 + 0 \cdot 100 + 1 \cdot 10 + 7 \\
-     &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0\end{align}$$<p>The idea with <b>hexadecimal</b> is that instead of using 10 as a magic number we
+     &= 2 \cdot 10^3 + 0 \cdot 10^2 + 1 \cdot 10^1 + 7 \cdot 10^0\end{align}$$<p>Here $10^0 = 1$; see <a href="explog.html#exponent-functions">this thing</a> for details.</p>
+
+<p>The idea with <b>hexadecimal</b> is that instead of using 10 as a magic number we
 use 16. That's why hexadecimal is also called <b>base 16</b>. But the problem is
 that we only have 10 digits, 0 to 9, so we borrow a few letters so that A=10,
 B=11, C=12, D=13, E=14 and F=15. For example:</p>
 
 $$\begin{align}\text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +                    \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
                &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
-               &= 51966\end{align}$$<p>Here 0x means heXadecimal. Mathematicians don't use it, but I used it here
-because it's very common in programming. Note that the first character is a
-zero, not the letter O.</p>
+               &= 51966\end{align}$$<p>Here 0x means heXadecimal. Note that the first character is a zero, not the
+letter O. Mathematicians don't use it, but I used it here because it's very
+common in programming.</p>
 
 <p>The sane way to calculate the last step is to use a programming interpreter or
 calculator of your choice. Don't try to do it by hand.</p>

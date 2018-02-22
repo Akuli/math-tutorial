@@ -6,7 +6,6 @@
 <title>Derivatives</title>
 
 <script type="text/x-mathjax-config">
-  // awesome, i have javascript inside html inside python
   MathJax.Hub.Config({
     extensions: ["tex2jax.js"],
     jax: ["input/TeX", "output/HTML-CSS"],
@@ -14,7 +13,16 @@
       inlineMath: [ ['$','$'] ],
       displayMath: [ ['$$','$$'] ],
     },
-    "HTML-CSS": { availableFonts: ["TeX"] }
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+      }
+    }
   });
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
@@ -85,8 +93,8 @@ $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$. This
 limit is known as the <b>derivative</b>.</p>
 
 <p>Let's find a formula for calculating derivatives. We'll do this for a general
-$y=f(x)$ graph instead of $y=x^2$, so we'll get something that is not limited
-to just $x^2$.</p>
+$y=f(x)$ graph where $f$ is a <a href="basics.html#functions">function</a> instead of
+$y=x^2$, so we'll get something that is not limited to just $x^2$.</p>
 
 <p><img width="340" height="295" class="asymptote" src="asymptote/715e866a23d6d654c8d568e4905169a3.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure that you
 fully understand it before moving on.</p>
@@ -109,26 +117,34 @@ $$\begin{align}& \ (x+h)^2 \\
 
 $$\begin{align}\lim_{\Delta x\to0} \frac{\Delta y}{\Delta x}  &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
 &= \lim_{h\to0} \frac{(x+h)^2-x^2}{h} \\
-&= \lim_{h\to0} \frac{x^2 + 2xh + h^2 - x^2}{h} \\
+&= \lim_{h\to0} \frac{\rcancel{x^2} + 2xh + h^2 \rcancel{- x^2}}{h} \\
 &= \lim_{h\to0} \frac{2xh + h^2}{h} \\
-&= \lim_{h\to0} \frac{(2x+h)h}{h} \\
+&= \lim_{h\to0} \frac{(2x+h)\rcancel h}{\rcancel h} \\
 &= \lim_{h\to0} (2x+h) \\
-&= 2x\end{align}$$<img width="139" height="283" class="asymptote" src="asymptote/70d42219b1c46cc9f2f1a3ae567da8ef.svg" style="float:right;" /><p>I think this is cool. We started with a complicated-looking thing but finally
-we arrived at just $2x$. What's more, the $2x$ is not just a random value we
-got out of a spooky calculation; for example, at $x=2$ the derivative is
-$2 \cdot 2 = 4$, so if we draw a straight line that barely touches $y=x^2$ at
-$x=2$ its slope will also be 4 like in the image at right.</p>
+&= 2x\end{align}$$<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;Akuli&gt;        so it&#39;s 2x
+&lt;Akuli&gt;        boom
+&lt;theelous3&gt;    oh shit
+&lt;Akuli&gt;        lol
+&lt;Akuli&gt;        i think this is cool
+&lt;theelous3&gt;    lmao, that&#39;s kinda awesome
+&lt;Akuli&gt;        right :) yeah
+</pre></div>
+<p>We started with a complicated-looking thing but finally we arrived at just
+$2x$. What's more, the $2x$ is not just a random value we got out of a spooky
+calculation; for example, at $x=2$ the derivative is $2 \cdot 2 = 4$, so if we
+draw a straight line that barely touches $y=x^2$ at $x=2$ its slope will also
+be 4. Like this:</p>
 
-<p>Earlier we looked at the line $y=2x+1$ and we got the slope 2 from any
+<p><img width="159" height="340" class="asymptote" src="asymptote/0af11447ea8d77419d6bcbf90faaeb70.svg" /></p><p>Earlier we looked at the line $y=2x+1$ and we got the slope 2 from any
 $\frac{\Delta y}{\Delta x}$ ratio, but derivatives are
 $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$, so the
 derivative of $2x+1$ should be 2. Let's see if that works:</p>
 
 $$\begin{align}y = f(x) = 2x+1\end{align}$$$$\begin{align}\lim_{\Delta x\to0} \frac{\Delta y}{\Delta x}  &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
 &= \lim_{h\to0} \frac{(2(x+h)+1)-(2x+1)}{h} \\
-&= \lim_{h\to0} \frac{2(x+h)+1-2x-1}{h} \\
-&= \lim_{h\to0} \frac{2x+2h+1-2x-1}{h} \\
-&= \lim_{h\to0} \frac{2h}{h} \\
+&= \lim_{h\to0} \frac{2(x+h)\rcancel{+1}-2x\rcancel{-1}}{h} \\
+&= \lim_{h\to0} \frac{\rcancel{2x}+2h\rcancel{-2x}}{h} \\
+&= \lim_{h\to0} \frac{2\rcancel h}{\rcancel h} \\
 &= 2\end{align}$$<p>Note how $x$ disappeared: the derivative of $x^2$ is $2x$, but the derivative
 of $2x+1$ is $2$ without any $x$. In other words, the derivative of $2x+1$ is
 the same with any $x$ value. This makes sense because straight lines have the
@@ -152,7 +168,7 @@ It doesn't make sense either, but <code>dy</code> is much less typing than
 <code>deltay</code>.
 </p>
 
-</div><p>&nbsp;</p>
+</div><p><p></p></p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Prove that the derivative of $sx+c$ is always $s$ by plugging in
 $f(x)=sx+c$ to the definition of derivative. Here $s$ and $c$ are
@@ -174,8 +190,8 @@ derivative. In these cases, we can use some handy-dandy rules:</p>
   example.
 </li></ul>$$\begin{align}\frac{d}{dx}(x^2) = 2x\end{align}$$<ul><li>The derivative of $x$ is 1 because the slope of the line $y=x$ is 1. You can
   also check this by plugging in $f(x)=x$ to the definition of derivative.
-</li></ul>$$\begin{align}\frac{d}{dx} x = 1\end{align}$$<ul><li>The derivative of any constant (e.g. 3) is 0 because a line like $y=3$ is
-  horizontal and it has slope 0. Again, you can check with the definition of
+</li></ul>$$\begin{align}\frac{d}{dx} x = 1\end{align}$$<ul><li>The derivative of any constant (e.g. 3) is $0$ because a line like $y=3$ is
+  horizontal and it has slope $0$. Again, you can check with the definition of
   derivative.
 </li></ul>$$\begin{align}\frac{d}{dx} 3 = 0\end{align}$$<p>That's quite a few rules, but they make this handy:</p>
 
@@ -202,6 +218,16 @@ this chapter.
 </pre></div>
 <p>Here "diff" is short for "differentiate", and it means finding a derivative.</p>
 
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;Akuli&gt;        theelous3, &gt;&gt;&gt; diff(x**2)
+&lt;theelous3&gt;    that is nice
+&lt;theelous3&gt;    oh :P
+&lt;theelous3&gt;    nice
+&lt;Akuli&gt;        yeah
+&lt;Akuli&gt;        hmm
+&lt;Akuli&gt;        i expected you to be like oh shit why did we do all this by hand
+&lt;theelous3&gt;    nah
+&lt;theelous3&gt;    would learn nothing just doing this
+</pre></div>
 <h2 id="some-history">Some History<a class="headerlink" href="#some-history" title="Link to this title">¶</a></h2><p><a href="https://en.wikipedia.org/wiki/Isaac_Newton">Newton</a> and
 <a href="https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz">Leibniz</a> discovered
 this derivative stuff independently, and they didn't exactly agree about which
@@ -353,6 +379,39 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
     }
   });
 });
+</pre></div>
+<h2 id="more-about-theelous3">More about theelous3<a class="headerlink" href="#more-about-theelous3" title="Link to this title">¶</a></h2><p>This chapter contains a few bits of an old conversation with me and
+<a href="https://theelous3.net/">theelous3</a> I found from my IRC logs. I enjoyed reading
+it afterwards a lot; it's nice to teach people stuff that I find fun, and it's
+<i>awesome</i> when the learner also enjoys it.</p>
+
+<p>Even though math and programming are separate things and you need very little
+math for programming, some concepts he had learned from Python helped him
+understand math stuff.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;theelous3&gt;    so the height of x, or x&#39;s &quot;y&quot;, can be described as
+               f(x), where f = lambda x: x**2
+</pre></div>
+<p>theelous3 wasn't very confident at first...</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;darkf&gt;        Are we doing calculus
+&lt;Akuli&gt;        darkf, theelous3 is learning what a derivative is
+&lt;theelous3&gt;    darkf: we&#39;re improving my 8 year old&#39;s math skills
+</pre></div>
+<p>...and he struggled with stuff that was very easy to me...</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;theelous3&gt;    (x**2 + 2hx + h**2) - x**2 / h
+&lt;theelous3&gt;    ?
+&lt;Akuli&gt;        theelous3, great you&#39;re making progress :D
+&lt;Akuli&gt;        theelous3 learns fast
+&lt;Akuli&gt;        theelous3, keep tidying it and try to get rid of the /h
+&lt;theelous3&gt;    idk how to do that, but I&#39;ll wing it
+&lt;Akuli&gt;        ok :)
+&lt;Akuli&gt;        you can start by removing the parentheses
+</pre></div>
+<p>...but he learned stuff surprisingly fast, and he enjoyed it.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;theelous3&gt;    I had math fun for the first time ever
 </pre></div>
 </div>
 </body>
