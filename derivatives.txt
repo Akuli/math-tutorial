@@ -159,13 +159,13 @@ math:
     \lim_{\Delta x\to0} \frac{\Delta y}{\Delta x} = \lim_{h\to0} \frac{f(x+h)-f(x)}{h}
 
 floatingbox: Handy thing: $(x+h)^2=x^2+2xh+h^2$
-    Proof:
+    Proof using $(a+b)c=ac+bc$:
 
     math:
         & \ (x+h)^2
         =&\ (x+h)(x+h)
-        =&\ (x+h)x+(x+h)h
-        =&\ xx+hx+xh+hh
+        =&\ x(x+h)+h(x+h)
+        =&\ xx+xh+hx+hh
         =&\ x^2+2xh+h^2
 
 Now we can set $f(x)=x^2$ and see what we get.

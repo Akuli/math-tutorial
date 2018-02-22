@@ -130,12 +130,13 @@ approaching from one side only because it's not possible to approach from both
 sides.
 
 floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
-    Proof:
+    Proof using $(a+b)c=ac+bc$ and $(a-b)c=ac-bc$:
 
     math:
         & \ (a-b)(a+b)
-        =&\ (a-b)a+(a-b)b
-        =&\ aa-ba+ab-bb
+        =&\ a(a+b)-b(a+b)
+        =&\ (aa+ab)-(ba+bb)
+        =&\ aa\rcancel{+ab}\rcancel{-ab}-bb
         =&\ a^2 - b^2
 
     Spoiler: plug in $a=x$ and $b=1$.

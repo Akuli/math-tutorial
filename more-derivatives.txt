@@ -296,14 +296,15 @@ indent:
     also contains [another proof](explog.html#example-derivative-of-x-c) that
     doesn't have this restriction.
 
-floatingbox: Handy thing: $(a-b)(a+b)=a^2-b^2$
-    Proof:
+floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
+    Proof using $(a+b)c=ac+bc$ and $(a-b)c=ac-bc$:
 
     math:
-      & \ (a-b)(a+b)
-      =&\ (a-b)a+(a-b)b
-      =&\ aa-ba+ab-bb
-      =&\ a^2 - b^2
+        & \ (a-b)(a+b)
+        =&\ a(a+b)-b(a+b)
+        =&\ (aa+ab)-(ba+bb)
+        =&\ aa\rcancel{+ab}\rcancel{-ab}-bb
+        =&\ a^2 - b^2
 
     In this case we need to plug in $a=\sqrt{x+h}$ and $b=\sqrt x$.
 
@@ -329,7 +330,7 @@ indent:
 
     You're probably wondering how the heck I knew that multiplying top and
     bottom by $\sqrt{x+h}+\sqrt x$ would result in something useful, but this
-    is actually a commonly used trick with square roots and limits.
+    is actually a well-known trick with square roots and limits.
 
 ### $\frac{d}{dx}(1/x) = \displaystyle \frac{-1}{x^2}$
 

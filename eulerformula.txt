@@ -177,12 +177,13 @@ math:
     \frac{e^{i\theta}-e^{-i\theta}}{2i} &= \sin(\theta)
 
 floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
-    Proof:
+    Proof using $(a+b)c=ac+bc$ and $(a-b)c=ac-bc$:
 
     math:
       & \ (a-b)(a+b)
-      =&\ (a-b)a+(a-b)b
-      =&\ aa-ba+ab-bb
+      =&\ a(a+b)-b(a+b)
+      =&\ (aa+ab)-(ba+bb)
+      =&\ aa\rcancel{+ab}\rcancel{-ab}-bb
       =&\ a^2 - b^2
 
     In this case we need to plug in $a=e^{i\theta}$ and $b=e^{-i\theta}$.

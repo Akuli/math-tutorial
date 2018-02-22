@@ -127,13 +127,13 @@ asymptote:
     draw(B--A2, L="$a$");
 
 floatingbox: Handy thing: $(a+b)^2=a^2+2ab+b^2$
-   Proof:
+   Proof using $(a+b)c=ac+bc$:
 
    math:
       & \ (a+b)^2
       =&\ (a+b)(a+b)
-      =&\ (a+b)a+(a+b)b
-      =&\ aa+ba+ab+bb
+      =&\ a(a+b)+b(a+b)
+      =&\ aa+ab+ba+bb
       =&\ a^2+2ab+b^2
 
 We can calculate the total area of the above square in a couple different ways
