@@ -60,7 +60,7 @@ $\Delta y = f(x+\Delta x)-f(x)$. This will be a mess anyway, but these handy
 variables make things a bit less messy.
 
 Anyway, now you can see a little triangle in the picture so we can apply [the
-Pythagorean theorem](geometry-and-trig.html#pythagorean-theorem), but as
+Pythagorean theorem](more-geometry-and-trig.html#pythagorean-theorem), but as
 usual, the result is not perfectly accurate because the graph is not
 guaranteed to be straight. We get this mess:
 

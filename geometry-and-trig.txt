@@ -155,6 +155,11 @@ Degrees are an alternative to radians, and they work so that 360° is a full
 turn. Here ° is the degree symbol, and 360 is a number that people ended up
 using for historical reasons.
 
+code:
+    <Zaab1t>     Akuli: is 360 really arbitrarily picked
+    <Akuli>      i don't know or care really
+    <Akuli>      is 12 hours arbitarily picked
+
 We already know that 360 degrees is $\tau$ radians, but let's figure out how to
 convert $D$ degrees to $R$ radians. One degree is $\frac{1}{360}$ turns, so $D$
 degrees is $D \cdot \frac{1}{360}=\frac{D}{360}$ turns. Similarly, $R$ radians
@@ -452,13 +457,13 @@ canvasdemo:
     const TAU = 2*Math.PI;
 
     /* handy things:
-        * paddle.centerx - paddle.length/2  x coordinate of left edge
-        * paddle.centerx + paddle.length/2  x coordinate of right edge
-        * screen.height - paddle.thickness  y coordinate of top edge
-        * screen.height                     y coordinate of bottom edge
+        paddle.centerx - paddle.length/2    x coordinate of left edge
+        paddle.centerx + paddle.length/2    x coordinate of right edge
+        screen.height - paddle.thickness    y coordinate of top edge
+        screen.height                       y coordinate of bottom edge
     */
     var paddle = {
-      // centerx and top are added later
+      // centerx is added later
       length: 200,
       thickness: 15,
       speed: 10,
@@ -466,16 +471,15 @@ canvasdemo:
     };
 
     /* handy things:
-        * ball.centerx - ball.radius    x coordinate of left edge
-        * ball.centerx + ball.radius    x coordinate of right edge
-        * ball.centery - ball.radius    y coordinate of top edge
-        * ball.centery + ball.radius    y coordinate of bottom edge
+        ball.centerx - ball.radius      x coordinate of left edge
+        ball.centerx + ball.radius      x coordinate of right edge
+        ball.centery - ball.radius      y coordinate of top edge
+        ball.centery + ball.radius      y coordinate of bottom edge
     */
     var ball = {
-      // centerx, centery and angle are added later
+      // centerx, centery, angle and moving are added later
       radius: 10,
       speed: 10,
-      moving: false,
     };
 
     function resetGame() {

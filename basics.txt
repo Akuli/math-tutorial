@@ -1,8 +1,14 @@
 # The Basics
 
-This tutorial assumes that you know most of these things. If you don't, that's
-not a problem at all and you can just **keep this page open** while you read
-other chapters.
+This chapter contains all kinds of boring basic stuff that you need in rest of
+this tutorial. If you don't remember everything in this chapter, that's not a
+problem at all and you can just **keep this page open** while you read other
+chapters.
+
+graybox: See Also
+    [This cheat sheet](http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf)
+    is nice and concise, and you might find it easier to find things from than
+    this chapter.
 
 ## Variables
 
@@ -25,7 +31,6 @@ because $x+1$ gets different values depending on what $x$ is.
 I'm quite sure you know or you can guess what $a=b$, $a \ne b$, $a>b$,
 $a \ge b$, $a < b$, $a \le b$ and $a \approx b$ mean so I won't explain
 those.
-
 
 ## +, -
 
@@ -78,24 +83,38 @@ that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
 lines but other numbers weren't.
 
 (divide-top-and-bottom)
-Dividing the top and bottom by something does not change the value. For example:
+Dividing the top and bottom by something does not change the value. For
+example:
 
 math: \frac 6 4 = \frac{6/2}{4/2} = \frac 3 2
 
 math: \frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}
 
-Of course, you can also do this backwards and multiply the top and bottom by
-something.
+You can also go backwards and multiply top and bottom by something.
+
+math:
+    \frac{1}{a+b} = \frac{x}{ax+bx}
+
+Here's an easy way to check that these things work:
+
+math:
+    \frac{ac}{bc} = \frac a b \cdot \frac c c = \frac a b \cdot 1 = \frac a b
+
+math:
+    \frac{a/c}{b/c} = \frac{a\cdot\frac1c}{b\cdot\frac1c} = \frac a b
 
 (zerodivision)
-Remember that you cannot divide anything by zero. See
-[Numberphile's awesome zero video](https://youtu.be/BRRolKTlF6Q) if you're
-wondering why.
+Remember that you cannot divide anything by zero. See [Numberphile's awesome
+zero video](https://youtu.be/BRRolKTlF6Q) if you're wondering why.
+
+code:
+    <laplous3>   when you divide by 0 you get theelous3
+    <laplous3>   it's a sort of math black hole
 
 If something is below *two* division lines, then you can move it to top:
 
 math:
-    \frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{\ \frac{bc}{c}\ } = \frac{ac}{b}
+    \frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{b\frac c c\ } = \frac{ac}{b}
 
 (negative-mul-div)
 Negative numbers behave like this when multiplied and divided. Note how the two
@@ -115,7 +134,6 @@ The absolute value of $x$ is $|x|$ in math and something like ``abs(x)`` or
 absolute value as stripping off the minus sign. For example, $|2| = 2$ and
 $|-3| = 3$.
 
-
 ## Powers and Square Root
 
 $x^y$ is ``x**y`` or ``pow(x, y)`` and $\sqrt x$ is ``sqrt(x)`` in most
@@ -124,33 +142,33 @@ programming languages.
 math: x^5=x\cdot x\cdot x\cdot x\cdot x
 
 math:
-    x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ pcs}} \cdot \
-              \underbrace{y \cdot ... \cdot y}_{a\text{ pcs}} \
-            = \underbrace{(xy)(xy)...(xy)}_{a\text{ pcs}} \
+    x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ times}} \cdot \
+              \underbrace{y \cdot ... \cdot y}_{a\text{ times}} \
+            = \underbrace{(xy)(xy)...(xy)}_{a\text{ times}} \
             = (xy)^a
 
 math:
     \frac{x^a}{y^a} \
-  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ pcs}}\ } \
-         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ pcs}}\ } \
-  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ pcs}} \
+  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ times}}\ } \
+         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ times}}\ } \
+  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ times}} \
   = \left( \frac x y \right)^a
 
 math:
-   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ pcs}} \
-            = \underbrace{x \cdot...\cdot x}_{a\text{ pcs}} \cdot \
-              \underbrace{x \cdot...\cdot x}_{b\text{ pcs}} \
+   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ times}} \
+            = \underbrace{x \cdot...\cdot x}_{a\text{ times}} \cdot \
+              \underbrace{x \cdot...\cdot x}_{b\text{ times}} \
             = x^a x^b
 
 math:
-   (x^a)^b = \underbrace{\overbrace{x^a}^{x\cdot...\cdot x,\ a\text{ pcs}} \
-              \cdot\ \ x^a\ \cdot ... \cdot x^a}_{b\text{ pcs}} \
-           = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{pcs}} \
-           = x^{ab}
+    x^{ab} = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{times}} \
+           = \overbrace{\underbrace{x^a}_{\substack{x\cdot x\cdot...\cdot x \\ a\text{ times}}} \
+              \cdot x^a \cdot x^a \cdot x^a \cdot\ ...\ \cdot x^a}^{b\text{ times}} \
+           = (x^a)^b
 
 math: (-x)^2 = x^2
 
-math: \sqrt x = x^\frac 1 2
+math: \sqrt x = x^{1/2}
 
 math: \sqrt a \sqrt b = \sqrt{ab}
 
@@ -173,8 +191,7 @@ It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
 $\sqrt 0 = 0$. No number produces a negative number when multiplied with
-itself, so you cannot do e.g. $\sqrt{-2}$.
-
+itself, so you cannot do e.g. $\sqrt{-1}$.
 
 ## Functions
 
@@ -214,7 +231,6 @@ $\cos x$ with some "special" functions for historical reasons. This tutorial
 uses $\sin(x)$ and $\cos(x)$ everywhere because most programmers are familiar
 with that.
 
-
 ## Equations
 
 For example, if you know that $2x+1 = 9$ you can find $x$ like this:
@@ -242,6 +258,55 @@ math:
     \sqrt{x^2} &= \sqrt 4
     |x| &= 2
     x=2\ & \text{or}\ x=-2
+
+## Proofs and stuff
+
+This tutorial contains quite a few exercises that ask you to prove
+something.
+
+code:
+    <Zaab1t>     if n is even
+    <Zaab1t>     is a**n then equal to a**(n/2) * a**(n/2)
+    <Akuli>      yes
+    <laplous3>   on the surface that seems reasonable, but how do you actually
+                 prove something like that?
+    <laplous3>   <- doesn't have a breeze what's involved in proving something
+    <laplous3>   I mean, I suppose picking arbitrary numbers and showing it
+                 works doesn't cut it right
+
+It's easy to write a program in one's favorite programming language that goes
+through a big pile of $a$ and $n$ values and makes sure they satisfy
+$a^n = a^{n/2} \cdot a^{n/2}$, but **that is not a proof**. What if there
+exists some funny $a$ and $n$ values that break everything? It's very unlikely,
+but a *proof* of something like this works for any $a$ value and any even $n$
+value.
+
+Here's an example proof:
+
+indent:
+indent:
+    $n$ is even, so $n/2$ is an integer and $a^{n/2}$ means $a$ multiplied by
+    itself $n/2$ times. We get this:
+
+    math:
+        a^{n/2} \cdot a^{n/2} \
+        &= \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \cdot \
+           \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}}
+        &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n/2\ +\ n/2\text{ times}}
+        &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n\text{ times}}
+        &= a^n
+
+There it is. Note that we didn't plug in any values; we just did something that
+worked for any $a$ and any even $n$. Note that this proof assumes $n > 0$;
+something like multiplying $a$ by itself -2 times doesn't make much sense.
+We'll revisit negative exponents [later](explog.html#exponent-functions).
+
+Note that it's ok to prove $a^n = a^{n/2} \cdot a^{n/2}$ by starting at
+$a^{n/2} \cdot a^{n/2}$ and eventually getting to $a^n$. It's just as valid to
+start with $a^n$ and try to turn that into $a^{n/2} \cdot a^{n/2}$.
+
+graybox: Exercise
+    Prove that $(a+b)c = ac+bc$ if $c$ is a positive integer.
 
 ## Areas
 
@@ -320,9 +385,3 @@ asymptote3d: float:left;
 The $V=abc$ thing is actually just a special case of the $V=Ah$
 cylinder. The shape of the cylinder's base can be anything, and in the
 $abc$ thing the base area is $ab$ and the height is $c$.
-
-## See Also
-
-This chapter shows only the things you need in the rest of this tutorial, but
-[this cheat sheet](http://tutorial.math.lamar.edu/pdf/Algebra_Cheat_Sheet.pdf)
-is more complete.
