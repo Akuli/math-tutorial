@@ -152,7 +152,32 @@ $$\begin{align}& \ (a-b)(a+b) \\
 <div class="box graybox"><h2> Exercise</h2><p>Can you calculate these limits by hand? Check the answer by plugging in
 numbers with your favorite programming language or calculator.</p>
 
-$$\begin{align}\lim_{x\to\infty}(x^5-x^4) \qquad \lim_{x\to\infty}(x^4-x^5)\end{align}$$$$\begin{align}\lim_{x\to1^+}\frac{x^2-1}{x-1} \qquad  \lim_{x\to1^-}\frac{x^2-1}{x-1} \qquad  \lim_{x\to1}\frac{x^2-1}{x-1}\end{align}$$</div><h2 id="indeterminate-forms">Indeterminate Forms<a class="headerlink" href="#indeterminate-forms" title="Link to this title">¶</a></h2><p>As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
+$$\begin{align}\lim_{x\to\infty}(x^5-x^4) \qquad \lim_{x\to\infty}(x^4-x^5)\end{align}$$$$\begin{align}\lim_{x\to1^+}\frac{x^2-1}{x-1} \qquad  \lim_{x\to1^-}\frac{x^2-1}{x-1} \qquad  \lim_{x\to1}\frac{x^2-1}{x-1}\end{align}$$</div><h2 id="common-tricks">Common Tricks<a class="headerlink" href="#common-tricks" title="Link to this title">¶</a></h2><p>There are a few things you can do when working with limits. Here $x$ and $y$
+can be anything, and plain $\lim$ without anything under it means that these
+rules work with all limits.</p>
+
+$$\begin{align}\begin{array}{ll}  \lim(x+y) = (\lim x)+(\lim y)           &\text{ if }(\lim x)+(\lim y)\text{ is defined} \\
+\lim(x-y) = (\lim x)-(\lim y)           &\text{ if }(\lim x)-(\lim y)\text{ is defined} \\
+\lim(xy) = (\lim x)(\lim y)             &\text{ if }(\lim x)(\lim y)\text{ is defined} \\
+\lim\frac x y = \frac{\lim x}{\lim y}   &\text{ if }\frac{\lim x}{\lim y}\text{ is defined} \\
+\lim f(x) = f\bigl(\lim x\bigr)         &\text{ if }f\text{ is a continuous function} \\
+\end{array}\end{align}$$<p>I don't recommend memorizing these rules; they are quite self-explanatory and
+simple. Just don't get confused when we use them.</p>
+
+<p>The "if blablabla is defined" means that the rules cannot be used when they
+give us something that doesn't make sense. For example:</p>
+
+$$\begin{align}\lim_{x\to\infty}\frac{x^2}{x}  = \frac{\displaystyle\lim_{x\to\infty} x^2}{\displaystyle\lim_{x\to\infty} x}  = \frac \infty \infty\end{align}$$<p>Here we need to divide top and bottom by $x$ before using the rules.</p>
+
+<p>You are probably wondering WTF the last rule is saying. See <a href="basics.html#functions">this
+thing</a> if you have no idea what a function is. In short,
+pretty much all functions you'll come across in this tutorial are continuous;
+we'll talk more about this
+<a href="more-derivatives.html#which-functions-have-derivatives">later</a>.</p>
+
+<p>For example, $\sqrt{\quad}$ is continuous:</p>
+
+$$\begin{align}\lim\sqrt x=\sqrt{\lim x}\end{align}$$<h2 id="indeterminate-forms">Indeterminate Forms<a class="headerlink" href="#indeterminate-forms" title="Link to this title">¶</a></h2><p>As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
 couldn't just plug in the value that is being approached. We need to do more
 work to get rid of the $\infty-\infty$ or $\frac 0 0$ situation. In mathy
 words, $\infty-\infty$ and $\frac 0 0$ are <b>indeterminate forms</b>.</p>
