@@ -18,9 +18,14 @@
       Macros: {
         // awesome, i have latex inside javascript inside html inside python
         // https://xkcd.com/1638/
+        red: [ "\\color{red}{#1}", 1 ],
         blue: [ "\\color{blue}{#1}", 1 ],
         green: [ "\\color{green}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+        maroon: [ "\\color{maroon}{#1}", 1 ],
+        olive: [ "\\color{olive}{#1}", 1 ],
+        purple: [ "\\color{purple}{#1}", 1 ],
+        black: [ "\\color{black}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
       }
     }
   });
@@ -97,7 +102,7 @@ using some <a href="basics.html#areas">basic area stuff</a>:</p>
 
 $$\begin{align}(a+b)(a+b) &= c^2 + 4\frac{ab}{2} \\
 (a+b)^2 &= c^2 + \frac{4}{2} ab \\
-a^2 + 2ab + b^2 &= c^2 + 2ab \\
+a^2 \rcancel{+ 2ab} + b^2 &= c^2 \rcancel{+ 2ab} \\
 a^2 + b^2 &= c^2\end{align}$$<div class="box graybox"><h2> Exercise</h2><p>Draw an $a+b$ by $a+b$ square, and use areas to derive the handy thing we
 used above.
 </p>
@@ -237,7 +242,7 @@ can do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny
 corner square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the
 bigger square. Let's set those equal:</p>
 
-$$\begin{align}\theta + \Delta\theta + \frac \tau 4 &= \frac \tau 4 + \alpha \\
+$$\begin{align}\theta + \Delta\theta \rcancel{+ \frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha \\
 \theta + \Delta\theta &= \alpha\end{align}$$<p>The blue area looks kind of like a triangle, so we can apply <a href="#triangle-trig">triangle
 trig</a> to it, but it's not a perfect triangle so we'll use
 $\approx$ instead of $=$.</p>
@@ -261,7 +266,7 @@ rule</a>.</p>
 $$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\underbrace{\frac\tau4 - \theta}_{\text{inner stuff}}\Bigr) \\
 &= \cos\Bigl(\frac\tau4 - \theta\Bigr) \cdot \frac{d}{d\theta}\Bigl(\frac\tau4 - \theta\Bigr) \\
 &= \sin\biggl(\frac\tau4 - \Bigl(\frac\tau4 - \theta\Bigr)\biggr) \cdot (0-1) \\
-&= \sin\Bigl(\frac\tau4 - \frac\tau4 + \theta\Bigr) \cdot (-1) \\
+&= \sin\Bigl(\rcancel{\frac\tau4} \rcancel{- \frac\tau4} + \theta\Bigr) \cdot (-1) \\
 &= -\sin(\theta)\end{align}$$<p>Let's check the result with <a href="graphs.html#sine-and-cosine">graphs</a>:</p>
 
 <p><img width="510" height="184" class="asymptote" src="asymptote/b341dc872e1634d4a2f88125f94388de.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the

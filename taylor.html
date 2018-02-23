@@ -18,9 +18,14 @@
       Macros: {
         // awesome, i have latex inside javascript inside html inside python
         // https://xkcd.com/1638/
+        red: [ "\\color{red}{#1}", 1 ],
         blue: [ "\\color{blue}{#1}", 1 ],
         green: [ "\\color{green}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+        maroon: [ "\\color{maroon}{#1}", 1 ],
+        olive: [ "\\color{olive}{#1}", 1 ],
+        purple: [ "\\color{purple}{#1}", 1 ],
+        black: [ "\\color{black}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
       }
     }
   });
@@ -84,33 +89,33 @@ we're talking about finding their values so that we have this:</p>
 
 $$\begin{align}\sin(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...\end{align}$$<p>Let's try to find those constants. We'll do this for a general $f(x)$ first,
 so we get something that works with many other functions instead of just
-$f(x)=\sin(x)$.</p>
+$f(x)=\sin(x)$. I'll also use colors to make things easier to follow.</p>
 
-$$\begin{align}f(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...\end{align}$$<p>We can start by plugging in $x=0$:</p>
+$$\begin{align}f(x)=\blue{c_0}+\green{c_1x}+\maroon{c_2x^2}+\olive{c_3x^3}+\purple{c_4x^4}+...\end{align}$$<p>We can start by plugging in $x=0$:</p>
 
-$$\begin{align}f(0) &= c_0+c_1\cdot0+c_2\cdot0^2+c_3\cdot0^3+... \\
-    &= c_0+0+0+... \\
-    &= c_0\end{align}$$<p>Great, we found one constant, but we still have infinitely many constants to
+$$\begin{align}f(0) &= \blue{c_0}+\green{c_1\black{0}}+\maroon{c_2\black{0}^2}+\olive{c_3\black{0}^3}+\purple{c_4\black{0}^4}+... \\
+&= \blue{c_0}+0+0+0+... \\
+&= \blue{c_0}\end{align}$$<p>Great, we found one constant, but we still have infinitely many constants to
 find. So, what do we do next? Let's try taking <a href="derivatives.html">the
 derivative</a> of both sides with the $\frac{d}{dx}x^c=cx^{c-1}$
 and $\frac{d}{dx}(c\ f(x))=c\cdot\frac{d}{dx}f(x)$ rules.</p>
 
-$$\begin{align}f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+... \\
-f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+... \\
-f'(0) &= c_1\end{align}$$<p>Let's take the derivative again a few times until we can notice a pattern. Here
+$$\begin{align}f(x) &= \blue{c_0}+\green{c_1x}+\maroon{c_2x^2}+\olive{c_3x^3}+\purple{c_4x^4}+... \\
+f'(x) &= \blue{0}+\green{c_1}+\maroon{2c_2x}+\olive{3c_3x^2}+\purple{4c_4x^3}+... \\
+f'(0) &= \green{c_1}\end{align}$$<p>Let's take the derivative again a few times until we can notice a pattern. Here
 $f''$ means the derivative of the derivative. It'll look like a mess, but it's
 not very complicated.</p>
 
-$$\begin{align}f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+5c_5x^4+... \\
-f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+... \\
-f''(0) &= 2c_2 \\
-c_2 &= \frac{f''(0)}{2}\end{align}$$$$\begin{align}f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+(6\cdot5)c_6x^4+... \\
-f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+... \\
-f'''(0) &= (3\cdot2)c_3 \\
-c_3 &= \frac{f'''(0)}{3\cdot2}\end{align}$$$$\begin{align}f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+... \\
-f''''(x) &= (4\cdot3\cdot2)c_4+(5\cdot4\cdot3\cdot2)c_5x+(6\cdot5\cdot4\cdot3)c_6x^2+... \\
-f''''(0) &= (4\cdot3\cdot2)c_4 \\
-c_4 &= \frac{f''''(0)}{4\cdot3\cdot2}\end{align}$$<p>At this point we need more notation:</p>
+$$\begin{align}f'(x) &= \green{c_1}+\maroon{2c_2x}+\olive{3c_3x^2}+\purple{4c_4x^3}+\blue{5c_5x^4}+... \\
+f''(x) &= \green{0}+\maroon{2c_2}+\olive{(3\cdot2)c_3x}+\purple{(4\cdot3)c_4x^2}+\blue{(5\cdot4)c_5x^3}+... \\
+f''(0) &= \maroon{2c_2} \\
+\maroon{c_2} &= \frac{f''(0)}{\maroon 2}\end{align}$$$$\begin{align}f''(x) &= \maroon{2c_2}+\olive{(3\cdot2)c_3x}+\purple{(4\cdot3)c_4x^2}+\blue{(5\cdot4)c_5x^3}+\green{(6\cdot5)c_6x^4}+... \\
+f'''(x) &= \maroon{0}+\olive{(3\cdot2)c_3}+\purple{(4\cdot3\cdot2)c_4x}+\blue{(5\cdot4\cdot3)c_5x^2}+\green{(6\cdot5\cdot4)c_6x^3}+... \\
+f'''(0) &= \olive{(3\cdot2)c_3} \\
+\olive{c_3} &= \frac{f'''(0)}{\olive{3\cdot2}}\end{align}$$$$\begin{align}f'''(x) &= \olive{(3\cdot2)c_3}+\purple{(4\cdot3\cdot2)c_4x}+\blue{(5\cdot4\cdot3)c_5x^2}+\green{(6\cdot5\cdot4)c_6x^3}+... \\
+f''''(x) &= \olive{0}+\purple{(4\cdot3\cdot2)c_4}+\blue{(5\cdot4\cdot3\cdot2)c_5x}+\green{(6\cdot5\cdot4\cdot3)c_6x^2}+... \\
+f''''(0) &= \purple{(4\cdot3\cdot2)c_4} \\
+\purple{c_4} &= \frac{f''''(0)}{\purple{4\cdot3\cdot2}}\end{align}$$<p>At this point we need more notation:</p>
 
 <ul><li>$f^{(n)}(x)$ is the $n$'th derivative of $f$, e.g. $f^{(4)}(x)=f''''(x)$.
   You probably agree that $f^{(10)}(x)$ is more readable than $f''''''''''(x)$.</li><li>$n! = n\cdot(n-1)\cdot(n-2)\cdot...\cdot2\cdot1$. As a special case, $0!=1$;
@@ -125,15 +130,15 @@ skip that.</p>
 <p>If we did more of these we would notice that $c_5=\frac{f^{(5)}(0)}{5!}$,
 $c_6=\frac{f^{(6)}(0)}{6!}$ and so on. Our series looks like this:</p>
 
-$$\begin{align}f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+... \\
+$$\begin{align}f(x) &= c_0 + c_1x + c_2x^2 + c_3x^3 + c_4x^4 + ... \\
 f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ...\end{align}$$<p>This is known as the <b>Maclaurin series</b> of $f$. Note that factorials get
 really big really fast, e.g. $10!$ is bigger than 1 million, so dividing by the
 factorials gives us small numbers.</p>
 
-<p>The Maclaurin series uses 0 as some kind of "magic number" that is always put
-to $f(\quad)$, $f'(\quad)$ etc., but it doesn't need to be 0. By starting with
-a constant $a$ and $f(x+a)$ instead of $f(x)$, we can find the <b>Taylor series</b>
-of $f$:</p>
+<p>The Maclaurin series uses $0$ as some kind of "magic number" that is always put
+to $f(\quad)$, $f'(\quad)$ etc., but it doesn't need to be $0$. By starting
+with a constant $a$ and $f(x+a)$ instead of $f(x)$, we can find the
+<b>Taylor series</b> of $f$:</p>
 
 $$\begin{align}f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f''(a)}{3!}(x-a)^3 + ...\end{align}$$<p>Note that the Maclaurin series is just a special case of the Taylor series with
 $a=0$.</p>
@@ -149,11 +154,8 @@ f'''(x) &= -\cos(x) \\
 f''''(x) &= \sin(x) \\
 f'''''(x) &= \cos(x) \\
 f''''''(x) &= -\sin(x) \\
-&...\end{align}$$<p>.. TODO: add pic</p>
-
-<p>Now let's plug in some values. With <a href="summary.html#unitcircle">the unit circle</a>
-we know that $\cos(0)=1$ and $\sin(0) = 0$ because the $(x,y)$ point $(1,0)$
-corresponds to the angle 0.</p>
+&...\end{align}$$<p>Now let's plug in some values. With <a href="geometry-and-trig.html#common-sincos">the unit circle</a>
+we know that $\cos(0)=1$ and $\sin(0) = 0$.</p>
 
 $$\begin{align}f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \frac{f'''(0)}{4!}x^4 + ... \\
 \sin(x) &=  \sin(0) + \frac{\cos(0)}{1!}x + \frac{-\sin(0)}{2!}x^2              + \frac{-\cos(0)}{3!}x^3 + \frac{\sin(0)}{4!}x^4 + ... \\

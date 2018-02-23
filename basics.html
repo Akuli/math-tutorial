@@ -18,9 +18,14 @@
       Macros: {
         // awesome, i have latex inside javascript inside html inside python
         // https://xkcd.com/1638/
+        red: [ "\\color{red}{#1}", 1 ],
         blue: [ "\\color{blue}{#1}", 1 ],
         green: [ "\\color{green}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\color{red}{\\cancel{\\color{black}{#1}}}", 1 ]
+        maroon: [ "\\color{maroon}{#1}", 1 ],
+        olive: [ "\\color{olive}{#1}", 1 ],
+        purple: [ "\\color{purple}{#1}", 1 ],
+        black: [ "\\color{black}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
       }
     }
   });
@@ -55,33 +60,36 @@ example, $5$ and $-12$ are constants, but $x+1$ is not a constant
 because $x+1$ gets different values depending on what $x$ is.
 </p>
 
-<h2 id="equality-and-stuff">Equality and stuff<a class="headerlink" href="#equality-and-stuff" title="Link to this title">¶</a></h2><p>I'm quite sure you know or you can guess what $a=b$, $a \ne b$, $a>b$,
+<h2 id="very-basics">Very Basics<a class="headerlink" href="#very-basics" title="Link to this title">¶</a></h2><p>I'm quite sure you know or you can guess what $a=b$, $a \ne b$, $a>b$,
 $a \ge b$, $a < b$, $a \le b$ and $a \approx b$ mean so I won't explain
 those.</p>
 
-<h2 id="2b2c202d">+, -<a class="headerlink" href="#2b2c202d" title="Link to this title">¶</a></h2><p>Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
-and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.</p>
+<p>In this tutorial, <code>a/b</code> is written as $a/b$ or $\frac a b$, and <code>a*b</code> is
+written as $a \cdot b$ or simply $ab$.</p>
+
+<p>Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
+and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.
+This is because $-x$ means $(-1)$ times $x$, so $-(-2)=(-1)(-2)$ and
+multiplying two negative numbers together gives a positive number.</p>
 
 <p>If we have something like $a+b+c-b$ we know that's just $a+c$ because we're
 adding $b$ and then we're taking it away. Later you'll notice that we end up
-with this $x+y-x$ pattern surprisingly often and things become nice and simple.</p>
+with this $+x-x$ pattern surprisingly often and things become nice and simple.
+This tutorial denotes using it like this:</p>
 
-<p>In general, you can move things around like this:</p>
+$$\begin{align}a\rcancel{+b}+c\rcancel{-b} = a+c\end{align}$$<p>A similar thing happens if you multiply by something and then divide it away.</p>
 
-$$\begin{align}a+b-c = a-c+b = -c+a+b = ...\end{align}$$<p>You get the idea: we can put $+a$, $+b$ and $-c$ to any order we want, and for
-convenience, we usually write e.g. $a+b$ instead of $+a+b$.
-</p>
+$$\begin{align}\frac{a\rcancel b}{\rcancel b} = a\end{align}$$<p>When adding things like $a+b-c$, you can put $+a$, $+b$ and $-c$ to any order
+you want, e.g. like this:</p>
 
-<h2 id="2a2c202f">*, /<a class="headerlink" href="#2a2c202f" title="Link to this title">¶</a></h2><p>In this tutorial, <code>a/b</code> is written as $a/b$ or $\frac a b$, and <code>a*b</code> is
-written as $a \cdot b$ or simply $ab$.</p>
+$$\begin{align}a+b-c = a-c+b = -c+a+b\end{align}$$<p>A similar thing works with multiplication and division. Just look at which
+things are on the top and which things are on the bottom; you can move stuff
+otherwise however you want:</p>
 
-<p>Some handy stuff:</p>
+$$\begin{align}\frac{ab}{c}d \frac e f gh = \frac{abdegh}{cf}\end{align}$$<p>More handy stuff:</p>
 
 $$\begin{align}0a &= 0 \\
-1a &= a \\
-(-1)a &= -a \\
-\frac a 1 &= a \\
-ab &= ba \\
+1a &= \frac a 1 = a \\
 -(a-b) &= b-a \\
 (a+b)c &= ac+bc \\
 (a-b)c &= ac-bc \\
@@ -95,36 +103,39 @@ like $(1 + 2) \cdot 3$.</p>
 <p>Note that there is <b>no</b> $\displaystyle\frac{a}{b+c}=\frac a b + \frac a c$
 rule; that doesn't work. This also applies to $\displaystyle\frac{a}{b-c}$.</p>
 
-<p>It's often best to look at which numbers are below a division line and which
-aren't. For example, if we have $\frac 1 2 \cdot 3 \cdot \frac 4 5$ we know
-that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
-lines but other numbers weren't.</p>
-
 <p id="divide-top-and-bottom">Dividing the top and bottom by something does not change the value. For
 example:
 </p>
 
-$$\begin{align}\frac 6 4 = \frac{6/2}{4/2} = \frac 3 2\end{align}$$$$\begin{align}\frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}\end{align}$$<p>This is often written with cancellation lines, like
+$$\begin{align}\frac 6 4 = \frac{6/2}{4/2} = \frac 3 2\end{align}$$$$\begin{align}\frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}\end{align}$$<p>I often denote dividing top and bottom like
 $\displaystyle\frac{\rcancel x}{(a+b)\rcancel x}$.</p>
 
-<p>You can also go backwards and multiply top and bottom by something.</p>
+<p>If you have a minus sign on top and bottom, you can get rid of it:</p>
 
-$$\begin{align}\frac{1}{a+b} = \frac{x}{ax+bx}\end{align}$$<p>Here's an easy way to check that these things work:</p>
+$$\begin{align}\frac{-a}{-b} = \frac{\rcancel{(-1)}a}{\rcancel{(-1)}b} = \frac a b\end{align}$$<p>You can also go backwards and multiply top and bottom by something.</p>
 
-$$\begin{align}\frac{ac}{bc} = \frac a b \cdot \frac c c = \frac a b \cdot 1 = \frac a b\end{align}$$$$\begin{align}\frac{a/c}{b/c} = \frac{a\cdot\frac1c}{b\cdot\frac1c} = \frac a b\end{align}$$<p id="zerodivision">Remember that you cannot divide anything by zero. See <a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome
+$$\begin{align}\frac{1}{a+b} = \frac{x}{(a+b)x}\end{align}$$<p>Here's an easy way to check that these things work using the fact that any
+number divided by itself is 1:</p>
+
+$$\begin{align}\frac{ac}{bc} = \frac a b \cdot \green{\frac c c}  = \frac a b \cdot \green 1 = \frac a b\end{align}$$$$\begin{align}\frac{a/c}{b/c} = \frac{a\cdot\frac1c}{b\cdot\frac1c}  = \frac a b \cdot \green{\frac{\ \frac1c\ }{\ \frac1c\ }}  = \frac a b \cdot \green 1 = \frac a b\end{align}$$<p>As you can see, sometimes I use colors to make things easier to read.</p>
+
+<p>If you have something like $\frac a b + \frac c d$, you <b>cannot</b> combine it
+into something like $\frac{a+c}{b+d}$ right away. You can combine stuff only if
+they have the same bottom, but you can make that happen by multiplying top and
+bottom nicely:</p>
+
+$$\begin{align}\frac a b + \frac c d = \frac{a\green d}{b\green d} + \frac{\blue b c}{\blue b d}  = \frac{ad+bc}{bd}\end{align}$$<p>This also works with $-$ instead of $+$.</p>
+
+<p>If something is below <i>two</i> division lines, then you can move it to top:</p>
+
+$$\begin{align}\frac{a}{\ \frac b c\ } = \frac{a\blue c}{\frac{b}{\rcancel c}\rcancel{\blue c}} = \frac{ac}{b}\end{align}$$<p id="zerodivision">Remember that you cannot divide anything by zero. See <a href="https://youtu.be/BRRolKTlF6Q">Numberphile's awesome
 zero video</a> if you're wondering why.
 </p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;laplous3&gt;   when you divide by 0 you get theelous3
 &lt;laplous3&gt;   it&#39;s a sort of math black hole
 </pre></div>
-<p>If something is below <i>two</i> division lines, then you can move it to top:</p>
-
-$$\begin{align}\frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{b\frac c c\ } = \frac{ac}{b}\end{align}$$<p id="negative-mul-div">Negative numbers behave like this when multiplied and divided. Note how the two
--'s cancel out.
-</p>
-
-$$\begin{align}2 \cdot (-2) = -(2 \cdot 2) = -4\end{align}$$$$\begin{align}(-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4\end{align}$$$$\begin{align}\frac{-3}{-4} = \frac{\rcancel{(-1)}\cdot 3}{\rcancel{(-1)}\cdot 4} = \frac 3 4\end{align}$$<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
+<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
 <code>Math.abs(x)</code> in most programming languages. It's easiest to think of the
 absolute value as stripping off the minus sign. For example, $|2| = 2$ and
 $|-3| = 3$.</p>
@@ -211,23 +222,22 @@ something.</p>
 </pre></div>
 <p>It's easy to write a program in one's favorite programming language that goes
 through a big pile of $a$ and $n$ values and makes sure they satisfy
-$a^n = a^{n/2} \cdot a^{n/2}$, but <b>that is not a proof</b>. What if there
-exists some funny $a$ and $n$ values that break everything? It's very unlikely,
-but a <i>proof</i> of something like this works for any $a$ value and any even $n$
-value.</p>
+$a^n = a^{n/2} \cdot a^{n/2}$, but <b>that is not a proof</b>. What if some funny
+$a$ and $n$ values break everything? It's very unlikely, but a <i>proof</i> of this
+must work with any $a$ and $n$ values.</p>
 
 <p>Here's an example proof:</p>
 
 <div class="indent"><div class="indent"><p>$n$ is even, so $n/2$ is an integer and $a^{n/2}$ means $a$ multiplied by
-itself $n/2$ times. We get this:</p>
+itself $n/2$ times.</p>
 
 $$\begin{align}a^{n/2} \cdot a^{n/2}  &= \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \cdot     \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \\
 &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n/2\ +\ n/2\text{ times}} \\
 &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n\text{ times}} \\
-&= a^n\end{align}$$</div></div><p>There it is. Note that we didn't plug in any values; we just did something that
-worked for any $a$ and any even $n$. Note that this proof assumes $n > 0$;
-something like multiplying $a$ by itself -2 times doesn't make much sense.
-We'll revisit negative exponents <a href="explog.html#exponent-functions">later</a>.</p>
+&= a^n\end{align}$$</div></div><p>There it is. We didn't plug in any values; we just did something that worked
+for any $a$ and any even $n$. Note that this proof assumes $n > 0$; something
+like multiplying $a$ by itself -2 times doesn't make much sense. We'll revisit
+negative exponents <a href="explog.html#exponent-functions">later</a>.</p>
 
 <p>Note that it's ok to prove $a^n = a^{n/2} \cdot a^{n/2}$ by starting at
 $a^{n/2} \cdot a^{n/2}$ and eventually getting to $a^n$. It's just as valid to
@@ -249,9 +259,9 @@ understand. Let's draw a rectangle around the triangle like this:</p>
 <p><img width="142" height="100" class="asymptote" src="asymptote/9ec2e5f48a2ac18ca3bb870719ed541c.svg" /></p><p>Now you can see that the triangle splits both pieces of the rectangle in
 half, so the triangle area must be half of the rectangle area $ah$.</p>
 
-<h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Link to this title">¶</a></h2><p>A volume is really the same thing as an area, but for 3D things. If our
-300 by 200 window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$
-pixels would fit inside it.</p>
+<h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Link to this title">¶</a></h2><p>A volume is a similar thing as an area, but for 3D things. If our 300 by 200
+window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$ pixels would
+fit inside it.</p>
 
 <img  class="asymptote" src="asymptote/04bcb2e2468a1ec3b8406d6dd76e3125.png" style="float:left;" /><img  class="asymptote" src="asymptote/67905ed05cbdf2e96fc9cd3b4ba46107.png" style="float:left;" /><p><div style="clear:both;"></div></p>
 
