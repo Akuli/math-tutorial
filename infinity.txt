@@ -176,16 +176,16 @@ The "if blablabla is defined" means that the rules cannot be used when they
 give us something that doesn't make sense. For example:
 
 math:
-    \lim_{x\to\infty}\frac{x^2}{x} \
-    = \frac{\displaystyle\lim_{x\to\infty} x^2}{\displaystyle\lim_{x\to\infty} x} \
-    = \frac \infty \infty
+    \lim_{x\to\infty}(x^2 - x) \
+    = \left(\lim_{x\to\infty} x^2\right)-\left(\lim_{x\to\infty} x\right) \
+    = \infty - \infty
 
-Here we need to divide top and bottom by $x$ before using the rules.
+Here we need to do some other stuff before using the rules.
 
 You are probably wondering WTF the last rule is saying. See [this
-thing](basics.html#functions) if you have no idea what a function is. In short,
-pretty much all functions you'll come across in this tutorial are continuous;
-we'll talk more about this
+thing](basics.html#functions) if you have no idea what a function is. Pretty
+much all functions you'll come across in this tutorial are continuous; we'll
+talk more about this
 [later](more-derivatives.html#which-functions-have-derivatives).
 
 For example, $\sqrt{\quad}$ is continuous:
