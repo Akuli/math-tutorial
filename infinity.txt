@@ -154,6 +154,45 @@ graybox: Exercise
         \lim_{x\to1^-}\frac{x^2-1}{x-1} \qquad \
         \lim_{x\to1}\frac{x^2-1}{x-1}
 
+## Common Tricks
+
+There are a few things you can do when working with limits. Here $x$ and $y$
+can be anything, and plain $\lim$ without anything under it means that these
+rules work with all limits.
+
+math:
+    \begin{array}{ll} \
+    \lim(x+y) = (\lim x)+(\lim y)           &\text{ if }(\lim x)+(\lim y)\text{ is defined}
+    \lim(x-y) = (\lim x)-(\lim y)           &\text{ if }(\lim x)-(\lim y)\text{ is defined}
+    \lim(xy) = (\lim x)(\lim y)             &\text{ if }(\lim x)(\lim y)\text{ is defined}
+    \lim\frac x y = \frac{\lim x}{\lim y}   &\text{ if }\frac{\lim x}{\lim y}\text{ is defined}
+    \lim f(x) = f\bigl(\lim x\bigr)         &\text{ if }f\text{ is a continuous function}
+    \end{array}
+
+I don't recommend memorizing these rules; they are quite self-explanatory and
+simple. Just don't get confused when we use them.
+
+The "if blablabla is defined" means that the rules cannot be used when they
+give us something that doesn't make sense. For example:
+
+math:
+    \lim_{x\to\infty}\frac{x^2}{x} \
+    = \frac{\displaystyle\lim_{x\to\infty} x^2}{\displaystyle\lim_{x\to\infty} x} \
+    = \frac \infty \infty
+
+Here we need to divide top and bottom by $x$ before using the rules.
+
+You are probably wondering WTF the last rule is saying. See [this
+thing](basics.html#functions) if you have no idea what a function is. In short,
+pretty much all functions you'll come across in this tutorial are continuous;
+we'll talk more about this
+[later](more-derivatives.html#which-functions-have-derivatives).
+
+For example, $\sqrt{\quad}$ is continuous:
+
+math:
+    \lim\sqrt x=\sqrt{\lim x}
+
 ## Indeterminate Forms
 
 As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
