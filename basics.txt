@@ -26,42 +26,50 @@ on $x$ (or sometimes some other variable we're talking about). For
 example, $5$ and $-12$ are constants, but $x+1$ is not a constant
 because $x+1$ gets different values depending on what $x$ is.
 
-## Equality and stuff
+## Very Basics
 
 I'm quite sure you know or you can guess what $a=b$, $a \ne b$, $a>b$,
 $a \ge b$, $a < b$, $a \le b$ and $a \approx b$ mean so I won't explain
 those.
 
-## +, -
-
-Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
-and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.
-
-If we have something like $a+b+c-b$ we know that's just $a+c$ because we're
-adding $b$ and then we're taking it away. Later you'll notice that we end up
-with this $x+y-x$ pattern surprisingly often and things become nice and simple.
-
-In general, you can move things around like this:
-
-math: a+b-c = a-c+b = -c+a+b = ...
-
-You get the idea: we can put $+a$, $+b$ and $-c$ to any order we want, and for
-convenience, we usually write e.g. $a+b$ instead of $+a+b$.
-
-
-## *, /
-
 In this tutorial, ``a/b`` is written as $a/b$ or $\frac a b$, and ``a*b`` is
 written as $a \cdot b$ or simply $ab$.
 
-Some handy stuff:
+Be careful when you have a minus in front of parentheses, e.g. $-(1+2)=-1-2$
+and $-(1-2)=-1+2$. So, two minus signs cancel out each other, like $-(-2)=2$.
+This is because $-x$ means $(-1)$ times $x$, so $-(-2)=(-1)(-2)$ and
+multiplying two negative numbers together gives a positive number.
+
+If we have something like $a+b+c-b$ we know that's just $a+c$ because we're
+adding $b$ and then we're taking it away. Later you'll notice that we end up
+with this $+x-x$ pattern surprisingly often and things become nice and simple.
+This tutorial denotes using it like this:
+
+math:
+    a\rcancel{+b}+c\rcancel{-b} = a+c
+
+A similar thing happens if you multiply by something and then divide it away.
+
+math:
+    \frac{a\rcancel b}{\rcancel b} = a
+
+When adding things like $a+b-c$, you can put $+a$, $+b$ and $-c$ to any order
+you want, e.g. like this:
+
+math: a+b-c = a-c+b = -c+a+b
+
+A similar thing works with multiplication and division. Just look at which
+things are on the top and which things are on the bottom; you can move stuff
+otherwise however you want:
+
+math:
+    \frac{ab}{c}d \frac e f gh = \frac{abdegh}{cf}
+
+More handy stuff:
 
 math:
     0a &= 0
-    1a &= a
-    (-1)a &= -a
-    \frac a 1 &= a
-    ab &= ba
+    1a &= \frac a 1 = a
     -(a-b) &= b-a
     (a+b)c &= ac+bc
     (a-b)c &= ac-bc
@@ -77,11 +85,6 @@ like $(1 + 2) \cdot 3$.
 Note that there is **no** $\displaystyle\frac{a}{b+c}=\frac a b + \frac a c$
 rule; that doesn't work. This also applies to $\displaystyle\frac{a}{b-c}$.
 
-It's often best to look at which numbers are below a division line and which
-aren't. For example, if we have $\frac 1 2 \cdot 3 \cdot \frac 4 5$ we know
-that's $\frac{1 \cdot 3 \cdot 4}{2 \cdot 5}$ because 2 and 5 were below the
-lines but other numbers weren't.
-
 (divide-top-and-bottom)
 Dividing the top and bottom by something does not change the value. For
 example:
@@ -91,21 +94,48 @@ math: \frac 6 4 = \frac{6/2}{4/2} = \frac 3 2
 math:
     \frac{x}{ax+bx} = \frac{x}{(a+b)x} = \frac{1}{a+b}
 
-This is often written with cancellation lines, like
+I often denote dividing top and bottom like
 $\displaystyle\frac{\rcancel x}{(a+b)\rcancel x}$.
+
+If you have a minus sign on top and bottom, you can get rid of it:
+
+math:
+    \frac{-a}{-b} = \frac{\rcancel{(-1)}a}{\rcancel{(-1)}b} = \frac a b
 
 You can also go backwards and multiply top and bottom by something.
 
 math:
-    \frac{1}{a+b} = \frac{x}{ax+bx}
+    \frac{1}{a+b} = \frac{x}{(a+b)x}
 
-Here's an easy way to check that these things work:
-
-math:
-    \frac{ac}{bc} = \frac a b \cdot \frac c c = \frac a b \cdot 1 = \frac a b
+Here's an easy way to check that these things work using the fact that any
+number divided by itself is 1:
 
 math:
-    \frac{a/c}{b/c} = \frac{a\cdot\frac1c}{b\cdot\frac1c} = \frac a b
+    \frac{ac}{bc} = \frac a b \cdot \green{\frac c c} \
+    = \frac a b \cdot \green 1 = \frac a b
+
+math:
+    \frac{a/c}{b/c} = \frac{a\cdot\frac1c}{b\cdot\frac1c} \
+    = \frac a b \cdot \green{\frac{\ \frac1c\ }{\ \frac1c\ }} \
+    = \frac a b \cdot \green 1 = \frac a b
+
+As you can see, sometimes I use colors to make things easier to read.
+
+If you have something like $\frac a b + \frac c d$, you **cannot** combine it
+into something like $\frac{a+c}{b+d}$ right away. You can combine stuff only if
+they have the same bottom, but you can make that happen by multiplying top and
+bottom nicely:
+
+math:
+    \frac a b + \frac c d = \frac{a\green d}{b\green d} + \frac{\blue b c}{\blue b d} \
+    = \frac{ad+bc}{bd}
+
+This also works with $-$ instead of $+$.
+
+If something is below *two* division lines, then you can move it to top:
+
+math:
+    \frac{a}{\ \frac b c\ } = \frac{a\blue c}{\frac{b}{\rcancel c}\rcancel{\blue c}} = \frac{ac}{b}
 
 (zerodivision)
 Remember that you cannot divide anything by zero. See [Numberphile's awesome
@@ -114,21 +144,6 @@ zero video](https://youtu.be/BRRolKTlF6Q) if you're wondering why.
 code:
     <laplous3>   when you divide by 0 you get theelous3
     <laplous3>   it's a sort of math black hole
-
-If something is below *two* division lines, then you can move it to top:
-
-math:
-    \frac{a}{\ \frac b c\ } = \frac{ac}{\frac b c c} = \frac{ac}{b\frac c c\ } = \frac{ac}{b}
-
-(negative-mul-div)
-Negative numbers behave like this when multiplied and divided. Note how the two
--'s cancel out.
-
-math: 2 \cdot (-2) = -(2 \cdot 2) = -4
-
-math: (-2) \cdot (-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 4
-
-math: \frac{-3}{-4} = \frac{\rcancel{(-1)}\cdot 3}{\rcancel{(-1)}\cdot 4} = \frac 3 4
 
 ## Absolute Value
 
@@ -279,17 +294,16 @@ code:
 
 It's easy to write a program in one's favorite programming language that goes
 through a big pile of $a$ and $n$ values and makes sure they satisfy
-$a^n = a^{n/2} \cdot a^{n/2}$, but **that is not a proof**. What if there
-exists some funny $a$ and $n$ values that break everything? It's very unlikely,
-but a *proof* of something like this works for any $a$ value and any even $n$
-value.
+$a^n = a^{n/2} \cdot a^{n/2}$, but **that is not a proof**. What if some funny
+$a$ and $n$ values break everything? It's very unlikely, but a *proof* of this
+must work with any $a$ and $n$ values.
 
 Here's an example proof:
 
 indent:
 indent:
     $n$ is even, so $n/2$ is an integer and $a^{n/2}$ means $a$ multiplied by
-    itself $n/2$ times. We get this:
+    itself $n/2$ times.
 
     math:
         a^{n/2} \cdot a^{n/2} \
@@ -299,10 +313,10 @@ indent:
         &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n\text{ times}}
         &= a^n
 
-There it is. Note that we didn't plug in any values; we just did something that
-worked for any $a$ and any even $n$. Note that this proof assumes $n > 0$;
-something like multiplying $a$ by itself -2 times doesn't make much sense.
-We'll revisit negative exponents [later](explog.html#exponent-functions).
+There it is. We didn't plug in any values; we just did something that worked
+for any $a$ and any even $n$. Note that this proof assumes $n > 0$; something
+like multiplying $a$ by itself -2 times doesn't make much sense. We'll revisit
+negative exponents [later](explog.html#exponent-functions).
 
 Note that it's ok to prove $a^n = a^{n/2} \cdot a^{n/2}$ by starting at
 $a^{n/2} \cdot a^{n/2}$ and eventually getting to $a^n$. It's just as valid to
@@ -353,9 +367,9 @@ half, so the triangle area must be half of the rectangle area $ah$.
 
 ## Volumes
 
-A volume is really the same thing as an area, but for 3D things. If our
-300 by 200 window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$
-pixels would fit inside it.
+A volume is a similar thing as an area, but for 3D things. If our 300 by 200
+window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$ pixels would
+fit inside it.
 
 asymptote3d: float:left;
     size(7cm);

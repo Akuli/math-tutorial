@@ -99,16 +99,16 @@ math: \sin(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
 
 Let's try to find those constants. We'll do this for a general $f(x)$ first,
 so we get something that works with many other functions instead of just
-$f(x)=\sin(x)$.
+$f(x)=\sin(x)$. I'll also use colors to make things easier to follow.
 
-math: f(x)=c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
+math: f(x)=\blue{c_0}+\green{c_1x}+\maroon{c_2x^2}+\olive{c_3x^3}+\purple{c_4x^4}+...
 
 We can start by plugging in $x=0$:
 
 math:
-    f(0) &= c_0+c_1\cdot0+c_2\cdot0^2+c_3\cdot0^3+...
-        &= c_0+0+0+...
-        &= c_0
+    f(0) &= \blue{c_0}+\green{c_1\black{0}}+\maroon{c_2\black{0}^2}+\olive{c_3\black{0}^3}+\purple{c_4\black{0}^4}+...
+    &= \blue{c_0}+0+0+0+...
+    &= \blue{c_0}
 
 Great, we found one constant, but we still have infinitely many constants to
 find. So, what do we do next? Let's try taking [the
@@ -116,31 +116,31 @@ derivative](derivatives.html) of both sides with the $\frac{d}{dx}x^c=cx^{c-1}$
 and $\frac{d}{dx}(c\ f(x))=c\cdot\frac{d}{dx}f(x)$ rules.
 
 math:
-    f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
-    f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+...
-    f'(0) &= c_1
+    f(x) &= \blue{c_0}+\green{c_1x}+\maroon{c_2x^2}+\olive{c_3x^3}+\purple{c_4x^4}+...
+    f'(x) &= \blue{0}+\green{c_1}+\maroon{2c_2x}+\olive{3c_3x^2}+\purple{4c_4x^3}+...
+    f'(0) &= \green{c_1}
 
 Let's take the derivative again a few times until we can notice a pattern. Here
 $f''$ means the derivative of the derivative. It'll look like a mess, but it's
 not very complicated.
 
 math:
-    f'(x) &= c_1 + 2c_2x+3c_3x^2+4c_4x^3+5c_5x^4+...
-    f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+...
-    f''(0) &= 2c_2
-    c_2 &= \frac{f''(0)}{2}
+    f'(x) &= \green{c_1}+\maroon{2c_2x}+\olive{3c_3x^2}+\purple{4c_4x^3}+\blue{5c_5x^4}+...
+    f''(x) &= \green{0}+\maroon{2c_2}+\olive{(3\cdot2)c_3x}+\purple{(4\cdot3)c_4x^2}+\blue{(5\cdot4)c_5x^3}+...
+    f''(0) &= \maroon{2c_2}
+    \maroon{c_2} &= \frac{f''(0)}{\maroon 2}
 
 math:
-    f''(x) &= 2c_2+(3\cdot2)c_3x+(4\cdot3)c_4x^2+(5\cdot4)c_5x^3+(6\cdot5)c_6x^4+...
-    f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+...
-    f'''(0) &= (3\cdot2)c_3
-    c_3 &= \frac{f'''(0)}{3\cdot2}
+    f''(x) &= \maroon{2c_2}+\olive{(3\cdot2)c_3x}+\purple{(4\cdot3)c_4x^2}+\blue{(5\cdot4)c_5x^3}+\green{(6\cdot5)c_6x^4}+...
+    f'''(x) &= \maroon{0}+\olive{(3\cdot2)c_3}+\purple{(4\cdot3\cdot2)c_4x}+\blue{(5\cdot4\cdot3)c_5x^2}+\green{(6\cdot5\cdot4)c_6x^3}+...
+    f'''(0) &= \olive{(3\cdot2)c_3}
+    \olive{c_3} &= \frac{f'''(0)}{\olive{3\cdot2}}
 
 math:
-    f'''(x) &= (3\cdot2)c_3+(4\cdot3\cdot2)c_4x+(5\cdot4\cdot3)c_5x^2+(6\cdot5\cdot4)c_6x^3+...
-    f''''(x) &= (4\cdot3\cdot2)c_4+(5\cdot4\cdot3\cdot2)c_5x+(6\cdot5\cdot4\cdot3)c_6x^2+...
-    f''''(0) &= (4\cdot3\cdot2)c_4
-    c_4 &= \frac{f''''(0)}{4\cdot3\cdot2}
+    f'''(x) &= \olive{(3\cdot2)c_3}+\purple{(4\cdot3\cdot2)c_4x}+\blue{(5\cdot4\cdot3)c_5x^2}+\green{(6\cdot5\cdot4)c_6x^3}+...
+    f''''(x) &= \olive{0}+\purple{(4\cdot3\cdot2)c_4}+\blue{(5\cdot4\cdot3\cdot2)c_5x}+\green{(6\cdot5\cdot4\cdot3)c_6x^2}+...
+    f''''(0) &= \purple{(4\cdot3\cdot2)c_4}
+    \purple{c_4} &= \frac{f''''(0)}{\purple{4\cdot3\cdot2}}
 
 At this point we need more notation:
 
@@ -160,17 +160,17 @@ If we did more of these we would notice that $c_5=\frac{f^{(5)}(0)}{5!}$,
 $c_6=\frac{f^{(6)}(0)}{6!}$ and so on. Our series looks like this:
 
 math:
-    f(x) &= c_0+c_1x+c_2x^2+c_3x^3+c_4x^4+...
+    f(x) &= c_0 + c_1x + c_2x^2 + c_3x^3 + c_4x^4 + ...
     f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + ...
 
 This is known as the **Maclaurin series** of $f$. Note that factorials get
 really big really fast, e.g. $10!$ is bigger than 1 million, so dividing by the
 factorials gives us small numbers.
 
-The Maclaurin series uses 0 as some kind of "magic number" that is always put
-to $f(\quad)$, $f'(\quad)$ etc., but it doesn't need to be 0. By starting with
-a constant $a$ and $f(x+a)$ instead of $f(x)$, we can find the **Taylor series**
-of $f$:
+The Maclaurin series uses $0$ as some kind of "magic number" that is always put
+to $f(\quad)$, $f'(\quad)$ etc., but it doesn't need to be $0$. By starting
+with a constant $a$ and $f(x+a)$ instead of $f(x)$, we can find the
+**Taylor series** of $f$:
 
 math:
     f(x) = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \frac{f''(a)}{3!}(x-a)^3 + ...
@@ -194,11 +194,8 @@ math:
     f''''''(x) &= -\sin(x)
     &...
 
-.. TODO: add pic
-
-Now let's plug in some values. With [the unit circle](summary.html#unitcircle)
-we know that $\cos(0)=1$ and $\sin(0) = 0$ because the $(x,y)$ point $(1,0)$
-corresponds to the angle 0.
+Now let's plug in some values. With [the unit circle](geometry-and-trig.html#common-sincos)
+we know that $\cos(0)=1$ and $\sin(0) = 0$.
 
 math:
     f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \frac{f'''(0)}{4!}x^4 + ...

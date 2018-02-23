@@ -52,20 +52,21 @@ graybox: See Also
     [This video](https://youtu.be/AuA2EAgAegE) contains a different kind of
     introduction to $e$ with more facts but less details.
 
-Let's try to find the derivative of $a^x$ where $a$ is a positive constant.
+Let's try to find the derivative of $b^x$ where the base $b$ is a positive
+constant.
 
 math:
-    \frac{d}{dx} a^x &= \lim_{h \to 0} \frac{a^{x+h}-a^x}{h}
-    &= \lim_{h \to 0} \frac{a^x a^h - a^x \cdot 1}{h}
-    &= \lim_{h \to 0} \frac{a^x(a^h-1)}{h}
-    &= \lim_{h \to 0} \left(a^x \frac{a^h-1}{h}\right)
-    &= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h}
+    \frac{d}{dx} b^x &= \lim_{h \to 0} \frac{b^{x+h}-b^x}{h}
+    &= \lim_{h \to 0} \frac{b^x a^h - b^x \cdot 1}{h}
+    &= \lim_{h \to 0} \frac{b^x(b^h-1)}{h}
+    &= \lim_{h \to 0} \left(b^x \frac{b^h-1}{h}\right)
+    &= b^x \cdot \lim_{h \to 0}\frac{b^h-1}{h}
 
 Note that the only $x$ in what we ended up with is outside the lim, so the
 entire lim thing is actually yet another constant. So, wouldn't it be handy if
-the whole lim thing was just 1? Then $\frac{d}{dx} a^x$ would be just $a^x$.
+the whole lim thing was just 1? Then $\frac{d}{dx} b^x$ would be just $b^x$.
 
-Turns out that there's only one $a$ value that satisfies this, and
+Turns out that there's only one $b$ value that satisfies this, and
 mathematicians call that number $e$.
 
 math: \lim_{h\to0} \frac{e^h-1}{h} = 1
@@ -113,12 +114,12 @@ math:
       = \lim_{t\to0} (1+t)^{1/t}
 
 Let's plug this into our $h$ limit. It doesn't matter how $t$ and $h$ relate to
-each other as long as they both go to 0, so we can set $t=h$.
+each other as long as they both go to $0$, so we can set $t=h$.
 
 math:
     \lim_{h\to0} \frac{e^h-1}{h} \
     &= \lim_{h\to0} \frac{\left((1+h)^{1/h}\right)^h-1}{h}
-    &= \lim_{h\to0} \frac{(1+h)^{1/h\ \cdot\ h}-1}{h}
+    &= \lim_{h\to0} \frac{(1+h)^{1/{\rcancel h}\cdot\rcancel h}-1}{h}
     &= \lim_{h\to0} \frac{(1+h)-1}{h}
     &= \lim_{h\to0} \frac{h}{h}
     &= 1
@@ -171,14 +172,15 @@ with any $x$. You cannot take any logarithm of zero or a negative value.
 
 The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
 for "natural", and $\log_e$ is called natural because it appears surprisingly
-often in all kinds of places because of the $e$.
+often in all kinds of places because of the $e$. We'll see examples of that
+later in this chapter.
 
 Many programming languages and calculators have a ``log(x)`` function, and
 usually it returns $\ln(x)$, $\log_2(x)$ or $\log_{10}(x)$. If you aren't sure
 which logarithm it is, you can try it like this:
 
 math:
-    \log_b(b) = \log_b(b^1) = 1
+    \log_b(b) = \rcancel{\log_b}(\rcancel{b}^1) = 1
 
 code: python3
     >>> import math
@@ -191,28 +193,15 @@ code: python3
 
 Python's ``math.log(x)`` returns $\ln(x)$.
 
+## Logarithm Rules
+
 The summary page contains [a bunch of formulas](summary.html#logs-are-useful)
-that make logarithms very useful. The proofs are below.
+of stuff that can be done with logarithms. They are proved here.
 
-Use the $\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ formula if your
-programming language doesn't have a logarithm that returns what you want:
-
-code: javascript
-    function log4(x) {
-        // this works with any logarithm, so i don't even need to care about
-        // which logarithm Math.log is in javascript
-        return Math.log(x) / Math.log(4);
-    }
-
-Most programming languages have a few different logarithm functions like
-``log2`` or ``log10``, and some allow specifying a base like ``math.log(x, 4)``
-in Python.
-
-## Logarithm Rule Proofs
-
-Here $x>0$, $y>0$, $a>0$, $a\ne1$, $b>0$ and $b\ne1$. The proofs are ordered so
-that they don't use anything that hasn't been proved before them, but they use
-things that directly follow from the inversiness like $b^{\log_b(x)}=x$.
+In these proofs, $x>0$, $y>0$, $a>0$, $a\ne1$, $b>0$ and $b\ne1$. The proofs
+are ordered so that they don't use anything that hasn't been proved before
+them, but they use things that directly follow from the inversiness like
+$b^{\log_b(x)}=x$.
 
 math:
     x^y &= x^y
@@ -240,36 +229,57 @@ math:
     \log_b(x)\ \log_a(b) &= \log_a(x)
     \log_b(x) &= \frac{\log_a(x)}{\log_a(b)}
 
+Note how some of these rules are nicely related to more well-known
+exponentiation rules:
+
+math:
+    b^{x+y} &= b^xb^y
+    \log_b(x)+\log_b(y) &= \log_b(xy)
+
+Use the $\log_b(x) = \displaystyle\frac{\log_a(x)}{\log_a(b)}$ formula if your
+programming language doesn't have a logarithm that returns what you want:
+
+code: javascript
+    function log4(x) {
+        // this works with any logarithm, so i don't even need to care about
+        // which logarithm Math.log is in javascript
+        return Math.log(x) / Math.log(4);
+    }
+
+Most programming languages have a few different logarithm functions like
+``log2`` or ``log10``, and some allow specifying a base like ``math.log(x, 4)``
+in Python.
+
 ## Derivative of any exponent function
 
 [Earlier](#the-e-constant) we tried to find the derivative of $a^x$ where $a>0$
 and we ended up with this:
 
-math: \frac{d}{dx} a^x = a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h}
+math: \frac{d}{dx} b^x = b^x \cdot \lim_{h \to 0}\frac{b^h-1}{h}
 
 But now we know that $\frac{d}{dx} e^x = e^x$ and we also know logarithms. Let's
 keep working on the derivative.
 
-math: a^x = e^{\ln(a^x)} = e^{x \ln(a)}
+math: b^x = e^{\ln(b^x)} = e^{x \ln(b)}
 
 Here I used the $\log_b(x^y)=y \log_b(x)$ formula that we proved above. So it
 looks like we could do this (remember to use [the chain
 rule](more-derivatives.html#chain-rule)):
 
 math:
-    \frac{d}{dx} a^x \
-    = \frac{d}{dx} e^{\overbrace{x \ln(a)}^{\substack{\text{inner} \\ \text{stuff}}}} \
-    = \underbrace{e^{x \ln(a)}}_{\text{this is }a^x} \
-    \cdot \overbrace{\frac{d}{dx}(x \underbrace{\ln(a)}_\text{constant})\
+    \frac{d}{dx} b^x \
+    = \frac{d}{dx} e^{\overbrace{x \ln(b)}^{\substack{\text{inner} \\ \text{stuff}}}} \
+    = \underbrace{e^{x \ln(b)}}_{\text{this is }b^x} \
+    \cdot \overbrace{\frac{d}{dx}(x \underbrace{\ln(b)}_\text{constant})\
     }^{\substack{\text{derivative of} \\ \text{inner stuff}}} \
-    = a^x \ln(a)
+    = b^x \ln(b)
 
 That's quite nice, but now we also have this:
 
 math:
-    \frac{d}{dx} a^x &= \frac{d}{dx} a^x
-    a^x \ln(a) &= a^x \cdot \lim_{h \to 0}\frac{a^h-1}{h}
-    \ln(a) &= \lim_{h\to0} \frac{a^h-1}{h}
+    \frac{d}{dx} b^x &= \frac{d}{dx} b^x
+    \rcancel{b^x}\ln(b) &= \rcancel{b^x} \lim_{h \to 0}\frac{b^h-1}{h}
+    \ln(b) &= \lim_{h\to0} \frac{b^h-1}{h}
 
 This is why the base $e$ logarithm is known as the *natural* logarithm, or $\ln$
 for short. It appears "naturally" in surprising places.
@@ -356,7 +366,7 @@ graybox: Exercise
     Logarithms are handy for proving other derivative rules too if we can
     assume that things are positive. Prove that
     $\frac{d}{dx}(f(x)g(x))=f'(x)g(x)+f(x)g'(x)$ when $f(x)>0$ and $g(x)>0$ by
-    rewriting $f(x)g(x)$ as $e^{\ln(f(x)g(x))}=e^{\ln f(x)+\ln g(x)}$.
+    rewriting $f(x)g(x)$ as $e^{\ln(f(x)g(x))}=e^{\ln(f(x))+\ln(g(x))}$.
 
 ## Integral of $\frac 1 x$
 
@@ -445,33 +455,34 @@ asymptote: float:right;
 
     draw(graph(f, 0.5, 4), blue, L="$y=\frac 1 x$", align=NE);
 
-We also know that $\ln(e) = \ln(e^1) = 1$, so we can define $e$ as the only
-number that satisfies this:
+We also know that $\ln(e) = \rcancel{\ln}(\rcancel{e}^1) = 1$, so we can define
+$e$ as the only number that satisfies this:
 
 math:
     \int_1^e\frac 1 x\ dx = 1
 
 ## Integrals of Exponent Functions
 
-We know that $\frac{d}{dx} a^x = a^x \ln(a)$. Turning that into an
-antiderivative rule is easy because $\ln(a)$ is a constant and we can use the
+We know that $\frac{d}{dx} b^x = b^x \ln(b)$. Turning that into an
+antiderivative rule is easy because $\ln(b)$ is a constant and we can use the
 $\frac{d}{dx}(c\ f(x)) = c\ f'(x)$ rule right-to-left.
 
 math:
-    \frac{d}{dx} a^x &= a^x \ln(a)
-    \frac{\frac{d}{dx} a^x}{\ln(a)} &= a^x
-    \frac{1}{\ln(a)} \cdot \frac{d}{dx} a^x &= a^x
-    \frac{d}{dx} \left( \frac{1}{\ln(a)} a^x \right) &= a^x
-    \frac{d}{dx} \left( \frac{a^x}{\ln(a)} \right) &= a^x
+    \frac{d}{dx} b^x &= b^x \ln(b)
+    \frac{\frac{d}{dx} b^x}{\ln(b)} &= b^x
+    \underbrace{\frac{1}{\ln(b)}}_\text{constant} \cdot \frac{d}{dx} b^x &= b^x
+    \frac{d}{dx} \left( \frac{1}{\ln(b)} b^x \right) &= b^x
+    \frac{d}{dx} \left( \frac{b^x}{\ln(b)} \right) &= b^x
 
-Now we know that $\frac{a^x}{\ln(a)}$ is an antiderivative of $a^x$, so here's
+Now we know that $\frac{b^x}{\ln(b)}$ is an antiderivative of $b^x$, so here's
 the solution:
 
 math:
-    \int a^x\ dx = \frac{a^x}{\ln(a)} + C
+    \int b^x\ dx = \frac{b^x}{\ln(b)} + C
 
-Of course, $\int e^x\ dx = e^x + C$ because $\ln(e)=\ln(e^1)=1$, but also
-because $\frac{d}{dx} e^x = e^x$.
+Of course, $\int e^x\ dx = e^x + C$ because
+$\ln(e)=\rcancel{\ln}(\rcancel{e}^1)=1$, but also because
+$\frac{d}{dx} e^x = e^x$.
 
 ## Integrals of Logarithms
 
@@ -516,9 +527,8 @@ Let's check it just to be sure using [the $\frac{d}{dx}(f(x)g(x))=f'(x)g(x)+f(x)
 rule](more-derivatives.html#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x):
 
 math:
-    \frac{d}{da} (a \ln(a) - a + 1) &= 1 \cdot \ln(a) + a \cdot \frac{1}{a} - 1 + 0
-    &= \ln(a) + 1 - 1
-    &= \ln(a)
+    \frac{d}{da} (a \ln(a) - a + 1) &= 1 \cdot \ln(a) + \rcancel a \frac{1}{\rcancel a} - 1 + 0
+    &= \ln(a) \rcancel{+ 1} \rcancel{- 1} = \ln(a)
 
 Note that the $+1$ at the end turned into $+0$ in the derivative, so everything
 would work just fine without it. We're almost done:

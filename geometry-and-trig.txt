@@ -307,6 +307,7 @@ programming languages have ``cos`` and ``sin`` functions, and you don't need to
 know how they calculate those values with other functions yet. You just need to
 know what $\sin$ and $\cos$ are.
 
+(common-sincos)
 As before, here's a pile of examples:
 
 asymptote: float:left;

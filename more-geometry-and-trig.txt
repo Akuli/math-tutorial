@@ -149,7 +149,7 @@ We must get the same area with both ways, so we get this:
 math:
     (a+b)(a+b) &= c^2 + 4\frac{ab}{2}
     (a+b)^2 &= c^2 + \frac{4}{2} ab
-    a^2 + 2ab + b^2 &= c^2 + 2ab
+    a^2 \rcancel{+ 2ab} + b^2 &= c^2 \rcancel{+ 2ab}
     a^2 + b^2 &= c^2
 
 graybox: Exercise
@@ -483,7 +483,7 @@ corner square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the
 bigger square. Let's set those equal:
 
 math:
-    \theta + \Delta\theta + \frac \tau 4 &= \frac \tau 4 + \alpha
+    \theta + \Delta\theta \rcancel{+ \frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha
     \theta + \Delta\theta &= \alpha
 
 The blue area looks kind of like a triangle, so we can apply [triangle
@@ -519,7 +519,7 @@ math:
     &= \frac{d}{d\theta}\sin\Bigl(\underbrace{\frac\tau4 - \theta}_{\text{inner stuff}}\Bigr)
     &= \cos\Bigl(\frac\tau4 - \theta\Bigr) \cdot \frac{d}{d\theta}\Bigl(\frac\tau4 - \theta\Bigr)
     &= \sin\biggl(\frac\tau4 - \Bigl(\frac\tau4 - \theta\Bigr)\biggr) \cdot (0-1)
-    &= \sin\Bigl(\frac\tau4 - \frac\tau4 + \theta\Bigr) \cdot (-1)
+    &= \sin\Bigl(\rcancel{\frac\tau4} \rcancel{- \frac\tau4} + \theta\Bigr) \cdot (-1)
     &= -\sin(\theta)
 
 

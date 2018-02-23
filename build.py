@@ -85,10 +85,14 @@ builder.get_head_extras = lambda filename: '''
       Macros: {
         // awesome, i have latex inside javascript inside html inside python
         // https://xkcd.com/1638/
+        red: [ "\\\\color{red}{#1}", 1 ],
         blue: [ "\\\\color{blue}{#1}", 1 ],
         green: [ "\\\\color{green}{#1}", 1 ],
-        rcancel: [ "\\\\require{cancel}\\\\color{red}{\\\\cancel{\\\\color{bla\
-ck}{#1}}}", 1 ]
+        maroon: [ "\\\\color{maroon}{#1}", 1 ],
+        olive: [ "\\\\color{olive}{#1}", 1 ],
+        purple: [ "\\\\color{purple}{#1}", 1 ],
+        black: [ "\\\\color{black}{#1}", 1 ],
+        rcancel: [ "\\\\require{cancel}\\\\red{\\\\cancel{\\\\black{#1}}}", 1 ]
       }
     }
   });
