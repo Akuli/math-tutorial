@@ -70,9 +70,9 @@ sides. That gives us $\infty-\infty$ on both sides, and $\infty-\infty$ is
 <p>So, if you used to have $\infty$ lines of code and you tell me that you deleted
 $\infty$ lines of it, I have no idea how much code you have now; it depends on
 <i>how</i> you deleted $\infty$ lines of code. If you deleted the whole repository
-you have no code, but if you spent infinitely much time deleting the lines one
-at a time, deleting them did nothing because $\infty-1=\infty$. In both cases,
-you deleted $\infty$ lines of code.</p>
+you have no code, but if you deleted lines of code one by one, deleting them
+did nothing because $\infty-1=\infty$. In both cases, you deleted $\infty$
+lines of code.</p>
 
 <p>Here are more examples of things that we <b>can</b> do. Try them out with your
 favorite programming language.</p>
@@ -122,8 +122,8 @@ $$\begin{align}\lim_{x\to\infty}x^2 = \infty^2 = \infty\end{align}$$<p>Even if w
 what the limit might be based on them. It's often possible to do something to
 get rid of $\infty-\infty$:</p>
 
-$$\begin{align}\lim_{x\to\infty}(x-x^2) &= \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty) \\
-&= \infty\cdot(-\infty) = -(\infty\cdot\infty) = -\infty\end{align}$$<p>Note that $x-x^2=x(1-x)$ is valid for a finite $x$, but
+$$\begin{align}\lim_{x\to\infty}(x-x^2) &= \lim_{x\to\infty}(\blue x-\blue x\cdot x)  = \lim_{x\to\infty}\blue x(1-x) \\
+&= \infty\cdot(1-\infty) = \infty\cdot(-\infty)=-\infty^2 = -\infty\end{align}$$<p>Note that $x-x^2=x(1-x)$ is valid for a finite $x$, but
 $\infty-\infty^2=\infty(1-\infty)$ is wrong because $\infty-\infty^2$ is not
 defined to begin with. The $x$ was finite because we're talking about a limit,
 and it doesn't mean just plugging in $x=\infty$.</p>
@@ -203,8 +203,8 @@ $$\begin{align}\frac{1+1+1+...}{2+2+2+...}=\frac{(1+1)+(1+1)+...}{2+2+2+2+...}=\
 $$\begin{align}\lim_{x\to0}\frac{x}{2x} = \lim_{x\to0} \frac 1 2 = \frac 1 2\end{align}$$$$\begin{align}\lim_{x\to0}\frac{2x}{x} = \lim_{x\to0} \frac 2 1 = \frac 2 1 = 2\end{align}$$<p>See also <a href="https://www.youtube.com/watch?v=BRRolKTlF6Q">this video</a>.
 </p>
 
-</div><h3 id="0-cdot-infty">$0 \cdot \infty$<a class="headerlink" href="#0-cdot-infty" title="Link to this title">¶</a></h3><div class="indent"><p>This one is interesting because 0 multiplied by anything finite is 0, and
-infinity multiplied by anything nonzero is either $\infty$ or $-\infty$
+</div><h3 id="0-cdot-infty">$0 \cdot \infty$<a class="headerlink" href="#0-cdot-infty" title="Link to this title">¶</a></h3><div class="indent"><p>This one is interesting because $0$ multiplied by anything finite is $0$,
+and infinity multiplied by anything nonzero is either $\infty$ or $-\infty$
 (see above).</p>
 
 $$\begin{align}\lim_{x\to\infty}(0 \cdot x) = 0\end{align}$$$$\begin{align}\lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0^+} \cdot \overbrace{x}^{\to\infty}\ \biggr)  = \lim_{x\to\infty} \frac x x = \lim_{x\to\infty} 1 = 1\end{align}$$$$\begin{align}\lim_{x\to\infty} \biggl(\ \underbrace{\frac 1 x}_{\to0^+}  \cdot \overbrace{x^2}^{\to\infty}\  \biggr) = \lim_{x\to\infty} \frac{x^2}{x} = \lim_{x\to\infty} \frac x 1 = \frac \infty 1 = \infty\end{align}$$</div><h3 id="1-infty">$1^\infty$<a class="headerlink" href="#1-infty" title="Link to this title">¶</a></h3><div class="indent"><p>You might be thinking that it makes sense to define $1^\infty = 1$ because

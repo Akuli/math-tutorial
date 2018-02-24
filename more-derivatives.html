@@ -94,11 +94,11 @@ derivatives $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$.</p>
 
 <h3 id="frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x">$\frac{d}{dx}(c \cdot f(x)) = c \cdot \frac{d}{dx}(f(x))$<a class="headerlink" href="#frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's plug in $c \cdot f(x)$ to the definition of derivative.</p>
 
-$$\begin{align}\frac{d}{dx}(c \cdot f(x))  &= \lim_{h\to0} \frac{c\cdot f(x+h)-c\cdot f(x)}{h} \\
-&= \lim_{h\to0} \frac{c\cdot\bigl(f(x+h)-f(x)\bigr)}{h} \\
-&= \lim_{h\to0} \left(c\cdot\frac{f(x+h)-f(x)}{h}\right) \\
-&= c\cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
-&= c\cdot f'(x)\end{align}$$<p>Here's a nice consequence of this rule:</p>
+$$\begin{align}\frac{d}{dx}(c \cdot f(x))  &= \lim_{h\to0} \frac{\green c \cdot f(x+h) - \green c \cdot f(x)}{h} \\
+&= \lim_{h\to0} \frac{\green c \cdot\bigl(f(x+h)-f(x)\bigr)}{h} \\
+&= \lim_{h\to0} \left(\green c \cdot\frac{f(x+h)-f(x)}{h}\right) \\
+&= \green c \cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+&= c \cdot f'(x)\end{align}$$<p>Here's a nice consequence of this rule:</p>
 
 $$\begin{align}\frac{d}{dx}(-f(x))  &= \frac{d}{dx}((-1)f(x)) \\
 &= (-1)f'(x) \\
@@ -126,26 +126,31 @@ $$\begin{align}\frac{d}{dx}(f(x)-g(x))  &= \frac{d}{dx}\bigl(f(x)+(-g(x))\bigr) 
 $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. This means that we can divide
 stuff by $g(x+h)-g(x)$. We'll do the $g(x+h)=g(x)$ case separately.</p>
 
-$$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-&= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{h} \cdot \frac{g(x+h)-g(x)}{g(x+h)-g(x)}\right) \\
-&= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot                        \frac{g(x+h)-g(x)}{h} \right) \\
-&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right)     \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right) \\
-&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)\end{align}$$<img width="222" height="283" class="asymptote" src="asymptote/585c8328017deaacb5dfd811d8976d4a.svg" style="float:right;" /><p>Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
-the derivative of $g$ exists, so <a href="#which-functions-have-derivatives">$g$ must be
-continuous</a>. So if $h \to 0$, then
-$g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.</p>
+<p>Multiplying top and bottom by the green stuff is a nice and clever way to
+get started with this:</p>
 
-$$\begin{align}\Delta g &= g(x+h)-g(x) \\
-g(x) + \Delta g &= g(x+h)\end{align}$$$$\begin{align}\frac{d}{dx} f(g(x))  &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x) \\
-&= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x) \\
+$$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
+&= \lim_{h\to0} \frac{\bigl(f(g(x+h))-f(g(x))\bigr)\green{\bigl(g(x+h)-g(x)\bigr)}}                      {h\cdot\green{\bigl(g(x+h)-g(x)\bigr)}} \\
+&= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \cdot                        \frac{\green{g(x+h)-g(x)}}{h} \right) \\
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right)     \left(\lim_{h\to0} \frac{\green{g(x+h)-g(x)}}{h} \right) \\
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)\end{align}$$<img width="222" height="283" class="asymptote" src="asymptote/039c2f722d1782eb90c1915be1747ffa.svg" style="float:right;" /><p>The stuff with green on the bottom looks kind of like something that could
+be turned into the definition of derivative, but the defintion has just $h$
+on the bottom instead of the green mess. Let's define another variable
+$\Delta g = \green{g(x+h)-g(x)}$. We assumed that the derivative of $g$
+exists, so <a href="#which-functions-have-derivatives">$g$ must be continuous</a>. So
+if $h \to 0$, then $g(x+h) \to g(x)$ and $\bigl(\green{g(x+h)-g(x)}\bigr) \to 0$.</p>
+
+$$\begin{align}\Delta g &= \green{g(x+h)-g(x)} \\
+g(x) + \Delta g &= \blue{g(x+h)}\end{align}$$$$\begin{align}\frac{d}{dx} f(g(x))  &= \left(\lim_{h\to0} \frac{f(\blue{g(x+h)})-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x) \\
+&= \left(\lim_{\Delta g \to 0} \frac{f(\blue{g(x) + \Delta g})-f(g(x))}{\green{\Delta g}}\right)g'(x) \\
 &= f'(g(x))g'(x)\end{align}$$<p>If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
 $g(x)$ everywhere:</p>
 
 $$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} \\
-&= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h} \\
+&= \lim_{h\to0} \frac{\rcancel{f(g(x))}-\rcancel{f(g(x))}}{h} \\
 &= \lim_{h\to0} \frac 0 h \\
 &= 0\end{align}$$$$\begin{align}f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right) \\
-&= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right) \\
+&= f(g(x)) \biggl( \lim_{h \to 0} \frac{\rcancel{g(x)}-\rcancel{g(x)}}{h} \biggr) \\
 &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
 &= f(g(x)) \cdot 0 \\
 &= 0\end{align}$$</div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging into the definition of derivative gives this:</p>

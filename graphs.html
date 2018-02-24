@@ -153,13 +153,43 @@ gets every possible value when $y=1$ and no values at all otherwise because
 $y=1^x$ is a horizontal line at height 1. A function like that doesn't really
 make much sense.</p>
 
-<h2 id="sine-and-cosine">Sine and Cosine<a class="headerlink" href="#sine-and-cosine" title="Link to this title">¶</a></h2><p>See <a href="geometry-and-trig.html#radians-and-tau">this thing</a> if you don't
-know what $\tau$ and radians are, and <a href="geometry-and-trig.html#trig-with-the-unit-circle">this
-thing</a> for a more
-detailed introduction to $\sin$, $\cos$ and the unit circle. Note that
-the graphs have a $t$ axis instead of an $x$ axis, and that $t$ is the
-same as the $t$ in the unit circle as radians.</p>
+<h2 id="sine-and-cosine">Sine and Cosine<a class="headerlink" href="#sine-and-cosine" title="Link to this title">¶</a></h2><div class="box redbox"><p>This section assumes that you know how sine and cosine are defined in a
+unit circle. I have explained it in <a href="geometry-and-trig.html">this chapter</a>.
+</p>
 
-<p><img width="397" height="367" class="asymptote" src="asymptote/b8d6771b17347ebf69b7428b303fe79a.svg" /></p><p><img width="567" height="227" class="asymptote" src="asymptote/fe2f0dcd713362be99c6f5d4520c2e63.svg" /></p><p><img width="567" height="227" class="asymptote" src="asymptote/1708b7a843d0374aa3bcd603935d819c.svg" /></p></div>
+</div><p>Here's a unit circle and a simple sine graph:</p>
+
+<img width="264" height="188" class="asymptote" src="asymptote/d7c360d476a6efa4516a31ca75d4f1ef.svg" style="float:left;" /><img width="585" height="234" class="asymptote" src="asymptote/5d5ab852939038ddec0873ce7dcf9d85.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
+
+<p>If you don't understand something about these things (e.g. what is
+$\sin(\theta)$, what is $\tau$, how do these graphs relate to each other, why
+does the blue graph look like a wave), please check those things from <a href="geometry-and-trig.html">this
+chapter</a> before you continue. The graph of cosine is a
+lot like the sine graph above, but we'll focus on the sine wave for now.</p>
+
+<p>First, let's notice that the sine wave repeats itself with intervals of $\tau$:</p>
+
+<p><img width="567" height="145" class="asymptote" src="asymptote/416dab987c38ac3a757f50a4c602a5a6.svg" /></p><p>This makes sense because if we rotate a full turn in the unit circle we get
+right back to where we started, and sine gets the same value. The repeating
+interval is known as the <b>period</b>.</p>
+
+$$\begin{align}\sin(x+\tau) = \sin(x)\end{align}$$<p>If we graph $y=\sin(\tau x)$ instead of $y=\sin(x)$, we get a period of $1$
+instead of $\tau$. Think about it like this: if $x$ changes by 1, then $\tau x$
+changes by $\tau$ and $\sin(\tau x)$ repeats.</p>
+
+$$\begin{align}\sin(\tau(x+1)) = \sin(\tau x + \tau) = \sin(\tau x)\end{align}$$<p><img width="425" height="283" class="asymptote" src="asymptote/4cc63c2660ad78bdd57d3aad75e1d5b6.svg" /></p><p>If we keep multiplying stuff we get $y=\sin(\tau f x)$ where the $f$ constant
+is the <b>frequency</b>, and the period is $\frac 1 f$. For example, setting
+$f=1/\tau \approx 0.159$ means that the period is
+$\frac{1}{1/\tau} = \tau$ because we're talking about
+$y=\sin(\tau f x)=\sin(\rcancel \tau \frac{1}{\rcancel \tau} x) = \sin(x)$.</p>
+
+<p>This fun demo lets you play with $y=A\sin(\tau f x)$ graphs. The amplitude $A$
+is just stretching the graph away from the $x$ axis.</p>
+
+<p><iframe src="https://purplemyst.github.io/generic-graphing/sine.html"
+        width="700" height="400"></iframe>
+</p>
+
+</div>
 </body>
 </html>
