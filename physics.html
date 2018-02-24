@@ -40,14 +40,18 @@
 the real world in any way. In this chapter we'll look into a bunch of ways to
 use math things for calculating more concrete stuff in the real world.</p>
 
-<div class="box graybox"><p>This chapter assumes that you know <a href="derivatives.html">derivatives</a> and
-<a href="integrals.html">integrals</a>.
+<div class="box graybox"><p>This chapter assumes that you know <a href="derivatives.html">derivatives</a>.</p>
+
+<p>There are also a few <a href="integrals.html">integrals</a>, but all you need to know
+is that $\int f(x)\ dx$ means all antiderivatives of $f$. For example,
+$\int 2x\ dx = x^2 + C$ because $\frac{d}{dx}(x^2+C)=2x$, and in fact, all
+antiderivatives are $x^2+$ some constant and that's what the $C$ is doing.
 </p>
 
 </div><p>I'll use <a href="https://en.wikipedia.org/wiki/International_System_of_Units">SI units</a>
-in this chapter, so instead of inches and pounds there will be centimeters and
+in this chapter, so instead of feet and pounds there will be metres and
 kilograms. If you live in a country that doesn't use SI units much, have a look
-at this conversion table of stuff I have used in this chapter:</p>
+at this table:</p>
 
 <p><table>
 <tr><th>Name of SI unit</th><th>Example value</th><th>Example value in non-SI units<sup>*</sup></th></tr>
@@ -91,7 +95,7 @@ $2\rm m/\rm{s}^2=\frac{2\rm m/\rm s}{\rm s}$ means that the velocity
 increases by $2\rm m/\rm s$ every second.
 </p>
 
-</div><p>This is already enough stuff for calculating something fun:</p>
+</div><p>This is already enough stuff for calculating something fun.</p>
 
 <h2 id="example-feather-and-hammer">Example: Feather and Hammer<a class="headerlink" href="#example-feather-and-hammer" title="Link to this title">¶</a></h2><p>Here's a famous
 experiment:</p>
@@ -99,12 +103,13 @@ experiment:</p>
 <p><iframe width="420" height="315" src="https://www.youtube.com/embed/5C5_dOEyAfk"></iframe></p>
 
 <p>As you can see, the acceleration caused by gravity does not depend on the mass
-or shape of the object if there's no air resistance. Let's try to calculate
-what that acceleration is.</p>
+or shape of the object, and we can really see it if there's no air resistance.
+Let's try to calculate what that acceleration is.</p>
 
-<p>Let's call the acceleration $g$. It's a constant, so we can find the speed
-$v(t)$ easily. We'll choose this so that positive $v$ means going down; this
-way we can work with positive numbers and keep everything nice and simple.</p>
+<p>Let's call the acceleration $g$ like gravity. It's a constant, so we can find
+the speed $v(t)$ easily. We'll choose this so that positive $v$ means going
+down; this way we can work with positive numbers and keep everything nice and
+simple.</p>
 
 $$\begin{align}v(t) = \int g\ dt = gt+C_1\end{align}$$<p>At $t=0$ the hammer and feather were just about to be dropped, and their
 velocity was still $0$:</p>
@@ -119,19 +124,12 @@ $$\begin{align}y(t) &= \int v(t)\ dt = \int gt\ dt = \frac 1 2 gt^2 + C_2\end{al
 them took about one second:</p>
 
 $$\begin{align}y(1\rm s)-y(0\rm s) &= 1.5\rm m \\
-\Bigl(\frac 1 2 g(1\rm s)^2 + \rcancel{C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 + \rcancel{C_2}\Bigr) &= 1.5 \rm m \\
+\Bigl(\frac 1 2 g(1\rm s)^2 \rcancel{+ C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 \rcancel{+ C_2}\Bigr) &= 1.5 \rm m \\
 \frac 1 2 g(1\rm s)^2 &= 1.5 \rm m \\
-g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 1.5 \rm m/\rm{s}^2\end{align}$$<p>A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
-is not too bad considering the horribly inaccurate $1.5\rm m$ and $1\rm s$ we
-calculated it from. A similar experiment on Earth would yield
-$g\approx9.81 \rm m/\rm{s}^2$, and that's a $g$ value we'll use in most of our
-other examples.</p>
+g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 3 \rm m/\rm{s}^2\end{align}$$<p>A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
+is horribly wrong. I haven't figured out what goes wrong with it yet.</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Try to get more accurate dropping time and distance from the video and
-calculate this stuff again. Can you get closer to $1.625 \rm m/\rm{s}^2$?
-</p>
-
-</div><h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
+<h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
 
 $$\begin{align}\Sigma F = ma\end{align}$$<p>Here $\Sigma$ means sum, and $\Sigma F$ is the sum of all forces that are
 pushing a mass and causing it an acceleration. In our previous example, there
@@ -157,9 +155,9 @@ M &= -G\end{align}$$<p>This mystery force is your chair holding up your butt, an
 in the front because it goes to the opposite direction compared to gravity.
 That's why they cancel out nicely and you don't accelerate anywhere.</p>
 
-<p>Newton's first and third law are very closely related to Newton's second law.
-For example, the first law is a special case of the second law: it says that a
-mass stays in place or moves smoothly ($a=0$) if no forces apply to it
+<p>Newton's first and third law are closely related to Newton's second law. For
+example, the first law is a special case of the second law: it says that a mass
+stays in place or moves smoothly ($a=0$) if no forces apply to it
 ($\Sigma F = 0$).
 </p>
 
