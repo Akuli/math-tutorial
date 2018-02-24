@@ -523,7 +523,7 @@ math:
     &= -\sin(\theta)
 
 
-Let's check the result with [graphs](graphs.html#sine-and-cosine):
+Let's check the result with [graphs](graphs.html#sine-waves):
 
 asymptote:
     size(18cm);

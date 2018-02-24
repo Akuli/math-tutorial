@@ -206,6 +206,7 @@ math: (\sqrt x\ )^2 = x
 
 math: \sqrt{x^2} = |x|
 
+(sqrt-basics)
 It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
