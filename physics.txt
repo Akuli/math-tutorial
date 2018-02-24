@@ -1,0 +1,179 @@
+# Physics Stuff
+
+This is mostly a math tutorial, but the math is not useless or isolated from
+the real world in any way. In this chapter we'll look into a bunch of ways to
+use math things for calculating more concrete stuff in the real world.
+
+graybox:
+    This chapter assumes that you know [derivatives](derivatives.html) and
+    [integrals](integrals.html).
+
+I'll use [SI units](https://en.wikipedia.org/wiki/International_System_of_Units)
+in this chapter, so instead of inches and pounds there will be centimeters and
+kilograms. If you live in a country that doesn't use SI units much, have a look
+at this conversion table of stuff I have used in this chapter:
+
+<table>
+<tr><th>Name of SI unit</th><th>Example value</th><th>Example value in non-SI units<sup>*</sup></th></tr>
+<tr><td>kilogram</td><td>80 kg</td><td>180 lbs</td></tr>
+<tr><td>metre</td><td>9.81 m</td><td>32 feet</td></tr>
+<tr><td>centimetre, $1\rm{cm}=\frac{1}{100}\rm{m}$</td><td>10 cm</td><td>4 inches</td></tr>
+</table>
+
+<small>* approximately</small>
+
+## Basic Stuff
+
+Here's a list of things I'll use in this tutorial:
+
+* Mass is usually denoted with $m$, and it's in kilograms.
+
+* Time is almost always denoted with $t$ and measured with seconds.
+
+* Distances are often denoted with e.g. $x$ or $y$. The SI unit of distances is
+  metre.
+
+* Velocity means how fast you are moving; in other words, it's the derivative
+  of your location with respect to time:
+
+indent:
+    math:
+        v = \frac{dx}{dt}
+
+    The unit of velocity is $\rm{m}/\rm{s}$ because $dx$ is conceptually a tiny
+    distance (metres) and $dt$ is a tiny time interval (seconds).
+
+* Acceleration is the changing rate of the velocity. If it's positive, your
+  velocity is getting bigger.
+
+indent:
+    math:
+        a = \frac{dv}{dt} = \frac{d^2x}{dt^2}
+
+    The $d^2$ notation means the derivative of the derivative of $x$; we take
+    the derivative two times. It "works" like this:
+
+    math:
+        a = \frac{d\frac{dx}{dt}}{dt} \
+        \mathop{=}^{\red ?}\frac{d \cdot dx}{dt \cdot dt} \
+        \mathop{=}^{\red ?}\frac{d^2x}{dt^2}
+
+    This makes no sense because $dx$ doesn't mean $d$ times $x$; it means the
+    change of $x$. However, it's just notation, and the
+    $\frac{d}{dt}x = \frac{dx}{dt}$ we are more used to doesn't make sense
+    either.
+
+    It can be handy to think of $x$, $v$ and $a$ as functions of the time and
+    write $x(t)$ instead of plain $x$, and this lets us use the usual $'$
+    notation:
+
+    math:
+        v(t) &= x'(t)
+        a(t) &= x''(t)
+
+    Velocity is metres per second, so acceleration is metres per second per
+    second, or $\frac{\rm{m}/\rm{s}}{\rm s} = \rm{m}/\rm{s}^2$. For example,
+    $2\rm m/\rm{s}^2=\frac{2\rm m/\rm s}{\rm s}$ means that the velocity
+    increases by $2\rm m/\rm s$ every second.
+
+This is already enough stuff for calculating something fun:
+
+## Example: Feather and Hammer
+
+Here's a famous
+experiment:
+
+<iframe width="420" height="315" src="https://www.youtube.com/embed/5C5_dOEyAfk"></iframe>
+
+As you can see, the acceleration caused by gravity does not depend on the mass
+or shape of the object if there's no air resistance. Let's try to calculate
+what that acceleration is.
+
+Let's call the acceleration $g$. It's a constant, so we can find the speed
+$v(t)$ easily. We'll choose this so that positive $v$ means going down; this
+way we can work with positive numbers and keep everything nice and simple.
+
+math:
+    v(t) = \int g\ dt = gt+C_1
+
+At $t=0$ the hammer and feather were just about to be dropped, and their
+velocity was still $0$:
+
+math:
+    v(0) &= 0
+    g \cdot 0 + C_1 &= 0
+    C_1 &= 0
+    v(t) &= gt
+
+We can integrate again to find the height at time $t$. Let's call that $y(t)$
+so that more $y$ means down.
+
+math:
+    y(t) &= \int v(t)\ dt = \int gt\ dt = \frac 1 2 gt^2 + C_2
+
+The initial height of the objects seems to be about $1.5\rm m$, and dropping
+them took about one second:
+
+math:
+    y(1\rm s)-y(0\rm s) &= 1.5\rm m
+    \Bigl(\frac 1 2 g(1\rm s)^2 + \rcancel{C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 + \rcancel{C_2}\Bigr) &= 1.5 \rm m
+    \frac 1 2 g(1\rm s)^2 &= 1.5 \rm m
+    g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 1.5 \rm m/\rm{s}^2
+
+A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
+is not too bad considering the horribly inaccurate $1.5\rm m$ and $1\rm s$ we
+calculated it from. A similar experiment on Earth would yield
+$g\approx9.81 \rm m/\rm{s}^2$, and that's a $g$ value we'll use in most of our
+other examples.
+
+graybox: Exercise
+    Try to get more accurate dropping time and distance from the video and
+    calculate this stuff again. Can you get closer to $1.625 \rm m/\rm{s}^2$?
+
+## Newton's Second Law
+
+Here's Newton's second law, written in a mathy way:
+
+math:
+    \Sigma F = ma
+
+Here $\Sigma$ means sum, and $\Sigma F$ is the sum of all forces that are
+pushing a mass and causing it an acceleration. In our previous example, there
+was only one force, the gravity $G$:
+
+math:
+    \green{\Sigma F} = m\blue{a}
+    \green{G} = m\blue{g}
+
+In fact, the force caused by gravity is always $mg$. For example, let's
+calculate the force that gravity pulls a person of weight 80kg down at:
+
+math:
+    G = mg = 80\rm{kg} \cdot 9.81\rm m/\rm{s}^2 \approx 784\rm{kgm}/\rm{s}^2 = 784 \rm N
+
+Here the $\rm N$ unit is 1 newton, defined so that
+$1\rm N = \frac{1\rm{kg} \cdot 1\rm m}{(1\rm s)^2}$.
+
+If you're sitting in front of your computer, gravity is pulling you down, but
+your acceleration is zero because you don't fall through your chair. Let's
+figure out why:
+
+math:
+    \Sigma F = ma = m \cdot 0 = 0
+
+This means that $\Sigma F \ne G$ because $G \ne 0$; instead $\Sigma F = G + M$
+where $M$ is some kind of Mystery force that we'll try to explain.
+
+math:
+    \Sigma F &= 0
+    G + M &= 0
+    M &= -G
+
+This mystery force is your chair holding up your butt, and it has a minus sign
+in the front because it goes to the opposite direction compared to gravity.
+That's why they cancel out nicely and you don't accelerate anywhere.
+
+Newton's first and third law are very closely related to Newton's second law.
+For example, the first law is a special case of the second law: it says that a
+mass stays in place or moves smoothly ($a=0$) if no forces apply to it
+($\Sigma F = 0$).
