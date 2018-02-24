@@ -539,4 +539,4 @@ asymptote:
 
 We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
 derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
-$\cos(\theta)$ graph shifted left.
+$\cos(\theta)$ graph shifted left. 
