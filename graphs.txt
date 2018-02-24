@@ -254,48 +254,94 @@ make much sense.
 
 ## Sine and Cosine
 
-See [this thing](geometry-and-trig.html#radians-and-tau) if you don't
-know what $\tau$ and radians are, and [this
-thing](geometry-and-trig.html#trig-with-the-unit-circle) for a more
-detailed introduction to $\sin$, $\cos$ and the unit circle. Note that
-the graphs have a $t$ axis instead of an $x$ axis, and that $t$ is the
-same as the $t$ in the unit circle as radians.
+redbox:
+    This section assumes that you know how sine and cosine are defined in a
+    unit circle. I have explained it in [this chapter](geometry-and-trig.html).
 
-asymptote:
-    size(14cm);
+Here's a unit circle and a simple sine graph:
+
+asymptote: float:left;
+    unitsize(1.8cm);
     real xyminmax=1.6, theta=1;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
 
-    draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
+    draw(rarc((0,0),1,0,theta), deepgreen, L="$\theta$");
     draw(rarc((0,0),1,theta,tau));
+    dot((cos(theta),sin(theta)), p=blue+dotpen);
+    label((cos(theta),sin(theta)), p=blue, L="$(\cos(\theta),\sin(\theta))$", align=NE);
 
-    dot((1,0), p=dotpen, L="$(1,0)$", align=SE);
-    dot((0,1), p=dotpen, L="$(0,1)$", align=NW);
-    dot((-1,0), p=dotpen, L="$(-1,0)$", align=SW);
-    dot((0,-1), p=dotpen, L="$(0,-1)$", align=SW);
-    dot((cos(theta),sin(theta)), p=dotpen);
-    label((cos(theta),sin(theta)), L="$(\cos(\theta),\sin(\theta))$", align=NE);
+asymptote: float:left;
+    unitsize(1.8cm);
+    real a=-1, b=9, axisend=10, dashend=8.3, labelx=8.5;
+    axises(a,axisend,-1.8,2.3, xlabel="$\theta$", xpen=deepgreen);
+    draw(graph(new real(real theta) { return sin(theta); }, a, b), blue);
+    draw((a,1)--(dashend,1), smalldashes, L=Label("$y=1$", position=Relative(0.7)), align=N);
+    draw((a,-1)--(dashend,-1), smalldashes, L=Label("$y=-1$", position=Relative(0.7)), align=S);
 
-asymptote:
-    size(20cm);
-    real a=-1, b=9;
-    axises(a,b+1,-1.8,2.3, xlabel="$\theta$", xpen=blue);
-    draw(graph(new real(real theta) { return sin(theta); }, a, b), heavyred);
-    draw((a,1)--(b,1), smalldashes, L=Label("$y=1$", position=Relative(0.7)), align=N);
-    draw((a,-1)--(b,-1), smalldashes, L=Label("$y=-1$", position=Relative(0.7)), align=S);
-
-    label((tau/4,1), heavyred, L="$y=\sin(\theta)$", align=N);
+    real angle=atan(cos(labelx));    // cos(labelx) is derivative at labelx
+    label((labelx,sin(labelx)), blue, L=rrotate(angle)*"$y=\sin(\theta)$",
+          align=(-sin(angle),cos(angle)));
     label("$\tau/2$", (tau/2,0), align=SW); dot((tau/2,0),dotpen);
     label("$\tau$", (tau,0), align=SE); dot((tau,0),dotpen);
 
+<div style="clear:left;"></div>
+
+If you don't understand something about these things (e.g. what is
+$\sin(\theta)$, what is $\tau$, how do these graphs relate to each other, why
+does the blue graph look like a wave), please check those things from [this
+chapter](geometry-and-trig.html) before you continue. The graph of cosine is a
+lot like the sine graph above, but we'll focus on the sine wave for now.
+
+First, let's notice that the sine wave repeats itself with intervals of $\tau$:
+
 asymptote:
     size(20cm);
-    real a=-1, b=9;
-    axises(a,b+1,-1.8,2.3, xlabel="$\theta$", xpen=blue);
-    draw(graph(new real(real theta) { return cos(theta); }, a, b), deepgreen);
-     draw((a,1)--(b,1), smalldashes, L=Label("$y=1$", position=Relative(0.3)), align=N);
-    draw((a,-1)--(b,-1), smalldashes, L=Label("$y=-1$", position=Relative(0.3)), align=S);
+    real xmin=-1, xmax=21;
+    axises(xmin, xmax+1, -1.2, 1.5);
+    draw(graph(new real(real x) { return sin(x); }, xmin, xmax), blue);
+    label((3*tau+tau/4,1), blue, L="$y=\sin(x)$", align=N);
+    dot((tau,0), p=dotpen, L="$\tau$", align=SE);
+    dot((2*tau,0), p=dotpen, L="$2\tau$", align=SE);
+    dot((3*tau,0), p=dotpen, L="$3\tau$", align=SE);
 
-    label((tau,1), deepgreen, L="$y=\cos(\theta)$", align=N);
-    label("$\tau/2$", (tau/2,0), align=SW); dot((tau/2,0),dotpen);
-    label("$\tau$", (tau,0), align=SE); dot((tau,0),dotpen);
+    draw(brace((5*tau/4,1.3),(5*tau/4+tau,1.3)), L="$\tau$", align=N);
+    draw(brace((3*tau/4+tau,-1.3),(3*tau/4,-1.3)), L="$\tau$", align=S);
+
+This makes sense because if we rotate a full turn in the unit circle we get
+right back to where we started, and sine gets the same value. The repeating
+interval is known as the **period**.
+
+math:
+    \sin(x+\tau) = \sin(x)
+
+If we graph $y=\sin(\tau x)$ instead of $y=\sin(x)$, we get a period of $1$
+instead of $\tau$. Think about it like this: if $x$ changes by 1, then $\tau x$
+changes by $\tau$ and $\sin(\tau x)$ repeats.
+
+math:
+    \sin(\tau(x+1)) = \sin(\tau x + \tau) = \sin(\tau x)
+
+asymptote:
+    size(15cm);
+    real xmin=-0.8, xmax=3.4;
+    axises(xmin, xmax+0.5, -1.2, 1.5);
+    draw(graph(new real(real x) { return sin(tau*x); }, xmin, xmax, n=10000), blue);
+    label((3.4,1), blue, L="$y=\sin(\tau x)$", align=N);
+    dot((1,0), p=dotpen, L="$1$", align=SE);
+    dot((2,0), p=dotpen, L="$2$", align=SE);
+    dot((3,0), p=dotpen, L="$3$", align=SE);
+
+    draw(brace((1.25,1.1),(2.25,1.1)), L="$1$", align=N);
+    draw(brace((1.75,-1.1),(0.75,-1.1)), L="$1$", align=S);
+
+If we keep multiplying stuff we get $y=\sin(\tau f x)$ where the $f$ constant
+is the **frequency**, and the period is $\frac 1 f$. For example, setting
+$f=1/\tau \approx 0.159$ means that the period is
+$\frac{1}{1/\tau} = \tau$ because we're talking about
+$y=\sin(\tau f x)=\sin(\rcancel \tau \frac{1}{\rcancel \tau} x) = \sin(x)$.
+
+This fun demo lets you play with $y=A\sin(\tau f x)$ graphs. The amplitude $A$
+is just stretching the graph away from the $x$ axis.
+
+<iframe src="https://purplemyst.github.io/generic-graphing/sine.html"
+        width="700" height="400"></iframe>
