@@ -118,7 +118,7 @@ code:
     true
 
 The code is a bit messier if your favorite programming language doesn't support
-C-style for loops. For example, Python's ``math.sqrt(int(n))`` returns the
+C-style for loops. For example, Python's ``int(math.sqrt(n))`` returns the
 smallest integer that is $\le \sqrt n$, and ``range(a, b)`` doesn't go all the
 way to ``b`` by default so we also need a ``+1``. We need an integer because
 ``range`` doesn't like floats.
@@ -196,7 +196,7 @@ code: python3
 <p></p>             <!-- empty space hack -->
 
 graybox: Exercise
-    Translate these ``isprime()`` functions to your favorite programming
+    Translate different ``isprime()`` functions to your favorite programming
     language and measure how fast they run. Try to optimize them if the results
     are not as good as you expected them to be.
 

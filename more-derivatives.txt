@@ -95,11 +95,11 @@ indent:
 
     math:
         \frac{d}{dx}(c \cdot f(x)) \
-        &= \lim_{h\to0} \frac{c\cdot f(x+h)-c\cdot f(x)}{h}
-        &= \lim_{h\to0} \frac{c\cdot\bigl(f(x+h)-f(x)\bigr)}{h}
-        &= \lim_{h\to0} \left(c\cdot\frac{f(x+h)-f(x)}{h}\right)
-        &= c\cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h}
-        &= c\cdot f'(x)
+        &= \lim_{h\to0} \frac{\green c \cdot f(x+h) - \green c \cdot f(x)}{h}
+        &= \lim_{h\to0} \frac{\green c \cdot\bigl(f(x+h)-f(x)\bigr)}{h}
+        &= \lim_{h\to0} \left(\green c \cdot\frac{f(x+h)-f(x)}{h}\right)
+        &= \green c \cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h}
+        &= c \cdot f'(x)
 
     Here's a nice consequence of this rule:
 
@@ -152,15 +152,19 @@ indent:
     $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. This means that we can divide
     stuff by $g(x+h)-g(x)$. We'll do the $g(x+h)=g(x)$ case separately.
 
+    Multiplying top and bottom by the green stuff is a nice and clever way to
+    get started with this:
+
     math:
         \frac{d}{dx} f(g(x)) \
         &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
-        &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{h} \cdot \frac{g(x+h)-g(x)}{g(x+h)-g(x)}\right)
-        &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \cdot \
-                              \frac{g(x+h)-g(x)}{h} \right)
-        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) \
-           \left(\lim_{h\to0} \frac{g(x+h)-g(x)}{h} \right)
-        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
+        &= \lim_{h\to0} \frac{\bigl(f(g(x+h))-f(g(x))\bigr)\green{\bigl(g(x+h)-g(x)\bigr)}}\
+                             {h\cdot\green{\bigl(g(x+h)-g(x)\bigr)}}
+        &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \cdot \
+                              \frac{\green{g(x+h)-g(x)}}{h} \right)
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) \
+           \left(\lim_{h\to0} \frac{\green{g(x+h)-g(x)}}{h} \right)
+        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)
 
     comment: TODO: fix this pic
 
@@ -176,28 +180,31 @@ indent:
         axises(xymin,xmax,xymin,ymax);
 
         real g(real x) { return 2*sin(x) + 0.7; }
-        draw(graph(g, xymin, xmax), blue);
-        label((glabelx,g(glabelx)), blue, L="$y=g(x)$", align=NE);
+        draw(graph(g, xymin, xmax), deepred);
+        label((glabelx,g(glabelx)), deepred, L="$y=g(x)$", align=NE);
 
-        draw((x,g(x))--(x,0), L=rotate(90)*"$g(x)$");
-        draw((x+h,0)--(x+h,g(x+h)), L=rotate(90)*"$g(x+h)$");
+        draw((x,g(x))--(x,0), smalldashes, L=rotate(90)*"$g(x)$");
+        draw((x+h,0)--(x+h,g(x+h)), smalldashes+blue, L=rotate(90)*"$g(x+h)$");
         label((x,0), L="$x$", align=SW);
         draw(brace((x+h,-h/2),(x,-h/2), amplitude=h/2), L="$h$", align=S);
-        draw(brace((x,g(x)), (x,g(x+h)), amplitude=h/2), L="$\Delta g$", align=W);
+        draw(brace((x,g(x)), (x,g(x+h)), amplitude=h/2), rgb(0,0.5,0),   // html green
+             L="$\Delta g$", align=W);
 
-    Next we'll define another variable $\Delta g = g(x+h)-g(x)$. We assumed that
-    the derivative of $g$ exists, so [$g$ must be
-    continuous](#which-functions-have-derivatives). So if $h \to 0$, then
-    $g(x+h) \to g(x)$ and $\bigl(g(x+h)-g(x)\bigr) \to 0$.
+    The stuff with green on the bottom looks kind of like something that could
+    be turned into the definition of derivative, but the defintion has just $h$
+    on the bottom instead of the green mess. Let's define another variable
+    $\Delta g = \green{g(x+h)-g(x)}$. We assumed that the derivative of $g$
+    exists, so [$g$ must be continuous](#which-functions-have-derivatives). So
+    if $h \to 0$, then $g(x+h) \to g(x)$ and $\bigl(\green{g(x+h)-g(x)}\bigr) \to 0$.
 
     math:
-        \Delta g &= g(x+h)-g(x)
-        g(x) + \Delta g &= g(x+h)
+        \Delta g &= \green{g(x+h)-g(x)}
+        g(x) + \Delta g &= \blue{g(x+h)}
 
     math:
         \frac{d}{dx} f(g(x)) \
-        &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{g(x+h)-g(x)} \right) g'(x)
-        &= \left(\lim_{\Delta g \to 0} \frac{f(g(x) + \Delta g)-f(g(x))}{\Delta g}\right)g'(x)
+        &= \left(\lim_{h\to0} \frac{f(\blue{g(x+h)})-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)
+        &= \left(\lim_{\Delta g \to 0} \frac{f(\blue{g(x) + \Delta g})-f(g(x))}{\green{\Delta g}}\right)g'(x)
         &= f'(g(x))g'(x)
 
     If $g(x+h)=g(x)$ when $h \to 0$, then we can just replace $g(x+h)$ with
@@ -205,13 +212,13 @@ indent:
 
     math:
         \frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
-        &= \lim_{h\to0} \frac{f(g(x))-f(g(x))}{h}
+        &= \lim_{h\to0} \frac{\rcancel{f(g(x))}-\rcancel{f(g(x))}}{h}
         &= \lim_{h\to0} \frac 0 h
         &= 0
 
     math:
         f(g(x))g'(x) &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \right)
-        &= f(g(x)) \left( \lim_{h \to 0} \frac{g(x)-g(x)}{h} \right)
+        &= f(g(x)) \biggl( \lim_{h \to 0} \frac{\rcancel{g(x)}-\rcancel{g(x)}}{h} \biggr)
         &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right)
         &= f(g(x)) \cdot 0
         &= 0

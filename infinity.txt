@@ -43,9 +43,9 @@ code: python3
 So, if you used to have $\infty$ lines of code and you tell me that you deleted
 $\infty$ lines of it, I have no idea how much code you have now; it depends on
 *how* you deleted $\infty$ lines of code. If you deleted the whole repository
-you have no code, but if you spent infinitely much time deleting the lines one
-at a time, deleting them did nothing because $\infty-1=\infty$. In both cases,
-you deleted $\infty$ lines of code.
+you have no code, but if you deleted lines of code one by one, deleting them
+did nothing because $\infty-1=\infty$. In both cases, you deleted $\infty$
+lines of code.
 
 Here are more examples of things that we **can** do. Try them out with your
 favorite programming language.
@@ -111,8 +111,9 @@ what the limit might be based on them. It's often possible to do something to
 get rid of $\infty-\infty$:
 
 math:
-    \lim_{x\to\infty}(x-x^2) &= \lim_{x\to\infty}x(1-x) = \infty\cdot(1-\infty)
-    &= \infty\cdot(-\infty) = -(\infty\cdot\infty) = -\infty
+    \lim_{x\to\infty}(x-x^2) &= \lim_{x\to\infty}(\blue x-\blue x\cdot x) \
+    = \lim_{x\to\infty}\blue x(1-x)
+    &= \infty\cdot(1-\infty) = \infty\cdot(-\infty)=-\infty^2 = -\infty
 
 Note that $x-x^2=x(1-x)$ is valid for a finite $x$, but
 $\infty-\infty^2=\infty(1-\infty)$ is wrong because $\infty-\infty^2$ is not
@@ -244,8 +245,8 @@ indent:
 ### $0 \cdot \infty$
 
 indent:
-    This one is interesting because 0 multiplied by anything finite is 0, and
-    infinity multiplied by anything nonzero is either $\infty$ or $-\infty$
+    This one is interesting because $0$ multiplied by anything finite is $0$,
+    and infinity multiplied by anything nonzero is either $\infty$ or $-\infty$
     (see above).
 
     math:
