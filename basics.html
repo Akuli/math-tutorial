@@ -35,7 +35,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><b>The Basics</b></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="the-basics">The Basics<a class="headerlink" href="#the-basics" title="Link to this title">¶</a></h1><p>This chapter contains all kinds of boring basic stuff that you need in rest of
 this tutorial. If you don't remember everything in this chapter, that's not a
 problem at all and you can just <b>keep this page open</b> while you read other
@@ -86,7 +86,9 @@ $$\begin{align}a+b-c = a-c+b = -c+a+b\end{align}$$<p>A similar thing works with 
 things are on the top and which things are on the bottom; you can move stuff
 otherwise however you want:</p>
 
-$$\begin{align}\frac{ab}{c}d \frac e f gh = \frac{abdegh}{cf}\end{align}$$<p>More handy stuff:</p>
+$$\begin{align}\frac{ab}{c}d \frac e f gh = \frac{abdegh}{cf}\end{align}$$<p>Prefixed minuses can be moved around similarly.</p>
+
+$$\begin{align}\frac{-a}{b} = \frac{(-1)a}{b} = (-1)\frac a b = -\frac a b\end{align}$$<p>More handy stuff:</p>
 
 $$\begin{align}0a &= 0 \\
 1a &= \frac a 1 = a \\
@@ -112,7 +114,10 @@ $\displaystyle\frac{\rcancel x}{(a+b)\rcancel x}$.</p>
 
 <p>If you have a minus sign on top and bottom, you can get rid of it:</p>
 
-$$\begin{align}\frac{-a}{-b} = \frac{\rcancel{(-1)}a}{\rcancel{(-1)}b} = \frac a b\end{align}$$<p>You can also go backwards and multiply top and bottom by something.</p>
+$$\begin{align}\frac{-a}{-b} = \frac{\rcancel{(-1)}a}{\rcancel{(-1)}b} = \frac a b\end{align}$$<p>If you have a minus sign on the bottom only, you can move it to top or front
+because $(-1)(-1)=1$.</p>
+
+$$\begin{align}\frac{a}{-b} = \frac{\rcancel{(-1)}(-1)a}{\rcancel{(-1)}b} = \frac{-a}{b}  = \frac{(-1)a}{b} = (-1)\frac a b = -\frac a b\end{align}$$<p>You can also go backwards and multiply top and bottom by something.</p>
 
 $$\begin{align}\frac{1}{a+b} = \frac{x}{(a+b)x}\end{align}$$<p>Here's an easy way to check that these things work using the fact that any
 number divided by itself is 1:</p>
@@ -143,19 +148,21 @@ $|-3| = 3$.</p>
 <h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p>$x^y$ is <code>x**y</code> or <code>pow(x, y)</code> and $\sqrt x$ is <code>sqrt(x)</code> in most
 programming languages.</p>
 
-$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ times}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ times}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ times}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ times}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ times}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ times}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ times}}           = \underbrace{x \cdot...\cdot x}_{a\text{ times}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ times}}           = x^a x^b\end{align}$$$$\begin{align}x^{ab} = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{times}}         = \overbrace{\underbrace{x^a}_{\substack{x\cdot x\cdot...\cdot x \\ a\text{ times}}}            \cdot x^a \cdot x^a \cdot x^a \cdot\ ...\ \cdot x^a}^{b\text{ times}}         = (x^a)^b\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}\sqrt x = x^{1/2}\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="square-negative-cancel">The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
-clear:
-</p>
-
-$$\begin{align}(-2)^2 = (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2\end{align}$$<p>This also means that $x^2$ is never negative. See <a href="graphs.html#parabolas">the $y=x^2$
-graph</a>. This also explains the $\sqrt{x^2}=|x|$ rule.</p>
-
-<p id="negative-sqrt">It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
+$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ times}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ times}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ times}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ times}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ times}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ times}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ times}}           = \underbrace{x \cdot...\cdot x}_{a\text{ times}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ times}}           = x^a x^b\end{align}$$$$\begin{align}x^{ab} = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{times}}         = \overbrace{\underbrace{x^a}_{\substack{x\cdot x\cdot...\cdot x \\ a\text{ times}}}            \cdot x^a \cdot x^a \cdot x^a \cdot\ ...\ \cdot x^a}^{b\text{ times}}         = (x^a)^b\end{align}$$$$\begin{align}(-x)^2 = x^2\end{align}$$$$\begin{align}\sqrt x = x^{1/2}\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="sqrt-basics">It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
-$\sqrt 0 = 0$. No number produces a negative number when multiplied with
-itself, so you cannot do e.g. $\sqrt{-1}$.
+$\sqrt 0 = 0$.
 </p>
+
+<p id="square-negative-cancel">The $(-x)^2=x^2$ and $\sqrt{x^2}=|x|$ rules probably seem confusing, but an
+example should make everything clear:
+</p>
+
+$$\begin{align}(-2)^2 &= (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2 \\
+\sqrt{(-2)^2} &= \sqrt{2^2} = \sqrt 4 = 2\end{align}$$<p>This means that $x^2$ is never negative because $x^2$ can be always turned into
+a positive number multiplied by itself, and that's obviously positive. We have
+just 1 exception, and that's $0^2 = 0 \cdot 0 = 0$. This also shows that we
+can't do e.g. $\sqrt{-1}$.</p>
 
 <h2 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this title">¶</a></h2><p>Here's a typical math function:</p>
 

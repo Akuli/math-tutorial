@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Physics Stuff</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        red: [ "\\color{red}{#1}", 1 ],
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        maroon: [ "\\color{maroon}{#1}", 1 ],
+        olive: [ "\\color{olive}{#1}", 1 ],
+        purple: [ "\\color{purple}{#1}", 1 ],
+        black: [ "\\color{black}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+      }
+    }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand" rel="stylesheet">
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>Physics Stuff</b></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="physics-stuff">Physics Stuff<a class="headerlink" href="#physics-stuff" title="Link to this title">¶</a></h1><p>This is mostly a math tutorial, but the math is not useless or isolated from
+the real world in any way. In this chapter we'll look into a bunch of ways to
+use math things for calculating more concrete stuff in the real world.</p>
+
+<div class="box graybox"><p>This chapter assumes that you know <a href="derivatives.html">derivatives</a> and
+<a href="integrals.html">integrals</a>.
+</p>
+
+</div><p>I'll use <a href="https://en.wikipedia.org/wiki/International_System_of_Units">SI units</a>
+in this chapter, so instead of inches and pounds there will be centimeters and
+kilograms. If you live in a country that doesn't use SI units much, have a look
+at this conversion table of stuff I have used in this chapter:</p>
+
+<p><table>
+<tr><th>Name of SI unit</th><th>Example value</th><th>Example value in non-SI units<sup>*</sup></th></tr>
+<tr><td>kilogram</td><td>80 kg</td><td>180 lbs</td></tr>
+<tr><td>metre</td><td>9.81 m</td><td>32 feet</td></tr>
+<tr><td>centimetre, $1\rm{cm}=\frac{1}{100}\rm{m}$</td><td>10 cm</td><td>4 inches</td></tr>
+</table></p>
+
+<p><small>* approximately</small></p>
+
+<h2 id="basic-stuff">Basic Stuff<a class="headerlink" href="#basic-stuff" title="Link to this title">¶</a></h2><p>Here's a list of things I'll use in this tutorial:</p>
+
+<ul><li>Mass is usually denoted with $m$, and it's in kilograms.
+</li></ul><ul><li>Time is almost always denoted with $t$ and measured with seconds.
+</li></ul><ul><li>Distances are often denoted with e.g. $x$ or $y$. The SI unit of distances is
+  metre.
+</li></ul><ul><li>Velocity means how fast you are moving; in other words, it's the derivative
+  of your location with respect to time:
+</li></ul><div class="indent">$$\begin{align}v = \frac{dx}{dt}\end{align}$$<p>The unit of velocity is $\rm{m}/\rm{s}$ because $dx$ is conceptually a tiny
+distance (metres) and $dt$ is a tiny time interval (seconds).
+</p>
+
+</div><ul><li>Acceleration is the changing rate of the velocity. If it's positive, your
+  velocity is getting bigger.
+</li></ul><div class="indent">$$\begin{align}a = \frac{dv}{dt} = \frac{d^2x}{dt^2}\end{align}$$<p>The $d^2$ notation means the derivative of the derivative of $x$; we take
+the derivative two times. It "works" like this:</p>
+
+$$\begin{align}a = \frac{d\frac{dx}{dt}}{dt}  \mathop{=}^{\red ?}\frac{d \cdot dx}{dt \cdot dt}  \mathop{=}^{\red ?}\frac{d^2x}{dt^2}\end{align}$$<p>This makes no sense because $dx$ doesn't mean $d$ times $x$; it means the
+change of $x$. However, it's just notation, and the
+$\frac{d}{dt}x = \frac{dx}{dt}$ we are more used to doesn't make sense
+either.</p>
+
+<p>It can be handy to think of $x$, $v$ and $a$ as functions of the time and
+write $x(t)$ instead of plain $x$, and this lets us use the usual $'$
+notation:</p>
+
+$$\begin{align}v(t) &= x'(t) \\
+a(t) &= x''(t)\end{align}$$<p>Velocity is metres per second, so acceleration is metres per second per
+second, or $\frac{\rm{m}/\rm{s}}{\rm s} = \rm{m}/\rm{s}^2$. For example,
+$2\rm m/\rm{s}^2=\frac{2\rm m/\rm s}{\rm s}$ means that the velocity
+increases by $2\rm m/\rm s$ every second.
+</p>
+
+</div><p>This is already enough stuff for calculating something fun:</p>
+
+<h2 id="example-feather-and-hammer">Example: Feather and Hammer<a class="headerlink" href="#example-feather-and-hammer" title="Link to this title">¶</a></h2><p>Here's a famous
+experiment:</p>
+
+<p><iframe width="420" height="315" src="https://www.youtube.com/embed/5C5_dOEyAfk"></iframe></p>
+
+<p>As you can see, the acceleration caused by gravity does not depend on the mass
+or shape of the object if there's no air resistance. Let's try to calculate
+what that acceleration is.</p>
+
+<p>Let's call the acceleration $g$. It's a constant, so we can find the speed
+$v(t)$ easily. We'll choose this so that positive $v$ means going down; this
+way we can work with positive numbers and keep everything nice and simple.</p>
+
+$$\begin{align}v(t) = \int g\ dt = gt+C_1\end{align}$$<p>At $t=0$ the hammer and feather were just about to be dropped, and their
+velocity was still $0$:</p>
+
+$$\begin{align}v(0) &= 0 \\
+g \cdot 0 + C_1 &= 0 \\
+C_1 &= 0 \\
+v(t) &= gt\end{align}$$<p>We can integrate again to find the height at time $t$. Let's call that $y(t)$
+so that more $y$ means down.</p>
+
+$$\begin{align}y(t) &= \int v(t)\ dt = \int gt\ dt = \frac 1 2 gt^2 + C_2\end{align}$$<p>The initial height of the objects seems to be about $1.5\rm m$, and dropping
+them took about one second:</p>
+
+$$\begin{align}y(1\rm s)-y(0\rm s) &= 1.5\rm m \\
+\Bigl(\frac 1 2 g(1\rm s)^2 + \rcancel{C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 + \rcancel{C_2}\Bigr) &= 1.5 \rm m \\
+\frac 1 2 g(1\rm s)^2 &= 1.5 \rm m \\
+g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 1.5 \rm m/\rm{s}^2\end{align}$$<p>A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
+is not too bad considering the horribly inaccurate $1.5\rm m$ and $1\rm s$ we
+calculated it from. A similar experiment on Earth would yield
+$g\approx9.81 \rm m/\rm{s}^2$, and that's a $g$ value we'll use in most of our
+other examples.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Try to get more accurate dropping time and distance from the video and
+calculate this stuff again. Can you get closer to $1.625 \rm m/\rm{s}^2$?
+</p>
+
+</div><h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
+
+$$\begin{align}\Sigma F = ma\end{align}$$<p>Here $\Sigma$ means sum, and $\Sigma F$ is the sum of all forces that are
+pushing a mass and causing it an acceleration. In our previous example, there
+was only one force, the gravity $G$:</p>
+
+$$\begin{align}\green{\Sigma F} = m\blue{a} \\
+\green{G} = m\blue{g}\end{align}$$<p>In fact, the force caused by gravity is always $mg$. For example, let's
+calculate the force that gravity pulls a person of weight 80kg down at:</p>
+
+$$\begin{align}G = mg = 80\rm{kg} \cdot 9.81\rm m/\rm{s}^2 \approx 784\rm{kgm}/\rm{s}^2 = 784 \rm N\end{align}$$<p>Here the $\rm N$ unit is 1 newton, defined so that
+$1\rm N = \frac{1\rm{kg} \cdot 1\rm m}{(1\rm s)^2}$.</p>
+
+<p>If you're sitting in front of your computer, gravity is pulling you down, but
+your acceleration is zero because you don't fall through your chair. Let's
+figure out why:</p>
+
+$$\begin{align}\Sigma F = ma = m \cdot 0 = 0\end{align}$$<p>This means that $\Sigma F \ne G$ because $G \ne 0$; instead $\Sigma F = G + M$
+where $M$ is some kind of Mystery force that we'll try to explain.</p>
+
+$$\begin{align}\Sigma F &= 0 \\
+G + M &= 0 \\
+M &= -G\end{align}$$<p>This mystery force is your chair holding up your butt, and it has a minus sign
+in the front because it goes to the opposite direction compared to gravity.
+That's why they cancel out nicely and you don't accelerate anywhere.</p>
+
+<p>Newton's first and third law are very closely related to Newton's second law.
+For example, the first law is a special case of the second law: it says that a
+mass stays in place or moves smoothly ($a=0$) if no forces apply to it
+($\Sigma F = 0$).
+</p>
+
+</div>
+</body>
+</html>
