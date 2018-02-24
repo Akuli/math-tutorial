@@ -65,6 +65,11 @@ otherwise however you want:
 math:
     \frac{ab}{c}d \frac e f gh = \frac{abdegh}{cf}
 
+Prefixed minuses can be moved around similarly.
+
+math:
+    \frac{-a}{b} = \frac{(-1)a}{b} = (-1)\frac a b = -\frac a b
+
 More handy stuff:
 
 math:
@@ -101,6 +106,13 @@ If you have a minus sign on top and bottom, you can get rid of it:
 
 math:
     \frac{-a}{-b} = \frac{\rcancel{(-1)}a}{\rcancel{(-1)}b} = \frac a b
+
+If you have a minus sign on the bottom only, you can move it to top or front
+because $(-1)(-1)=1$.
+
+math:
+    \frac{a}{-b} = \frac{\rcancel{(-1)}(-1)a}{\rcancel{(-1)}b} = \frac{-a}{b} \
+    = \frac{(-1)a}{b} = (-1)\frac a b = -\frac a b
 
 You can also go backwards and multiply top and bottom by something.
 
@@ -194,22 +206,23 @@ math: (\sqrt x\ )^2 = x
 
 math: \sqrt{x^2} = |x|
 
-(square-negative-cancel)
-The $(-x)^2=x^2$ rule probably seems confusing, but an example should make it
-clear:
-
-math:
-    (-2)^2 = (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2
-
-This also means that $x^2$ is never negative. See [the $y=x^2$
-graph](graphs.html#parabolas). This also explains the $\sqrt{x^2}=|x|$ rule.
-
-(negative-sqrt)
 It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
 multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
 because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
-$\sqrt 0 = 0$. No number produces a negative number when multiplied with
-itself, so you cannot do e.g. $\sqrt{-1}$.
+$\sqrt 0 = 0$.
+
+(square-negative-cancel)
+The $(-x)^2=x^2$ and $\sqrt{x^2}=|x|$ rules probably seem confusing, but an
+example should make everything clear:
+
+math:
+    (-2)^2 &= (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2
+    \sqrt{(-2)^2} &= \sqrt{2^2} = \sqrt 4 = 2
+
+This means that $x^2$ is never negative because $x^2$ can be always turned into
+a positive number multiplied by itself, and that's obviously positive. We have
+just 1 exception, and that's $0^2 = 0 \cdot 0 = 0$. This also shows that we
+can't do e.g. $\sqrt{-1}$.
 
 ## Functions
 
