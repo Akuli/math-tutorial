@@ -5,17 +5,22 @@ the real world in any way. In this chapter we'll look into a bunch of ways to
 use math things for calculating more concrete stuff in the real world.
 
 graybox:
-    This chapter assumes that you know [derivatives](derivatives.html) and
-    [integrals](integrals.html).
+    This chapter assumes that you know [derivatives](derivatives.html).
+
+    There are also a few [integrals](integrals.html), but all you need to know
+    is that $\int f(x)\ dx$ means all antiderivatives of $f$. For example,
+    $\int 2x\ dx = x^2 + C$ because $\frac{d}{dx}(x^2+C)=2x$, and in fact, all
+    antiderivatives are $x^2+$ some constant and that's what the $C$ is doing.
 
 I'll use [SI units](https://en.wikipedia.org/wiki/International_System_of_Units)
-in this chapter, so instead of inches and pounds there will be centimeters and
+in this chapter, so instead of feet and pounds there will be metres and
 kilograms. If you live in a country that doesn't use SI units much, have a look
-at this conversion table of stuff I have used in this chapter:
+at this table:
 
 <table>
 <tr><th>Name of SI unit</th><th>Example value</th><th>Example value in non-SI units<sup>*</sup></th></tr>
-<tr><td>kilogram</td><td>80 kg</td><td>180 lbs</td></tr>
+<tr><td>gram</td><td>300 g</td><td>10 oz</td></tr>
+<tr><td>kilogram, $1\rm{kg} = 1000\rm g$</td><td>80 kg</td><td>180 lbs</td></tr>
 <tr><td>metre</td><td>9.81 m</td><td>32 feet</td></tr>
 <tr><td>centimetre, $1\rm{cm}=\frac{1}{100}\rm{m}$</td><td>10 cm</td><td>4 inches</td></tr>
 </table>
@@ -76,7 +81,7 @@ indent:
     $2\rm m/\rm{s}^2=\frac{2\rm m/\rm s}{\rm s}$ means that the velocity
     increases by $2\rm m/\rm s$ every second.
 
-This is already enough stuff for calculating something fun:
+This is already enough stuff for calculating something fun.
 
 ## Example: Feather and Hammer
 
@@ -86,12 +91,13 @@ experiment:
 <iframe width="420" height="315" src="https://www.youtube.com/embed/5C5_dOEyAfk"></iframe>
 
 As you can see, the acceleration caused by gravity does not depend on the mass
-or shape of the object if there's no air resistance. Let's try to calculate
-what that acceleration is.
+or shape of the object, and we can really see it if there's no air resistance.
+Let's try to calculate what that acceleration is.
 
-Let's call the acceleration $g$. It's a constant, so we can find the speed
-$v(t)$ easily. We'll choose this so that positive $v$ means going down; this
-way we can work with positive numbers and keep everything nice and simple.
+Let's call the acceleration $g$ like gravity. It's a constant, so we can find
+the speed $v(t)$ easily. We'll choose this so that positive $v$ means going
+down; this way we can work with positive numbers and keep everything nice and
+simple.
 
 math:
     v(t) = \int g\ dt = gt+C_1
@@ -116,19 +122,25 @@ them took about one second:
 
 math:
     y(1\rm s)-y(0\rm s) &= 1.5\rm m
-    \Bigl(\frac 1 2 g(1\rm s)^2 + \rcancel{C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 + \rcancel{C_2}\Bigr) &= 1.5 \rm m
+    \Bigl(\frac 1 2 g(1\rm s)^2 \rcancel{+ C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 \rcancel{+ C_2}\Bigr) &= 1.5 \rm m
     \frac 1 2 g(1\rm s)^2 &= 1.5 \rm m
-    g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 1.5 \rm m/\rm{s}^2
+    g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 3 \rm m/\rm{s}^2
 
 A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
-is not too bad considering the horribly inaccurate $1.5\rm m$ and $1\rm s$ we
-calculated it from. A similar experiment on Earth would yield
-$g\approx9.81 \rm m/\rm{s}^2$, and that's a $g$ value we'll use in most of our
-other examples.
+is horribly wrong. I haven't figured out what goes wrong with it yet.
 
-graybox: Exercise
-    Try to get more accurate dropping time and distance from the video and
-    calculate this stuff again. Can you get closer to $1.625 \rm m/\rm{s}^2$?
+comment: this is old shit
+    A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
+    is not too bad considering the horribly inaccurate $1.5\rm m$ and $1\rm s$ we
+    calculated it from.
+
+    graybox: Exercise
+        Try to get more accurate dropping time and distance from the video and
+        calculate this stuff again. Can you get closer to $1.625 \rm m/\rm{s}^2$?
+
+graybox:
+    A similar experiment on Earth should yield $g\approx9.81 \rm m/\rm{s}^2$,
+    and that's a $g$ value we'll use in most of our other examples.
 
 ## Newton's Second Law
 
@@ -173,7 +185,271 @@ This mystery force is your chair holding up your butt, and it has a minus sign
 in the front because it goes to the opposite direction compared to gravity.
 That's why they cancel out nicely and you don't accelerate anywhere.
 
-Newton's first and third law are very closely related to Newton's second law.
-For example, the first law is a special case of the second law: it says that a
-mass stays in place or moves smoothly ($a=0$) if no forces apply to it
+Newton's first and third law are closely related to Newton's second law. For
+example, the first law is a special case of the second law: it says that a mass
+stays in place or moves smoothly ($a=0$) if no forces apply to it
 ($\Sigma F = 0$).
+
+## Spring Stuff
+
+graybox:
+    This is kind of boring but the harmonic oscillation stuff below is fun, and
+    it assumes that you know this stuff.
+
+asyboilerplate:
+    pen ceilingfill=gray, massfill=lightgray;
+    real ymin=1.2, C=-0.7;
+    path ceiling=box((0.5,1),(1.5,1.1)), mass=box((0.9,0),(1.1,-0.2));
+    transform massstretch(real deltay) { return shift(0,1)*yscale(1-C+deltay)*shift(0,-1); }
+    transform massmove(real deltay) { return shift(0,C-deltay); }
+
+    // vertical spring from (1,1) to (1,0) with n loops
+    path _spring(int n=15) {
+        guide g;
+        for (real y = 4*n; y > 0; ) {
+            g=g..(4,--y)..(0,--y-2)..(-4,--y)..(0,--y+2);
+        }
+        g=(0,4*n)..g..(0,0);
+
+        // now its 4*n units tall, make it 1 unit instead and shift
+        return shift(1,0) * (scale(1/(4*n))*g);
+    }
+    path spring = _spring();
+
+    pair center(path p) {
+        return (min(p)+max(p))/2;
+    }
+
+Let's say that we hang a spring off of something, and our $y$ axis is upside
+down so that $y=0$ is the bottom of the spring with the spring is hanging
+freely.
+
+asymptote:
+    unitsize(5cm);
+    axises(0, 0, ymin, -0.3, ylabel="");
+    fill(ceiling, ceilingfill);
+    draw(spring);
+
+    draw((0,0)--(1,0), smalldashes);
+    dot((0,0), p=dotpen, L="$0$", align=W);
+
+Now, let's attach a mass to the end of the spring:
+
+asymptote:
+    unitsize(5cm);
+    axises(0, 0, ymin, -1, ylabel="");
+    fill(ceiling, ceilingfill);
+    draw(massstretch(0)*spring);
+    filldraw(massmove(0)*mass, massfill);
+    label(center(massmove(0)*mass), L="$m$");
+
+    draw(massmove(0)*((0,0)--(1,0)), smalldashes);
+    dot((0,0), p=dotpen, L="$0$", align=W);
+    dot(massmove(0)*(0,0), p=dotpen, L="$y$", align=W);
+
+Now there are two forces that act on our mass: gravity $G=mg$ and a spring
+force $F=-ky$. Here $k$ is a constant that describes the stiffness of our
+spring: more $k$ means that it pulls up with a bigger force. We're also
+multiplying by $y$, so pulling the spring more means that the spring resists it
+with a bigger force. The minus in the front means that the spring is pulling
+up.
+
+The mass is not moving anywhere, so we can plug in $a=0$ to Newton's second
+law:
+
+math:
+    \Sigma F &= ma
+    G+F &= m \cdot 0
+    mg-ky &= 0
+    k &= \frac{mg}{y}
+
+Let's calculate an example $k$ value so you get an idea of what it is. For
+example, let's say that we're on Earth and a 300 gram weight made the spring
+stretch by 10cm.
+
+math:
+    k = \frac{mg}{y} = \frac{0.30\rm{kg} \cdot 9.81\rm m/\rm{s}^2}{0.10\rm{m}} \
+    \approx 29 \rm N/\rm m
+
+The unit is newtons per metres, so for every metre we pull we would get 29N
+more force.
+
+## Harmonic Oscillation
+
+graybox:
+    This sections assumes that you have read the above spring stuff and
+    [this sine wave stuff](graphs.html#sine-waves), and you know [sine and
+    cosine derivatives](more-geometry-and-trig.html#derivative-of-sine). You'll
+    see soon what sine waves have to do with a spring and a bouncing mass.
+
+Let's pull the mass down a bit and release it, so it starts to bounce up and
+down:
+
+asymptote:
+    unitsize(5cm);
+    axises(0, 0, ymin, -1.2, ylabel="");
+    fill(ceiling, ceilingfill);
+    draw(massstretch(0)*spring);
+    filldraw(massmove(0)*mass, massfill);
+    label(center(massmove(0)*mass), L="$m$");
+
+    dot((0,0), p=dotpen, L="$0$", align=W);
+    draw((0,C)--(1,C), smalldashes);
+    dot((0,C), p=dotpen, L="$y(t)$", align=W);
+
+    real arrowx=1.2, arrowoffset=0.1;
+    draw(massmove(0)*((arrowx,min(mass).y-arrowoffset)--(arrowx,max(mass).y+arrowoffset)),
+         arrow=Arrows(size=0.5cm), L=rotate(90)*"bouncing");
+
+Note that we now have $y(t)$ at left; $y$ is no longer a constant, it depends
+on the time because the mass is moving up and down. Let's try to figure out how
+to calculate $y(t)$ values.
+
+We have the same forces as before, but we cannot just plug in $a=0$. Instead
+we'll plug in the $a=y''(t)$ we learned [here](#basic-stuff).
+
+math:
+    \Sigma F &= ma
+    G+F &= m\ y''(t)
+    mg-k\ y(t) &= m\ y''(t)
+    \green{y}''\green{(t)} &= -\frac k m \green{y(t)}+g
+
+This thing with a function and its derivative in it is known as a
+*differential equation*. Let's try to solve it even though we have never seen
+differential equations before.
+
+What we're trying to do is to find a function $y(t)$ whose derivative's
+derivative is $-\frac k m$ times the function plus a constant. Here's a funny
+idea -- **maybe** $y(t)$ might be some kind of sine wave? The second derivative
+of sine is the same function with a minus in the front:
+
+math:
+    \frac{d^2}{dt^2} \green{\sin(t)} = \frac{d}{dt} \cos(t) = -\green{\sin(t)}
+
+We just need to make it get multiplied by $\frac m k$ and produce the $g$
+constant somehow, but those things are easy as you'll see in a moment.
+
+First of all, the amplitude doesn't need to be 1 because we can move constants
+to front when taking derivatives:
+
+math:
+    \frac{d^2}{dt^2}(\green{A\sin(t)}) = \frac{d}{dt}(A\cos(t)) = -\green{A\sin(t)}
+
+If we stick another constant $B$ inside the $\sin(\quad)$, [the chain
+rule](more-derivatives.html#chain-rule) says that we need to multiply by the
+derivative of the inside stuff, and $\frac{d}{dt}(Bt)=B$:
+
+math:
+    \frac{d^2}{dt^2}(\green{A\sin(Bt)}) = \frac{d}{dt}(BA\cos(Bt)) = -\blue{B^2}\green{A\sin(Bt)}
+
+Note how $B^2$ matches with the $\frac k m$:
+
+math:
+    \green{y}''\green{(t)} = -\blue{\frac k m}\green{y(t)}+g
+
+Now we just need to produce the $g$ somehow. Added constants go away when
+taking derivatives, so maybe adding yet another constant $C$ does something
+useful?
+
+math:
+    \frac{d^2}{dt^2}(\green{A\sin(Bt)+C}) &= \frac{d}{dt}(BA\cos(Bt) + 0)
+    &= -B^2A\sin(Bt)
+    &= (-B^2)(\green{A\sin(Bt)+C}-C)
+    &= (-B^2)(\green{A\sin(Bt)+C})-(-B^2)C
+    &= -B^2(\green{A\sin(Bt)+C})+B^2C
+
+There we go! Now we just need to compare our stuff:
+
+math:
+    \green{y}''\green{(t)} &= -\blue{\frac k m} \green{y(t)} + \maroon{g}
+    \frac{d^2}{dt^2}(\green{A\sin(Bt)+C}) &= -\blue{B^2}(\green{A\sin(Bt)+C}) + \maroon{B^2C}
+
+Now we can conclude that $\green{y(t) = A\sin(Bt)+C}$ where $A$, $B$ and $C$
+are constants. So our spring is really bouncing in some kind of sine wave, even
+though it seemed to have nothing to do with circles and sine waves! In fact,
+"harmonic oscillation" means oscillating in a sine wave.
+
+Let's figure out what the constants mean. Based on the sine wave graph thing,
+$A$ is just making the graph taller, and $C$ is moving it *down* because we
+decided that more $y$ means down.
+
+asymptote:
+    unitsize(5cm);
+    real A=0.3, B=6, phaseshift=2.5, xmax=3.2;
+    real T = tau/B;
+    pen htmlgreen=rgb(0,0.5,0);
+
+    axises(0, 0, ymin, -1.2, ylabel="");
+
+    real y(real t) { return A*sin(B*t+phaseshift) + C; }
+    draw((0,C)--(xmax,C), p=htmlgreen+smalldashes);
+
+    real firsttopx = 1/4*T - T*(phaseshift/tau);
+    draw(brace((firsttopx+1.5*T,C-A-0.1), (firsttopx+0.5*T,C-A-0.1)), L="$T$", align=S);
+
+    draw(brace((firsttopx+1.75*T-0.05, C), (firsttopx+1.75*T-0.05, C+A)), L="$A$", align=W);
+    draw((firsttopx+1.75*T, C+A)--(firsttopx+2*T, C+A), mediumgray);
+    draw(brace((firsttopx+2.25*T-0.05, C-A), (firsttopx+2.25*T-0.05, C)), L="$A$", align=W);
+    draw((firsttopx+2.25*T, C-A)--(firsttopx+2.5*T, C-A), mediumgray);
+
+    draw(graph(y, 0, xmax), htmlgreen);   // must be on top of the gray line
+    label((firsttopx+3*T,C+A), p=htmlgreen, L="$y=A\sin(Bt)+C$", align=N);
+
+    real deltay = C - y(1);
+    fill(ceiling, ceilingfill);
+    draw(massstretch(deltay)*spring);
+    filldraw(massmove(deltay)*mass, massfill);
+    label(center(massmove(deltay)*mass), L="$m$");
+
+    draw((xmax-0.6, C-A-0.1)--(xmax-0.2, C-A-0.1), arrow=Arrow(size=0.5cm),
+         L="$t$", align=S);
+
+    dot((0,0), p=dotpen, L="$0$", align=W);
+    dot((0,C), p=dotpen, L="$C$", align=W);
+
+We'll figure out how to calculate the period time $T$ later, but let's find the
+$B$ and $C$ constants first. Again, we'll do this by comparing similar parts of
+the equations.
+
+math:
+    y''(t) &= -\blue{\frac k m} \green{y(t)} + \maroon{g}
+    &= -\blue{B^2}\green{y(t)} + \maroon{B^2C}
+
+math:
+    \blue{B^2} &= \blue{\frac k m}
+    B &= \sqrt{\frac k m}
+
+math:
+    \maroon{B^2C} &= \maroon g
+    \blue{\frac k m} C &= g
+    C &= \frac{mg}{k}
+
+When we calculated the spring's height without any bouncing we ended up at
+$k=\frac{mg}{y}$, and we can turn that into $y=\frac{mg}{k}$. So being the
+center of the bouncing, $C$ is the height that the mass was at without any
+bouncing. This makes sense nicely.
+
+Let's try to find out what the period $T$ has to do with our constants.
+In the sine wave graph thing we figured that $T$ is the period of
+$A\sin(\purple{\frac{\tau t}{T}})$ is $T$, and the sine wave part of $y(t)$ is
+$A\sin(\purple{Bt})$.
+
+math:
+    \purple{\frac{\tau \rcancel{\purple t}}{T}} &= \purple{B\rcancel{\purple t}}
+    T &= \frac \tau B = \frac{\tau}{\sqrt{\blue{B^2}}} = \frac{\tau}{\sqrt{\blue{k/m}}}
+    &= \frac{\tau}{\sqrt k / \sqrt m} = \frac{\tau\sqrt m}{\sqrt k} = \tau\sqrt{\frac m k}
+
+There we go! Calculating the time it takes for the spring to bounce up and down
+involves the circle constant $\tau=2\pi$.
+
+If $k$ is bigger, then $T$ is smaller; it makes sense because stiffer springs
+bounce faster. Similarly, a bigger mass makes the spring bounce slower, with a
+bigger $T$. If the spring is hanging freely without any mass, we have
+$m \approx 0$ and $T$ is very small; it means that the spring just vibrates
+quickly if you pull it and let it go.
+
+graybox: Exercise
+    When we wanted to get a constant $B$ from the derivative of the inside,
+    what other inside functions could we have chosen than $Bt$? Would using
+    another inside function change our $\tau\sqrt{m/k}$ result? How could we
+    make the spring vibrate so that the inside function would be different?

@@ -19,11 +19,13 @@ from bs4 import BeautifulSoup
 # TODO: move these to htmlthingy
 os.makedirs('imagecache', exist_ok=True)
 
+
 def cache_get(filename):
     cached = os.path.join('imagecache', filename)
     if os.path.exists(cached):
         return cached
     return None
+
 
 def cache_put(tempfilename, cachefilename):
     os.makedirs('imagecache', exist_ok=True)
@@ -133,28 +135,40 @@ def dark_code(match, filename):
     return str(soup)
 
 
+asyboilerplates = collections.defaultdict(str)
+
+
+@builder.converter.add_multiliner(r'^asyboilerplate(3d)?:(.*)\n')
+def add_more_asymptote_boilerplate(match, filename):
+    code = textwrap.dedent(match.string[match.end():])
+    asyboilerplates[(filename, match.group(1))] += code + '\n'
+    return ''
+
+
 @builder.converter.add_multiliner(r'^asymptote(3d)?:(.*)\n')
 def asymptote(match, filename):
     format = 'png' if match.group(1) else 'svg'     # 3d svg's dont work :(
-    code = textwrap.dedent(match.string[match.end():])
-    svgfilename = hashlib.md5(code.encode('utf-8')).hexdigest() + '.' + format
+    fullcode = ('import boilerplate%s;\n' % (match.group(1) or '')) + (
+        asyboilerplates[(filename, match.group(1))] +
+        textwrap.dedent(match.string[match.end():]))
+    fullfilename = (hashlib.md5(fullcode.encode('utf-8')).hexdigest()
+                    + '.' + format)
     os.makedirs(os.path.join(builder.outputdir, 'asymptote'), exist_ok=True)
-    outfile = os.path.join(builder.outputdir, 'asymptote', svgfilename)
+    outfile = os.path.join(builder.outputdir, 'asymptote', fullfilename)
 
-    if cache_get(svgfilename) is None:
+    if cache_get(fullfilename) is None:
         with tempfile.TemporaryDirectory() as tmpdir:
             for file in glob.glob('asymptote/*.asy'):
                 shutil.copy(file, tmpdir)
 
             with open(os.path.join(tmpdir, 'image.asy'), 'w') as file:
-                file.write('import boilerplate%s;\n' % (match.group(1) or ''))
-                file.write(textwrap.dedent(match.string[match.end():]))
+                file.write(fullcode)
 
             subprocess.check_call(
                 ['asy', '-f', format, '--libgs=', 'image.asy'], cwd=tmpdir)
-            cache_put(os.path.join(tmpdir, 'image.' + format), svgfilename)
+            cache_put(os.path.join(tmpdir, 'image.' + format), fullfilename)
 
-    shutil.copy(cache_get(svgfilename), outfile)
+    shutil.copy(cache_get(fullfilename), outfile)
 
     if format == 'svg':
         # figure out the correct size (lol)

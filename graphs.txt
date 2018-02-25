@@ -309,7 +309,7 @@ asymptote:
 
 This makes sense because if we rotate a full turn on the unit circle we get
 right back to where we started, and sine gets the same value. The repeating
-interval is known as the **period**.
+interval is known as the **period** $T$.
 
 math:
     \sin(x+\tau) = \sin(x)
@@ -331,17 +331,24 @@ asymptote:
     dot((2,0), p=dotpen, L="$2$", align=SE);
     dot((3,0), p=dotpen, L="$3$", align=SE);
 
-    draw(brace((1.25,1.1),(2.25,1.1)), L="$1$", align=N);
-    draw(brace((1.75,-1.1),(0.75,-1.1)), L="$1$", align=S);
+    draw(brace((1.25,1.1),(2.25,1.1)), L="$T=1$", align=N);
+    draw(brace((1.75,-1.1),(0.75,-1.1)), L="$T=1$", align=S);
 
-If we keep multiplying stuff we get $y=\sin(\tau f x)$ where the $f$ constant
-is the **frequency**, and the period is $\frac 1 f$. For example, setting
-$f=1/\tau \approx 0.159$ means that the period is
-$\frac{1}{1/\tau} = \tau$ because we're talking about
-$y=\sin(\tau f x)=\sin(\rcancel \tau \frac{1}{\rcancel \tau} x) = \sin(x)$.
+In general, if we graph $y=\sin(\frac{\tau x}{T})$ we get a period $T$:
 
-This fun demo lets you play with $y=A\sin(\tau f x)$ graphs. The amplitude $A$
-is just stretching the graph away from the $x$ axis.
+math:
+    \sin\biggl(\frac{\tau(x+T)}{T}\biggr) \
+    &= \sin\biggl(\frac \tau T (x+T)\biggr) \
+    = \sin\biggl(\frac \tau T x + \frac{\tau}{\rcancel T}\rcancel T\biggr) 
+    &= \sin\biggl(\frac{\tau x}{T} + \tau\biggr) \
+    = \sin\Bigl(\frac{\tau x}{T}\Bigr)
+
+This fun demo lets you play with $y=A\sin(\frac{\tau x}{T})$ graphs. The
+amplitude $A$ is just stretching the graph away from the $x$ axis.
 
 <iframe src="https://purplemyst.github.io/generic-graphing/sine.html"
         width="700" height="400"></iframe>
+
+The demo lets you make $A$ and $f$ negative, but as you can see, that just
+flips the graph around and it still looks very similar; this is why $A$ and $f$
+are usually chosen to be positive.
