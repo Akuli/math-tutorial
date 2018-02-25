@@ -52,14 +52,14 @@ $f'(0)$ is not defined:</p>
 
 $$\begin{align}f(x) = \left\{\begin{matrix}      1 \text{ if } x \ge 0 \\
     0 \text{ if } x < 0 \\
-\end{matrix}\right.\end{align}$$<p><img width="227" height="159" class="asymptote" src="asymptote/d7ef1a5b2b4155f3aa442109bcea2fbe.svg" /></p><p></li><li></p>
+\end{matrix}\right.\end{align}$$<p><img width="227" height="159" class="asymptote" src="asymptote/a7cee99af7199c7238ea8b5d819dfbb9.svg" /></p><p></li><li></p>
 
 <p>The graph of the function has a spike in it. Derivatives describe
 "growing speed" and it isn't clear how fast the values grow on top of a
 spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
 $|x|$ has a derivative everywhere except at $x=0$.</p>
 
-<p><img width="170" height="141" class="asymptote" src="asymptote/c30ea4d9566657343733b8c3f6d38d71.svg" /></p><p></li></ul></p>
+<p><img width="170" height="141" class="asymptote" src="asymptote/6a7c41832bf5f8e9f78b1ebfe11aacf1.svg" /></p><p></li></ul></p>
 
 <p>Of course, there are more precise definitions about continuity and "spikes",
 but this should be enough to give you some kind of idea about the limitations.</p>
@@ -133,7 +133,7 @@ $$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
 &= \lim_{h\to0} \frac{\bigl(f(g(x+h))-f(g(x))\bigr)\green{\bigl(g(x+h)-g(x)\bigr)}}                      {h\cdot\green{\bigl(g(x+h)-g(x)\bigr)}} \\
 &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \cdot                        \frac{\green{g(x+h)-g(x)}}{h} \right) \\
 &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right)     \left(\lim_{h\to0} \frac{\green{g(x+h)-g(x)}}{h} \right) \\
-&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)\end{align}$$<img width="222" height="283" class="asymptote" src="asymptote/039c2f722d1782eb90c1915be1747ffa.svg" style="float:right;" /><p>The stuff with green on the bottom looks kind of like something that could
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)\end{align}$$<img width="222" height="283" class="asymptote" src="asymptote/c95365e536936258b8055b481c0cc877.svg" style="float:right;" /><p>The stuff with green on the bottom looks kind of like something that could
 be turned into the definition of derivative, but the defintion has just $h$
 on the bottom instead of the green mess. Let's define another variable
 $\Delta g = \green{g(x+h)-g(x)}$. We assumed that the derivative of $g$
@@ -197,7 +197,7 @@ $\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}$. Now we know that the rule works
 when $c=1$, and then if we plug in $k=1$ we know it works when $c=2$, and so
 on.</p>
 
-<p><img width="425" height="89" class="asymptote" src="asymptote/12e3ecb6364c0c22cc5c810bda348f4e.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive
+<p><img width="425" height="89" class="asymptote" src="asymptote/dc9aef9cb79d3af0542d9b467d10811a.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive
 integer, but it also works when $c$ is e.g. $\frac{1}{2}$. This tutorial
 also contains <a href="explog.html#example-derivative-of-x-c">another proof</a> that
 doesn't have this restriction.

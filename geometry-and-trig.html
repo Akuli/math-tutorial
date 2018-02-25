@@ -44,29 +44,29 @@ chapter contains a working example game.</p>
 size changes. For example, here the blue triangle is the yellow triangle
 <b>scaled up by 2</b>:</p>
 
-<p><img width="408" height="110" class="asymptote" src="asymptote/417a576d7fcc8ced6b0c22c3bdcffb74.svg" /></p><p>Note that angles do not change when scaling. These pictures represent the
+<p><img width="408" height="110" class="asymptote" src="asymptote/69cdb2301bf608d9b4b0aa1149071904.svg" /></p><p>Note that angles do not change when scaling. These pictures represent the
 bottom-left corners of the above triangles, and as you can see, they are
 identical:</p>
 
-<p><img width="281" height="91" class="asymptote" src="asymptote/f14ce26f0ab222969670a6431042ab9d.svg" /></p><p>Scaling with a number less than 1 is known as <b>scaling down</b>, and it makes
+<p><img width="281" height="91" class="asymptote" src="asymptote/e392a25dc6b3bc245778b5efea167438.svg" /></p><p>Scaling with a number less than 1 is known as <b>scaling down</b>, and it makes
 things smaller. For example, dividing by 2 is same as multiplying by
 $\frac 1 2 = 0.5$, so dividing everything by 2 does this:</p>
 
-<p><img width="261" height="81" class="asymptote" src="asymptote/6248718894c0cb291aaad76722da6584.svg" /></p><h2 id="radians-and-tau">Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Link to this title">¶</a></h2><p>Maybe we could measure angles somehow? A common way to do this is to draw
+<p><img width="261" height="81" class="asymptote" src="asymptote/2529fbeab0f8c74023c4b77a648e80f8.svg" /></p><h2 id="radians-and-tau">Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Link to this title">¶</a></h2><p>Maybe we could measure angles somehow? A common way to do this is to draw
 angles on a circle arc with radius 1. Like this:</p>
 
-<p><img width="283" height="259" class="asymptote" src="asymptote/a9427239d6282537c022a0c43e86b35a.svg" /></p><p>Now we can define the angle as the length of the blue arc. With this
+<p><img width="283" height="259" class="asymptote" src="asymptote/8beba09a82421913311357796b3af19a.svg" /></p><p>Now we can define the angle as the length of the blue arc. With this
 definition, the angle in the picture is about 1 because it looks like the
 length of the blue arc is about the same as the radius. This way to measure
 angles is known as <b>radians</b>, and the angle in the pic is 1 radian.</p>
 
 <p>Here are more pictures of angles that should help you understand this:</p>
 
-<p><img width="510" height="239" class="asymptote" src="asymptote/3438c9298be5c960b140cd68bb107d18.svg" /></p><p>In this tutorial, the greek tau letter $\tau$ means a full turn in radians:</p>
+<p><img width="510" height="239" class="asymptote" src="asymptote/7128732115906be6eb534dd13ca6d149.svg" /></p><p>In this tutorial, the greek tau letter $\tau$ means a full turn in radians:</p>
 
 $$\begin{align}\tau = 6.2831853...\end{align}$$<p>So, if we draw a circle with radius 1, its circumference is $\tau$.</p>
 
-<p><img width="113" height="91" class="asymptote" src="asymptote/ca46c18b4c09975932f25c73646873b6.svg" /></p><p>Some programming languages (e.g. new Pythons) have a <code>tau</code> constant, but if
+<p><img width="113" height="91" class="asymptote" src="asymptote/a15b94392ff6fbb16be00bcfb2025a0f.svg" /></p><p>Some programming languages (e.g. new Pythons) have a <code>tau</code> constant, but if
 your favorite language doesn't, use <code>2*pi</code> instead. Here pi is the more
 well-known circle constant $\pi = \tau/2 = 3.14159265...$, and almost all
 programming languages have something like <code>math.pi</code> or <code>Math.PI</code>.</p>
@@ -78,7 +78,7 @@ course, you can use $\pi$ if you prefer it over $\tau$.</p>
 <p>If we <a href="#scaling">scale up</a> the above $\tau$ pic by some number $r$, the radius
 becomes $1 \cdot r = r$ and the perimeter becomes $\tau r$:</p>
 
-<p><img width="170" height="136" class="asymptote" src="asymptote/0f86213db6feb347f9332ec1aa335053.svg" /></p><p>Now we have something that works with any circle instead of just circles with
+<p><img width="170" height="136" class="asymptote" src="asymptote/f18d9bcda74e69d1423246f6d47153f0.svg" /></p><p>Now we have something that works with any circle instead of just circles with
 radius 1.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Use the above $\tau r$ drawing and the below animation to conclude that
@@ -121,13 +121,13 @@ $90 \cdot \tau / 360 = \tau\cdot\frac{90}{360} = \frac{\tau}{4}$ radians
 
 <h2 id="coordinates">Coordinates<a class="headerlink" href="#coordinates" title="Link to this title">¶</a></h2><p>Here's a boring number line:</p>
 
-<p><img width="340" height="33" class="asymptote" src="asymptote/bd1a397c230a3efb8173fa564358d791.svg" /></p><p>If we have two number lines called $x$ and $y$, we can do this:</p>
+<p><img width="340" height="33" class="asymptote" src="asymptote/874eb8510145695d48255676196ed1f7.svg" /></p><p>If we have two number lines called $x$ and $y$, we can do this:</p>
 
-<p><img width="340" height="340" class="asymptote" src="asymptote/737bac56e60a758880d4a0e7f723e7a6.svg" /></p><p>Every point on this plane can be represented with two numbers. These are known
+<p><img width="340" height="340" class="asymptote" src="asymptote/01e559c678f6e69dfe6ef767d494500e.svg" /></p><p>Every point on this plane can be represented with two numbers. These are known
 as the $x$ and $y$ <b>coordinates</b>. For example, the $x$ coordinate of the red
 point in the below picture is $3$ and the $y$ coordinate is $-2$:</p>
 
-<p><img width="340" height="325" class="asymptote" src="asymptote/a40ec8489a0669c13039889ac83e5cec.svg" /></p><p>Usually $x$ goes before $y$ for historical reasons, so $(3,-2)$ means
+<p><img width="340" height="325" class="asymptote" src="asymptote/dac8dfd1d96bef42d0f6559adafe58f9.svg" /></p><p>Usually $x$ goes before $y$ for historical reasons, so $(3,-2)$ means
 $(x,y)=(3,-2)$.</p>
 
 <p id="upside-down-y-axis">So far this probably feels like some useless gibberish that has nothing to do
@@ -137,7 +137,7 @@ on the screen, and the $y$ axis is upside down compared to what mathematicians
 are used to. Like this:
 </p>
 
-<p><img width="392" height="232" class="asymptote" src="asymptote/5fcc073db3752a9d5baf218870fe8ddf.svg" /></p><div class="box graybox"><h2> Exercise</h2><p>The location of something usually means the top left corner in programming.
+<p><img width="392" height="255" class="asymptote" src="asymptote/f60ba455d8df084fc4f28c317d098af1.svg" /></p><div class="box graybox"><h2> Exercise</h2><p>The location of something usually means the top left corner in programming.
 Where does the <b>bottom right</b> corner of the window go in this code?</p>
 
 <div class="highlight" style="background: #a9a9a9"><pre style="line-height: 125%"><span></span>window.resize(300, 200);    // (width, height)
@@ -157,7 +157,7 @@ radian stuff</a> above. The unit circle means a circle with
 radius 1. Let's draw a unit circle in the center of the xy plane (we'll talk
 about other radiuses soon) and draw an angle to it.</p>
 
-<p><img width="340" height="317" class="asymptote" src="asymptote/d85cdb22a34185b9f6c9c071b194ae94.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure you
+<p><img width="340" height="317" class="asymptote" src="asymptote/d1ad938841d893379a6d9e6ab8a19a03.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure you
 understand them before moving on.</p>
 
 <p>Now, what are the coordinates of the red dot? Mathematicians have defined a
@@ -172,7 +172,7 @@ know what $\sin$ and $\cos$ are.</p>
 <p id="common-sincos">As before, here's a pile of examples:
 </p>
 
-<img width="254" height="285" class="asymptote" src="asymptote/4f8c1581c9245aebea7dbcdfd8dcebd4.svg" style="float:left;" /><img width="284" height="285" class="asymptote" src="asymptote/7c8dd179867794159d148d015d938f6d.svg" style="float:left;" /><img width="303" height="285" class="asymptote" src="asymptote/a4eefbcaad190b4aeee1999fe1b3cb36.svg" style="float:left;" /><img width="326" height="285" class="asymptote" src="asymptote/b5d4cafe698053456efccb9352814951.svg" style="float:left;" /><img width="256" height="285" class="asymptote" src="asymptote/7db0b501ea321d99b26c55eb363e4761.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
+<img width="254" height="285" class="asymptote" src="asymptote/14c7a7beed5445420294ab0a808e8b21.svg" style="float:left;" /><img width="284" height="285" class="asymptote" src="asymptote/487111dc01d517a8fc53f0903117063a.svg" style="float:left;" /><img width="303" height="285" class="asymptote" src="asymptote/d9c5ae1c58d9ad18a3b40c289cd2367d.svg" style="float:left;" /><img width="326" height="285" class="asymptote" src="asymptote/867da5a2fa87f02e1002b0c6d16d6a7e.svg" style="float:left;" /><img width="256" height="285" class="asymptote" src="asymptote/b1e51b4c04ef19dba569e8602eea9257.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
 
 <p>Here $3\tau/4 = \frac 3 4 \tau$ means three quarters of a turn.</p>
 
@@ -195,9 +195,9 @@ $$\begin{align}0.00000000000000006123233995736766\end{align}$$<p>As you can see,
 this thing...
 </p>
 
-<p><img width="397" height="249" class="asymptote" src="asymptote/d558ecb2363471c82b7e6c106fc5ae32.svg" /></p><p>...and <a href="#scaling">scale it up</a> by $r$:</p>
+<p><img width="397" height="249" class="asymptote" src="asymptote/2bf352ceb4c3824d395192f7dee081cb.svg" /></p><p>...and <a href="#scaling">scale it up</a> by $r$:</p>
 
-<p><img width="454" height="285" class="asymptote" src="asymptote/1ad1a8ede1bd0e9d9b514101007292f8.svg" /></p><p>Like I said earlier, angles don't change when scaling, but lengths do. Here
+<p><img width="454" height="285" class="asymptote" src="asymptote/f6bd473fcf9331b0821b112b6ee6afda.svg" /></p><p>Like I said earlier, angles don't change when scaling, but lengths do. Here
 $\theta$ represented an angle <i>and</i> an arc length, so we have the old $\theta$
 angle and a scaled $r\theta$ arc length.</p>
 
@@ -205,7 +205,7 @@ angle and a scaled $r\theta$ arc length.</p>
 <code>player.move()</code> method is called. It means that the player goes to some
 place on the circle with radius 2 around it:</p>
 
-<p><img width="340" height="242" class="asymptote" src="asymptote/04d9f7177db42f384fa87ba2333d8c9e.svg" /></p><p>Note how $\theta$ is measured clockwise here but we have measured it
+<p><img width="340" height="264" class="asymptote" src="asymptote/23f00e162733f957368abab1d1a3cf31.svg" /></p><p>Note how $\theta$ is measured clockwise here but we have measured it
 counter-clockwise until now; measuring clockwise is a programming standard
 while mathematicians do things counter-clockwise. This means that
 everything works nicely with <a href="#upside-down-y-axis">the "upside down" $y$

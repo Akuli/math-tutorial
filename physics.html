@@ -55,7 +55,8 @@ at this table:</p>
 
 <p><table>
 <tr><th>Name of SI unit</th><th>Example value</th><th>Example value in non-SI units<sup>*</sup></th></tr>
-<tr><td>kilogram</td><td>80 kg</td><td>180 lbs</td></tr>
+<tr><td>gram</td><td>300 g</td><td>10 oz</td></tr>
+<tr><td>kilogram, $1\rm{kg} = 1000\rm g$</td><td>80 kg</td><td>180 lbs</td></tr>
 <tr><td>metre</td><td>9.81 m</td><td>32 feet</td></tr>
 <tr><td>centimetre, $1\rm{cm}=\frac{1}{100}\rm{m}$</td><td>10 cm</td><td>4 inches</td></tr>
 </table></p>
@@ -129,7 +130,11 @@ $$\begin{align}y(1\rm s)-y(0\rm s) &= 1.5\rm m \\
 g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 3 \rm m/\rm{s}^2\end{align}$$<p>A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
 is horribly wrong. I haven't figured out what goes wrong with it yet.</p>
 
-<h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
+<div class="box graybox"><p>A similar experiment on Earth should yield $g\approx9.81 \rm m/\rm{s}^2$,
+and that's a $g$ value we'll use in most of our other examples.
+</p>
+
+</div><h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
 
 $$\begin{align}\Sigma F = ma\end{align}$$<p>Here $\Sigma$ means sum, and $\Sigma F$ is the sum of all forces that are
 pushing a mass and causing it an acceleration. In our previous example, there
@@ -158,9 +163,133 @@ That's why they cancel out nicely and you don't accelerate anywhere.</p>
 <p>Newton's first and third law are closely related to Newton's second law. For
 example, the first law is a special case of the second law: it says that a mass
 stays in place or moves smoothly ($a=0$) if no forces apply to it
-($\Sigma F = 0$).
+($\Sigma F = 0$).</p>
+
+<h2 id="spring-stuff">Spring Stuff<a class="headerlink" href="#spring-stuff" title="Link to this title">¶</a></h2><div class="box graybox"><p>This is kind of boring but the harmonic oscillation stuff below is fun, and
+it assumes that you know this stuff.
 </p>
 
-</div>
+</div><p>Let's say that we hang a spring off of something, and our $y$ axis is upside
+down so that $y=0$ is the bottom of the spring with the spring is hanging
+freely.</p>
+
+<p><img width="234" height="215" class="asymptote" src="asymptote/fb5fdde3516a28bc4df433c4bf1a70d2.svg" /></p><p>Now, let's attach a mass to the end of the spring:</p>
+
+<p><img width="236" height="314" class="asymptote" src="asymptote/6f08a427d875302b45d2c9374d6ccca9.svg" /></p><p>Now there are two forces that act on our mass: gravity $G=mg$ and a spring
+force $F=-ky$. Here $k$ is a constant that describes the stiffness of our
+spring: more $k$ means that it pulls up with a bigger force. We're also
+multiplying by $y$, so pulling the spring more means that the spring resists it
+with a bigger force. The minus in the front means that the spring is pulling
+up.</p>
+
+<p>The mass is not moving anywhere, so we can plug in $a=0$ to Newton's second
+law:</p>
+
+$$\begin{align}\Sigma F &= ma \\
+G+F &= m \cdot 0 \\
+mg-ky &= 0 \\
+k &= \frac{mg}{y}\end{align}$$<p>Let's calculate an example $k$ value so you get an idea of what it is. For
+example, let's say that we're on Earth and a 300 gram weight made the spring
+stretch by 10cm.</p>
+
+$$\begin{align}k = \frac{mg}{y} = \frac{0.30\rm{kg} \cdot 9.81\rm m/\rm{s}^2}{0.10\rm{m}}  \approx 29 \rm N/\rm m\end{align}$$<p>The unit is newtons per metres, so for every metre we pull we would get 29N
+more force.</p>
+
+<h2 id="harmonic-oscillation">Harmonic Oscillation<a class="headerlink" href="#harmonic-oscillation" title="Link to this title">¶</a></h2><div class="box graybox"><p>This sections assumes that you have read the above spring stuff and
+<a href="graphs.html#sine-waves">this sine wave stuff</a>, and you know <a href="more-geometry-and-trig.html#derivative-of-sine">sine and
+cosine derivatives</a>. You'll
+see soon what sine waves have to do with a spring and a bouncing mass.
+</p>
+
+</div><p>Let's pull the mass down a bit and release it, so it starts to bounce up and
+down:</p>
+
+<p><img width="262" height="342" class="asymptote" src="asymptote/09dfee190de4c872d404dea93ea9ca0c.svg" /></p><p>Note that we now have $y(t)$ at left; $y$ is no longer a constant, it depends
+on the time because the mass is moving up and down. Let's try to figure out how
+to calculate $y(t)$ values.</p>
+
+<p>We have the same forces as before, but we cannot just plug in $a=0$. Instead
+we'll plug in the $a=y''(t)$ we learned <a href="#basic-stuff">here</a>.</p>
+
+$$\begin{align}\Sigma F &= ma \\
+G+F &= m\ y''(t) \\
+mg-k\ y(t) &= m\ y''(t) \\
+\green{y}''\green{(t)} &= -\frac k m \green{y(t)}+g\end{align}$$<p>This thing with a function and its derivative in it is known as a
+<i>differential equation</i>. Let's try to solve it even though we have never seen
+differential equations before.</p>
+
+<p>What we're trying to do is to find a function $y(t)$ whose derivative's
+derivative is $-\frac k m$ times the function plus a constant. Here's a funny
+idea – <b>maybe</b> $y(t)$ might be some kind of sine wave? The second derivative
+of sine is the same function with a minus in the front:</p>
+
+$$\begin{align}\frac{d^2}{dt^2} \green{\sin(t)} = \frac{d}{dt} \cos(t) = -\green{\sin(t)}\end{align}$$<p>We just need to make it get multiplied by $\frac m k$ and produce the $g$
+constant somehow, but those things are easy as you'll see in a moment.</p>
+
+<p>First of all, the amplitude doesn't need to be 1 because we can move constants
+to front when taking derivatives:</p>
+
+$$\begin{align}\frac{d^2}{dt^2}(\green{A\sin(t)}) = \frac{d}{dt}(A\cos(t)) = -\green{A\sin(t)}\end{align}$$<p>If we stick another constant $B$ inside the $\sin(\quad)$, <a href="more-derivatives.html#chain-rule">the chain
+rule</a> says that we need to multiply by the
+derivative of the inside stuff, and $\frac{d}{dt}(Bt)=B$:</p>
+
+$$\begin{align}\frac{d^2}{dt^2}(\green{A\sin(Bt)}) = \frac{d}{dt}(BA\cos(Bt)) = -\blue{B^2}\green{A\sin(Bt)}\end{align}$$<p>Note how $B^2$ matches with the $\frac k m$:</p>
+
+$$\begin{align}\green{y}''\green{(t)} = -\blue{\frac k m}\green{y(t)}+g\end{align}$$<p>Now we just need to produce the $g$ somehow. Added constants go away when
+taking derivatives, so maybe adding yet another constant $C$ does something
+useful?</p>
+
+$$\begin{align}\frac{d^2}{dt^2}(\green{A\sin(Bt)+C}) &= \frac{d}{dt}(BA\cos(Bt) + 0) \\
+&= -B^2A\sin(Bt) \\
+&= (-B^2)(\green{A\sin(Bt)+C}-C) \\
+&= (-B^2)(\green{A\sin(Bt)+C})-(-B^2)C \\
+&= -B^2(\green{A\sin(Bt)+C})+B^2C\end{align}$$<p>There we go! Now we just need to compare our stuff:</p>
+
+$$\begin{align}\green{y}''\green{(t)} &= -\blue{\frac k m} \green{y(t)} + \maroon{g} \\
+\frac{d^2}{dt^2}(\green{A\sin(Bt)+C}) &= -\blue{B^2}(\green{A\sin(Bt)+C}) + \maroon{B^2C}\end{align}$$<p>Now we can conclude that $\green{y(t) = A\sin(Bt)+C}$ where $A$, $B$ and $C$
+are constants. So our spring is really bouncing in some kind of sine wave, even
+though it seemed to have nothing to do with circles and sine waves! In fact,
+"harmonic oscillation" means oscillating in a sine wave.</p>
+
+<p>Let's figure out what the constants mean. Based on the sine wave graph thing,
+$A$ is just making the graph taller, and $C$ is moving it <i>down</i> because we
+decided that more $y$ means down.</p>
+
+<p><img width="550" height="375" class="asymptote" src="asymptote/ac188661b022bf81d9c277efcef26a09.svg" /></p><p>We'll figure out how to calculate the period time $T$ later, but let's find the
+$B$ and $C$ constants first. Again, we'll do this by comparing similar parts of
+the equations.</p>
+
+$$\begin{align}y''(t) &= -\blue{\frac k m} \green{y(t)} + \maroon{g} \\
+&= -\blue{B^2}\green{y(t)} + \maroon{B^2C}\end{align}$$$$\begin{align}\blue{B^2} &= \blue{\frac k m} \\
+B &= \sqrt{\frac k m}\end{align}$$$$\begin{align}\maroon{B^2C} &= \maroon g \\
+\blue{\frac k m} C &= g \\
+C &= \frac{mg}{k}\end{align}$$<p>When we calculated the spring's height without any bouncing we ended up at
+$k=\frac{mg}{y}$, and we can turn that into $y=\frac{mg}{k}$. So being the
+center of the bouncing, $C$ is the height that the mass was at without any
+bouncing. This makes sense nicely.</p>
+
+<p>Let's try to find out what the period $T$ has to do with our constants.
+In the sine wave graph thing we figured that $T$ is the period of
+$A\sin(\purple{\frac{\tau t}{T}})$ is $T$, and the sine wave part of $y(t)$ is
+$A\sin(\purple{Bt})$.</p>
+
+$$\begin{align}\purple{\frac{\tau \rcancel{\purple t}}{T}} &= \purple{B\rcancel{\purple t}} \\
+T &= \frac \tau B = \frac{\tau}{\sqrt{\blue{B^2}}} = \frac{\tau}{\sqrt{\blue{k/m}}} \\
+&= \frac{\tau}{\sqrt k / \sqrt m} = \frac{\tau\sqrt m}{\sqrt k} = \tau\sqrt{\frac m k}\end{align}$$<p>There we go! Calculating the time it takes for the spring to bounce up and down
+involves the circle constant $\tau=2\pi$.</p>
+
+<p>If $k$ is bigger, then $T$ is smaller; it makes sense because stiffer springs
+bounce faster. Similarly, a bigger mass makes the spring bounce slower, with a
+bigger $T$. If the spring is hanging freely without any mass, we have
+$m \approx 0$ and $T$ is very small; it means that the spring just vibrates
+quickly if you pull it and let it go.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>When we wanted to get a constant $B$ from the derivative of the inside,
+what other inside functions could we have chosen than $Bt$? Would using
+another inside function change our $\tau\sqrt{m/k}$ result? How could we
+make the spring vibrate so that the inside function would be different?
+</p>
+
+</div></div>
 </body>
 </html>

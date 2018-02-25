@@ -50,10 +50,10 @@ itself just amazing.</p>
 
 <h2 id="the-problem">The Problem<a class="headerlink" href="#the-problem" title="Link to this title">¶</a></h2><p>Here's a picture of a few areas:</p>
 
-<p><img width="421" height="425" class="asymptote" src="asymptote/703dba94d30f32067b9800805c88c81c.svg" /></p><p>The first two areas are easy to calculate and everything is quite
+<p><img width="421" height="425" class="asymptote" src="asymptote/51f24e5259fd91b5263c61dbe7d1a476.svg" /></p><p>The first two areas are easy to calculate and everything is quite
 self-explanatory, but how the heck are we going to do the third one?</p>
 
-<img width="283" height="123" class="asymptote" src="asymptote/2ea5288a9d6e3dc2827f56ee961fe4a4.svg" style="float:right;" /><p id="noob-rectangles">If this was a question on a codeacademy-like noob programming site you would
+<img width="283" height="123" class="asymptote" src="asymptote/ea8169e3c7b6d659be7e646471b94c12.svg" style="float:right;" /><p id="noob-rectangles">If this was a question on a codeacademy-like noob programming site you would
 probably write some code that approximates the area by calculating areas of
 little rectangles. This Python program prints <code>0.42167045099417744</code>:
 </p>
@@ -77,7 +77,7 @@ x <span style="color: #666666">=</span> <span style="color: #40a070">1</span>
 <b>10 seconds</b> and I got a precise answer instead of a decimal approximation.
 This chapter is all about how I did that and why it works.</p>
 
-<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img width="340" height="305" class="asymptote" src="asymptote/3789da55e37445ff5d17806fd865fee9.svg" style="float:right;" /><p>Let's say that our curve is of the form $y=f(x)$ where $f$ is a
+<h2 id="area-to-x">Area to x<a class="headerlink" href="#area-to-x" title="Link to this title">¶</a></h2><img width="340" height="305" class="asymptote" src="asymptote/c4baf7836d7f4360875b50a45cbdae82.svg" style="float:right;" /><p>Let's say that our curve is of the form $y=f(x)$ where $f$ is a
 <a href="more-derivatives.html#which-functions-have-derivatives">continuous</a>
 function. Then we'll choose some $x$ location and <i>move</i> it right by
 $\Delta x$. Then we could calculate the change of area $\Delta A$ in a
@@ -105,7 +105,7 @@ the antiderivative of $f$ is $F$. We'll use this big $F$ style in
 the rest of the tutorial.
 </p>
 
-</div><img width="227" height="176" class="asymptote" src="asymptote/a43eb04844e5faeccc3b18a7c755cb48.svg" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
+</div><img width="227" height="176" class="asymptote" src="asymptote/7755b530ba24f0bc0e832f7f0ab83704.svg" style="float:right;" /><h2 id="our-first-integral">Our First Integral<a class="headerlink" href="#our-first-integral" title="Link to this title">¶</a></h2><p>Let's go back to our original problem. One of
 <a href="summary.html#derivative-rules">the derivative rules on the summary page</a> was this:</p>
 
 $$\begin{align}\frac{d}{dx} \sqrt x = \frac{1}{2 \sqrt x}\end{align}$$<p>So it looks like the antiderivative function $F$ is $F(x) = \sqrt x$.
@@ -114,7 +114,7 @@ $\frac{1}{2 \sqrt x}$ because $\frac{d}{dx} 1 = 0$. Or how about
 $\sqrt x + 100$ or $\sqrt x - 10$? We don't know what $F(x)$ is, but we
 know that $F(x) = \sqrt x + C$ where $C$ is a constant.</p>
 
-<img width="216" height="255" class="asymptote" src="asymptote/4e566f9d76f624b312de8b34b0acd30a.svg" style="float:right;" /><p>Let's try to calculate our area:</p>
+<img width="216" height="255" class="asymptote" src="asymptote/979878b16828855533afb5606c378294.svg" style="float:right;" /><p>Let's try to calculate our area:</p>
 
 $$\begin{align}F(b)-F(a)   &= (\sqrt b + C) - (\sqrt a + C) \\
             &= \sqrt b \rcancel{+C} - \sqrt a \rcancel{-C} \\
@@ -134,7 +134,7 @@ but <i>any</i> antiderivative will do because the $C$'s are substracted away.</l
 </li></ol><p>This connection between antiderivatives and areas is also known as the
 fundamental theorem of calculus.</p>
 
-<img width="198" height="184" class="asymptote" src="asymptote/f45c866a1626efec572343d3e249db44.svg" style="float:right;" /><h2 id="notation">Notation<a class="headerlink" href="#notation" title="Link to this title">¶</a></h2><p>Usually this stuff is written like this:</p>
+<img width="198" height="184" class="asymptote" src="asymptote/261fe3a4c177f81cb9984d9e20bb8887.svg" style="float:right;" /><h2 id="notation">Notation<a class="headerlink" href="#notation" title="Link to this title">¶</a></h2><p>Usually this stuff is written like this:</p>
 
 <ul><li>The blue area in the image at right is $\int_a^b f(x)\ dx$. Be careful
 here – the $dx$ is just a part of the notation and you must not forget
@@ -229,12 +229,12 @@ here</a> if you don't.
 the radius. There are a few different ways to divide a circle into a
 bunch of smaller and simpler areas:</p>
 
-<p><img width="510" height="159" class="asymptote" src="asymptote/157e148a5308f5c674a6e33487841661.svg" /></p><p>The idea here is that we can calculate the area of a circle by just integrating
+<p><img width="510" height="159" class="asymptote" src="asymptote/3b01f840d5dca58eb19d1a9a374b2f6e.svg" /></p><p>The idea here is that we can calculate the area of a circle by just integrating
 a bunch of these little area slices. The first one is the most difficult to
 integrate, but the second and third one are something we can do. Let's do the
 third one.</p>
 
-<img width="187" height="198" class="asymptote" src="asymptote/9182d7d00470be4f039f4ba058182934.svg" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
+<img width="187" height="198" class="asymptote" src="asymptote/7b448027260008577c01abce43aafcf2.svg" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
 base $\Delta b$ and height $r$, but we know its area is $A(b+\Delta b)-A(b)$:</p>
 
 $$\begin{align}A(b+\Delta b)-A(b) &\approx \frac{\Delta b \cdot r}{2} \\
@@ -267,18 +267,18 @@ page</a>.</small>
 </div><p>Integrals are actually not limited to areas, and they also work nicely
 with 3D stuff. Here $V(x)$ represents the volume to $x$.</p>
 
-<img  class="asymptote" src="asymptote/eb3599c1c6e3b80ebe8accc8a9a945ac.png" style="float:left;" /><img  class="asymptote" src="asymptote/70f67f794e4d15a5d8e6147f02fb7dc7.png" style="float:left;" /><p><div style="clear:both;"></div></p>
+<img  class="asymptote" src="asymptote/0da41a010d1af95b6e9233c79fc2c66d.png" style="float:left;" /><img  class="asymptote" src="asymptote/d3d584ee35c6d7989e0a566f970a01b9.png" style="float:left;" /><p><div style="clear:both;"></div></p>
 
 <p>We get this stuff that looks a lot like our area stuff above:</p>
 
 $$\begin{align}V(x+\Delta x)-V(x) &\approx A(x) \cdot \Delta x \\
 \frac{V(x+\Delta x)-V(x)}{\Delta x} &\approx A(x) \\
 \lim_{\Delta x \to 0} \frac{V(x+\Delta x)-V(x)}{\Delta x} &= A(x) \\
-V'(x) &= A(x)\end{align}$$$$\begin{align}V(b)-V(a) = \bigl[V(x)\bigr]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx\end{align}$$<img  class="asymptote" src="asymptote/8b4875fb4008dcdb212b18e594d11dd5.png" style="float:right;" /><p>Let's solve our VLC problem. If you look at the image at right, all we
+V'(x) &= A(x)\end{align}$$$$\begin{align}V(b)-V(a) = \bigl[V(x)\bigr]_a^b = \int_a^b V'(x)\ dx = \int_a^b A(x)\ dx\end{align}$$<img  class="asymptote" src="asymptote/09e440bd42d5af6ea497ff25a00a8a43.png" style="float:right;" /><p>Let's solve our VLC problem. If you look at the image at right, all we
 really need is $A(x)$, but for that we need to know what $f(x)$ is.
 Let's start by drawing $y=f(x)$ in a 2D plane without the 3D stuff:</p>
 
-<p><img width="227" height="149" class="asymptote" src="asymptote/6748d683c440daea389805adf49a1685.svg" /></p><p>If you have read <a href="derivatives.html#slopes">the slope thing on my derivative
+<p><img width="227" height="149" class="asymptote" src="asymptote/f3d08211a074959256f898d1dbb1a91f.svg" /></p><p>If you have read <a href="derivatives.html#slopes">the slope thing on my derivative
 page</a> you have no trouble at all finding $f(x)$.</p>
 
 $$\begin{align}f(x) = sx = \frac{\Delta y}{\Delta x} x = \frac r h x\end{align}$$<p>Next we need $A(x)$. <a href="#example-circle-area">Above</a> we figured that the
@@ -292,7 +292,7 @@ $$\begin{align}\int_0^h A(x)\ dx &= \int_0^h \pi (f(x))^2\ dx \\
     &= \pi \frac{r^2}{h^2} \int_0^h x^2\ dx \\
     &= \pi \frac{r^2}{h^2} \left[ \frac{x^3}{3} \right]_0^h \\
     &= \pi \frac{r^2}{h^2} \left( \frac{h^3}{3} - \frac{0^3}{3} \right) \\
-    &= \frac{\pi r^2 h}{3}\end{align}$$<img  class="asymptote" src="asymptote/d2ec8c7a1acd9e034294badf961e3e6a.png" style="float:right;" /><p>That was a mess, but we're almost done!</p>
+    &= \frac{\pi r^2 h}{3}\end{align}$$<img  class="asymptote" src="asymptote/edb1713a747290fe284f93d608833abe.png" style="float:right;" /><p>That was a mess, but we're almost done!</p>
 
 <p>Note that the area of the base circle is $\pi r^2$, and $\pi r^2 h$ would
 be the volume of a <i>cylinder</i> that barely fits around the VLC cone. So,
