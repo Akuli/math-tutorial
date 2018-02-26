@@ -98,8 +98,7 @@ increases by $2\rm m/\rm s$ every second.
 
 </div><p>This is already enough stuff for calculating something fun.</p>
 
-<h2 id="example-feather-and-hammer">Example: Feather and Hammer<a class="headerlink" href="#example-feather-and-hammer" title="Link to this title">¶</a></h2><p>Here's a famous
-experiment:</p>
+<h2 id="example-feather-and-hammer">Example: Feather and Hammer<a class="headerlink" href="#example-feather-and-hammer" title="Link to this title">¶</a></h2><p>Here's a famous experiment:</p>
 
 <p><iframe width="420" height="315" src="https://www.youtube.com/embed/5C5_dOEyAfk"></iframe></p>
 
@@ -121,20 +120,28 @@ C_1 &= 0 \\
 v(t) &= gt\end{align}$$<p>We can integrate again to find the height at time $t$. Let's call that $y(t)$
 so that more $y$ means down.</p>
 
-$$\begin{align}y(t) &= \int v(t)\ dt = \int gt\ dt = \frac 1 2 gt^2 + C_2\end{align}$$<p>The initial height of the objects seems to be about $1.5\rm m$, and dropping
-them took about one second:</p>
+$$\begin{align}y(t) &= \int v(t)\ dt = \int gt\ dt = \frac 1 2 gt^2 + C_2\end{align}$$<p>Next we'll need the dropping height and the time it took to drop the object.
+The height looks like about $1.5\rm m$, but we need to measure the dropping
+time more carefully (I'll explain more soon). For some reason, I always got the
+time wrong when trying to measure it, so we'll use YouTube's comments:</p>
 
-$$\begin{align}y(1\rm s)-y(0\rm s) &= 1.5\rm m \\
-\Bigl(\frac 1 2 g(1\rm s)^2 \rcancel{+ C_2}\Bigr) - \Bigl(\frac 1 2 g\cdot0^2 \rcancel{+ C_2}\Bigr) &= 1.5 \rm m \\
-\frac 1 2 g(1\rm s)^2 &= 1.5 \rm m \\
-g &= 2 \cdot \frac{1.5 \rm m}{(1\rm s)^2} = 3 \rm m/\rm{s}^2\end{align}$$<p>A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
-is horribly wrong. I haven't figured out what goes wrong with it yet.</p>
+<img src="images/utubecomment.png" style="border: 1px solid black;     border-radius: 10px;" />$$\begin{align}y(1.294\rm s)-y(0) &= 1.5\rm m \\
+\Bigl(\frac 1 2 g(1.294\rm s)^2 \rcancel{+ C_2}\Bigr) -      \Bigl(\frac 1 2 g\cdot0^2 \rcancel{+ C_2}\Bigr) &= 1.5\rm m \\
+\frac 1 2 g(1.294\rm s)^2 &= 1.5\rm m \\
+g &= 2 \cdot \frac{1.5\rm m}{(1.294\rm s)^2} \approx 1.79\rm m/\rm{s}^2\end{align}$$<p>Now you can see that we had to square the dropping time, so a small error in it
+causes the result to be off quite a bit; that is, a 25% error in the dropping
+time throws the result off by more than 25%.</p>
 
-<div class="box graybox"><p>A similar experiment on Earth should yield $g\approx9.81 \rm m/\rm{s}^2$,
-and that's a $g$ value we'll use in most of our other examples.
+<p>A quick search for "moon gravity" gives $1.625 \rm m/\rm{s}^2$, and our thing
+isn't too bad considering the $1.5\rm m$ we guessed.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Use the correct moon $g$ to calculate a more precise height than
+$1.5\rm m$.
 </p>
 
-</div><h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
+</div><p>Here's Earth's $g$ that we'll use in rest of our examples:</p>
+
+$$\begin{align}g \approx 9.81 \rm m/\rm{s}^2\end{align}$$<h2 id="newton-s-second-law">Newton's Second Law<a class="headerlink" href="#newton-s-second-law" title="Link to this title">¶</a></h2><p>Here's Newton's second law, written in a mathy way:</p>
 
 $$\begin{align}\Sigma F = ma\end{align}$$<p>Here $\Sigma$ means sum, and $\Sigma F$ is the sum of all forces that are
 pushing a mass and causing it an acceleration. In our previous example, there
@@ -268,7 +275,7 @@ center of the bouncing, $C$ is the height that the mass was at without any
 bouncing. This makes sense nicely.</p>
 
 <p>Let's try to find out what the period $T$ has to do with our constants.
-In the sine wave graph thing we figured that $T$ is the period of
+In the sine wave graph thing we figured that the period of
 $A\sin(\purple{\frac{\tau t}{T}})$ is $T$, and the sine wave part of $y(t)$ is
 $A\sin(\purple{Bt})$.</p>
 
