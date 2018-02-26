@@ -65,7 +65,7 @@ def get_sidebar_content(txtfile):
         thingy("Interesting for programmers",
                'infinity numbertheory fib derivatives geometry-and-trig '
                'physics'),
-        thingy("Kinda fun", 'integrals more-integrals'),
+        thingy("Kinda fun", 'integrals integral-techniques more-integrals'),
         thingy("Mathy", 'more-derivatives more-geometry-and-trig explog'),
         thingy("Mind-blowing", 'taylor eulerformula'),
         thingy("Other stuff", 'basics graphs summary', indexlink),

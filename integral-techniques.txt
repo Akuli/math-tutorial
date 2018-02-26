@@ -1,0 +1,168 @@
+# Integration Techniques
+
+redbox:
+    This chapter assumes that you know [integrals](integrals.html) and
+    [sine and cosine
+    derivatives](more-geometry-and-trig.html#derivative-of-sine).
+
+Nowadays it's easiest to use sympy for doing difficult integrals, but in this
+chapter we'll look into how integrals were done before computers and
+calculators. It sounds very boring and hard, but you might find especially
+u-substitution kind of amazing.
+
+## U Substitution
+
+In the integral chapter we learned that $\int f(x)\ dx$ means the
+antiderivatives of $f$. The notation with $dx$'s in it is known as
+[Leibniz](https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz)'s notation,
+and I explained the $\int f(x)\ dx$ like Leibniz did. However, the notation
+probably wouldn't be used today if the trick I'm about to show wouldn't make it
+really handy.
+
+Let's say that $F$ is an antiderivative of $f$; that is, $F'(x)=f(x)$. In the
+integral chapter we turned the [chain rule](more-derivatives.html#chain-rule)
+into an integral rule by integrating both sides:
+
+math:
+    f(g(x))g'(x) &= \frac{d}{dx}F(g(x))
+    \int f(g(x))g'(x)\ dx &= F(g(x)) + C
+
+Something interesting happens if we define another variable $u=g(x)$. Then
+$\frac{du}{dx}=g'(x)$.
+
+math:
+    \int f(u)\frac{du}{dx}\ dx &= F(u) + C
+
+Could we just *cancel out* the $dx$'s? It feels kind of wrong because the $dx$
+is just a part of our antiderivative notation and not really a variable, but
+let's try it and see what happens:
+
+math:
+    \int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &= F(u) + C
+    \int f(u)\ du &= F(u) + C
+
+Amazing, it really worked! $F(u) + C$ is indeed the integral of $f(u)$ with
+respect to $u$.
+
+When our teacher had shown this trick to us for the first time, everyone were
+just amazed by it, and the teacher said that he wanted to take a picture of our
+faces.
+
+graybox: Example: $\int x\sin(x^2)\ dx$
+    The derivative of $x^2$ is $2x$ and it differs from $x$ by just a constant,
+    so a substitution like $u=x^2$ will work.
+
+    math:
+        \int x\sin(x^2)\ dx &= \int \sin(\green{x^2})\ \blue{x\ dx} \
+        \qquad\qquad \begin{array}{l} \
+            \green u = \green{x^2}
+            \frac{du}{dx} = 2x
+            du = 2x\ dx
+            \blue{x\ dx} = \blue{\frac 1 2 du}
+        \end{array}
+        &= \int\sin(\green u)\blue{\frac 1 2 du}
+        &= \frac 1 2 \int\sin(u)\ du
+        &= \frac 1 2 (-\cos(\green u)) + C
+        &= -\frac 1 2 \cos(\green{x^2}) + C
+
+    math:
+        \frac{d}{dx}\left(-\frac 1 2 \cos(x^2) + C\right) \
+        = -\frac 1 2 (-\sin(x^2)) \cdot 2x + 0 = x\sin(x^2)
+
+This worked because it's easy to change the integral so that it contains
+the derivative of the inside:
+
+math:
+    \int x\sin(x^2)\ dx = \frac 1 2 \int 2x\sin(x^2)\ dx
+
+Treating $du$ and $dx$ as variables like $du=2x\ dx$ is hand-wavy, but it's
+very commonly used and accepted hand-waviness because it works so nicely. In
+fact, many people write $\int dx$ when they mean $\int 1\ dx$ and
+$\int \frac{dx}{f(x)}$ when they mean $\int \frac{1}{f(x)}\ dx$.
+
+Note that in the above example we added another variable, and switched
+**everything** to use that variable instead of $x$; there must be no $x$ left
+over. If there is, try another $u$ choice, do something to the function before
+integrating it or maybe try some other integration technique instead of $u$
+substitution. When we were done, we went from the $u$ world back to the $x$
+world.
+
+(story)
+graybox: Exercise
+    Here's a true story. At school we had trouble with this integral:
+
+    math:
+        \int \frac{\cos(x)}{\sin^2(x)}\ dx
+
+    Our supply teacher came up with a solution, and when I saw it I knew it was
+    very incorrect, aka **WRONG** in **CAPS AND BOLD**. It started like this:
+
+    math:
+        \int \frac{\cos(x)}{\sin^2(x)} \
+        = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...
+
+    You should know by now that we **cannot** bring non-constants like
+    $\frac{1}{2\sin(x)}$ out of integrals. I argued with the teacher about his
+    solution for the rest of the lesson, and the following day our actual
+    teacher thanked me for arguing about it. Later I found two more severe
+    mistakes from the solution.
+
+    Anyway, integrate $\dfrac{\cos(x)}{\sin^2(x)}$ correctly. It's easy with
+    the correct substitution.
+
+Let's see how this works for definite integral; that is, $\int_a^b$ instead of
+$\int$, area instead of antiderivative.
+
+math:
+    \int_a^b f(g(x))g'(x)\ dx &= \bigl[F(g(x))\bigr]_{x=a}^{x=b}
+    &= F(\green{g(b)})-F(\green{g(a)})
+    &= \bigl[F(\green{u})\bigr]_{u=\green{g(a)}}^{u=\green{g(b)}}
+    &= \int_{g(a)}^{g(b)} f(u)\ du
+
+This means that we just need to change the limits to $u$ values.
+
+graybox: Example: $\int_\sqrt{\tau}^\sqrt{2\tau} x\sin(x^2)\ dx$
+    math:
+        \int_\sqrt{\tau}^\sqrt{2\tau} x\sin(x^2)\ dx &= \int_\sqrt{\tau}^\sqrt{2\tau} \sin(x^2)\ x\ dx \
+        \qquad\qquad \begin{array}{l} \
+            u = x^2
+            \text{if }x=\sqrt{\tau}\text{ then }u=\tau
+            \text{if }x=\sqrt{2\tau}\text{ then }u=2\tau
+            du = 2x\ dx
+            x\ dx = \frac 1 2 du
+        \end{array}
+        &= \int_\tau^{2\tau}\sin(u)\frac 1 2 du
+        &= \frac 1 2 \bigl[-\cos(u)\bigr]_{u=\tau}^{u=2\tau}
+        &= \frac 1 2 (-\cos(2\tau)-(-\cos(\tau)))
+        &= \frac 1 2 (\green{\cos(\tau)-\cos(2\tau)})
+
+    $\tau$ and $2\tau$ differ from each other by a full turn, and rotating a
+    full turn on the unit circle brings us back to where we started and the
+    cosines are the same.
+
+    math:
+        \cos(\tau) &= \cos(2\tau)
+        \green{\cos(\tau)-\cos(2\tau)} &= 0
+        \int_\sqrt{\tau}^\sqrt{2\tau} x\sin(x^2)\ dx &= 0
+
+Note that we didn't need to go back to the $x$ world; with definite integrals
+it's enough to change the limits, and then we can forget the whole $x$.
+
+graybox: Exercise
+    The [parabola](graphs.html#parabolas) $y=(x-1)^2$ rotates around the $x$
+    axis between $0 \le x \le 2$. Calculate the volume of the shape it forms.
+
+    comment: trying to fix not having transparent backgrounds in 3d images
+             with css (lol)
+
+    asymptote3d: border: 5px solid white; border-radius: 10px;
+        size(12cm);
+
+        currentprojection = perspective(camera=(4,2,10), up=Y);
+        real f(real x) { return (x-1)**2; }
+        axises3d(-2,3,-1.5,2,0,0);
+
+        draw(path3(graph(f,-0.5,2.5)), heavyred,
+             L=Label(rotate(10)*"$y=(x-1)^2$", position=Relative(0.8)), align=E);
+        draw(surface(path3(graph(f,0,2)), c=O, axis=X), yellow);
+        draw(surface((2,0,0)--(2,f(2),0), c=O, axis=X), yellow);
