@@ -182,8 +182,8 @@ math:
     M &= -G
 
 This mystery force is your chair holding up your butt, and it has a minus sign
-in the front because it goes to the opposite direction compared to gravity.
-That's why they cancel out nicely and you don't accelerate anywhere.
+in the front because it goes to the opposite direction of gravity. That's why
+they cancel out nicely and you don't accelerate anywhere.
 
 Newton's first and third law are closely related to Newton's second law. For
 example, the first law is a special case of the second law: it says that a mass
@@ -221,8 +221,7 @@ asyboilerplate:
     }
 
 Let's say that we hang a spring off of something, and our $y$ axis is upside
-down so that $y=0$ is the bottom of the spring with the spring is hanging
-freely.
+down so that $y=0$ is the bottom of the spring when it's hanging freely.
 
 asymptote:
     unitsize(5cm);
@@ -326,7 +325,7 @@ of sine is the same function with a minus in the front:
 math:
     \frac{d^2}{dt^2} \green{\sin(t)} = \frac{d}{dt} \cos(t) = -\green{\sin(t)}
 
-We just need to make it get multiplied by $\frac m k$ and produce the $g$
+We just need to make it get multiplied by $\frac k m$ and produce the $g$
 constant somehow, but those things are easy as you'll see in a moment.
 
 First of all, the amplitude doesn't need to be 1 because we can move constants
