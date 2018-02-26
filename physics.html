@@ -35,7 +35,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>Physics Stuff</b></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>Physics Stuff</b></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="physics-stuff">Physics Stuff<a class="headerlink" href="#physics-stuff" title="Link to this title">¶</a></h1><p>This is mostly a math tutorial, but the math is not useless or isolated from
 the real world in any way. In this chapter we'll look into a bunch of ways to
 use math things for calculating more concrete stuff in the real world.</p>
@@ -157,8 +157,8 @@ where $M$ is some kind of Mystery force that we'll try to explain.</p>
 $$\begin{align}\Sigma F &= 0 \\
 G + M &= 0 \\
 M &= -G\end{align}$$<p>This mystery force is your chair holding up your butt, and it has a minus sign
-in the front because it goes to the opposite direction compared to gravity.
-That's why they cancel out nicely and you don't accelerate anywhere.</p>
+in the front because it goes to the opposite direction of gravity. That's why
+they cancel out nicely and you don't accelerate anywhere.</p>
 
 <p>Newton's first and third law are closely related to Newton's second law. For
 example, the first law is a special case of the second law: it says that a mass
@@ -170,8 +170,7 @@ it assumes that you know this stuff.
 </p>
 
 </div><p>Let's say that we hang a spring off of something, and our $y$ axis is upside
-down so that $y=0$ is the bottom of the spring with the spring is hanging
-freely.</p>
+down so that $y=0$ is the bottom of the spring when it's hanging freely.</p>
 
 <p><img width="234" height="215" class="asymptote" src="asymptote/fb5fdde3516a28bc4df433c4bf1a70d2.svg" /></p><p>Now, let's attach a mass to the end of the spring:</p>
 
@@ -223,7 +222,7 @@ derivative is $-\frac k m$ times the function plus a constant. Here's a funny
 idea – <b>maybe</b> $y(t)$ might be some kind of sine wave? The second derivative
 of sine is the same function with a minus in the front:</p>
 
-$$\begin{align}\frac{d^2}{dt^2} \green{\sin(t)} = \frac{d}{dt} \cos(t) = -\green{\sin(t)}\end{align}$$<p>We just need to make it get multiplied by $\frac m k$ and produce the $g$
+$$\begin{align}\frac{d^2}{dt^2} \green{\sin(t)} = \frac{d}{dt} \cos(t) = -\green{\sin(t)}\end{align}$$<p>We just need to make it get multiplied by $\frac k m$ and produce the $g$
 constant somehow, but those things are easy as you'll see in a moment.</p>
 
 <p>First of all, the amplitude doesn't need to be 1 because we can move constants

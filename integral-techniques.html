@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Integration Techniques</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        red: [ "\\color{red}{#1}", 1 ],
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        maroon: [ "\\color{maroon}{#1}", 1 ],
+        olive: [ "\\color{olive}{#1}", 1 ],
+        purple: [ "\\color{purple}{#1}", 1 ],
+        black: [ "\\color{black}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+      }
+    }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand" rel="stylesheet">
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><b>Integration Techniques</b></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="integration-techniques">Integration Techniques<a class="headerlink" href="#integration-techniques" title="Link to this title">¶</a></h1><div class="box redbox"><p>This chapter assumes that you know <a href="integrals.html">integrals</a> and
+<a href="more-geometry-and-trig.html#derivative-of-sine">sine and cosine
+derivatives</a>.
+</p>
+
+</div><p>Nowadays it's easiest to use sympy for doing difficult integrals, but in this
+chapter we'll look into how integrals were done before computers and
+calculators. It sounds very boring and hard, but you might find especially
+u-substitution kind of amazing.</p>
+
+<h2 id="u-substitution">U Substitution<a class="headerlink" href="#u-substitution" title="Link to this title">¶</a></h2><p>In the integral chapter we learned that $\int f(x)\ dx$ means the
+antiderivatives of $f$. The notation with $dx$'s in it is known as
+<a href="https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz">Leibniz</a>'s notation,
+and I explained the $\int f(x)\ dx$ like Leibniz did. However, the notation
+probably wouldn't be used today if the trick I'm about to show wouldn't make it
+really handy.</p>
+
+<p>Let's say that $F$ is an antiderivative of $f$; that is, $F'(x)=f(x)$. In the
+integral chapter we turned the <a href="more-derivatives.html#chain-rule">chain rule</a>
+into an integral rule by integrating both sides:</p>
+
+$$\begin{align}f(g(x))g'(x) &= \frac{d}{dx}F(g(x)) \\
+\int f(g(x))g'(x)\ dx &= F(g(x)) + C\end{align}$$<p>Something interesting happens if we define another variable $u=g(x)$. Then
+$\frac{du}{dx}=g'(x)$.</p>
+
+$$\begin{align}\int f(u)\frac{du}{dx}\ dx &= F(u) + C\end{align}$$<p>Could we just <i>cancel out</i> the $dx$'s? It feels kind of wrong because the $dx$
+is just a part of our antiderivative notation and not really a variable, but
+let's try it and see what happens:</p>
+
+$$\begin{align}\int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &= F(u) + C \\
+\int f(u)\ du &= F(u) + C\end{align}$$<p>Amazing, it really worked! $F(u) + C$ is indeed the integral of $f(u)$ with
+respect to $u$.</p>
+
+<p>When our teacher had shown this trick to us for the first time, everyone were
+just amazed by it, and the teacher said that he wanted to take a picture of our
+faces.</p>
+
+<div class="box graybox"><h2> Example: $\int x\sin(x^2)\ dx$</h2><p>The derivative of $x^2$ is $2x$ and it differs from $x$ by just a constant,
+so a substitution like $u=x^2$ will work.</p>
+
+$$\begin{align}\int x\sin(x^2)\ dx &= \int \sin(\green{x^2})\ \blue{x\ dx}  \qquad\qquad \begin{array}{l}      \green u = \green{x^2} \\
+    \frac{du}{dx} = 2x \\
+    du = 2x\ dx \\
+    \blue{x\ dx} = \blue{\frac 1 2 du} \\
+\end{array} \\
+&= \int\sin(\green u)\blue{\frac 1 2 du} \\
+&= \frac 1 2 \int\sin(u)\ du \\
+&= \frac 1 2 (-\cos(\green u)) + C \\
+&= -\frac 1 2 \cos(\green{x^2}) + C\end{align}$$$$\begin{align}\frac{d}{dx}\left(-\frac 1 2 \cos(x^2) + C\right)  = -\frac 1 2 (-\sin(x^2)) \cdot 2x + 0 = x\sin(x^2)\end{align}$$</div><p>This worked because it's easy to change the integral so that it contains
+the derivative of the inside:</p>
+
+$$\begin{align}\int x\sin(x^2)\ dx = \frac 1 2 \int 2x\sin(x^2)\ dx\end{align}$$<p>Treating $du$ and $dx$ as variables like $du=2x\ dx$ is hand-wavy, but it's
+very commonly used and accepted hand-waviness because it works so nicely. In
+fact, many people write $\int dx$ when they mean $\int 1\ dx$ and
+$\int \frac{dx}{f(x)}$ when they mean $\int \frac{1}{f(x)}\ dx$.</p>
+
+<p>Note that in the above example we added another variable, and switched
+<b>everything</b> to use that variable instead of $x$; there must be no $x$ left
+over. If there is, try another $u$ choice, do something to the function before
+integrating it or maybe try some other integration technique instead of $u$
+substitution. When we were done, we went from the $u$ world back to the $x$
+world.</p>
+
+<div id="story" class="box graybox"><h2> Exercise</h2><p>Here's a true story. At school we had trouble with this integral:</p>
+
+$$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}\ dx\end{align}$$<p>Our supply teacher came up with a solution, and when I saw it I knew it was
+very incorrect, aka <b>WRONG</b> in <b>CAPS AND BOLD</b>. It started like this:</p>
+
+$$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}  = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...\end{align}$$<p>You should know by now that we <b>cannot</b> bring non-constants like
+$\frac{1}{2\sin(x)}$ out of integrals. I argued with the teacher about his
+solution for the rest of the lesson, and the following day our actual
+teacher thanked me for arguing about it. Later I found two more severe
+mistakes from the solution.</p>
+
+<p>Anyway, integrate $\dfrac{\cos(x)}{\sin^2(x)}$ correctly. It's easy with
+the correct substitution.
+</p>
+
+</div><p>Let's see how this works for definite integral; that is, $\int_a^b$ instead of
+$\int$, area instead of antiderivative.</p>
+
+$$\begin{align}\int_a^b f(g(x))g'(x)\ dx &= \bigl[F(g(x))\bigr]_{x=a}^{x=b} \\
+&= F(\green{g(b)})-F(\green{g(a)}) \\
+&= \bigl[F(\green{u})\bigr]_{u=\green{g(a)}}^{u=\green{g(b)}} \\
+&= \int_{g(a)}^{g(b)} f(u)\ du\end{align}$$<p>This means that we just need to change the limits to $u$ values.</p>
+
+<div class="box graybox"><h2> Example: $\int_\sqrt{\tau}^\sqrt{2\tau} x\sin(x^2)\ dx$</h2>$$\begin{align}\int_\sqrt{\tau}^\sqrt{2\tau} x\sin(x^2)\ dx &= \int_\sqrt{\tau}^\sqrt{2\tau} \sin(x^2)\ x\ dx  \qquad\qquad \begin{array}{l}      u = x^2 \\
+    \text{if }x=\sqrt{\tau}\text{ then }u=\tau \\
+    \text{if }x=\sqrt{2\tau}\text{ then }u=2\tau \\
+    du = 2x\ dx \\
+    x\ dx = \frac 1 2 du \\
+\end{array} \\
+&= \int_\tau^{2\tau}\sin(u)\frac 1 2 du \\
+&= \frac 1 2 \bigl[-\cos(u)\bigr]_{u=\tau}^{u=2\tau} \\
+&= \frac 1 2 (-\cos(2\tau)-(-\cos(\tau))) \\
+&= \frac 1 2 (\green{\cos(\tau)-\cos(2\tau)})\end{align}$$<p>$\tau$ and $2\tau$ differ from each other by a full turn, and rotating a
+full turn on the unit circle brings us back to where we started and the
+cosines are the same.</p>
+
+$$\begin{align}\cos(\tau) &= \cos(2\tau) \\
+\green{\cos(\tau)-\cos(2\tau)} &= 0 \\
+\int_\sqrt{\tau}^\sqrt{2\tau} x\sin(x^2)\ dx &= 0\end{align}$$</div><p>Note that we didn't need to go back to the $x$ world; with definite integrals
+it's enough to change the limits, and then we can forget the whole $x$.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>The <a href="graphs.html#parabolas">parabola</a> $y=(x-1)^2$ rotates around the $x$
+axis between $0 \le x \le 2$. Calculate the volume of the shape it forms.</p>
+
+<img  class="asymptote" src="asymptote/872ff63b52265633a8a8c65ba18c2795.png" style="border: 5px solid white; border-radius: 10px;" /></div></div>
+</body>
+</html>
