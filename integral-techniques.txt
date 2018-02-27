@@ -20,7 +20,7 @@ probably wouldn't be used today if the trick I'm about to show wouldn't make it
 really handy.
 
 Let's say that $F$ is an antiderivative of $f$; that is, $F'(x)=f(x)$. In the
-integral chapter we turned the [chain rule](more-more-derivatives.html#chain-rule)
+integral chapter we turned the [chain rule](more-derivatives.html#chain-rule)
 into an integral rule by integrating both sides:
 
 math:
