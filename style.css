@@ -101,7 +101,7 @@ code {
     border-radius: 5px;
     font-size: 0.9em;
 }
-.graybox code {
+.graybox code, .redbox code {
     background-color: #bbb;
 }
 

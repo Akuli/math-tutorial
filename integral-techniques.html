@@ -54,7 +54,7 @@ probably wouldn't be used today if the trick I'm about to show wouldn't make it
 really handy.</p>
 
 <p>Let's say that $F$ is an antiderivative of $f$; that is, $F'(x)=f(x)$. In the
-integral chapter we turned the <a href="more-derivatives.html#chain-rule">chain rule</a>
+integral chapter we turned the <a href="derivatives.html#chain-rule">chain rule</a>
 into an integral rule by integrating both sides:</p>
 
 $$\begin{align}f(g(x))g'(x) &= \frac{d}{dx}F(g(x)) \\
@@ -65,11 +65,11 @@ $$\begin{align}\int f(u)\frac{du}{dx}\ dx &= F(u) + C\end{align}$$<p>Could we ju
 is just a part of our antiderivative notation and not really a variable, but
 let's try it and see what happens:</p>
 
-$$\begin{align}\int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &= F(u) + C \\
-\int f(u)\ du &= F(u) + C\end{align}$$<p>Amazing, it really worked! $F(u) + C$ is indeed the integral of $f(u)$ with
+$$\begin{align}\int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &\mathop{=}^{\text{wat}} F(u) + C \\
+\int f(u)\ du\ &\mathop{=}^{\text{lol}}_{\text{srsly?}}\ F(u) + C\end{align}$$<p>Amazing, it really worked! $F(u) + C$ is indeed the integral of $f(u)$ with
 respect to $u$.</p>
 
-<p>When our teacher had shown this trick to us for the first time, everyone were
+$$\begin{align}\frac{d}{du}(F(u)+C) \mathop{=}^{\text{yes}} F'(u)+0 \mathop{=}_{\text{srsly}} f(u)\end{align}$$<p>When our teacher had shown this trick to us for the first time, everyone were
 just amazed by it, and the teacher said that he wanted to take a picture of our
 faces.</p>
 
@@ -104,14 +104,16 @@ world.</p>
 $$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}\ dx\end{align}$$<p>Our supply teacher came up with a solution, and when I saw it I knew it was
 very incorrect, aka <b>WRONG</b> in <b>CAPS AND BOLD</b>. It started like this:</p>
 
-$$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}  = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...\end{align}$$<p>You should know by now that we <b>cannot</b> bring non-constants like
+$$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}  = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...\end{align}$$<p>Here the supply teacher wanted to have the derivative of $\sin^2(x)$ on the
+top. You should know by now that we <b>cannot</b> bring non-constants like
 $\frac{1}{2\sin(x)}$ out of integrals. I argued with the teacher about his
 solution for the rest of the lesson, and the following day our actual
-teacher thanked me for arguing about it. Later I found two more severe
+teacher thanked me for arguing about it. Later I found two more fatal
 mistakes from the solution.</p>
 
 <p>Anyway, integrate $\dfrac{\cos(x)}{\sin^2(x)}$ correctly. It's easy with
-the correct substitution.
+the correct substitution. (Note that
+<a href="explog.html#exponent-functions">$x^{-a} = 1/x^a$</a>.)
 </p>
 
 </div><p>Let's see how this works for definite integral; that is, $\int_a^b$ instead of

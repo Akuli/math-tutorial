@@ -40,49 +40,10 @@
 but you might like some of it. It assumes that you have read <a href="derivatives.html">the first
 derivative chapter</a>.</p>
 
-<h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>In the first derivative chapter I said that most functions you'll come across
-have a derivative. Let's be a bit more specific. The derivative doesn't exist in
-these cases:</p>
-
-<p><ul><li></p>
-
-<p>The function is not <i>continuous</i>; that is, the graph consists of multiple
-lines. For example, this function is not continuous at $x=0$ and thus
-$f'(0)$ is not defined:</p>
-
-$$\begin{align}f(x) = \left\{\begin{matrix}      1 \text{ if } x \ge 0 \\
-    0 \text{ if } x < 0 \\
-\end{matrix}\right.\end{align}$$<p><img width="227" height="159" class="asymptote" src="asymptote/a7cee99af7199c7238ea8b5d819dfbb9.svg" /></p><p></li><li></p>
-
-<p>The graph of the function has a spike in it. Derivatives describe
-"growing speed" and it isn't clear how fast the values grow on top of a
-spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
-$|x|$ has a derivative everywhere except at $x=0$.</p>
-
-<p><img width="170" height="141" class="asymptote" src="asymptote/6a7c41832bf5f8e9f78b1ebfe11aacf1.svg" /></p><p></li></ul></p>
-
-<p>Of course, there are more precise definitions about continuity and "spikes",
-but this should be enough to give you some kind of idea about the limitations.</p>
-
-<h2 id="chain-rule">Chain Rule<a class="headerlink" href="#chain-rule" title="Link to this title">¶</a></h2><p>Let's say you want to find the derivative of $(2x)^2$. The derivative of $x^2$
-is just $2x$, so isn't the derivative of $(2x)^2$ then $2(2x)=4x$?
-<b>No, it's not!</b></p>
-
-<p>When things are nested like this you need to multiply by the derivative of the
-inner stuff.</p>
-
-$$\begin{align}\frac{d}{dx}(\underbrace{2x}_{\substack{\text{inner} \\ \text{stuff}}})^2  = 2(2x)\cdot\underbrace{\frac{d}{dx}(2x)}_{\substack{\text{derivative of} \\ \text{inner stuff}}}  = 4x\cdot2=8x\end{align}$$<p>If the inner stuff is just $x$, then its derivative is $1$ and multiplying by
-it does nothing.</p>
-
-<p>This inner stuff derivative thing is known as the chain rule, and it looks like
-this in a mathy $f$ and $g$ form:</p>
-
-$$\begin{align}\frac{d}{dx}f(g(x)) = f'(g(x))g'(x)\end{align}$$<p>There's a proof <a href="#frac-d-dx-f-g-x-f-g-x-g-x">below</a>.</p>
-
 <h2 id="derivative-rules">Derivative Rules<a class="headerlink" href="#derivative-rules" title="Link to this title">¶</a></h2><p>Libraries like sympy are sure handy for finding derivatives, but we can also
 find the derivative of pretty much anything by hand. In <a href="derivatives.html">the first derivative
-chapter</a> we learned to find the derivatives of any constant,
-$x$ and $x^2$.</p>
+chapter</a> I showed you a bunch of derivative rules and I told
+you we'd prove them later. Let's do it.</p>
 
 <p>We also used a bunch of rules that we didn't prove, and there was a link to
 even more magic rules on the summary page. This page contains some proofs that
@@ -92,13 +53,39 @@ don't use anything that has not been proved before them.</p>
 <p>Here $c$ can be any constant, and $f$ and $g$ can be any functions that have
 derivatives $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$.</p>
 
-<h3 id="frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x">$\frac{d}{dx}(c \cdot f(x)) = c \cdot \frac{d}{dx}(f(x))$<a class="headerlink" href="#frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's plug in $c \cdot f(x)$ to the definition of derivative.</p>
+<h3 id="frac-d-dx-x-1">$\frac{d}{dx} x = 1$<a class="headerlink" href="#frac-d-dx-x-1" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=x$ is a straight line with slope 1.</p>
+
+<p><img width="209" height="208" class="asymptote" src="asymptote/a25ede4561945f70d9428e32d5d71460.svg" /></p><p>We can also plug in $f(x)=x$ to the definition of derivative:</p>
+
+$$\begin{align}\frac{d}{dx} x &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+&= \lim_{h\to0} \frac{(\rcancel x+h)\rcancel{-x}}{h} \\
+&= \lim_{h\to0} \frac h h \\
+&= 1\end{align}$$<p>This third way is not really a proof, but you can just use <a href="derivatives.html#notation">Leibniz's
+notation</a>:</p>
+
+$$\begin{align}\frac{d}{dx} x = \frac{dx}{dx}\ \mathop{=}^{\text{lol}}\ 1\end{align}$$<p>The $\frac{dx}{dx}$ says a very small change of $x$ divided by a very small
+change of $x$. Leibniz's notation Just Works&#8482; in general, but it's
+not enough for a proof because nowadays we use limits instead of infinitely
+small numbers.
+</p>
+
+</div><h3 id="frac-d-dx-x-c">$\frac{d}{dx} x = c$<a class="headerlink" href="#frac-d-dx-x-c" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=c$ is a horizontal line at height $c$, so its slope is $0$.</p>
+
+<p><img width="235" height="195" class="asymptote" src="asymptote/dc28f6da5e2f715b772657df203c149f.svg" /></p><p>We can also plug in $f(x)=c$ to the definition of derivative:</p>
+
+$$\begin{align}\frac{d}{dx} x &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+&= \lim_{h\to0} \frac{c-c}{h} \\
+&= \lim_{h\to0} \frac 0 h \\
+&= 0\end{align}$$<p>We can do a similar non-proof trick with Leibniz's notation because $c$ is
+a constant that doesn't change, so $dc\ =\ 0$.</p>
+
+$$\begin{align}\frac{d}{dx}c = \frac{dc}{dx}\ \mathop{=}^{\text{lol}}\ \frac{0}{dx} = 0\end{align}$$</div><h3 id="frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x">$\frac{d}{dx}(c \cdot f(x)) = c \cdot \frac{d}{dx}(f(x))$<a class="headerlink" href="#frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's plug in $c \cdot f(x)$ to the definition of derivative.</p>
 
 $$\begin{align}\frac{d}{dx}(c \cdot f(x))  &= \lim_{h\to0} \frac{\green c \cdot f(x+h) - \green c \cdot f(x)}{h} \\
 &= \lim_{h\to0} \frac{\green c \cdot\bigl(f(x+h)-f(x)\bigr)}{h} \\
-&= \lim_{h\to0} \left(\green c \cdot\frac{f(x+h)-f(x)}{h}\right) \\
-&= \green c \cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
-&= c \cdot f'(x)\end{align}$$<p>Here's a nice consequence of this rule:</p>
+&= \lim_{h\to0} \left(c \cdot\frac{f(x+h)-f(x)}{h}\right) \\
+&= c \cdot\lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
+&= c \cdot f'(x)\end{align}$$<p>Here's a nice consequence of this rule.</p>
 
 $$\begin{align}\frac{d}{dx}(-f(x))  &= \frac{d}{dx}((-1)f(x)) \\
 &= (-1)f'(x) \\
@@ -107,7 +94,13 @@ $$\begin{align}\frac{d}{dx}(-f(x))  &= \frac{d}{dx}((-1)f(x)) \\
 $$\begin{align}\frac{d}{dx} (6x^2+7x-123) = \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123)\end{align}$$<p>If these things work, then the stuff above is correct:</p>
 
 <ul><li>$\frac{d}{dx}(f(x)+g(x))=f'(x)+g'(x)$</li><li>$\frac{d}{dx}(f(x)-g(x))=f'(x)-g'(x)$
-</li></ul><p>Let's start by proving the $+$ thing with the definition of derivative.
+</li></ul><p>This is because adding and substracting a big pile of stuff can be always
+turned into simpler adds and substractions...</p>
+
+$$\begin{align}a+b-c-d+e = (((a+b)-c)-d)+e\end{align}$$<p>...and then we could apply the above rules to one thing at a time, starting
+with $a+b$.</p>
+
+<p>Let's start by proving the $+$ thing with the definition of derivative.
 It's kind of messy, but it works. I'll color $f$'s with blue and $g$'s with
 green so the mess should be a bit less unreadable.</p>
 
@@ -124,7 +117,7 @@ $$\begin{align}\frac{d}{dx}(f(x)-g(x))  &= \frac{d}{dx}\bigl(f(x)+(-g(x))\bigr) 
 &= f'(x)+(-g'(x)) \\
 &= f'(x)-g'(x)\end{align}$$</div><h3 id="frac-d-dx-f-g-x-f-g-x-g-x">$\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$<a class="headerlink" href="#frac-d-dx-f-g-x-f-g-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's first assume that $g(x+h) \ne g(x)$ with a small $h$; that is,
 $g(x+h)-g(x) \ne 0$ in a $h \to 0$ limit. This means that we can divide
-stuff by $g(x+h)-g(x)$. We'll do the $g(x+h)=g(x)$ case separately.</p>
+stuff by $\green{g(x+h)-g(x)}$. We'll do the $g(x+h)=g(x)$ case separately.</p>
 
 <p>Multiplying top and bottom by the green stuff is a nice and clever way to
 get started with this:</p>
@@ -153,7 +146,22 @@ $$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} 
 &= f(g(x)) \biggl( \lim_{h \to 0} \frac{\rcancel{g(x)}-\rcancel{g(x)}}{h} \biggr) \\
 &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
 &= f(g(x)) \cdot 0 \\
-&= 0\end{align}$$</div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging into the definition of derivative gives this:</p>
+&= 0\end{align}$$<p>We're now done with the proof, but I also want to show you what this rule
+looks like in Leibniz's notation. If we abbreviate $f(g(x))$ as $f$ and
+$g(x)$ as $g$, then $f'(\maroon{g(x)})$ is $\frac{df}{d\maroon g}$ because
+we're putting $g(x)$ into $f'(\quad)$.</p>
+
+$$\begin{align}\frac{df}{dx} = \frac{df}{\green{dg}} \cdot \frac{\green{dg}}{dx}\end{align}$$<p>It looks like the $dg$'s just cancel out, and in fact, the green stuff we
+added in the beginning of the proof was the change of $g$. That's how I
+knew that adding it would do something useful.</p>
+
+<p>Also note that Leibniz's notation doesn't handle the corner case with $g$
+being a constant because then $\green{dg}$ would be $0$ and
+$\frac{df}{\green{dg}}$ would be undefined. Even though Leibniz's notation
+is very handy, it has some limitations.
+</p>
+
+</div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging into the definition of derivative gives this:</p>
 
 $$\begin{align}\frac{d}{dx}(f(x)g(x)) = \lim_{h\to0} \frac{f(x+h)g(x+h)-f(x)g(x)}{h}\end{align}$$<p>If the top was slightly different, we could just group it nicely.</p>
 
@@ -167,7 +175,21 @@ $$\begin{align}\frac{d}{dx} (f(x)g(x))  &= \lim_{h\to0} \frac{\green{f(x+h)g(x+h
 &= \lim_{h\to0} \frac{\bigl(\green{f(x+h)}\blue{-f(x)}\bigr)g(x+h)      + f(x)\bigl(\blue{g(x+h)}\green{-g(x)}\bigr)}{h} \\
 &= \lim_{h\to0} \left(\frac{\bigl(\green{f(x+h)}\blue{-f(x)}\bigr)g(x+h)}{h}      + \frac{f(x)\bigl(\blue{g(x+h)}\green{-g(x)}\bigr)}{h}\right) \\
 &= \left(\lim_{h\to0} \frac{\green{f(x+h)}\blue{-f(x)}}{h}\right) \left(\lim_{h\to0}g(x+h)\right)      + f(x)\left(\lim_{h\to0}\frac{\blue{g(x+h)}\green{-g(x)}}{h}\right) \\
-&= f'(x)g(x) + f(x)g'(x)\end{align}$$</div><h3 id="frac-d-dx-x-c-c-x-c-1">$\frac{d}{dx} x^c = c\ x^{c-1}$<a class="headerlink" href="#frac-d-dx-x-c-c-x-c-1" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual $c$ value. For example,
+&= f'(x)g(x) + f(x)g'(x)\end{align}$$<p>Again, we're done with the proof, but I also want to show you a Leibniz
+notation trick.</p>
+
+$$\begin{align}\frac{d(fg)}{dx} = \frac{df}{dx}g + f\frac{dg}{dx} \\
+d(fg)=df \cdot g + f \cdot dg\end{align}$$<p>If we think about an $f$ by $g$ rectangle, its area is $fg$, and it changes
+by $d(fg)$ when $f$ changes by $df$ and $g$ changes by $dg$.</p>
+
+<p><img width="340" height="216" class="asymptote" src="asymptote/15d21c97f300b28d2cc10999480b7860.svg" /></p><p>This is very hand-wavy because it (ab)uses Leibniz's notation and only
+works with positive $f$ and $g$, but it gives you some intuition about how
+the change of $fg$ is $df \cdot g + f \cdot dg$. Note that $f+df$ goes to
+$f$ when we take a limit with $h\to0$, and that explains why we ended up
+with $\displaystyle\lim_{h\to0}g(x+h)$ in the proof.
+</p>
+
+</div><h3 id="frac-d-dx-x-c-c-x-c-1">$\frac{d}{dx} x^c = c\ x^{c-1}$<a class="headerlink" href="#frac-d-dx-x-c-c-x-c-1" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual $c$ value. For example,
 our very first derivative example shows that $\frac{d}{dx} x^2 = 2x$, and
 $2x^{2-1}$ is also $2x$. Here I'll prove that this works with all positive
 integers using a powerful technique known as <b>induction</b>.</p>
@@ -188,9 +210,9 @@ proved above and the assumption.</p>
 $$\begin{align}\frac{d}{dx} x^{k+1} &= \frac{d}{dx} (x^k x^1) \\
 &= \frac{d}{dx} (\green{x} \cdot \blue{x^k}) \\
 &= \left(\frac{d}{dx} \green{x}\right) \cdot \blue{x^k}      + \green{x} \cdot \left(\frac{d}{dx} \blue{x^k}\right) \\
-&= 1x^k + x \cdot k x^{k-1} \\
-&= 1x^k + k\cdot x^{k-1}x^1 \\
-&= 1\green{x^k} + k\green{x}^{\green{k}\rcancel{-1}\rcancel{+1}} \\
+&= 1x^k + x \cdot k \maroon{x^{k-1}} \\
+&= 1x^k + k\cdot \maroon{\frac{x^k}{x}}x \\
+&= 1\green{x^k} + k\green{x^k} \\
 &= (1+k)\green{x^k} \\
 &= (k+1)x^{(k+1)-1}\end{align}$$<p>We proved that if $\frac{d}{dx} x^k = k x^{k-1}$ then
 $\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}$. Now we know that the rule works
@@ -253,6 +275,57 @@ $$\begin{align}\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)  &= \frac{d}{dx} \l
 &= \green{f}'\green{(x)}\blue{\frac{1}{g(x)}} +     \green{f(x)}\biggl(\frac{d}{dx}\Bigl(          \green{\frac{1}{\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}}}\Bigr)\biggr) \\
 &= \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
 &= \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
-&= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}\end{align}$$</div></div>
+&= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}\end{align}$$</div><h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>This stuff is boring and it's here mostly to avoid mathematicians complaining
+about not having it here.</p>
+
+<p>In the previous chapter we calculated some derivatives, but we just assumed
+that it's possible and that was it. Pretty much all functions in this tutorial
+have derivatives, but the derivative does not exist in these cases:</p>
+
+<ul><li>The graph of the function has a spike in it. Derivatives describe
+  "growing speed" and it isn't clear how fast the values grow on top of a
+  spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
+  $|x|$ has a derivative everywhere except at $x=0$.
+</li></ul><div class="indent"><p><img width="170" height="141" class="asymptote" src="asymptote/6a7c41832bf5f8e9f78b1ebfe11aacf1.svg" /></p><p>Let's see what the definition of derivative gives for $\frac{d}{dx}|x|$ at
+$x=0$:</p>
+
+$$\begin{align}\lim_{h\to0} \frac{|0+h| - |0|}{h} &= \lim_{h\to0} \frac{|h|}{h} \\
+&= \lim_{h\to0} \begin{cases}  \frac h h = 1       & \text{ if }h > 0 \\
+\frac{-h}{h} = -1   & \text{ if }h < 0 \\
+\end{cases}\end{align}$$<p>But <a href="infinity.html#limit2sided">$h\to0$ means that we must get the same answer from both
+cases</a>. The limit does not exist.
+</p>
+
+</div><ul><li>The function is not <i>continuous</i>; that is, the graph consists of multiple
+  lines. For example, this function is not continuous at $x=0$ and thus
+  $f'(0)$ is not defined:
+</li></ul><div class="indent">$$\begin{align}f(x) = \begin{cases}      1   & \text{ if } x > 0 \\
+    0   & \text{ if } x = 0 \\
+    -1  & \text{ if } x < 0 \\
+\end{cases}\end{align}$$<p><img width="227" height="159" class="asymptote" src="asymptote/5fdfcb083b9112f0e7dbd72930e65acb.svg" /></p><p>Let's check with the definition of derivative.</p>
+
+$$\begin{align}f'(0) &= \lim_{h\to0} \frac{f(0+h)-f(0)}{h} \\
+&= \lim_{h\to0} \frac{f(h)-0}{h} \\
+&= \lim_{h\to0} \begin{cases}      \frac{1}{h}                 & \text{ if } h > 0 \\
+    \frac{-1}{h}=-\frac 1 h     & \text{ if } h < 0 \\
+\end{cases}\end{align}$$<p>If $h\to0^+$, $1/h$ is dividing by something very small and positive, so it
+goes to $\infty$. Similarly, in the second case $h$ is negative and $1/h$ goes
+to $-\infty$... but $-1/h$ goes to $\infty$:</p>
+
+$$\begin{align}f'(0) &\mathop{=}^{\red ?} \begin{cases}      \infty  & \text{ if } h > 0 \\
+    \infty  & \text{ if } h < 0 \\
+\end{cases} \\
+f'(0) &\mathop{=}^{\red ?} \infty\end{align}$$<p>Most mathematicians say that the derivative cannot be $\infty$ or $-\infty$
+because many ways to use derivatives only work with finite values. In fact,
+limits at infinity are a kind of corner case anyway, and some people mean
+"the limit exists and is finite" when they say "the limit exists".</p>
+
+<p>Let's update our definition of derivative:</p>
+
+$$\begin{align}f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \quad  \text{if the limit exists and is finite}\end{align}$$</div><p>Of course, there are more precise definitions about continuity and "spikes",
+but this should be enough to give you some kind of idea about the limitations.
+</p>
+
+</div>
 </body>
 </html>
