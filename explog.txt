@@ -264,7 +264,7 @@ math: b^x = e^{\ln(b^x)} = e^{x \ln(b)}
 
 Here I used the $\log_b(x^y)=y \log_b(x)$ formula that we proved above. So it
 looks like we could do this (remember to use [the chain
-rule](more-derivatives.html#chain-rule)):
+rule](derivatives.html#chain-rule)):
 
 math:
     \frac{d}{dx} b^x \
@@ -287,7 +287,7 @@ for short. It appears "naturally" in surprising places.
 ## Derivative of a logarithm
 
 Let's find the derivative of $e^{\ln(x)}$ with [the chain
-rule](more-derivatives.html#chain-rule). We don't know what the derivative of
+rule](derivatives.html#chain-rule). We don't know what the derivative of
 the inner stuff is yet, but it's not a problem; let's just say that's
 $\frac{d}{dx}\ln(x)$ and figure out the actual value later.
 
