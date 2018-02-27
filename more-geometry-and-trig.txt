@@ -512,7 +512,7 @@ $\theta$. Note that $\theta$ must be in radians.
 Now we know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$ and
 [$\cos(\theta) = \sin(\tau/4 - \theta)$](#why-is-cosine-called-cosine), so this
 will be really easy. We just need to remember [the chain
-rule](more-derivatives.html#chain-rule).
+rule](more-more-derivatives.html#chain-rule).
 
 math:
     \frac{d}{d\theta} \cos(\theta) \

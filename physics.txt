@@ -341,7 +341,7 @@ math:
     \frac{d^2}{dt^2}(\green{A\sin(t)}) = \frac{d}{dt}(A\cos(t)) = -\green{A\sin(t)}
 
 If we stick another constant $B$ inside the $\sin(\quad)$, [the chain
-rule](more-derivatives.html#chain-rule) says that we need to multiply by the
+rule](more-more-derivatives.html#chain-rule) says that we need to multiply by the
 derivative of the inside stuff, and $\frac{d}{dt}(Bt)=B$:
 
 math:

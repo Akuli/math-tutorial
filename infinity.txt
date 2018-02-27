@@ -125,6 +125,7 @@ positive side, and we can plug in values like $2.001$ or $2.0000000001$ to
 guess what the limit might be. Similarly, $x\to2^-$ means approaching with
 numbers like $1.9999999$.
 
+(limit2sided)
 A plain $x\to2$ means that we must approach 2 from **both sides** and get the
 same value, but as a special case, $x\to\infty$ and $x\to-\infty$ mean
 approaching from one side only because it's not possible to approach from both

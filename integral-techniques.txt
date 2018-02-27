@@ -20,7 +20,7 @@ probably wouldn't be used today if the trick I'm about to show wouldn't make it
 really handy.
 
 Let's say that $F$ is an antiderivative of $f$; that is, $F'(x)=f(x)$. In the
-integral chapter we turned the [chain rule](more-derivatives.html#chain-rule)
+integral chapter we turned the [chain rule](more-more-derivatives.html#chain-rule)
 into an integral rule by integrating both sides:
 
 math:
@@ -38,11 +38,14 @@ is just a part of our antiderivative notation and not really a variable, but
 let's try it and see what happens:
 
 math:
-    \int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &= F(u) + C
-    \int f(u)\ du &= F(u) + C
+    \int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &\mathop{=}^{\text{wat}} F(u) + C
+    \int f(u)\ du\ &\mathop{=}^{\text{lol}}_{\text{srsly?}}\ F(u) + C
 
 Amazing, it really worked! $F(u) + C$ is indeed the integral of $f(u)$ with
 respect to $u$.
+
+math:
+    \frac{d}{du}(F(u)+C) \mathop{=}^{\text{yes}} F'(u)+0 \mathop{=}_{\text{srsly}} f(u)
 
 When our teacher had shown this trick to us for the first time, everyone were
 just amazed by it, and the teacher said that he wanted to take a picture of our
@@ -101,14 +104,16 @@ graybox: Exercise
         \int \frac{\cos(x)}{\sin^2(x)} \
         = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...
 
-    You should know by now that we **cannot** bring non-constants like
+    Here the supply teacher wanted to have the derivative of $\sin^2(x)$ on the
+    top. You should know by now that we **cannot** bring non-constants like
     $\frac{1}{2\sin(x)}$ out of integrals. I argued with the teacher about his
     solution for the rest of the lesson, and the following day our actual
-    teacher thanked me for arguing about it. Later I found two more severe
+    teacher thanked me for arguing about it. Later I found two more fatal
     mistakes from the solution.
 
     Anyway, integrate $\dfrac{\cos(x)}{\sin^2(x)}$ correctly. It's easy with
-    the correct substitution.
+    the correct substitution. (Note that
+    [$x^{-a} = 1/x^a$](explog.html#exponent-functions).)
 
 Let's see how this works for definite integral; that is, $\int_a^b$ instead of
 $\int$, area instead of antiderivative.

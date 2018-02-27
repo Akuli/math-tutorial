@@ -122,6 +122,10 @@ Let's find a formula for calculating derivatives. We'll do this for a general
 $y=f(x)$ graph where $f$ is a [function](basics.html#functions) instead of
 $y=x^2$, so we'll get something that is not limited to just $x^2$.
 
+code:
+    <theelous3>    so the height of x, or x's "y", can be described as
+                   f(x), where f = lambda x: x**2
+
 asymptote:
     size(12cm);
     real xmin = 0.1, xmax=1.7;
@@ -177,6 +181,7 @@ math:
     &= \lim_{h\to0} \frac{\rcancel{x^2} + 2xh + h^2 \rcancel{- x^2}}{h}
     &= \lim_{h\to0} \frac{2xh + h^2}{h}
     &= \lim_{h\to0} \frac{(2x+h)\rcancel h}{\rcancel h}
+    &= \lim_{h\to0} \frac{2x+h}{1}
     &= \lim_{h\to0} (2x+h)
     &= 2x
 
@@ -212,6 +217,9 @@ asymptote:
    draw((2,0)--(2,2**2), smalldashes);
    label("2", (2,0), align=S);
 
+graybox: Exercise
+    Find the derivative of $x^3$.
+
 Earlier we looked at the line $y=2x+1$ and we got the slope 2 from any
 $\frac{\Delta y}{\Delta x}$ ratio, but derivatives are
 $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$, so the
@@ -233,10 +241,16 @@ of $2x+1$ is $2$ without any $x$. In other words, the derivative of $2x+1$ is
 the same with any $x$ value. This makes sense because straight lines have the
 same slope everywhere.
 
-In fact, if you are asked to find the derivative of something like $5x+8$ you
-know immediately that's 5 because $y=5x+8$ is a straight line with slope 5.
+graybox: Exercise
+    Prove that the derivative of $sx+c$ is always $s$. Here $s$ and $c$ are
+    constants.
 
-graybox:
+<p></p>
+
+(notation)
+redbox:
+    This stuff is in a red box just to make sure that you read it.
+
     The derivative $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$
     is often written as $\frac{dy}{dx}$. Historically $dy$ and $dx$ were
     infinitely tiny changes of $y$ and $x$, but nowadays limits are
@@ -251,13 +265,6 @@ graybox:
     It doesn't make sense either, but ``dy`` is much less typing than
     ``deltay``.
 
-<p></p>
-
-graybox: Exercise
-    Prove that the derivative of $sx+c$ is always $s$ by plugging in
-    $f(x)=sx+c$ to the definition of derivative. Here $s$ and $c$ are
-    constants.
-
 ## Faster!
 
 Let's say that you want to calculate something like this:
@@ -269,34 +276,28 @@ That would be a horribly complicated calculation with the definition of
 derivative. In these cases, we can use some handy-dandy rules:
 
 * If we have a bunch of things added or substracted from each other we can find
-  the derivatives of each thing one by one. We'll prove this in [the next
-  chapter](more-derivatives.html).
+  the derivatives of each thing one by one.
 
 math:
     \frac{d}{dx} (6x^2+7x-123) = \frac{d}{dx}(6x^2) + \frac{d}{dx}(7x) - \frac{d}{dx}(123)
 
 * You can move constants to the front of the $\frac{d}{dx}$. This works only
-  with constants; you cannot move anything with $x$ in it to the front. Again,
-  there's a proof in the next chapter.
+  with constants; you cannot move anything with $x$ in it to the front.
 
 math:
     \frac{d}{dx}(6x^2) = 6 \cdot \frac{d}{dx}(x^2)
 
-* Derivative of $x^2$ is $2x$. We proved this in our very first derivative
-  example.
+* Derivative of $x^2$ is $2x$.
 
 math:
     \frac{d}{dx}(x^2) = 2x
 
-* The derivative of $x$ is 1 because the slope of the line $y=x$ is 1. You can
-  also check this by plugging in $f(x)=x$ to the definition of derivative.
+* The derivative of $x$ is 1.
 
 math:
     \frac{d}{dx} x = 1
 
-* The derivative of any constant (e.g. 3) is $0$ because a line like $y=3$ is
-  horizontal and it has slope $0$. Again, you can check with the definition of
-  derivative.
+* The derivative of any constant (e.g. 3) is $0$.
 
 math:
     \frac{d}{dx} 3 = 0
@@ -310,11 +311,8 @@ math:
     =& 6 \cdot 2x + 7 \cdot 1
     =& 12x + 7
 
-graybox: See Also
-    The summary page has a derivative section with [many more
-    rules](summary.html#derivative-rules). You may need them if you want
-    to find derivatives of different functions than the functions in
-    this chapter.
+Don't believe these rules just because I say that they work; in [the next
+chapter](more-derivatives.html) we'll *prove* that they work.
 
 You can also use a nice symbolic calculation library, like Python's
 [sympy](http://www.sympy.org) (can be installed with pip):
@@ -341,21 +339,42 @@ code:
     <theelous3>    nah
     <theelous3>    would learn nothing just doing this
 
-## Some History
+## Chain Rule
 
-[Newton](https://en.wikipedia.org/wiki/Isaac_Newton) and
-[Leibniz](https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz) discovered
-this derivative stuff independently, and they didn't exactly agree about which
-of them had invented it first. The word "derivative" probably refers to how
-derivatives can be easily *derived* for most functions like in the example
-above, but this comic suggests that it refers to Leibniz *deriving* Newton's
-work:
+This is a separate section just because it's easy to forget using this
+derivative rule.
 
-image: https://imgs.xkcd.com/comics/newton_and_leibniz.png
-    max-width: 100%;
-    max-height: 100%;
+For example, let's say that we want to find the derivative of $(2x)^2$:
 
-<small>The comic comes from [https://xkcd.com/626/](https://xkcd.com/626/).</small>
+math: \frac{d}{dx}\bigl((2x)^2\bigr) \mathop{=}^{\red ?} 2(2x) = 4x
+
+I put a red ? over the equal sign because we used the $\frac{d}{dx}x^2=2x$ rule
+when the inside was $2x$ instead of $x$. We aren't sure if we can do that just
+yet, and we actually get a *different* result if we start by using the
+$(ab)^2=a^2b^2$ rule from [the basics page](basics.html#powers-and-square-root):
+
+math: (2x)^2 = 2^2x^2 = 4x^2
+
+math:
+    \frac{d}{dx}\bigl((2x)^2\bigr)=\frac{d}{dx}(4x^2)=4\cdot\frac{d}{dx}(x^2)=4\cdot2x=8x
+
+This solution must be correct because we know that each part of it is correct.
+
+When stuff is nested like this we don't necessarily need to expand everything;
+it's enough to multiply by the derivative of the inner stuff:
+
+math:
+    \frac{d}{dx}\bigl((\underbrace{2x}_{\substack{\text{inner} \\ \text{stuff}}})^2\bigr) \
+    =2(2x) \cdot \underbrace{\frac{d}{dx}(2x)}_{\substack{\text{derivative of} \\ \text{inner stuff}}} \
+    =4x \cdot 2 = 8x
+
+This is known as the **chain rule**, and it looks like this in a mathy $f$ and
+$g$ form:
+
+math:
+    \frac{d}{dx}f(g(x))=f'(g(x)) \cdot g'(x)
+
+Use it every time you have inside stuff other than $x$.
 
 ## Example: Smooth Jumps
 
@@ -491,6 +510,28 @@ canvasdemo:
      });
    });
 
+## Some History
+
+[Newton](https://en.wikipedia.org/wiki/Isaac_Newton) and
+[Leibniz](https://en.wikipedia.org/wiki/Gottfried_Wilhelm_Leibniz) discovered
+this derivative stuff independently, and they didn't exactly agree about which
+of them had invented it first. The word "derivative" probably refers to how
+derivatives can be easily *derived* for most functions like in the example
+above, but this comic suggests that it refers to Leibniz *deriving* Newton's
+work:
+
+image: https://imgs.xkcd.com/comics/newton_and_leibniz.png
+    max-width: 100%;
+    max-height: 100%;
+
+<small>The comic comes from [https://xkcd.com/626/](https://xkcd.com/626/).</small>
+
+Speaking of Leibniz and Newton, our $\frac{dy}{dx}$ derivative notation is the
+notation that Leibniz used, and known as Leibniz's notation. Newton used
+multiple different notations, including a dot on top of the function like
+$\dot f$. The $f'$ notation comes from yet another guy called
+[Lagrange](https://en.wikipedia.org/wiki/Joseph-Louis_Lagrange).
+
 ## More about theelous3
 
 This chapter contains a few bits of an old conversation with me and
@@ -501,10 +542,6 @@ it afterwards a lot; it's nice to teach people stuff that I find fun, and it's
 Even though math and programming are separate things and you need very little
 math for programming, some concepts he had learned from Python helped him
 understand math stuff.
-
-code:
-    <theelous3>    so the height of x, or x's "y", can be described as
-                   f(x), where f = lambda x: x**2
 
 theelous3 wasn't very confident at first...
 
@@ -528,4 +565,14 @@ code:
 ...but he learned stuff surprisingly fast, and he enjoyed it.
 
 code:
+    <theelous3>    yeah I figured I can just get rid of the x**2's
+    <Akuli>        theelous3, great
+    <Akuli>        thats exactly what you're supposed to do
+    <theelous3>    2hx + h**2 / h
+    ....
     <theelous3>    I had math fun for the first time ever
+
+<p></p>
+
+graybox:
+    [Click here](more-derivatives.html) to read the next derivative chapter.
