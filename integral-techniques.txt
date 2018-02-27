@@ -28,7 +28,8 @@ math:
     \int f(g(x))g'(x)\ dx &= F(g(x)) + C
 
 Something interesting happens if we define another variable $u=g(x)$. Then
-$\frac{du}{dx}=g'(x)$.
+$\frac{du}{dx}=g'(x)$. You can use whatever variable name you want, but $u$ is
+traditionally used here.
 
 math:
     \int f(u)\frac{du}{dx}\ dx &= F(u) + C
