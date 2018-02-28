@@ -268,11 +268,11 @@ $-\frac 1 x$ on the top.
 
 </div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
 
-<ul><li>$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$</li><li>$\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$</li><li>$\frac{d}{dx} f(\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}) = f'(g(x))g'(x)$
+<ul><li>$\frac{d}{dx} (\green{f(x)}\blue{g(x)}) = \green{f}'\green{(x)}\blue{g(x)} + \green{f(x)}\blue{g}'\blue{(x)}$</li><li>$\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$</li><li>$\frac{d}{dx} f(\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}) = f'(g(x))g'(x)$
 </li></ul><p>Now this is quite straight-forward.</p>
 
 $$\begin{align}\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)  &= \frac{d}{dx} \left( \green{f(x)} \blue{\frac{1}{g(x)}} \right) \\
-&= \green{f}'\green{(x)}\blue{\frac{1}{g(x)}} +     \green{f(x)}\biggl(\frac{d}{dx}\Bigl(          \green{\frac{1}{\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}}}\Bigr)\biggr) \\
+&= \green{f}'\green{(x)}\blue{\frac{1}{g(x)}} +     \green{f(x)}\biggl(\frac{d}{dx}\Bigl(          \blue{\frac{1}{\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}}}\Bigr)\biggr) \\
 &= \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
 &= \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
 &= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}\end{align}$$</div><h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>This stuff is boring and it's here mostly to avoid mathematicians complaining
@@ -302,7 +302,7 @@ cases</a>. The limit does not exist.
 </li></ul><div class="indent">$$\begin{align}f(x) = \begin{cases}      1   & \text{ if } x > 0 \\
     0   & \text{ if } x = 0 \\
     -1  & \text{ if } x < 0 \\
-\end{cases}\end{align}$$<p><img width="227" height="159" class="asymptote" src="asymptote/5fdfcb083b9112f0e7dbd72930e65acb.svg" /></p><p>Let's check with the definition of derivative.</p>
+\end{cases}\end{align}$$<p><img width="227" height="193" class="asymptote" src="asymptote/fd9f4f27726d916f815316c4c0ebb594.svg" /></p><p>Let's check with the definition of derivative.</p>
 
 $$\begin{align}f'(0) &= \lim_{h\to0} \frac{f(0+h)-f(0)}{h} \\
 &= \lim_{h\to0} \frac{f(h)-0}{h} \\

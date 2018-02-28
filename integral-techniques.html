@@ -70,7 +70,15 @@ $$\begin{align}\int f(u)\frac{du}{\rcancel{dx}}\rcancel{dx} &\mathop{=}^{\text{w
 \int f(u)\ du\ &\mathop{=}^{\text{lol}}_{\text{srsly?}}\ F(u) + C\end{align}$$<p>Amazing, it really worked! $F(u) + C$ is indeed the integral of $f(u)$ with
 respect to $u$.</p>
 
-$$\begin{align}\frac{d}{du}(F(u)+C) \mathop{=}^{\text{yes}} F'(u)+0 \mathop{=}_{\text{srsly}} f(u)\end{align}$$<p>When our teacher had shown this trick to us for the first time, everyone were
+$$\begin{align}\frac{d}{du}(F(u)+C) \mathop{=}^{\text{yes}} F'(u)+0 \mathop{=}_{\text{srsly}} f(u)\end{align}$$<p>We can get to the same result like this:</p>
+
+$$\begin{align}&   \int f(\green{g(x)})\blue{g'(x)\ dx}  \qquad\qquad \begin{array}{l}      \green u = \green{g(x)} \\
+    \frac{du}{dx} = g'(x) \\
+    \blue{du} \overset{\text{lol}}= \blue{g'(x)\ dx} \\
+\end{array} \\
+=&\ \int f(\green u)\ \blue{du} \\
+=&\ F(u) + C \\
+=&\ F(g(x)) + C\end{align}$$<p>When our teacher had shown this trick to us for the first time, everyone were
 just amazed by it, and the teacher said that he wanted to take a picture of our
 faces.</p>
 
