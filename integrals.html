@@ -229,10 +229,10 @@ here</a> if you don't.
 the radius. There are a few different ways to divide a circle into a
 bunch of smaller and simpler areas:</p>
 
-<p><img width="510" height="159" class="asymptote" src="asymptote/3b01f840d5dca58eb19d1a9a374b2f6e.svg" /></p><p>The idea here is that we can calculate the area of a circle by just integrating
+<p><img width="510" height="147" class="asymptote" src="asymptote/6d13ddcb1b3c44f3b6de10c17b678f94.svg" /></p><p>The idea here is that we can calculate the area of a circle by just integrating
 a bunch of these little area slices. The first one is the most difficult to
-integrate, but the second and third one are something we can do. Let's do the
-third one.</p>
+integrate so we'll do it <a href="integral-techniques.html#circle-area">later</a>, but the
+second and third one are something we can do now. Let's do the third one.</p>
 
 <img width="187" height="198" class="asymptote" src="asymptote/7b448027260008577c01abce43aafcf2.svg" style="float:right;" /><p>The green area in the image at right looks kind of like a triangle with
 base $\Delta b$ and height $r$, but we know its area is $A(b+\Delta b)-A(b)$:</p>
@@ -244,7 +244,7 @@ A'(b) &= \frac r 2 \\
 A(b) &= \int \frac r 2\ db = \frac{rb}{2} + C\end{align}$$<p>If $b=0$, then $A(b)=0$.</p>
 
 $$\begin{align}A(0) = \frac{r \cdot 0}{2} + C &= 0 \\
-C &= 0\end{align}$$<p>If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area.</p>
+C &= 0\end{align}$$<p>If $b$ is the whole circumference $\tau r$, then $A(b)$ is the circle area.</p>
 
 $$\begin{align}A(\tau r) = \frac{r \tau r}{2}+0 = \frac 1 2 \tau r^2 = \pi r^2\end{align}$$<p>Alternatively, after figuring out $A(b) = \frac{rb}{2}+C$ we could also
 do this:</p>

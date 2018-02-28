@@ -154,6 +154,56 @@ it's enough to change the limits, and then we can forget the whole $x$.</p>
 <div class="box graybox"><h2> Exercise</h2><p>The <a href="graphs.html#parabolas">parabola</a> $y=(x-1)^2$ rotates around the $x$
 axis between $0 \le x \le 2$. Calculate the volume of the shape it forms.</p>
 
-<img  class="asymptote" src="asymptote/872ff63b52265633a8a8c65ba18c2795.png" style="border: 5px solid white; border-radius: 10px;" /></div></div>
+<img  class="asymptote" src="asymptote/872ff63b52265633a8a8c65ba18c2795.png" style="border: 5px solid white; border-radius: 10px;" /></div><h2 id="trig-substitution">Trig Substitution<a class="headerlink" href="#trig-substitution" title="Link to this title">¶</a></h2><p>Let's say we have an integral like this:</p>
+
+$$\begin{align}\int\sqrt{1-x^2}\ dx\end{align}$$<p>A substitution like $u=1-x^2$ does not work here because the derivative of the
+inside is $-2x$. The $-2$ is not a problem, but we have no extra $x$ in the
+integral (and obviously we can't just add an $x$ there).</p>
+
+<p><a href="more-geometry-and-trig.html#famous-trig-formula">Here</a> we created this formula
+as an exercise:</p>
+
+$$\begin{align}\sin^2(\theta) + \cos^2(\theta) = 1\end{align}$$<p>We can solve $\cos^2(\theta) = 1-\sin^2(\theta)$. So, wouldn't it be handy if
+we had $x=\sin(\theta)$?</p>
+
+$$\begin{align}\newcommand{abs}[1]{\lvert{#1}\rvert} \\
+\sqrt{1-(\sin(\theta))^2} = \sqrt{\cos^2(\theta)} = \abs{\cos(\theta)}\end{align}$$<p>We can do this with a substitution $\theta = \arcsin(x)$. Here $\arcsin$ is the
+inverse of $\sin$, but it always returns values so that
+$-\frac \tau 4 < \theta < \frac \tau 4$, denoted with blue in this pic:</p>
+
+<p><img width="198" height="198" class="asymptote" src="asymptote/1b353c06b508379088bae7f98bc8d664.svg" /></p><p>This is because if we know what $\sin(\theta)$ is, there are multiple values
+that $\theta$ could be, like the red dot in the image, but we don't have this
+problem on a restricted range like $-\frac \tau 4 < \theta < \frac \tau 4$.</p>
+
+<p>Anyway, you can see from the pic that the $x$ coordinates are not negative, so
+we have $\cos(\theta) \ge 0$. Let's do the integral</p>
+
+$$\begin{align}&\int\sqrt{1-x^2}\ dx  \qquad\qquad \begin{array}{l} \\
+    \theta=\arcsin(x) \\
+    x=\sin(\theta) \\
+    dx = \cos(\theta)\ d\theta \\
+    \green{\cos(\theta)} \ge 0 \\
+\end{array} \\
+=&\ \int\sqrt{1-\sin^2(\theta)}\ \cos(\theta)\ d\theta \\
+=&\ \int\sqrt{\cos^2(\theta)}\ \cos(\theta)\ d\theta \\
+=&\ \int\abs{\green{\cos(\theta)}}\cos(\theta)\ d\theta \\
+=&\ \int\cos^2(\theta)\ d\theta\end{align}$$<p>We still can't use u substitution because we don't have the derivative of
+$\cos(\theta)$ anywhere. Let's cheat and use <a href="https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Power-reduction_formulae">Wikipedia's trig formula
+list</a>:</p>
+
+$$\begin{align}\cos^2(\theta) = \frac{1+\cos(2\theta)}{2}\end{align}$$<p>We'll learn an easy way to prove formulas like this in <a href="eulerformula.html">the Euler formula
+chapter</a>.</p>
+
+$$\begin{align}\int\sqrt{1-x^2}\ dx  = \int\frac{1+\cos(2\theta)}{2}\ d\theta  = \frac 1 2 \int(1+\cos(2\theta))\ d\theta\end{align}$$<p>Rest of this is quite straight-forward, so I don't see any reason to go through
+that.</p>
+
+<div id="circle-area" class="box graybox"><h2> Exercise</h2><p>In <a href="integrals.html#example-circle-area">the integral chapter</a> I showed you
+this pic of different ways to prove the circle area $\pi r^2$:</p>
+
+<p><img width="510" height="147" class="asymptote" src="asymptote/6d13ddcb1b3c44f3b6de10c17b678f94.svg" /></p><p>Prove the circle area formula using the <i>first</i> way, the one with the
+stupid vertical slices.
+</p>
+
+</div></div>
 </body>
 </html>
