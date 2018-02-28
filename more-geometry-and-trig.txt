@@ -86,6 +86,14 @@ indent:
     This also works if $x$ or $y$ is negative or if they are both negative; the
     negativeness doesn't matter because $(-x)^2 = x^2$ with any $x$.
 
+(famous-trig-formula)
+graybox: Exercise
+    Every point on the unit circle is $(\cos(\theta),\sin(\theta))$ with some
+    $\theta$ value like we learned [here](geometry-and-trig.html#trig-with-the-unit-circle),
+    but the distance from all of these points to $(0,0)$ is 1. Create an
+    equation that has $\sin(\theta)$ and $\cos(\theta)$ on one side, but just a
+    constant on the other side. The equation must work with any $\theta$.
+
 ## Pythagorean Theorem Proof
 
 Now we have looked into a bunch of ways to **use** the Pythagorean theorem, but

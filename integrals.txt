@@ -395,19 +395,14 @@ the radius. There are a few different ways to divide a circle into a
 bunch of smaller and simpler areas:
 
 asymptote:
+    // this same code is in integrals.txt AND integral-techniques.txt
     size(18cm);
     transform trans = identity();
     real dt = pi/20;     // radians
     real dx = 0.1;
 
     void addstuff() {
-        real angle = pi/3;      // radians
-
         draw(trans*unitcircle, deepblue);
-        label(rotate(degrees(angle)-90)*"$\tau r$", trans*(cos(angle),sin(angle)),
-              deepblue, align=NE);
-
-        draw(trans*brace((1,-dx/2), (0,-dx/2)), L=Label("$r$", filltype=Fill(white)), align=S);
         trans = trans*shift(2.5,0);
     }
 
@@ -430,8 +425,8 @@ asymptote:
 
 The idea here is that we can calculate the area of a circle by just integrating
 a bunch of these little area slices. The first one is the most difficult to
-integrate, but the second and third one are something we can do. Let's do the
-third one.
+integrate so we'll do it [later](integral-techniques.html#circle-area), but the
+second and third one are something we can do now. Let's do the third one.
 
 asymptote: float:right;
     size(7cm);
@@ -464,7 +459,7 @@ math:
     A(0) = \frac{r \cdot 0}{2} + C &= 0
     C &= 0
 
-If $b$ is the whole perimeter $\tau r$, then $A(b)$ is the circle area.
+If $b$ is the whole circumference $\tau r$, then $A(b)$ is the circle area.
 
 math: A(\tau r) = \frac{r \tau r}{2}+0 = \frac 1 2 \tau r^2 = \pi r^2
 

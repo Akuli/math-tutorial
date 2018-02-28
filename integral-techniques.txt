@@ -185,3 +185,116 @@ graybox: Exercise
              L=Label(rotate(10)*"$y=(x-1)^2$", position=Relative(0.8)), align=E);
         draw(surface(path3(graph(f,0,2)), c=O, axis=X), yellow);
         draw(surface((2,0,0)--(2,f(2),0), c=O, axis=X), yellow);
+
+## Trig Substitution
+
+Let's say we have an integral like this:
+
+math: \int\sqrt{1-x^2}\ dx
+
+A substitution like $u=1-x^2$ does not work here because the derivative of the
+inside is $-2x$. The $-2$ is not a problem, but we have no extra $x$ in the
+integral (and obviously we can't just add an $x$ there).
+
+[Here](more-geometry-and-trig.html#famous-trig-formula) we created this formula
+as an exercise:
+
+math: \sin^2(\theta) + \cos^2(\theta) = 1
+
+We can solve $\cos^2(\theta) = 1-\sin^2(\theta)$. So, wouldn't it be handy if
+we had $x=\sin(\theta)$?
+
+math:
+    \newcommand{abs}[1]{\lvert{#1}\rvert}
+    \sqrt{1-(\sin(\theta))^2} = \sqrt{\cos^2(\theta)} = \abs{\cos(\theta)}
+
+We can do this with a substitution $\theta = \arcsin(x)$. Here $\arcsin$ is the
+inverse of $\sin$, but it always returns values so that
+$-\frac \tau 4 < \theta < \frac \tau 4$, denoted with blue in this pic:
+
+asymptote:
+    size(7cm);
+    axises(-1.2,1.5,-1.2,1.5, xlabel="", ylabel="");
+    draw(rarc((0,0), 1, -tau/4, tau/4), blue);
+    draw(rarc((0,0), 1, tau/4, 3*tau/4), smalldashes);
+
+    real theta=1;
+    draw((0,0)--(cos(theta),sin(theta)));
+    label(0.4*(cos(theta/2),sin(theta/2)), L="$\theta$");
+    dot((cos(theta),sin(theta)), dotpen);
+    dot((-cos(theta),sin(theta)), dotpen+red);
+
+This is because if we know what $\sin(\theta)$ is, there are multiple values
+that $\theta$ could be, like the red dot in the image, but we don't have this
+problem on a restricted range like $-\frac \tau 4 < \theta < \frac \tau 4$.
+
+Anyway, you can see from the pic that the $x$ coordinates are not negative, so
+we have $\cos(\theta) \ge 0$. Let's do the integral
+
+math:
+    &\int\sqrt{1-x^2}\ dx \
+    \qquad\qquad \begin{array}{l}
+        \theta=\arcsin(x)
+        x=\sin(\theta)
+        dx = \cos(\theta)\ d\theta
+        \green{\cos(\theta)} \ge 0
+    \end{array}
+    =&\ \int\sqrt{1-\sin^2(\theta)}\ \cos(\theta)\ d\theta
+    =&\ \int\sqrt{\cos^2(\theta)}\ \cos(\theta)\ d\theta
+    =&\ \int\abs{\green{\cos(\theta)}}\cos(\theta)\ d\theta
+    =&\ \int\cos^2(\theta)\ d\theta
+
+We still can't use u substitution because we don't have the derivative of
+$\cos(\theta)$ anywhere. Let's cheat and use [Wikipedia's trig formula
+list](https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Power-reduction_formulae):
+
+math:
+    \cos^2(\theta) = \frac{1+\cos(2\theta)}{2}
+
+We'll learn an easy way to prove formulas like this in [the Euler formula
+chapter](eulerformula.html).
+
+math:
+    \int\sqrt{1-x^2}\ dx \
+    = \int\frac{1+\cos(2\theta)}{2}\ d\theta \
+    = \frac 1 2 \int(1+\cos(2\theta))\ d\theta
+
+Rest of this is quite straight-forward, so I don't see any reason to go through
+that.
+
+(circle-area)
+graybox: Exercise
+    In [the integral chapter](integrals.html#example-circle-area) I showed you
+    this pic of different ways to prove the circle area $\pi r^2$:
+
+    asymptote:
+        // this same code is in integrals.txt AND integral-techniques.txt
+        size(18cm);
+        transform trans = identity();
+        real dt = pi/20;     // radians
+        real dx = 0.1;
+
+        void addstuff() {
+            draw(trans*unitcircle, deepblue);
+            trans = trans*shift(2.5,0);
+        }
+
+        draw((-1,0)--(1,0));
+        for (real x = -1; x < 1; x+= dx ) {
+            draw((x,0)--(x,sqrt(1-x**2)), gray);
+        }
+        draw((-1,0)--(1,0), gray);
+        addstuff();
+
+        for (real r = 0; r < 1; r += dx) {
+            draw(trans*scale(r)*unitcircle, gray);
+        }
+        addstuff();
+
+        for (real t = 0; t < 2*pi; t += dt) {
+            draw(trans*((0,0)--(cos(t),sin(t))), gray);
+        }
+        addstuff();
+
+    Prove the circle area formula using the *first* way, the one with the
+    stupid vertical slices.
