@@ -210,7 +210,7 @@ math:
 
 We can do this with a substitution $\theta = \arcsin(x)$. Here $\arcsin$ is the
 inverse of $\sin$, but it always returns values so that
-$-\frac \tau 4 < \theta < \frac \tau 4$, denoted with blue in this pic:
+$-\frac \tau 4 \le \theta \le \frac \tau 4$, denoted with blue in this pic:
 
 asymptote:
     size(7cm);
@@ -226,7 +226,7 @@ asymptote:
 
 This is because if we know what $\sin(\theta)$ is, there are multiple values
 that $\theta$ could be, like the red dot in the image, but we don't have this
-problem on a restricted range like $-\frac \tau 4 < \theta < \frac \tau 4$.
+problem on a restricted range like $-\frac \tau 4 \le \theta \le \frac \tau 4$.
 
 Anyway, you can see from the pic that the $x$ coordinates are not negative, so
 we have $\cos(\theta) \ge 0$. Let's do the integral
@@ -248,8 +248,7 @@ We still can't use u substitution because we don't have the derivative of
 $\cos(\theta)$ anywhere. Let's cheat and use [Wikipedia's trig formula
 list](https://en.wikipedia.org/wiki/List_of_trigonometric_identities#Power-reduction_formulae):
 
-math:
-    \cos^2(\theta) = \frac{1+\cos(2\theta)}{2}
+math: \cos^2(\theta) = \frac{1+\cos(2\theta)}{2}
 
 We'll learn an easy way to prove formulas like this in [the Euler formula
 chapter](eulerformula.html).
