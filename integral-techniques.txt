@@ -48,6 +48,19 @@ respect to $u$.
 math:
     \frac{d}{du}(F(u)+C) \mathop{=}^{\text{yes}} F'(u)+0 \mathop{=}_{\text{srsly}} f(u)
 
+We can get to the same result like this:
+
+math:
+    &   \int f(\green{g(x)})\blue{g'(x)\ dx} \
+    \qquad\qquad \begin{array}{l} \
+        \green u = \green{g(x)}
+        \frac{du}{dx} = g'(x)
+        \blue{du} \overset{\text{lol}}= \blue{g'(x)\ dx}
+    \end{array}
+    =&\ \int f(\green u)\ \blue{du}
+    =&\ F(u) + C
+    =&\ F(g(x)) + C
+
 When our teacher had shown this trick to us for the first time, everyone were
 just amazed by it, and the teacher said that he wanted to take a picture of our
 faces.
