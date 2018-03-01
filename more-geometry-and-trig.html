@@ -224,8 +224,8 @@ complement.</p>
 <div class="box redbox"><p>Rest of this chapter assumes that you know <a href="derivatives.html">derivatives</a>.
 </p>
 
-</div><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's draw an angle $\theta$ in the unit circle. We'll assume that $\theta$ is
-in radians, so <a href="geometry-and-trig.html#radians-and-tau">it's an arc length on the unit
+</div><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's draw an angle $\theta$ and a change $\Delta\theta$ in the unit circle.
+We'll assume that $\theta$ is in radians, so <a href="geometry-and-trig.html#radians-and-tau">it's an arc length on the unit
 circle</a>.</p>
 
 <p><img width="454" height="448" class="asymptote" src="asymptote/40cf19696dd5f485b9610cb2f1e3aeb4.svg" /></p><p>Here the black &#8738; signs mean an angle. It looks a lot like a circle arc,
@@ -237,17 +237,19 @@ two equal angles like the arrows in the picture show. But we know that the
 lower angle is simply $\theta + \Delta\theta$, so the upper angle is also
 $\theta + \Delta\theta$.</p>
 
-<p>Let's zoom on the blue area. A lot of things are going on there.</p>
+<p>Let's zoom on the blue area:</p>
 
-<p><img width="510" height="241" class="asymptote" src="asymptote/9c003e3b962016bcf125e680fa950a52.svg" /></p><p>This is a mess, but let's try to make sense of this.</p>
+<p><img width="510" height="241" class="asymptote" src="asymptote/f48de2d580bcd139f7e11276c7d0c7f5.svg" /></p><p>That's quite a mess! Make sure you fully understand it before continuing.</p>
 
-<p>The $h$ is just the difference of the $y$ coordinates:</p>
+<p>Here's the same thing with new variables $h$ and $\alpha$ for convenience:</p>
 
-$$\begin{align}h = \sin(\theta+\Delta\theta)-\sin(\theta)\end{align}$$<p>We can figure out the angle mess by rotating from the orange line all the way
-to the blue $\Delta\theta$ line. We can do that in a couple different ways: we
-can do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny
-corner square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the
-bigger square. Let's set those equal:</p>
+<p><img width="510" height="241" class="asymptote" src="asymptote/cd9182b834a4fbeff114c8b9f081ea33.svg" /></p><p>The $h$ is just the difference of the $y$ coordinates.</p>
+
+$$\begin{align}h = \sin(\theta+\Delta\theta)-\sin(\theta)\end{align}$$<p>Next we need to figure out what $\alpha$ is. We can rotate from the orange line
+all the way to the blue $\Delta\theta$ line in a couple different ways: we can
+do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny corner
+square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the bigger
+square. Let's set those equal:</p>
 
 $$\begin{align}\theta + \Delta\theta \rcancel{+ \frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha \\
 \theta + \Delta\theta &= \alpha\end{align}$$<p>The blue area looks kind of like a triangle, so we can apply <a href="#triangle-trig">triangle
@@ -276,7 +278,7 @@ $$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\un
 &= \sin\Bigl(\rcancel{\frac\tau4} \rcancel{- \frac\tau4} + \theta\Bigr) \cdot (-1) \\
 &= -\sin(\theta)\end{align}$$<p>Let's check the result with <a href="graphs.html#sine-waves">graphs</a>:</p>
 
-<p><img width="510" height="184" class="asymptote" src="asymptote/19442578e41b46472896dece218e34d8.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
+<p><img width="510" height="184" class="asymptote" src="asymptote/cbc5b2c2882396b573b88c43ac7d9690.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
 derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
 $\cos(\theta)$ graph shifted left. 
 </p>
