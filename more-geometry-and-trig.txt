@@ -402,8 +402,8 @@ redbox:
 
 ## Derivative of Sine
 
-Let's draw an angle $\theta$ in the unit circle. We'll assume that $\theta$ is
-in radians, so [it's an arc length on the unit
+Let's draw an angle $\theta$ and a change $\Delta\theta$ in the unit circle.
+We'll assume that $\theta$ is in radians, so [it's an arc length on the unit
 circle](geometry-and-trig.html#radians-and-tau).
 
 asymptote:
@@ -446,49 +446,68 @@ two equal angles like the arrows in the picture show. But we know that the
 lower angle is simply $\theta + \Delta\theta$, so the upper angle is also
 $\theta + \Delta\theta$.
 
-Let's zoom on the blue area. A lot of things are going on there.
+asyboilerplate:
+    void bluearea() {
+        size(18cm);
+        real theta=0.8, dtheta=0.3, ymin=0.6;
+
+        // corners of the yellow area
+        pair bottomright=(ymin/sin(theta)*cos(theta), ymin);
+        pair bottomleft=(ymin/sin(theta+dtheta)*cos(theta+dtheta), ymin);
+        pair topleft=(cos(theta+dtheta),sin(theta+dtheta));
+        pair topright=(cos(theta),sin(theta));
+
+        filldraw(bottomright--bottomleft--topleft--topright--cycle, yellow, lightolive);
+        filldraw(rarc((0,0),1,theta,theta+dtheta)--(topleft.x,topright.y)--cycle, paleblue, blue);
+
+        real midangle=theta + dtheta/2;
+        label((cos(midangle),sin(midangle)), blue,
+              L=rrotate(midangle-tau/4)*"$\Delta\theta$", align=NE);
+
+        draw((0.2,sin(theta+dtheta))--(cos(theta+dtheta),sin(theta+dtheta)), orange);
+
+        path squarebox=((1,0)--(1,1)--(0,1));
+        draw(shift(topleft)*rrotate(tau/2)*scale(0.04)*squarebox);
+        draw(shift(topleft)*rrotate(tau/2+theta+dtheta)*scale(0.02)*squarebox);
+        draw(rarc(topleft,0.1,-tau/2,-tau/2+theta+dtheta), L="$\theta+\Delta\theta$");
+
+        dot(topleft, p=dotpen, L="$(\cos(\theta+\Delta\theta),\sin(\theta+\Delta\theta))$", align=NE);
+        dot(topright, p=dotpen, L="$(\cos(\theta),\sin(\theta))$");
+    }
+
+    void bluearea_extragibberish() {
+        real theta=0.8, dtheta=0.3;
+        // copy-pasted shit
+        pair topleft=(cos(theta+dtheta),sin(theta+dtheta));
+        pair topright=(cos(theta),sin(theta));
+
+        label((topleft.x,(topleft.y+topright.y)/2), blue, L="$h$", align=E);
+        draw(rarc(topleft,0.05,-tau/4,-tau/4+theta+dtheta), heavyred, L="$\alpha$");
+    }
+
+Let's zoom on the blue area:
 
 asymptote:
-    size(18cm);
-    real theta=0.8, dtheta=0.3, ymin=0.6;
+    bluearea();
 
-    // corners of the yellow area
-    pair bottomright=(ymin/sin(theta)*cos(theta), ymin);
-    pair bottomleft=(ymin/sin(theta+dtheta)*cos(theta+dtheta), ymin);
-    pair topleft=(cos(theta+dtheta),sin(theta+dtheta));
-    pair topright=(cos(theta),sin(theta));
+That's quite a mess! Make sure you fully understand it before continuing.
 
-    filldraw(bottomright--bottomleft--topleft--topright--cycle, yellow, lightolive);
-    filldraw(rarc((0,0),1,theta,theta+dtheta)--(topleft.x,topright.y)--cycle, paleblue, blue);
-    label((topleft.x,(topleft.y+topright.y)/2), blue, L="$h$", align=E);
+Here's the same thing with new variables $h$ and $\alpha$ for convenience:
 
-    real midangle=theta + dtheta/2;
-    label((cos(midangle),sin(midangle)), blue,
-          L=rrotate(midangle-tau/4)*"$\Delta\theta$", align=NE);
+asymptote:
+    bluearea();
+    bluearea_extragibberish();
 
-    draw((0.2,sin(theta+dtheta))--(cos(theta+dtheta),sin(theta+dtheta)), orange);
-
-    path squarebox=((1,0)--(1,1)--(0,1));
-    draw(shift(topleft)*rrotate(tau/2)*scale(0.04)*squarebox);
-    draw(shift(topleft)*rrotate(tau/2+theta+dtheta)*scale(0.02)*squarebox);
-    draw(rarc(topleft,0.1,-tau/2,-tau/2+theta+dtheta), L="$\theta+\Delta\theta$");
-    draw(rarc(topleft,0.05,-tau/4,-tau/4+theta+dtheta), heavyred, L="$\alpha$");
-
-    dot(topleft, p=dotpen, L="$(\cos(\theta+\Delta\theta),\sin(\theta+\Delta\theta))$", align=NE);
-    dot(topright, p=dotpen, L="$(\cos(\theta),\sin(\theta))$");
-
-This is a mess, but let's try to make sense of this.
-
-The $h$ is just the difference of the $y$ coordinates:
+The $h$ is just the difference of the $y$ coordinates.
 
 math:
     h = \sin(\theta+\Delta\theta)-\sin(\theta)
 
-We can figure out the angle mess by rotating from the orange line all the way
-to the blue $\Delta\theta$ line. We can do that in a couple different ways: we
-can do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny
-corner square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the
-bigger square. Let's set those equal:
+Next we need to figure out what $\alpha$ is. We can rotate from the orange line
+all the way to the blue $\Delta\theta$ line in a couple different ways: we can
+do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny corner
+square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the bigger
+square. Let's set those equal:
 
 math:
     \theta + \Delta\theta \rcancel{+ \frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha
