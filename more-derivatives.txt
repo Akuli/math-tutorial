@@ -283,28 +283,28 @@ indent:
         }
 
         size(12cm);
-        real f=0.8, g=0.5, df=0.2, dg=0.1;
+        real f=0.5, g=0.8, df=0.1, dg=0.2;
 
-        path yellowbox=box((0,0),(f,g));
-        path bluebox=box((f,0),(f+df,g));
-        path greenbox=box((0,g),(f+df,g+dg));
+        path yellowbox=box((0,0),(g,f));
+        path bluebox=box((g,0),(g+dg,f));
+        path greenbox=box((0,f),(g+dg,f+df));
 
         filldraw(yellowbox, lightyellow);
         filldraw(bluebox, lightblue);
         filldraw(greenbox, lightgreen);
 
-        label((f/2,0), L="$f$", align=S);
-        label((f+df/2,0), L="$df$", align=S);
-        label((0,g/2), L="$g$", align=W);
-        label((0,g+dg/2), L="$dg$", align=W);
+        label((g/2,0), L="$g$", align=S);
+        label((g+dg/2,0), L="$dg$", align=S);
+        label((0,f/2), L="$f$", align=W);
+        label((0,f+df/2), L="$df$", align=W);
 
         label(center(yellowbox), L="$fg$");
-        label(center(bluebox), L="$df \cdot g$");
-        label(center(greenbox), L="$(f+df) \cdot dg$");
+        label(center(bluebox), L="$f \cdot dg$");
+        label(center(greenbox), L="$df \cdot (g+dg)$");
 
     This is very hand-wavy because it (ab)uses Leibniz's notation and only
     works with positive $f$ and $g$, but it gives you some intuition about how
-    the change of $fg$ is $df \cdot g + f \cdot dg$. Note that $f+df$ goes to
+    the change of $fg$ is $df \cdot g + f \cdot dg$. Note that $g+dg$ goes to
     $f$ when we take a limit with $h\to0$, and that explains why we ended up
     with $\displaystyle\lim_{h\to0}g(x+h)$ in the proof.
 
