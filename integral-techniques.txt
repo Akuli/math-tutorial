@@ -61,6 +61,16 @@ math:
     =&\ F(u) + C
     =&\ F(g(x)) + C
 
+code:
+    <__Myst__>  Akuli: that's magic
+    <Akuli>     yes it is :D
+    <Akuli>     well not really
+    <Akuli>     you can kind of understand it if you think of du and dx as
+                very small changes of u and x
+    <Akuli>     and ∫f(u)du as a sum of f(u) by du area rectangles
+    <Akuli>     that's obviously not a very modern way to define derivatives and
+                integrals, but it kind of explain-ishs it
+
 When our teacher had shown this trick to us for the first time, everyone were
 just amazed by it, and the teacher said that he wanted to take a picture of our
 faces.
@@ -121,9 +131,16 @@ graybox: Exercise
     Here the supply teacher wanted to have the derivative of $\sin^2(x)$ on the
     top. You should know by now that we **cannot** bring non-constants like
     $\frac{1}{2\sin(x)}$ out of integrals. I argued with the teacher about his
-    solution for the rest of the lesson, and the following day our actual
-    teacher thanked me for arguing about it. Later I found two more fatal
-    mistakes from the solution.
+    solution for the rest of the lesson.
+
+    darkcode:
+        <Zaab1t>    and then everyone clapped
+        <Akuli>     well, everyone laughed several times
+        <Akuli>     "this is constant on this interval balblabla"  "NO its a
+                    function, not a constant"
+
+    The following day our actual teacher thanked me for arguing about it, and
+    later I found two more fatal mistakes from the solution.
 
     Anyway, integrate $\dfrac{\cos(x)}{\sin^2(x)}$ correctly. It's easy with
     the correct substitution. (Note that
