@@ -171,14 +171,23 @@ give us something that doesn't make sense. For example:</p>
 $$\begin{align}\lim_{x\to\infty}(x^2 - x)  = \left(\lim_{x\to\infty} x^2\right)-\left(\lim_{x\to\infty} x\right)  = \infty - \infty\end{align}$$<p>Here we need to do some other stuff before using the rules.</p>
 
 <p>You are probably wondering WTF the last rule is saying. See <a href="basics.html#functions">this
-thing</a> if you have no idea what a function is. Pretty
-much all functions you'll come across in this tutorial are continuous; we'll
-talk more about this
+thing</a> if you have no idea what a function is. <b>Pretty
+much all functions you'll come across in this tutorial are continuous</b>;
+we'll talk more about this
 <a href="more-derivatives.html#which-functions-have-derivatives">later</a>.</p>
 
 <p>For example, $\sqrt{\quad}$ is continuous:</p>
 
-$$\begin{align}\lim\sqrt x=\sqrt{\lim x}\end{align}$$<h2 id="indeterminate-forms">Indeterminate Forms<a class="headerlink" href="#indeterminate-forms" title="Link to this title">¶</a></h2><p>As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
+$$\begin{align}\lim\sqrt x=\sqrt{\lim x}\end{align}$$<p>In the rest of this tutorial, we'll calculate limits e.g. like this:</p>
+
+$$\begin{align}\lim_{h\to0} \frac{1}{\sqrt{x+h}+\sqrt x}\end{align}$$<p>Again, don't get confused; there's nothing unusual here so everything's nice
+and continuous, and we can do this because we don't get an indeterminate form:</p>
+
+$$\begin{align}\lim_{h\to0} \frac{1}{\sqrt{x+h}+\sqrt x}  &= \frac{1}{\sqrt{x+\blue{\underset{h\to0}{\lim}h}} + \sqrt x} \\
+&= \frac{1}{\sqrt{x+\blue{0}} + \sqrt x}\end{align}$$<p>A faster way is to just think about what happens to $\frac{1}{\sqrt{x+h}+\sqrt x}$
+with a tiny $h$. It obviously gets very close to $\frac{1}{\sqrt{x}+\sqrt x}$.</p>
+
+<h2 id="indeterminate-forms">Indeterminate Forms<a class="headerlink" href="#indeterminate-forms" title="Link to this title">¶</a></h2><p>As you can see, getting $\infty-\infty$ or $\frac 0 0$ in a limit means that we
 couldn't just plug in the value that is being approached. We need to do more
 work to get rid of the $\infty-\infty$ or $\frac 0 0$ situation. In mathy
 words, $\infty-\infty$ and $\frac 0 0$ are <b>indeterminate forms</b>.</p>
