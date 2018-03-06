@@ -45,13 +45,10 @@ find the derivative of pretty much anything by hand. In <a href="derivatives.htm
 chapter</a> I showed you a bunch of derivative rules and I told
 you we'd prove them later. Let's do it.</p>
 
-<p>We also used a bunch of rules that we didn't prove, and there was a link to
-even more magic rules on the summary page. This page contains some proofs that
-hopefully make the rules feel less magic. The proofs are ordered so that they
-don't use anything that has not been proved before them.</p>
-
-<p>Here $c$ can be any constant, and $f$ and $g$ can be any functions that have
-derivatives $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$.</p>
+<p>The proofs are ordered so that they don't use anything that has not been proved
+before them. In these proofs, $c$ can be any constant, $f$ and $g$ are
+functions and $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$ are their
+derivatives.</p>
 
 <h3 id="frac-d-dx-x-1">$\frac{d}{dx} x = 1$<a class="headerlink" href="#frac-d-dx-x-1" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=x$ is a straight line with slope 1.</p>
 
@@ -185,7 +182,7 @@ by $d(fg)$ when $f$ changes by $df$ and $g$ changes by $dg$.</p>
 <p><img width="340" height="217" class="asymptote" src="asymptote/29ef805cc19b75de5ac051f1014bf6ae.svg" /></p><p>This is very hand-wavy because it (ab)uses Leibniz's notation and only
 works with positive $f$ and $g$, but it gives you some intuition about how
 the change of $fg$ is $df \cdot g + f \cdot dg$. Note that $g+dg$ goes to
-$f$ when we take a limit with $h\to0$, and that explains why we ended up
+$g$ when we take a limit with $h\to0$, and that explains why we ended up
 with $\displaystyle\lim_{h\to0}g(x+h)$ in the proof.
 </p>
 
@@ -235,7 +232,7 @@ $$\begin{align}& \ (a-b)(a+b) \\
 </p>
 
 </div><h3 id="frac-d-dx-sqrt-x-displaystyle-frac-1-2-sqrt-x">$\frac{d}{dx} \sqrt x = \displaystyle \frac{1}{2\ \sqrt x}$<a class="headerlink" href="#frac-d-dx-sqrt-x-displaystyle-frac-1-2-sqrt-x" title="Link to this title">¶</a></h3><div class="indent"><p>We could prove this with the $\frac{d}{dx} x^c$ rule because
-$\sqrt x = x^\frac{1}{2}$, but we proved the $x^c$ rule only for positive
+$\sqrt x = x^{1/2}$, but we proved the $x^c$ rule only for positive
 integers. Let's survive without it.</p>
 
 $$\begin{align}\frac{d}{dx} \sqrt x &= \lim_{h\to0} \frac{\sqrt{x+h}-\sqrt x}{h} \\
