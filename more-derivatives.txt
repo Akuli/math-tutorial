@@ -11,13 +11,10 @@ find the derivative of pretty much anything by hand. In [the first derivative
 chapter](derivatives.html) I showed you a bunch of derivative rules and I told
 you we'd prove them later. Let's do it.
 
-We also used a bunch of rules that we didn't prove, and there was a link to
-even more magic rules on the summary page. This page contains some proofs that
-hopefully make the rules feel less magic. The proofs are ordered so that they
-don't use anything that has not been proved before them.
-
-Here $c$ can be any constant, and $f$ and $g$ can be any functions that have
-derivatives $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$.
+The proofs are ordered so that they don't use anything that has not been proved
+before them. In these proofs, $c$ can be any constant, $f$ and $g$ are
+functions and $f'(x)=\frac{d}{dx}f(x)$ and $g'(x)=\frac{d}{dx}g(x)$ are their
+derivatives.
 
 ### $\frac{d}{dx} x = 1$
 
@@ -305,7 +302,7 @@ indent:
     This is very hand-wavy because it (ab)uses Leibniz's notation and only
     works with positive $f$ and $g$, but it gives you some intuition about how
     the change of $fg$ is $df \cdot g + f \cdot dg$. Note that $g+dg$ goes to
-    $f$ when we take a limit with $h\to0$, and that explains why we ended up
+    $g$ when we take a limit with $h\to0$, and that explains why we ended up
     with $\displaystyle\lim_{h\to0}g(x+h)$ in the proof.
 
 ### $\frac{d}{dx} x^c = c\ x^{c-1}$
@@ -381,7 +378,7 @@ floatingbox: Handy thing: $a^2-b^2=(a-b)(a+b)$
 
 indent:
     We could prove this with the $\frac{d}{dx} x^c$ rule because
-    $\sqrt x = x^\frac{1}{2}$, but we proved the $x^c$ rule only for positive
+    $\sqrt x = x^{1/2}$, but we proved the $x^c$ rule only for positive
     integers. Let's survive without it.
 
     math:
