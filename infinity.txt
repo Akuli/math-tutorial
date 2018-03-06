@@ -185,15 +185,31 @@ math:
 Here we need to do some other stuff before using the rules.
 
 You are probably wondering WTF the last rule is saying. See [this
-thing](basics.html#functions) if you have no idea what a function is. Pretty
-much all functions you'll come across in this tutorial are continuous; we'll
-talk more about this
+thing](basics.html#functions) if you have no idea what a function is. <b>Pretty
+much all functions you'll come across in this tutorial are continuous</b>;
+we'll talk more about this
 [later](more-derivatives.html#which-functions-have-derivatives).
 
 For example, $\sqrt{\quad}$ is continuous:
 
 math:
     \lim\sqrt x=\sqrt{\lim x}
+
+In the rest of this tutorial, we'll calculate limits e.g. like this:
+
+math:
+    \lim_{h\to0} \frac{1}{\sqrt{x+h}+\sqrt x}
+
+Again, don't get confused; there's nothing unusual here so everything's nice
+and continuous, and we can do this because we don't get an indeterminate form:
+
+math:
+    \lim_{h\to0} \frac{1}{\sqrt{x+h}+\sqrt x} \
+    &= \frac{1}{\sqrt{x+\blue{\underset{h\to0}{\lim}h}} + \sqrt x}
+    &= \frac{1}{\sqrt{x+\blue{0}} + \sqrt x}
+
+A faster way is to just think about what happens to $\frac{1}{\sqrt{x+h}+\sqrt x}$
+with a tiny $h$. It obviously gets very close to $\frac{1}{\sqrt{x}+\sqrt x}$.
 
 ## Indeterminate Forms
 
