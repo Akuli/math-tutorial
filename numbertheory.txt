@@ -94,7 +94,8 @@ code:
     true
 
 If $n$ is not a prime, we can write $n=ab$ where $a$ and $b$ are integers and
-$a,b\ge2$. If we assume that $a > \sqrt n$ and $b > \sqrt n$, we get this:
+at least one of them is 2 or bigger. If we assume that $a > \sqrt n$ and
+$b > \sqrt n$, we get this:
 
 math:
     ab & > \sqrt n \sqrt n
@@ -120,8 +121,8 @@ code:
 The code is a bit messier if your favorite programming language doesn't support
 C-style for loops. For example, Python's ``int(math.sqrt(n))`` returns the
 smallest integer that is $\le \sqrt n$, and ``range(a, b)`` doesn't go all the
-way to ``b`` by default so we also need a ``+1``. We need an integer because
-``range`` doesn't like floats.
+way to ``b`` so we also need a ``+1``. We need an integer because ``range``
+doesn't like floats.
 
 code: python3
     for divisor in range(2, int(math.sqrt(n))+1):
@@ -147,7 +148,7 @@ code: javascript
       ...
     }
 
-The code is kind of messy, but ``divisor`` gets the values ``2, 3, 5, 7, ...``
+The code is kind of messy, but ``divisor`` gets the values $2,3,5,7,9,11,...$
 like we wanted it to get.
 
 Here's the even messier Python equivalent:
@@ -159,7 +160,8 @@ code: python3
         ...
 
 If ``n == 2``, we must not check for divisibility with 2 because ``2 % 2 == 0``
-even though 2 is prime.
+even though 2 is prime, and unlike the JavaScript thing, the Python mess
+*always* checks for divisibility by 2.
 
 So, here are our final prime checking examples for JavaScript and Python:
 
@@ -225,9 +227,9 @@ math:
                   &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14
                   &= 51966
 
-Here 0x means heXadecimal. Note that the first character is a zero, not the
-letter O. Mathematicians don't use it, but I used it here because it's very
-common in programming.
+Here $\text{0x}$ means heXadecimal. Note that the first character is a zero,
+not the letter O. Mathematicians don't use this $\text{0x}$ notation, but I
+used it here because it's very common in programming.
 
 The sane way to calculate the last step is to use a programming interpreter or
 calculator of your choice. Don't try to do it by hand.
