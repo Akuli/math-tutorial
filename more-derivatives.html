@@ -263,16 +263,7 @@ $$\begin{align}\frac{d}{dx} (1/x)  &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1
 $-\frac 1 x$ on the top.
 </p>
 
-</div><h3 id="frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2">$\frac{d}{dx} \displaystyle \left(\frac{f(x)}{g(x)}\right) = \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}$<a class="headerlink" href="#frac-d-dx-displaystyle-left-frac-f-x-g-x-right-frac-f-x-g-x-f-x-g-x-g-x-2" title="Link to this title">¶</a></h3><div class="indent"><p>We need these rules that are proved above:</p>
-
-<ul><li>$\frac{d}{dx} (\green{f(x)}\blue{g(x)}) = \green{f}'\green{(x)}\blue{g(x)} + \green{f(x)}\blue{g}'\blue{(x)}$</li><li>$\frac{d}{dx} (1/x) = \displaystyle \frac{-1}{x^2}$</li><li>$\frac{d}{dx} f(\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}) = f'(g(x))g'(x)$
-</li></ul><p>Now this is quite straight-forward.</p>
-
-$$\begin{align}\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right)  &= \frac{d}{dx} \left( \green{f(x)} \blue{\frac{1}{g(x)}} \right) \\
-&= \green{f}'\green{(x)}\blue{\frac{1}{g(x)}} +     \green{f(x)}\biggl(\frac{d}{dx}\Bigl(          \blue{\frac{1}{\underbrace{g(x)}_{\substack{\text{inner} \\ \text{stuff}}}}}\Bigr)\biggr) \\
-&= \frac{f'(x)}{g(x)} + f(x) \left( \frac{-1}{(g(x))^2} g'(x) \right) \\
-&= \frac{f'(x)g(x)}{g(x)g(x)} - \frac{f(x)g'(x)}{(g(x))^2} \\
-&= \frac{f'(x)g(x) - f(x)g'(x)}{(g(x))^2}\end{align}$$</div><h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>This stuff is boring and it's here mostly to avoid mathematicians complaining
+</div><h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>This stuff is boring and it's here mostly to avoid mathematicians complaining
 about not having it here.</p>
 
 <p>In the previous chapter we calculated some derivatives, but we just assumed

@@ -80,11 +80,8 @@ page</a>.
 negativeness doesn't matter because $(-x)^2 = x^2$ with any $x$.
 </p>
 
-</div><div id="famous-trig-formula" class="box graybox"><h2> Exercise</h2><p>Every point on the unit circle is $(\cos(\theta),\sin(\theta))$ with some
-$\theta$ value like we learned <a href="geometry-and-trig.html#trig-with-the-unit-circle">here</a>,
-but the distance from all of these points to $(0,0)$ is 1. Create an
-equation that has $\sin(\theta)$ and $\cos(\theta)$ on one side, but just a
-constant on the other side. The equation must work with any $\theta$.
+</div><div id="famous-trig-formula" class="box graybox"><h2> Exercise</h2><p>Use unit circle trig and the Pythagorean theorem to prove that
+$\sin^2(\theta)+\cos^2(\theta)=1$ with any $\theta$.
 </p>
 
 </div><h2 id="pythagorean-theorem-proof">Pythagorean Theorem Proof<a class="headerlink" href="#pythagorean-theorem-proof" title="Link to this title">¶</a></h2><p>Now we have looked into a bunch of ways to <b>use</b> the Pythagorean theorem, but
@@ -178,7 +175,11 @@ and $\frac \tau 4$; this corresponds to $x > 0$ in Cartesian to polar
 conversion.</p>
 
 <div id="tanformula" class="box graybox"><h2> Exercise</h2><p>Use triangle trig to prove that
-$\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$.
+$\tan(\theta)=\dfrac{\sin(\theta)}{\cos(\theta)}$.</p>
+
+<p>Triangle trig only makes sense for $0 < \theta < \frac \tau 4$, but the
+above formula can be used to define $\tan(\theta)$ for any $\theta$ as long
+as $\cos(\theta) \ne 0$.
 </p>
 
 </div><h2 id="triangle-angle-sum">Triangle Angle Sum<a class="headerlink" href="#triangle-angle-sum" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section uses the Greek alpha, beta and gamma letters $\alpha$, $\beta$
@@ -280,7 +281,32 @@ $$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\un
 
 <p><img width="510" height="184" class="asymptote" src="asymptote/cbc5b2c2882396b573b88c43ac7d9690.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
 derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
-$\cos(\theta)$ graph shifted left. 
+$\cos(\theta)$ graph shifted left. </p>
+
+<h2 id="derivative-of-tangent">Derivative of Tangent<a class="headerlink" href="#derivative-of-tangent" title="Link to this title">¶</a></h2><p>We need a couple things we have proved earlier. These things are from this
+chapter:</p>
+
+<ul><li>$\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$</li><li>$\frac{d}{d\theta}\sin(\theta)=\cos(\theta)$</li><li>$\frac{d}{d\theta}\cos(\theta)=-\sin(\theta)$</li><li>$\purple{\sin^2(\theta)+\cos^2(\theta)}=1$
+</li></ul><p>We also need these things from <a href="more-derivatives.html">the more derivatives
+chapter</a>:</p>
+
+<ul><li>$\frac{d}{dx}(f(\maroon{g(x)}))=f'(\maroon{g(x)})\maroon{g}'\maroon{(x)}$</li><li>$\frac{d}{dx}(\blue{f(x)}\green{g(x)})=\blue{f}'\blue{(x)}\green{g(x)}+\blue{f(x)}\green{g}'\green{(x)}$</li><li>$\frac{d}{dx}\Bigl(\dfrac 1 x\Bigr) = \dfrac{-1}{x^2}$
+</li></ul><p>Let's do this.</p>
+
+$$\begin{align}\frac{d}{d\theta}\tan(\theta) &= \frac{d}{d\theta} \left( \frac{\sin(\theta)}{\cos(\theta)} \right) \\
+&= \frac{d}{d\theta} \left( \blue{\sin(\theta)} \green{\frac{1}{\cos(\theta)}} \right) \\
+&= \Bigl(\frac{d}{d\theta}\blue{\sin(\theta)}\Bigr)\green{\frac{1}{\cos(\theta)}} +     \blue{\sin(\theta)}\biggl(\frac{d}{d\theta}\Bigl(          \green{\frac{1}{\maroon{\cos(\theta)}}}\Bigr)\biggr) \\
+&= \rcancel{\cos(\theta)}\frac{1}{\rcancel{\cos(\theta)}} + \sin(\theta)\biggl(     \frac{-1}{\maroon{\cos}^2\maroon{(\theta)}}\cdot\frac{d}{d\theta}\maroon{\cos(\theta)}\biggr) \\
+&= 1 + \sin(\theta)\frac{-1}{\cos^2(\theta)}(-\sin(\theta)) \\
+&= 1 + (-1)(-1)\frac{\sin^2(\theta)}{\cos^2(\theta)} \\
+&= 1 + \left(\frac{\sin(\theta)}{\cos(\theta)}\right)^2 \\
+&= 1 + \tan^2(\theta)\end{align}$$<p>If we're clever, we can rewrite this a bit differently:</p>
+
+$$\begin{align}1+\tan^2(\theta) &= \frac{\cos^2(\theta)}{\green{\cos^2(\theta)}} + \frac{\sin^2(\theta)}{\green{\cos^2(\theta)}} \\
+&= \frac{\purple{\cos^2(\theta)+\sin^2(\theta)}}{\green{\cos^2(\theta)}} \\
+&= \frac{1}{\cos^2(\theta)}\end{align}$$<p>Both of these answers can be useful; the first one can be useful because the
+derivative is written entirely in terms of the original function, and the
+second one simplifies nicely when e.g. under a square root.
 </p>
 
 </div>

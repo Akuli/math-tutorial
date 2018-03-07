@@ -119,7 +119,8 @@ divisor = 16, n / divisor = 1.0625
 true
 </pre></div>
 <p>If $n$ is not a prime, we can write $n=ab$ where $a$ and $b$ are integers and
-$a,b\ge2$. If we assume that $a > \sqrt n$ and $b > \sqrt n$, we get this:</p>
+at least one of them is 2 or bigger. If we assume that $a > \sqrt n$ and
+$b > \sqrt n$, we get this:</p>
 
 $$\begin{align}ab & > \sqrt n \sqrt n \\
 ab & > n\end{align}$$<p>But we just said that $n=ab$ and this doesn't work. Our assumption was false and
@@ -140,8 +141,8 @@ true
 <p>The code is a bit messier if your favorite programming language doesn't support
 C-style for loops. For example, Python's <code>int(math.sqrt(n))</code> returns the
 smallest integer that is $\le \sqrt n$, and <code>range(a, b)</code> doesn't go all the
-way to <code>b</code> by default so we also need a <code>+1</code>. We need an integer because
-<code>range</code> doesn't like floats.</p>
+way to <code>b</code> so we also need a <code>+1</code>. We need an integer because <code>range</code>
+doesn't like floats.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">for</span> divisor <span style="color: #007020; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #40a070">2</span>, <span style="color: #007020">int</span>(math<span style="color: #666666">.</span>sqrt(n))<span style="color: #666666">+</span><span style="color: #40a070">1</span>):
     <span style="color: #666666">...</span>
@@ -162,7 +163,7 @@ are divisible by 2 and thus not prime, so we can do this:</p>
   ...
 }
 </pre></div>
-<p>The code is kind of messy, but <code>divisor</code> gets the values <code>2, 3, 5, 7, ...</code>
+<p>The code is kind of messy, but <code>divisor</code> gets the values $2,3,5,7,9,11,...$
 like we wanted it to get.</p>
 
 <p>Here's the even messier Python equivalent:</p>
@@ -173,7 +174,8 @@ like we wanted it to get.</p>
     <span style="color: #666666">...</span>
 </pre></div>
 <p>If <code>n == 2</code>, we must not check for divisibility with 2 because <code>2 % 2 == 0</code>
-even though 2 is prime.</p>
+even though 2 is prime, and unlike the JavaScript thing, the Python mess
+<i>always</i> checks for divisibility by 2.</p>
 
 <p>So, here are our final prime checking examples for JavaScript and Python:</p>
 
@@ -228,9 +230,9 @@ B=11, C=12, D=13, E=14 and F=15. For example:</p>
 
 $$\begin{align}\text{0xCAFE}  &= \text{0xC} \cdot 16^3 + \text{0xA} \cdot 16^2 +                    \text{0xF} \cdot 16^1 + \text{0xE} \cdot 16^0 \\
                &= 12 \cdot 16^3 + 10 \cdot 16^2 + 15 \cdot 16 + 14 \\
-               &= 51966\end{align}$$<p>Here 0x means heXadecimal. Note that the first character is a zero, not the
-letter O. Mathematicians don't use it, but I used it here because it's very
-common in programming.</p>
+               &= 51966\end{align}$$<p>Here $\text{0x}$ means heXadecimal. Note that the first character is a zero,
+not the letter O. Mathematicians don't use this $\text{0x}$ notation, but I
+used it here because it's very common in programming.</p>
 
 <p>The sane way to calculate the last step is to use a programming interpreter or
 calculator of your choice. Don't try to do it by hand.</p>

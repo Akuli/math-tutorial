@@ -141,9 +141,9 @@ sides.
 
 <div class="floatingbox"><h2> Handy thing: $a^2-b^2=(a-b)(a+b)$</h2><p>Proof using $(a+b)c=ac+bc$ and $(a-b)c=ac-bc$:</p>
 
-$$\begin{align}& \ (a-b)(a+b) \\
-=&\ a(a+b)-b(a+b) \\
-=&\ (aa+ab)-(ba+bb) \\
+$$\begin{align}& \ \blue{(a-b)}\green{(a+b)} \\
+=&\ \blue a \green{(a+b)}-\blue b \green{(a+b)} \\
+=&\ (\blue a \green a+\blue a\green b)-(\blue b\green a+\blue b\green b) \\
 =&\ aa\rcancel{+ab}\rcancel{-ab}-bb \\
 =&\ a^2 - b^2\end{align}$$<p>Spoiler: plug in $a=x$ and $b=1$.
 </p>
@@ -161,7 +161,8 @@ $$\begin{align}\begin{array}{ll}  \lim(x+y) = (\lim x)+(\lim y)           &\text
 \lim(x-y) = (\lim x)-(\lim y)           &\text{ if }(\lim x)-(\lim y)\text{ is defined} \\
 \lim(xy) = (\lim x)(\lim y)             &\text{ if }(\lim x)(\lim y)\text{ is defined} \\
 \lim\frac x y = \frac{\lim x}{\lim y}   &\text{ if }\frac{\lim x}{\lim y}\text{ is defined} \\
-\lim f(x) = f\bigl(\lim x\bigr)         &\text{ if }f\text{ is a continuous function} \\
+\lim(x^y) = (\lim x)^{\lim y}           &\text{ if }(\lim x)^{\lim y}\text{ is defined} \\
+\lim f(x) = f(\lim x)                   &\text{ if }f\text{ is a continuous function} \\
 \end{array}\end{align}$$<p>I don't recommend memorizing these rules; they are quite self-explanatory and
 simple. Just don't get confused when we use them.</p>
 
@@ -172,18 +173,18 @@ $$\begin{align}\lim_{x\to\infty}(x^2 - x)  = \left(\lim_{x\to\infty} x^2\right)-
 
 <p>You are probably wondering WTF the last rule is saying. See <a href="basics.html#functions">this
 thing</a> if you have no idea what a function is. <b>Pretty
-much all functions you'll come across in this tutorial are continuous</b>;
-we'll talk more about this
+much all functions you'll come across in this tutorial are continuous</b>, and
+I'll let you know if something is not continuous. We'll talk more about this
 <a href="more-derivatives.html#which-functions-have-derivatives">later</a>.</p>
 
 <p>For example, $\sqrt{\quad}$ is continuous:</p>
 
-$$\begin{align}\lim\sqrt x=\sqrt{\lim x}\end{align}$$<p>In the rest of this tutorial, we'll calculate limits e.g. like this:</p>
+$$\begin{align}\lim\sqrt x=\sqrt{\lim x}\end{align}$$<p>In the rest of this tutorial, we'll calculate limits like this:</p>
 
 $$\begin{align}\lim_{h\to0} \frac{1}{\sqrt{x+h}+\sqrt x}\end{align}$$<p>Again, don't get confused; there's nothing unusual here so everything's nice
-and continuous, and we can do this because we don't get an indeterminate form:</p>
+and continuous.</p>
 
-$$\begin{align}\lim_{h\to0} \frac{1}{\sqrt{x+h}+\sqrt x}  &= \frac{1}{\sqrt{x+\blue{\underset{h\to0}{\lim}h}} + \sqrt x} \\
+$$\begin{align}\blue{\lim_{h\to0}} \frac{1}{\sqrt{x+\blue h}+\sqrt x}  &= \frac{1}{\sqrt{x+\blue{\underset{h\to0}{\lim}h}} + \sqrt x} \\
 &= \frac{1}{\sqrt{x+\blue{0}} + \sqrt x}\end{align}$$<p>A faster way is to just think about what happens to $\frac{1}{\sqrt{x+h}+\sqrt x}$
 with a tiny $h$. It obviously gets very close to $\frac{1}{\sqrt{x}+\sqrt x}$.</p>
 
@@ -290,10 +291,9 @@ x^2 &= 2 \\
 x=\sqrt2 \text{ or } & x=-\sqrt2\end{align}$$<p>The infinite fraction consists of adding and dividing positive numbers, so it
 must be positive.</p>
 
-$$\begin{align}1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}=\sqrt2=1.41421...\end{align}$$<div class="box graybox"><h2> Exercise</h2><p>There are three $x$ values that satisfy $x + x^2 = x^3$. One of them is
-zero, another is negative and the third one is <a href="https://en.wikipedia.org/wiki/Golden_ratio">the golden
-ratio</a>. Use these facts to
-prove that $\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+...}}}}$ is the golden ratio.
+$$\begin{align}1+\frac{1}{2+\frac{1}{2+\frac{1}{2+...}}}=\sqrt2=1.41421...\end{align}$$<div class="box graybox"><h2> Exercise</h2><p><a href="https://en.wikipedia.org/wiki/Golden_ratio">Golden ratio</a> is the only
+positive $x$ value that satisfies $x + x^2 = x^3$. Prove that
+$\sqrt{1+\sqrt{1+\sqrt{1+\sqrt{1+...}}}}$ is the golden ratio.
 </p>
 
 </div></div>
