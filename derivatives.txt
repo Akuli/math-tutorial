@@ -192,7 +192,6 @@ code:
     <Akuli>        lol
     <Akuli>        i think this is cool
     <theelous3>    lmao, that's kinda awesome
-    <Akuli>        right :) yeah
 
 We started with a complicated-looking thing but finally we arrived at just
 $2x$. What's more, the $2x$ is not just a random value we got out of a spooky
@@ -241,12 +240,6 @@ of $2x+1$ is $2$ without any $x$. In other words, the derivative of $2x+1$ is
 the same with any $x$ value. This makes sense because straight lines have the
 same slope everywhere.
 
-graybox: Exercise
-    Prove that the derivative of $sx+c$ is always $s$. Here $s$ and $c$ are
-    constants.
-
-<p></p>
-
 (notation)
 redbox:
     This stuff is in a red box just to make sure that you read it.
@@ -264,6 +257,56 @@ redbox:
     Sometimes programmers write ``dy`` when they really mean ``deltay``.
     It doesn't make sense either, but ``dy`` is much less typing than
     ``deltay``.
+
+## Fun Intuition
+
+<small>I got the idea for doing this from
+[this video](https://youtu.be/S0_qX4VJhMQ).</small>
+
+Now we know how to find the derivative of $x^2$ with the lim thing, but we can
+also find it by just thinking about what $x^2$ means -- if we have a square
+with side length $x$, then its [area](basics.html#areas) is $x^2$. Let's see
+what happens to the area if we change $x$ by a small change $\Delta x$.
+
+asymptote:
+    size(8cm);
+    real x = 1;
+    real dx = 0.2;
+    filldraw(box((0,0),(x,x)), lightyellow);
+    filldraw(box((x,0),(x+dx,x)), lightblue);
+    filldraw(box((0,x),(x,x+dx)), lightgreen);
+    filldraw(box((x,x),(x+dx,x+dx)), red);
+    draw(brace((-0.05,0),(-0.05,x)), L="$x$", align=W);
+    draw(brace((-0.05,x),(-0.05,x+dx), amplitude=0.1), L="$\Delta x$", align=W);
+    draw(brace((x,-0.05),(0,-0.05)), L="$x$", align=S);
+    draw(brace((x+dx,-0.05),(x,-0.05), amplitude=0.1), L="$\Delta x$", align=S);
+    label((x/2,x/2), L="$x^2$");
+
+Here's the area change:
+
+math:
+    \Delta(x^2) &= \blue{\text{blue}} + \green{\text{green}} + \red{\text{red}}
+    &= \blue{x \cdot \Delta x} + \green{x \cdot \Delta x} + \red{\Delta x \cdot \Delta x}
+    &= (\blue x + \green x + \red{\Delta x})\Delta x
+    &= (2x + \red{\Delta x})\Delta x
+    \frac{\Delta(x^2)}{\Delta x} &= 2x + \red{\Delta x}
+
+Now a $\Delta x \to 0$ limit gives $\dfrac{d(x^2)}{dx} = 2x$.
+
+This fun stuff makes you realize that derivatives are not just some weird
+gibberish that comes out of a magic $\lim$ formula. However, we're assuming
+that $x > 0$ here; a square with a negative side length doesn't make much
+sense.
+
+Usually derivatives are calculated with the lim thing and at not checked with a
+geometry thing like we did above, and geometric things don't always work very
+well. For example, we would need to think about a 5-dimensional space for doing
+what we just did to $x^5$, but we can easily find $\frac{d}{dx} x^5$ with the
+lim thing.
+
+graybox: Exercise
+    In the previous exercise you calculated $\frac{d}{dx} x^3$. Check your
+    answer like we checked the $x^2$ derivative above.
 
 ## Faster!
 
@@ -312,7 +355,8 @@ math:
     =& 12x + 7
 
 Don't believe these rules just because I say that they work; in [the next
-chapter](more-derivatives.html) we'll *prove* that they work.
+chapter](more-derivatives.html) we'll *prove* that they work and also get more
+intuition about them.
 
 You can also use a nice symbolic calculation library, like Python's
 [sympy](http://www.sympy.org) (can be installed with pip):

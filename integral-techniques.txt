@@ -3,7 +3,8 @@
 redbox:
     This chapter assumes that you know [integrals](integrals.html) and
     [sine and cosine
-    derivatives](more-geometry-and-trig.html#derivative-of-sine).
+    derivatives](more-geometry-and-trig.html#derivative-of-sine). It also uses
+    [weird trig notation](more-geometry-and-trig.html#sin-sup-2-sup-x)
 
 Nowadays it's easiest to use sympy for doing difficult integrals, but in this
 chapter we'll look into how integrals were done before computers and
@@ -125,7 +126,7 @@ graybox: Exercise
     very incorrect, aka **WRONG** in **CAPS AND BOLD**. It started like this:
 
     math:
-        \int \frac{\cos(x)}{\sin^2(x)} \
+        \int \frac{\cos(x)}{\sin^2(x)}\ dx\
         = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...
 
     Here the supply teacher wanted to have the derivative of $\sin^2(x)$ on the
@@ -213,7 +214,7 @@ A substitution like $u=1-x^2$ does not work here because the derivative of the
 inside is $-2x$. The $-2$ is not a problem, but we have no extra $x$ in the
 integral (and obviously we can't just add an $x$ there).
 
-[Here](more-geometry-and-trig.html#famous-trig-formula) we created this formula
+[Here](more-geometry-and-trig.html#famous-trig-formula) we proved this formula
 as an exercise:
 
 math: \sin^2(\theta) + \cos^2(\theta) = 1
@@ -277,6 +278,23 @@ math:
 
 Rest of this is quite straight-forward, so I don't see any reason to go through
 that.
+
+Here's a handy-dandy table of trig substitutions with a positive constant $a$:
+
+<table>
+<tr><th>If your integral<br />contains this...</th>
+    <th>...use this sub...</th>
+    <th>...and this trig formula...</th>
+    <th>...that comes from here</th></tr>
+<tr><td>$\sqrt{a-x^2}$</td>
+    <td>$x=\sqrt a \sin(\theta)$</td>
+    <td>$\sin^2(\theta)+\cos^2(\theta)=1$</td>
+    <td>[this exercise](more-geometry-and-trig.html#famous-trig-formula)</td></tr>
+<tr><td>$\sqrt{a+x^2}$</td>
+    <td>$x=\sqrt a \tan(\theta)$</td>
+    <td>$1+\tan^2(\theta)=\frac{1}{\cos^2(\theta)}$</td>
+    <td>[the tan derivative](more-geometry-and-trig.html#derivative-of-tangent)</td></tr>
+</table>
 
 (circle-area)
 graybox: Exercise

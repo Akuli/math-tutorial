@@ -24,7 +24,9 @@ corner:
 math:
     a^2 + b^2 = c^2
 
-We'll prove this soon. Note that $c$ must be the longest side of the triangle.
+We'll prove this soon. Note that $c$ must be the longest side of the triangle,
+but it doesn't matter which side is $a$ and which is $b$ because
+$b^2+a^2 = a^2+b^2$.
 
 The Pythagorean theorem has many important applications:
 
@@ -88,11 +90,8 @@ indent:
 
 (famous-trig-formula)
 graybox: Exercise
-    Every point on the unit circle is $(\cos(\theta),\sin(\theta))$ with some
-    $\theta$ value like we learned [here](geometry-and-trig.html#trig-with-the-unit-circle),
-    but the distance from all of these points to $(0,0)$ is 1. Create an
-    equation that has $\sin(\theta)$ and $\cos(\theta)$ on one side, but just a
-    constant on the other side. The equation must work with any $\theta$.
+    Use unit circle trig and the Pythagorean theorem to prove that
+    $\sin^2(\theta)+\cos^2(\theta)=1$ with any $\theta$.
 
 ## Pythagorean Theorem Proof
 
@@ -194,7 +193,11 @@ as **Cartesian coordinates**, and the $(r,\theta)$ form is called
 
 If we know $r$ and $\theta$, finding $x$ and $y$ is simple as plugging them in
 to the equations above. But how about figuring out $r$ and $\theta$ from $x$
-and $y$? We can use Pythagorean theorem to figure out $r$:
+and $y$? This is useful if you have written a game using $x$ and $y$
+coordinates, but you want to also do something that's easier with polar
+coordinates.
+
+We can use Pythagorean theorem to figure out $r$:
 
 math:
     r = \text{hypot}(x, y) = \sqrt{x^2+y^2}
@@ -210,7 +213,7 @@ Note that $y$ goes before $x$; getting this mixed up gives wrong angles.
 The atan2 function was originally a thing in programming languages only, but
 nowadays at least some non-programming-related math articles on Wikipedia use
 it as well. The 2 at the end of atan2 means that it takes two arguments unlike
-atan, and the next section explains what atan is:
+atan, and in the next section I'll explain what atan is.
 
 ## Triangle Trig
 
@@ -298,7 +301,52 @@ conversion.
 (tanformula)
 graybox: Exercise
     Use triangle trig to prove that
-    $\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$.
+    $\tan(\theta)=\dfrac{\sin(\theta)}{\cos(\theta)}$. Even though triangle
+    trig is limited to $0 < \theta < \frac \tau 4$, the above formula can be
+    used to *define* $\tan(\theta)$ for any $\theta$ as long as
+    $\cos(\theta) \ne 0$.
+
+## Notation Notes
+
+comment:
+    this title uses sups because mathjax doesn't use the same font as titles
+    looks not-shit this way imo
+
+### sin<sup>2</sup>(x)
+
+indent:
+    In this tutorial, I'll often write $\sin^2(x)$ when I mean $(\sin(x))^2$,
+    and I also do $\cos^2(x)$ and $\tan^2(x)$. The $\sin^2(x)$ notation looks
+    like really weird nonsense at first, but there are a couple reasons why I
+    use it:
+
+    * All other tutorials and websites use it.
+    * A huge pile of parentheses can be even more confusing. Math is not
+      supposed to be something that only Lisp programmers can understand.
+
+    image: https://imgs.xkcd.com/comics/lisp_cycles.png
+        max-width: 100%;
+        max-height: 100%;
+
+    <small>The comic is from [here](https://xkcd.com/297/).</small>
+
+### sec, csc, cot... head explodes
+
+indent:
+    The only trig functions used in this tutorial are sin, cos, tan and their
+    inverse functions, but if you read math stuff from e.g. Wikipedia, you may come
+    across these functions:
+
+    math:
+        \sec(\theta) &= \frac{1}{\cos(\theta)}
+        \csc(\theta) &= \frac{1}{\sin(\theta)}
+        \cot(\theta) &= \frac{\cos(\theta)}{\sin(\theta)} = \frac{1}{\tan(\theta)}
+
+    I think it's just way more clear to write $\frac{1}{\sin(x)}$ than
+    $\csc(x)$. This tutorial uses $\tan$ even though it's just
+    $\frac{\sin(x)}{\cos(x)}$ because it can be quite handy, and it also lets
+    you understand why [the awesome atan2
+    function](#cartesian-to-polar-coordinates) was named atan2.
 
 ## Triangle Angle Sum
 
@@ -365,25 +413,25 @@ asymptote: float:right;
     real w=3, h=2;
     abctriangle(w,h, lightyellow);
     draw(rarc((0,0),1,0,atan2(h,w)), L="$\alpha$");
-    draw(rarc((w,h),0.7,-tau/4,atan2(-h,-w)), L="$\beta$", align=S);
+    draw(rarc((w,h),0.7,atan2(-h,-w),-tau/4), L="$\beta$");
 
 Let's have a look at the triangle at right. We know that it's a triangle, so
-[the sum of the angles must be $\frac \tau 2$](#triangle-angle-sum).
+the sum of the angles must be $\frac \tau 2$ (see above).
 
 math:
     \alpha + \beta + \frac \tau 4 &= \frac \tau 2
-    \beta &= \frac \tau 2 - \frac \tau 4 - \alpha = \frac \tau 4 - \alpha
+    \blue \beta &= \frac \tau 2 - \frac \tau 4 - \alpha = \blue{\frac \tau 4 - \alpha}
 
 We also know these things:
 
 math:
-    \cos(\alpha) &= \frac a c
-    \sin(\beta) &= \frac a c
+    \cos(\alpha) &= \frac{\alpha\text{'s adjacent}}{\text{hypotenuse}} = \frac a c
+    \sin(\beta) &= \frac{\beta \text{'s opposite}}{\text{hypotenuse}} = \frac a c
 
-Setting these equal and plugging in $\beta=\frac\tau4-\alpha$ gives this:
+Setting these equal and plugging in $\blue\beta=\blue{\frac\tau4-\alpha}$ gives this:
 
 math:
-    \cos(\alpha) &= \sin\left(\frac \tau 4 - \alpha\right)
+    \cos(\alpha) &= \sin\left(\blue{\frac \tau 4 - \alpha}\right)
 
 Only angles between $0$ and $\frac \tau 4$ make sense as triangle corners, but
 this actually works with any $\alpha$.
@@ -492,7 +540,8 @@ asymptote:
 
 That's quite a mess! Make sure you fully understand it before continuing.
 
-Here's the same thing with new variables $h$ and $\alpha$ for convenience:
+Unfortunately we need to make the mess even messier by defining new variables
+$\alpha$ and $h$ like this:
 
 asymptote:
     bluearea();
@@ -510,7 +559,7 @@ square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the bigger
 square. Let's set those equal:
 
 math:
-    \theta + \Delta\theta \rcancel{+ \frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha
+    \theta + \Delta\theta + \rcancel{\frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha
     \theta + \Delta\theta &= \alpha
 
 The blue area looks kind of like a triangle, so we can apply [triangle
@@ -534,12 +583,16 @@ This proof is based on a picture that makes sense only for
 $0 < \theta < \frac \tau 4$, but the same derivative rule works with any
 $\theta$. Note that $\theta$ must be in radians.
 
+graybox: Exercise
+    Find the derivative of cosine similarly with a unit circle. The below proof
+    uses $\frac{d}{d\theta}\sin(\theta)=\cos(\theta)$ instead of using unit
+    circle stuff again, so you can't cheat by scrolling down.
+
 ## Derivative of Cosine
 
 Now we know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$ and
-[$\cos(\theta) = \sin(\tau/4 - \theta)$](#why-is-cosine-called-cosine), so this
-will be really easy. We just need to remember [the chain
-rule](derivatives.html#chain-rule).
+[$\cos(\theta) = \sin(\tau/4 - \theta)$](#why-is-cosine-called-cosine), so we
+can do this easily, but we'll need [the chain rule](derivatives.html#chain-rule).
 
 math:
     \frac{d}{d\theta} \cos(\theta) \
@@ -565,5 +618,59 @@ asymptote:
     label((3*tau/4,1.4), blue, L=rotate(20)*"$y=-\sin(\theta)$");
 
 We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
-derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
+derivative moved the graph left. Similarly, the $-\sin(\theta)$ graph is the
 $\cos(\theta)$ graph shifted left. 
+
+## Derivative of Tangent
+
+graybox:
+    Here $\tan^2(\theta)$ means $(\tan(\theta))^2$ as explained
+    [here](#sin-sup-2-sup-x).
+
+We need a few things that we have proved earlier. These things are from this
+chapter:
+
+* $\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$
+* $\frac{d}{d\theta}\sin(\theta)=\cos(\theta)$
+* $\frac{d}{d\theta}\cos(\theta)=-\sin(\theta)$
+* $\purple{\sin^2(\theta)+\cos^2(\theta)}=1$
+
+We also need these things from [the more derivatives
+chapter](more-derivatives.html):
+
+* $\frac{d}{dx}(f(\maroon{g(x)}))=f'(\maroon{g(x)})\maroon{g}'\maroon{(x)}$
+* $\frac{d}{dx}(\blue{f(x)}\green{g(x)})=\blue{f}'\blue{(x)}\green{g(x)}+\blue{f(x)}\green{g}'\green{(x)}$
+* $\frac{d}{dx}\Bigl(\dfrac{1}{\maroon x}\Bigr) = \dfrac{-1}{{\maroon x}^2}$
+
+Let's do this.
+
+math:
+    \frac{d}{d\theta}\tan(\theta) \
+    &= \frac{d}{d\theta} \left( \frac{\blue{\sin(\theta)}}{\green{\cos(\theta)}} \right)
+    &= \frac{d}{d\theta} \left( \blue{\sin(\theta)} \green{\frac{1}{\cos(\theta)}} \right)
+    &= \Bigl(\frac{d}{d\theta}\blue{\sin(\theta)}\Bigr)\green{\frac{1}{\cos(\theta)}} +\
+        \blue{\sin(\theta)}\biggl(\frac{d}{d\theta}\Bigl( \
+            \green{\frac{1}{\maroon{\cos(\theta)}}}\Bigr)\biggr)
+    &= \rcancel{\cos(\theta)}\frac{1}{\rcancel{\cos(\theta)}} + \sin(\theta)\biggl(\
+        \frac{-1}{\maroon{\cos}^2\maroon{(\theta)}}\biggl(\frac{d}{d\theta}\maroon{\cos(\theta)}\biggr)\biggr)
+    &= 1 + \sin(\theta)\frac{-1}{\cos^2(\theta)}(-\sin(\theta))
+    &= 1 + (-1)(-1)\frac{\sin^2(\theta)}{\cos^2(\theta)}
+    &= 1 + \left(\frac{\sin(\theta)}{\cos(\theta)}\right)^2
+    &= 1 + \tan^2(\theta)
+
+That was a mess, but we're done! In fact, there's a formula for finding the
+derivative of $\frac{\blue{f(x)}}{\green{g(x)}}$ that we could just plug stuff
+into, but it's not very different from rewriting as
+$\blue{f(x)}\green{\frac{1}{g(x)}}$ and then taking the derivative like we just
+did.
+
+If we're clever, we can rewrite this a bit differently:
+
+math:
+    1+\tan^2(\theta) &= \frac{\cos^2(\theta)}{\green{\cos^2(\theta)}} + \frac{\sin^2(\theta)}{\green{\cos^2(\theta)}}
+    &= \frac{\purple{\cos^2(\theta)+\sin^2(\theta)}}{\green{\cos^2(\theta)}}
+    &= \frac{1}{\cos^2(\theta)}
+
+Both of these answers can be useful; the first one is nice because the
+derivative is written entirely in terms of the original function, and the
+second one e.g. simplifies nicely under a square root.
