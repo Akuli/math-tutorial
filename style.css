@@ -111,8 +111,12 @@ h1, h2, h3, h4, h5, h6 {
 
 p, li {
     font-family: Cabin;
-    font-size: em;
+    font-size: 1em;
     line-height: 140%;
+}
+
+small {
+    font-size: 0.7em;
 }
 
 .indent {
