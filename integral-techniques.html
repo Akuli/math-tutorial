@@ -38,7 +38,8 @@
 <div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><b>Integration Techniques</b></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="integration-techniques">Integration Techniques<a class="headerlink" href="#integration-techniques" title="Link to this title">¶</a></h1><div class="box redbox"><p>This chapter assumes that you know <a href="integrals.html">integrals</a> and
 <a href="more-geometry-and-trig.html#derivative-of-sine">sine and cosine
-derivatives</a>.
+derivatives</a>. It also uses
+<a href="more-geometry-and-trig.html#sin-sup-2-sup-x">weird trig notation</a>
 </p>
 
 </div><p>Nowadays it's easiest to use sympy for doing difficult integrals, but in this
@@ -122,7 +123,7 @@ world.</p>
 $$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}\ dx\end{align}$$<p>Our supply teacher came up with a solution, and when I saw it I knew it was
 very incorrect, aka <b>WRONG</b> in <b>CAPS AND BOLD</b>. It started like this:</p>
 
-$$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}  = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...\end{align}$$<p>Here the supply teacher wanted to have the derivative of $\sin^2(x)$ on the
+$$\begin{align}\int \frac{\cos(x)}{\sin^2(x)}\ dx = \frac{1}{2\sin(x)}\int\frac{2\sin(x)\cos(x)}{\sin^2(x)}\ dx =\ ...\end{align}$$<p>Here the supply teacher wanted to have the derivative of $\sin^2(x)$ on the
 top. You should know by now that we <b>cannot</b> bring non-constants like
 $\frac{1}{2\sin(x)}$ out of integrals. I argued with the teacher about his
 solution for the rest of the lesson.</p>
@@ -211,6 +212,23 @@ chapter</a>.</p>
 
 $$\begin{align}\int\sqrt{1-x^2}\ dx  = \int\frac{1+\cos(2\theta)}{2}\ d\theta  = \frac 1 2 \int(1+\cos(2\theta))\ d\theta\end{align}$$<p>Rest of this is quite straight-forward, so I don't see any reason to go through
 that.</p>
+
+<p>Here's a handy-dandy table of trig substitutions with a positive constant $a$:</p>
+
+<p><table>
+<tr><th>If your integral<br />contains this...</th>
+    <th>...use this sub...</th>
+    <th>...and this trig formula...</th>
+    <th>...that comes from here</th></tr>
+<tr><td>$\sqrt{a-x^2}$</td>
+    <td>$x=\sqrt a \sin(\theta)$</td>
+    <td>$\sin^2(\theta)+\cos^2(\theta)=1$</td>
+    <td><a href="more-geometry-and-trig.html#famous-trig-formula">this exercise</a></td></tr>
+<tr><td>$\sqrt{a+x^2}$</td>
+    <td>$x=\sqrt a \tan(\theta)$</td>
+    <td>$1+\tan^2(\theta)=\frac{1}{\cos^2(\theta)}$</td>
+    <td><a href="more-geometry-and-trig.html#derivative-of-tangent">the tan derivative</a></td></tr>
+</table></p>
 
 <div id="circle-area" class="box graybox"><h2> Exercise</h2><p>In <a href="integrals.html#example-circle-area">the integral chapter</a> I showed you
 this pic of different ways to prove the circle area $\pi r^2$:</p>

@@ -57,26 +57,21 @@ derivatives.</p>
 $$\begin{align}\frac{d}{dx} x &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
 &= \lim_{h\to0} \frac{(\rcancel x+h)\rcancel{-x}}{h} \\
 &= \lim_{h\to0} \frac h h \\
-&= 1\end{align}$$<p>This third way is not really a proof, but you can just use <a href="derivatives.html#notation">Leibniz's
-notation</a>:</p>
+&= 1\end{align}$$<p>We can also use the $\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}$
+thing with $y=x$:</p>
 
-$$\begin{align}\frac{d}{dx} x = \frac{dx}{dx}\ \mathop{=}^{\text{lol}}\ 1\end{align}$$<p>The $\frac{dx}{dx}$ says a very small change of $x$ divided by a very small
-change of $x$. Leibniz's notation Just Works&#8482; in general, but it's
-not enough for a proof because nowadays we use limits instead of infinitely
-small numbers.
-</p>
-
-</div><h3 id="frac-d-dx-x-c">$\frac{d}{dx} x = c$<a class="headerlink" href="#frac-d-dx-x-c" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=c$ is a horizontal line at height $c$, so its slope is $0$.</p>
+$$\begin{align}\frac{d}{dx} x = \lim_{\Delta x \to 0} \frac{\Delta x}{\Delta x} = 1\end{align}$$</div><h3 id="frac-d-dx-x-c">$\frac{d}{dx} x = c$<a class="headerlink" href="#frac-d-dx-x-c" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=c$ is a horizontal line at height $c$, so its slope is $0$.</p>
 
 <p><img width="235" height="195" class="asymptote" src="asymptote/dc28f6da5e2f715b772657df203c149f.svg" /></p><p>We can also plug in $f(x)=c$ to the definition of derivative:</p>
 
 $$\begin{align}\frac{d}{dx} x &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
 &= \lim_{h\to0} \frac{c-c}{h} \\
 &= \lim_{h\to0} \frac 0 h \\
-&= 0\end{align}$$<p>We can do a similar non-proof trick with Leibniz's notation because $c$ is
-a constant that doesn't change, so $dc\ =\ 0$.</p>
+&= 0\end{align}$$<p>We can use the $\displaystyle\lim_{\Delta x \to 0} \tfrac{\Delta y}{\Delta x}$
+thing by setting $y=c$. Then $\Delta y = 0$ because $y$ is a <i>constant</i>;
+its value doesn't change.</p>
 
-$$\begin{align}\frac{d}{dx}c = \frac{dc}{dx}\ \mathop{=}^{\text{lol}}\ \frac{0}{dx} = 0\end{align}$$</div><h3 id="frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x">$\frac{d}{dx}(c \cdot f(x)) = c \cdot \frac{d}{dx}(f(x))$<a class="headerlink" href="#frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's plug in $c \cdot f(x)$ to the definition of derivative.</p>
+$$\begin{align}\lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0} \frac{0}{\Delta x} = 0\end{align}$$</div><h3 id="frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x">$\frac{d}{dx}(c \cdot f(x)) = c \cdot \frac{d}{dx}(f(x))$<a class="headerlink" href="#frac-d-dx-c-cdot-f-x-c-cdot-frac-d-dx-f-x" title="Link to this title">¶</a></h3><div class="indent"><p>Let's plug in $c \cdot f(x)$ to the definition of derivative.</p>
 
 $$\begin{align}\frac{d}{dx}(c \cdot f(x))  &= \lim_{h\to0} \frac{\green c \cdot f(x+h) - \green c \cdot f(x)}{h} \\
 &= \lim_{h\to0} \frac{\green c \cdot\bigl(f(x+h)-f(x)\bigr)}{h} \\
@@ -143,19 +138,21 @@ $$\begin{align}\frac{d}{dx} f(g(x)) &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h} 
 &= f(g(x)) \biggl( \lim_{h \to 0} \frac{\rcancel{g(x)}-\rcancel{g(x)}}{h} \biggr) \\
 &= f(g(x)) \left( \lim_{h \to 0} \frac{0}{h} \right) \\
 &= f(g(x)) \cdot 0 \\
-&= 0\end{align}$$<p>We're now done with the proof, but I also want to show you what this rule
-looks like in Leibniz's notation. If we abbreviate $f(g(x))$ as $f$ and
-$g(x)$ as $g$, then $f'(\maroon{g(x)})$ is $\frac{df}{d\maroon g}$ because
-we're putting $g(x)$ into $f'(\quad)$.</p>
+&= 0\end{align}$$<p>We are now done with the proof, but I also want to show you what this rule
+looks like with the $\displaystyle\lim_{\Delta x \to 0}$ thing. For
+convenience, we'll abbreviate $f(g(x))$ as $f$ and $g(x)$ as $g$. Now
+$f'(x) = \displaystyle\lim_{\Delta x\to0}\frac{\Delta f}{\Delta x}$, but note that
+$f'(\maroon{g(x)}) = \displaystyle\lim_{\Delta g \to 0}\frac{\Delta f}{\Delta\maroon g}$
+because we're putting $g(x)$ into $f'(\quad)$.</p>
 
-$$\begin{align}\frac{df}{dx} = \frac{df}{\green{dg}} \cdot \frac{\green{dg}}{dx}\end{align}$$<p>It looks like the $dg$'s just cancel out, and in fact, the green stuff we
-added in the beginning of the proof was the change of $g$. That's how I
+$$\begin{align}\lim_{\Delta x\to0}\frac{\Delta f}{\Delta x}  &= \biggl(\lim_{\Delta g\to0}\frac{\Delta f}{\Delta g}\biggr)    \biggl(\lim_{\Delta x\to0}\frac{\Delta g}{\Delta x}\biggr) \\
+&= \lim_{\Delta x\to0}\biggl(\frac{\Delta f}{\green{\Delta g}} \cdot \frac{\green{\Delta g}}{\Delta x}\biggr)\end{align}$$<p>It looks like the $\Delta g$'s just cancel out, and in fact, the green
+stuff we added in the beginning of the proof was $\Delta g$. This is how I
 knew that adding it would do something useful.</p>
 
-<p>Also note that Leibniz's notation doesn't handle the corner case with $g$
-being a constant because then $\green{dg}$ would be $0$ and
-$\frac{df}{\green{dg}}$ would be undefined. Even though Leibniz's notation
-is very handy, it has some limitations.
+<p>Also note that this notation doesn't handle the corner case with $g$ being
+a constant because then $\green{\Delta g} = 0$ and $\frac{\Delta f}{\Delta g}$
+is dividing by zero.
 </p>
 
 </div><h3 id="frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x">$\frac{d}{dx} (f(x)g(x)) = f'(x)g(x) + f(x)g'(x)$<a class="headerlink" href="#frac-d-dx-f-x-g-x-f-x-g-x-f-x-g-x" title="Link to this title">¶</a></h3><div class="indent"><p>Plugging into the definition of derivative gives this:</p>
@@ -172,24 +169,29 @@ $$\begin{align}\frac{d}{dx} (f(x)g(x))  &= \lim_{h\to0} \frac{\green{f(x+h)g(x+h
 &= \lim_{h\to0} \frac{\bigl(\green{f(x+h)}\blue{-f(x)}\bigr)g(x+h)      + f(x)\bigl(\blue{g(x+h)}\green{-g(x)}\bigr)}{h} \\
 &= \lim_{h\to0} \left(\frac{\bigl(\green{f(x+h)}\blue{-f(x)}\bigr)g(x+h)}{h}      + \frac{f(x)\bigl(\blue{g(x+h)}\green{-g(x)}\bigr)}{h}\right) \\
 &= \left(\lim_{h\to0} \frac{\green{f(x+h)}\blue{-f(x)}}{h}\right) \left(\lim_{h\to0}g(x+h)\right)      + f(x)\left(\lim_{h\to0}\frac{\blue{g(x+h)}\green{-g(x)}}{h}\right) \\
-&= f'(x)g(x) + f(x)g'(x)\end{align}$$<p>Again, we're done with the proof, but I also want to show you a Leibniz
-notation trick.</p>
+&= f'(x)g(x) + f(x)g'(x)\end{align}$$<p>In the previous chapter we checked the $x^2$ derivative with <a href="derivatives.html#fun-intuition">a fun square
+area thing</a>, and we can do the same thing
+here if we assume that $f(x)$ and $g(x)$ are positive. The area of an
+$f(x)$ by $g(x)$ rectangle is $f(x)g(x)$.</p>
 
-$$\begin{align}\frac{d(fg)}{dx} = \frac{df}{dx}g + f\frac{dg}{dx} \\
-d(fg)=df \cdot g + f \cdot dg\end{align}$$<p>If we think about an $f$ by $g$ rectangle, its area is $fg$, and it changes
-by $d(fg)$ when $f$ changes by $df$ and $g$ changes by $dg$.</p>
-
-<p><img width="340" height="217" class="asymptote" src="asymptote/29ef805cc19b75de5ac051f1014bf6ae.svg" /></p><p>This is very hand-wavy because it (ab)uses Leibniz's notation and only
-works with positive $f$ and $g$, but it gives you some intuition about how
-the change of $fg$ is $df \cdot g + f \cdot dg$. Note that $g+dg$ goes to
-$g$ when we take a limit with $h\to0$, and that explains why we ended up
-with $\displaystyle\lim_{h\to0}g(x+h)$ in the proof.
+<p><img width="340" height="211" class="asymptote" src="asymptote/7d736b7a8f8f13a94355664337145b15.svg" /></p>$$\begin{align}\Delta(f(x)g(x)) &= \blue{\text{blue}} + \green{\text{green}} + \red{\text{red}} \\
+&= \blue{\Delta f \cdot g(x)} + \green{f(x) \cdot \Delta g} + \red{\Delta f \cdot \Delta g} \\
+\frac{\Delta(f(x)g(x))}{\Delta x} &= \frac{\blue{\Delta f \cdot g(x)}}{\Delta x} +      \frac{\green{f(x) \cdot \Delta g}}{\Delta x} + \frac{\red{\Delta f \cdot \Delta g}}{\Delta x} \\
+&= \frac{\blue{\Delta f}}{\Delta x}\blue{g(x)} +      \green{f(x)}\frac{\green{\Delta g}}{\Delta x} + \frac{\red{\Delta f}}{\Delta x}\red{\Delta g}\end{align}$$<p>Now taking $\Delta x \to 0$ limits gives
+$\dfrac{d(f(x)g(x))}{dx} = f'(x)g(x) + f(x)g'(x) + f'(x)\cdot\red0$ where
+$\red0=\displaystyle\lim_{\Delta x \to 0}\red{\Delta g}$.
 </p>
 
-</div><h3 id="frac-d-dx-x-c-c-x-c-1">$\frac{d}{dx} x^c = c\ x^{c-1}$<a class="headerlink" href="#frac-d-dx-x-c-c-x-c-1" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual $c$ value. For example,
-our very first derivative example shows that $\frac{d}{dx} x^2 = 2x$, and
-$2x^{2-1}$ is also $2x$. Here I'll prove that this works with all positive
-integers using a powerful technique known as <b>induction</b>.</p>
+</div><div class="box graybox"><h2> Exercise</h2><p>The same rule with three functions looks like this:</p>
+
+$$\begin{align}\frac{d}{dx}(f(x)g(x)h(x)) = f'(x)g(x)h(x) + f(x)g'(x)h(x) + f(x)g(x)h'(x)\end{align}$$<p>Check this rule geometrically.
+</p>
+
+</div><h3 id="frac-d-dx-x-c-c-x-c-1">$\frac{d}{dx} x^c = c\ x^{c-1}$<a class="headerlink" href="#frac-d-dx-x-c-c-x-c-1" title="Link to this title">¶</a></h3><div class="indent"><p>It's easy to prove that this works for an individual $c$ value. For
+example, our very first derivative example shows that
+$\frac{d}{dx} x^2 = 2x$, and plugging in $c=2$ gives $2x^{2-1}=2x^1=2x$.
+Let's prove that this works with <i>all</i> positive integers instead of just 2
+using a powerful technique known as <b>induction</b>.</p>
 
 <p>Let's start by showing that this works with $c=1$:</p>
 
@@ -208,7 +210,7 @@ $$\begin{align}\frac{d}{dx} x^{k+1} &= \frac{d}{dx} (x^k x^1) \\
 &= \frac{d}{dx} (\green{x} \cdot \blue{x^k}) \\
 &= \left(\frac{d}{dx} \green{x}\right) \cdot \blue{x^k}      + \green{x} \cdot \left(\frac{d}{dx} \blue{x^k}\right) \\
 &= 1x^k + x \cdot k \maroon{x^{k-1}} \\
-&= 1x^k + k\cdot \maroon{\frac{x^k}{x}}x \\
+&= 1x^k + \rcancel x \cdot k\maroon{\frac{x^k}{\rcancel{\maroon x}}} \\
 &= 1\green{x^k} + k\green{x^k} \\
 &= (1+k)\green{x^k} \\
 &= (k+1)x^{(k+1)-1}\end{align}$$<p>We proved that if $\frac{d}{dx} x^k = k x^{k-1}$ then
@@ -260,9 +262,20 @@ $$\begin{align}\frac{d}{dx} (1/x)  &= \lim_{h\to0} \frac{\frac{1}{x+h} - \frac 1
 &= \lim_{h\to0} \frac{-\rcancel h}{(x+h)x\rcancel h} \\
 &= \lim_{h\to0} \frac{-1}{(x+h)x} \\
 &= \frac{-1}{x^2}\end{align}$$<p>The $-1$ is kind of surprising, but as you can see, it comes from the
-$-\frac 1 x$ on the top.
-</p>
+$-\frac 1 x$ on the top. $x^2$ is never negative so $\frac{1}{x^2}$ is also
+never negative, and $\frac{-1}{x^2}$ is <i>always</i> negative (it can't be $0$
+because $x$ is finite). So it seems like $\frac 1 x$ is decreasing; that
+is, its values always get smaller as $x$ gets bigger.</p>
 
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">1</span><span style="color: #666666">/</span><span style="color: #40a070">2</span>
+<span style="color: #888888">0.5</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">1</span><span style="color: #666666">/</span><span style="color: #40a070">3</span>
+<span style="color: #888888">0.3333333333333333</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">1</span><span style="color: #666666">/</span><span style="color: #40a070">4</span>
+<span style="color: #888888">0.25</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">1</span><span style="color: #666666">/</span><span style="color: #40a070">5</span>
+<span style="color: #888888">0.2</span>
+</pre></div>
 </div><h2 id="which-functions-have-derivatives">Which functions have derivatives?<a class="headerlink" href="#which-functions-have-derivatives" title="Link to this title">¶</a></h2><p>This stuff is boring and it's here mostly to avoid mathematicians complaining
 about not having it here.</p>
 
@@ -271,7 +284,7 @@ that it's possible and that was it. Pretty much all functions in this tutorial
 have derivatives, but the derivative does not exist in these cases:</p>
 
 <ul><li>The graph of the function has a spike in it. Derivatives describe
-  "growing speed" and it isn't clear how fast the values grow on top of a
+  "growth rate" and it isn't clear how fast the values grow on top of a
   spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
   $|x|$ has a derivative everywhere except at $x=0$.
 </li></ul><div class="indent"><p><img width="170" height="141" class="asymptote" src="asymptote/6a7c41832bf5f8e9f78b1ebfe11aacf1.svg" /></p><p>Let's see what the definition of derivative gives for $\frac{d}{dx}|x|$ at
@@ -310,8 +323,25 @@ limits at infinity are a kind of corner case anyway, and some people mean
 
 <p>Let's update our definition of derivative:</p>
 
-$$\begin{align}f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \quad  \text{if the limit exists and is finite}\end{align}$$</div><p>Of course, there are more precise definitions about continuity and "spikes",
-but this should be enough to give you some kind of idea about the limitations.
+$$\begin{align}f'(x) = \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \quad  \text{if the limit exists and is finite}\end{align}$$</div><p id="continuity">For people who are interested in it, here's the definition of continuity:
+</p>
+
+<div class="box graybox"><p>Saying that a function $f$ is continuous at $x$ means
+$\displaystyle\lim_{h\to0} f(x+h) = f(x)$. Saying that $f$ is
+continuous means that it's continuous at every $x$ where
+$\displaystyle\lim_{h\to0} f(x+h)$ and $f(x)$ are defined.
+</p>
+
+</div><p>The "where blablabla are defined" thing seems confusing. Let's look at an
+example:</p>
+
+<p><img width="283" height="205" class="asymptote" src="asymptote/63711337bba1545ab27526df4822c20e.svg" /></p><p>Let's plug in $f(x)=\sqrt x$ and $x=0$. We can't do
+$\displaystyle\lim_{h\to0} \sqrt{0+h}$ because that would mean doing
+$\displaystyle\lim_{h\to0^-}\sqrt h$, but we can't take square roots of
+negative numbers. So, it doesn't really make sense to think about the
+continuity of $\sqrt x$ at $x=0$ because it isn't defined for $x < 0$, but
+$\sqrt\quad$ is nice and continuous elsewhere, so we say that $\sqrt\quad$ <i>is</i>
+continuous.
 </p>
 
 </div>

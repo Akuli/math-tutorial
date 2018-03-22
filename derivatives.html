@@ -136,7 +136,6 @@ $$\begin{align}\lim_{\Delta x\to0} \frac{\Delta y}{\Delta x}  &= \lim_{h\to0} \f
 &lt;Akuli&gt;        lol
 &lt;Akuli&gt;        i think this is cool
 &lt;theelous3&gt;    lmao, that&#39;s kinda awesome
-&lt;Akuli&gt;        right :) yeah
 </pre></div>
 <p>We started with a complicated-looking thing but finally we arrived at just
 $2x$. What's more, the $2x$ is not just a random value we got out of a spooky
@@ -162,12 +161,6 @@ of $2x+1$ is $2$ without any $x$. In other words, the derivative of $2x+1$ is
 the same with any $x$ value. This makes sense because straight lines have the
 same slope everywhere.</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Prove that the derivative of $sx+c$ is always $s$. Here $s$ and $c$ are
-constants.
-</p>
-
-</div><p><p></p></p>
-
 <div id="notation" class="box redbox"><p>This stuff is in a red box just to make sure that you read it.</p>
 
 <p>The derivative $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$
@@ -183,6 +176,37 @@ $f'(x) = \frac{d}{dx} f(x)$.</p>
 <p>Sometimes programmers write <code>dy</code> when they really mean <code>deltay</code>.
 It doesn't make sense either, but <code>dy</code> is much less typing than
 <code>deltay</code>.
+</p>
+
+</div><h2 id="fun-intuition">Fun Intuition<a class="headerlink" href="#fun-intuition" title="Link to this title">¶</a></h2><p><small>I got the idea for doing this from
+<a href="https://youtu.be/S0_qX4VJhMQ">this video</a>.</small></p>
+
+<p>Now we know how to find the derivative of $x^2$ with the lim thing, but we can
+also find it by just thinking about what $x^2$ means – if we have a square
+with side length $x$, then its <a href="basics.html#areas">area</a> is $x^2$. Let's see
+what happens to the area if we change $x$ by a small change $\Delta x$.</p>
+
+<p><img width="227" height="206" class="asymptote" src="asymptote/034acae8e1a071f70227b39cb5201e98.svg" /></p><p>Here's the area change:</p>
+
+$$\begin{align}\Delta(x^2) &= \blue{\text{blue}} + \green{\text{green}} + \red{\text{red}} \\
+&= \blue{x \cdot \Delta x} + \green{x \cdot \Delta x} + \red{\Delta x \cdot \Delta x} \\
+&= (\blue x + \green x + \red{\Delta x})\Delta x \\
+&= (2x + \red{\Delta x})\Delta x \\
+\frac{\Delta(x^2)}{\Delta x} &= 2x + \red{\Delta x}\end{align}$$<p>Now a $\Delta x \to 0$ limit gives $\dfrac{d(x^2)}{dx} = 2x$.</p>
+
+<p>This fun stuff makes you realize that derivatives are not just some weird
+gibberish that comes out of a magic $\lim$ formula. However, we're assuming
+that $x > 0$ here; a square with a negative side length doesn't make much
+sense.</p>
+
+<p>Usually derivatives are calculated with the lim thing and at not checked with a
+geometry thing like we did above, and geometric things don't always work very
+well. For example, we would need to think about a 5-dimensional space for doing
+what we just did to $x^5$, but we can easily find $\frac{d}{dx} x^5$ with the
+lim thing.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>In the previous exercise you calculated $\frac{d}{dx} x^3$. Check your
+answer like we checked the $x^2$ derivative above.
 </p>
 
 </div><h2 id="faster">Faster!<a class="headerlink" href="#faster" title="Link to this title">¶</a></h2><p>Let's say that you want to calculate something like this:</p>
@@ -204,7 +228,8 @@ $$\begin{align}&  \frac{d}{dx} (6x^2+7x-123) \\
 =& 6 \cdot \frac{d}{dx}(x^2) + 7 \cdot \frac{d}{dx} x - 0 \\
 =& 6 \cdot 2x + 7 \cdot 1 \\
 =& 12x + 7\end{align}$$<p>Don't believe these rules just because I say that they work; in <a href="more-derivatives.html">the next
-chapter</a> we'll <i>prove</i> that they work.</p>
+chapter</a> we'll <i>prove</i> that they work and also get more
+intuition about them.</p>
 
 <p>You can also use a nice symbolic calculation library, like Python's
 <a href="http://www.sympy.org">sympy</a> (can be installed with pip):</p>

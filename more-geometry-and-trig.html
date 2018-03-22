@@ -51,7 +51,9 @@ small square at the bottom-right corner means that we're talking about a
 quarter-turn corner. This works with any triangle that has a quarter-turn
 corner:</p>
 
-$$\begin{align}a^2 + b^2 = c^2\end{align}$$<p>We'll prove this soon. Note that $c$ must be the longest side of the triangle.</p>
+$$\begin{align}a^2 + b^2 = c^2\end{align}$$<p>We'll prove this soon. Note that $c$ must be the longest side of the triangle,
+but it doesn't matter which side is $a$ and which is $b$ because
+$b^2+a^2 = a^2+b^2$.</p>
 
 <p>The Pythagorean theorem has many important applications:</p>
 
@@ -123,7 +125,11 @@ as <b>Cartesian coordinates</b>, and the $(r,\theta)$ form is called
 
 <p>If we know $r$ and $\theta$, finding $x$ and $y$ is simple as plugging them in
 to the equations above. But how about figuring out $r$ and $\theta$ from $x$
-and $y$? We can use Pythagorean theorem to figure out $r$:</p>
+and $y$? This is useful if you have written a game using $x$ and $y$
+coordinates, but you want to also do something that's easier with polar
+coordinates.</p>
+
+<p>We can use Pythagorean theorem to figure out $r$:</p>
 
 $$\begin{align}r = \text{hypot}(x, y) = \sqrt{x^2+y^2}\end{align}$$<p>Rewriting $\theta$ in terms of $x$ and $y$ so that all corner cases are covered
 is a bit more complicated, so programmers defined a function just for that:</p>
@@ -133,7 +139,7 @@ $$\begin{align}\theta = \text{atan2}(y,x)\end{align}$$<p>Note that $y$ goes befo
 <p>The atan2 function was originally a thing in programming languages only, but
 nowadays at least some non-programming-related math articles on Wikipedia use
 it as well. The 2 at the end of atan2 means that it takes two arguments unlike
-atan, and the next section explains what atan is:</p>
+atan, and in the next section I'll explain what atan is.</p>
 
 <h2 id="triangle-trig">Triangle Trig<a class="headerlink" href="#triangle-trig" title="Link to this title">¶</a></h2><img width="283" height="245" class="asymptote" src="asymptote/0c161cd1b3666e8723d43b436b207d03.svg" style="float:right;" /><p>The word "trigonometry" means triangle something, and trig functions like
 $\sin$ and $\cos$ can be also defined in a triangle with a quarter-turn corner.
@@ -175,11 +181,33 @@ and $\frac \tau 4$; this corresponds to $x > 0$ in Cartesian to polar
 conversion.</p>
 
 <div id="tanformula" class="box graybox"><h2> Exercise</h2><p>Use triangle trig to prove that
-$\tan(\theta)=\dfrac{\sin(\theta)}{\cos(\theta)}$.</p>
+$\tan(\theta)=\dfrac{\sin(\theta)}{\cos(\theta)}$. Even though triangle
+trig is limited to $0 < \theta < \frac \tau 4$, the above formula can be
+used to <i>define</i> $\tan(\theta)$ for any $\theta$ as long as
+$\cos(\theta) \ne 0$.
+</p>
 
-<p>Triangle trig only makes sense for $0 < \theta < \frac \tau 4$, but the
-above formula can be used to define $\tan(\theta)$ for any $\theta$ as long
-as $\cos(\theta) \ne 0$.
+</div><h2 id="notation-notes">Notation Notes<a class="headerlink" href="#notation-notes" title="Link to this title">¶</a></h2><h3 id="sin-sup-2-sup-x">sin<sup>2</sup>(x)<a class="headerlink" href="#sin-sup-2-sup-x" title="Link to this title">¶</a></h3><div class="indent"><p>In this tutorial, I'll often write $\sin^2(x)$ when I mean $(\sin(x))^2$,
+and I also do $\cos^2(x)$ and $\tan^2(x)$. The $\sin^2(x)$ notation looks
+like really weird nonsense at first, but there are a couple reasons why I
+use it:</p>
+
+<ul><li>All other tutorials and websites use it.</li><li>A huge pile of parentheses can be even more confusing. Math is not
+  supposed to be something that only Lisp programmers can understand.
+</li></ul><img src="https://imgs.xkcd.com/comics/lisp_cycles.png" style="max-width: 100%;     max-height: 100%;" /><p><small>The comic is from <a href="https://xkcd.com/297/">here</a>.</small>
+</p>
+
+</div><h3 id="sec-csc-cot-head-explodes">sec, csc, cot... head explodes<a class="headerlink" href="#sec-csc-cot-head-explodes" title="Link to this title">¶</a></h3><div class="indent"><p>The only trig functions used in this tutorial are sin, cos, tan and their
+inverse functions, but if you read math stuff from e.g. Wikipedia, you may come
+across these functions:</p>
+
+$$\begin{align}\sec(\theta) &= \frac{1}{\cos(\theta)} \\
+\csc(\theta) &= \frac{1}{\sin(\theta)} \\
+\cot(\theta) &= \frac{\cos(\theta)}{\sin(\theta)} = \frac{1}{\tan(\theta)}\end{align}$$<p>I think it's just way more clear to write $\frac{1}{\sin(x)}$ than
+$\csc(x)$. This tutorial uses $\tan$ even though it's just
+$\frac{\sin(x)}{\cos(x)}$ because it can be quite handy, and it also lets
+you understand why <a href="#cartesian-to-polar-coordinates">the awesome atan2
+function</a> was named atan2.
 </p>
 
 </div><h2 id="triangle-angle-sum">Triangle Angle Sum<a class="headerlink" href="#triangle-angle-sum" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section uses the Greek alpha, beta and gamma letters $\alpha$, $\beta$
@@ -204,16 +232,16 @@ works with <b>any</b> triangle. We'll find this useful later.</p>
 <img src="images/triangleanglesum.gif" style="max-width: 300px;     max-height: 300px;" /><p><small>The animation comes from
 <a href="https://plus.google.com/photos/photo/116203071099093782712/6081217819806380914">here</a>.</small></p>
 
-<h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img width="170" height="121" class="asymptote" src="asymptote/076c55234a4bc8fd0c2e561985bfd41a.svg" style="float:right;" /><p>Let's have a look at the triangle at right. We know that it's a triangle, so
-<a href="#triangle-angle-sum">the sum of the angles must be $\frac \tau 2$</a>.</p>
+<h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img width="170" height="121" class="asymptote" src="asymptote/0e29eb3afd0d0dd6ea2a2b7f1ae568ca.svg" style="float:right;" /><p>Let's have a look at the triangle at right. We know that it's a triangle, so
+the sum of the angles must be $\frac \tau 2$ (see above).</p>
 
 $$\begin{align}\alpha + \beta + \frac \tau 4 &= \frac \tau 2 \\
-\beta &= \frac \tau 2 - \frac \tau 4 - \alpha = \frac \tau 4 - \alpha\end{align}$$<p>We also know these things:</p>
+\blue \beta &= \frac \tau 2 - \frac \tau 4 - \alpha = \blue{\frac \tau 4 - \alpha}\end{align}$$<p>We also know these things:</p>
 
-$$\begin{align}\cos(\alpha) &= \frac a c \\
-\sin(\beta) &= \frac a c\end{align}$$<p>Setting these equal and plugging in $\beta=\frac\tau4-\alpha$ gives this:</p>
+$$\begin{align}\cos(\alpha) &= \frac{\alpha\text{'s adjacent}}{\text{hypotenuse}} = \frac a c \\
+\sin(\beta) &= \frac{\beta \text{'s opposite}}{\text{hypotenuse}} = \frac a c\end{align}$$<p>Setting these equal and plugging in $\blue\beta=\blue{\frac\tau4-\alpha}$ gives this:</p>
 
-$$\begin{align}\cos(\alpha) &= \sin\left(\frac \tau 4 - \alpha\right)\end{align}$$<p>Only angles between $0$ and $\frac \tau 4$ make sense as triangle corners, but
+$$\begin{align}\cos(\alpha) &= \sin\left(\blue{\frac \tau 4 - \alpha}\right)\end{align}$$<p>Only angles between $0$ and $\frac \tau 4$ make sense as triangle corners, but
 this actually works with any $\alpha$.</p>
 
 <p>The angle $\frac\tau4-\alpha$ is also known as the <i>complement</i> angle because
@@ -242,7 +270,8 @@ $\theta + \Delta\theta$.</p>
 
 <p><img width="510" height="241" class="asymptote" src="asymptote/f48de2d580bcd139f7e11276c7d0c7f5.svg" /></p><p>That's quite a mess! Make sure you fully understand it before continuing.</p>
 
-<p>Here's the same thing with new variables $h$ and $\alpha$ for convenience:</p>
+<p>Unfortunately we need to make the mess even messier by defining new variables
+$\alpha$ and $h$ like this:</p>
 
 <p><img width="510" height="241" class="asymptote" src="asymptote/cd9182b834a4fbeff114c8b9f081ea33.svg" /></p><p>The $h$ is just the difference of the $y$ coordinates.</p>
 
@@ -252,7 +281,7 @@ do $\theta+\Delta\theta+\frac \tau 4$ where $\frac \tau 4$ is the tiny corner
 square, or we can do $\frac \tau 4 + \alpha$ where $\frac \tau 4$ is the bigger
 square. Let's set those equal:</p>
 
-$$\begin{align}\theta + \Delta\theta \rcancel{+ \frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha \\
+$$\begin{align}\theta + \Delta\theta + \rcancel{\frac \tau 4} &= \rcancel{\frac \tau 4} + \alpha \\
 \theta + \Delta\theta &= \alpha\end{align}$$<p>The blue area looks kind of like a triangle, so we can apply <a href="#triangle-trig">triangle
 trig</a> to it, but it's not a perfect triangle so we'll use
 $\approx$ instead of $=$.</p>
@@ -268,10 +297,14 @@ $$\begin{align}\lim_{\Delta\theta\to0}\cos(\theta+\Delta\theta) &= \lim_{\Delta\
 $0 < \theta < \frac \tau 4$, but the same derivative rule works with any
 $\theta$. Note that $\theta$ must be in radians.</p>
 
-<h2 id="derivative-of-cosine">Derivative of Cosine<a class="headerlink" href="#derivative-of-cosine" title="Link to this title">¶</a></h2><p>Now we know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$ and
-<a href="#why-is-cosine-called-cosine">$\cos(\theta) = \sin(\tau/4 - \theta)$</a>, so this
-will be really easy. We just need to remember <a href="derivatives.html#chain-rule">the chain
-rule</a>.</p>
+<div class="box graybox"><h2> Exercise</h2><p>Find the derivative of cosine similarly with a unit circle. The below proof
+uses $\frac{d}{d\theta}\sin(\theta)=\cos(\theta)$ instead of using unit
+circle stuff again, so you can't cheat by scrolling down.
+</p>
+
+</div><h2 id="derivative-of-cosine">Derivative of Cosine<a class="headerlink" href="#derivative-of-cosine" title="Link to this title">¶</a></h2><p>Now we know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$ and
+<a href="#why-is-cosine-called-cosine">$\cos(\theta) = \sin(\tau/4 - \theta)$</a>, so we
+can do this easily, but we'll need <a href="derivatives.html#chain-rule">the chain rule</a>.</p>
 
 $$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\underbrace{\frac\tau4 - \theta}_{\text{inner stuff}}\Bigr) \\
 &= \cos\Bigl(\frac\tau4 - \theta\Bigr) \cdot \frac{d}{d\theta}\Bigl(\frac\tau4 - \theta\Bigr) \\
@@ -280,33 +313,43 @@ $$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\un
 &= -\sin(\theta)\end{align}$$<p>Let's check the result with <a href="graphs.html#sine-waves">graphs</a>:</p>
 
 <p><img width="510" height="184" class="asymptote" src="asymptote/cbc5b2c2882396b573b88c43ac7d9690.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
-derivative moves the graph left. Similarly, the $-\sin(\theta)$ graph is the
+derivative moved the graph left. Similarly, the $-\sin(\theta)$ graph is the
 $\cos(\theta)$ graph shifted left. </p>
 
-<h2 id="derivative-of-tangent">Derivative of Tangent<a class="headerlink" href="#derivative-of-tangent" title="Link to this title">¶</a></h2><p>We need a couple things we have proved earlier. These things are from this
+<h2 id="derivative-of-tangent">Derivative of Tangent<a class="headerlink" href="#derivative-of-tangent" title="Link to this title">¶</a></h2><div class="box graybox"><p>Here $\tan^2(\theta)$ means $(\tan(\theta))^2$ as explained
+<a href="#sin-sup-2-sup-x">here</a>.
+</p>
+
+</div><p>We need a few things that we have proved earlier. These things are from this
 chapter:</p>
 
 <ul><li>$\tan(\theta)=\frac{\sin(\theta)}{\cos(\theta)}$</li><li>$\frac{d}{d\theta}\sin(\theta)=\cos(\theta)$</li><li>$\frac{d}{d\theta}\cos(\theta)=-\sin(\theta)$</li><li>$\purple{\sin^2(\theta)+\cos^2(\theta)}=1$
 </li></ul><p>We also need these things from <a href="more-derivatives.html">the more derivatives
 chapter</a>:</p>
 
-<ul><li>$\frac{d}{dx}(f(\maroon{g(x)}))=f'(\maroon{g(x)})\maroon{g}'\maroon{(x)}$</li><li>$\frac{d}{dx}(\blue{f(x)}\green{g(x)})=\blue{f}'\blue{(x)}\green{g(x)}+\blue{f(x)}\green{g}'\green{(x)}$</li><li>$\frac{d}{dx}\Bigl(\dfrac 1 x\Bigr) = \dfrac{-1}{x^2}$
+<ul><li>$\frac{d}{dx}(f(\maroon{g(x)}))=f'(\maroon{g(x)})\maroon{g}'\maroon{(x)}$</li><li>$\frac{d}{dx}(\blue{f(x)}\green{g(x)})=\blue{f}'\blue{(x)}\green{g(x)}+\blue{f(x)}\green{g}'\green{(x)}$</li><li>$\frac{d}{dx}\Bigl(\dfrac{1}{\maroon x}\Bigr) = \dfrac{-1}{{\maroon x}^2}$
 </li></ul><p>Let's do this.</p>
 
-$$\begin{align}\frac{d}{d\theta}\tan(\theta) &= \frac{d}{d\theta} \left( \frac{\sin(\theta)}{\cos(\theta)} \right) \\
+$$\begin{align}\frac{d}{d\theta}\tan(\theta)  &= \frac{d}{d\theta} \left( \frac{\blue{\sin(\theta)}}{\green{\cos(\theta)}} \right) \\
 &= \frac{d}{d\theta} \left( \blue{\sin(\theta)} \green{\frac{1}{\cos(\theta)}} \right) \\
 &= \Bigl(\frac{d}{d\theta}\blue{\sin(\theta)}\Bigr)\green{\frac{1}{\cos(\theta)}} +     \blue{\sin(\theta)}\biggl(\frac{d}{d\theta}\Bigl(          \green{\frac{1}{\maroon{\cos(\theta)}}}\Bigr)\biggr) \\
-&= \rcancel{\cos(\theta)}\frac{1}{\rcancel{\cos(\theta)}} + \sin(\theta)\biggl(     \frac{-1}{\maroon{\cos}^2\maroon{(\theta)}}\cdot\frac{d}{d\theta}\maroon{\cos(\theta)}\biggr) \\
+&= \rcancel{\cos(\theta)}\frac{1}{\rcancel{\cos(\theta)}} + \sin(\theta)\biggl(     \frac{-1}{\maroon{\cos}^2\maroon{(\theta)}}\biggl(\frac{d}{d\theta}\maroon{\cos(\theta)}\biggr)\biggr) \\
 &= 1 + \sin(\theta)\frac{-1}{\cos^2(\theta)}(-\sin(\theta)) \\
 &= 1 + (-1)(-1)\frac{\sin^2(\theta)}{\cos^2(\theta)} \\
 &= 1 + \left(\frac{\sin(\theta)}{\cos(\theta)}\right)^2 \\
-&= 1 + \tan^2(\theta)\end{align}$$<p>If we're clever, we can rewrite this a bit differently:</p>
+&= 1 + \tan^2(\theta)\end{align}$$<p>That was a mess, but we're done! In fact, there's a formula for finding the
+derivative of $\frac{\blue{f(x)}}{\green{g(x)}}$ that we could just plug stuff
+into, but it's not very different from rewriting as
+$\blue{f(x)}\green{\frac{1}{g(x)}}$ and then taking the derivative like we just
+did.</p>
+
+<p>If we're clever, we can rewrite this a bit differently:</p>
 
 $$\begin{align}1+\tan^2(\theta) &= \frac{\cos^2(\theta)}{\green{\cos^2(\theta)}} + \frac{\sin^2(\theta)}{\green{\cos^2(\theta)}} \\
 &= \frac{\purple{\cos^2(\theta)+\sin^2(\theta)}}{\green{\cos^2(\theta)}} \\
-&= \frac{1}{\cos^2(\theta)}\end{align}$$<p>Both of these answers can be useful; the first one can be useful because the
+&= \frac{1}{\cos^2(\theta)}\end{align}$$<p>Both of these answers can be useful; the first one is nice because the
 derivative is written entirely in terms of the original function, and the
-second one simplifies nicely when e.g. under a square root.
+second one e.g. simplifies nicely under a square root.
 </p>
 
 </div>
