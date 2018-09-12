@@ -1,0 +1,219 @@
+## Absolute Value
+
+The absolute value of $x$ is $|x|$ in math and something like ``abs(x)`` or
+``Math.abs(x)`` in most programming languages. It's easiest to think of the
+absolute value as stripping off the minus sign. For example, $|2| = 2$ and
+$|-3| = 3$.
+
+## Powers and Square Root
+
+$x^y$ is ``x**y`` or ``pow(x, y)`` and $\sqrt x$ is ``sqrt(x)`` in most
+programming languages.
+
+math: x^5=x\cdot x\cdot x\cdot x\cdot x
+
+math:
+    x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ times}} \cdot \
+              \underbrace{y \cdot ... \cdot y}_{a\text{ times}} \
+            = \underbrace{(xy)(xy)...(xy)}_{a\text{ times}} \
+            = (xy)^a
+
+math:
+    \frac{x^a}{y^a} \
+  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ times}}\ } \
+         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ times}}\ } \
+  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ times}} \
+  = \left( \frac x y \right)^a
+
+math:
+   x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ times}} \
+            = \underbrace{x \cdot...\cdot x}_{a\text{ times}} \cdot \
+              \underbrace{x \cdot...\cdot x}_{b\text{ times}} \
+            = x^a x^b
+
+math:
+    x^{ab} = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{times}} \
+           = \overbrace{\underbrace{x^a}_{\substack{x\cdot x\cdot...\cdot x \\ a\text{ times}}} \
+              \cdot x^a \cdot x^a \cdot x^a \cdot\ ...\ \cdot x^a}^{b\text{ times}} \
+           = (x^a)^b
+
+math: \sqrt x = x^{1/2}
+
+math: \sqrt a \sqrt b = \sqrt{ab}
+
+math: (\sqrt x\ )^2 = x
+
+math: \sqrt{x^2} = |x|
+
+(sqrt-basics)
+It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
+multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
+because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
+$\sqrt 0 = 0$.
+
+(square-negative-cancel)
+The $(-x)^2=x^2$ and $\sqrt{x^2}=|x|$ rules probably seem confusing, but an
+example should make everything clear:
+
+math:
+    (-2)^2 &= (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2
+    \sqrt{(-2)^2} &= \sqrt{2^2} = \sqrt 4 = 2
+
+This means that $x^2$ is never negative because $x^2$ can be always turned into
+a positive number multiplied by itself, and that's obviously positive. We have
+just 1 exception, and that's $0^2 = 0 \cdot 0 = 0$. This also shows that we
+can't do e.g. $\sqrt{-1}$.
+
+## Functions
+
+Here's a typical math function:
+
+math:
+   f(x) &= 2x
+   f(6) &= 2 \cdot 6 = 12
+
+There is no special syntax for defining a function. All we have is the
+equal sign, and when defining a function we just say that its value at x is
+equal to something.
+
+If you're familiar with a functional programming language like Haskell, then
+you'll probably realize that the above math looks a lot like this Haskell
+session:
+
+code: haskell
+   Prelude> let f x = 2*x
+   Prelude> f 6
+   12
+   Prelude>
+
+If you're feeling like WTF is this, here's a Python session that should make
+everything clear.
+
+code: python3
+   >>> def f(x):
+   ...     return 2*x
+   ...
+   >>> f(6)
+   12
+
+Quick note about ``f(x)`` versus ``f x``: if you define your own function
+called $f$ or $g$ you should use $f(x)$, but you can do e.g. $\sin x$ or
+$\cos x$ with some "special" functions for historical reasons. This tutorial
+uses $\sin(x)$ and $\cos(x)$ everywhere because most programmers are familiar
+with that.
+
+## Proofs and stuff
+
+This tutorial contains quite a few exercises that ask you to prove
+something.
+
+It's easy to write a program in one's favorite programming language that goes
+through a big pile of $a$ and $n$ values and makes sure they satisfy
+$a^n = a^{n/2} \cdot a^{n/2}$, but **that is not a proof**. What if some funny
+$a$ and $n$ values break everything? It's very unlikely, but a *proof* of this
+must work with any $a$ and $n$ values.
+
+Here's an example proof:
+
+indent:
+indent:
+    $n$ is even, so $n/2$ is an integer and $a^{n/2}$ means $a$ multiplied by
+    itself $n/2$ times.
+
+    math:
+        a^{n/2} \cdot a^{n/2} \
+        &= \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \cdot \
+           \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}}
+        &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n/2\ +\ n/2\text{ times}}
+        &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n\text{ times}}
+        &= a^n
+
+There it is. We didn't plug in any values; we just did something that worked
+for any $a$ and any even $n$. Note that this proof assumes $n > 0$; something
+like multiplying $a$ by itself -2 times doesn't make much sense. We'll revisit
+negative exponents [later](explog.html#exponent-functions).
+
+Note that it's ok to prove $a^n = a^{n/2} \cdot a^{n/2}$ by starting at
+$a^{n/2} \cdot a^{n/2}$ and eventually getting to $a^n$. It's just as valid to
+start with $a^n$ and try to turn that into $a^{n/2} \cdot a^{n/2}$.
+
+graybox: Exercise
+    Prove that $(a+b)c = ac+bc$ if $c$ is a positive integer.
+
+## Areas
+
+If you are a programmer you'll probably understand areas best as the
+number of pixels in a shape. For example, if you create a GUI program
+that creates a 300 by 200 window, it contains $300 \cdot 200 = 60000$
+pixels.
+
+asymptote: float:left;
+    size(5cm);
+    real w=3, h=2;
+    filldraw((0,0)--(0,h)--(w,h)--(w,0)--cycle, paleyellow);
+    label((w/2,h/2), L="$A=ab$");
+    label((w/2,0), L="$a$", align=S);
+    label((w,h/2), L="$b$", align=E);
+
+asymptote: float:left;
+    size(9cm);
+    real a=3, h=2, offset=1;
+    filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
+    draw((offset,0)--(offset,h), smalldashes, L="$h$", align=W);
+    label((a/2,0), L="$a$", align=S);
+    label((offset+(a-offset)/3,h/4), L="$A=\displaystyle\frac{ah}{2}$");
+
+<div style="clear:both;"></div>
+
+The yellow area is simple, but the triangle area is also easy to
+understand. Let's draw a rectangle around the triangle like this:
+
+asymptote:
+    size(5cm);
+    real a=3, h=2, offset=1;
+    filldraw((offset,h)--(0,0)--(a,0)--cycle, palegreen);
+    label((a/2,0), L="$a$", align=S);
+    draw((offset,0)--(offset,h), smalldashes);
+    draw((0,0)--(0,h), smalldashes, L="$h$", align=W);
+    draw((0,h)--(a,h)--(a,0), smalldashes);
+
+Now you can see that the triangle splits both pieces of the rectangle in
+half, so the triangle area must be half of the rectangle area $ah$.
+
+## Volumes
+
+A volume is a similar thing as an area, but for 3D things. If our 300 by 200
+window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$ pixels would
+fit inside it.
+
+asymptote3d: float:left;
+    size(7cm);
+
+    real a=2, b=3, c=4;
+    currentprojection = perspective(camera=(-5a,-1b,2c), up=Z);
+
+    draw(scale(a,b,c)*unitcube, yellow+opacity(0.6));
+    label((a/2,0,0), L="$a$", align=SE);
+    label((0,b/2,0), L="$b$", align=S);
+    label((0,b,c/2), L="$c$", align=W);
+    label((a/2,b/2,c/2), L="$V=abc$");
+
+asymptote3d: float:left;
+    size(7cm);
+
+    real r1=2, r2=3, h=4;
+    currentprojection = perspective(camera=(2h,1.5h,2h), up=Z);
+
+    draw(scale(r1,r2,1)*surface(unitcircle3), mediumblue+opacity(0.7));
+    draw(scale(r1,r2,h)*unitcylinder, mediumblue+opacity(0.5));
+    draw(shift(0,0,h)*scale(r1,r2,1)*surface(unitcircle3), yellow+opacity(0.8));
+    label((0,0,h/2), L="$V=Ah$");
+    label((1,1,h), L="$A$", align=N);
+
+    draw(path3(brace((r2,h),(r2,0)), YZplane), L="$h$", align=E);
+
+<div style="clear:both;"></div>
+
+The $V=abc$ thing is actually just a special case of the $V=Ah$
+cylinder. The shape of the cylinder's base can be anything, and in the
+$abc$ thing the base area is $ab$ and the height is $c$.

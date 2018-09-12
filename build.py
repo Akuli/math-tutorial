@@ -95,7 +95,8 @@ builder.get_head_extras = lambda filename: '''
         olive: [ "\\\\color{olive}{#1}", 1 ],
         purple: [ "\\\\color{purple}{#1}", 1 ],
         black: [ "\\\\color{black}{#1}", 1 ],
-        rcancel: [ "\\\\require{cancel}\\\\red{\\\\cancel{\\\\black{#1}}}", 1 ]
+        rcancel: [ "\\\\require{cancel}\\\\red{\\\\cancel{\\\\black{#1}}}", 1],
+        implies: [ "\\\\Rightarrow", 0 ]
       }
     }
   });
@@ -121,6 +122,17 @@ def multiline_math(match, filename):
     lines = (line.replace('\\\n', ' ')
              for line in re.split(r'(?<!\\)\n', math))
     yield r'$$\begin{align}%s\end{align}$$' % (r' \\' + '\n').join(lines)
+
+
+@builder.converter.add_multiliner(r'^indent2:\n')
+def indent2_handler(match, filename):
+    markup = textwrap.dedent(match.string[match.end():])
+    assert markup, "blank line after 'indent2:'"
+    yield '<div class="indent">'
+    yield '<div class="indent">'
+    yield from builder.converter.convert(markup, filename)
+    yield '</div>'
+    yield '</div>'
 
 
 # for multiline code inside a graybox, pygments hard-codes too much
