@@ -524,7 +524,7 @@ math:
 ...and substract the $\frac{x}{-1}$ thing:
 
 math:
-    \color{blue}{\frac{x}{-1}} - \color{blue}{\frac{x}{-1}} + 1 &= 0 - \frac{x}{-1}
+    \color{blue}{\frac{x}{-1}} + 1 - \color{blue}{\frac{x}{-1}} &= 0 - \frac{x}{-1}
     1 &= -\frac{x}{-1}
 
 Let's rewrite the prefix $-$ as multiplying by $-1$:
@@ -640,10 +640,9 @@ math:
     -(-(b^2)) &= +b^2
     (a-b)^2 &= a^2-2ab+b^2
 
-Note that you can think of $-x$ as $(-1)x$, so $-(-(b^2)) = (-1)(-1)b^2$, and
-the only thing we really need to know is that $(-1)(-1) = 1$. That's correct, if
-you multiply negative numbers with each other, you get a *positive* number;
-there's a proof of this [below](#negative-times-negative)
+Here's another way that's easier to remember: $-x = (-1)x$, so
+$-(-(b^2)) = (-1)(-1)b^2$, and $(-1)(-1)=1$ because we proved it (see
+[above](#negative-times-negative)).
 
 There's another, easier way to prove the $(a-b)^2$ formula, which is using
 the $(a+b)^2$ formula we already proved with $x-y=x+(-y)$:
