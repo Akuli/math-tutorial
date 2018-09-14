@@ -219,6 +219,8 @@ math:
     \green{(1+2) \cdot 3} = 3 \cdot 3 = \maroon9
     \blue{1 \cdot 3 + 2 \cdot 3} = 3 + 6 = \maroon9
 
+<hr />
+
 If you want to prove that something is **false**, all you need to do is to give
 an example of the thing not working. For example, if you want to prove that this
 is false...
@@ -241,6 +243,8 @@ indent:
 
     We found such $a,b,c$ that $(a+b)c \ne a+bc$.
 
+<hr />
+
 So far we have talked about proving that something is true for **all** $a$, $b$
 and $c$ values, but what if you need to prove that there is **some** number or
 combination of numbers that satisfies a thing? For example, what if you want to
@@ -255,6 +259,8 @@ indent:
     $2 \cdot 3 = 6$, so $3$ is the number.
 
 Well, that was easy.
+
+<hr />
 
 Here's yet another powerful technique: **proof by contradiction**. If you want
 to prove something, you can assume that what you want to prove is *false*, and
@@ -603,6 +609,8 @@ math:
     &= a^2+ab+ba+b^2
     &= a^2+2ab+b^2
 
+<hr />
+
 Now that we have gotten started with this, we can do more. For example, we know
 that $a-b=a+(-b)$, so using $(a+b)c=ac+bc$ we get this:
 
@@ -644,6 +652,8 @@ Here's another way that's easier to remember: $-x = (-1)x$, so
 $-(-(b^2)) = (-1)(-1)b^2$, and $(-1)(-1)=1$ because we proved it (see
 [above](#negative-times-negative)).
 
+<hr />
+
 There's another, easier way to prove the $(a-b)^2$ formula, which is using
 the $(a+b)^2$ formula we already proved with $x-y=x+(-y)$:
 
@@ -660,6 +670,8 @@ for all $b \in \mathbb{R}$, which is what we just proved. We are almost done:
 
 math:
     (a-b)^2=a^2-2ab+b^2
+
+<hr />
 
 There's one more formula I want to show you. I promise, this will be the last
 one. So far we have looked at $\green{(a+b)(a+b)}$ and
@@ -861,6 +873,8 @@ on both sides, but the moving may be easier to do if you need to do these things
 a lot. A similar thing works with multiplication and division: $\frac x 2 = 3$
 can be solved by "moving" the 2 to the other side, and it gives
 $x = 3 \cdot 2 = 6$.
+
+<hr />
 
 Now we know enough stuff to solve our horribly complicated equation. Let's do
 it.
