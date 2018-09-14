@@ -881,25 +881,50 @@ it.
 
 math:
     3x^2+2x+9 &= 4x^2+4+5
-    3x^2+2x+9 &= 4x^2+9     \qquad\qquad \
-        \text{move everything that contains }x\text{ to left side}
-    3x^2+2x+9-4x^2 &= 9     \qquad\qquad \
-        \text{move everything that doesn't contain }x\text{ to right side}
-    3x^2+2x-4x^2 &= 9-9     \qquad\qquad \text{simplify both sides}
-    3x^2-4x^2+2x &= 0
-    -x^2+2x &= 0            \qquad\qquad \text{divide both sides by }x
-    -\frac{x^2}{x}+\frac{2x}x &= \frac 0 x
-    -x+2 &= 0               \qquad\qquad \
-        \text{move everything that doesn't contain }x\text{ to right side}
-    -x &= -2
-    x &= 2
 
-Of course, you don't need to write the comments to the side. I put them there
-just to make it easier to follow for you. I also wrote down many more steps than
-I usually do; again, just to hopefully make everything easier to follow.
+Simplify $4+5$ to $9$.
 
-This time, we didn't get an extra solution, but we actually missed a solution!
-We divided both sides by $x$, which only works for $x \ne 0$. Before that we had
-$2x = x^2$, and $2 \cdot 0 = 0 = 0^2$, so we actually have two solutions, $x=2$
-and $x=0$. The "blah blah" things of "if blah blah, then we can do something"
-really matter, so don't forget them.
+math:
+    3x^2+2x+9 &= 4x^2+9
+
+Substract $9$ on both sides to cancel the $+9$.
+
+math:
+    3x^2+2x+9-9 &= 4x^2+9-9
+    3x^2+2x &= 4x^2
+
+Substract $3x^2$ on both sides.
+
+math:
+    3x^2+2x-3x^2 &= 4x^2-3x^2
+    2x &= x^2
+
+Divide both sides by $x$.
+
+math:
+    2=x
+
+Of course, there's no need to write down that much text between the lines. In
+fact, you need no text, and much less steps. I would solve the equation like
+this:
+
+math:
+    3x^2+2x+9 &= 4x^2+\overbrace{4+5}^9
+    3x^2+2x &= 4x^2
+    2x &= x^2
+    2 &= x
+
+Look carefully, we didn't 100% follow the rules. We can divide both sides by
+something, but only if that something is not zero; in the last step we divided
+by $x$, and it only works if $x \ne 0$, so we need to handle that case
+specially. Like this:
+
+indent:
+    math:
+        \text{...same }&\text{stuff as before...}
+        2x &= x^2
+        \text{if }x \ne 0\text{:} \quad 2 &= x
+
+    if $x=0$, then $2x=0=0^2=x^2$, so $0$ is also a solution
+
+    Answer: $x=0$ or $x=2$
