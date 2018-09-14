@@ -121,7 +121,7 @@ That's a mess! Let me explain how to read it:
     $\in$ means "in", so you should read this like "let a,b,c in reals".
     </li>
     <li>
-    "let $a,b,c \in \mathbb{R}$" means "let $a \in \mathbb{R}$ and
+    "Let $a,b,c \in \mathbb{R}$" means "Let $a \in \mathbb{R}$ and
     $b \in \mathbb{R}$ and $c \in \mathbb{R}$". Copy/pasting is bad, just like
     in programming.
     </li>
@@ -137,13 +137,13 @@ right away what it means because the multiplied things are closely together.
 
 ## Proofs and Axioms
 
-Here is a proof that $(a+b)c = ac + bc$ that assumes $c \in \{1,2,3,...\}$.
-We'll talk about other $c$ values below.
+Here is a proof of $(a+b)c = ac + bc$. The proof only works if
+$c \in \{1,2,3,...\}$. We'll talk about other $c$ values below.
 
 math:
     (a+b)c  &= \underbrace{(a+b)+(a+b)+...+(a+b)}_{c\text{ times}}
             &= \underbrace{a+b+a+b+...+a+b}_{ \
-                a\text{ and }b\text{ repeated }c\text{ times}}
+                a\text{ repeated }c\text{ times, }b\text{ repeated }c\text{ times}}
             &= \underbrace{a+a+...+a}_{c\text{ times}} + \
                 \underbrace{b+b+...+b}_{c\text{ times}}
             &= ac + bc
@@ -404,7 +404,8 @@ If $a=b$, then $b=a$. This means that you can also add more stuff by "canceling
 backwards":
 
 math:
-    \frac a b = \frac{ a\blue c }{ b\blue c }
+    \frac{ a\blue c }{ b\blue c } &= \frac a b
+    \frac a b &= \frac{ a\blue c }{ b\blue c }
 
 The backwards thing also works with $+$ and $-$; sometimes it's useful to look
 at $y$ as $x+y-x$ or something like that.
@@ -625,9 +626,10 @@ math:
     (a-b)^2 &= (a-b)(a-b)
     &= a(a-b)-b(a-b)
     &= a(a-b)+(-b)(a-b)
-    &= a^2-ab-ba-b(-b)
+    &= a(a-b)+(-b)a-(-b)b
+    &= a^2-ab-ba-(-b)b
 
-Hmm, what can we do to $-b(-b)$? We have two minuses, and we can bring them both
+Hmm, what can we do to $-(-b)b$? We have two minuses, and we can bring them both
 to front, so we have $-(-(b^2))$. If you think about this on the number line,
 every $-$ means flipping to the other side of the number line:
 
@@ -721,8 +723,8 @@ make math challenging but interesting.
 
 ## Or Note
 
-If you read the $x^2=y^2$ thing carefully, you noticethat there may be some $x$
-and $y$ that have **both** $\green{x+y}=0$ and $\blue{x-y}=0$ at
+If you read the $x^2=y^2$ thing carefully, you notice that there may be some
+$x$ and $y$ that have **both** $\green{x+y}=0$ and $\blue{x-y}=0$ at
 the same time. It seems like I didn't handle that case at all; I just did
 "$\green{x+y}=0$ or $\blue{x-y}=0$". The thing is, I actually
 handled that case. Let me explain how.
@@ -859,8 +861,8 @@ commonly done to both sides of an $x=y$ equation:
 
 Most things on this list are quite straight-forward, but maybe the last thing
 isn't, so let's prove that. Earlier we proved that
-$x^2=y^2 \iff (x=y\text{ or }x=-y)$, but the $x=-y$ never happens if $x$ and $y$
-are positive; we have also proved this.
+$x^2=y^2 \iff (x=y\text{ or }x=-y)$, but we have also proved that $x=-y$ never
+happens if $x$ and $y$ are positive.
 
 graybox: Exercise
     Prove that the last thing also works for $x \ge 0$ and $y \ge 0$, not only
