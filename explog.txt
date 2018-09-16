@@ -360,7 +360,7 @@ math:
 comment: TODO: explain why x=0 is not a problem
 
 Here we don't need to worry about negative $x$ values because [we can't take
-square roots of negative values](basics.html#sqrt-basics) anyway.
+square roots of negative values](oldbasics.html#sqrt-basics) anyway.
 
 graybox: Exercise
     Logarithms are handy for proving other derivative rules too if we can

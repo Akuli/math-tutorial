@@ -5,7 +5,7 @@ by [a friend of mine](https://github.com/PurpleMyst/).
 
 ## Basic Stuff
 
-Let's say that $f$ is [a function](basics.html#functions) and we have a graph
+Let's say that $f$ is [a function](oldbasics.html#functions) and we have a graph
 $y=f(x)$. It means that we can get a $y$ value by plugging the corresponding
 $x$ value to $f$. For example, at $x=1.5$, the $y$ value is $f(1.5)$.
 

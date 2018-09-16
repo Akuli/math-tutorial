@@ -186,7 +186,7 @@ math:
 Here we need to do some other stuff before using the rules.
 
 You are probably wondering WTF the last rule is saying. See [this
-thing](basics.html#functions) if you have no idea what a function is. <b>Pretty
+thing](oldbasics.html#functions) if you have no idea what a function is. <b>Pretty
 much all functions you'll come across in this tutorial are continuous</b>, and
 I'll let you know if something is not continuous. We'll talk more about this
 [later](more-derivatives.html#which-functions-have-derivatives).
@@ -337,7 +337,7 @@ indent:
 indent:
     Let's start by thinking about what $x^0$ means for a finite $x$. We know
     that $x^{a+b}=x^ax^b$ (see [the basics
-    page](basics.html#powers-and-square-root)), so we can plug in e.g. $a=1$
+    page](oldbasics.html#powers-and-square-root)), so we can plug in e.g. $a=1$
     and $b=0$:
 
     math:

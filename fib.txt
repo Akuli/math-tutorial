@@ -79,7 +79,7 @@ math:
 Here $\pm$ means $+$ or $-$, and I'm using it just to prevent annoying
 repetition. We need the absolute value bars because we applied a square root on
 both sides and we ended up with a $\sqrt{x^2} = |x|$ situation on the left side
-(see [the basics page](basics.html#square-negative-cancel)). So now we have
+(see [the basics page](oldbasics.html#square-negative-cancel)). So now we have
 three solutions: $x=0$, $x=\frac{1+\sqrt 5}{2}$ and $x=\frac{1-\sqrt 5}{2}$.
 
 The positive solution $\frac{1 + \sqrt 5}{2}$ is known as [the golden

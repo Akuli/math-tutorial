@@ -4,6 +4,163 @@ This chapter contains useful stuff that isn't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
 chapter contains a working example game.
 
+
+## Angles
+
+You probably know what *degrees* are. For example, 45 degrees means an angle
+like this:
+
+asymptote:
+    unitsize(3cm);
+    draw((1,1)--(0,0)--(1,0));
+    draw(arc((0,0),0.5,0,45), blue, L="$45^\circ$");
+
+Real mathematicians™ don't use degrees. They use **radians** instead:
+
+image: https://imgs.xkcd.com/comics/degrees.png
+    max-width: 100%;
+    max-height: 100%;
+
+<small>The comic comes from [here](https://xkcd.com/1643/).</small>
+
+Most programming languages also use radians, and if you insist on using
+degrees, you will need to convert between degrees and radians a lot. Let me
+explain you what radians are, so you can avoid that mess.
+
+Let's draw a circle with radius 1; that is, the distance between any point on
+the circle and the center of the circle is 1.
+
+asymptote:
+    unitsize(3cm);
+
+    draw(unitcircle);
+    real angle = 2;
+    draw((0,0)--(cos(angle),sin(angle)), blue, L="1");
+    dot((0,0), p=dotpen, L="center", align=S);
+
+Now let's take a slice of this circle so that the
+<span style="color:red;">arc length</span> of the slice is also 1. The angle we
+get in the center is then 1 radian.
+
+asymptote:
+    unitsize(3cm);
+
+    draw(unitcircle);
+    draw((cos(1),sin(1))--(0,0), gray, L="1");
+    draw((0,0)--(1,0), gray, L="1");
+    draw(rarc((0,0),1,0,1), red, L="1");
+    dot((0,0), p=dotpen);
+
+    pair labelpos = (1.5,0);
+    pair angleunitvector = (cos(.5),sin(.5));
+    draw(labelpos{left}..{-angleunitvector}(angleunitvector*0.2), blue, arrow=Arrow(size=4mm));
+    label(labelpos, blue, L="1 radian", align=E);
+
+In general, if you pick a circle slice with arc length $x$, the angle will be
+$x$ radians:
+
+asymptote:
+    unitsize(3cm);
+
+    real x = 2;
+    draw(unitcircle);
+    draw((cos(x),sin(x))--(0,0), gray, L="1");
+    draw((0,0)--(1,0), gray, L="1");
+    draw(rarc((0,0),1,0,x), red, L="$x$");
+    dot((0,0), p=dotpen);
+
+    pair labelpos = (1.5,0);
+    pair angleunitvector = (cos(x/2),sin(x/2));
+    draw(labelpos{left}..{-angleunitvector}(angleunitvector*0.2), blue, arrow=Arrow(size=4mm));
+    label(labelpos, blue, L="$x$ radians", align=E);
+
+Here are more pictures of angles that should help you understand this.
+
+asymptote:
+    size(18cm);
+
+    void drawanglesign(real angle, transform T) {
+        path anglesign=T*scale(1.5)*((1,0)--(0,0)--(cos(angle),sin(angle)));
+        path bluearc=T*rarc((0,0),1,0,angle);
+        draw(anglesign);
+        draw(bluearc, blue, L=(string)angle+"rad");
+    }
+
+    real k=4, h=-2;
+    drawanglesign(1, shift(1k,0)); drawanglesign(4, shift(1k,h));
+    drawanglesign(2, shift(2k,0)); drawanglesign(5, shift(2k,h));
+    drawanglesign(3, shift(3k,0)); drawanglesign(6, shift(3k,h));
+
+As you can see, 6 radians is *almost* a turn, and 3 radians is *almost* a half
+turn. A full turn happens to be $2\pi$ radians, where $\pi = 3.14159...$ is the
+famous constant, available as something like ``math.pi`` or ``Math.PI`` in most
+programming languages.
+
+Let's prove that a full turn is $2\pi$ radians. First of all, if we want to do
+anything at all with $\pi$, we need to know what it is. Usually $\pi$ is
+presented like this in schoolbook math:
+
+asymptote:
+    size(6cm);
+    draw(unitcircle, blue, L="$\pi d$");
+    pair endpoint = (cos(3.5),sin(3.5));
+    draw((-endpoint)--endpoint, L="$d$");
+
+So, for *any* circle, if we measure the $d$, the length of the blue part will
+be $\pi$ times the $d$. It doesn't matter what size the circle is, and I'll
+explain more about that [soon](#scaling).
+
+Anyway, now let's have a look at the picture with an angle of $x$ radians, and
+let's modify it so that it represents the angle of a full turn:
+
+asymptote:
+    unitsize(3cm);
+
+    draw(unitcircle, red, L="$x$");
+    draw((0,0)--(1,0), gray, L="1");
+    //dot((0,0), p=dotpen);
+
+    pair endpoint = (cos(4),sin(4));
+    draw((-endpoint)--endpoint);
+
+The length of the long, black line is $2$ because it's double the length of the
+$1$ line. Comparing the pictures gives $d=2$ and $x=\pi d = \pi \cdot 2 = 2\pi$.
+
+graybox: Exercise
+    Find a round object and measuring tape, and use them to calculate $\pi$.
+    You should get quite close to 3.14. Like I said, any round object will do,
+    and you will *always* get the same value.
+
+    image: https://upload.wikimedia.org/wikipedia/commons/4/4a/Pi-unrolled_slow.gif
+        max-width: 300px;
+
+    <small>The animation comes from
+    [here](https://commons.wikimedia.org/wiki/File:Pi-unrolled_slow.gif).</small>
+
+Here are pictures of important angles in radians. Spend a while looking at this
+section so that if I say $\pi / 2$, you'll immediately think of an angle like
+∟.
+
+asymptote:
+    size(12cm);
+
+    void drawanglesign(real angle, string label, transform T) {
+        path anglesign=T*scale(1.5)*((1,0)--(0,0)--(cos(angle),sin(angle)));
+        path bluearc=T*rarc((0,0),1,0,angle);
+        draw(anglesign);
+        draw(bluearc, blue, L=label);
+    }
+
+    real k=5, h=-3;
+    drawanglesign(pi/4, "$\frac \pi 4$", shift(1k,0)); drawanglesign(pi, "$\pi$", shift(1k,h));
+    drawanglesign(pi/2, "$\frac \pi 2$", shift(2k,0)); drawanglesign(2*pi, "$2\pi$", shift(2k,h));
+
+graybox: Another Exercise
+    How many degrees is $\pi$ radians? How about 1 radian? How about $x$
+    radians? Write a ``radians_to_degrees()`` function using your favorite
+    programming language.
+
+
 ## Scaling
 
 If we multiply all measurements of a shape or picture by a positive number, the
@@ -58,145 +215,134 @@ asymptote:
     draw(T*triangle234[3], L="$3/2$");
     draw(T*triangle234[4], L="$4/2$");
 
+<hr />
+
+Scaling seems to change the lengths of all straight lines the same way, but it
+works for curvy things as well. We can explain this by thinking of the curve as
+if it consisted of a bunch of short and straight lines. It doesn't, but if we
+use many lines, it will be "accurate enough"; more about this soon. Also, note
+that I said "explain", not "prove"; the purpose of this thing is to give you an
+idea of why the curve scaling thing works, and I have no idea whether real
+mathematicians think that this explanation is a perfect proof.
+
+For example, let's say we have this arc:
+
+asymptote:
+    unitsize(3cm);
+    draw(rarc((0,0),1,0,3));
+
+Let $N \in \{1,2,3,...\}$ be the number of short lines, and let
+$L_1,L_2,L_3,...,L_N$ be the lengths of the lines. Like this ($N=8$ in the
+picture, but it doesn't have to be 8):
+
+asymptote:
+    unitsize(3cm);
+
+    int N=8;
+    real step=3/N;
+
+    pen[] colors = { blue, heavyred, purple };
+    pen lastcolor = deepgreen;
+
+    for (int n=0; n<N; ++n)
+    {
+        pair vec1 = (cos(n*step),sin(n*step));
+        pair vec2 = (cos((n+1)*step),sin((n+1)*step));
+        if (n<colors.length) {
+            draw(vec1--vec2, L="$L_"+string(n+1)+"$", p=colors[n]);
+        } else if (n==colors.length) {
+            draw(vec1--vec2, L="$...$");
+        } else if (n==N-1) {
+            draw(vec1--vec2, L="$L_N$", lastcolor);
+        } else {
+            draw(vec1--vec2);
+        }
+    }
+
+Total length before the scaling is then $L_1+L_2+...+L_N$. Let $s > 0$. After
+scaling by $s$, the lengths are $sL_1,sL_2,...,sL_N$, and the total length is
+then $sL_1+sL_2+...+sL_N$. We can factor it:
+
+math:
+    \underbrace{sL_1+sL_2+...+sL_N}_\text{after scaling} \
+    = s \cdot \underbrace{(L_1+L_2+...+sL_N)}_\text{before scaling}
+
+The total length got scaled by $s$.
+
+Note that this was just an approximation. Mathematical curves don't need to
+consist of straight lines, but even though it is an approximation, we can
+make any errors as small as we want by choosing many lines and making them
+smaller. Everything we did above will work the same, and it doesn't matter how
+many things the $...$ parts contain. The $N$ can be as big as we want; if we
+set $N=1000000000000000000000$ or something, everything will be *really*
+precise.
+
+For example, this drawing has 20 lines instead of 8, and it's already much
+harder to actually see the lines:
+
+asymptote:
+    unitsize(3cm);
+
+    int N=20;
+    real step=3/N;
+
+    for (int n=0; n<N; ++n)
+    {
+        pair vec1 = (cos(n*step),sin(n*step));
+        pair vec2 = (cos((n+1)*step),sin((n+1)*step));
+        draw(vec1--vec2);
+    }
+
+<hr />
+
+Now we are ready to understand why $\pi$ appears in all circles. Let's draw a
+circle with diameter $d$, and let $x$ represent the length of the blue line.
+(Yes, we'll always have $x=\pi d$, but we are trying to prove it now, so we
+must pretend that we don't know it yet.)
+
+asymptote:
+    size(4cm);
+    draw(unitcircle, blue, L="$x$");
+    pair endpoint = (cos(3.5),sin(3.5));
+    draw((-endpoint)--endpoint, L="$d$");
+
+Now dividing the lengths gives $\frac{\color{blue}x}{d}$. You'll see why we
+divided them in a moment.
+
+Let $s \in \mathbb{R}, s > 0$. Scaling by $s$ gives this, because *all*
+measurements get multiplied by $s$, including the $x$:
+
+asymptote:
+    size(7cm);
+    draw(unitcircle, blue, L="$sx$");
+    pair endpoint = (cos(3.5),sin(3.5));
+    draw((-endpoint)--endpoint, L="$sd$");
+
+In my pictures, $s > 1$ because scaling by $s$ made the thing bigger, but it
+works the same way if $0 < s < 1$ or $s=1$. Let's do the same division thing
+again based on this picture:
+
+math:
+    \frac{\color{blue}{sx}}{sd} = \frac x d
+
+The $s$ cancels so that we end up with the same $\frac x d$ ratio every time,
+no matter how we scale the circle. In other words, this works for circles of
+all sizes. The $\frac x d$ ratio is called $\pi$, and we get our final result:
+
+math:
+    \frac x d &= \pi
+    x &= \pi d
+
 comment:
 asymptote:
     unitsize(1.5cm);
     triangle234(lightyellow);
     triangle234(lightblue, shift(6,0)*scale(0.5), "/2");
 
-## Radians and Tau
-
-Maybe we could measure angles somehow? A common way to do this is to draw
-angles on a circle arc with radius 1. Like this:
-
-asymptote:
-    size(10cm);
-    draw((0,0)--(1.2,0));
-    draw((1.2*cos(1),1.2*sin(1))--(0,0));
-    draw(rarc((0,0), 1, 0, 1), blue);
-    draw(rarc((0,0), 1, 1, tau), smalldashes);
-    draw(rrotate(1)*brace((0,0.05),(1,0.05)), heavygreen,
-         L=rrotate(1)*"this is 1", align=unit((-sin(1),cos(1))));
-
-    pair arrowend=(0.3*cos(0.5),0.3*sin(0.5)), labelplace=(0.5,-0.3);
-    draw(labelplace..{-unit(arrowend)}(arrowend), arrow=Arrow(size=5mm));
-    label(labelplace, L="the angle", align=W);
-
-Now we can define the angle as the length of the blue arc. With this
-definition, the angle in the picture is about 1 because it looks like the
-length of the blue arc is about the same as the radius. This way to measure
-angles is known as **radians**, and the angle in the pic is 1 radian.
-
-Here are more pictures of angles that should help you understand this:
-
-asymptote:
-    size(18cm);
-
-    // returns max width
-    real drawanglesign(real angle, transform T) {
-        path anglesign=T*scale(1.5)*((1,0)--(0,0)--(cos(angle),sin(angle)));
-        path bluearc=T*rarc((0,0),1,0,angle);
-        draw(anglesign);
-        draw(bluearc, blue, L=(string)angle+"rad");
-
-        return max(anglesign^^bluearc).x - min(anglesign^^bluearc).x;
-    }
-
-    real k=4, h=-2;
-    drawanglesign(1, shift(1k,0)); drawanglesign(4, shift(1k,h));
-    drawanglesign(2, shift(2k,0)); drawanglesign(5, shift(2k,h));
-    drawanglesign(3, shift(3k,0)); drawanglesign(6, shift(3k,h));
-
-In this tutorial, the greek tau letter $\tau$ means a full turn in radians:
-
-math:
-    \tau = 6.2831853...
-
-So, if we draw a circle with radius 1, its circumference is $\tau$.
-
-asymptote:
-    size(4cm);
-    draw(unitcircle, blue, L="$\tau$");
-    draw((0,0)--(cos(1),sin(1)), L="$1$");
-
-Some programming languages (e.g. new Pythons) have a ``tau`` constant, but if
-your favorite language doesn't, use ``2*pi`` instead. Here pi is the more
-well-known circle constant $\pi = \tau/2 = 3.14159265...$, and almost all
-programming languages have something like ``math.pi`` or ``Math.PI``.
-
-I find $\tau$ easier to work with than $\pi$ because if I see $\tau/4$ somewhere
-I know immediately that it's a quarter turn, but $\pi/2$ isn't as obvious. Of
-course, you can use $\pi$ if you prefer it over $\tau$.
-
-If we [scale up](#scaling) the above $\tau$ pic by some number $r$, the radius
-becomes $1 \cdot r = r$ and the perimeter becomes $\tau r$:
-
-asymptote:
-    size(6cm);
-    draw(unitcircle, blue, L="$\tau r$");
-    draw((0,0)--(cos(1),sin(1)), L="$r$");
-
-Now we have something that works with any circle instead of just circles with
-radius 1.
-
-graybox: Exercise
-    Use the above $\tau r$ drawing and the below animation to conclude that
-    $\tau=2\pi$.
-
-    image: https://upload.wikimedia.org/wikipedia/commons/4/4a/Pi-unrolled_slow.gif
-        max-width: 300px;
-
-    <small>The animation comes from
-    [here](https://commons.wikimedia.org/wiki/File:Pi-unrolled_slow.gif).</small>
-
-## Degrees
-
-Degrees are an alternative to radians, and they work so that 360° is a full
-turn. Here ° is the degree symbol, and 360 is a number that people ended up
-using for historical reasons.
-
-code:
-    <Zaab1t>     Akuli: is 360 really arbitrarily picked
-    <Akuli>      i don't know or care really
-    <Akuli>      is 12 hours arbitarily picked
-
-We already know that 360 degrees is $\tau$ radians, but let's figure out how to
-convert $D$ degrees to $R$ radians. One degree is $\frac{1}{360}$ turns, so $D$
-degrees is $D \cdot \frac{1}{360}=\frac{D}{360}$ turns. Similarly, $R$ radians
-means $\frac R \tau$ turns.
-
-math:
-    \frac{D}{360} &= \frac{R}{\tau}
-
-Multiplying both sides by 360 or $\tau$ gives these:
-
-math:
-    D &= R \cdot 360 / \tau
-    R &= D \cdot \tau / 360
-
-code: python3
-    def degrees2radians(degrees):
-        return degrees * math.tau / 360
-
-    def radians2degrees(radians):
-        return radians * 360 / math.tau
-
-For example, $\frac{90}{360} = \frac 1 4$, so 90° is
-$90 \cdot \tau / 360 = \tau\cdot\frac{90}{360} = \frac{\tau}{4}$ radians
-(quarter turn).
-
-Some programming languages also have conversion functions like Python's
-``math.degrees()`` and ``math.radians()``.
-
-image: https://imgs.xkcd.com/comics/degrees.png
-    max-width: 100%;
-    max-height: 100%;
-
-<small>The comic comes from [here](https://xkcd.com/1643/).</small>
 
 ## Coordinates
 
-Here's a boring number line:
+Here's a boring number line that represents $\mathbb{R}$.
 
 asymptote:
     size(12cm);
@@ -217,9 +363,9 @@ asymptote:
         dot((0,xy), L=(string)xy, align=W, p=dotpen);
     }
 
-Every point on this plane can be represented with two numbers. These are known
-as the $x$ and $y$ **coordinates**. For example, the $x$ coordinate of the red
-point in the below picture is $3$ and the $y$ coordinate is $-2$:
+Every point can now be represented with two numbers. These are known as the $x$
+and $y$ **coordinates**. For example, the $x$ coordinate of the red point in
+the below picture is $3$ and the $y$ coordinate is $-2$:
 
 asymptote:
     size(12cm);
@@ -253,28 +399,96 @@ asymptote:
     axises(0, 300, 0, -200);
     draw((200, -100), p=dotpen, L="$(200,100)$", align=SE);
 
+
+## Basic Coordinate Stuff
+
+There is a working ball and paddle at the end of this chapter. In that game, I
+have code like this:
+
+code:
+    ball.centery = screen.height - paddle.thickness - ball.radius;
+
+In this game, all coordinates are in pixels. When you see something like this,
+you can always draw a picture and figure out what it does. For example, let's
+figure out where the ball ends up when this code runs. In the game, there is no
+space between the bottom of the screen and the paddle, so the picture looks
+like this:
+
+asymptote:
+    size(20cm);
+    real screenwidth = 60;
+    real screenheight = 40;
+    real paddlethickness = 15;
+    real paddlelength = 30;
+    real ballradius = 5;
+
+    pair ubracevec = (0,-1);
+    pair rbracevec = (1,0);
+
+    axises(0, 1.2*screenwidth, 0, -1.4*screenheight);
+
+    draw(scale(screenwidth,-screenheight)*unitsquare);
+    draw(brace((screenwidth,-screenheight)+ubracevec,(0,-screenheight)+ubracevec), L="screen.width", align=S);
+    draw(brace((screenwidth,0)+rbracevec,(screenwidth,-screenheight)+rbracevec), L=rotate(90)*"screen.height", align=E);
+    dot((0,-screenheight), p=dotpen, L=rotate(90)*"screen.height", align=W);
+
+    path paddle = shift(screenwidth/2,-screenheight)*scale(paddlelength, paddlethickness)*shift(-0.5,0)*unitsquare;
+    filldraw(paddle, lightgreen);
+    label((min(paddle)+max(paddle))/2, L="the paddle");
+    draw(brace(max(paddle)+rbracevec,(max(paddle).x,min(paddle).y)+rbracevec), L=rotate(90)*Label("paddle.thickness", filltype=Fill(white)), align=E);
+
+    pair ballcenter = (screenwidth/2, max(paddle).y + ballradius);
+    draw((0,ballcenter.y)--ballcenter, gray+smalldashes);
+    dot((0,ballcenter.y), p=dotpen, L=rotate(90)*"ball.centery", align=W);
+    draw(shift(ballcenter)*scale(ballradius)*unitcircle);
+
+    pair pointonball = shift(ballcenter)*scale(ballradius)*(cos(1),sin(1));
+    draw(ballcenter--pointonball, orange);
+    label(pointonball, L=rrotate(1)*"ball.radius", p=orange, align=N);
+
+There are many things in the picture, but if you look at it, you can now see
+what the code is doing. Let's go through it a step at a time to make sure you
+understand all of it:
+
+<ul>
+    <li>The $y$ axis is "upside down" as usual in programming, so
+        ``screen.height`` is the $y$ coordinate of the bottom of the
+        screen, as shown in the picture.</li>
+    <li>The *top* of the paddle is above the bottom of the screen, so its $y$
+        coordinate is smaller. That's ``screen.height - paddle.thickness``.</li>
+    <li>The center of the ball is even higher, and that difference is the
+        radius of the ball because the ball sits on top of the paddle. That's
+        why we set the $y$ coordinate of the ball's center, or
+        ``ball.centery``, to ``screen.height - paddle.thickness - ball.radius``.</li>
+</ul>
+
+If you are still following, that's great! This example is probably the most
+complicated calculation in my game, and now you should have no trouble at all
+with understanding the other things.
+
 graybox: Exercise
-    The location of something usually means the top left corner in programming.
-    Where does the **bottom right** corner of the window go in this code?
+    The $(x,y)$ location of something usually means the top left corner in
+    programming. Where does the **bottom right** corner of the window go in
+    this GUI code?
 
     darkcode:
         window.resize(300, 200);    // (width, height)
         window.move_to(600, 500);   // (x, y)
 
-    If this exercise feels difficult, grab a piece of paper and draw a picture
-    of the whole screen with the window in it.
+    Take a piece of paper and draw a picture of the whole screen with the
+    window in it; it'll help you to understand how this works.
+
 
 ## Trig with the Unit Circle
 
 graybox:
     This section uses the Greek theta letter $\theta$ because mathematicians
-    often use it to denote an angle, just like $r$ often denotes a radius. Try
-    not to get confused; it's just a letter.
+    often use it to denote an angle. Don't be confused, it's just a letter.
 
 Here's a problem that combines [the coordinate stuff](#coordinates) with [the
-radian stuff](#radians-and-tau) above. The unit circle means a circle with
-radius 1. Let's draw a unit circle in the center of the xy plane (we'll talk
-about other radiuses soon) and draw an angle to it.
+angle stuff](#angles) above. Let $\theta \in \mathbb{R}$. The **unit circle**
+means a circle with radius 1. Let's draw a unit circle in the center of the xy
+plane, and let's draw the $\theta$ angle to it.
 
 asymptote:
     size(12cm);
@@ -304,14 +518,13 @@ math:
 
 The function names are $\cos$ and $\sin$ for historical reasons. Almost all
 programming languages have ``cos`` and ``sin`` functions, and you don't need to
-know how they calculate those values with other functions yet. You just need to
-know what $\sin$ and $\cos$ are.
+know how they are implemented. You just need to know what they do.
 
 (common-sincos)
 As before, here's a pile of examples:
 
 asymptote: float:left;
-    unitsize(2.5cm);
+    size(10cm);
     real xyminmax=1.6;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
     draw(unitcircle);
@@ -320,95 +533,108 @@ asymptote: float:left;
     label((0,-xyminmax), L="$(\cos(0),\sin(0))=(1,0)$", align=S);
 
 asymptote: float:left;
-    unitsize(2.5cm);
+    size(10cm);
     real xyminmax=1.6;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
-    draw(rarc((0,0),1,0,tau/4), blue, L="$\tau/4$");
-    draw(rarc((0,0),1,tau/4,tau));
+    draw(rarc((0,0),1,0,2*pi/4), blue);
+    draw(rarc((0,0),1,2*pi/4,2*pi));
     dot((0,1), p=red+dotpen);
     label((0,1), L="$(0,1)$", align=NE);
-    label((0,-xyminmax), L="$(\cos(\tau/4),\sin(\tau/4))=(0,1)$", align=S);
+    label((0,-xyminmax), L="$(\cos(\frac \pi 2),\sin(\frac \pi 2))=(0,1)$", align=S);
 
 asymptote: float:left;
-    unitsize(2.5cm);
+    size(10cm);
     real xyminmax=1.6;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
-    draw(rarc((0,0),1,0,0.4*tau), blue, L="$\tau/2$");
-    draw(rarc((0,0),1,0.4*tau,tau/2), blue);
-    draw(rarc((0,0),1,tau/2,tau));
+    draw(rarc((0,0),1,0,0.4*2*pi), blue);
+    draw(rarc((0,0),1,0.4*2*pi,2*pi/2), blue);
+    draw(rarc((0,0),1,2*pi/2,2*pi));
     dot((-1,0), p=red+dotpen);
     label((-1,0), L="$(-1,0)$", align=NW);
-    label((0,-xyminmax), L="$(\cos(\tau/2),\sin(\tau/2))=(-1,0)$", align=S);
+    label((0,-xyminmax), L="$(\cos(\pi),\sin(\pi))=(-1,0)$", align=S);
 
 asymptote: float:left;
-    unitsize(2.5cm);
+    size(10cm);
     real xyminmax=1.6;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
-    draw(rarc((0,0),1,0,3*tau/4), blue, L="$3\tau/4$");
-    draw(rarc((0,0),1,3*tau/4,tau));
+    draw(rarc((0,0),1,0,3*2*pi/4), blue);
+    draw(rarc((0,0),1,3*2*pi/4,2*pi));
     dot((0,-1), p=red+dotpen);
     label((0,-1), L="$(0,-1)$", align=SE);
-    label((0,-xyminmax), L="$(\cos(3\tau/4),\sin(3\tau/4))=(0,-1)$", align=S);
+    label((0,-xyminmax), L="$(\cos(\frac 3 2 \pi),\sin(\frac 3 2 \pi))=(0,-1)$", align=S);
 
 asymptote: float:left;
-    unitsize(2.5cm);
+    size(10cm);
     real xyminmax=1.6;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
-    draw(rarc((0,0),1,0,0.8*tau), blue, L="$\tau$");
-    draw(rarc((0,0),1,0.8*tau,tau), blue);
+    draw(rarc((0,0),1,0,2*pi), blue);
     dot((1,0), p=red+dotpen);
     label((1,0), L="$(1,0)$", align=NE);
-    label((0,-xyminmax), L="$(\cos(\tau),\sin(\tau))=(1,0)$", align=S);
+    label((0,-xyminmax), L="$(\cos(2\pi),\sin(2\pi))=(1,0)$", align=S);
 
 <div style="clear:left;"></div>
-
-Here $3\tau/4 = \frac 3 4 \tau$ means three quarters of a turn.
 
 You can check these with Python:
 
 code: python3
     >>> import math
-    >>> math.sin(math.tau/4)
+    >>> math.sin(math.pi/2)
     1.0
-    >>> math.cos(math.tau/4)
+    >>> math.cos(math.pi/2)
     6.123233995736766e-17
 
-Mathemathically $\cos(\tau/4) = 0$, but floats are not mathematically precise
-so small errors may occur. In this case, ``e-17`` at the end of the number
-means that the value we have is 6.12323399... with the dot moved left by 17
-places:
+Mathematically $\cos(\frac \pi 2) = 0$, but Python's ``math.sin`` and
+``math.cos`` use floats. Floats are not mathematically precise. For example,
+``0.1 + 0.2`` is not exactly ``0.3``, but something very close to it:
+
+code: python3
+    >>> 0.1 + 0.2
+    0.30000000000000004
+
+``math.cos(math.pi/2)`` returned ``6.123233995736766e-17``, and the ``e-17`` at
+the end of the number means that we actually have 6.12323399... with the ``.``
+moved left by 17 places (and zeros added as needed):
 
 math:
     0.00000000000000006123233995736766
 
-As you can see, this is just a small error.
+As you can see, this is just a tiny error, and the result is in fact *very*
+close to $0$.
+
+graybox: Exercise
+    The above drawings have $\theta \ge 0$, but I said $\theta \in \mathbb{R}$,
+    so it can also be negative. What is $\sin(-\frac \pi 2)$? Try to first
+    solve it by drawing a picture, and check the answer with your favorite
+    programming language.
 
 (parametric-circle)
-Now it's time to generalize this to circles with a non-1 radius. Let's take
-this thing...
+Now it's time to generalize this to circles with a radius other than 1. Let
+$r \in \mathbb{R}$ and $r > 0$. Let's [scale](#scaling) this thing...
 
 asymptote:
-    size(14cm);
+    unitsize(2.5cm);
     real xyminmax=1.4, theta=1;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
 
     draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
     draw(rarc((0,0),1,theta,tau));
     draw((cos(theta),sin(theta))--(0,0), heavygreen, L="1");
+    draw(brace((1,-0.1),(0,-0.1)), gray, L="$1$", align=S);
 
     dot((cos(theta),sin(theta)), p=red+dotpen);
     label((cos(theta),sin(theta)), L="$(x,y)=(\cos(\theta),\sin(\theta))$", align=NE);
 
-...and [scale it up](#scaling) by $r$:
+...by $r$:
 
 asymptote:
-    size(16cm);
-    real xyminmax=3.5, r=2.5, theta=1;
+    unitsize(2.5cm);
+    real xyminmax=2.5, r=2, theta=1;
     axises(-xyminmax, xyminmax, -xyminmax, xyminmax);
 
     draw(rarc((0,0),1,0,theta), blue, L="$\theta$");
     draw(rarc((0,0),r,0,theta), orange, L="$r\theta$");
     draw(rarc((0,0),r,theta,tau));
+    draw(brace((1,-0.1),(0,-0.1)), gray, L="$1$", align=S);
 
     draw((r*cos(theta),r*sin(theta))--(0,0), heavygreen, L="$r$");
 
@@ -419,8 +645,25 @@ Like I said earlier, angles don't change when scaling, but lengths do. Here
 $\theta$ represented an angle *and* an arc length, so we have the old $\theta$
 angle and a scaled $r\theta$ arc length.
 
+The coordinates also get scaled by $r$ just like other lengths, because you can
+think of them as lengths along the axises:
+
+asymptote:
+    unitsize(2.5cm);
+    real xymin=-0.3, xymax=2.5, r=2, theta=1;
+    axises(xymin, xymax, xymin, xymax);
+
+    draw(rarc((0,0),r,asin(xymin/r),0), black);
+    draw(rarc((0,0),r,0,theta), orange, L="$r\theta$");
+    draw(rarc((0,0),r,theta,pi/2-asin(xymin/r)), black);
+    draw(brace((-0.1,0),(-0.1,r*sin(theta))), gray, L="$y=r\sin(\theta)$", align=W);
+    draw((0,r*sin(theta))--(r*cos(theta),r*sin(theta)), gray+smalldashes);
+
+    draw((r*cos(theta),r*sin(theta))--(0,0), heavygreen, L="$r$");
+    dot((r*cos(theta),r*sin(theta)), p=red+dotpen);
+
 graybox: Exercise
-    Let's say that a player of a 2D game should move by 2 pixels every time a
+    The player of a 2D game should move by 2 pixels every time a
     ``player.move()`` method is called. It means that the player goes to some
     place on the circle with radius 2 around it:
 
@@ -437,16 +680,17 @@ graybox: Exercise
         draw(T*rarc((0,0),0.3,theta,0), blue, L="$\theta$");
         dot(T*(0,0), p=dotpen, L="player", align=N);
 
-    Note how $\theta$ is measured clockwise here but we have measured it
-    counter-clockwise until now; measuring clockwise is a programming standard
-    while mathematicians do things counter-clockwise. This means that
-    everything works nicely with [the "upside down" $y$
+    Note how $\theta$ is clockwise here but it has been counter-clockwise until
+    now; clockwise angles are a programming thing while mathematicians do
+    things counter-clockwise. This works nicely with [the "upside down" $y$
     axis](#upside-down-y-axis).
 
-    Let's say that ``player.x`` and ``player.y`` are the current coordinates as
-    floats (they may need to be rounded to ints when actually drawing things),
-    ``player.speed`` is 2 and ``player.angle`` is $\theta$. Write a
-    ``player.move()`` method using your favorite programming language.
+    Let ``player.x`` and ``player.y`` be the current coordinates of the player
+    as floats (they may need to be rounded to ints when actually drawing
+    things). Let ``player.speed = 2`` and ``player.angle = θ``. Write the
+    ``player.move()`` method using your favorite programming language, and
+    compare it to the moving code in my ball and paddle game.
+
 
 ## Example: Ball and Paddle
 
@@ -455,8 +699,6 @@ demonstrates most things we have learned so far. Click it, press arrow up to
 start the game and then use arrow keys to move the paddle.
 
 canvasdemo:
-    const TAU = 2*Math.PI;
-
     /* handy things:
         paddle.centerx - paddle.length/2    x coordinate of left edge
         paddle.centerx + paddle.length/2    x coordinate of right edge
@@ -487,7 +729,7 @@ canvasdemo:
       paddle.centerx = screen.width/2;
       ball.centerx = screen.width/2;
       ball.centery = screen.height - paddle.thickness - ball.radius;
-      ball.angle = 3*TAU/4;     // up
+      ball.angle = 1.5*Math.PI;     // up
       ball.moving = false;
     }
 
@@ -510,10 +752,10 @@ canvasdemo:
         ball.centery += ball.speed * Math.sin(ball.angle);
 
         if (ball.centerx - ball.radius < 0) {     // bumps left wall
-          ball.angle = TAU/2 - ball.angle;
+          ball.angle = Math.PI - ball.angle;
           ball.centerx = ball.radius;
         } else if (ball.centerx + ball.radius > screen.width) {   // right wall
-          ball.angle = TAU/2 - ball.angle;
+          ball.angle = Math.PI - ball.angle;
           ball.centerx = screen.width - ball.radius;
         } else if (ball.centery - ball.radius < 0) {          // top
           ball.angle = -ball.angle;
@@ -528,7 +770,8 @@ canvasdemo:
             ball.centery = screen.height-paddle.thickness-ball.radius;
 
             // also adjust the angle depending on which side of the paddle the
-            // ball hits
+            // ball hits, 100 is a constant that I found with trial and error,
+            // and it seems to work well
             ball.angle += (ball.centerx - paddle.centerx) / 100;
           }
         }
@@ -565,10 +808,11 @@ graybox: Exercise
 
     darkcode:
         if (the ball hits the left wall or the right wall) {
-            ball.angle = TAU/2 - ball.angle;
+            ball.angle = Math.PI - ball.angle;
         }
         if (the ball hits the top wall or the paddle) {
             ball.angle = -ball.angle;
         }
 
-    Derive these formulas.
+    Figure out why this makes the ball bounce correctly by drawing pictures of
+    the ball hitting the walls.

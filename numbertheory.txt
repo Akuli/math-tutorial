@@ -34,7 +34,7 @@ code: python3
 
 redbox:
     This section assumes that you know what [square
-    root](basics.html#powers-and-square-root) is.
+    root](oldbasics.html#powers-and-square-root) is.
 
 A prime number is a number that is divisible by only 1 and itself. For example,
 6 is not a prime because it's divisible by 2 and 3, but 7 is a prime.
