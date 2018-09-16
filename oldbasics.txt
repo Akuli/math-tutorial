@@ -1,3 +1,13 @@
+# Old Basics Page
+
+redbox: What is this page?!
+    I'm in the process of rewriting most things in this tutorial, because I
+    realized how crappy and beginner-unfriendly it was after helping a
+    beginner. I have rewritten most of the basics page (see
+    [the new basics page](basics.html)), but not all of it, and this page
+    contains the things that I haven't rewritten yet.
+
+
 ## Absolute Value
 
 The absolute value of $x$ is $|x|$ in math and something like ``abs(x)`` or
@@ -102,43 +112,6 @@ $\cos x$ with some "special" functions for historical reasons. This tutorial
 uses $\sin(x)$ and $\cos(x)$ everywhere because most programmers are familiar
 with that.
 
-## Proofs and stuff
-
-This tutorial contains quite a few exercises that ask you to prove
-something.
-
-It's easy to write a program in one's favorite programming language that goes
-through a big pile of $a$ and $n$ values and makes sure they satisfy
-$a^n = a^{n/2} \cdot a^{n/2}$, but **that is not a proof**. What if some funny
-$a$ and $n$ values break everything? It's very unlikely, but a *proof* of this
-must work with any $a$ and $n$ values.
-
-Here's an example proof:
-
-indent:
-indent:
-    $n$ is even, so $n/2$ is an integer and $a^{n/2}$ means $a$ multiplied by
-    itself $n/2$ times.
-
-    math:
-        a^{n/2} \cdot a^{n/2} \
-        &= \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}} \cdot \
-           \underbrace{a \cdot a \cdot ... \cdot a}_{n/2\text{ times}}
-        &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n/2\ +\ n/2\text{ times}}
-        &= \underbrace{a \cdot a \cdot a \cdot a \cdot a \cdot ... \cdot a}_{n\text{ times}}
-        &= a^n
-
-There it is. We didn't plug in any values; we just did something that worked
-for any $a$ and any even $n$. Note that this proof assumes $n > 0$; something
-like multiplying $a$ by itself -2 times doesn't make much sense. We'll revisit
-negative exponents [later](explog.html#exponent-functions).
-
-Note that it's ok to prove $a^n = a^{n/2} \cdot a^{n/2}$ by starting at
-$a^{n/2} \cdot a^{n/2}$ and eventually getting to $a^n$. It's just as valid to
-start with $a^n$ and try to turn that into $a^{n/2} \cdot a^{n/2}$.
-
-graybox: Exercise
-    Prove that $(a+b)c = ac+bc$ if $c$ is a positive integer.
 
 ## Areas
 

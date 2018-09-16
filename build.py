@@ -68,7 +68,7 @@ def get_sidebar_content(txtfile):
         thingy("Kinda fun", 'integrals integral-techniques more-integrals'),
         thingy("Mathy", 'more-derivatives more-geometry-and-trig explog'),
         thingy("Mind-blowing", 'taylor eulerformula'),
-        thingy("Other stuff", 'basics graphs summary', indexlink),
+        thingy("Other stuff", 'basics oldbasics graphs summary', indexlink),
     ])
 
 builder.get_sidebar_content = get_sidebar_content
