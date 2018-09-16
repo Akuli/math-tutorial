@@ -717,7 +717,6 @@ because then $x^2=(-y)^2=y^2$. But are there are other $x$ and $y$ values that
 two numbers is zero **only if** the two numbers are equal.
 
 math:
-    x^2 &= y^2
     x^2 - y^2 &= 0
     \green{(x+y)}\blue{(x-y)} &= 0
 
