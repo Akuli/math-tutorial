@@ -3,7 +3,7 @@
 In this chapter you'll learn one of the most amazing math things I have seen.
 
 redbox:
-    Be sure to learn [radians](geometry-and-trig.html#radians-and-tau),
+    Be sure to learn [radians](geometry-and-trig.html#angles),
     [sin, cos](geometry-and-trig.html#trig-with-the-unit-circle),
     [derivatives](derivatives.html), [e](explog.html#the-e-constant) and
     [Taylor series](taylor.html) before reading this chapter. That's lots of

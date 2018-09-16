@@ -12,7 +12,7 @@ own sin and cos implementations that would be good enough for pretty much
 everything.
 
 redbox:
-    This tutorial uses [radians](geometry-and-trig.html#radians-and-tau),
+    This tutorial uses [radians](geometry-and-trig.html#angles),
     [unit circle trig](geometry-and-trig.html#trig-with-the-unit-circle) and
     [derivatives](derivatives.html). Be sure to learn these things first.
 

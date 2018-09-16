@@ -29,7 +29,7 @@ We'll prove this soon. Note that $c$ must be the longest side of the triangle.
 The Pythagorean theorem has many important applications:
 
 * The hypotenuse of a triangle can be calculated by [square
-  rooting](basics.html#powers-and-square-root) both sides of the above
+  rooting](oldbasics.html#powers-and-square-root) both sides of the above
   equation. Hypotenuse is a fancy word that means the longest side of a
   quarter-turn triangle.
 
@@ -145,7 +145,7 @@ floatingbox: Handy thing: $(a+b)^2=a^2+2ab+b^2$
       =&\ a^2+2ab+b^2
 
 We can calculate the total area of the above square in a couple different ways
-using some [basic area stuff](basics.html#areas):
+using some [basic area stuff](oldbasics.html#areas):
 
 * The square's sides are each $a+b$, so the area must be $(a+b)(a+b)$.
 * The square consists of the green square whose area is $c^2$ and 4 yellow
@@ -404,7 +404,7 @@ redbox:
 
 Let's draw an angle $\theta$ and a change $\Delta\theta$ in the unit circle.
 We'll assume that $\theta$ is in radians, so [it's an arc length on the unit
-circle](geometry-and-trig.html#radians-and-tau).
+circle](geometry-and-trig.html#angles).
 
 asymptote:
     size(16cm);

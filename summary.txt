@@ -129,7 +129,7 @@ asymptote3d: float:left;
 
 The circle area is explained [here](integrals.html#example-circle-area),
 the cone volume is explained [here](integrals.html#going-3d), and everything
-else is explained [here](basics.html#areas).
+else is explained [here](oldbasics.html#areas).
 
 ## Slopes
 
@@ -284,7 +284,7 @@ math: \int_1^3 2x\ dx = \left[x^2\right]_1^3 = 3^2-1^2 = 9-1 = 8
 
 (integral-rules)
 Here are some handy antiderivative rules. The $a$ can be any
-[constant](basics.html#constants) and it has nothing to do with the left
+[constant](oldbasics.html#constants) and it has nothing to do with the left
 side of an area, and $f$ and $g$ can be any continuous functions.
 
 math:

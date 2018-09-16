@@ -8,6 +8,14 @@ redbox: What is this page?!
     contains the things that I haven't rewritten yet.
 
 
+## Constants
+
+A value is considered to be a constant if it doesn't depend on $x$. For
+example, $2x$ is not a constant, because it gets different values depending on
+$x$; for example, if $x=3$, then $2x=6$, and if $x=4$, then $2x=8$. On the
+other hand, things like $3$, $4$ and $\pi = 3.14159...$ are constants.
+
+
 ## Absolute Value
 
 The absolute value of $x$ is $|x|$ in math and something like ``abs(x)`` or

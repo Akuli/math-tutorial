@@ -452,7 +452,7 @@ have derivatives, but the derivative does not exist in these cases:
 
 * The graph of the function has a spike in it. Derivatives describe
   "growing speed" and it isn't clear how fast the values grow on top of a
-  spike. For example, the [absolute value](basics.html#absolute-value)
+  spike. For example, the [absolute value](oldbasics.html#absolute-value)
   $|x|$ has a derivative everywhere except at $x=0$.
 
 indent:
