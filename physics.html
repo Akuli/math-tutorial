@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>Physics Stuff</b></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><b>Physics Stuff</b></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="physics-stuff">Physics Stuff<a class="headerlink" href="#physics-stuff" title="Link to this title">¶</a></h1><p>This is mostly a math tutorial, but the math is not useless or isolated from
 the real world in any way. In this chapter we'll look into a bunch of ways to
 use math things for calculating more concrete stuff in the real world.</p>
@@ -179,9 +180,9 @@ it assumes that you know this stuff.
 </div><p>Let's say that we hang a spring off of something, and our $y$ axis is upside
 down so that $y=0$ is the bottom of the spring when it's hanging freely.</p>
 
-<p><img width="234" height="215" class="asymptote" src="asymptote/fb5fdde3516a28bc4df433c4bf1a70d2.svg" /></p><p>Now, let's attach a mass to the end of the spring:</p>
+<p><img width="235" height="216" class="asymptote" src="asymptote/fb5fdde3516a28bc4df433c4bf1a70d2.svg" /></p><p>Now, let's attach a mass to the end of the spring:</p>
 
-<p><img width="236" height="314" class="asymptote" src="asymptote/6f08a427d875302b45d2c9374d6ccca9.svg" /></p><p>Now there are two forces that act on our mass: gravity $G=mg$ and a spring
+<p><img width="236" height="315" class="asymptote" src="asymptote/6f08a427d875302b45d2c9374d6ccca9.svg" /></p><p>Now there are two forces that act on our mass: gravity $G=mg$ and a spring
 force $F=-ky$. Here $k$ is a constant that describes the stiffness of our
 spring: more $k$ means that it pulls up with a bigger force. We're also
 multiplying by $y$, so pulling the spring more means that the spring resists it
@@ -210,7 +211,7 @@ see soon what sine waves have to do with a spring and a bouncing mass.
 </div><p>Let's pull the mass down a bit and release it, so it starts to bounce up and
 down:</p>
 
-<p><img width="262" height="342" class="asymptote" src="asymptote/09dfee190de4c872d404dea93ea9ca0c.svg" /></p><p>Note that we now have $y(t)$ at left; $y$ is no longer a constant, it depends
+<p><img width="263" height="344" class="asymptote" src="asymptote/09dfee190de4c872d404dea93ea9ca0c.svg" /></p><p>Note that we now have $y(t)$ at left; $y$ is no longer a constant, it depends
 on the time because the mass is moving up and down. Let's try to figure out how
 to calculate $y(t)$ values.</p>
 
@@ -261,7 +262,7 @@ though it seemed to have nothing to do with circles and sine waves! In fact,
 $A$ is just making the graph taller, and $C$ is moving it <i>down</i> because we
 decided that more $y$ means down.</p>
 
-<p><img width="550" height="375" class="asymptote" src="asymptote/ac188661b022bf81d9c277efcef26a09.svg" /></p><p>We'll figure out how to calculate the period time $T$ later, but let's find the
+<p><img width="552" height="377" class="asymptote" src="asymptote/ac188661b022bf81d9c277efcef26a09.svg" /></p><p>We'll figure out how to calculate the period time $T$ later, but let's find the
 $B$ and $C$ constants first. Again, we'll do this by comparing similar parts of
 the equations.</p>
 

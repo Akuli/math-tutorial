@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><b>Integration Techniques</b></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><b>Integration Techniques</b></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="integration-techniques">Integration Techniques<a class="headerlink" href="#integration-techniques" title="Link to this title">¶</a></h1><div class="box redbox"><p>This chapter assumes that you know <a href="integrals.html">integrals</a> and
 <a href="more-geometry-and-trig.html#derivative-of-sine">sine and cosine
 derivatives</a>. It also uses
@@ -187,7 +188,7 @@ $$\begin{align}\newcommand{abs}[1]{\lvert{#1}\rvert} \\
 inverse of $\sin$, but it always returns values so that
 $-\frac \tau 4 \le \theta \le \frac \tau 4$, denoted with blue in this pic:</p>
 
-<p><img width="198" height="198" class="asymptote" src="asymptote/1b353c06b508379088bae7f98bc8d664.svg" /></p><p>This is because if we know what $\sin(\theta)$ is, there are multiple values
+<p><img width="199" height="199" class="asymptote" src="asymptote/1b353c06b508379088bae7f98bc8d664.svg" /></p><p>This is because if we know what $\sin(\theta)$ is, there are multiple values
 that $\theta$ could be, like the red dot in the image, but we don't have this
 problem on a restricted range like $-\frac \tau 4 \le \theta \le \frac \tau 4$.</p>
 
@@ -233,7 +234,7 @@ that.</p>
 <div id="circle-area" class="box graybox"><h2> Exercise</h2><p>In <a href="integrals.html#example-circle-area">the integral chapter</a> I showed you
 this pic of different ways to prove the circle area $\pi r^2$:</p>
 
-<p><img width="510" height="147" class="asymptote" src="asymptote/6d13ddcb1b3c44f3b6de10c17b678f94.svg" /></p><p>Prove the circle area formula using the <i>first</i> way, the one with the
+<p><img width="512" height="148" class="asymptote" src="asymptote/6d13ddcb1b3c44f3b6de10c17b678f94.svg" /></p><p>Prove the circle area formula using the <i>first</i> way, the one with the
 stupid vertical slices.
 </p>
 

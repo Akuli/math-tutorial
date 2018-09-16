@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><b>Infinity</b></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><b>Infinity</b></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="infinity">Infinity<a class="headerlink" href="#infinity" title="Link to this title">¶</a></h1><p>This tutorial uses the symbol $\infty$ in a few places, and it's not at all
 obvious how it behaves. It is after all bigger than any other number, and
 that's kind of weird. Mathematicians say that infinity is not a number at all,
@@ -171,7 +172,7 @@ give us something that doesn't make sense. For example:</p>
 
 $$\begin{align}\lim_{x\to\infty}(x^2 - x)  = \left(\lim_{x\to\infty} x^2\right)-\left(\lim_{x\to\infty} x\right)  = \infty - \infty\end{align}$$<p>Here we need to do some other stuff before using the rules.</p>
 
-<p>You are probably wondering WTF the last rule is saying. See <a href="basics.html#functions">this
+<p>You are probably wondering WTF the last rule is saying. See <a href="oldbasics.html#functions">this
 thing</a> if you have no idea what a function is. <b>Pretty
 much all functions you'll come across in this tutorial are continuous</b>, and
 I'll let you know if something is not continuous. We'll talk more about this
@@ -249,7 +250,7 @@ $$\begin{align}\lim_{n\to\infty} \left(1+\frac 1 n\right)^{2n}  = \lim_{n\to\inf
 <span style="color: #007020; font-weight: bold">NaN</span>
 </pre></div>
 </div><h3 id="0-0">$0^0$<a class="headerlink" href="#0-0" title="Link to this title">¶</a></h3><div class="indent"><p>Let's start by thinking about what $x^0$ means for a finite $x$. We know
-that $x^{a+b}=x^ax^b$ (see <a href="basics.html#powers-and-square-root">the basics
+that $x^{a+b}=x^ax^b$ (see <a href="oldbasics.html#powers-and-square-root">the basics
 page</a>), so we can plug in e.g. $a=1$
 and $b=0$:</p>
 

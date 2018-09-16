@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,99 +36,147 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><b>Geometry and Trig</b></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><b>Geometry and Trig</b></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h1><p>This chapter contains useful stuff that isn't too difficult to get started
 with. You'll find it especially useful if you like writing games, and this
-chapter contains a working example game.</p>
+chapter contains a working example game.
+</p>
 
-<h2 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Link to this title">¶</a></h2><p>If we multiply all measurements of a shape or picture by a positive number, the
-size changes. For example, here the blue triangle is the yellow triangle
-<b>scaled up by 2</b>:</p>
+<h2 id="angles">Angles<a class="headerlink" href="#angles" title="Link to this title">¶</a></h2><p>You probably know what <i>degrees</i> are. For example, 45 degrees means an angle
+like this:</p>
 
-<p><img width="408" height="110" class="asymptote" src="asymptote/69cdb2301bf608d9b4b0aa1149071904.svg" /></p><p>Note that angles do not change when scaling. These pictures represent the
-bottom-left corners of the above triangles, and as you can see, they are
-identical:</p>
+<p><img width="88" height="88" class="asymptote" src="asymptote/71b981dc7a41961d3b42eb4d374bc699.svg" /></p><p>Real mathematicians™ don't use degrees. They use <b>radians</b> instead:</p>
 
-<p><img width="281" height="91" class="asymptote" src="asymptote/e392a25dc6b3bc245778b5efea167438.svg" /></p><p>Scaling with a number less than 1 is known as <b>scaling down</b>, and it makes
-things smaller. For example, dividing by 2 is same as multiplying by
-$\frac 1 2 = 0.5$, so dividing everything by 2 does this:</p>
+<img src="https://imgs.xkcd.com/comics/degrees.png" style="max-width: 100%;     max-height: 100%;" /><p><small>The comic comes from <a href="https://xkcd.com/1643/">here</a>.</small></p>
 
-<p><img width="261" height="81" class="asymptote" src="asymptote/2529fbeab0f8c74023c4b77a648e80f8.svg" /></p><h2 id="radians-and-tau">Radians and Tau<a class="headerlink" href="#radians-and-tau" title="Link to this title">¶</a></h2><p>Maybe we could measure angles somehow? A common way to do this is to draw
-angles on a circle arc with radius 1. Like this:</p>
+<p>Most programming languages also use radians, and if you insist on using
+degrees, you will need to convert between degrees and radians a lot. Let me
+explain you what radians are, so you can avoid that mess.</p>
 
-<p><img width="283" height="259" class="asymptote" src="asymptote/8beba09a82421913311357796b3af19a.svg" /></p><p>Now we can define the angle as the length of the blue arc. With this
-definition, the angle in the picture is about 1 because it looks like the
-length of the blue arc is about the same as the radius. This way to measure
-angles is known as <b>radians</b>, and the angle in the pic is 1 radian.</p>
+<p>Let's draw a circle with radius 1; that is, the distance between any point on
+the circle and the center of the circle is 1.</p>
 
-<p>Here are more pictures of angles that should help you understand this:</p>
+<p><img width="173" height="173" class="asymptote" src="asymptote/f3c1c65ca2215b35840a2010234a7769.svg" /></p><p>Now let's take a slice of this circle so that the
+<span style="color:red;">arc length</span> of the slice is also 1. The angle we
+get in the center is then 1 radian.</p>
 
-<p><img width="510" height="239" class="asymptote" src="asymptote/7128732115906be6eb534dd13ca6d149.svg" /></p><p>In this tutorial, the greek tau letter $\tau$ means a full turn in radians:</p>
+<p><img width="307" height="173" class="asymptote" src="asymptote/4da070c1c0b9f0a9d79f9086d8b65ab6.svg" /></p><p>In general, if you pick a circle slice with arc length $x$, the angle will be
+$x$ radians:</p>
 
-$$\begin{align}\tau = 6.2831853...\end{align}$$<p>So, if we draw a circle with radius 1, its circumference is $\tau$.</p>
+<p><img width="318" height="178" class="asymptote" src="asymptote/9252b2621a53c2eb69877021404f1a03.svg" /></p><p>Here are more pictures of angles that should help you understand this.</p>
 
-<p><img width="113" height="91" class="asymptote" src="asymptote/a15b94392ff6fbb16be00bcfb2025a0f.svg" /></p><p>Some programming languages (e.g. new Pythons) have a <code>tau</code> constant, but if
-your favorite language doesn't, use <code>2*pi</code> instead. Here pi is the more
-well-known circle constant $\pi = \tau/2 = 3.14159265...$, and almost all
-programming languages have something like <code>math.pi</code> or <code>Math.PI</code>.</p>
+<p><img width="512" height="240" class="asymptote" src="asymptote/4296162a65a0f5d7ce2591b79644398f.svg" /></p><p>As you can see, 6 radians is <i>almost</i> a turn, and 3 radians is <i>almost</i> a half
+turn. A full turn happens to be $2\pi$ radians, where $\pi = 3.14159...$ is the
+famous constant, available as something like <code>math.pi</code> or <code>Math.PI</code> in most
+programming languages.</p>
 
-<p>I find $\tau$ easier to work with than $\pi$ because if I see $\tau/4$ somewhere
-I know immediately that it's a quarter turn, but $\pi/2$ isn't as obvious. Of
-course, you can use $\pi$ if you prefer it over $\tau$.</p>
+<p>Let's prove that a full turn is $2\pi$ radians. First of all, if we want to do
+anything at all with $\pi$, we need to know what it is. Usually $\pi$ is
+presented like this in schoolbook math:</p>
 
-<p>If we <a href="#scaling">scale up</a> the above $\tau$ pic by some number $r$, the radius
-becomes $1 \cdot r = r$ and the perimeter becomes $\tau r$:</p>
+<p><img width="171" height="134" class="asymptote" src="asymptote/a90055e6faa1db5c9a6c4cf467a84c62.svg" /></p><p>So, for <i>any</i> circle, if we measure the $d$, the length of the blue part will
+be $\pi$ times the $d$. It doesn't matter what size the circle is, and I'll
+explain more about that <a href="#scaling">soon</a>.</p>
 
-<p><img width="170" height="136" class="asymptote" src="asymptote/f18d9bcda74e69d1423246f6d47153f0.svg" /></p><p>Now we have something that works with any circle instead of just circles with
-radius 1.</p>
+<p>Anyway, now let's have a look at the picture with an angle of $x$ radians, and
+let's modify it so that it represents the angle of a full turn:</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Use the above $\tau r$ drawing and the below animation to conclude that
-$\tau=2\pi$.</p>
+<p><img width="196" height="173" class="asymptote" src="asymptote/374fbaf49953170de0f7ff1b55955bd1.svg" /></p><p>The length of the long, black line is $2$ because it's double the length of the
+$1$ line. Comparing the pictures gives $d=2$ and $x=\pi d = \pi \cdot 2 = 2\pi$.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>Find a round object and measuring tape, and use them to calculate $\pi$.
+You should get quite close to 3.14. Like I said, any round object will do,
+and you will <i>always</i> get the same value.</p>
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Pi-unrolled_slow.gif" style="max-width: 300px;" /><p><small>The animation comes from
 <a href="https://commons.wikimedia.org/wiki/File:Pi-unrolled_slow.gif">here</a>.</small>
 </p>
 
-</div><h2 id="degrees">Degrees<a class="headerlink" href="#degrees" title="Link to this title">¶</a></h2><p>Degrees are an alternative to radians, and they work so that 360° is a full
-turn. Here ° is the degree symbol, and 360 is a number that people ended up
-using for historical reasons.</p>
+</div><p>Here are pictures of important angles in radians. Spend a while looking at this
+section so that if I say $\pi / 2$, you'll immediately think of an angle like
+∟.</p>
 
-<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;Zaab1t&gt;     Akuli: is 360 really arbitrarily picked
-&lt;Akuli&gt;      i don&#39;t know or care really
-&lt;Akuli&gt;      is 12 hours arbitarily picked
-</pre></div>
-<p>We already know that 360 degrees is $\tau$ radians, but let's figure out how to
-convert $D$ degrees to $R$ radians. One degree is $\frac{1}{360}$ turns, so $D$
-degrees is $D \cdot \frac{1}{360}=\frac{D}{360}$ turns. Similarly, $R$ radians
-means $\frac R \tau$ turns.</p>
+<p><img width="341" height="235" class="asymptote" src="asymptote/fa2290414b50f343f3f8382d7ca1eff3.svg" /></p><div class="box graybox"><h2> Another Exercise</h2><p>How many degrees is $\pi$ radians? How about 1 radian? How about $x$
+radians? Write a <code>radians_to_degrees()</code> function using your favorite
+programming language.
+</p>
 
-$$\begin{align}\frac{D}{360} &= \frac{R}{\tau}\end{align}$$<p>Multiplying both sides by 360 or $\tau$ gives these:</p>
+</div><h2 id="scaling">Scaling<a class="headerlink" href="#scaling" title="Link to this title">¶</a></h2><p>If we multiply all measurements of a shape or picture by a positive number, the
+size changes. For example, here the blue triangle is the yellow triangle
+<b>scaled up by 2</b>:</p>
 
-$$\begin{align}D &= R \cdot 360 / \tau \\
-R &= D \cdot \tau / 360\end{align}$$<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">degrees2radians</span>(degrees):
-    <span style="color: #007020; font-weight: bold">return</span> degrees <span style="color: #666666">*</span> math<span style="color: #666666">.</span>tau <span style="color: #666666">/</span> <span style="color: #40a070">360</span>
+<p><img width="409" height="110" class="asymptote" src="asymptote/69cdb2301bf608d9b4b0aa1149071904.svg" /></p><p>Note that angles do not change when scaling. These pictures represent the
+bottom-left corners of the above triangles, and as you can see, they are
+identical:</p>
 
-<span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">radians2degrees</span>(radians):
-    <span style="color: #007020; font-weight: bold">return</span> radians <span style="color: #666666">*</span> <span style="color: #40a070">360</span> <span style="color: #666666">/</span> math<span style="color: #666666">.</span>tau
-</pre></div>
-<p>For example, $\frac{90}{360} = \frac 1 4$, so 90° is
-$90 \cdot \tau / 360 = \tau\cdot\frac{90}{360} = \frac{\tau}{4}$ radians
-(quarter turn).</p>
+<p><img width="282" height="91" class="asymptote" src="asymptote/e392a25dc6b3bc245778b5efea167438.svg" /></p><p>Scaling with a number less than 1 is known as <b>scaling down</b>, and it makes
+things smaller. For example, dividing by 2 is same as multiplying by
+$\frac 1 2 = 0.5$, so dividing everything by 2 does this:</p>
 
-<p>Some programming languages also have conversion functions like Python's
-<code>math.degrees()</code> and <code>math.radians()</code>.</p>
+<p><img width="262" height="81" class="asymptote" src="asymptote/2529fbeab0f8c74023c4b77a648e80f8.svg" /></p><p><hr /></p>
 
-<img src="https://imgs.xkcd.com/comics/degrees.png" style="max-width: 100%;     max-height: 100%;" /><p><small>The comic comes from <a href="https://xkcd.com/1643/">here</a>.</small></p>
+<p>Scaling seems to change the lengths of all straight lines the same way, but it
+works for curvy things as well. We can explain this by thinking of the curve as
+if it consisted of a bunch of short and straight lines. It doesn't, but if we
+use many lines, it will be "accurate enough"; more about this soon. Also, note
+that I said "explain", not "prove"; the purpose of this thing is to give you an
+idea of why the curve scaling thing works, and I have no idea whether real
+mathematicians think that this explanation is a perfect proof.</p>
 
-<h2 id="coordinates">Coordinates<a class="headerlink" href="#coordinates" title="Link to this title">¶</a></h2><p>Here's a boring number line:</p>
+<p>For example, let's say we have this arc:</p>
 
-<p><img width="340" height="33" class="asymptote" src="asymptote/874eb8510145695d48255676196ed1f7.svg" /></p><p>If we have two number lines called $x$ and $y$, we can do this:</p>
+<p><img width="172" height="88" class="asymptote" src="asymptote/7defdf00b0339aa008137271250964c2.svg" /></p><p>Let $N \in \{1,2,3,...\}$ be the number of short lines, and let
+$L_1,L_2,L_3,...,L_N$ be the lengths of the lines. Like this ($N=8$ in the
+picture, but it doesn't have to be 8):</p>
 
-<p><img width="340" height="340" class="asymptote" src="asymptote/01e559c678f6e69dfe6ef767d494500e.svg" /></p><p>Every point on this plane can be represented with two numbers. These are known
-as the $x$ and $y$ <b>coordinates</b>. For example, the $x$ coordinate of the red
-point in the below picture is $3$ and the $y$ coordinate is $-2$:</p>
+<p><img width="239" height="98" class="asymptote" src="asymptote/b8651f453762f49e040988bca8adeaa4.svg" /></p><p>Total length before the scaling is then $L_1+L_2+...+L_N$. Let $s > 0$. After
+scaling by $s$, the lengths are $sL_1,sL_2,...,sL_N$, and the total length is
+then $sL_1+sL_2+...+sL_N$. We can factor it:</p>
 
-<p><img width="340" height="325" class="asymptote" src="asymptote/dac8dfd1d96bef42d0f6559adafe58f9.svg" /></p><p>Usually $x$ goes before $y$ for historical reasons, so $(3,-2)$ means
+$$\begin{align}\underbrace{sL_1+sL_2+...+sL_N}_\text{after scaling}  = s \cdot \underbrace{(L_1+L_2+...+sL_N)}_\text{before scaling}\end{align}$$<p>The total length got scaled by $s$.</p>
+
+<p>Note that this was just an approximation. Mathematical curves don't need to
+consist of straight lines, but even though it is an approximation, we can
+make any errors as small as we want by choosing many lines and making them
+smaller. Everything we did above will work the same, and it doesn't matter how
+many things the $...$ parts contain. The $N$ can be as big as we want; if we
+set $N=1000000000000000000000$ or something, everything will be <i>really</i>
+precise.</p>
+
+<p>For example, this drawing has 20 lines instead of 8, and it's already much
+harder to actually see the lines:</p>
+
+<p><img width="172" height="87" class="asymptote" src="asymptote/09822e7a1c9a0265b1929ec309f02e60.svg" /></p><p><hr /></p>
+
+<p>Now we are ready to understand why $\pi$ appears in all circles. Let's draw a
+circle with diameter $d$, and let $x$ represent the length of the blue line.
+(Yes, we'll always have $x=\pi d$, but we are trying to prove it now, so we
+must pretend that we don't know it yet.)</p>
+
+<p><img width="114" height="91" class="asymptote" src="asymptote/3b0d97e5e50e91776ee91b23602b9cde.svg" /></p><p>Now dividing the lengths gives $\frac{\color{blue}x}{d}$. You'll see why we
+divided them in a moment.</p>
+
+<p>Let $s \in \mathbb{R}, s > 0$. Scaling by $s$ gives this, because <i>all</i>
+measurements get multiplied by $s$, including the $x$:</p>
+
+<p><img width="199" height="165" class="asymptote" src="asymptote/2664da9d6644e6b6920e5f75c121070e.svg" /></p><p>In my pictures, $s > 1$ because scaling by $s$ made the thing bigger, but it
+works the same way if $0 < s < 1$ or $s=1$. Let's do the same division thing
+again based on this picture:</p>
+
+$$\begin{align}\frac{\color{blue}{sx}}{sd} = \frac x d\end{align}$$<p>The $s$ cancels so that we end up with the same $\frac x d$ ratio every time,
+no matter how we scale the circle. In other words, this works for circles of
+all sizes. The $\frac x d$ ratio is called $\pi$, and we get our final result:</p>
+
+$$\begin{align}\frac x d &= \pi \\
+x &= \pi d\end{align}$$<h2 id="coordinates">Coordinates<a class="headerlink" href="#coordinates" title="Link to this title">¶</a></h2><p>Here's a boring number line that represents $\mathbb{R}$.</p>
+
+<p><img width="341" height="33" class="asymptote" src="asymptote/874eb8510145695d48255676196ed1f7.svg" /></p><p>If we have two number lines called $x$ and $y$, we can do this:</p>
+
+<p><img width="341" height="341" class="asymptote" src="asymptote/01e559c678f6e69dfe6ef767d494500e.svg" /></p><p>Every point can now be represented with two numbers. These are known as the $x$
+and $y$ <b>coordinates</b>. For example, the $x$ coordinate of the red point in
+the below picture is $3$ and the $y$ coordinate is $-2$:</p>
+
+<p><img width="341" height="327" class="asymptote" src="asymptote/dac8dfd1d96bef42d0f6559adafe58f9.svg" /></p><p>Usually $x$ goes before $y$ for historical reasons, so $(3,-2)$ means
 $(x,y)=(3,-2)$.</p>
 
 <p id="upside-down-y-axis">So far this probably feels like some useless gibberish that has nothing to do
@@ -137,27 +186,58 @@ on the screen, and the $y$ axis is upside down compared to what mathematicians
 are used to. Like this:
 </p>
 
-<p><img width="392" height="255" class="asymptote" src="asymptote/f60ba455d8df084fc4f28c317d098af1.svg" /></p><div class="box graybox"><h2> Exercise</h2><p>The location of something usually means the top left corner in programming.
-Where does the <b>bottom right</b> corner of the window go in this code?</p>
+<p><img width="394" height="256" class="asymptote" src="asymptote/f60ba455d8df084fc4f28c317d098af1.svg" /></p><h2 id="basic-coordinate-stuff">Basic Coordinate Stuff<a class="headerlink" href="#basic-coordinate-stuff" title="Link to this title">¶</a></h2><p>There is a working ball and paddle at the end of this chapter. In that game, I
+have code like this:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>ball.centery = screen.height - paddle.thickness - ball.radius;
+</pre></div>
+<p>In this game, all coordinates are in pixels. When you see something like this,
+you can always draw a picture and figure out what it does. For example, let's
+figure out where the ball ends up when this code runs. In the game, there is no
+space between the bottom of the screen and the paddle, so the picture looks
+like this:</p>
+
+<p><img width="569" height="430" class="asymptote" src="asymptote/0a2cf4c9f886bcdf7b29f6eab094734c.svg" /></p><p>There are many things in the picture, but if you look at it, you can now see
+what the code is doing. Let's go through it a step at a time to make sure you
+understand all of it:</p>
+
+<p><ul>
+    <li>The $y$ axis is "upside down" as usual in programming, so
+        <code>screen.height</code> is the $y$ coordinate of the bottom of the
+        screen, as shown in the picture.</li>
+    <li>The <i>top</i> of the paddle is above the bottom of the screen, so its $y$
+        coordinate is smaller. That's <code>screen.height - paddle.thickness</code>.</li>
+    <li>The center of the ball is even higher, and that difference is the
+        radius of the ball because the ball sits on top of the paddle. That's
+        why we set the $y$ coordinate of the ball's center, or
+        <code>ball.centery</code>, to <code>screen.height - paddle.thickness - ball.radius</code>.</li>
+</ul></p>
+
+<p>If you are still following, that's great! This example is probably the most
+complicated calculation in my game, and now you should have no trouble at all
+with understanding the other things.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>The $(x,y)$ location of something usually means the top left corner in
+programming. Where does the <b>bottom right</b> corner of the window go in
+this GUI code?</p>
 
 <div class="highlight" style="background: #a9a9a9"><pre style="line-height: 125%"><span></span>window.resize(300, 200);    // (width, height)
 window.move_to(600, 500);   // (x, y)
 </pre></div>
-<p>If this exercise feels difficult, grab a piece of paper and draw a picture
-of the whole screen with the window in it.
+<p>Take a piece of paper and draw a picture of the whole screen with the
+window in it; it'll help you to understand how this works.
 </p>
 
 </div><h2 id="trig-with-the-unit-circle">Trig with the Unit Circle<a class="headerlink" href="#trig-with-the-unit-circle" title="Link to this title">¶</a></h2><div class="box graybox"><p>This section uses the Greek theta letter $\theta$ because mathematicians
-often use it to denote an angle, just like $r$ often denotes a radius. Try
-not to get confused; it's just a letter.
+often use it to denote an angle. Don't be confused, it's just a letter.
 </p>
 
-</div><p>Here's a problem that combines <a href="#coordinates">the coordinate stuff</a> with <a href="#radians-and-tau">the
-radian stuff</a> above. The unit circle means a circle with
-radius 1. Let's draw a unit circle in the center of the xy plane (we'll talk
-about other radiuses soon) and draw an angle to it.</p>
+</div><p>Here's a problem that combines <a href="#coordinates">the coordinate stuff</a> with <a href="#angles">the
+angle stuff</a> above. Let $\theta \in \mathbb{R}$. The <b>unit circle</b>
+means a circle with radius 1. Let's draw a unit circle in the center of the xy
+plane, and let's draw the $\theta$ angle to it.</p>
 
-<p><img width="340" height="317" class="asymptote" src="asymptote/d1ad938841d893379a6d9e6ab8a19a03.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure you
+<p><img width="341" height="318" class="asymptote" src="asymptote/d1ad938841d893379a6d9e6ab8a19a03.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure you
 understand them before moving on.</p>
 
 <p>Now, what are the coordinates of the red dot? Mathematicians have defined a
@@ -166,55 +246,68 @@ couple functions just for solving this problem:</p>
 $$\begin{align}x &= \cos(\theta) \\
 y &= \sin(\theta)\end{align}$$<p>The function names are $\cos$ and $\sin$ for historical reasons. Almost all
 programming languages have <code>cos</code> and <code>sin</code> functions, and you don't need to
-know how they calculate those values with other functions yet. You just need to
-know what $\sin$ and $\cos$ are.</p>
+know how they are implemented. You just need to know what they do.</p>
 
 <p id="common-sincos">As before, here's a pile of examples:
 </p>
 
-<img width="254" height="285" class="asymptote" src="asymptote/14c7a7beed5445420294ab0a808e8b21.svg" style="float:left;" /><img width="284" height="285" class="asymptote" src="asymptote/487111dc01d517a8fc53f0903117063a.svg" style="float:left;" /><img width="303" height="285" class="asymptote" src="asymptote/d9c5ae1c58d9ad18a3b40c289cd2367d.svg" style="float:left;" /><img width="326" height="285" class="asymptote" src="asymptote/867da5a2fa87f02e1002b0c6d16d6a7e.svg" style="float:left;" /><img width="256" height="285" class="asymptote" src="asymptote/b1e51b4c04ef19dba569e8602eea9257.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
-
-<p>Here $3\tau/4 = \frac 3 4 \tau$ means three quarters of a turn.</p>
+<img width="254" height="285" class="asymptote" src="asymptote/550df7063ff42a93afb4acf1471ead72.svg" style="float:left;" /><img width="254" height="285" class="asymptote" src="asymptote/7a10ce29cec29d52165aed04f3fc03e0.svg" style="float:left;" /><img width="285" height="282" class="asymptote" src="asymptote/63ac57aa5f6653e145d3df05de7933b7.svg" style="float:left;" /><img width="280" height="285" class="asymptote" src="asymptote/44b83e084237b401a8d3fc2ee0fc9ccd.svg" style="float:left;" /><img width="269" height="285" class="asymptote" src="asymptote/f987e60f91d1306d9cdbaa02f67d3ca3.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
 
 <p>You can check these with Python:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>tau<span style="color: #666666">/</span><span style="color: #40a070">4</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>sin(math<span style="color: #666666">.</span>pi<span style="color: #666666">/</span><span style="color: #40a070">2</span>)
 <span style="color: #888888">1.0</span>
-<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>cos(math<span style="color: #666666">.</span>tau<span style="color: #666666">/</span><span style="color: #40a070">4</span>)
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>math<span style="color: #666666">.</span>cos(math<span style="color: #666666">.</span>pi<span style="color: #666666">/</span><span style="color: #40a070">2</span>)
 <span style="color: #888888">6.123233995736766e-17</span>
 </pre></div>
-<p>Mathemathically $\cos(\tau/4) = 0$, but floats are not mathematically precise
-so small errors may occur. In this case, <code>e-17</code> at the end of the number
-means that the value we have is 6.12323399... with the dot moved left by 17
-places:</p>
+<p>Mathematically $\cos(\frac \pi 2) = 0$, but Python's <code>math.sin</code> and
+<code>math.cos</code> use floats. Floats are not mathematically precise. For example,
+<code>0.1 + 0.2</code> is not exactly <code>0.3</code>, but something very close to it:</p>
 
-$$\begin{align}0.00000000000000006123233995736766\end{align}$$<p>As you can see, this is just a small error.</p>
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #40a070">0.1</span> <span style="color: #666666">+</span> <span style="color: #40a070">0.2</span>
+<span style="color: #888888">0.30000000000000004</span>
+</pre></div>
+<p><code>math.cos(math.pi/2)</code> returned <code>6.123233995736766e-17</code>, and the <code>e-17</code> at
+the end of the number means that we actually have 6.12323399... with the <code>.</code>
+moved left by 17 places (and zeros added as needed):</p>
 
-<p id="parametric-circle">Now it's time to generalize this to circles with a non-1 radius. Let's take
-this thing...
+$$\begin{align}0.00000000000000006123233995736766\end{align}$$<p>As you can see, this is just a tiny error, and the result is in fact <i>very</i>
+close to $0$.</p>
+
+<div class="box graybox"><h2> Exercise</h2><p>The above drawings have $\theta \ge 0$, but I said $\theta \in \mathbb{R}$,
+so it can also be negative. What is $\sin(-\frac \pi 2)$? Try to first
+solve it by drawing a picture, and check the answer with your favorite
+programming language.
 </p>
 
-<p><img width="397" height="249" class="asymptote" src="asymptote/2bf352ceb4c3824d395192f7dee081cb.svg" /></p><p>...and <a href="#scaling">scale it up</a> by $r$:</p>
+</div><p id="parametric-circle">Now it's time to generalize this to circles with a radius other than 1. Let
+$r \in \mathbb{R}$ and $r > 0$. Let's <a href="#scaling">scale</a> this thing...
+</p>
 
-<p><img width="454" height="285" class="asymptote" src="asymptote/f6bd473fcf9331b0821b112b6ee6afda.svg" /></p><p>Like I said earlier, angles don't change when scaling, but lengths do. Here
+<p><img width="380" height="224" class="asymptote" src="asymptote/d7ddd61fe61449beb5acbe72133ce23d.svg" /></p><p>...by $r$:</p>
+
+<p><img width="529" height="380" class="asymptote" src="asymptote/1ed9e61f7022c858cf978d5b05e58a8d.svg" /></p><p>Like I said earlier, angles don't change when scaling, but lengths do. Here
 $\theta$ represented an angle <i>and</i> an arc length, so we have the old $\theta$
 angle and a scaled $r\theta$ arc length.</p>
 
-<div class="box graybox"><h2> Exercise</h2><p>Let's say that a player of a 2D game should move by 2 pixels every time a
+<p>The coordinates also get scaled by $r$ just like other lengths, because you can
+think of them as lengths along the axises:</p>
+
+<p><img width="354" height="224" class="asymptote" src="asymptote/fea8572bac431d5641492a91f43c4e63.svg" /></p><div class="box graybox"><h2> Exercise</h2><p>The player of a 2D game should move by 2 pixels every time a
 <code>player.move()</code> method is called. It means that the player goes to some
 place on the circle with radius 2 around it:</p>
 
-<p><img width="340" height="264" class="asymptote" src="asymptote/23f00e162733f957368abab1d1a3cf31.svg" /></p><p>Note how $\theta$ is measured clockwise here but we have measured it
-counter-clockwise until now; measuring clockwise is a programming standard
-while mathematicians do things counter-clockwise. This means that
-everything works nicely with <a href="#upside-down-y-axis">the "upside down" $y$
+<p><img width="341" height="265" class="asymptote" src="asymptote/23f00e162733f957368abab1d1a3cf31.svg" /></p><p>Note how $\theta$ is clockwise here but it has been counter-clockwise until
+now; clockwise angles are a programming thing while mathematicians do
+things counter-clockwise. This works nicely with <a href="#upside-down-y-axis">the "upside down" $y$
 axis</a>.</p>
 
-<p>Let's say that <code>player.x</code> and <code>player.y</code> are the current coordinates as
-floats (they may need to be rounded to ints when actually drawing things),
-<code>player.speed</code> is 2 and <code>player.angle</code> is $\theta$. Write a
-<code>player.move()</code> method using your favorite programming language.
+<p>Let <code>player.x</code> and <code>player.y</code> be the current coordinates of the player
+as floats (they may need to be rounded to ints when actually drawing
+things). Let <code>player.speed = 2</code> and <code>player.angle = θ</code>. Write the
+<code>player.move()</code> method using your favorite programming language, and
+compare it to the moving code in my ball and paddle game.
 </p>
 
 </div><h2 id="example-ball-and-paddle">Example: Ball and Paddle<a class="headerlink" href="#example-ball-and-paddle" title="Link to this title">¶</a></h2><p>Here's a minimal game written with my <a href="https://github.com/Akuli/math-tutorial/blob/master/canvaswrapper.js">canvaswrapper.js</a> script that
@@ -222,8 +315,6 @@ demonstrates most things we have learned so far. Click it, press arrow up to
 start the game and then use arrow keys to move the paddle.</p>
 
 <script type="text/javascript" src="canvaswrapper.js"></script><canvas id="canvas1" width="600" height="400" tabindex="1"></canvas><script>var screen = new CanvasWrapper('canvas1');
-
-const TAU = 2*Math.PI;
 
 /* handy things:
     paddle.centerx - paddle.length/2    x coordinate of left edge
@@ -255,7 +346,7 @@ function resetGame() {
   paddle.centerx = screen.width/2;
   ball.centerx = screen.width/2;
   ball.centery = screen.height - paddle.thickness - ball.radius;
-  ball.angle = 3*TAU/4;     // up
+  ball.angle = 1.5*Math.PI;     // up
   ball.moving = false;
 }
 
@@ -278,10 +369,10 @@ runRepeatedly(function() {
     ball.centery += ball.speed * Math.sin(ball.angle);
 
     if (ball.centerx - ball.radius < 0) {     // bumps left wall
-      ball.angle = TAU/2 - ball.angle;
+      ball.angle = Math.PI - ball.angle;
       ball.centerx = ball.radius;
     } else if (ball.centerx + ball.radius > screen.width) {   // right wall
-      ball.angle = TAU/2 - ball.angle;
+      ball.angle = Math.PI - ball.angle;
       ball.centerx = screen.width - ball.radius;
     } else if (ball.centery - ball.radius < 0) {          // top
       ball.angle = -ball.angle;
@@ -296,7 +387,8 @@ runRepeatedly(function() {
         ball.centery = screen.height-paddle.thickness-ball.radius;
 
         // also adjust the angle depending on which side of the paddle the
-        // ball hits
+        // ball hits, 100 is a constant that I found with trial and error,
+        // and it seems to work well
         ball.angle += (ball.centerx - paddle.centerx) / 100;
       }
     }
@@ -326,8 +418,6 @@ runRepeatedly(function() {
   });
 });
 </script><p>Here's the code:</p><div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #007020; font-weight: bold">var</span> screen <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">new</span> CanvasWrapper(<span style="color: #4070a0">&#39;canvas1&#39;</span>);
-
-<span style="color: #007020; font-weight: bold">const</span> TAU <span style="color: #666666">=</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span><span style="color: #007020">Math</span>.PI;
 
 <span style="color: #60a0b0; font-style: italic">/* handy things:</span>
 <span style="color: #60a0b0; font-style: italic">    paddle.centerx - paddle.length/2    x coordinate of left edge</span>
@@ -359,7 +449,7 @@ runRepeatedly(function() {
   paddle.centerx <span style="color: #666666">=</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>;
   ball.centerx <span style="color: #666666">=</span> screen.width<span style="color: #666666">/</span><span style="color: #40a070">2</span>;
   ball.centery <span style="color: #666666">=</span> screen.height <span style="color: #666666">-</span> paddle.thickness <span style="color: #666666">-</span> ball.radius;
-  ball.angle <span style="color: #666666">=</span> <span style="color: #40a070">3</span><span style="color: #666666">*</span>TAU<span style="color: #666666">/</span><span style="color: #40a070">4</span>;     <span style="color: #60a0b0; font-style: italic">// up</span>
+  ball.angle <span style="color: #666666">=</span> <span style="color: #40a070">1.5</span><span style="color: #666666">*</span><span style="color: #007020">Math</span>.PI;     <span style="color: #60a0b0; font-style: italic">// up</span>
   ball.moving <span style="color: #666666">=</span> <span style="color: #007020; font-weight: bold">false</span>;
 }
 
@@ -382,10 +472,10 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
     ball.centery <span style="color: #666666">+=</span> ball.speed <span style="color: #666666">*</span> <span style="color: #007020">Math</span>.sin(ball.angle);
 
     <span style="color: #007020; font-weight: bold">if</span> (ball.centerx <span style="color: #666666">-</span> ball.radius <span style="color: #666666">&lt;</span> <span style="color: #40a070">0</span>) {     <span style="color: #60a0b0; font-style: italic">// bumps left wall</span>
-      ball.angle <span style="color: #666666">=</span> TAU<span style="color: #666666">/</span><span style="color: #40a070">2</span> <span style="color: #666666">-</span> ball.angle;
+      ball.angle <span style="color: #666666">=</span> <span style="color: #007020">Math</span>.PI <span style="color: #666666">-</span> ball.angle;
       ball.centerx <span style="color: #666666">=</span> ball.radius;
     } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (ball.centerx <span style="color: #666666">+</span> ball.radius <span style="color: #666666">&gt;</span> screen.width) {   <span style="color: #60a0b0; font-style: italic">// right wall</span>
-      ball.angle <span style="color: #666666">=</span> TAU<span style="color: #666666">/</span><span style="color: #40a070">2</span> <span style="color: #666666">-</span> ball.angle;
+      ball.angle <span style="color: #666666">=</span> <span style="color: #007020">Math</span>.PI <span style="color: #666666">-</span> ball.angle;
       ball.centerx <span style="color: #666666">=</span> screen.width <span style="color: #666666">-</span> ball.radius;
     } <span style="color: #007020; font-weight: bold">else</span> <span style="color: #007020; font-weight: bold">if</span> (ball.centery <span style="color: #666666">-</span> ball.radius <span style="color: #666666">&lt;</span> <span style="color: #40a070">0</span>) {          <span style="color: #60a0b0; font-style: italic">// top</span>
       ball.angle <span style="color: #666666">=</span> <span style="color: #666666">-</span>ball.angle;
@@ -400,7 +490,8 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
         ball.centery <span style="color: #666666">=</span> screen.height<span style="color: #666666">-</span>paddle.thickness<span style="color: #666666">-</span>ball.radius;
 
         <span style="color: #60a0b0; font-style: italic">// also adjust the angle depending on which side of the paddle the</span>
-        <span style="color: #60a0b0; font-style: italic">// ball hits</span>
+        <span style="color: #60a0b0; font-style: italic">// ball hits, 100 is a constant that I found with trial and error,</span>
+        <span style="color: #60a0b0; font-style: italic">// and it seems to work well</span>
         ball.angle <span style="color: #666666">+=</span> (ball.centerx <span style="color: #666666">-</span> paddle.centerx) <span style="color: #666666">/</span> <span style="color: #40a070">100</span>;
       }
     }
@@ -435,13 +526,14 @@ runRepeatedly(<span style="color: #007020; font-weight: bold">function</span>() 
 <div class="box graybox"><h2> Exercise</h2><p>A part of my game works similarly to this pseudocode:</p>
 
 <div class="highlight" style="background: #a9a9a9"><pre style="line-height: 125%"><span></span>if (the ball hits the left wall or the right wall) {
-    ball.angle = TAU/2 - ball.angle;
+    ball.angle = Math.PI - ball.angle;
 }
 if (the ball hits the top wall or the paddle) {
     ball.angle = -ball.angle;
 }
 </pre></div>
-<p>Derive these formulas.
+<p>Figure out why this makes the ball bounce correctly by drawing pictures of
+the ball hitting the walls.
 </p>
 
 </div></div>

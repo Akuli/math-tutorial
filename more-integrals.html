@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><b>More Integrals</b></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><b>More Integrals</b></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="more-integrals">More Integrals<a class="headerlink" href="#more-integrals" title="Link to this title">¶</a></h1><p>There are many fun and awesome things that can be done with integrals.
 <a href="integrals.html">Last time</a> we looked into calculating areas and 3D
 volumes, but you'll be also amazed by everything else we can do.</p>
@@ -45,7 +46,7 @@ integral chapter</a> first. This chapter uses things I
 showed in those chapters.
 </p>
 
-</div><h2 id="arc-length">Arc Length<a class="headerlink" href="#arc-length" title="Link to this title">¶</a></h2><p><img width="170" height="170" class="asymptote" src="asymptote/ff468c33b83979ca17f3e0ac86027d59.svg" /></p><p>The length of the blue arc in the above image is quite easy to calculate.
+</div><h2 id="arc-length">Arc Length<a class="headerlink" href="#arc-length" title="Link to this title">¶</a></h2><p><img width="171" height="171" class="asymptote" src="asymptote/ff468c33b83979ca17f3e0ac86027d59.svg" /></p><p>The length of the blue arc in the above image is quite easy to calculate.
 We can just complete it to a full circle, and we know <a href="summary.html#geometry-and-trig">its perimeter
 length is $3\tau$</a> so half of
 that is $3\tau/2 \approx 9.42$. But that's just a special case. What if
@@ -56,7 +57,7 @@ derivative</a>, and say
 that the length of an arc to $x$ is $s(x)$, just like <a href="integrals.html#area-to-x">we did with
 areas</a>. We get this:</p>
 
-<p><img width="425" height="410" class="asymptote" src="asymptote/0b2b26d32c848b8891fcd9ea5e3e6862.svg" /></p><p>For convenience, I'll define $\Delta s = s(x+\Delta x)-s(x)$ and
+<p><img width="427" height="412" class="asymptote" src="asymptote/0b2b26d32c848b8891fcd9ea5e3e6862.svg" /></p><p>For convenience, I'll define $\Delta s = s(x+\Delta x)-s(x)$ and
 $\Delta y = f(x+\Delta x)-f(x)$. This will be a mess anyway, but these handy
 variables make things a bit less messy.</p>
 
@@ -87,7 +88,7 @@ definitions of $\Delta y$ and $\Delta s$ just to make sure that they really are
 derivatives.</p>
 
 $$\begin{align}\lim_{\Delta x\to0} \frac{s(x+\Delta x)-s(x)}{\Delta x}      &= \sqrt{1+\left(\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)^2} \\
-s'(x) &= \sqrt{1+(f'(x))^2}\end{align}$$<img width="170" height="123" class="asymptote" src="asymptote/a1ced55a7d16d1e58d2eb840972572a4.svg" style="float:right;" /><p><br></p>
+s'(x) &= \sqrt{1+(f'(x))^2}\end{align}$$<img width="171" height="123" class="asymptote" src="asymptote/a1ced55a7d16d1e58d2eb840972572a4.svg" style="float:right;" /><p><br></p>
 
 $$\begin{align}s(b)-s(a) &= [s(x)]_a^b \\
 &= \int_a^b s'(x)\ dx \\
@@ -97,7 +98,7 @@ one of my favorite math stuff.</p>
 <h2 id="example-more-jumping">Example: More Jumping<a class="headerlink" href="#example-more-jumping" title="Link to this title">¶</a></h2><div class="box graybox"><h2> Problem</h2><p>A player jumps along the parabola $y=2x-x^2$. How long is the arc
 that the player's path traces above the x axis?</p>
 
-<p><img width="283" height="195" class="asymptote" src="asymptote/8bc62daa8e7e918d2f2b8b6ca5d71032.svg" /></p></div><p>First things first – let's figure out when the graph hits the $x$ axis;
+<p><img width="285" height="195" class="asymptote" src="asymptote/8bc62daa8e7e918d2f2b8b6ca5d71032.svg" /></p></div><p>First things first – let's figure out when the graph hits the $x$ axis;
 that is, when $y=0$:</p>
 
 $$\begin{align}2x-x^2&=0 \\
@@ -141,13 +142,13 @@ what to do.</p>
 <h2 id="boring-trapezoid-area">Boring Trapezoid Area<a class="headerlink" href="#boring-trapezoid-area" title="Link to this title">¶</a></h2><p>This has nothing to do with integrals, but we need it soon. Let's find an area
 formula for shapes like this:</p>
 
-<p><img width="227" height="77" class="asymptote" src="asymptote/54ff04d9bca5bd49ad97fea5a2f2537a.svg" /></p><p>The line with length $c$ is centered between the topmost and the
+<p><img width="228" height="77" class="asymptote" src="asymptote/54ff04d9bca5bd49ad97fea5a2f2537a.svg" /></p><p>The line with length $c$ is centered between the topmost and the
 bottommost line, and all horizontally drawn lines are parallel with each
 other.</p>
 
 <p>Let's cut off and rotate the ends:</p>
 
-<p><img width="227" height="85" class="asymptote" src="asymptote/c36021fa4ec1bbf514a4437b13e20b30.svg" /></p><p><img width="227" height="94" class="asymptote" src="asymptote/4ca35ecbbb0cc0b36c27f63958eb1428.svg" /></p><p>The area is obviously just $ch$.</p>
+<p><img width="228" height="86" class="asymptote" src="asymptote/c36021fa4ec1bbf514a4437b13e20b30.svg" /></p><p><img width="228" height="95" class="asymptote" src="asymptote/4ca35ecbbb0cc0b36c27f63958eb1428.svg" /></p><p>The area is obviously just $ch$.</p>
 
 <h2 id="my-thick-line-area-thing">My Thick Line Area Thing<a class="headerlink" href="#my-thick-line-area-thing" title="Link to this title">¶</a></h2><p>I'm sure someone has invented this before me, but I haven't found a name
 for this yet. That's why the title above is like it is.</p>
@@ -155,12 +156,12 @@ for this yet. That's why the title above is like it is.</p>
 <p>Let's try to figure out how to calculate an area like this if we know
 nothing but $t$ and $l$:</p>
 
-<p><img width="283" height="206" class="asymptote" src="asymptote/4b4b019c08e8418baf5df2188d27ab18.svg" /></p><p>The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
+<p><img width="285" height="207" class="asymptote" src="asymptote/4b4b019c08e8418baf5df2188d27ab18.svg" /></p><p>The area of a $t$ by $l$ rectangle is just $tl$. Let's see if it works
 when things are curved like this. Note that the distance between the red
 line and the black lines is always the same; calculating this would be
 different if the thickness wasn't the same $t$ everywhere.</p>
 
-<img width="202" height="283" class="asymptote" src="asymptote/fe5b8411d0f9242e444dc010cd9882b1.svg" style="float:right;" /><p>Let's start by thinking about a small, trapezoid-shaped piece of the
+<img width="203" height="285" class="asymptote" src="asymptote/fe5b8411d0f9242e444dc010cd9882b1.svg" style="float:right;" /><p>Let's start by thinking about a small, trapezoid-shaped piece of the
 area like in the image at right. Now everything is quite straight-forward
 and a lot like in <a href="integrals.html#example-circle-area">the circle example</a>.</p>
 
@@ -180,11 +181,11 @@ here</a> if you don't.
 integral</a>, but now we can do it
 without thinking about any integrals.</p>
 
-<p><img width="155" height="198" class="asymptote" src="asymptote/971aa8ae9bd7fe7da706187eb5e8a3a2.svg" /></p><p>The length of the red line is $l=\tau R$, so with my thick line area thing, the
+<p><img width="155" height="199" class="asymptote" src="asymptote/971aa8ae9bd7fe7da706187eb5e8a3a2.svg" /></p><p>The length of the red line is $l=\tau R$, so with my thick line area thing, the
 area must be $rl=r\tau R$. If we set $R=\frac r 2$, the hole in the center
 disappears:</p>
 
-<p><img width="159" height="198" class="asymptote" src="asymptote/d31bfc751ee1161602a807f8421635a2.svg" /></p><p>Now the area is $r\tau\frac r 2 = \frac \tau 2 r^2 = \pi r^2$.
+<p><img width="160" height="199" class="asymptote" src="asymptote/d31bfc751ee1161602a807f8421635a2.svg" /></p><p>Now the area is $r\tau\frac r 2 = \frac \tau 2 r^2 = \pi r^2$.
 </p>
 
 </div>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<title>Old Basics Page</title>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+    },
+    "HTML-CSS": { availableFonts: ["TeX"] },
+    TeX: {
+      Macros: {
+        // awesome, i have latex inside javascript inside html inside python
+        // https://xkcd.com/1638/
+        red: [ "\\color{red}{#1}", 1 ],
+        blue: [ "\\color{blue}{#1}", 1 ],
+        green: [ "\\color{green}{#1}", 1 ],
+        maroon: [ "\\color{maroon}{#1}", 1 ],
+        olive: [ "\\color{olive}{#1}", 1 ],
+        purple: [ "\\color{purple}{#1}", 1 ],
+        black: [ "\\color{black}{#1}", 1 ],
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
+      }
+    }
+  });
+</script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Cabin|Quicksand" rel="stylesheet">
+</head>
+<body>
+<div id="content">
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><b>Old Basics Page</b></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<h1 id="old-basics-page">Old Basics Page<a class="headerlink" href="#old-basics-page" title="Link to this title">¶</a></h1><div class="box redbox"><h2> What is this page?!</h2><p>I'm in the process of rewriting most things in this tutorial, because I
+realized how crappy and beginner-unfriendly it was after helping a
+beginner. I have rewritten most of the basics page (see
+<a href="basics.html">the new basics page</a>), but not all of it, and this page
+contains the things that I haven't rewritten yet.
+</p>
+
+</div><h2 id="constants">Constants<a class="headerlink" href="#constants" title="Link to this title">¶</a></h2><p>A value is considered to be a constant if it doesn't depend on $x$. For
+example, $2x$ is not a constant, because it gets different values depending on
+$x$; for example, if $x=3$, then $2x=6$, and if $x=4$, then $2x=8$. On the
+other hand, things like $3$, $4$ and $\pi = 3.14159...$ are constants.
+</p>
+
+<h2 id="absolute-value">Absolute Value<a class="headerlink" href="#absolute-value" title="Link to this title">¶</a></h2><p>The absolute value of $x$ is $|x|$ in math and something like <code>abs(x)</code> or
+<code>Math.abs(x)</code> in most programming languages. It's easiest to think of the
+absolute value as stripping off the minus sign. For example, $|2| = 2$ and
+$|-3| = 3$.</p>
+
+<h2 id="powers-and-square-root">Powers and Square Root<a class="headerlink" href="#powers-and-square-root" title="Link to this title">¶</a></h2><p>$x^y$ is <code>x**y</code> or <code>pow(x, y)</code> and $\sqrt x$ is <code>sqrt(x)</code> in most
+programming languages.</p>
+
+$$\begin{align}x^5=x\cdot x\cdot x\cdot x\cdot x\end{align}$$$$\begin{align}x^a y^a = \underbrace{x \cdot ... \cdot x}_{a\text{ times}} \cdot            \underbrace{y \cdot ... \cdot y}_{a\text{ times}}          = \underbrace{(xy)(xy)...(xy)}_{a\text{ times}}          = (xy)^a\end{align}$$$$\begin{align}\frac{x^a}{y^a}  = \frac{\ \overbrace{x\cdot x\cdot x\cdot...\cdot x}^{a\text{ times}}\ }         {\ \underbrace{y\cdot y\cdot y\cdot...\cdot y}_{a\text{ times}}\ }  = \underbrace{\frac x y \cdot \frac x y \cdot ... \cdot \frac x y}_{a\text{ times}}  = \left( \frac x y \right)^a\end{align}$$$$\begin{align}x^{a+b}  = \underbrace{x \cdot x \cdot x \cdot... \cdot x}_{a+b\text{ times}}           = \underbrace{x \cdot...\cdot x}_{a\text{ times}} \cdot             \underbrace{x \cdot...\cdot x}_{b\text{ times}}           = x^a x^b\end{align}$$$$\begin{align}x^{ab} = \underbrace{x \cdot x \cdot...\cdot x}_{a\cdot b\ \text{times}}         = \overbrace{\underbrace{x^a}_{\substack{x\cdot x\cdot...\cdot x \\ a\text{ times}}}            \cdot x^a \cdot x^a \cdot x^a \cdot\ ...\ \cdot x^a}^{b\text{ times}}         = (x^a)^b\end{align}$$$$\begin{align}\sqrt x = x^{1/2}\end{align}$$$$\begin{align}\sqrt a \sqrt b = \sqrt{ab}\end{align}$$$$\begin{align}(\sqrt x\ )^2 = x\end{align}$$$$\begin{align}\sqrt{x^2} = |x|\end{align}$$<p id="sqrt-basics">It's easiest to think of $\sqrt x$ as the non-negative number that is $x$ when
+multiplied with itself. For example, 3 is not negative, so $\sqrt 9 = 3$
+because $3 \cdot 3 = 9$. Similarly e.g. $\sqrt 4 = 2$, $\sqrt 1 = 1$ and
+$\sqrt 0 = 0$.
+</p>
+
+<p id="square-negative-cancel">The $(-x)^2=x^2$ and $\sqrt{x^2}=|x|$ rules probably seem confusing, but an
+example should make everything clear:
+</p>
+
+$$\begin{align}(-2)^2 &= (-2)(-2) = -(-(2 \cdot 2)) = 2 \cdot 2 = 2^2 \\
+\sqrt{(-2)^2} &= \sqrt{2^2} = \sqrt 4 = 2\end{align}$$<p>This means that $x^2$ is never negative because $x^2$ can be always turned into
+a positive number multiplied by itself, and that's obviously positive. We have
+just 1 exception, and that's $0^2 = 0 \cdot 0 = 0$. This also shows that we
+can't do e.g. $\sqrt{-1}$.</p>
+
+<h2 id="functions">Functions<a class="headerlink" href="#functions" title="Link to this title">¶</a></h2><p>Here's a typical math function:</p>
+
+$$\begin{align}f(x) &= 2x \\
+f(6) &= 2 \cdot 6 = 12\end{align}$$<p>There is no special syntax for defining a function. All we have is the
+equal sign, and when defining a function we just say that its value at x is
+equal to something.</p>
+
+<p>If you're familiar with a functional programming language like Haskell, then
+you'll probably realize that the above math looks a lot like this Haskell
+session:</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span> <span style="color: #007020; font-weight: bold">let</span> f x <span style="color: #007020; font-weight: bold">=</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span>x
+<span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span> f <span style="color: #40a070">6</span>
+<span style="color: #40a070">12</span>
+<span style="color: #902000">Prelude</span><span style="color: #666666">&gt;</span>
+</pre></div>
+<p>If you're feeling like WTF is this, here's a Python session that should make
+everything clear.</p>
+
+<div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">def</span> <span style="color: #06287e">f</span>(x):
+<span style="color: #c65d09; font-weight: bold">... </span>    <span style="color: #007020; font-weight: bold">return</span> <span style="color: #40a070">2</span><span style="color: #666666">*</span>x
+<span style="color: #c65d09; font-weight: bold">...</span>
+<span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>f(<span style="color: #40a070">6</span>)
+<span style="color: #888888">12</span>
+</pre></div>
+<p>Quick note about <code>f(x)</code> versus <code>f x</code>: if you define your own function
+called $f$ or $g$ you should use $f(x)$, but you can do e.g. $\sin x$ or
+$\cos x$ with some "special" functions for historical reasons. This tutorial
+uses $\sin(x)$ and $\cos(x)$ everywhere because most programmers are familiar
+with that.
+</p>
+
+<h2 id="areas">Areas<a class="headerlink" href="#areas" title="Link to this title">¶</a></h2><p>If you are a programmer you'll probably understand areas best as the
+number of pixels in a shape. For example, if you create a GUI program
+that creates a 300 by 200 window, it contains $300 \cdot 200 = 60000$
+pixels.</p>
+
+<img width="142" height="102" class="asymptote" src="asymptote/4a345af90bf16f44fe904942c5c6418e.svg" style="float:left;" /><img width="256" height="191" class="asymptote" src="asymptote/f682d3256adc396a0aaecefc89587f1c.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<p>The yellow area is simple, but the triangle area is also easy to
+understand. Let's draw a rectangle around the triangle like this:</p>
+
+<p><img width="142" height="100" class="asymptote" src="asymptote/7b5a40ee1d61ffaa5fca859150f9d448.svg" /></p><p>Now you can see that the triangle splits both pieces of the rectangle in
+half, so the triangle area must be half of the rectangle area $ah$.</p>
+
+<h2 id="volumes">Volumes<a class="headerlink" href="#volumes" title="Link to this title">¶</a></h2><p>A volume is a similar thing as an area, but for 3D things. If our 300 by 200
+window was 50 pixels deep, then $300 \cdot 200 \cdot 50 = 3000000$ pixels would
+fit inside it.</p>
+
+<img  class="asymptote" src="asymptote/e8d2424aa3923e72a1982c99500f3903.png" style="float:left;" /><img  class="asymptote" src="asymptote/21eb3f2c14fcf610830e5aad633b3a16.png" style="float:left;" /><p><div style="clear:both;"></div></p>
+
+<p>The $V=abc$ thing is actually just a special case of the $V=Ah$
+cylinder. The shape of the cylinder's base can be anything, and in the
+$abc$ thing the base area is $ab$ and the height is $c$.
+</p>
+
+</div>
+</body>
+</html>

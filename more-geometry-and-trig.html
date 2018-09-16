@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><b>More Geometry and Trig</b></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><b>More Geometry and Trig</b></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="more-geometry-and-trig">More Geometry and Trig<a class="headerlink" href="#more-geometry-and-trig" title="Link to this title">¶</a></h1><p><a href="geometry-and-trig.html">In the geometry and trig chapter</a> we learned stuff
 that are very useful for writing games, and I have used something from that
 chapter in almost all 2D games I have made. In this chapter you'll learn things
@@ -45,7 +46,7 @@ that are sometimes useful.</p>
 chapter</a>.
 </p>
 
-</div><img width="170" height="133" class="asymptote" src="asymptote/22f88a1dbe6af2efd57bbb174622dc6d.svg" style="float:right;" /><h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><p>Let's say that we have a triangle with a quarter-turn corner, and its sides are
+</div><img width="171" height="134" class="asymptote" src="asymptote/22f88a1dbe6af2efd57bbb174622dc6d.svg" style="float:right;" /><h2 id="pythagorean-theorem">Pythagorean Theorem<a class="headerlink" href="#pythagorean-theorem" title="Link to this title">¶</a></h2><p>Let's say that we have a triangle with a quarter-turn corner, and its sides are
 $a$, $b$ and $c$ where $c$ is the longest side. In the picture at right, the
 small square at the bottom-right corner means that we're talking about a
 quarter-turn corner. This works with any triangle that has a quarter-turn
@@ -57,7 +58,7 @@ $b^2+a^2 = a^2+b^2$.</p>
 
 <p>The Pythagorean theorem has many important applications:</p>
 
-<ul><li>The hypotenuse of a triangle can be calculated by <a href="basics.html#powers-and-square-root">square
+<ul><li>The hypotenuse of a triangle can be calculated by <a href="oldbasics.html#powers-and-square-root">square
   rooting</a> both sides of the above
   equation. Hypotenuse is a fancy word that means the longest side of a
   quarter-turn triangle.
@@ -70,7 +71,7 @@ $$\begin{align}\text{hypot}(a,b) = \sqrt{a^2 + b^2}\end{align}$$<p>It's also pos
 
 </div><ul><li>Using the hypot thing, we can calculate the distance of two points
   $(x_1,y_1)$ and $(x_2,y_2)$ like this:
-</li></ul><div class="indent"><p><img width="425" height="262" class="asymptote" src="asymptote/17e1dd278cf42d070b549ccee165b596.svg" /></p><p>It doesn't matter which point is which:</p>
+</li></ul><div class="indent"><p><img width="427" height="263" class="asymptote" src="asymptote/17e1dd278cf42d070b549ccee165b596.svg" /></p><p>It doesn't matter which point is which:</p>
 
 $$\begin{align}\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}  &= \sqrt{\bigl(-(x_1-x_2)\bigr)^2 + \bigl(-(y_1-y_2)\bigr)^2} \\
 &= \sqrt{(x_1-x_2)^2 + (y_1-y_2)^2}\end{align}$$<p>Here I used the $a-b=-(b-a)$ and $(-x)^2=x^2$ formulas from <a href="basics.html">the basics
@@ -78,7 +79,7 @@ page</a>.
 </p>
 
 </div><ul><li>The formula simplifies nicely if one of the points is $(0,0)$:
-</li></ul><div class="indent"><p><img width="255" height="182" class="asymptote" src="asymptote/94a347b00bc43dd94c896f58e0ea8bdb.svg" /></p><p>This also works if $x$ or $y$ is negative or if they are both negative; the
+</li></ul><div class="indent"><p><img width="256" height="183" class="asymptote" src="asymptote/94a347b00bc43dd94c896f58e0ea8bdb.svg" /></p><p>This also works if $x$ or $y$ is negative or if they are both negative; the
 negativeness doesn't matter because $(-x)^2 = x^2$ with any $x$.
 </p>
 
@@ -92,14 +93,14 @@ because it's simple.</p>
 
 <p>Let's start by arranging 4 abc triangles like this:</p>
 
-<p><img width="216" height="225" class="asymptote" src="asymptote/41c442bb1435be1b115db336dd0064ce.svg" /></p><div class="floatingbox"><h2> Handy thing: $(a+b)^2=a^2+2ab+b^2$</h2><p>Proof using $(a+b)c=ac+bc$:</p>
+<p><img width="217" height="226" class="asymptote" src="asymptote/41c442bb1435be1b115db336dd0064ce.svg" /></p><div class="floatingbox"><h2> Handy thing: $(a+b)^2=a^2+2ab+b^2$</h2><p>Proof using $(a+b)c=ac+bc$:</p>
 
 $$\begin{align}& \ (a+b)^2 \\
 =&\ (a+b)(a+b) \\
 =&\ a(a+b)+b(a+b) \\
 =&\ aa+ab+ba+bb \\
 =&\ a^2+2ab+b^2\end{align}$$</div><p>We can calculate the total area of the above square in a couple different ways
-using some <a href="basics.html#areas">basic area stuff</a>:</p>
+using some <a href="oldbasics.html#areas">basic area stuff</a>:</p>
 
 <ul><li>The square's sides are each $a+b$, so the area must be $(a+b)(a+b)$.</li><li>The square consists of the green square whose area is $c^2$ and 4 yellow
   triangles with area $\frac{ab}{2}$ each. Total area is
@@ -113,7 +114,7 @@ a^2 + b^2 &= c^2\end{align}$$<div class="box graybox"><h2> Exercise</h2><p>Draw 
 used above.
 </p>
 
-</div><img width="340" height="247" class="asymptote" src="asymptote/05ade203961554352eeef3ab5854a85f.svg" style="float:right;" /><h2 id="cartesian-to-polar-coordinates">Cartesian to Polar Coordinates<a class="headerlink" href="#cartesian-to-polar-coordinates" title="Link to this title">¶</a></h2><p>We know that every point on the xy plane can be represented with $(x,y)$
+</div><img width="341" height="248" class="asymptote" src="asymptote/05ade203961554352eeef3ab5854a85f.svg" style="float:right;" /><h2 id="cartesian-to-polar-coordinates">Cartesian to Polar Coordinates<a class="headerlink" href="#cartesian-to-polar-coordinates" title="Link to this title">¶</a></h2><p>We know that every point on the xy plane can be represented with $(x,y)$
 coordinates, but we can also represent every point with a distance from $(0,0)$
 and an angle:</p>
 
@@ -141,7 +142,7 @@ nowadays at least some non-programming-related math articles on Wikipedia use
 it as well. The 2 at the end of atan2 means that it takes two arguments unlike
 atan, and in the next section I'll explain what atan is.</p>
 
-<h2 id="triangle-trig">Triangle Trig<a class="headerlink" href="#triangle-trig" title="Link to this title">¶</a></h2><img width="283" height="245" class="asymptote" src="asymptote/0c161cd1b3666e8723d43b436b207d03.svg" style="float:right;" /><p>The word "trigonometry" means triangle something, and trig functions like
+<h2 id="triangle-trig">Triangle Trig<a class="headerlink" href="#triangle-trig" title="Link to this title">¶</a></h2><img width="285" height="246" class="asymptote" src="asymptote/0c161cd1b3666e8723d43b436b207d03.svg" style="float:right;" /><p>The word "trigonometry" means triangle something, and trig functions like
 $\sin$ and $\cos$ can be also defined in a triangle with a quarter-turn corner.
 We can get those definitions from our circle stuff by drawing a triangle under
 the red $(x,y)$ point like in the image at right.</p>
@@ -153,7 +154,7 @@ $$\begin{align}\frac x r = \frac{r\cos(\theta)}{r} = \cos(\theta) \\
 <i>opposite side</i> of a corner means the side opposite of that corner, and the
 <i>adjacent side</i> means the side that is not opposite or the hypotenuse.</p>
 
-<img width="170" height="145" class="asymptote" src="asymptote/25d4a55a23778be30e4667c5b8683738.svg" style="float:right;" /><p>Now we are ready to define $\sin$ and $\cos$ with nothing but a
+<img width="171" height="145" class="asymptote" src="asymptote/25d4a55a23778be30e4667c5b8683738.svg" style="float:right;" /><p>Now we are ready to define $\sin$ and $\cos$ with nothing but a
 quarter-turn-cornered triangle. We'll also define a third function called
 $\tan$ that we haven't used before.</p>
 
@@ -166,7 +167,7 @@ circles in xy plane are a much handier way to handle that.</p>
 <p>If we apply the $\tan$ definition to our circle pic above, we get this:</p>
 
 $$\begin{align}\tan(\theta) &= \frac y x \\
-\theta &= \arctan\left(\frac y x\right)\end{align}$$<img width="227" height="214" class="asymptote" src="asymptote/e20cc3efc08b9c92e09cdf91deaa5dd2.svg" style="float:right;" /><p>Here $\arctan$ means the inverse of $\tan$, and most programming languages have
+\theta &= \arctan\left(\frac y x\right)\end{align}$$<img width="228" height="214" class="asymptote" src="asymptote/e20cc3efc08b9c92e09cdf91deaa5dd2.svg" style="float:right;" /><p>Here $\arctan$ means the inverse of $\tan$, and most programming languages have
 an <code>atan</code> function that computes arctan. However, earlier we did
 $\theta = \text{atan2}(y,x)$. Here are some things that can go wrong with
 $\arctan(\frac y x)$:</p>
@@ -215,7 +216,7 @@ and $\gamma$ to represent angles. Don't get confused – they are just
 letters, like a, b, c or $\theta$.
 </p>
 
-</div><p><img width="283" height="248" class="asymptote" src="asymptote/6cdd1dab0f30792e8e2d9a518ef77880.svg" /></p><p>In the above picture, every red angle is a half turn minus blue angle, and we
+</div><p><img width="285" height="249" class="asymptote" src="asymptote/6cdd1dab0f30792e8e2d9a518ef77880.svg" /></p><p>In the above picture, every red angle is a half turn minus blue angle, and we
 know that half turn is $\tau/2$ radians. Let's start at the little arrow at
 bottom and move along the edges clockwise until we arrive at the arrow again.
 The red angles represent how much we need to turn at each corner, and those
@@ -232,7 +233,7 @@ works with <b>any</b> triangle. We'll find this useful later.</p>
 <img src="images/triangleanglesum.gif" style="max-width: 300px;     max-height: 300px;" /><p><small>The animation comes from
 <a href="https://plus.google.com/photos/photo/116203071099093782712/6081217819806380914">here</a>.</small></p>
 
-<h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img width="170" height="121" class="asymptote" src="asymptote/0e29eb3afd0d0dd6ea2a2b7f1ae568ca.svg" style="float:right;" /><p>Let's have a look at the triangle at right. We know that it's a triangle, so
+<h2 id="why-is-cosine-called-cosine">Why is cosine called cosine?<a class="headerlink" href="#why-is-cosine-called-cosine" title="Link to this title">¶</a></h2><img width="171" height="121" class="asymptote" src="asymptote/0e29eb3afd0d0dd6ea2a2b7f1ae568ca.svg" style="float:right;" /><p>Let's have a look at the triangle at right. We know that it's a triangle, so
 the sum of the angles must be $\frac \tau 2$ (see above).</p>
 
 $$\begin{align}\alpha + \beta + \frac \tau 4 &= \frac \tau 2 \\
@@ -254,10 +255,10 @@ complement.</p>
 </p>
 
 </div><h2 id="derivative-of-sine">Derivative of Sine<a class="headerlink" href="#derivative-of-sine" title="Link to this title">¶</a></h2><p>Let's draw an angle $\theta$ and a change $\Delta\theta$ in the unit circle.
-We'll assume that $\theta$ is in radians, so <a href="geometry-and-trig.html#radians-and-tau">it's an arc length on the unit
+We'll assume that $\theta$ is in radians, so <a href="geometry-and-trig.html#angles">it's an arc length on the unit
 circle</a>.</p>
 
-<p><img width="454" height="448" class="asymptote" src="asymptote/40cf19696dd5f485b9610cb2f1e3aeb4.svg" /></p><p>Here the black &#8738; signs mean an angle. It looks a lot like a circle arc,
+<p><img width="455" height="449" class="asymptote" src="asymptote/40cf19696dd5f485b9610cb2f1e3aeb4.svg" /></p><p>Here the black &#8738; signs mean an angle. It looks a lot like a circle arc,
 but in this case we are only interested in the angles, not circle arcs with
 radius 1.</p>
 
@@ -268,12 +269,12 @@ $\theta + \Delta\theta$.</p>
 
 <p>Let's zoom on the blue area:</p>
 
-<p><img width="510" height="241" class="asymptote" src="asymptote/f48de2d580bcd139f7e11276c7d0c7f5.svg" /></p><p>That's quite a mess! Make sure you fully understand it before continuing.</p>
+<p><img width="512" height="242" class="asymptote" src="asymptote/f48de2d580bcd139f7e11276c7d0c7f5.svg" /></p><p>That's quite a mess! Make sure you fully understand it before continuing.</p>
 
 <p>Unfortunately we need to make the mess even messier by defining new variables
 $\alpha$ and $h$ like this:</p>
 
-<p><img width="510" height="241" class="asymptote" src="asymptote/cd9182b834a4fbeff114c8b9f081ea33.svg" /></p><p>The $h$ is just the difference of the $y$ coordinates.</p>
+<p><img width="512" height="242" class="asymptote" src="asymptote/cd9182b834a4fbeff114c8b9f081ea33.svg" /></p><p>The $h$ is just the difference of the $y$ coordinates.</p>
 
 $$\begin{align}h = \sin(\theta+\Delta\theta)-\sin(\theta)\end{align}$$<p>Next we need to figure out what $\alpha$ is. We can rotate from the orange line
 all the way to the blue $\Delta\theta$ line in a couple different ways: we can
@@ -312,7 +313,7 @@ $$\begin{align}\frac{d}{d\theta} \cos(\theta)  &= \frac{d}{d\theta}\sin\Bigl(\un
 &= \sin\Bigl(\rcancel{\frac\tau4} \rcancel{- \frac\tau4} + \theta\Bigr) \cdot (-1) \\
 &= -\sin(\theta)\end{align}$$<p>Let's check the result with <a href="graphs.html#sine-waves">graphs</a>:</p>
 
-<p><img width="510" height="184" class="asymptote" src="asymptote/cbc5b2c2882396b573b88c43ac7d9690.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
+<p><img width="512" height="184" class="asymptote" src="asymptote/cbc5b2c2882396b573b88c43ac7d9690.svg" /></p><p>We know that $\frac{d}{d\theta} \sin(\theta) = \cos(\theta)$, so finding the
 derivative moved the graph left. Similarly, the $-\sin(\theta)$ graph is the
 $\cos(\theta)$ graph shifted left. </p>
 

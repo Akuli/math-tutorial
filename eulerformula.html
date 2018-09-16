@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,10 +36,10 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><b>Euler's Formula</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><b>Euler's Formula</b></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="euler-s-formula">Euler's Formula<a class="headerlink" href="#euler-s-formula" title="Link to this title">¶</a></h1><p>In this chapter you'll learn one of the most amazing math things I have seen.</p>
 
-<div class="box redbox"><p>Be sure to learn <a href="geometry-and-trig.html#radians-and-tau">radians</a>,
+<div class="box redbox"><p>Be sure to learn <a href="geometry-and-trig.html#angles">radians</a>,
 <a href="geometry-and-trig.html#trig-with-the-unit-circle">sin, cos</a>,
 <a href="derivatives.html">derivatives</a>, <a href="explog.html#the-e-constant">e</a> and
 <a href="taylor.html">Taylor series</a> before reading this chapter. That's lots of
@@ -60,7 +61,7 @@ they behave very differently than real numbers.</p>
 <p>A <i>complex number</i> is something real plus something imaginary, and they are
 often represented in a 2D plane. Like this:</p>
 
-<p><img width="312" height="300" class="asymptote" src="asymptote/657c9dfa374bb43c86d498771cf33622.svg" /></p><p>Re is short for Real and Im for Imaginary.</p>
+<p><img width="313" height="301" class="asymptote" src="asymptote/657c9dfa374bb43c86d498771cf33622.svg" /></p><p>Re is short for Real and Im for Imaginary.</p>
 
 <p>Note how the words "imaginary" and "complex" reflect people's attitudes to these
 numbers. At first they were considered nonsense, but nowadays there are many
@@ -108,12 +109,12 @@ is the $x$ coordinate and $\sin$ is the $y$ coordinate in a unit circle, and a
 moment ago we drew a $(\text{Re}, \text{Im})$-plane. Actually the formula
 represents a unit circle in $(\text{Re}, \text{Im})$ plane!</p>
 
-<p><img width="425" height="336" class="asymptote" src="asymptote/0a4dcab270a3599b446e8105d9311ecc.svg" /></p><p>Just looking at the above drawing, everything else makes sense perfectly except
+<p><img width="427" height="337" class="asymptote" src="asymptote/0a4dcab270a3599b446e8105d9311ecc.svg" /></p><p>Just looking at the above drawing, everything else makes sense perfectly except
 the $e^{i\theta}$ label. It's just crazy.</p>
 
 <h2 id="example-trig-identities">Example: Trig Identities<a class="headerlink" href="#example-trig-identities" title="Link to this title">¶</a></h2><p>Let's draw another unit circle with angles $\theta$ and $-\theta$.</p>
 
-<p><img width="397" height="315" class="asymptote" src="asymptote/e7d0868e29b1d755882aad4ea3332217.svg" /></p><p>The black dots are aligned horizontally so $x$ coordinates are the same and
+<p><img width="398" height="316" class="asymptote" src="asymptote/e7d0868e29b1d755882aad4ea3332217.svg" /></p><p>The black dots are aligned horizontally so $x$ coordinates are the same and
 $\cos(\theta)=\cos(-\theta)$. But the $y$ coordinates are opposite, so
 $\sin(-\theta)=-\sin(\theta)$. These work with any $\theta$.</p>
 
@@ -166,7 +167,7 @@ $\displaystyle\frac{\sin(2\theta)}{\cos(2\theta)}$, use the formulas and
 try to rewrite the result in terms of $\tan(\theta)$.
 </p>
 
-</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img width="340" height="328" class="asymptote" src="asymptote/8dd185f076727c17ab84c2da864cffcc.svg" /></p><p>If we plug in $\theta=\tau=2\pi$ we get this:</p>
+</div><h2 id="example-famous-constants">Example: Famous Constants<a class="headerlink" href="#example-famous-constants" title="Link to this title">¶</a></h2><p><img width="341" height="329" class="asymptote" src="asymptote/8dd185f076727c17ab84c2da864cffcc.svg" /></p><p>If we plug in $\theta=\tau=2\pi$ we get this:</p>
 
 $$\begin{align}e^{i\tau} = \cos(\tau) + i \sin(\tau) = 1 + i \cdot 0 = 1\end{align}$$<p>This makes sense because if we start at 1 and rotate a full turn ($\tau$
 radians), we get back to where we started.</p>

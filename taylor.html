@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Series</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><b>Taylor Series</b></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="taylor-series">Taylor Series<a class="headerlink" href="#taylor-series" title="Link to this title">¶</a></h1><p>So far we have calculated sine and cosine values with Python.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span><span style="color: #007020; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">math</span>
@@ -46,7 +47,7 @@
 own sin and cos implementations that would be good enough for pretty much
 everything.</p>
 
-<div class="box redbox"><p>This tutorial uses <a href="geometry-and-trig.html#radians-and-tau">radians</a>,
+<div class="box redbox"><p>This tutorial uses <a href="geometry-and-trig.html#angles">radians</a>,
 <a href="geometry-and-trig.html#trig-with-the-unit-circle">unit circle trig</a> and
 <a href="derivatives.html">derivatives</a>. Be sure to learn these things first.
 </p>
@@ -75,7 +76,7 @@ $x^2$ is never less than 0.</p>
 <p>The zeros of $f(x)$ can be thought of as places where the graph $y=f(x)$
 touches the $x$ axis; that is, $y=0$:</p>
 
-<p><img width="289" height="397" class="asymptote" src="asymptote/dd2092c62f8315959b66935e19ecb56a.svg" /></p><p>The word <b>series</b> is a fancy way to say infinitely many things added to each
+<p><img width="290" height="398" class="asymptote" src="asymptote/dd2092c62f8315959b66935e19ecb56a.svg" /></p><p>The word <b>series</b> is a fancy way to say infinitely many things added to each
 other. For example, $1+1+1+...$ means that we add infinitely many $1$'s, so it's
 a series.</p>
 
@@ -83,7 +84,7 @@ a series.</p>
 cannot be polynomials because a polynomial of degree $n$ has at most $n$ zeros,
 but $\sin(x)$ has infinitely many zeros:</p>
 
-<p><img width="567" height="148" class="asymptote" src="asymptote/69730d2e4d5967dad276fcd715eea3d5.svg" /></p><p>But what if we have an infinite series instead of a polynomial? Then we can
+<p><img width="569" height="149" class="asymptote" src="asymptote/69730d2e4d5967dad276fcd715eea3d5.svg" /></p><p>But what if we have an infinite series instead of a polynomial? Then we can
 have an infinite number of zeros. So, if $c_0,c_1,c_2,c_3,...$ are constants,
 we're talking about finding their values so that we have this:</p>
 
@@ -163,7 +164,7 @@ $$\begin{align}f(x) &= f(0) + \frac{f'(0)}{1!}x + \frac{f''(0)}{2!}x^2 + \frac{f
 &= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ...\end{align}$$<p>Just to make sure it works, let's chop off the series at some point and draw a
 graph of a part of it.</p>
 
-<p><img width="510" height="240" class="asymptote" src="asymptote/740ee59d34781064b2ea3717ffb625e4.svg" /></p><p>The chopped off part is known as the 9th <b>Taylor polynomial</b> of $\sin(x)$
+<p><img width="512" height="241" class="asymptote" src="asymptote/740ee59d34781064b2ea3717ffb625e4.svg" /></p><p>The chopped off part is known as the 9th <b>Taylor polynomial</b> of $\sin(x)$
 because it's a polynomial of degree 9 and it came from a Taylor series.</p>
 
 <p>Anyway, I think the above graph is just amazing. Here's a working <code>sin(x)</code>

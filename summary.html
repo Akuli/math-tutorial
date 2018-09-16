@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><b>Summary</b></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><b>Summary</b></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="summary">Summary<a class="headerlink" href="#summary" title="Link to this title">¶</a></h1><p>This page contains important and hard-to-remember things from other
 chapters all in one place to make them easier to find. You can look for
 stuff you need from this page or you can use it to find something
@@ -74,18 +75,18 @@ $1^\infty$, $0^0$, $\infty^0$
 <h2 id="common-areas-and-volumes">Common Areas and Volumes<a class="headerlink" href="#common-areas-and-volumes" title="Link to this title">¶</a></h2><p>You may need to use <a href="#integrals">integrals</a> if you want to calculate an
 area that is not listed here.</p>
 
-<img width="142" height="102" class="asymptote" src="asymptote/3f3a0f6415135920158a220dcad75a43.svg" style="float:left;" /><img width="227" height="172" class="asymptote" src="asymptote/6248a3e08d795cd696e0b627894dda47.svg" style="float:left;" /><img width="198" height="198" class="asymptote" src="asymptote/4160918df4ece38c22ab5e611032f1c2.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
+<img width="142" height="102" class="asymptote" src="asymptote/3f3a0f6415135920158a220dcad75a43.svg" style="float:left;" /><img width="228" height="172" class="asymptote" src="asymptote/6248a3e08d795cd696e0b627894dda47.svg" style="float:left;" /><img width="199" height="199" class="asymptote" src="asymptote/4160918df4ece38c22ab5e611032f1c2.svg" style="float:left;" /><p><div style="clear:both;"></div></p>
 
 <img  class="asymptote" src="asymptote/e8d2424aa3923e72a1982c99500f3903.png" style="float:left;" /><img  class="asymptote" src="asymptote/06d7b00b670ee69ac1446b3fdb3b968f.png" style="float:left;" /><img  class="asymptote" src="asymptote/2805c5b34c2d87aa57a7742bcc8eb720.png" style="float:left;" /><p><div style="clear:both;"></div></p>
 
 <p>The circle area is explained <a href="integrals.html#example-circle-area">here</a>,
 the cone volume is explained <a href="integrals.html#going-3d">here</a>, and everything
-else is explained <a href="basics.html#areas">here</a>.</p>
+else is explained <a href="oldbasics.html#areas">here</a>.</p>
 
 <h2 id="slopes">Slopes<a class="headerlink" href="#slopes" title="Link to this title">¶</a></h2><p>Notation: if $x$ is first 3 and we change it to 4, the <i>difference</i> of
 these values is $\Delta x = 4-3 = 1$.</p>
 
-<p><img width="168" height="283" class="asymptote" src="asymptote/d50a1ce926917d3de687e02d3a607c0b.svg" /></p><p>Only straight lines have slopes. The slope of the line in the picture
+<p><img width="169" height="285" class="asymptote" src="asymptote/d50a1ce926917d3de687e02d3a607c0b.svg" /></p><p>Only straight lines have slopes. The slope of the line in the picture
 above is $s = \frac{\Delta y}{\Delta x}$, so it determines how much $y$
 changes compared to $x$ because $\Delta y = s \cdot \Delta x$.</p>
 
@@ -93,7 +94,7 @@ changes compared to $x$ because $\Delta y = s \cdot \Delta x$.</p>
 always the same, so $\Delta x = 0$ regardless of the two points chosen
 for calculating $\frac{\Delta y}{\Delta x}$ and we get division by zero.</p>
 
-<img width="290" height="340" class="asymptote" src="asymptote/0f49362609b7faa6af96ee3cf002a2ef.svg" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
+<img width="291" height="341" class="asymptote" src="asymptote/0f49362609b7faa6af96ee3cf002a2ef.svg" style="float:right;" /><h2 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h2><p>Unofficially $dx$ is like $\Delta x$, but infinitely small. Use e.g.
 $\displaystyle \lim_{\Delta x \to 0}$ instead of $dx$ when doing actual
 calculations so the "smallness" is explicit and well-defined. The $\lim$
 thing means the limit as $\Delta x$ goes to 0, e.g.
@@ -138,7 +139,7 @@ stuff is proved <a href="explog.html#derivative-of-any-exponent-function">here</
 need to use the $\frac{d}{dx} f(g(x)) = f'(g(x))g'(x)$ rule; that is,
 remember to multiply by $g'(x)$. For example:</p>
 
-$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x\end{align}$$<img width="227" height="167" class="asymptote" src="asymptote/2161b00d1a445b433a80ed9f6407b2dc.svg" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
+$$\begin{align}\frac{d}{dx} (2x)^2 = 2(2x)^{2-1} \cdot \frac{d}{dx}(2x) = 2(2x) \cdot 2=8x\end{align}$$<img width="228" height="168" class="asymptote" src="asymptote/2161b00d1a445b433a80ed9f6407b2dc.svg" style="float:right;" /><h2 id="integrals">Integrals<a class="headerlink" href="#integrals" title="Link to this title">¶</a></h2><p>Area under curve $y=f(x)$ from $a$ to $b$ is $F(b)-F(a)$ where $F$ is an
 anti<a href="#derivatives">derivative</a> of $f$, i.e. $F'(x)=f(x)$. If $F(x)$ is one
 antiderivative of $f$, then all antiderivatives are of the form $F(x)+C$ with
 different values of $C$.</p>
@@ -149,7 +150,7 @@ different values of $C$.</p>
 </li></ul><p>Example (remember that $\frac{d}{dx} x^2 = 2x$):</p>
 
 $$\begin{align}\int_1^3 2x\ dx = \left[x^2\right]_1^3 = 3^2-1^2 = 9-1 = 8\end{align}$$<p id="integral-rules">Here are some handy antiderivative rules. The $a$ can be any
-<a href="basics.html#constants">constant</a> and it has nothing to do with the left
+<a href="oldbasics.html#constants">constant</a> and it has nothing to do with the left
 side of an area, and $f$ and $g$ can be any continuous functions.
 </p>
 
@@ -173,14 +174,14 @@ right-to-left.</p>
 
 <p>Arc length: $s = \displaystyle\int_a^b \sqrt{1+(f'(x))^2}\ dx$</p>
 
-<div class="indent"><p><img width="340" height="141" class="asymptote" src="asymptote/29d863654496d1feae9209530f51e878.svg" /></p></div><p>3D volume: $V = \displaystyle\int_a^b A(x)\ dx$</p>
+<div class="indent"><p><img width="341" height="142" class="asymptote" src="asymptote/29d863654496d1feae9209530f51e878.svg" /></p></div><p>3D volume: $V = \displaystyle\int_a^b A(x)\ dx$</p>
 
 <p><img  class="asymptote" src="asymptote/d4ad65331eaf8873596f7ac50df86e7f.png" /></p><h2 id="geometry-and-trig">Geometry and Trig<a class="headerlink" href="#geometry-and-trig" title="Link to this title">¶</a></h2><p>Scaling means multiplying all measurements by a positive number. The size
 changes, but angles remain the same.</p>
 
 <p>The angle of this slice is $\theta$ radians:</p>
 
-<p><img width="142" height="134" class="asymptote" src="asymptote/d769273fee605b95e167045ce26fec6b.svg" /></p><p>A full turn is $\tau$ radians, and a half turn is $\pi=\frac\tau2\approx3.14$
+<p><img width="142" height="135" class="asymptote" src="asymptote/d769273fee605b95e167045ce26fec6b.svg" /></p><p>A full turn is $\tau$ radians, and a half turn is $\pi=\frac\tau2\approx3.14$
 radians. The circumference of a circle with radius $r$ is $\tau r$:</p>
 
 <p><img width="142" height="108" class="asymptote" src="asymptote/2f20bb9de270bc417bfadf6608613434.svg" /></p><p>360 degrees (or 360° for short) is a full turn. Conversion functions:</p>
@@ -196,7 +197,7 @@ many programming things.</p>
 <p id="unitcircle">Unit circle and a circle with radius $r$:
 </p>
 
-<img width="283" height="217" class="asymptote" src="asymptote/a4c6038b5867330c50e0dc8d272d026f.svg" style="float:left;" /><img width="340" height="247" class="asymptote" src="asymptote/ed6fb5735bebfab67d89ce3fc6abeb3a.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
+<img width="285" height="218" class="asymptote" src="asymptote/a4c6038b5867330c50e0dc8d272d026f.svg" style="float:left;" /><img width="341" height="248" class="asymptote" src="asymptote/ed6fb5735bebfab67d89ce3fc6abeb3a.svg" style="float:left;" /><p><div style="clear:left;"></div></p>
 
 <p>Polar to Cartesian coordinates:</p>
 
@@ -209,7 +210,7 @@ $$\begin{align}\left\{\begin{array}{l}      r = \text{hypot}(x,y) = \sqrt{x^2+y^
 \end{array}\right.\end{align}$$<p id="trianglestuff">A triangle with a quarter-turn corner and a bunch of math:
 </p>
 
-<img width="170" height="121" class="asymptote" src="asymptote/754ed36a2d3ad2ea6f98ee7a05219ab0.svg" style="float:right;" />$$\begin{align}&\sin(\theta) = \frac b c \\
+<img width="171" height="121" class="asymptote" src="asymptote/754ed36a2d3ad2ea6f98ee7a05219ab0.svg" style="float:right;" />$$\begin{align}&\sin(\theta) = \frac b c \\
 &\cos(\theta) = \frac a c \\
 &\tan(\theta) = \frac b a \\
 &a^2 + b^2 = c^2\end{align}$$<p>The sum of all angles of a triangle is always $\frac \tau 2$.</p>

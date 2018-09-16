@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><b>Derivatives</b></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><b>Derivatives</b></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="derivatives">Derivatives<a class="headerlink" href="#derivatives" title="Link to this title">¶</a></h1><p>Derivatives are one of my favorite things in math. At first they seem
 like calculating their values will be quite complicated, but it turns
 out to be surprisingly easy.</p>
@@ -73,7 +74,7 @@ $\Delta$ is the Greek delta letter, so if someone's code has a variable named
 those points. Let's call the height of this triangle $\Delta y$ and the width
 $\Delta x$. Like this:</p>
 
-<p><img width="235" height="397" class="asymptote" src="asymptote/9c1fad6084bc4147abb7a2830dc410af.svg" /></p><p>In this example I have set the constant term to 1 and slope to 2, and with
+<p><img width="236" height="398" class="asymptote" src="asymptote/9c1fad6084bc4147abb7a2830dc410af.svg" /></p><p>In this example I have set the constant term to 1 and slope to 2, and with
 these points, I get $\Delta y = 6$ and $\Delta x = 3$. Here's something
 interesting:</p>
 
@@ -85,7 +86,7 @@ same slope.</p>
 <h2 id="what-is-a-derivative">What is a derivative?<a class="headerlink" href="#what-is-a-derivative" title="Link to this title">¶</a></h2><p>Now we know what slopes of lines are and how to calculate them, but can we
 calculate slopes of curves that look e.g. like this?</p>
 
-<p><img width="283" height="257" class="asymptote" src="asymptote/8865a05b83f756f0fc3440145b5f4292.svg" /></p><p>The problem with this is that we don't get the same $\frac{\Delta y}{\Delta x}$
+<p><img width="285" height="258" class="asymptote" src="asymptote/8865a05b83f756f0fc3440145b5f4292.svg" /></p><p>The problem with this is that we don't get the same $\frac{\Delta y}{\Delta x}$
 ratios everywhere. You can think about $\frac{\Delta y}{\Delta x}$ as the
 growth rate, and as you can see in the above graph, the values of $x^2$ grow at
 different rates in different places. For example, the slope seems to be $0$ at
@@ -93,18 +94,18 @@ $x=0$ and something positive when $x$ is positive.</p>
 
 <p>Maybe we could calculate the slope with a very small triangle?</p>
 
-<p><img width="283" height="243" class="asymptote" src="asymptote/789895b3a346a823efd8eb985cb8afbf.svg" /></p><p>We can calculate the exact slope at a point with a limit like
+<p><img width="285" height="244" class="asymptote" src="asymptote/789895b3a346a823efd8eb985cb8afbf.svg" /></p><p>We can calculate the exact slope at a point with a limit like
 $\displaystyle\lim_{\Delta x\to0} \textstyle\frac{\Delta y}{\Delta x}$. This
 limit is known as the <b>derivative</b>.</p>
 
 <p>Let's find a formula for calculating derivatives. We'll do this for a general
-$y=f(x)$ graph where $f$ is a <a href="basics.html#functions">function</a> instead of
+$y=f(x)$ graph where $f$ is a <a href="oldbasics.html#functions">function</a> instead of
 $y=x^2$, so we'll get something that is not limited to just $x^2$.</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;theelous3&gt;    so the height of x, or x&#39;s &quot;y&quot;, can be described as
                f(x), where f = lambda x: x**2
 </pre></div>
-<p><img width="340" height="295" class="asymptote" src="asymptote/ad0979adbaef6baf7140e824f2eea01e.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure that you
+<p><img width="341" height="296" class="asymptote" src="asymptote/ad0979adbaef6baf7140e824f2eea01e.svg" /></p><p>There are quite a few things going on in the above drawing. Make sure that you
 fully understand it before moving on.</p>
 
 <p>If we look at the length of the $f(x+\Delta x)$ line and take off the length of
@@ -143,7 +144,7 @@ calculation; for example, at $x=2$ the derivative is $2 \cdot 2 = 4$, so if we
 draw a straight line that barely touches $y=x^2$ at $x=2$ its slope will also
 be 4. Like this:</p>
 
-<p><img width="159" height="340" class="asymptote" src="asymptote/1bf322a431d11b3e93edbee9728a3924.svg" /></p><div class="box graybox"><h2> Exercise</h2><p>Find the derivative of $x^3$.
+<p><img width="160" height="341" class="asymptote" src="asymptote/1bf322a431d11b3e93edbee9728a3924.svg" /></p><div class="box graybox"><h2> Exercise</h2><p>Find the derivative of $x^3$.
 </p>
 
 </div><p>Earlier we looked at the line $y=2x+1$ and we got the slope 2 from any
@@ -186,7 +187,7 @@ also find it by just thinking about what $x^2$ means – if we have a square
 with side length $x$, then its <a href="basics.html#areas">area</a> is $x^2$. Let's see
 what happens to the area if we change $x$ by a small change $\Delta x$.</p>
 
-<p><img width="227" height="206" class="asymptote" src="asymptote/034acae8e1a071f70227b39cb5201e98.svg" /></p><p>Here's the area change:</p>
+<p><img width="228" height="207" class="asymptote" src="asymptote/034acae8e1a071f70227b39cb5201e98.svg" /></p><p>Here's the area change:</p>
 
 $$\begin{align}\Delta(x^2) &= \blue{\text{blue}} + \green{\text{green}} + \red{\text{red}} \\
 &= \blue{x \cdot \Delta x} + \green{x \cdot \Delta x} + \red{\Delta x \cdot \Delta x} \\
@@ -262,7 +263,7 @@ derivative rule.</p>
 $$\begin{align}\frac{d}{dx}\bigl((2x)^2\bigr) \mathop{=}^{\red ?} 2(2x) = 4x\end{align}$$<p>I put a red ? over the equal sign because we used the $\frac{d}{dx}x^2=2x$ rule
 when the inside was $2x$ instead of $x$. We aren't sure if we can do that just
 yet, and we actually get a <i>different</i> result if we start by using the
-$(ab)^2=a^2b^2$ rule from <a href="basics.html#powers-and-square-root">the basics page</a>:</p>
+$(ab)^2=a^2b^2$ rule from <a href="oldbasics.html#powers-and-square-root">the basics page</a>:</p>
 
 $$\begin{align}(2x)^2 = 2^2x^2 = 4x^2\end{align}$$$$\begin{align}\frac{d}{dx}\bigl((2x)^2\bigr)=\frac{d}{dx}(4x^2)=4\cdot\frac{d}{dx}(x^2)=4\cdot2x=8x\end{align}$$<p>This solution must be correct because we know that each part of it is correct.</p>
 
@@ -277,13 +278,13 @@ $$\begin{align}\frac{d}{dx}f(g(x))=f'(g(x)) \cdot g'(x)\end{align}$$<p>Use it ev
 <h2 id="example-smooth-jumps">Example: Smooth Jumps<a class="headerlink" href="#example-smooth-jumps" title="Link to this title">¶</a></h2><p>Let's say you're making a game where a player can jump over something. If the
 player moves right at a steady speed, which of these jumps looks best?</p>
 
-<p><img width="567" height="162" class="asymptote" src="asymptote/291b55ce711b3fd0ae7f55e8503cd3cb.svg" /></p><p>The answer is obvious – the rightmost jump looks best. It's time to figure out
+<p><img width="569" height="163" class="asymptote" src="asymptote/291b55ce711b3fd0ae7f55e8503cd3cb.svg" /></p><p>The answer is obvious – the rightmost jump looks best. It's time to figure out
 how to make games with jumps like that.</p>
 
 <p>Let's say that $t$ is time and $h$ is the height of our player, so we get this
 graph:</p>
 
-<p><img width="255" height="181" class="asymptote" src="asymptote/3e5373529755e3d5df0763bcf79bd5ba.svg" /></p><p><a href="graphs.html#parabolas">This graph looks like a parabola, so its equation is $h=at^2+bt+c$
+<p><img width="256" height="182" class="asymptote" src="asymptote/3e5373529755e3d5df0763bcf79bd5ba.svg" /></p><p><a href="graphs.html#parabolas">This graph looks like a parabola, so its equation is $h=at^2+bt+c$
 where $a$, $b$ and $c$ are constants.</a> The
 changing rate of height is the falling speed. Let's call that $v$ like
 velocity.</p>

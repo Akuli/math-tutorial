@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><b>Exponent Functions and Logarithms</b></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><a href="more-derivatives.html">More Derivatives</a></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><b>Exponent Functions and Logarithms</b></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="exponent-functions-and-logarithms">Exponent Functions and Logarithms<a class="headerlink" href="#exponent-functions-and-logarithms" title="Link to this title">¶</a></h1><p>The above title sounds really boring, so I wonder how you ended up reading this
 thing. The mathematician inside may might find some of this interesting though.</p>
 
@@ -53,7 +54,7 @@ x^{-2} &= \frac{x^{-1}}x = \frac{1/x}{x} = \frac{1}{x^2} \\
 x^{-3} &= \frac{x^{-2}}x = \frac{1/x^2}{x} = \frac{1}{x^3}\end{align}$$<p>So in general, we have $x^{-y} = \frac{1}{x^y}$. Let's draw a few points of the
 graph $y=2^x$ and connect them with a smooth curve:</p>
 
-<p><img width="249" height="312" class="asymptote" src="asymptote/b8605ba07d07acd35e5c245e33901526.svg" /></p><p>The graph suggests that we should be able to do things like $2^{1/2}$ or
+<p><img width="250" height="313" class="asymptote" src="asymptote/b8605ba07d07acd35e5c245e33901526.svg" /></p><p>The graph suggests that we should be able to do things like $2^{1/2}$ or
 $2^\pi$ because it's smooth and continuous. In fact, we're already familiar
 with the special case $2^{1/2}$, that's $\sqrt{2}$.</p>
 
@@ -133,7 +134,7 @@ $b$ is known as the <b>base</b> of the logarithm.</p>
 <p id="negative-log">The inversiness looks like this in graphs:
 </p>
 
-<p><img width="340" height="340" class="asymptote" src="asymptote/1156f608b22ff7d9270212588a5e890c.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
+<p><img width="341" height="341" class="asymptote" src="asymptote/1156f608b22ff7d9270212588a5e890c.svg" /></p><p>Note that the $\log_2$ graph does not exist in the $x<0$ area because $2^x>0$
 with any $x$. You cannot take any logarithm of zero or a negative value.</p>
 
 <p>The base $e$ logarithm $\log_e(x)$ is often written as $\ln(x)$. The n is short
@@ -254,7 +255,7 @@ $$\begin{align}x^c = e^{\ln(x^c)} = e^{c \ln(x)}\end{align}$$<p>Now we can find 
 $$\begin{align}\frac{d}{dx} x^c  &= \frac{d}{dx} e^{\overbrace{c\ln(x)}^{\substack{\text{inner}\\\text{stuff}}}}  = e^{c \ln(x)} \cdot \frac{d}{dx}(c \ln(x)) \\
 &= x^c \cdot c \frac 1 x = c\frac{x^c}x = c\ x^{c-1}\end{align}$$<p>It's handy that this isn't limited to integers. For example:</p>
 
-$$\begin{align}\frac{d}{dx} \sqrt x = \frac{d}{dx} x^{1/2} = \frac 1 2 x^{1/2 - 1}  = \frac 1 2 x^{-1/2} = \frac 1 2 \cdot \frac{1}{x^{1/2}} = \frac{1}{2\sqrt x}\end{align}$$<p>Here we don't need to worry about negative $x$ values because <a href="basics.html#sqrt-basics">we can't take
+$$\begin{align}\frac{d}{dx} \sqrt x = \frac{d}{dx} x^{1/2} = \frac 1 2 x^{1/2 - 1}  = \frac 1 2 x^{-1/2} = \frac 1 2 \cdot \frac{1}{x^{1/2}} = \frac{1}{2\sqrt x}\end{align}$$<p>Here we don't need to worry about negative $x$ values because <a href="oldbasics.html#sqrt-basics">we can't take
 square roots of negative values</a> anyway.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Logarithms are handy for proving other derivative rules too if we can
@@ -279,7 +280,7 @@ $\int\frac 1 x\ dx = \ln(x) + C$. However, that only works if $x > 0$ because
 we can't take a logarithm of a negative number, but $\frac 1 x$ is defined for
 any $x \ne 0$:</p>
 
-<p><img width="283" height="283" class="asymptote" src="asymptote/e3ef367a229bae2c72188aa22f717c64.svg" /></p><p>If $x$ is negative, then $-x$ is positive. Maybe something like $\ln(-x)$
+<p><img width="285" height="284" class="asymptote" src="asymptote/e3ef367a229bae2c72188aa22f717c64.svg" /></p><p>If $x$ is negative, then $-x$ is positive. Maybe something like $\ln(-x)$
 happens to be our $\frac 1 x$ antiderivative? Let's see.</p>
 
 $$\begin{align}\frac{d}{dx} \ln(\underbrace{-x}_{\substack{\text{inner} \\ \text{stuff}}})  = \frac{1}{-x} \cdot (-1) = \frac 1 x\end{align}$$<p>Now we have this:</p>
@@ -298,7 +299,7 @@ $$\begin{align}\int\frac 1 x\ dx &= \ln(|x|) + C \\
 \end{array}\right.\end{align}$$<p>Here's a nice integral with $\frac 1 x$ and a constant $a>0$:</p>
 
 $$\begin{align}\int_1^a\frac 1 x\ dx &= \Bigl[\ln(|x|)\Bigr]_1^a = \Bigl[\ln(x)\Bigr]_1^a = \ln(a) - \ln(1) \\
-&= \ln(a) - \ln(e^0) = \ln(a) - 0 = \ln(a)\end{align}$$<img width="227" height="139" class="asymptote" src="asymptote/61ab147d4e58cea629a94b3556328a41.svg" style="float:right;" /><p>We also know that $\ln(e) = \rcancel{\ln}(\rcancel{e}^1) = 1$, so we can define
+&= \ln(a) - \ln(e^0) = \ln(a) - 0 = \ln(a)\end{align}$$<img width="228" height="140" class="asymptote" src="asymptote/61ab147d4e58cea629a94b3556328a41.svg" style="float:right;" /><p>We also know that $\ln(e) = \rcancel{\ln}(\rcancel{e}^1) = 1$, so we can define
 $e$ as the only number that satisfies this:</p>
 
 $$\begin{align}\int_1^e\frac 1 x\ dx = 1\end{align}$$<h2 id="integrals-of-exponent-functions">Integrals of Exponent Functions<a class="headerlink" href="#integrals-of-exponent-functions" title="Link to this title">¶</a></h2><p>We know that $\frac{d}{dx} b^x = b^x \ln(b)$. Turning that into an
@@ -319,7 +320,7 @@ $\frac{d}{dx} e^x = e^x$.</p>
 <h2 id="integrals-of-logarithms">Integrals of Logarithms<a class="headerlink" href="#integrals-of-logarithms" title="Link to this title">¶</a></h2><p>Let's start by integrating $\ln(x)$. There are several ways to do this, but
 here's my favorite way:</p>
 
-<p><img width="283" height="274" class="asymptote" src="asymptote/e92f6ad4af3813a7b959c012bb0c71e5.svg" /></p><p>We know that $y = e^x$, so $x = \ln(y)$. That's how $\ln(a)$ appears on the x
+<p><img width="285" height="275" class="asymptote" src="asymptote/e92f6ad4af3813a7b959c012bb0c71e5.svg" /></p><p>We know that $y = e^x$, so $x = \ln(y)$. That's how $\ln(a)$ appears on the x
 axis. The orange area is obviously $\int_0^{\ln(a)} e^x\ dx$ and similarly the
 yellow area is $\int_1^a \ln(y)\ dy$.</p>
 

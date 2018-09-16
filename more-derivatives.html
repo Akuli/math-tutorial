@@ -25,7 +25,8 @@
         olive: [ "\\color{olive}{#1}", 1 ],
         purple: [ "\\color{purple}{#1}", 1 ],
         black: [ "\\color{black}{#1}", 1 ],
-        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1 ]
+        rcancel: [ "\\require{cancel}\\red{\\cancel{\\black{#1}}}", 1],
+        implies: [ "\\Rightarrow", 0 ]
       }
     }
   });
@@ -35,7 +36,7 @@
 </head>
 <body>
 <div id="content">
-<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><b>More Derivatives</b></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">The Basics</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
+<div id="sidebar"><div class="sidebarblock"><h3>Interesting for programmers</h3><ul><li><a href="infinity.html">Infinity</a></li><li><a href="numbertheory.html">Number Theory</a></li><li><a href="fib.html">Fibonacci Sequence</a></li><li><a href="derivatives.html">Derivatives</a></li><li><a href="geometry-and-trig.html">Geometry and Trig</a></li><li><a href="physics.html">Physics Stuff</a></li></ul></div><div class="sidebarblock"><h3>Kinda fun</h3><ul><li><a href="integrals.html">Integrals</a></li><li><a href="integral-techniques.html">Integration Techniques</a></li><li><a href="more-integrals.html">More Integrals</a></li></ul></div><div class="sidebarblock"><h3>Mathy</h3><ul><li><b>More Derivatives</b></li><li><a href="more-geometry-and-trig.html">More Geometry and Trig</a></li><li><a href="explog.html">Exponent Functions and Logarithms</a></li></ul></div><div class="sidebarblock"><h3>Mind-blowing</h3><ul><li><a href="taylor.html">Taylor Series</a></li><li><a href="eulerformula.html">Euler's Formula</a></li></ul></div><div class="sidebarblock"><h3>Other stuff</h3><ul><li><a href="basics.html">Introduction to Math</a></li><li><a href="oldbasics.html">Old Basics Page</a></li><li><a href="graphs.html">Graphs</a></li><li><a href="summary.html">Summary</a></li></ul><h3><a href="index.html">Back to front page</a></h3></div></div>
 <h1 id="more-derivatives">More Derivatives<a class="headerlink" href="#more-derivatives" title="Link to this title">¶</a></h1><p>This chapter contains derivative stuff that most people probably find boring,
 but you might like some of it. It assumes that you have read <a href="derivatives.html">the first
 derivative chapter</a>.</p>
@@ -52,7 +53,7 @@ derivatives.</p>
 
 <h3 id="frac-d-dx-x-1">$\frac{d}{dx} x = 1$<a class="headerlink" href="#frac-d-dx-x-1" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=x$ is a straight line with slope 1.</p>
 
-<p><img width="209" height="208" class="asymptote" src="asymptote/a25ede4561945f70d9428e32d5d71460.svg" /></p><p>We can also plug in $f(x)=x$ to the definition of derivative:</p>
+<p><img width="210" height="209" class="asymptote" src="asymptote/a25ede4561945f70d9428e32d5d71460.svg" /></p><p>We can also plug in $f(x)=x$ to the definition of derivative:</p>
 
 $$\begin{align}\frac{d}{dx} x &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
 &= \lim_{h\to0} \frac{(\rcancel x+h)\rcancel{-x}}{h} \\
@@ -62,7 +63,7 @@ thing with $y=x$:</p>
 
 $$\begin{align}\frac{d}{dx} x = \lim_{\Delta x \to 0} \frac{\Delta x}{\Delta x} = 1\end{align}$$</div><h3 id="frac-d-dx-x-c">$\frac{d}{dx} x = c$<a class="headerlink" href="#frac-d-dx-x-c" title="Link to this title">¶</a></h3><div class="indent"><p>The graph $y=c$ is a horizontal line at height $c$, so its slope is $0$.</p>
 
-<p><img width="235" height="195" class="asymptote" src="asymptote/dc28f6da5e2f715b772657df203c149f.svg" /></p><p>We can also plug in $f(x)=c$ to the definition of derivative:</p>
+<p><img width="236" height="196" class="asymptote" src="asymptote/dc28f6da5e2f715b772657df203c149f.svg" /></p><p>We can also plug in $f(x)=c$ to the definition of derivative:</p>
 
 $$\begin{align}\frac{d}{dx} x &= \lim_{h\to0} \frac{f(x+h)-f(x)}{h} \\
 &= \lim_{h\to0} \frac{c-c}{h} \\
@@ -118,7 +119,7 @@ $$\begin{align}\frac{d}{dx} f(g(x))  &= \lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{h}
 &= \lim_{h\to0} \frac{\bigl(f(g(x+h))-f(g(x))\bigr)\green{\bigl(g(x+h)-g(x)\bigr)}}                      {h\cdot\green{\bigl(g(x+h)-g(x)\bigr)}} \\
 &= \lim_{h\to0} \left(\frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \cdot                        \frac{\green{g(x+h)-g(x)}}{h} \right) \\
 &= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right)     \left(\lim_{h\to0} \frac{\green{g(x+h)-g(x)}}{h} \right) \\
-&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)\end{align}$$<img width="222" height="283" class="asymptote" src="asymptote/c95365e536936258b8055b481c0cc877.svg" style="float:right;" /><p>The stuff with green on the bottom looks kind of like something that could
+&= \left(\lim_{h\to0} \frac{f(g(x+h))-f(g(x))}{\green{g(x+h)-g(x)}} \right) g'(x)\end{align}$$<img width="223" height="285" class="asymptote" src="asymptote/c95365e536936258b8055b481c0cc877.svg" style="float:right;" /><p>The stuff with green on the bottom looks kind of like something that could
 be turned into the definition of derivative, but the defintion has just $h$
 on the bottom instead of the green mess. Let's define another variable
 $\Delta g = \green{g(x+h)-g(x)}$. We assumed that the derivative of $g$
@@ -174,7 +175,7 @@ area thing</a>, and we can do the same thing
 here if we assume that $f(x)$ and $g(x)$ are positive. The area of an
 $f(x)$ by $g(x)$ rectangle is $f(x)g(x)$.</p>
 
-<p><img width="340" height="211" class="asymptote" src="asymptote/7d736b7a8f8f13a94355664337145b15.svg" /></p>$$\begin{align}\Delta(f(x)g(x)) &= \blue{\text{blue}} + \green{\text{green}} + \red{\text{red}} \\
+<p><img width="341" height="212" class="asymptote" src="asymptote/7d736b7a8f8f13a94355664337145b15.svg" /></p>$$\begin{align}\Delta(f(x)g(x)) &= \blue{\text{blue}} + \green{\text{green}} + \red{\text{red}} \\
 &= \blue{\Delta f \cdot g(x)} + \green{f(x) \cdot \Delta g} + \red{\Delta f \cdot \Delta g} \\
 \frac{\Delta(f(x)g(x))}{\Delta x} &= \frac{\blue{\Delta f \cdot g(x)}}{\Delta x} +      \frac{\green{f(x) \cdot \Delta g}}{\Delta x} + \frac{\red{\Delta f \cdot \Delta g}}{\Delta x} \\
 &= \frac{\blue{\Delta f}}{\Delta x}\blue{g(x)} +      \green{f(x)}\frac{\green{\Delta g}}{\Delta x} + \frac{\red{\Delta f}}{\Delta x}\red{\Delta g}\end{align}$$<p>Now taking $\Delta x \to 0$ limits gives
@@ -218,7 +219,7 @@ $\frac{d}{dx} x^{k+1} = (k+1)x^{(k+1)-1}$. Now we know that the rule works
 when $c=1$, and then if we plug in $k=1$ we know it works when $c=2$, and so
 on.</p>
 
-<p><img width="425" height="89" class="asymptote" src="asymptote/dc9aef9cb79d3af0542d9b467d10811a.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive
+<p><img width="427" height="90" class="asymptote" src="asymptote/dc9aef9cb79d3af0542d9b467d10811a.svg" /></p><p>Note that we only proved that the rule works when $c$ is a positive
 integer, but it also works when $c$ is e.g. $\frac{1}{2}$. This tutorial
 also contains <a href="explog.html#example-derivative-of-x-c">another proof</a> that
 doesn't have this restriction.
@@ -285,9 +286,9 @@ have derivatives, but the derivative does not exist in these cases:</p>
 
 <ul><li>The graph of the function has a spike in it. Derivatives describe
   "growth rate" and it isn't clear how fast the values grow on top of a
-  spike. For example, the <a href="basics.html#absolute-value">absolute value</a>
+  spike. For example, the <a href="oldbasics.html#absolute-value">absolute value</a>
   $|x|$ has a derivative everywhere except at $x=0$.
-</li></ul><div class="indent"><p><img width="170" height="141" class="asymptote" src="asymptote/6a7c41832bf5f8e9f78b1ebfe11aacf1.svg" /></p><p>Let's see what the definition of derivative gives for $\frac{d}{dx}|x|$ at
+</li></ul><div class="indent"><p><img width="171" height="142" class="asymptote" src="asymptote/6a7c41832bf5f8e9f78b1ebfe11aacf1.svg" /></p><p>Let's see what the definition of derivative gives for $\frac{d}{dx}|x|$ at
 $x=0$:</p>
 
 $$\begin{align}\lim_{h\to0} \frac{|0+h| - |0|}{h} &= \lim_{h\to0} \frac{|h|}{h} \\
@@ -303,7 +304,7 @@ cases</a>. The limit does not exist.
 </li></ul><div class="indent">$$\begin{align}f(x) = \begin{cases}      1   & \text{ if } x > 0 \\
     0   & \text{ if } x = 0 \\
     -1  & \text{ if } x < 0 \\
-\end{cases}\end{align}$$<p><img width="227" height="193" class="asymptote" src="asymptote/fd9f4f27726d916f815316c4c0ebb594.svg" /></p><p>Let's check with the definition of derivative.</p>
+\end{cases}\end{align}$$<p><img width="228" height="193" class="asymptote" src="asymptote/fd9f4f27726d916f815316c4c0ebb594.svg" /></p><p>Let's check with the definition of derivative.</p>
 
 $$\begin{align}f'(0) &= \lim_{h\to0} \frac{f(0+h)-f(0)}{h} \\
 &= \lim_{h\to0} \frac{f(h)-0}{h} \\
@@ -335,7 +336,7 @@ $\displaystyle\lim_{h\to0} f(x+h)$ and $f(x)$ are defined.
 </div><p>The "where blablabla are defined" thing seems confusing. Let's look at an
 example:</p>
 
-<p><img width="283" height="205" class="asymptote" src="asymptote/63711337bba1545ab27526df4822c20e.svg" /></p><p>Let's plug in $f(x)=\sqrt x$ and $x=0$. We can't do
+<p><img width="285" height="206" class="asymptote" src="asymptote/63711337bba1545ab27526df4822c20e.svg" /></p><p>Let's plug in $f(x)=\sqrt x$ and $x=0$. We can't do
 $\displaystyle\lim_{h\to0} \sqrt{0+h}$ because that would mean doing
 $\displaystyle\lim_{h\to0^-}\sqrt h$, but we can't take square roots of
 negative numbers. So, it doesn't really make sense to think about the
