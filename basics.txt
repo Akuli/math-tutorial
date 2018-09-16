@@ -127,6 +127,23 @@ That's a mess! Let me explain how to read it:
     </li>
 </ul>
 
+Note that real numbers don't have anything to do with things that we can
+measure in real life. If we say "let $x=2$", we don't mean that $x$ is 2 inches
+or metres or whatever. It's $2$. Note that this is also true when we draw
+stuff; it's perfectly normal to draw a rectangle like this:
+
+asymptote:
+    size(5cm);
+    real w=3, h=2;
+    filldraw(scale(w,h)*unitsquare, lightblue);
+    label((w/2,h), L="$"+string(w)+"$", align=N);
+    label((0,h/2), L="$"+string(h)+"$", align=W);
+
+The rectangle's width is 3 and its height 2, and therefore its area is 6. It is
+*not* 3 inches wide or 2 inches high, and its area is not 6 square inches. If
+we *use* the math for something practical, then we need inches and centimeters
+and pixels and other stuff, but the math itself is written without that.
+
 A note about $ab$ and ``a*b``: if I had written something like
 $a \cdot c + b \cdot c$ you would need to think about that for a while. What was
 the operator precedence again? Oh right, multiplication is done first, so we
