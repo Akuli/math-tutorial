@@ -139,7 +139,7 @@ asymptote:
     label((w/2,h), L="$"+string(w)+"$", align=N);
     label((0,h/2), L="$"+string(h)+"$", align=W);
 
-The rectangle's width is 3 and its height 2, and therefore its area is 6. It is
+The rectangle's width is 3 and its height is 2, and therefore its area is 6. It is
 *not* 3 inches wide or 2 inches high, and its area is not 6 square inches. If
 we *use* the math for something practical, then we need inches and centimeters
 and pixels and other stuff, but the math itself is written without that.
