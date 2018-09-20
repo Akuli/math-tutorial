@@ -166,11 +166,19 @@ $a \cdot c + b \cdot c$ you would need to think about that for a while. What was
 the operator precedence again? Oh right, multiplication is done first, so we
 have $(a \cdot c)+(b \cdot c)$. That's bad because I want to let you focus on
 important things instead of notation details, and $ac+bc$ is better; you can see
-right away what it means because the multiplied things are closely together.
-</p>
+right away what it means because the multiplied things are closely together.</p>
 
-<h2 id="proofs-and-axioms">Proofs and Axioms<a class="headerlink" href="#proofs-and-axioms" title="Link to this title">¶</a></h2><p>Here is a proof of $(a+b)c = ac + bc$. The proof only works if
-$c \in \{1,2,3,...\}$. We'll talk about other $c$ values below.</p>
+<p>Finally, here is some boring but important stuff. You probably know what
+$a < b$ and $a > b$ mean, but we also use these things in math:</p>
+
+<ul><li>$a \ge b$, or "greater than or equal", means $a > b$ or $a = b$. For example,
+  $2 \ge 1$ and $1 \ge 1$ are true, but $1 > 1$ is false.</li><li>$a \le b$ means $b \ge a$.</li><li>"$x$ is positive" and "$x$ is negative" mean $x > 0$ and $x < 0$,
+  respectively. Note that $0$ is not positive or negative.</li><li>"$x$ is non-negative" or "$x$ is not negative" means $x \ge 0$. This is
+  useful when negative numbers need to be treated specially, but it doesn't
+  matter whether $x$ is zero or positive.</li><li>"$x$ is non-positive" or "$x$ is not positive" means $x \le 0$.
+</li></ul><h2 id="proofs-and-axioms">Proofs and Axioms<a class="headerlink" href="#proofs-and-axioms" title="Link to this title">¶</a></h2><p>Here is a proof of $(a+b)c = ac + bc$. The proof works only if
+$c \in \{1,2,3,...\}$, because otherwise it doesn't make sense to add a number
+to itself $c$ times. We'll talk about other $c$ values soon.</p>
 
 $$\begin{align}(a+b)c  &= \underbrace{(a+b)+(a+b)+...+(a+b)}_{c\text{ times}} \\
         &= \underbrace{a+b+a+b+...+a+b}_{              a\text{ repeated }c\text{ times, }b\text{ repeated }c\text{ times}} \\
@@ -332,7 +340,11 @@ the horizontal line are being divided, and things above it are being multiplied.
 You can reorder stuff as long as you don't change those things.
 </p>
 
-$$\begin{align}a \cdot \frac{b}{c} \cdot \frac{d}{e} = \frac{abd}{ce}\end{align}$$<p id="zerodivision">In the above math, $c$ and $e$ must not be $0$ because you can't divide by zero.
+$$\begin{align}a \cdot \frac{b}{c} \cdot \frac{d}{e} = \frac{abd}{ce}\end{align}$$<p>Note that $a$ goes to top. It works like this because $\frac b c=b\frac 1 c$,
+just like $a-b=a+(-b)$. This is why $a\frac b c = ab\frac 1 c=\frac{ab}{c}$,
+and a similar thing happens with more things multiplied.</p>
+
+<p id="zerodivision">In the above math, $c$ and $e$ must not be $0$ because you can't divide by zero.
 </p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span>&lt;laplous3&gt;   when you divide by 0 you get theelous3
@@ -430,9 +442,9 @@ then using that result, we'll show that it works for any negative numbers.</p>
 sign between them. With an equation, we can divide both sides by anything
 nonzero (more details <a href="#solving-equations">below</a>), so let's do that:</p>
 
-$$\begin{align}\frac{x}{\color{green}{-1}} = \frac{(-1)(-1)}{(\color{green}{-1})}\end{align}$$<p>The right side cancels:</p>
+$$\begin{align}\frac{x}{(\color{green}{-1})} = \frac{(-1)(-1)}{(\color{green}{-1})}\end{align}$$<p>The right side cancels:</p>
 
-$$\begin{align}\frac{x}{(-1)} &= \frac{(-1)\color{blue}{(-1)}}{\color{blue}{(-1)}} \\
+$$\begin{align}\frac{x}{(-1)} &= \frac{(-1)\color{blue}{(-1)}}{\color{blue}{(-1)}} = (-1) \\
 \frac{x}{-1} &= -1\end{align}$$<p>We can also add and substract things on both sides. Let's add $1$...</p>
 
 $$\begin{align}\frac{x}{-1} + 1 &= -1 + 1 \\
@@ -527,7 +539,15 @@ $$\begin{align}(a-b)^2 = (a+(-b))^2 = a^2+2a(-b)+(-b)^2\end{align}$$<p>Let's do 
 $$\begin{align}(-b)^2=(-b)(-b)=(-1)b(-1)b=(-1)(-1)b^2=1b^2=b^2\end{align}$$<p>If you don't want to do this mess ever again, you can memorize that $(-b)^2=b^2$
 for all $b \in \mathbb{R}$, which is what we just proved. We are almost done:</p>
 
-$$\begin{align}(a-b)^2=a^2-2ab+b^2\end{align}$$<p><hr /></p>
+$$\begin{align}(a-b)^2=a^2-2ab+b^2\end{align}$$<p>This happens all the time in math: we have proved a thing or we have an axiom
+for a thing, and then we use it to prove another thing, and then using that
+other thing we prove even more stuff, and so on.</p>
+
+$$\begin{align}(a+b)c &= ac+bc \\
+\Downarrow \\
+(a+b)^2 =&\ a^2+2ab+b^2 \\
+\Downarrow \\
+(a-b)^2 =&\ a^2-2ab+b^2\end{align}$$<p><hr /></p>
 
 <p>There's one more formula I want to show you. I promise, this will be the last
 one. So far we have looked at $\green{(a+b)(a+b)}$ and
