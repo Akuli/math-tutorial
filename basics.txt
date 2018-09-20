@@ -151,11 +151,25 @@ have $(a \cdot c)+(b \cdot c)$. That's bad because I want to let you focus on
 important things instead of notation details, and $ac+bc$ is better; you can see
 right away what it means because the multiplied things are closely together.
 
+Finally, here is some boring but important stuff. You probably know what
+$a < b$ and $a > b$ mean, but we also use these things in math:
+
+* $a \ge b$, or "greater than or equal", means $a > b$ or $a = b$. For example,
+  $2 \ge 1$ and $1 \ge 1$ are true, but $1 > 1$ is false.
+* $a \le b$ means $b \ge a$.
+* "$x$ is positive" and "$x$ is negative" mean $x > 0$ and $x < 0$,
+  respectively. Note that $0$ is not positive or negative.
+* "$x$ is non-negative" or "$x$ is not negative" means $x \ge 0$. This is
+  useful when negative numbers need to be treated specially, but it doesn't
+  matter whether $x$ is zero or positive.
+* "$x$ is non-positive" or "$x$ is not positive" means $x \le 0$.
+
 
 ## Proofs and Axioms
 
-Here is a proof of $(a+b)c = ac + bc$. The proof only works if
-$c \in \{1,2,3,...\}$. We'll talk about other $c$ values below.
+Here is a proof of $(a+b)c = ac + bc$. The proof works only if
+$c \in \{1,2,3,...\}$, because otherwise it doesn't make sense to add a number
+to itself $c$ times. We'll talk about other $c$ values soon.
 
 math:
     (a+b)c  &= \underbrace{(a+b)+(a+b)+...+(a+b)}_{c\text{ times}}
@@ -366,6 +380,10 @@ You can reorder stuff as long as you don't change those things.
 math:
     a \cdot \frac{b}{c} \cdot \frac{d}{e} = \frac{abd}{ce}
 
+Note that $a$ goes to top. It works like this because $\frac b c=b\frac 1 c$,
+just like $a-b=a+(-b)$. This is why $a\frac b c = ab\frac 1 c=\frac{ab}{c}$,
+and a similar thing happens with more things multiplied.
+
 (zerodivision)
 In the above math, $c$ and $e$ must not be $0$ because you can't divide by zero.
 
@@ -531,12 +549,12 @@ sign between them. With an equation, we can divide both sides by anything
 nonzero (more details [below](#solving-equations)), so let's do that:
 
 math:
-    \frac{x}{\color{green}{-1}} = \frac{(-1)(-1)}{(\color{green}{-1})}
+    \frac{x}{(\color{green}{-1})} = \frac{(-1)(-1)}{(\color{green}{-1})}
 
 The right side cancels:
 
 math:
-    \frac{x}{(-1)} &= \frac{(-1)\color{blue}{(-1)}}{\color{blue}{(-1)}}
+    \frac{x}{(-1)} &= \frac{(-1)\color{blue}{(-1)}}{\color{blue}{(-1)}} = (-1)
     \frac{x}{-1} &= -1
 
 We can also add and substract things on both sides. Let's add $1$...
@@ -689,6 +707,17 @@ for all $b \in \mathbb{R}$, which is what we just proved. We are almost done:
 
 math:
     (a-b)^2=a^2-2ab+b^2
+
+This happens all the time in math: we have proved a thing or we have an axiom
+for a thing, and then we use it to prove another thing, and then using that
+other thing we prove even more stuff, and so on.
+
+math:
+    (a+b)c &= ac+bc
+    \Downarrow
+    (a+b)^2 =&\ a^2+2ab+b^2
+    \Downarrow
+    (a-b)^2 =&\ a^2-2ab+b^2
 
 <hr />
 
