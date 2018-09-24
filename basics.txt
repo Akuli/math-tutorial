@@ -741,7 +741,7 @@ indent:
     Find all real numbers $x$ and $y$ that satisfy $x^2 = y^2$.
 
 We know that this is true at least if $x=y$ because $x^2=x^2$, or if $x=-y$
-because then $x^2=(-y)^2=y^2$. But are there are other $x$ and $y$ values that
+because then $x^2=(-y)^2=y^2$. But are there other $x$ and $y$ values that
 *also* happen to make this work? We can check it like this: the difference of
 two numbers is zero **only if** the two numbers are equal.
 
