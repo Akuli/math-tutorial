@@ -91,9 +91,9 @@ indent:
 
 A real number means any number between $-\infty$ and $\infty$, but not $-\infty$
 or $\infty$; that is, pretty much any number you can think of, like $2$, $0.1$,
-$3.14159...$, $-5$ or $1000000$. We say "real number" to make a difference
+$3.14159$, $-5$ or $1000000$. We say "real number" to make a difference
 between other kinds of numbers; for example, "let $n$ be an integer" means that
-$n$ can be $2$ or $-5$ or $1000000$, but not $0.1$ or $3.14159...$.
+$n$ can be $2$ or $-5$ or $1000000$, but not $0.1$ or $3.14159$.
 
 Mathematicians are lazy, so usually we don't want to write out "let $x$ be a
 real number" (think about writing by hand) every time we want to work with
@@ -127,10 +127,10 @@ That's a mess! Let me explain how to read it:
     </li>
 </ul>
 
-Note that real numbers don't have anything to do with things that we can
-measure in real life. If we say "let $x=2$", we don't mean that $x$ is 2 inches
-or metres or whatever. It's $2$. Note that this is also true when we draw
-stuff; it's perfectly normal to draw a rectangle like this:
+Real numbers don't have anything to do with things that we can measure in real
+life. If we say "let $x=2$", we don't mean that $x$ is 2 inches or metres or
+whatever. It's $2$. This is also true when we draw stuff; it's perfectly normal
+to draw a rectangle like this:
 
 asymptote:
     size(5cm);
@@ -158,7 +158,7 @@ $a < b$ and $a > b$ mean, but we also use these things in math:
   $2 \ge 1$ and $1 \ge 1$ are true, but $1 > 1$ is false.
 * $a \le b$ means $b \ge a$.
 * "$x$ is positive" and "$x$ is negative" mean $x > 0$ and $x < 0$,
-  respectively. Note that $0$ is not positive or negative.
+  respectively. $0$ is not positive or negative.
 * "$x$ is non-negative" or "$x$ is not negative" means $x \ge 0$. This is
   useful when negative numbers need to be treated specially, but it doesn't
   matter whether $x$ is zero or positive.
@@ -306,30 +306,29 @@ indent:
 ...like this:
 
 indent:
-    Let's assume $a+b=0$. Substracting $b$ on both sides gives $a+b-b=0-b$; that
-    is, $a=-b$. $b$ is positive, so $-b$ is negative, and $a$ is also negative
-    because it's $-b$. This is not possible because we just said that $a$ is
-    positive. Our assumption gave us nonsense, so it must be false. This means
-    that there are no positive $a$ and $b$ so that $a+b=0$, which is what we
-    wanted.
+    Let $a,b \in \mathbb{R}$ and $a,b > 0$. Let's assume $a+b=0$. Substracting
+    $b$ on both sides gives $a+b-b=0-b$; that is, $a=-b$. $b$ is positive, so
+    $-b$ is negative, and $a$ is also negative because it's $-b$. This is not
+    possible because we just said that $a$ is positive. Our assumption gave us
+    nonsense, so it must be false. This means that there are no positive $a$
+    and $b$ so that $a+b=0$, which is what we wanted.
 
 Of course, you don't need to write down that much text every time. This is
 enough:
 
 indent:
-    $a,b \in \mathbb{R}$ and $a,b > 0$. If $a+b=0$, then $a = -b < 0$, which is
-    a contradiction.
+    Let $a,b \in \mathbb{R}$ and $a,b > 0$. If $a+b=0$, then $a = -b < 0$,
+    which is a contradiction.
 
 
 ## Simplification Techniques
 
+graybox:
+    In this tutorial, division is usually not written as $a/b$; it is almost
+    always $\frac a b$, and later you'll find that much nicer to work with.
+
 Let $a,b,c,d,e,x,y \in \mathbb{R}$. The things I'm about to show can be proved
 with axioms of reals.
-
-If you add together many things, you can put them to any order you want.
-
-math:
-    a+b+c+d+e = e+d+a+c+b
 
 For every $a$, there is a number $-a$ such that $a + (-a) = 0$. If $a$ is
 positive, then $-a$ is negative, and vice versa. On a number line, this looks
@@ -348,8 +347,35 @@ asymptote:
     dot((b,0), L="$b$", align=N, p=dotpen);
     dot((0,0), L="$0$", align=N, p=dotpen);
 
-Substraction $a-b$ actually means $a + (-b)$. That's why you can order
-$+\text{something}$ and $-\text{something}$ things however you want:
+Substraction $a-b$ actually means $a + (-b)$.
+
+A similar thing happens with division: for any real number $a$ except $0$
+(we'll talk about dividing by $0$ soon), $\frac 1 a$ is a number that gives 1
+when you multiply it by $a$:
+
+math:
+    a + (-a) &= 0
+    a \cdot \frac 1 a &= 1, \qquad a \ne 0
+
+As you can see, adding and multiplying rules look similar, but some of them are
+slightly different.
+
+If you add together many things, you can put them to any order you want. The
+same thing works with multiplying.
+
+math:
+    a+b+c+d+e &= e+d+a+c+b
+    abcde &= edacb
+
+If we combine this with the $a-b=a+(-b)$ thing, we'll notice that we can order
+$+\text{something}$ and $-\text{something}$ things however we want. For example:
+
+math:
+    a-b-c &= a + (-b) + (-c)
+    &= (-c) + a + (-b)
+    &= -c+a-b
+
+It works the same way with more things too:
 
 math:
     \red{a}      \
@@ -366,23 +392,16 @@ math:
 
 Note that $a = +a$.
 
-Multiplication and division follow similar rules as addition and substraction.
-In this tutorial, division is usually not written as $a/b$; it is almost always
-$\frac a b$, and later you'll find that much nicer to work with.
-
 (divide-top-and-bottom)
-For example, with $+$ and $-$ you can order things however you want, as long as
-things with $+$ in front of them stay $+$'ed and things with $-$ in front of
-them stay $-$'ed. With $\frac a b$ notation, it works the same way: things under
-the horizontal line are being divided, and things above it are being multiplied.
-You can reorder stuff as long as you don't change those things.
+With multiplication and division, you can also reorder things however you want,
+as long as things under the horizontal line are being divided, and things above
+it are being multiplied.
 
 math:
     a \cdot \frac{b}{c} \cdot \frac{d}{e} = \frac{abd}{ce}
 
-Note that $a$ goes to top. It works like this because $\frac b c=b\frac 1 c$,
-just like $a-b=a+(-b)$. This is why $a\frac b c = ab\frac 1 c=\frac{ab}{c}$,
-and a similar thing happens with more things multiplied.
+The $a$ goes to top because $\frac b c=b\frac 1 c$, and so
+$a\frac b c = ab\frac 1 c=\frac{ab}{c}$.
 
 (zerodivision)
 In the above math, $c$ and $e$ must not be $0$ because you can't divide by zero.
@@ -411,19 +430,13 @@ what the answer *should* be based on just that, and we need to go back and look
 at where the $\frac 0 0$ came from. Usually there's a way to do whatever we're
 trying to do so that we can avoid $\frac 0 0$.
 
-We know that $x-y=x+(-y)$, so substracting $y$ from $x$ is actually adding a
-different number, $-y$, to $x$. Division works similarly:
-
-math:
-    \frac x y = x \cdot \frac{1}{y}, \qquad y \ne 0
-
 Sometimes things *cancel* out nicely:
 
 math:
     \red{x}+y\red{-x} = y
 
 We're adding the $x$ and taking it away, so after all the $x$ goes away
-completely, no matter what the value of $x$ is. A similar thing happens with
+completely, no matter what the value of $x$ is. It works similarly with
 multiplication and division:
 
 math:
@@ -433,17 +446,15 @@ math:
     \frac{ ab\red{c}d\blue{e} }{ \red{c}\blue{e}xy}\
     = \frac{abd}{xy}
 
-I colored the cancelled stuff just to make it easier to see what cancels.
-
-If $a=b$, then $b=a$. This means that you can also add more stuff by "canceling
-backwards":
+Sometimes it's useful to use this canceling rule right-to-left and add more
+stuff:
 
 math:
     \frac{ a\blue c }{ b\blue c } &= \frac a b
     \frac a b &= \frac{ a\blue c }{ b\blue c }
 
-The backwards thing also works with $+$ and $-$; sometimes it's useful to look
-at $y$ as $x+y-x$ or something like that.
+The "backwards canceling" thing also works with $+$ and $-$; sometimes it's
+useful to look at $y$ as $y+x-x$ or something like that.
 
 Be aware of mixing adding and multiplying rules. They don't mix very well, for
 example:
@@ -487,10 +498,11 @@ math:
     = \blue2\cdot\frac 1 2 + \blue b\cdot\frac 1 2 \
     = 1 + \frac b 2
 
-Or use this rule that does the same thing...
+Or use one of these handy rules that do the same thing...
 
 math:
-    \frac{\blue{a+b}}{c} = \frac{\blue a}c + \frac{\blue b}c
+    \frac{\blue{a+b}}{c} &= \frac{\blue a}c + \frac{\blue b}c
+    \frac{\blue{a-b}}{c} &= \frac{\blue a}c - \frac{\blue b}c
 
 ...like this:
 
@@ -507,9 +519,9 @@ Here's another thing that does not work:
 math:
     \frac a b + \frac c d = \frac{a+b}{c+d} \qquad \red{\text{wrong!}}
 
-You can combine fractions only if their bottoms are the same, which is using the
-$\frac{a+b}{c} = \frac a c + \frac b c$ rule right to left. If you want the
-bottoms to be the same, you may need to do "canceling backwards":
+You can combine fractions with $+$ and $-$ between them only if the bottoms are
+the same. This is using the $\frac{a+b}{c} = \frac a c + \frac b c$ rule right
+to left. If you want the bottoms to be the same, you may need to do "canceling backwards":
 
 math:
     \frac a b + \frac c d = \frac{a\blue d}{b\blue d} + \
@@ -585,6 +597,23 @@ math:
 
 The $x$ and $y$ can be any positive reals, so $-x$ and $-y$ can be any negative
 reals. It works!
+
+<hr />
+
+[Earlier](#simplification-techniques) I said that $\color{green}{a} \cdot \frac b c$
+simplifies to $\frac{\color{green}{a}b}{c}$, not $\frac{b}{\color{green}{a}c}$.
+However, if $a=-1$, both are correct:
+
+math:
+    \frac{(-1)b}{c} = \frac{b}{(-1)c} = \frac{-b}{c} = \frac{b}{-c}
+
+Here is a quick proof that $\frac{(-1)b}{c} = \frac{b}{(-1)c}$. Other parts of
+the above math are more straight-forward. This is one of the cases when
+"canceling backwards" is useful:
+
+math:
+    \frac{(-1)b}{c} = \frac{\color{blue}{(-1)}(-1)b}{\color{blue}{(-1)}c} \
+    = \frac{1b}{(-1)c} = \frac{b}{(-1)c}
 
 
 ## Using Formulas to Make More Formulas
@@ -738,7 +767,8 @@ math:
 Here is an example of using this formula.
 
 indent:
-    Find all real numbers $x$ and $y$ that satisfy $x^2 = y^2$.
+    Let $x,y \in \mathbb{R}$. If $x^2 = y^2$, what can we say about $x$ and
+    $y$?
 
 We know that this is true at least if $x=y$ because $x^2=x^2$, or if $x=-y$
 because then $x^2=(-y)^2=y^2$. But are there other $x$ and $y$ values that
@@ -811,8 +841,8 @@ probably get it right, and that's why ``True or True == True``.
 
 Let $A$ and $B$ be Booleans. Saying "if $A$, then $B$" means that if $A$ is
 true, then $B$ is also true. That's it. It doesn't say anything about what
-happens if $A$ is false. Here is a list of the possible cases for "if $A$, then
-$B$":
+happens if $A$ is false. Also, if $B$ is true, $A$ can be still false. Here is
+a list of the possible cases:
 
 indent:
     "$B$ is true if $A$ is true" <br />
@@ -825,10 +855,9 @@ indent:
     <tr><td>false    </td><td>true or false  </td></tr>
     </table>
 
-By the way, if you look at this carefully, you'll notice that if $B$ is false,
-then $A$ is also false, because the only row with false in the $B$ column has
-false in the $A$ column. This is what we use in proofs by contradiction: we say
-"if the thing we're trying to prove is not true, then $1=2$".
+For example, if $1 = 2$, then $1 \cdot 0 = 2 \cdot 0$; that is, $0 = 0$. In
+other words, we have "if $1=2$, then $0=0$", but we **don't** have "if $0=0$,
+then $1=2$". Math is not broken.
 
 Here's a similar table for "if and only if", sometimes written "iff" with double
 "f":
