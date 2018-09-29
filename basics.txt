@@ -109,23 +109,15 @@ indent:
 
 That's a mess! Let me explain how to read it:
 
-<ul>
-    <li>
-    $\mathbb{R}$ is a set of all real numbers. Sets are not like arrays because
-    some sets contain infinitely many objects, and the order doesn't matter; the
-    sets $\{a,b\}$ and $\{b,a\}$ are equal, but in programming, the arrays
-    ``[a, b]`` and ``[b, a]`` are not. $\mathbb{R}$ is not the only set with a
-    single-letter name, but that's the only one you'll need in this tutorial.
-    </li>
-    <li>
-    $\in$ means "in", so you should read this like "let a,b,c in reals".
-    </li>
-    <li>
-    "Let $a,b,c \in \mathbb{R}$" means "Let $a \in \mathbb{R}$ and
-    $b \in \mathbb{R}$ and $c \in \mathbb{R}$". Copy/pasting is bad, just like
-    in programming.
-    </li>
-</ul>
+* $\mathbb{R}$ is a set of all real numbers. Sets are not like arrays because
+  some sets contain infinitely many objects, and the order doesn't matter; the
+  sets $\{a,b\}$ and $\{b,a\}$ are equal, but in programming, the arrays
+  ``[a, b]`` and ``[b, a]`` are not. $\mathbb{R}$ is not the only set with a
+  single-letter name, but that's the only one you'll need in this tutorial.
+* $\in$ means "in", so you should read this like "let a,b,c in reals".
+* "Let $a,b,c \in \mathbb{R}$" means "Let $a \in \mathbb{R}$ and
+  $b \in \mathbb{R}$ and $c \in \mathbb{R}$". Copy/pasting is bad, just like
+  in programming.
 
 Real numbers don't have anything to do with things that we can measure in real
 life. If we say "let $x=2$", we don't mean that $x$ is 2 inches or metres or
@@ -190,21 +182,13 @@ we did above.
 The above proof relies on a few facts that you probably know already, and we
 can't do the proof without these "basic facts":
 
-<ul>
-    <li>
-    We can parenthesize $+$'ed things however we want: $(x+y)+z = x+(y+z)$, and
-    because those things are the same, we can simply write the whole thing as
-    just $x+y+z$. In our case, $(a+b)+(a+b)+...+(a+b)=a+b+a+b+...+a+b$.
-    </li>
-    <li>
-    We can reorder $+$'ed things however we want: $a+b+a+b=a+a+b+b$. In the
-    simplest form, $x+y=y+x$, and the more complicated ab things can be done by
-    applying the simple $x+y=y+x$ rule multiple times.
-    </li>
-    <li>
-    If $x \in \{1,2,3,...\}$, then $xy$ means $y$ added to itself $x$ times.
-    </li>
-</ul>
+* We can parenthesize $+$'ed things however we want: $(x+y)+z = x+(y+z)$, and
+  because those things are the same, we can simply write the whole thing as
+  just $x+y+z$. In our case, $(a+b)+(a+b)+...+(a+b)=a+b+a+b+...+a+b$.
+* We can reorder $+$'ed things however we want: $a+b+a+b=a+a+b+b$. In the
+  simplest form, $x+y=y+x$, and the more complicated ab things can be done by
+  applying the simple $x+y=y+x$ rule multiple times.
+* If $x \in \{1,2,3,...\}$, then $xy$ means $y$ added to itself $x$ times.
 
 That's all there is to our proof. But we assumed that $c \in \{1,2,3,...\}$.
 Let's see if the thing works with a different $c$:
@@ -921,17 +905,15 @@ Obviously, if we apply multiple "if and only if" things, we don't introduce any
 Let $a,x,y \in \mathbb{R}$. Here is a list of "if and only if" things that are
 commonly done to both sides of an $x=y$ equation:
 
-<ul>
-    <li>Adding a number to both sides: $x=y \iff x+a=y+a$.</li>
-    <li>Substracting a number from both sides: $x=y \iff x-a=y-a$.</li>
-    <li>Multiplying both sides by something nonzero: if $a \ne 0$, then
-        $x=y \iff xa=ya$ (if $a=0$, then $xa=ya$ is always true).</li>
-    <li>Dividing both sides by something nonzero: if $a \ne 0$, then
-        $x=y \iff \frac x a = \frac y a$ (if $a=0$, $\frac x a$ and $\frac y a$
-        are undefined).</li>
-    <li>$xy=0 \iff x=0 \text{ or } y=0$.</li>
-    <li>If $x > 0$ and $y > 0$, then $x=y \iff x^2=y^2$.</li>
-</ul>
+* Adding a number to both sides: $x=y \iff x+a=y+a$.
+* Substracting a number from both sides: $x=y \iff x-a=y-a$.
+* Multiplying both sides by something nonzero: if $a \ne 0$, then
+  $x=y \iff xa=ya$ (if $a=0$, then $xa=ya$ is always true).
+* Dividing both sides by something nonzero: if $a \ne 0$, then
+  $x=y \iff \frac x a = \frac y a$ (if $a=0$, $\frac x a$ and $\frac y a$
+  are undefined).
+* $xy=0 \iff x=0 \text{ or } y=0$.
+* If $x > 0$ and $y > 0$, then $x=y \iff x^2=y^2$.
 
 Most things on this list are quite straight-forward, but maybe the last thing
 isn't, so let's prove that. Earlier we proved that
