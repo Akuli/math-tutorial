@@ -311,7 +311,7 @@ graybox:
     In this tutorial, division is usually not written as $a/b$; it is almost
     always $\frac a b$, and later you'll find that much nicer to work with.
 
-Let $a,b,c,d,e,x,y \in \mathbb{R}$. The things I'm about to show can be proved
+Let $a,b,c,d,e,x,y,z \in \mathbb{R}$. The things I'm about to show can be proved
 with axioms of reals.
 
 For every $a$, there is a number $-a$ such that $a + (-a) = 0$. If $a$ is
@@ -404,15 +404,16 @@ Division by zero is saying "I want a number that gives $x$ when I multiply it by
 zero". If you multiply a number by zero, you always get zero:
 
 math:
-    0x = 0 \qquad \text{for all } x \in \mathbb{R}
+    0z = 0 \qquad \text{for all } z \in \mathbb{R}
 
-So, saying $y = \frac x 0$ means $0y = x$, which *never* works if $x \ne 0$.
-However, if $x=0$, it works for *any* $y$ because $0y = 0 = x$. In other words,
-it seems like $\frac 0 0$ can be anything. That doesn't really make sense
-either, but later we'll see that if we are getting $\frac 0 0$, we don't know
-what the answer *should* be based on just that, and we need to go back and look
-at where the $\frac 0 0$ came from. Usually there's a way to do whatever we're
-trying to do so that we can avoid $\frac 0 0$.
+So, saying $z = \frac x 0$ means $0z = x$, which *never* works if $x \ne 0$.
+However, if $x=0$, it works for *any* $z$. In other words, it seems like
+$\frac 0 0$ can be anything. That doesn't really make sense either, but later
+we'll see that if we are getting $\frac 0 0$, we don't know what the answer
+*should* be based on just that, and we need to go back and look at where the
+$\frac 0 0$ came from. Usually there's a way to do whatever we're trying to do
+so that we can avoid $\frac 0 0$, but if you get $\frac x 0$ with $x \ne 0$,
+you probably did something wrong.
 
 Sometimes things *cancel* out nicely:
 
