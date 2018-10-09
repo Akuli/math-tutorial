@@ -161,18 +161,3 @@ th, td {
 .asymptote {
     margin: 15px;
 }
-
-/* https://stackoverflow.com/a/1636635 */
-ol.parenlist {
-    counter-reset: list;
-}
-ol.parenlist > li {
-    list-style: none;
-    position: relative;
-}
-ol.parenlist > li:before {
-    counter-increment: list;
-    content: "(" counter(list, decimal) "):";
-    position: absolute;
-    left: -2em;
-}

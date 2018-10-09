@@ -133,25 +133,14 @@ numbers. We can do better by abbreviating "real numbers" as "reals"...</p>
 
 </div><p>That's a mess! Let me explain how to read it:</p>
 
-<p><ul>
-    <li>
-    $\mathbb{R}$ is a set of all real numbers. Sets are not like arrays because
-    some sets contain infinitely many objects, and the order doesn't matter; the
-    sets $\{a,b\}$ and $\{b,a\}$ are equal, but in programming, the arrays
-    <code>[a, b]</code> and <code>[b, a]</code> are not. $\mathbb{R}$ is not the only set with a
-    single-letter name, but that's the only one you'll need in this tutorial.
-    </li>
-    <li>
-    $\in$ means "in", so you should read this like "let a,b,c in reals".
-    </li>
-    <li>
-    "Let $a,b,c \in \mathbb{R}$" means "Let $a \in \mathbb{R}$ and
-    $b \in \mathbb{R}$ and $c \in \mathbb{R}$". Copy/pasting is bad, just like
-    in programming.
-    </li>
-</ul></p>
-
-<p>Real numbers don't have anything to do with things that we can measure in real
+<ul><li>$\mathbb{R}$ is a set of all real numbers. Sets are not like arrays because
+  some sets contain infinitely many objects, and the order doesn't matter; the
+  sets $\{a,b\}$ and $\{b,a\}$ are equal, but in programming, the arrays
+  <code>[a, b]</code> and <code>[b, a]</code> are not. $\mathbb{R}$ is not the only set with a
+  single-letter name, but that's the only one you'll need in this tutorial.</li><li>$\in$ means "in", so you should read this like "let a,b,c in reals".</li><li>"Let $a,b,c \in \mathbb{R}$" means "Let $a \in \mathbb{R}$ and
+  $b \in \mathbb{R}$ and $c \in \mathbb{R}$". Copy/pasting is bad, just like
+  in programming.
+</li></ul><p>Real numbers don't have anything to do with things that we can measure in real
 life. If we say "let $x=2$", we don't mean that $x$ is 2 inches or metres or
 whatever. It's $2$. This is also true when we draw stuff; it's perfectly normal
 to draw a rectangle like this:</p>
@@ -194,23 +183,12 @@ we did above.</p>
 <p>The above proof relies on a few facts that you probably know already, and we
 can't do the proof without these "basic facts":</p>
 
-<p><ul>
-    <li>
-    We can parenthesize $+$'ed things however we want: $(x+y)+z = x+(y+z)$, and
-    because those things are the same, we can simply write the whole thing as
-    just $x+y+z$. In our case, $(a+b)+(a+b)+...+(a+b)=a+b+a+b+...+a+b$.
-    </li>
-    <li>
-    We can reorder $+$'ed things however we want: $a+b+a+b=a+a+b+b$. In the
-    simplest form, $x+y=y+x$, and the more complicated ab things can be done by
-    applying the simple $x+y=y+x$ rule multiple times.
-    </li>
-    <li>
-    If $x \in \{1,2,3,...\}$, then $xy$ means $y$ added to itself $x$ times.
-    </li>
-</ul></p>
-
-<p>That's all there is to our proof. But we assumed that $c \in \{1,2,3,...\}$.
+<ul><li>We can parenthesize $+$'ed things however we want: $(x+y)+z = x+(y+z)$, and
+  because those things are the same, we can simply write the whole thing as
+  just $x+y+z$. In our case, $(a+b)+(a+b)+...+(a+b)=a+b+a+b+...+a+b$.</li><li>We can reorder $+$'ed things however we want: $a+b+a+b=a+a+b+b$. In the
+  simplest form, $x+y=y+x$, and the more complicated ab things can be done by
+  applying the simple $x+y=y+x$ rule multiple times.</li><li>If $x \in \{1,2,3,...\}$, then $xy$ means $y$ added to itself $x$ times.
+</li></ul><p>That's all there is to our proof. But we assumed that $c \in \{1,2,3,...\}$.
 Let's see if the thing works with a different $c$:</p>
 
 <div class="highlight" style="background: #f0f0f0"><pre style="line-height: 125%"><span></span><span style="color: #c65d09; font-weight: bold">&gt;&gt;&gt; </span>(<span style="color: #40a070">1</span><span style="color: #666666">+</span><span style="color: #40a070">2</span>)<span style="color: #666666">*</span><span style="color: #40a070">0</span>     <span style="color: #60a0b0; font-style: italic"># left side: a=1, b=2, c=0</span>
@@ -318,7 +296,7 @@ which is a contradiction.
 always $\frac a b$, and later you'll find that much nicer to work with.
 </p>
 
-</div><p>Let $a,b,c,d,e,x,y \in \mathbb{R}$. The things I'm about to show can be proved
+</div><p>Let $a,b,c,d,e,x,y,z \in \mathbb{R}$. The things I'm about to show can be proved
 with axioms of reals.</p>
 
 <p>For every $a$, there is a number $-a$ such that $a + (-a) = 0$. If $a$ is
@@ -369,13 +347,14 @@ multiply it by $y$":</p>
 $$\begin{align}\frac{x}{y}y = x\end{align}$$<p>Division by zero is saying "I want a number that gives $x$ when I multiply it by
 zero". If you multiply a number by zero, you always get zero:</p>
 
-$$\begin{align}0x = 0 \qquad \text{for all } x \in \mathbb{R}\end{align}$$<p>So, saying $y = \frac x 0$ means $0y = x$, which <i>never</i> works if $x \ne 0$.
-However, if $x=0$, it works for <i>any</i> $y$ because $0y = 0 = x$. In other words,
-it seems like $\frac 0 0$ can be anything. That doesn't really make sense
-either, but later we'll see that if we are getting $\frac 0 0$, we don't know
-what the answer <i>should</i> be based on just that, and we need to go back and look
-at where the $\frac 0 0$ came from. Usually there's a way to do whatever we're
-trying to do so that we can avoid $\frac 0 0$.</p>
+$$\begin{align}0z = 0 \qquad \text{for all } z \in \mathbb{R}\end{align}$$<p>So, saying $z = \frac x 0$ means $0z = x$, which <i>never</i> works if $x \ne 0$.
+However, if $x=0$, it works for <i>any</i> $z$. In other words, it seems like
+$\frac 0 0$ can be anything. That doesn't really make sense either, but later
+we'll see that if we are getting $\frac 0 0$, we don't know what the answer
+<i>should</i> be based on just that, and we need to go back and look at where the
+$\frac 0 0$ came from. Usually there's a way to do whatever we're trying to do
+so that we can avoid $\frac 0 0$, but if you get $\frac x 0$ with $x \ne 0$,
+you probably did something wrong.</p>
 
 <p>Sometimes things <i>cancel</i> out nicely:</p>
 
@@ -700,34 +679,27 @@ $$\begin{align}0x &= 0(x+1) \\
 We got all real numbers as "fake solutions" that seem to work fine, even though
 they don't actually work at all. This is an <a href="#if-and-only-if">if and only if</a>
 problem, because we showed that if $x=x+1$, then $0=0$. It's perfectly correct,
-but it doesn't help us in any way.</p>
+but it's useless because it tells nothing about $x=x+1$.</p>
 
 <p>Usually when dealing with equations, we need "if and only if" things. If we
 apply an "if and only if" thing to an equation, we don't introduce any "fake
 solutions"; the equation we had before applying the "if and only if" thing is
-true <i>exactly</i> for those values of $x$ the equation after the applying is true.
+true <i>exactly</i> for the same $x$ values as the equation after the applying.
 Obviously, if we apply multiple "if and only if" things, we don't introduce any
 "fake solutions" either.</p>
 
 <p>Let $a,x,y \in \mathbb{R}$. Here is a list of "if and only if" things that are
 commonly done to both sides of an $x=y$ equation:</p>
 
-<p><ul>
-    <li>Adding a number to both sides: $x=y \iff x+a=y+a$.</li>
-    <li>Substracting a number from both sides: $x=y \iff x-a=y-a$.</li>
-    <li>Multiplying both sides by something nonzero: if $a \ne 0$, then
-        $x=y \iff xa=ya$ (if $a=0$, then $xa=ya$ is always true).</li>
-    <li>Dividing both sides by something nonzero: if $a \ne 0$, then
-        $x=y \iff \frac x a = \frac y a$ (if $a=0$, $\frac x a$ and $\frac y a$
-        are undefined).</li>
-    <li>$xy=0 \iff x=0 \text{ or } y=0$.</li>
-    <li>If $x > 0$ and $y > 0$, then $x=y \iff x^2=y^2$.</li>
-</ul></p>
-
-<p>Most things on this list are quite straight-forward, but maybe the last thing
+<ul><li>Adding a number to both sides: $x=y \iff x+a=y+a$.</li><li>Substracting a number from both sides: $x=y \iff x-a=y-a$.</li><li>Multiplying both sides by something nonzero: if $a \ne 0$, then
+  $x=y \iff xa=ya$ (if $a=0$, then $xa=ya$ is always true).</li><li>Dividing both sides by something nonzero: if $a \ne 0$, then
+  $x=y \iff \frac x a = \frac y a$ (if $a=0$, $\frac x a$ and $\frac y a$
+  are undefined).</li><li>$xy=0 \iff x=0 \text{ or } y=0$.</li><li>If $x > 0$ and $y > 0$, then $x=y \iff x^2=y^2$.
+</li></ul><p>Most things on this list are quite straight-forward, but maybe the last thing
 isn't, so let's prove that. Earlier we proved that
 $x^2=y^2 \iff (x=y\text{ or }x=-y)$, but we have also proved that $x=-y$ never
-happens if $x$ and $y$ are positive.</p>
+happens if $x$ and $y$ are positive. This means that if $x > 0$ and $y > 0$,
+then $x^2=y^2 \iff x=y$, which is what we wanted.</p>
 
 <div class="box graybox"><h2> Exercise</h2><p>Prove that the last thing also works for $x \ge 0$ and $y \ge 0$, not only
 for $x > 0$ and $y > 0$.
@@ -741,7 +713,11 @@ a lot. A similar thing works with multiplication and division: $\frac x 2 = 3$
 can be solved by "moving" the 2 to the other side, and it gives
 $x = 3 \cdot 2 = 6$.</p>
 
-<p><hr /></p>
+<div class="box graybox"><h2> Yet another exercise</h2><p>Do <a href="#negative-times-negative">the $(-1)(-1)=1$ proof</a> by "moving" things to
+the other side of the equation as much as possible.
+</p>
+
+</div><p><hr /></p>
 
 <p>Now we know enough stuff to solve our horribly complicated equation. Let's do
 it.</p>
@@ -770,7 +746,7 @@ specially. Like this:</p>
 
 <div class="indent">$$\begin{align}\text{...same }&\text{stuff as before...} \\
 2x &= x^2 \\
-\text{if }x \ne 0\text{:} \quad 2 &= x\end{align}$$<p>if $x=0$, then $2x=0=0^2=x^2$, so $0$ is also a solution</p>
+\text{if }x \ne 0\text{:} \quad 2 &= x\end{align}$$<p>If $x=0$, then $2x = 2 \cdot 0 = 0=0^2=x^2$, so $0$ is also a solution.</p>
 
 <p>Answer: $x=0$ or $x=2$
 </p>
